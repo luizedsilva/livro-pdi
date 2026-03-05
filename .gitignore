@@ -7,3 +7,6 @@
 *.fls
 *.fdb_latexmk
 
+
+/.quarto/
+**/*.quarto_ipynb
