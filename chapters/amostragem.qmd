@@ -71,7 +71,7 @@ A amostragem corresponde à discretização espacial da imagem. Uma cena contín
 
 Matematicamente, considera‑se uma função contínua de intensidade (f(x,y)), que, após a amostragem, passa a ser definida apenas em posições discretas de (x) e (y).
 
-![Ilustração dos processos de amostragem (A) e quantização (B) de um sinal contínuo.](/imgs/cap2/amostragem-quantizacao.svg){#fig-amostragem-quantizacao}
+![Ilustração dos processos de amostragem e quantização de um sinal contínuo.](/imgs/cap2/amostragem.png){#fig-amostragem-quantizacao width=80%}
 
 ### Resolução Espacial
 
