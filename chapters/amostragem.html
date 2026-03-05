@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Amostragem e Quantização – Processamento de Imagens</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/melhoramento.html" rel="next">
+<link href="../chapters/intro.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5de800ff0d570d78397ee07e50104809.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/amostragem.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Amostragem e Quantização</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Processamento de Imagens</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução ao Processamento Digital de Imagens</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/amostragem.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Amostragem e Quantização</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/melhoramento.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Melhoramento de Imagens</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/fourier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformada de Fourier</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/compressao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/cor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/morfobinaria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática Binária</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/morfocinza.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Morfologia Matemática em Tons de Cinza</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/segmentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/representacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/interpretacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/opencv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Conclusão</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referências</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#elementos-da-percepção-visual" id="toc-elementos-da-percepção-visual" class="nav-link active" data-scroll-target="#elementos-da-percepção-visual"><span class="header-section-number">2.1</span> Elementos da Percepção Visual</a>
+  <ul class="collapse">
+  <li><a href="#sistema-de-processamento-de-imagens" id="toc-sistema-de-processamento-de-imagens" class="nav-link" data-scroll-target="#sistema-de-processamento-de-imagens"><span class="header-section-number">2.1.1</span> Sistema de Processamento de Imagens</a></li>
+  <li><a href="#o-olho-humano-e-a-formação-da-imagem" id="toc-o-olho-humano-e-a-formação-da-imagem" class="nav-link" data-scroll-target="#o-olho-humano-e-a-formação-da-imagem"><span class="header-section-number">2.1.2</span> O Olho Humano e a Formação da Imagem</a></li>
+  <li><a href="#fóvea-cones-e-bastonetes" id="toc-fóvea-cones-e-bastonetes" class="nav-link" data-scroll-target="#fóvea-cones-e-bastonetes"><span class="header-section-number">2.1.3</span> Fóvea, Cones e Bastonetes</a></li>
+  </ul></li>
+  <li><a href="#ilusões-de-ótica-e-percepção" id="toc-ilusões-de-ótica-e-percepção" class="nav-link" data-scroll-target="#ilusões-de-ótica-e-percepção"><span class="header-section-number">2.2</span> Ilusões de Ótica e Percepção</a></li>
+  <li><a href="#imagens-digitais-e-sensores" id="toc-imagens-digitais-e-sensores" class="nav-link" data-scroll-target="#imagens-digitais-e-sensores"><span class="header-section-number">2.3</span> Imagens Digitais e Sensores</a>
+  <ul class="collapse">
+  <li><a href="#espectro-visível" id="toc-espectro-visível" class="nav-link" data-scroll-target="#espectro-visível"><span class="header-section-number">2.3.1</span> Espectro Visível</a></li>
+  <li><a href="#sensores-de-imagem" id="toc-sensores-de-imagem" class="nav-link" data-scroll-target="#sensores-de-imagem"><span class="header-section-number">2.3.2</span> Sensores de Imagem</a></li>
+  </ul></li>
+  <li><a href="#amostragem" id="toc-amostragem" class="nav-link" data-scroll-target="#amostragem"><span class="header-section-number">2.4</span> Amostragem</a>
+  <ul class="collapse">
+  <li><a href="#conceito-de-amostragem" id="toc-conceito-de-amostragem" class="nav-link" data-scroll-target="#conceito-de-amostragem"><span class="header-section-number">2.4.1</span> Conceito de Amostragem</a></li>
+  <li><a href="#resolução-espacial" id="toc-resolução-espacial" class="nav-link" data-scroll-target="#resolução-espacial"><span class="header-section-number">2.4.2</span> Resolução Espacial</a></li>
+  </ul></li>
+  <li><a href="#quantização" id="toc-quantização" class="nav-link" data-scroll-target="#quantização"><span class="header-section-number">2.5</span> Quantização</a>
+  <ul class="collapse">
+  <li><a href="#conceito-de-quantização" id="toc-conceito-de-quantização" class="nav-link" data-scroll-target="#conceito-de-quantização"><span class="header-section-number">2.5.1</span> Conceito de Quantização</a></li>
+  <li><a href="#profundidade-de-bits" id="toc-profundidade-de-bits" class="nav-link" data-scroll-target="#profundidade-de-bits"><span class="header-section-number">2.5.2</span> Profundidade de Bits</a></li>
+  </ul></li>
+  <li><a href="#representação-da-imagem-digital" id="toc-representação-da-imagem-digital" class="nav-link" data-scroll-target="#representação-da-imagem-digital"><span class="header-section-number">2.6</span> Representação da Imagem Digital</a></li>
+  <li><a href="#os-formatos-pbm-pgm-e-ppm-de-imagens" id="toc-os-formatos-pbm-pgm-e-ppm-de-imagens" class="nav-link" data-scroll-target="#os-formatos-pbm-pgm-e-ppm-de-imagens"><span class="header-section-number">2.7</span> Os formatos PBM, PGM e PPM de imagens</a>
+  <ul class="collapse">
+  <li><a href="#para-ler-um-arquivo-pnm" id="toc-para-ler-um-arquivo-pnm" class="nav-link" data-scroll-target="#para-ler-um-arquivo-pnm"><span class="header-section-number">2.7.1</span> Para ler um arquivo PNM</a></li>
+  <li><a href="#salvar-um-arquivo-pnm" id="toc-salvar-um-arquivo-pnm" class="nav-link" data-scroll-target="#salvar-um-arquivo-pnm"><span class="header-section-number">2.7.2</span> Salvar um arquivo PNM</a></li>
+  </ul></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">2.8</span> Considerações Finais</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Amostragem e Quantização</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>A representação digital de imagens é um dos pilares fundamentais do Processamento Digital de Imagens (PDI). Para que uma cena do mundo real possa ser manipulada por um computador, é necessário transformá‑la de uma forma contínua, tanto no espaço quanto na intensidade luminosa, em uma representação discreta. Esse processo ocorre por meio de duas etapas essenciais: <strong>amostragem</strong> e <strong>quantização</strong>.</p>
+<p>Neste capítulo são apresentados os fundamentos conceituais dessas etapas, relacionando‑as à percepção visual humana, aos sensores de aquisição de imagens e aos modelos matemáticos utilizados para representar imagens digitais.</p>
+<section id="elementos-da-percepção-visual" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="elementos-da-percepção-visual"><span class="header-section-number">2.1</span> Elementos da Percepção Visual</h2>
+<section id="sistema-de-processamento-de-imagens" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="sistema-de-processamento-de-imagens"><span class="header-section-number">2.1.1</span> Sistema de Processamento de Imagens</h3>
+<p>Um sistema de processamento de imagens pode ser descrito como um conjunto de etapas que envolvem <strong>aquisição</strong>, <strong>processamento</strong>, <strong>armazenamento</strong> e <strong>saída</strong> de imagens, conforme ilustrado em <a href="#fig-sistema" class="quarto-xref">Figura&nbsp;<span>2.1</span></a>. A aquisição é realizada por dispositivos como câmeras de vídeo e scanners, enquanto o processamento ocorre em um computador. A saída pode ser exibida em monitores, impressoras ou outros dispositivos gráficos, e o armazenamento é feito em mídias digitais.</p>
+<p>Essa estrutura é inspirada, em muitos aspectos, no próprio sistema visual humano, que serve como referência para o desenvolvimento de modelos computacionais de visão.</p>
+<div id="fig-sistema" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sistema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/sistema.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sistema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.1: Elementos de um sistema de processamento de imagens
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="o-olho-humano-e-a-formação-da-imagem" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="o-olho-humano-e-a-formação-da-imagem"><span class="header-section-number">2.1.2</span> O Olho Humano e a Formação da Imagem</h3>
+<p>O olho humano funciona como um sofisticado sistema óptico (Figura <a href="#fig-olho" class="quarto-xref">Figura&nbsp;<span>2.2</span></a>). A luz proveniente dos objetos atravessa a córnea e o cristalino, sendo focalizada sobre a retina. Na retina encontram‑se os fotorreceptores, responsáveis por converter a energia luminosa em sinais elétricos que são transmitidos ao cérebro pelo nervo óptico.</p>
+<div id="fig-olho" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-olho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/olho.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-olho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.2: Olho humano
+</figcaption>
+</figure>
+</div>
+<p>A imagem formada na retina é invertida, e o cérebro realiza a interpretação e a reconstrução da cena observada. Esse processo evidencia que a percepção visual não é apenas um fenômeno físico, mas também cognitivo.</p>
+</section>
+<section id="fóvea-cones-e-bastonetes" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="fóvea-cones-e-bastonetes"><span class="header-section-number">2.1.3</span> Fóvea, Cones e Bastonetes</h3>
+<p>A retina possui duas classes principais de fotorreceptores: <strong>bastonetes</strong> e <strong>cones</strong>, Figura <a href="#fig-cones" class="quarto-xref">Figura&nbsp;<span>2.3</span></a>. Os bastonetes são altamente sensíveis à luz e estão associados à percepção de brilho, enquanto os cones são responsáveis pela percepção de cores.</p>
+<p>A região da <strong>fóvea</strong>, uma pequena depressão circular localizada no centro da retina, concentra uma grande densidade de cones, sendo responsável pela alta acuidade visual. Essa característica inspira o projeto de sensores de imagem, como os dispositivos CCD e CMOS, que utilizam matrizes de elementos sensíveis à luz para capturar imagens digitais.</p>
+<div id="fig-cones" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/bastonetes_cones.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.3: Bastonetes e Cones
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="ilusões-de-ótica-e-percepção" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="ilusões-de-ótica-e-percepção"><span class="header-section-number">2.2</span> Ilusões de Ótica e Percepção</h2>
+<p>O estudo das ilusões de ótica revela limitações e particularidades do sistema visual humano. Em situações onde o cérebro não consegue interpretar corretamente os estímulos visuais, ele tende a completar a informação com base em experiências prévias e padrões memorizados.</p>
+<p>Fenômenos como o efeito Mach (Figura <a href="#fig-mach" class="quarto-xref">Figura&nbsp;<span>2.4</span></a>), a percepção de contraste e distorções associadas a linhas e formas (Figura <a href="#fig-linhas" class="quarto-xref">Figura&nbsp;<span>2.5</span></a>) demonstram que a intensidade percebida nem sempre corresponde à intensidade física real. Esses efeitos são relevantes em PDI, pois técnicas de realce e segmentação exploram princípios semelhantes aos do sistema visual humano.</p>
+<div id="fig-mach" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mach-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/mach.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mach-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.4: Efeito mach
+</figcaption>
+</figure>
+</div>
+<div id="fig-linhas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-linhas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/linhas.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linhas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.5: Efeito de linhas
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="imagens-digitais-e-sensores" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="imagens-digitais-e-sensores"><span class="header-section-number">2.3</span> Imagens Digitais e Sensores</h2>
+<section id="espectro-visível" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="espectro-visível"><span class="header-section-number">2.3.1</span> Espectro Visível</h3>
+<p>O espectro visível (Figura <a href="#fig-espectro" class="quarto-xref">Figura&nbsp;<span>2.6</span></a>) corresponde a uma pequena faixa do espectro eletromagnético, compreendida aproximadamente entre os comprimentos de onda do violeta ao vermelho. Embora estreita, essa faixa é suficiente para representar uma grande variedade de informações visuais utilizadas em aplicações cotidianas.</p>
+<div id="fig-espectro" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-espectro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/espectro.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-espectro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.6: Espectro visível da luz
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sensores-de-imagem" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="sensores-de-imagem"><span class="header-section-number">2.3.2</span> Sensores de Imagem</h3>
+<p>A aquisição de imagens digitais é realizada por sensores que convertem energia luminosa em sinais elétricos. Um sensor simples consiste em um material sensível à luz que gera uma tensão proporcional à intensidade luminosa incidente.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap2/sensor1.png" class="img-fluid figure-img"></p>
+<figcaption>Sensores para aquisição de imagens</figcaption>
+</figure>
+</div>
+<p>Os sensores podem ser classificados em:</p>
+<ul>
+<li><strong>Sensores lineares</strong>, que capturam imagens linha a linha;</li>
+<li><strong>Sensores matriciais</strong>, que utilizam uma matriz bidimensional de elementos sensíveis à luz, sendo os mais comuns em câmeras digitais modernas.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap2/sensorlinear.png" class="img-fluid figure-img"></p>
+<figcaption>Sensor Linear</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap2/sensormatricial.png" class="img-fluid figure-img"></p>
+<figcaption>Sensor Matricial</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="amostragem" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="amostragem"><span class="header-section-number">2.4</span> Amostragem</h2>
+<section id="conceito-de-amostragem" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="conceito-de-amostragem"><span class="header-section-number">2.4.1</span> Conceito de Amostragem</h3>
+<p>A amostragem corresponde à discretização espacial da imagem. Uma cena contínua é convertida em um conjunto finito de pontos, organizados em uma grade regular. Cada ponto da grade representa um <strong>pixel</strong> da imagem digital.</p>
+<p>Matematicamente, considera‑se uma função contínua de intensidade (f(x,y)), que, após a amostragem, passa a ser definida apenas em posições discretas de (x) e (y).</p>
+<div id="fig-amostragem-quantizacao" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-amostragem-quantizacao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/amostragem-quantizacao.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-amostragem-quantizacao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.7: Ilustração dos processos de amostragem (A) e quantização (B) de um sinal contínuo.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="resolução-espacial" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="resolução-espacial"><span class="header-section-number">2.4.2</span> Resolução Espacial</h3>
+<p>A resolução espacial de uma imagem está relacionada ao número de amostras por unidade de comprimento, sendo frequentemente expressa em <strong>DPI (dots per inch)</strong>. Quanto maior a resolução, maior o número de pixels utilizados para representar a imagem e maior o nível de detalhe visual.</p>
+<p>Imagens com o mesmo tamanho físico podem apresentar resoluções diferentes, resultando em níveis distintos de nitidez. Da mesma forma, imagens com a mesma resolução podem ter tamanhos físicos diferentes.</p>
+</section>
+</section>
+<section id="quantização" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="quantização"><span class="header-section-number">2.5</span> Quantização</h2>
+<section id="conceito-de-quantização" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="conceito-de-quantização"><span class="header-section-number">2.5.1</span> Conceito de Quantização</h3>
+<p>A quantização refere‑se à discretização dos valores de intensidade da imagem. Enquanto a amostragem define <em>onde</em> a imagem é medida, a quantização define <em>quais valores</em> essas medições podem assumir.</p>
+<p>Sejam (L) os níveis possíveis de intensidade, normalmente escolhidos como uma potência de dois:</p>
+<p><span class="math display">\[
+L = 2^k
+\]</span></p>
+<p>onde (k) é o número de bits utilizados para representar cada pixel.</p>
+</section>
+<section id="profundidade-de-bits" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="profundidade-de-bits"><span class="header-section-number">2.5.2</span> Profundidade de Bits</h3>
+<p>A profundidade de bits influencia diretamente a qualidade visual da imagem. Por exemplo:</p>
+<ul>
+<li>8 bits por pixel permitem 256 níveis de cinza;</li>
+<li>4 bits por pixel permitem 16 níveis;</li>
+<li>2 bits por pixel permitem apenas 4 níveis.</li>
+</ul>
+<p>Reduções na quantização podem introduzir efeitos visuais indesejados, como perda de detalhes e aparecimento de bandas de intensidade.</p>
+</section>
+</section>
+<section id="representação-da-imagem-digital" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="representação-da-imagem-digital"><span class="header-section-number">2.6</span> Representação da Imagem Digital</h2>
+<p>Uma imagem digital pode ser representada como uma <strong>matriz numérica</strong>, em que cada elemento corresponde ao valor de intensidade de um pixel. A Figura <a href="#fig-binaria" class="quarto-xref">Figura&nbsp;<span>2.8</span></a>, ilustra os valores dos pixels (1 ou 0) numa imagem binária. Para imagens em tons de cinza, essa matriz contém valores escalares, conforme ilustrado na <a href="#fig-cinza" class="quarto-xref">Figura&nbsp;<span>2.9</span></a>.</p>
+<div id="fig-binaria" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binaria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/binaria.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binaria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.8: Ilustração dos pixels numa Imagem Binária
+</figcaption>
+</figure>
+</div>
+<div id="fig-cinza" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cinza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/cinza.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cinza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.9: Ilustração dos pixels numa Imagem em Tons de Cinza
+</figcaption>
+</figure>
+</div>
+<p>O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, movimente o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom), dos pixels correspondentes na região selecionada.</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" width="100%" height="500" style="border:none; overflow:hiddeln;">
+</iframe>
+<p>Para imagens coloridas, a representação pode envolver:</p>
+<ul>
+<li>tabelas de cores;</li>
+<li>camadas de cores, como os canais vermelho, verde e azul (RGB). (Figura <a href="#fig-colorida" class="quarto-xref">Figura&nbsp;<span>2.10</span></a>)</li>
+</ul>
+<div id="fig-colorida" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-colorida-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/colorida.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorida-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.10: Ilustração dos pixels numa Imagem Colorida
+</figcaption>
+</figure>
+</div>
+<p>Além da representação matricial, a imagem também pode ser interpretada como uma superfície tridimensional, na qual as coordenadas espaciais definem a posição do pixel e a intensidade define a altura da superfície (Figura <a href="#fig-superficie" class="quarto-xref">Figura&nbsp;<span>2.11</span></a>).</p>
+<div id="fig-superficie" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-superficie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap2/superficie.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-superficie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.11: Ilustração da imagem com superfície
+</figcaption>
+</figure>
+</div>
+<p>O exemplo interativo seguinte permite uma visualização de uma imagem como superfície:</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/7vlY9trVV" width="100%" height="600" style="border:none; overflow:hiddeln;">
+</iframe>
+</section>
+<section id="os-formatos-pbm-pgm-e-ppm-de-imagens" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="os-formatos-pbm-pgm-e-ppm-de-imagens"><span class="header-section-number">2.7</span> Os formatos PBM, PGM e PPM de imagens</h2>
+<p>Os formatos <strong>PBM, PGM e PPM</strong> pertencem à família <strong>Netpbm</strong> e são amplamente utilizados no ensino e na pesquisa em <strong>Processamento Digital de Imagens</strong>, principalmente por sua simplicidade e transparência na representação dos dados. Esses formatos descrevem explicitamente os valores dos pixels, sem empregar técnicas sofisticadas de compressão, o que facilita a compreensão de como uma imagem digital é armazenada e manipulada. Cada formato é voltado para um tipo específico de imagem: binária, em escala de cinza ou colorida.</p>
+<p>O formato <strong>PBM (Portable Bitmap)</strong> é utilizado para representar <strong>imagens binárias</strong>, nas quais cada pixel assume apenas dois valores possíveis. Tipicamente, o valor <code>0</code> representa a cor branca e o valor <code>1</code> representa a cor preta. Por esse motivo, o PBM é especialmente adequado para máscaras, imagens segmentadas e resultados de processos de limiarização. Por trabalhar com apenas um bit por pixel, esse formato é conceitualmente simples e frequentemente empregado em exemplos introdutórios de binarização e análise lógica de imagens.</p>
+<pre class="text"><code>P1
+5 5
+0 0 1 0 0
+0 1 1 1 0
+1 1 1 1 1
+0 1 1 1 0
+0 0 1 0 0</code></pre>
+<p>O formato <strong>PGM (Portable Graymap)</strong> é destinado à representação de <strong>imagens em escala de cinza</strong>. Nesse caso, cada pixel é descrito por um único valor numérico que indica seu nível de intensidade luminosa, geralmente variando entre <code>0</code> (preto) e <code>255</code> (branco). Imagens PGM são muito utilizadas em processamento de imagens por permitirem uma análise direta dos níveis de cinza, sendo ideais para o estudo de filtros, detecção de bordas, realce de contraste e transformações pontuais. Sua estrutura simples torna explícita a relação entre valores numéricos e intensidades visuais.</p>
+<pre class="text"><code>P2
+5 5
+255
+0   50  100 150 200
+50  100 150 200 255
+100 150 200 255 200
+150 200 255 200 150
+200 255 200 150 100</code></pre>
+<p>Já o formato <strong>PPM (Portable Pixmap)</strong> é empregado para <strong>imagens coloridas</strong>, representadas no modelo <strong>RGB</strong>. Cada pixel é descrito por três valores inteiros correspondentes às componentes vermelha (Red), verde (Green) e azul (Blue), normalmente também no intervalo de <code>0</code> a <code>255</code>. Dessa forma, o PPM permite representar uma ampla gama de cores, sendo frequentemente usado como formato intermediário em conversões e experimentos. Apesar de gerar arquivos maiores, sua clareza estrutural facilita o entendimento da composição das imagens coloridas.</p>
+<pre class="text"><code>P3
+3 2
+255
+255   0   0   0  255   0    0   0 255
+255 255   0   0  255 255  255   0 255</code></pre>
+<p>Os três formatos admitem duas variações: uma versão <strong>ASCII</strong>, legível por humanos, e uma versão <strong>binária</strong>, mais compacta e eficiente em termos de armazenamento. As versões ASCII são particularmente úteis em contextos didáticos, pois permitem a inspeção direta dos valores dos pixels em um editor de texto. Já as versões binárias são mais adequadas para aplicações práticas, devido ao menor tamanho dos arquivos e à maior velocidade de leitura e escrita.</p>
+<p>Em conjunto, os formatos PBM, PGM e PPM desempenham um papel fundamental no ensino do Processamento Digital de Imagens, pois tornam explícita a relação entre a representação numérica e a aparência visual das imagens. Ao trabalhar com esses formatos, o estudante pode compreender de forma concreta conceitos como pixel, nível de cinza, cor e quantização, estabelecendo uma base sólida para o estudo de técnicas mais avançadas.</p>
+<section id="para-ler-um-arquivo-pnm" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="para-ler-um-arquivo-pnm"><span class="header-section-number">2.7.1</span> Para ler um arquivo PNM</h3>
+<p>Abaixo o código em linguagem C para ler arquivo nesses formatos</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-fontsize="\small"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-------------------------------------------------------------------------</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"> * Read pnm ascii image</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"> * Params (in):</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"> *   name = image file name</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"> *   tp = image type (BW, GRAY or COLOR)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"> * Returns:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"> *   image structure</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"> *-------------------------------------------------------------------------+*/</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>image img_get<span class="op">(</span><span class="dt">char</span> <span class="op">*</span>name<span class="op">,</span> <span class="dt">int</span> tp<span class="op">)</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> lines<span class="op">[</span><span class="dv">100</span><span class="op">];</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> nr<span class="op">,</span> nc<span class="op">,</span> ml<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    image img<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">FILE</span> <span class="op">*</span>fimg<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*--- PNM = "P1" or "P2" or "P3" ---*/</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    fgets<span class="op">(</span>lines<span class="op">,</span> <span class="dv">80</span><span class="op">,</span> fimg<span class="op">);</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*--- Comment lines ---*/</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    fgets<span class="op">(</span>lines<span class="op">,</span> <span class="dv">80</span><span class="op">,</span> fimg<span class="op">);</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>strchr<span class="op">(</span>lines<span class="op">,</span> <span class="ch">'#'</span><span class="op">))</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        fgets<span class="op">(</span>lines<span class="op">,</span> <span class="dv">80</span><span class="op">,</span> fimg<span class="op">);</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    sscanf<span class="op">(</span>lines<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>nc<span class="op">,</span> <span class="op">&amp;</span>nr<span class="op">);</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>tp <span class="op">!=</span> BW<span class="op">)</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        fscanf<span class="op">(</span>fimg<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>ml<span class="op">);</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        ml <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> img_create<span class="op">(</span>nr<span class="op">,</span> nc<span class="op">,</span> ml<span class="op">,</span> tp<span class="op">);</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nr <span class="op">*</span> nc<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="op">(</span>tp <span class="op">!=</span> COLOR<span class="op">)</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>      <span class="op">{</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> k<span class="op">;</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        fscanf<span class="op">(</span>fimg<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>k<span class="op">);</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> k<span class="op">;</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>      <span class="op">{</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> r<span class="op">,</span> g<span class="op">,</span> b<span class="op">;</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        fscanf<span class="op">(</span>fimg<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>r<span class="op">,</span> <span class="op">&amp;</span>g<span class="op">,</span> <span class="op">&amp;</span>b<span class="op">);</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="op">(</span>r <span class="op">&lt;&lt;</span> <span class="dv">16</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span>g <span class="op">&lt;&lt;</span> <span class="dv">8</span><span class="op">)</span> <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    fclose<span class="op">(</span>fimg<span class="op">);</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    img_info<span class="op">(</span>name<span class="op">,</span> img<span class="op">);</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> img<span class="op">;</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="salvar-um-arquivo-pnm" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="salvar-um-arquivo-pnm"><span class="header-section-number">2.7.2</span> Salvar um arquivo PNM</h3>
+<p>Abaixo o código para gravar a imagem nestes formatos.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-------------------------------------------------------------------------</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"> * Write pnm image</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"> * Params:</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"> *   img = image structure</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"> *   name = image file name</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"> *   tp = image type (BW, GRAY or COLOR)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"> *-------------------------------------------------------------------------*/</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> img_put<span class="op">(</span>image img<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>name<span class="op">,</span> <span class="dt">int</span> tp<span class="op">)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> count<span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">FILE</span> <span class="op">*</span>fimg<span class="op">;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    fprintf<span class="op">(</span>fimg<span class="op">,</span> <span class="st">"P</span><span class="sc">%c\n</span><span class="st">"</span><span class="op">,</span> tp <span class="op">+</span> <span class="ch">'0'</span><span class="op">);</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    fputs<span class="op">(</span>CREATOR<span class="op">,</span> fimg<span class="op">);</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    fprintf<span class="op">(</span>fimg<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st">  </span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> img<span class="op">-&gt;</span>nc<span class="op">,</span> img<span class="op">-&gt;</span>nr<span class="op">);</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>tp <span class="op">!=</span> BW<span class="op">)</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        fprintf<span class="op">(</span>fimg<span class="op">,</span> <span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> img<span class="op">-&gt;</span>ml<span class="op">);</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> img<span class="op">-&gt;</span>nr <span class="op">*</span> img<span class="op">-&gt;</span>nc<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>tp <span class="op">!=</span> COLOR<span class="op">)</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> x <span class="op">=</span> img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>            fprintf<span class="op">(</span>fimg<span class="op">,</span> <span class="st">"</span><span class="sc">%3d</span><span class="st"> "</span><span class="op">,</span> x<span class="op">);</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> r <span class="op">=</span> <span class="op">(</span>img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">&gt;&gt;</span> <span class="dv">16</span><span class="op">)</span> <span class="op">&amp;</span> <span class="bn">0xFF</span><span class="op">;</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> g <span class="op">=</span> <span class="op">(</span>img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">&gt;&gt;</span> <span class="dv">8</span><span class="op">)</span> <span class="op">&amp;</span> <span class="bn">0xFF</span><span class="op">;</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> b <span class="op">=</span> img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">&amp;</span> <span class="bn">0xFF</span><span class="op">;</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>            fprintf<span class="op">(</span>fimg<span class="op">,</span> <span class="st">"</span><span class="sc">%3d</span><span class="st"> </span><span class="sc">%3d</span><span class="st"> </span><span class="sc">%3d</span><span class="st"> "</span><span class="op">,</span> r<span class="op">,</span> g<span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        count<span class="op">++;</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>count <span class="op">&gt;</span> PER_LINE<span class="op">)</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>            fprintf<span class="op">(</span>fimg<span class="op">,</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>            count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    fclose<span class="op">(</span>fimg<span class="op">);</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Onde a imagem (<em>image</em>) está representada na seguinte estrutura:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-fontsize="\small"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CREATOR </span><span class="st">"# CREATOR: Image Processing using C-Ansi - ByDu</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="op">*</span>px<span class="op">;</span>        <span class="co">// pixels vector</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> nr<span class="op">,</span> nc<span class="op">,</span> ml<span class="op">;</span> <span class="co">// nr = n.rows, nc = n.columns, ml = max level</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> tp<span class="op">;</span>         <span class="co">// tp = type</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="op">*</span> image<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    BW <span class="op">=</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    GRAY<span class="op">,</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    COLOR</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Um programa para abrir uma imagem em formato PGM, calcular o negativo da imagem, salvar o resultado e chamar um visualizador de imagem para apresentar o resultado é o seguinte:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-fontsize="\small"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>image neg_pgm<span class="op">(</span>image In<span class="op">)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    image Out <span class="op">=</span> img_clone<span class="op">(</span>In<span class="op">);</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> In<span class="op">-&gt;</span>nr <span class="op">*</span> In<span class="op">-&gt;</span>nc<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        Out<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> In<span class="op">-&gt;</span>ml <span class="op">-</span> In<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Out<span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> msg<span class="op">(</span><span class="dt">char</span> <span class="op">*</span>s<span class="op">)</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">\n</span><span class="st">Negative image"</span><span class="op">);</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">\n</span><span class="st">-------------------------------"</span><span class="op">);</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">\n</span><span class="st">Usage:  </span><span class="sc">%s</span><span class="st">  image-name[.pnm] tp</span><span class="sc">\n\n</span><span class="st">"</span><span class="op">,</span> s<span class="op">);</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"    image-name[.pnm] is image file file </span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"    tp = image type (1 = BW, 2 = Gray, 3 = Color)</span><span class="sc">\n\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">/*-------------------------------------------------------------------------</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"> * main function</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"> *-------------------------------------------------------------------------*/</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> nc<span class="op">,</span> nr<span class="op">,</span> ml<span class="op">,</span> tp<span class="op">;</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>p<span class="op">,</span> nameIn<span class="op">[</span><span class="dv">100</span><span class="op">],</span> nameOut<span class="op">[</span><span class="dv">100</span><span class="op">],</span> cmd<span class="op">[</span><span class="dv">110</span><span class="op">];</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    image In<span class="op">,</span> Out<span class="op">;</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">//-- define input/output file name</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    img_name<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">],</span> nameIn<span class="op">,</span> nameOut<span class="op">,</span> GRAY<span class="op">,</span> GRAY<span class="op">);</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">//-- read image</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    In <span class="op">=</span> img_get<span class="op">(</span>nameIn<span class="op">,</span> tp<span class="op">);</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">//-- transformation</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    Out <span class="op">=</span> neg_pgm<span class="op">(</span>In<span class="op">);</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="co">//-- save image</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    img_put<span class="op">(</span>Out<span class="op">,</span> nameOut<span class="op">,</span> tp<span class="op">);</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="co">//-- show image</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    sprintf<span class="op">(</span>cmd<span class="op">,</span> <span class="st">"</span><span class="sc">%s</span><span class="st"> </span><span class="sc">%s</span><span class="st"> &amp;"</span><span class="op">,</span> VIEW<span class="op">,</span> nameOut<span class="op">);</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    system<span class="op">(</span>cmd<span class="op">);</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    img_free<span class="op">(</span>In<span class="op">);</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    img_free<span class="op">(</span>Out<span class="op">);</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="considerações-finais" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">2.8</span> Considerações Finais</h2>
+<p>A amostragem e a quantização constituem a base da representação digital de imagens. A escolha adequada da resolução espacial e da profundidade de quantização é fundamental para garantir um equilíbrio entre qualidade visual, custo computacional e requisitos de armazenamento.</p>
+<p>A compreensão desses conceitos é essencial para o estudo de técnicas mais avançadas de processamento de imagens, como filtragem, segmentação, compressão e reconhecimento de padrões, abordadas nos capítulos seguintes.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/intro.html" class="pagination-link" aria-label="Introdução ao Processamento Digital de Imagens">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução ao Processamento Digital de Imagens</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/melhoramento.html" class="pagination-link" aria-label="Melhoramento de Imagens">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Melhoramento de Imagens</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
