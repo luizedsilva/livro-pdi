@@ -1,0 +1,79 @@
+
+## Compressão de Imagens
+
+O crescimento acelerado da produção e do armazenamento de imagens digitais impõe desafios significativos relacionados ao uso eficiente de memória e largura de banda. Imagens digitais, especialmente aquelas com alta resolução e profundidade de bits, demandam grandes quantidades de espaço para armazenamento e transmissão. Nesse contexto, a **compressão de imagens** surge como uma área fundamental do Processamento Digital de Imagens (PDI).
+
+A compressão tem como objetivo principal reduzir a quantidade de dados necessária para representar uma imagem, preservando, tanto quanto possível, sua qualidade visual e informacional. Este capítulo apresenta os conceitos fundamentais da compressão de imagens, seus principais métodos e aplicações.
+
+## Conceitos Básicos de Compressão
+
+A compressão de imagens consiste em representar uma imagem com menos bits do que a sua representação original. Essa redução é obtida explorando **redundâncias** presentes nos dados da imagem e limitações do sistema visual humano.
+
+De forma geral, os sistemas de compressão envolvem dois processos principais: **codificação**, responsável por reduzir a redundância, e **decodificação**, responsável por reconstruir a imagem a partir da representação comprimida.
+
+## Tipos de Redundância em Imagens
+
+A eficiência da compressão está diretamente relacionada à identificação e eliminação de redundâncias. Em imagens digitais, destacam-se três tipos principais:
+
+### Redundância Espacial
+
+A redundância espacial decorre da alta correlação entre pixels vizinhos. Em regiões homogêneas, pixels adjacentes tendem a apresentar valores de intensidade semelhantes, permitindo que essa informação seja representada de forma mais compacta.
+
+### Redundância Estatística
+
+A redundância estatística está associada à distribuição não uniforme dos níveis de intensidade. Alguns valores ocorrem com maior frequência do que outros, possibilitando o uso de códigos mais curtos para símbolos mais prováveis.
+
+### Redundância Psicovisual
+
+A redundância psicovisual explora limitações do sistema visual humano. Certas informações podem ser descartadas ou representadas de forma aproximada sem causar impacto perceptível significativo na qualidade da imagem.
+
+## Compressão sem Perda
+
+Na **compressão sem perda**, a imagem reconstruída após a descompressão é idêntica à imagem original. Esse tipo de compressão é essencial em aplicações onde a fidelidade absoluta dos dados é crítica, como imagens médicas, científicas e técnicas.
+
+Métodos comuns de compressão sem perda incluem codificação por comprimento de execução, codificação preditiva e codificação entropia, como os algoritmos de Huffman e aritmético.
+
+## Compressão com Perda
+
+A **compressão com perda** permite pequenas distorções na imagem reconstruída em troca de taxas de compressão significativamente maiores. Esse tipo de compressão é amplamente utilizado em aplicações multimídia, onde a percepção visual é mais importante do que a exatidão pixel a pixel.
+
+Técnicas com perda geralmente envolvem transformações da imagem para domínios mais adequados, como o domínio da frequência, seguidas de processos de quantização que descartam informações menos relevantes perceptualmente.
+
+## Transformações Utilizadas na Compressão
+
+Diversos métodos de compressão utilizam transformações matemáticas para concentrar a energia da imagem em um pequeno conjunto de coeficientes. Entre as mais utilizadas destacam-se:
+
+* Transformada Discreta do Cosseno (DCT);
+* Transformada de Fourier;
+* Transformada Wavelet.
+
+Essas transformações facilitam a identificação de componentes menos significativas, que podem ser quantizadas de forma mais agressiva.
+
+## Codificação Entropia
+
+A codificação entropia é uma etapa essencial em muitos sistemas de compressão. Ela visa representar os dados de forma eficiente, utilizando códigos de comprimento variável baseados na probabilidade de ocorrência dos símbolos.
+
+Algoritmos clássicos incluem a **codificação de Huffman**, que utiliza árvores binárias para atribuir códigos mais curtos a símbolos mais frequentes, e a **codificação aritmética**, que alcança taxas de compressão próximas ao limite teórico da entropia.
+
+## Padrões de Compressão de Imagens
+
+Diversos padrões de compressão foram desenvolvidos ao longo dos anos, visando interoperabilidade e eficiência. Entre os mais conhecidos destacam-se:
+
+* **JPEG**, amplamente utilizado para fotografias;
+* **PNG**, que utiliza compressão sem perda;
+* **JPEG2000**, baseado em wavelets;
+* **WebP**, desenvolvido para aplicações web.
+
+Cada padrão apresenta características específicas em termos de taxa de compressão, qualidade visual e complexidade computacional.
+
+## Métricas de Qualidade
+
+A avaliação da qualidade de imagens comprimidas pode ser realizada por meio de métricas objetivas e subjetivas. Métricas objetivas, como o erro quadrático médio (MSE) e a razão sinal-ruído de pico (PSNR), fornecem medidas quantitativas da distorção introduzida.
+
+Entretanto, a avaliação subjetiva, baseada na percepção humana, continua sendo essencial para determinar a qualidade visual final da imagem.
+
+## Considerações Finais
+
+A compressão de imagens é uma área central do Processamento Digital de Imagens, possibilitando o armazenamento e a transmissão eficientes de grandes volumes de dados visuais. A escolha do método de compressão adequado depende da aplicação, do nível de fidelidade requerido e das restrições computacionais.
+
+Os conceitos apresentados neste capítulo fornecem a base necessária para o estudo de técnicas modernas de compressão e codificação multimídia, bem como para a compreensão dos principais padrões utilizados na prática.

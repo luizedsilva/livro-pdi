@@ -1,0 +1,98 @@
+## Morfologia Matemática Binária
+
+A **Morfologia Matemática** é uma área do Processamento Digital de Imagens dedicada à análise e ao processamento da forma geométrica dos objetos presentes em uma imagem. Diferentemente de técnicas baseadas diretamente em valores de intensidade, a morfologia foca na **estrutura espacial** dos objetos, sendo especialmente eficaz no tratamento de imagens binárias.
+
+Este capítulo apresenta os fundamentos da **morfologia matemática binária**, introduzindo seus principais operadores e discutindo suas aplicações em tarefas como filtragem, segmentação e análise de formas.
+
+## Imagens Binárias
+
+Uma imagem binária é uma imagem digital na qual cada pixel pode assumir apenas dois valores possíveis, geralmente representados por 0 e 1. Esses valores indicam, respectivamente, a ausência ou a presença de um objeto em determinada posição da imagem.
+
+Imagens binárias são frequentemente obtidas a partir de imagens em tons de cinza por meio de processos de limiarização. Sua simplicidade torna-as adequadas para a aplicação de operações morfológicas, nas quais a forma e a conectividade dos objetos são os principais aspectos analisados.
+
+## Conceitos Fundamentais da Morfologia Matemática
+
+A morfologia matemática baseia-se na teoria dos conjuntos. Uma imagem binária pode ser interpretada como um conjunto de pontos no plano bidimensional, correspondentes aos pixels de valor 1.
+
+As operações morfológicas envolvem dois conjuntos principais:
+
+* **Imagem**: o conjunto que representa os objetos de interesse;
+* **Elemento estruturante**: um pequeno conjunto que define a forma e a escala da operação.
+
+O elemento estruturante atua como uma sonda que percorre a imagem, permitindo analisar e modificar suas estruturas geométricas.
+
+## Elemento Estruturante
+
+O **elemento estruturante** é um componente central da morfologia matemática. Ele pode assumir diferentes formas, como linhas, quadrados, discos ou cruzes, e possui um ponto de origem que define sua posição relativa durante as operações.
+
+A escolha do elemento estruturante influencia diretamente o resultado das operações morfológicas, pois determina quais características geométricas serão preservadas, realçadas ou removidas.
+
+## Dilatação
+
+A **dilatação** é uma operação morfológica que tende a expandir as regiões dos objetos em uma imagem binária. Formalmente, a dilatação de um conjunto (A) por um elemento estruturante (B) é definida como:
+
+$$
+A \oplus B = \{ z \mid (\hat{B})_z \cap A \neq \varnothing \}
+$$
+
+onde $\hat{B}$ representa a reflexão do elemento estruturante (B).
+
+A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos.
+
+## Erosão
+
+A **erosão** é a operação dual da dilatação e tem como efeito principal a redução das regiões dos objetos. A erosão de um conjunto (A) por um elemento estruturante (B) é definida como:
+
+$$
+A \ominus B = \{ z \mid B_z \subseteq A \}
+$$
+
+Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.
+
+## Abertura
+
+A **abertura** é uma operação composta, definida como a erosão seguida de uma dilatação utilizando o mesmo elemento estruturante:
+
+$$
+A \circ B = (A \ominus B) \oplus B
+$$
+
+A abertura é utilizada para remover objetos pequenos e detalhes finos, preservando a forma geral das estruturas maiores presentes na imagem.
+
+## Fechamento
+
+O **fechamento** é a operação dual da abertura, definida como a dilatação seguida de uma erosão:
+
+$$
+A \bullet B = (A \oplus B) \ominus B
+$$
+
+Essa operação é eficaz para preencher pequenas lacunas e buracos nos objetos, além de suavizar contornos externos.
+
+## Propriedades das Operações Morfológicas
+
+As operações morfológicas apresentam propriedades importantes, como:
+
+* **Idempotência**: a aplicação repetida de abertura ou fechamento não altera o resultado após a primeira aplicação;
+* **Dualidade**: erosão e dilatação, assim como abertura e fechamento, são operações duais;
+* **Invariância por translação**: o resultado das operações não depende da posição absoluta dos objetos na imagem.
+
+Essas propriedades fornecem uma base teórica sólida para o uso da morfologia matemática em sistemas de processamento de imagens.
+
+## Aplicações da Morfologia Binária
+
+A morfologia matemática binária é amplamente utilizada em diversas aplicações, tais como:
+
+* remoção de ruído impulsivo;
+* preenchimento de regiões;
+* extração de contornos;
+* análise de conectividade;
+* pré-processamento para segmentação e reconhecimento de padrões.
+
+Sua simplicidade conceitual e eficiência computacional fazem da morfologia uma ferramenta essencial em PDI.
+
+## Considerações Finais
+
+A morfologia matemática binária fornece um conjunto poderoso de operadores para a análise e manipulação da forma dos objetos em imagens digitais. A compreensão de seus princípios e operações fundamentais é essencial para o desenvolvimento de soluções robustas em Processamento Digital de Imagens.
+
+Os conceitos apresentados neste capítulo servem como base para extensões mais avançadas, como a morfologia em imagens em tons de cinza e aplicações em visão computacional.

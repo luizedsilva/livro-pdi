@@ -1,0 +1,15 @@
+# Conclusão
+
+O Processamento Digital de Imagens consolidou-se como uma área fundamental da computação moderna, com aplicações que permeiam desde sistemas simples de visualização até soluções complexas baseadas em inteligência artificial. Ao longo deste livro, foram apresentados os principais conceitos, técnicas e ferramentas que permitem a análise, a melhoria e a interpretação automática de imagens digitais.
+
+Inicialmente, foram discutidos os fundamentos das imagens digitais, incluindo sua representação matemática, os modelos de cor e os aspectos físicos relacionados à formação da imagem. Esses conceitos são essenciais para compreender como a informação visual é capturada, armazenada e manipulada em sistemas computacionais.
+
+Na sequência, foram exploradas técnicas clássicas de processamento, como filtragem, realce, transformações geométricas, detecção de bordas e segmentação. Essas operações constituem a base para a maioria das aplicações práticas, permitindo reduzir ruídos, destacar características relevantes e separar regiões de interesse em uma imagem.
+
+O livro também abordou métodos de reconhecimento e interpretação de imagens, destacando o papel das características visuais, da cor, da textura e da forma na identificação de padrões. Nesse contexto, ferramentas como o OpenCV demonstraram-se essenciais para a implementação eficiente de algoritmos, aproximando a teoria da prática.
+
+Com o avanço recente do aprendizado de máquina e das redes neurais profundas, o processamento de imagens passou a integrar sistemas cada vez mais inteligentes e autônomos. Embora este livro tenha enfatizado os fundamentos, os conceitos apresentados servem como base sólida para o estudo de técnicas mais avançadas, como visão computacional baseada em aprendizado profundo.
+
+Por fim, espera-se que este livro tenha fornecido ao leitor não apenas o conhecimento técnico necessário, mas também uma visão crítica sobre o uso e as limitações das técnicas de processamento de imagens. O domínio desses conceitos é indispensável para profissionais e pesquisadores que atuam em áreas como ciência de dados, engenharia, saúde, robótica e sensoriamento remoto.
+
+O Processamento de Imagens continua em constante evolução, impulsionado por novas demandas e avanços tecnológicos. Assim, o aprendizado nessa área deve ser contínuo, combinando fundamentos teóricos sólidos com experimentação prática e atualização constante.

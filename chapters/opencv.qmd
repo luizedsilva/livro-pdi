@@ -1,0 +1,106 @@
+
+# Introdução ao OpenCV
+
+O OpenCV (Open Source Computer Vision Library) é uma biblioteca amplamente utilizada para o desenvolvimento de aplicações em visão computacional e processamento digital de imagens. Criado originalmente pela Intel, o OpenCV é distribuído como software livre e oferece suporte a múltiplas linguagens, com grande destaque para Python e C++.
+
+Este capítulo apresenta os conceitos fundamentais do OpenCV, sua estrutura básica e exemplos práticos de uso.
+
+## Visão Computacional e OpenCV
+
+A visão computacional tem como objetivo permitir que sistemas computacionais interpretem informações visuais provenientes do mundo real. Para isso, utiliza técnicas de processamento de imagens, reconhecimento de padrões e aprendizado de máquina.
+
+O OpenCV disponibiliza implementações eficientes desses algoritmos, facilitando o desenvolvimento de aplicações práticas.
+
+## Estrutura da Biblioteca OpenCV
+
+Em Python, o OpenCV é acessado principalmente por meio do módulo `cv2`. Após a instalação, a biblioteca pode ser importada da seguinte forma:
+
+```python
+import cv2
+````
+
+## Leitura e Exibição de Imagens
+
+A leitura de imagens é feita com a função `imread`, e a exibição com `imshow`.
+
+```python
+import cv2
+
+imagem = cv2.imread("imagem.jpg")
+cv2.imshow("Imagem Original", imagem)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+## Representação de Imagens no OpenCV
+
+No OpenCV, imagens coloridas são representadas no formato **BGR** (Blue, Green, Red), e não RGB.
+
+A conversão para tons de cinza pode ser feita da seguinte forma:
+
+```python
+imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
+cv2.imshow("Imagem em Cinza", imagem_cinza)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+## Redimensionamento de Imagens
+
+O redimensionamento é uma operação comum no processamento de imagens:
+
+```python
+imagem_redimensionada = cv2.resize(imagem, (300, 200))
+cv2.imshow("Imagem Redimensionada", imagem_redimensionada)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+## Filtragem e Redução de Ruído
+
+Filtros são usados para suavizar imagens e reduzir ruídos. Um dos mais comuns é o filtro Gaussiano:
+
+```python
+imagem_suavizada = cv2.GaussianBlur(imagem, (5, 5), 0)
+cv2.imshow("Imagem Suavizada", imagem_suavizada)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+## Detecção de Bordas
+
+A detecção de bordas é fundamental para a identificação de objetos. Um método amplamente utilizado é o detector de bordas de Canny:
+
+```python
+bordas = cv2.Canny(imagem_cinza, 100, 200)
+cv2.imshow("Bordas Detectadas", bordas)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+## Limiarização (Threshold)
+
+A limiarização converte uma imagem em tons de cinza para uma imagem binária:
+
+```python
+_, imagem_binaria = cv2.threshold(imagem_cinza, 127, 255, cv2.THRESH_BINARY)
+cv2.imshow("Imagem Binária", imagem_binaria)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+## Aplicações Práticas do OpenCV
+
+Com essas operações básicas, é possível desenvolver aplicações como:
+
+* reconhecimento facial;
+* sistemas de vigilância;
+* análise de imagens médicas;
+* visão computacional em robótica;
+* processamento de vídeos em tempo real.
+
+## Considerações Finais
+
+O OpenCV fornece uma base sólida para o desenvolvimento de aplicações em visão computacional. A compreensão das operações fundamentais — leitura, conversão, filtragem, segmentação e detecção de bordas — é essencial para avançar em aplicações mais complexas.
+
+Este capítulo apresentou os conceitos iniciais e exemplos práticos que servirão como base para os próximos estudos em processamento e interpretação de imagens.

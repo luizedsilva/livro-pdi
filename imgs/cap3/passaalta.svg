@@ -1,0 +1,22 @@
+<svg width="160" height="160" viewBox="0 0 160 160"
+     xmlns="http://www.w3.org/2000/svg">
+  <style>
+    rect { fill:#fff; stroke:#000; stroke-width:2; }
+    text { font-family:serif; font-size:20px; text-anchor:middle; dominant-baseline:middle; }
+  </style>
+
+  <g transform="translate(20,20)">
+    <rect x="0" y="0" width="40" height="40"/><text x="20" y="20">0</text>
+    <rect x="40" y="0" width="40" height="40"/><text x="60" y="20">1</text>
+    <rect x="80" y="0" width="40" height="40"/><text x="100" y="20">0</text>
+
+    <rect x="0" y="40" width="40" height="40"/><text x="20" y="60">1</text>
+    <rect x="40" y="40" width="40" height="40"/><text x="60" y="60">-4</text>
+    <rect x="80" y="40" width="40" height="40"/><text x="100" y="60">1</text>
+
+    <rect x="0" y="80" width="40" height="40"/><text x="20" y="100">0</text>
+    <rect x="40" y="80" width="40" height="40"/><text x="60" y="100">1</text>
+    <rect x="80" y="80" width="40" height="40"/><text x="100" y="100">0</text>
+  </g>
+</svg>
+

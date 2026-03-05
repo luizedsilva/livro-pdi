@@ -1,0 +1,87 @@
+## Imagens Coloridas
+
+A maioria das informações visuais percebidas pelo ser humano envolve cor. Em Processamento Digital de Imagens, o uso da cor amplia significativamente a capacidade de análise, interpretação e representação de cenas, tornando sistemas computacionais mais próximos da percepção humana.
+
+Este capítulo apresenta os fundamentos das **imagens coloridas**, abordando os princípios da percepção da cor, os principais modelos de cor utilizados em sistemas computacionais e as formas de representação e manipulação de imagens coloridas.
+
+## Percepção da Cor
+
+A percepção da cor é resultado da interação da luz com o sistema visual humano. A luz visível corresponde a uma faixa restrita do espectro eletromagnético e, ao atingir a retina, estimula diferentes tipos de fotorreceptores.
+
+O olho humano possui três tipos principais de cones, cada um sensível a uma faixa específica de comprimentos de onda, aproximadamente associada às cores vermelha, verde e azul. A combinação das respostas desses cones permite a percepção de uma grande variedade de cores.
+
+Esse mecanismo fisiológico fundamenta muitos dos modelos de cor utilizados em Processamento de Imagens.
+
+## Conceitos Básicos de Cor
+
+Uma cor pode ser descrita por atributos perceptuais fundamentais, tais como:
+
+* **Matiz (hue)**: corresponde à tonalidade dominante da cor;
+* **Saturação**: indica o grau de pureza da cor;
+* **Brilho ou intensidade**: representa a quantidade de luz associada à cor.
+
+Esses atributos são utilizados para definir modelos de cor que facilitam a representação e o processamento computacional de imagens coloridas.
+
+## Modelo de Cor RGB
+
+O modelo **RGB (Red, Green, Blue)** é o mais utilizado em dispositivos de aquisição e exibição de imagens, como câmeras, monitores e scanners. Nesse modelo, cada cor é representada como uma combinação aditiva das componentes vermelha, verde e azul.
+
+Uma imagem colorida RGB pode ser representada por três matrizes bidimensionais, correspondentes aos canais R, G e B. Cada pixel é descrito por um vetor tridimensional:
+
+$$
+\mathbf{c}(x,y) = [R(x,y),, G(x,y),, B(x,y)]
+$$
+
+O modelo RGB é intuitivo e eficiente para dispositivos de hardware, mas não é sempre o mais adequado para tarefas de análise de imagens.
+
+## Modelo de Cor CMY e CMYK
+
+Os modelos **CMY (Cyan, Magenta, Yellow)** e **CMYK (Cyan, Magenta, Yellow, Black)** são amplamente utilizados em sistemas de impressão. Diferentemente do RGB, esses modelos são baseados na mistura **subtrativa** de cores.
+
+A conversão entre RGB e CMY pode ser expressa de forma simples, considerando valores normalizados:
+
+$$
+C = 1 - R, \quad M = 1 - G, \quad Y = 1 - B
+$$
+
+O canal adicional K no modelo CMYK é utilizado para melhorar o contraste e reduzir o consumo de tinta.
+
+## Modelo de Cor HSV
+
+O modelo **HSV (Hue, Saturation, Value)** foi desenvolvido para representar cores de forma mais próxima à percepção humana. Nesse modelo:
+
+* H representa a matiz;
+* S representa a saturação;
+* V representa o valor ou brilho.
+
+O modelo HSV é particularmente útil em aplicações de segmentação e reconhecimento, pois permite separar informações de cor da intensidade luminosa.
+
+## Modelo de Cor HSI
+
+O modelo **HSI (Hue, Saturation, Intensity)** é semelhante ao HSV, mas utiliza a intensidade como componente separada. Essa característica o torna adequado para aplicações em que se deseja processar a intensidade independentemente da cor.
+
+Em muitos algoritmos de processamento, operações são realizadas apenas sobre o canal de intensidade, preservando as informações cromáticas.
+
+## Representação de Imagens Coloridas
+
+Imagens coloridas podem ser representadas de diferentes formas, dependendo do modelo de cor adotado. Em geral, uma imagem colorida pode ser vista como um conjunto de imagens monocromáticas correlacionadas.
+
+Essa representação permite que técnicas clássicas de processamento em tons de cinza sejam aplicadas individualmente aos canais de cor ou a componentes específicas do modelo adotado.
+
+## Aplicações de Imagens Coloridas
+
+O uso de imagens coloridas é essencial em diversas aplicações, tais como:
+
+* segmentação baseada em cor;
+* reconhecimento de objetos;
+* análise de cenas naturais;
+* visão computacional em robótica;
+* processamento de imagens médicas e industriais.
+
+A escolha adequada do modelo de cor é determinante para o sucesso dessas aplicações.
+
+## Considerações Finais
+
+As imagens coloridas desempenham um papel central no Processamento Digital de Imagens moderno. A compreensão dos modelos de cor e de suas características é fundamental para o desenvolvimento de sistemas eficientes e robustos.
+
+O domínio desses conceitos permite selecionar representações adequadas e explorar de forma eficaz as informações cromáticas presentes nas imagens, ampliando as possibilidades de análise e interpretação.

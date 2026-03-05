@@ -1,0 +1,378 @@
+---
+title: "Melhoramento de Imagens"
+Author: Luiz Eduardo da Silva
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+
+  beamer:
+    theme: CambridgeUS
+    colortheme: seagull
+    fontsize: 10pt
+lang: pt-BR
+---
+
+## Processamento Digital de Imagens
+
+### Melhoramento de Imagens
+
+- Etapa fundamental do Processamento Digital de Imagens (PDI)
+- Objetivo principal:
+  - Tornar a imagem **mais adequada à interpretação humana**
+  - Facilitar **etapas posteriores de processamento**
+- Diferente de segmentação ou reconhecimento:
+  - Não busca informação quantitativa
+  - Busca **qualidade visual e realce**
+
+---
+
+## O que é Melhoramento de Imagens?
+
+- Conjunto de técnicas aplicadas diretamente à imagem
+- Atua sobre os **valores de intensidade dos pixels**
+- Objetivos principais:
+  - Realçar detalhes
+  - Reduzir imperfeições
+  - Evidenciar características de interesse
+
+> O conceito de “melhor” é **subjetivo** e depende da aplicação.
+
+---
+
+## Subjetividade do Melhoramento
+
+- Não existe um critério único de otimização
+- A escolha da técnica depende:
+  - Do tipo de imagem
+  - Da aplicação
+  - Da experiência do analista
+- Uma imagem pode ser “melhor” para um objetivo e “pior” para outro
+
+---
+
+## Domínios de Processamento
+
+As técnicas de melhoramento podem ser classificadas conforme o domínio:
+
+- **Domínio espacial**
+  - Operações diretamente sobre os pixels
+- **Domínio da frequência**
+  - A imagem é transformada
+  - As operações são realizadas no novo domínio
+  - A imagem é reconstruída posteriormente
+
+---
+
+## Foco do Capítulo
+
+- Ênfase no **domínio espacial**
+- Técnicas:
+  - Conceitualmente mais simples
+  - Amplamente utilizadas
+- No próximo capítulo:
+  - Transformação para o domínio da frequência
+  - **Transformada de Fourier**
+
+---
+
+## Melhoramento no Domínio Espacial
+
+O processamento no domínio espacial é descrito por:
+
+$$
+g(x,y) = T\left[f(x,y)\right]
+$$
+
+- $f(x,y)$: imagem de entrada  
+- $g(x,y)$: imagem de saída  
+- $T$: operador sobre os valores de intensidade
+
+---
+
+## Operações no Domínio Espacial
+
+As operações podem ser aplicadas:
+
+- A um **único pixel**
+- A uma **vizinhança de pixels**
+
+Isso dá origem a diferentes classes de técnicas:
+- Transformações pontuais
+- Filtragem espacial
+
+---
+
+## Transformações de Intensidade
+
+- Operações **pontuais**
+- Cada pixel é processado independentemente
+- Mapeiam:
+  - Nível de cinza de entrada $r$
+  - Para um nível de saída $s$
+
+---
+
+## Visualização do Mapeamento de Intensidade
+
+::: {.content-visible when-format="html"}
+<iframe 
+  src="https://editor.p5js.org/luizedsilva/full/N451LEXKV"
+  width="100%"
+  height="450"
+  style="border:none;">
+</iframe>
+:::
+
+::: {.content-visible when-format="pdf"}
+Exemplo interativo disponível em:
+
+https://editor.p5js.org/luizedsilva/full/N451LEXKV
+:::
+
+---
+
+## Transformação Linear
+
+A transformação linear é dada por:
+
+$$
+g(x,y) = a\,f(x,y) + b
+$$
+
+- $a$: controla o **contraste**
+- $b$: controla o **brilho**
+
+---
+
+## Efeito dos Parâmetros
+
+- $a > 1$: aumenta o contraste
+- $0 < a < 1$: reduz o contraste
+- $b > 0$: imagem mais clara
+- $b < 0$: imagem mais escura
+
+---
+
+## Transformações Logarítmicas
+
+Utilizadas para:
+- Expandir valores de baixa intensidade
+- Comprimir valores elevados
+
+Forma típica:
+
+$$
+g(x,y) = c\,\log\!\left(1 + f(x,y)\right)
+$$
+
+---
+
+## Constante da Transformação Logarítmica
+
+A constante $c$ ajusta a escala:
+
+$$
+c = \frac{L-1}{\log(1 + L-1)}
+$$
+
+- $L$: número de níveis de cinza
+- Aplicações comuns:
+  - Imagens médicas
+  - Imagens espectrais
+
+---
+
+## Transformações de Potência (Gama)
+
+Definidas por:
+
+$$
+g(x,y) = c\,\left[f(x,y)\right]^{\gamma}
+$$
+
+- $\gamma < 1$: clareia a imagem
+- $\gamma > 1$: escurece a imagem
+
+---
+
+## Exemplo Interativo – Correção Gama
+
+::: {.content-visible when-format="html"}
+<iframe 
+  src="https://editor.p5js.org/luizedsilva/full/wtDvsM5Ym"
+  width="100%"
+  height="380"
+  style="border:none;">
+</iframe>
+:::
+
+::: {.content-visible when-format="pdf"}
+Exemplo disponível em:
+
+https://editor.p5js.org/luizedsilva/full/wtDvsM5Ym
+:::
+
+---
+
+## Histograma de Imagens
+
+- Representa a **distribuição dos níveis de intensidade**
+- Ferramenta fundamental para análise e melhoramento
+- Indica:
+  - Contraste
+  - Brilho
+  - Faixa dinâmica
+
+---
+
+## Interpretação do Histograma
+
+- Histograma concentrado:
+  - Baixo contraste
+- Histograma espalhado:
+  - Bom contraste
+- Base para técnicas como:
+  - Equalização de histograma
+
+---
+
+## Equalização de Histograma
+
+- Técnica de redistribuição dos níveis de cinza
+- Objetivo:
+  - Maximizar o contraste global
+- Muito utilizada pela simplicidade e eficácia
+
+---
+
+## Mapeamento de Intensidade
+
+$$
+s_k = (L - 1)\sum_{j=0}^{k} p_r(r_j)
+$$
+
+ou
+
+$$
+s_k = \frac{L - 1}{MN}\sum_{j=0}^{k} n_j
+$$
+
+Define uma **tabela de consulta (LUT)**.
+
+---
+
+## Exemplo Interativo – Equalização
+
+::: {.content-visible when-format="html"}
+<iframe 
+  src="https://editor.p5js.org/luizedsilva/full/nFphWvonZ"
+  width="100%"
+  height="500"
+  style="border:none;">
+</iframe>
+:::
+
+::: {.content-visible when-format="pdf"}
+Exemplo disponível em:
+
+https://editor.p5js.org/luizedsilva/full/nFphWvonZ
+:::
+
+---
+
+## Filtragem de Imagens
+
+- Atua sobre a **vizinhança dos pixels**
+- Objetivos:
+  - Realçar bordas
+  - Suavizar ruído
+  - Extrair informações
+
+---
+
+## Convolução
+
+- Base da filtragem linear
+- Máscara (*kernel*) desliza sobre a imagem
+- Calcula-se uma soma ponderada
+
+$$
+g(i,j) = \sum w(y,x)\, f(i+y, j+x)
+$$
+
+---
+
+## Operadores Lineares
+
+Um operador $H$ é linear se satisfaz:
+
+- **Aditividade**
+- **Homogeneidade**
+
+Essas propriedades são fundamentais na análise de filtros.
+
+---
+
+## Ruído em Imagens
+
+- Variação indesejada da intensidade
+- Pode ser introduzido por:
+  - Sensores
+  - Transmissão
+  - Conversão A/D
+- Melhoramento deve equilibrar:
+  - Realce
+  - Supressão de ruído
+
+---
+
+## Ruído Sal e Pimenta
+
+- Pixels isolados pretos e brancos
+- Ruído impulsivo
+- Facilmente perceptível
+- Modelo probabilístico simples
+
+---
+
+## Remoção de Ruído Sal e Pimenta
+
+- Filtros lineares: pouco eficazes
+- Filtros não lineares:
+  - **Filtro da mediana**
+  - Mediana adaptativa
+- Preservam bordas e detalhes
+
+---
+
+## Exemplo Interativo – Ruído e Mediana
+
+::: {.content-visible when-format="html"}
+<iframe 
+  src="https://editor.p5js.org/luizedsilva/full/xk5SXodH3"
+  width="100%"
+  height="450"
+  style="border:none;">
+</iframe>
+:::
+
+---
+
+## Considerações Finais
+
+- Melhoramento é essencial no PDI
+- Serve tanto para visualização quanto pré-processamento
+- As técnicas espaciais são a base para métodos mais avançados
+- Preparam o caminho para o domínio da frequência
+
+---
+
+## Próximo Capítulo
+
+### Transformada de Fourier
+
+- Mudança de domínio
+- Análise em frequência
+- Fundamento de filtros no domínio da frequência

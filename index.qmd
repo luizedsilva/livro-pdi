@@ -1,0 +1,37 @@
+# Prefácio {.unnumbered}
+
+Este é o livro gerado apartir dos slides da disciplina de **Processamento de Imagens**. A geração foi realizada usando a ferramenta **Quarto book** com o auxílio do Chat-GPT 5.2, mas todo o conteúdo foi verificado e aprovado pelo autor.
+
+Para aprender mais sobre **Quarto book** visite: <https://quarto.org/docs/books>.
+
+Alguns exemplos do livro serão apresentados usando p5.js.
+A **p5.js** é uma biblioteca JavaScript de código aberto, inspirada na linguagem *Processing*, concebida para tornar a programação visual e interativa mais acessível. Ao abstrair a complexidade do desenvolvimento web, ela permite a criação de gráficos, animações e interações de forma simples e intuitiva, favorecendo tanto iniciantes quanto usuários experientes.
+
+Por sua facilidade de uso e execução direta no navegador, a p5.js é amplamente adotada em contextos educacionais, visualização de dados e prototipagem, constituindo uma ferramenta especialmente adequada ao ensino e à experimentação em **Processamento de Imagens**, ao integrar programação, visualização e interatividade em um mesmo ambiente.
+
+Exemplo de código embutido usando p5js:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+<iframe 
+  src="https://editor.p5js.org/luizedsilva/full/J9qjHybzR"
+  width="100%" 
+  height="500"
+  style="border:none; overflow:hiddeln;">
+</iframe>
+:::
+
+::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/J9qjHybzR>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/J9qjHybzR width=100 height=100 pdfheight=3cm >}}
+:::
+:::
+
+
+Para aprender mais sobre **p5.js** visite: <https://editor.p5js.org/about>.

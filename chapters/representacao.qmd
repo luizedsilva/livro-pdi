@@ -1,0 +1,104 @@
+
+## Representação e Descrição de Imagens
+
+Após a segmentação, o próximo passo em um sistema de Processamento Digital de Imagens consiste em **representar** e **descrever** as regiões ou objetos identificados. Enquanto a segmentação define *onde* estão os objetos, a representação e a descrição determinam *como* esses objetos serão caracterizados para análise posterior, classificação ou reconhecimento.
+
+Este capítulo aborda os conceitos fundamentais de representação e descrição de imagens, apresentando técnicas clássicas utilizadas para extrair características relevantes de regiões segmentadas.
+
+## Representação de Regiões
+
+A representação de uma região tem como objetivo codificar sua forma e estrutura de maneira adequada ao processamento computacional. Uma boa representação deve ser compacta, discriminativa e robusta a variações irrelevantes.
+
+As técnicas de representação podem ser classificadas em duas categorias principais:
+
+* **Representações por contorno**, que descrevem apenas a fronteira do objeto;
+* **Representações por região**, que utilizam todos os pixels pertencentes ao objeto.
+
+A escolha do tipo de representação depende da aplicação e das propriedades que se deseja analisar.
+
+## Representação por Contorno
+
+Na representação por contorno, apenas os pixels que delimitam a região são considerados. Essa abordagem é eficiente quando a forma do objeto é o principal atributo de interesse.
+
+### Codificação por Cadeia
+
+A **codificação por cadeia** descreve um contorno como uma sequência de direções discretas, geralmente baseadas na conectividade 4 ou 8. Cada segmento do contorno é representado por um símbolo que indica a direção do próximo pixel.
+
+Essa técnica produz uma representação compacta e é particularmente útil para análise de forma, embora seja sensível a ruídos e pequenas variações no contorno.
+
+### Assinaturas de Forma
+
+Uma assinatura de forma representa o contorno por meio de uma função unidimensional, geralmente baseada na distância entre pontos do contorno e um ponto de referência, como o centroide.
+
+Assinaturas facilitam a comparação entre formas, mas podem perder informações locais importantes.
+
+## Representação por Região
+
+As representações por região utilizam todos os pixels que compõem o objeto. Essa abordagem é mais adequada quando propriedades internas, como textura ou intensidade média, são relevantes.
+
+Entre as representações por região mais comuns estão:
+
+* matrizes de pixels;
+* histogramas;
+* momentos geométricos.
+
+Essas representações tendem a ser mais robustas a ruídos locais no contorno.
+
+## Descrição de Regiões
+
+A descrição de uma região consiste na extração de **atributos quantitativos**, também chamados de *features*, que caracterizam propriedades geométricas, topológicas ou estatísticas do objeto.
+
+Esses atributos formam um vetor de características utilizado em etapas posteriores, como classificação ou reconhecimento de padrões.
+
+## Descritores Geométricos
+
+Descritores geométricos caracterizam a forma e o tamanho das regiões. Exemplos comuns incluem:
+
+* **área**, definida pelo número de pixels da região;
+* **perímetro**, correspondente ao comprimento do contorno;
+* **razão de aspecto**, que relaciona largura e altura;
+* **circularidade**, que mede o quão próxima a forma está de um círculo.
+
+Esses descritores são amplamente utilizados devido à sua simplicidade e interpretação intuitiva.
+
+## Momentos de Imagem
+
+Os **momentos de imagem** fornecem uma descrição global da distribuição espacial dos pixels em uma região. O momento de ordem ((p,q)) é definido como:
+
+$$
+m_{pq} = \sum_x \sum_y x^p y^q f(x,y)
+$$
+
+Momentos podem ser utilizados para calcular propriedades como área, centroide e orientação principal do objeto.
+
+Momentos invariantes, como os **momentos de Hu**, são particularmente importantes por serem invariantes a transformações geométricas como translação, rotação e escala.
+
+## Descritores de Textura
+
+Descritores de textura capturam padrões locais de variação de intensidade dentro de uma região. Esses descritores são úteis para diferenciar objetos com formas semelhantes, mas texturas distintas.
+
+Entre os métodos clássicos de descrição de textura destacam-se matrizes de coocorrência, filtros estatísticos e medidas baseadas em frequência.
+
+## Normalização e Invariância
+
+Para que descritores sejam eficazes em sistemas de reconhecimento, é desejável que sejam invariantes a transformações irrelevantes, como mudanças de posição, orientação ou escala.
+
+Técnicas de normalização são frequentemente aplicadas para garantir comparabilidade entre objetos extraídos de imagens diferentes.
+
+## Aplicações de Representação e Descrição
+
+A representação e a descrição de imagens são etapas fundamentais em aplicações como:
+
+* reconhecimento de padrões;
+* classificação de objetos;
+* análise de formas;
+* visão computacional em robótica;
+* sistemas de inspeção automática.
+
+A qualidade dos descritores influencia diretamente o desempenho dessas aplicações.
+
+## Considerações Finais
+
+A representação e a descrição de imagens constituem o elo entre a segmentação e o reconhecimento de padrões. A escolha adequada de representações e descritores é essencial para capturar as características relevantes dos objetos e garantir o sucesso das etapas posteriores.
+
+Os conceitos apresentados neste capítulo fornecem uma base sólida para o estudo de técnicas avançadas de análise de imagens e aprendizado de máquina aplicado à visão computacional.

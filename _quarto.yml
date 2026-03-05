@@ -1,0 +1,40 @@
+project:
+  type: book
+
+lang: pt-BR
+
+book:
+  title: "Processamento de Imagens"
+  author: "Luiz Eduardo da Silva"
+  date: today
+  chapters:
+    - index.qmd
+    - chapters/intro.qmd
+    - chapters/amostragem.qmd
+    - chapters/melhoramento.qmd
+    - chapters/fourier.qmd
+    - chapters/compressao.qmd
+    - chapters/cor.qmd
+    - chapters/morfobinaria.qmd
+    - chapters/morfocinza.qmd
+    - chapters/segmentacao.qmd
+    - chapters/representacao.qmd
+    - chapters/interpretacao.qmd
+    - chapters/opencv.qmd
+    - chapters/summary.qmd
+    - chapters/references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    date-format: "DD/MM/YYYY"
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    pdf-engine: lualatex
+    code-block-options:
+      fontsize: \small
+    documentclass: scrreprt
+    babel-lang: brazil

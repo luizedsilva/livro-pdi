@@ -1,0 +1,499 @@
+## Melhoramento de Imagens
+
+O melhoramento de imagens é uma das etapas mais importantes do Processamento Digital de Imagens (PDI). Diferentemente de outras áreas, como segmentação ou reconhecimento de padrões, o objetivo principal do melhoramento não é extrair informações quantitativas da imagem, mas **tornar a imagem mais adequada à interpretação humana ou a etapas posteriores de processamento**.
+
+As técnicas de melhoramento atuam diretamente sobre os valores de intensidade dos pixels, buscando realçar detalhes, reduzir imperfeições ou evidenciar características de interesse, sem alterar o conteúdo essencial da cena.
+
+## O pixel
+
+Em uma imagem digital, cada pixel pode ser identificado por suas coordenadas no plano da imagem. Seja $p$ um pixel localizado na posição $(i, j)$. A partir dessa posição, é possível definir diferentes relações de vizinhança entre os pixels, que são amplamente utilizadas em operações de processamento de imagens, como filtragem, segmentação e detecção de bordas.
+
+### Vizinhança dos Pixels
+
+A **vizinhança de 4 pixels**, também chamada de vizinhança ortogonal, considera apenas os pixels que estão imediatamente acima, abaixo, à esquerda e à direita do pixel (p). Esses pixels compartilham um lado com (p). Formalmente, o conjunto desses vizinhos é definido por\
+$$
+N_4(p) = \{(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)\}.\
+$$
+
+Além desses, também podemos considerar os **vizinhos diagonais** de (p). Esses pixels estão posicionados nas quatro diagonais ao redor do pixel central, compartilhando apenas um vértice com ele. O conjunto dos vizinhos diagonais é dado por\
+$$
+N_D(p) = \{(i + 1, j + 1), (i - 1, j - 1), (i - 1, j + 1), (i + 1, j - 1)\}.\
+$$
+
+Quando consideramos simultaneamente os vizinhos ortogonais e os vizinhos diagonais, obtemos a **vizinhança de 8 pixels**. Essa vizinhança inclui todos os pixels imediatamente adjacentes ao redor de (p), formando um bloco $3 \times 3$ com $p$ no centro. O conjunto de vizinhos é definido pela união das duas vizinhanças anteriores:\
+$$
+N_8(p) = N_4(p) \cup N_D(p).\
+$$
+
+Essas diferentes definições de vizinhança são importantes porque determinam como os pixels são considerados conectados em uma imagem. Dependendo da aplicação, pode-se utilizar a vizinhança de 4 ou de 8 pixels para definir conectividade, propagação de regiões ou cálculo de operadores locais.
+
+![Ilustração das relações de vizinhança dos pixels](/imgs/cap3/vizinhanca.png)
+
+### Medidas de Distância dos pixels
+
+Em uma imagem digital, também é comum definir **medidas de distância entre pixels**. Essas medidas são importantes em diversas aplicações de processamento de imagens, como segmentação, crescimento de regiões, transformadas de distância e análise de conectividade. Considere dois pixels $p$ e $q$, localizados nas coordenadas $p = (i_1, j_1)$ e $q = (i_2, j_2)$.
+
+A **distância euclidiana** corresponde à distância geométrica tradicional entre dois pontos no plano cartesiano. Ela representa o comprimento do segmento de reta que liga os pixels $p$ e $q$. Essa medida é definida por
+
+$$
+d_e = \sqrt{(i_1 - i_2)^2 + (j_1 - j_2)^2}
+$$
+
+Essa é a distância mais natural do ponto de vista geométrico, porém pode ser computacionalmente mais custosa, pois envolve o cálculo de raiz quadrada.
+
+Outra medida bastante utilizada em processamento de imagens é a **distância city-block** (ou **distância Manhattan**). Nesse caso, a distância é calculada considerando apenas deslocamentos horizontais e verticais, como se o movimento ocorresse em uma grade de ruas ortogonais de uma cidade. A distância é dada por
+
+$$
+d_c = |i_1 - i_2| + |j_1 - j_2|
+$$
+
+Essa medida está diretamente associada à **vizinhança de 4 pixels**, pois o deslocamento entre os pontos ocorre apenas pelas direções horizontal e vertical.
+
+Uma terceira medida é a **distância xadrez** (ou **distância de Chebyshev**). Nessa definição, a distância entre dois pixels corresponde ao maior deslocamento necessário entre as coordenadas horizontal e vertical. Essa medida é definida por
+
+$$
+d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
+$$
+
+O nome distância xadrez vem do fato de que ela corresponde ao número mínimo de movimentos necessários para um **rei** se deslocar entre duas casas em um tabuleiro de xadrez. Essa métrica está associada à **vizinhança de 8 pixels**, pois permite movimentos tanto nas direções ortogonais quanto diagonais.
+
+Essas três medidas de distância são amplamente utilizadas em algoritmos de processamento de imagens, e a escolha de qual utilizar depende do tipo de conectividade e da modelagem geométrica desejada para o problema.
+
+![Medidas de distância em imagens digitais](/imgs/cap3/distancia.png)
+
+### Adjacência de Conectividade dos Pixels
+
+Em processamento de imagens, o conceito de **adjacência** é usado para determinar quando dois pixels podem ser considerados vizinhos pertencentes a uma mesma região. Para isso, define-se inicialmente um conjunto $V$ de valores de intensidade que serão utilizados para estabelecer essa relação. Esse conjunto depende do tipo de imagem analisada. Por exemplo, em uma imagem binária pode-se considerar $V = \{1\}$, representando os pixels do objeto. Em imagens em tons de cinza, $V$ pode ser um subconjunto dos níveis de cinza, e em imagens coloridas pode corresponder a uma determinada cor ou faixa de cores.
+
+Dados dois pixels $p$ e $q$, dizemos que eles possuem **adjacência-4** ou **adjacência-8** quando satisfazem duas condições: ambos possuem valores de intensidade pertencentes ao conjunto $V$ e, além disso, são vizinhos segundo a definição de vizinhança adotada. No caso da adjacência-4, os pixels devem pertencer à vizinhança $N_4$. Já na adjacência-8, eles devem pertencer à vizinhança $N_8$.
+
+A partir do conceito de adjacência, pode-se definir um **caminho** entre dois pixels. Um caminho de $p = (i_1, j_1)$ até $q = (i_n, j_n)$ é uma sequência de pixels distintos
+
+$$
+(i_1, j_1), (i_2, j_2), \dots, (i_n, j_n)
+$$
+
+tal que cada par consecutivo de pixels
+
+$$
+(i_x, j_x) \ \text{e} \ (i_{x-1}, j_{x-1}), \quad \text{para} \quad 1 < x \le n
+$$
+
+é adjacente segundo o critério de vizinhança adotado (adjacência-4 ou adjacência-8).
+
+Considere agora $S$ como um subconjunto de pixels de uma imagem. Dizemos que dois pixels $p$ e $q$ estão **conectados em** $S$ se existir um caminho entre eles formado exclusivamente por pixels pertencentes ao conjunto $S$.
+
+O conjunto de todos os pixels de $S$ que estão conectados a um determinado pixel $p$ recebe o nome de **componente conexo**. Em outras palavras, uma componente conexa é uma região da imagem formada por pixels adjacentes entre si e que satisfazem o critério de pertencimento ao conjunto $V$.
+
+### Região e Borda
+
+O conjunto de pontos conectados em uma imagem forma uma **região** da imagem. Uma região corresponde, portanto, a um grupo de pixels adjacentes que compartilham determinadas propriedades, como o mesmo valor de intensidade ou pertencimento ao conjunto $V$. Em muitos contextos de análise de imagens, essa região também pode ser interpretada como uma **forma** presente na imagem.
+
+Os pixels que **não pertencem a nenhuma região de interesse** são denominados **fundo da imagem**. O fundo representa a parte da imagem que não faz parte dos objetos ou estruturas que se deseja analisar.
+
+A **fronteira** de uma região — também chamada de **borda** ou **contorno** — é formada pelos pixels que delimitam a separação entre a região e o fundo. Essa fronteira pode ser definida de duas maneiras. A **borda interna** é o conjunto de pixels da própria região que possuem pelo menos um vizinho pertencente ao fundo da imagem. Já a **borda externa** é composta pelos pixels do fundo que possuem pelo menos um vizinho pertencente à região.
+
+![Ilustração de uma região, borda interna e borda externa](/imgs/cap3/regiao-borda.png)
+
+Ao definir regiões e fronteiras, é importante evitar o chamado **paradoxo da conectividade**, que ocorre quando diferentes critérios de vizinhança produzem ambiguidades na definição de conectividade entre pixels. Para evitar esse problema, utiliza-se uma regra complementar: se a **vizinhança de 8 pixels (**$N_8$) for utilizada para definir a borda, então a **vizinhança de 4 pixels (**$N_4$) deve ser utilizada para definir a região. De forma equivalente, se a borda for definida utilizando $N_4$, a região deve ser definida utilizando $N_8$.
+
+![Ilustração do paradoxo da conectividade](/imgs/cap3/paradoxo.png)
+
+## Conceito de Melhoramento de Imagens
+
+O melhoramento de imagens pode ser definido como o conjunto de técnicas aplicadas a uma imagem com o objetivo de melhorar sua aparência visual ou facilitar sua análise. O conceito de “melhor” é, em grande parte, **subjetivo**, pois depende do observador e da aplicação.
+
+Em geral, as técnicas de melhoramento não seguem um critério único de otimização. Ao contrário, são escolhidas com base na experiência, no conhecimento do domínio da aplicação e nas características específicas da imagem a ser processada.
+
+## Domínios de Processamento
+
+As técnicas de melhoramento de imagens podem ser classificadas de acordo com o domínio em que são aplicadas:
+
+-   **Domínio espacial**: as operações são realizadas diretamente sobre os pixels da imagem.
+-   **Domínio da frequência**: a imagem é transformada para um domínio alternativo, como o domínio da frequência, onde as operações são aplicadas e, posteriormente, a imagem é reconstruída.
+
+Neste capítulo, o foco principal está nas técnicas de melhoramento no domínio espacial, que são conceitualmente mais simples e amplamente utilizadas. No próximo capítulo será apresentada a transformação para o Domínio da frequência, denominada **Transformada de Fourier**, que é mais importante e utilizada em Processamento de Imagens e outras aplicações.
+
+## Melhoramento no Domínio Espacial
+
+No domínio espacial, o processamento é descrito por uma função da forma:
+
+$$
+g(x,y) = T\left[f(x,y)\right]
+$$
+
+em que (f(x,y)) representa a imagem de entrada, (g(x,y)) a imagem resultante e (T) um operador definido sobre os valores de intensidade.
+
+Essas operações podem ser aplicadas a um único pixel ou a uma vizinhança de pixels, dependendo da técnica utilizada.
+
+## Transformações de Intensidade
+
+As transformações de intensidade são operações pontuais, nas quais o valor de cada pixel da imagem de saída depende exclusivamente do valor do pixel correspondente na imagem de entrada.
+
+Essas transformações mapeiam um nível de cinza de entrada (r) para um nível de saída (s), conforme representado no gráfico gerado no exemplo seguinte (onde $L$ representa a quantidade de níveis de cinza):
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/N451LEXKV" width="100%" height="500" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/N451LEXKV>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/N451LEXKV width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+### Transformação Linear
+
+A transformação linear é uma das formas mais simples de melhoramento e pode ser expressa como:
+
+$$
+g(x,y) = a\,f(x,y) + b
+$$
+
+Os parâmetros (a) e (b) controlam, respectivamente, o contraste e o brilho da imagem. Valores maiores de (a) ampliam o contraste, enquanto o termo (b) desloca os níveis de intensidade.
+
+### Transformações Logarítmicas
+
+Transformações logarítmicas são utilizadas para expandir valores de baixa intensidade e comprimir valores elevados, sendo especialmente úteis em imagens que apresentam grande variação dinâmica.
+
+Uma forma típica é dada por:
+
+$$
+g(x,y) = c\,\log\!\left(1 + f(x,y)\right)
+$$
+
+Essas transformações são comuns em aplicações como imagens médicas e espectrais. A constante $c$ é definida para ajustar a transformação dentro de intervalo de intensidade. Um valor possível para a constante $c$ na transformação logarítmica é:
+
+$$
+c = \frac{max}{\log(1 + max)}
+$$
+
+Onde $max = L-1$ é a máxima intensidade de pixel na imagem, ou seja, o maior valor retornado para a função imagem $f(x,y)$.
+
+### Transformações de Potência
+
+As transformações de potência, também conhecidas como correção gama, são definidas por:
+
+$$
+g(x,y) = c\,\left[f(x,y)\right]^{\gamma}
+$$
+
+O parâmetro ($\gamma$) controla a forma da curva de transformação. Valores de ($\gamma < 1$) tem o efeito de clarear a imagem, enquanto valores de ($\gamma > 1$) escurecem a imagem. O exemplo interativo abaixo ilustra essa transformação:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/wtDvsM5Ym" width="100%" height="380" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/wtDvsM5Ym>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/wtDvsM5Ym width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+## Histograma de Imagens
+
+O histograma de uma imagem descreve a distribuição dos níveis de intensidade dos pixels. Ele fornece uma representação estatística que é amplamente utilizada para análise e melhoramento de imagens.
+
+Imagens com baixo contraste tendem a apresentar histogramas concentrados em uma faixa estreita de valores, enquanto imagens com bom contraste exibem histogramas mais espalhados ao longo da escala de intensidades.
+
+Algoritmo para calcular o histograma de uma imagem:
+
+``` c
+// atribuir valor zero a todos elementos do vetor
+for (i = 0; i < L; i++)
+  Histo[i] = 0;
+// calcular distribuição dos níveis de cinza 
+// para cada pixel da imagem
+for (i = 0; i < M; i++)
+  for (j = 0; j < N; j++)
+     Histo [Img[i][j]] = Histo [Img[i][j]]+1;
+```
+
+## Equalização de Histograma
+
+A equalização de histograma é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.
+
+Essa técnica é amplamente utilizada devido à sua simplicidade e eficácia, embora possa produzir resultados indesejados em algumas aplicações, como a amplificação de ruído.
+
+O processo chamado de **Mapeamento de Intensidade** (@gonzalez2010processamento) é dado por:
+
+$$
+s_k = T(r_k) = (L - 1)\sum_{j=0}^{k} p_r(r_j)
+            = \frac{L - 1}{MN}\sum_{j=0}^{k} n_j
+$$
+
+onde:
+
+-   $L$ é o número de tons de cinza da imagem.
+-   $k$ representa um tom de cinza, com\
+    $k = 0, 1, 2, \ldots, L - 1$.
+-   $n_k$ é o número de pixels de intensidade $k$ na imagem (histograma).
+-   $p_r(r_k) = \dfrac{n_k}{MN}$ é a probabilidade de ocorrência do nível $k$.
+-   $M$ é o número de linhas da imagem.
+-   $N$ é o número de colunas da imagem.
+
+Considere uma imagem digital de dimensão $64 \times 64$ pixels, totalizando $MN = 4096$ pixels, codificada com **3 bits por pixel**. Nesse caso, o número de níveis de cinza é dado por $L = 2^3 = 8,$ com níveis de intensidade no intervalo $[0, L-1] = [0,7]$.
+
+A Tabela a seguir apresenta o **histograma da imagem**, a **probabilidade de ocorrência de cada nível de cinza** e o **mapeamento de intensidade** obtido pelo processo de **equalização de histograma**.
+
+| $r_k$ | $n_k$ | $n_k/MN$ | $s_k = \dfrac{L-1}{MN}\sum_{j=0}^{k} n_j$ | $s_k$ (arred.) |
+|:-------------:|--------------:|:-------------:|:-------------:|:-------------:|
+| $r_0 = 0$ | 790 | 0,19 | 1,33 | 1 |
+| $r_1 = 1$ | 1023 | 0,25 | 3,08 | 3 |
+| $r_2 = 2$ | 850 | 0,21 | 4,55 | 5 |
+| $r_3 = 3$ | 656 | 0,16 | 5,67 | 6 |
+| $r_4 = 4$ | 329 | 0,08 | 6,23 | 6 |
+| $r_5 = 5$ | 245 | 0,06 | 6,65 | 7 |
+| $r_6 = 6$ | 122 | 0,03 | 6,86 | 7 |
+| $r_7 = 7$ | 81 | 0,02 | 7,00 | 7 |
+
+Observa-se que o valor $n_k$ corresponde ao **número de pixels com intensidade** $r_k$, enquanto $n_k/MN$ representa a **probabilidade de ocorrência** desse nível de cinza na imagem.
+
+Esse procedimento define uma **tabela de consulta (LUT)** que mapeia cada nível de entrada $r_k$ para um novo nível $s_k$, redistribuindo os níveis de cinza de forma mais uniforme e aumentando o contraste global da imagem.
+
+O exemplo interativo a seguir apresenta a implementação do algoritmo de **equalização de histograma**. No exemplo, pode-se carregar qualquer imagem, mas somente as intensidades (tons de cinza), são utilizadas. Para imagem carregada será apresentada a imagem original, o seu histograma correspondente, a imagem equalizada e o histograma equalizado.
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/nFphWvonZ" width="100%" height="500" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/nFphWvonZ>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/nFphWvonZ width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+## Filtragem
+
+A filtragem no Processamento Digital de Imagens é o conjunto de técnicas utilizadas para modificar ou extrair informações de uma imagem por meio da aplicação de operadores matemáticos que atuam sobre a vizinhança de cada pixel. Esses operadores analisam a relação entre um pixel e seus vizinhos, permitindo realçar características relevantes, como bordas e detalhes, ou atenuar informações indesejadas, como ruídos e variações abruptas de intensidade. A filtragem pode ser realizada no domínio espacial ou no domínio da frequência e envolve tanto filtros lineares, baseados em operações de **convolução**, quanto filtros não lineares, que não obedecem às propriedades de linearidade. Dessa forma, a filtragem é uma etapa fundamental no pré-processamento e na análise de imagens, sendo amplamente utilizada em aplicações de visão computacional, reconhecimento de padrões e análise visual automatizada.
+
+### Convolução
+
+A **convolução** é o processo de calcular a intensidade de um determinado pixel em função da intensidade de seus vizinhos. O cálculo é baseado em ponderação, isto é, utilizam-se pesos diferentes para pixels vizinhos diferentes.
+
+A convolução pode ser interpretada como o deslizamento de uma máscara (ou *kernel*) sobre a imagem, onde, a cada posição, é calculada uma soma ponderada entre os valores dos pixels da vizinhança e os coeficientes do kernel.
+
+O exemplo interativo seguinte ilustra o processo de convolução para uma imagem 16x16 em tons de cinza. No exemplo é possível iniciar a simulação (clicando no botão "continuar"), pausar o processo (clicando no botão "pausar"), ou acelerar/desacelerar a simulação, clicando com o mouse sobre a imagem.
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/DvTNxm7gO" width="100%" height="380" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/DvTNxm7gO>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/DvTNxm7gO width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+### Equação da Convolução
+
+Matematicamente, a convolução bidimensional é expressa por:
+
+$$
+g(i,j) = \sum_{y=-a}^{a} \sum_{x=-b}^{b}
+w(y,x)\, f(i+y, j+x)
+$$
+
+onde:
+
+-   $f(i,j)$ é a imagem de entrada;
+-   $g(i,j)$ é a imagem resultante;
+-   $w(y,x)$ é a máscara de convolução;
+-   $a$ e $b$ definem o tamanho do kernel.
+
+### Pseudocódigo da Convolução
+
+``` c
+for (i = a; i < nl - a; i++)
+  for (j = b; j < nc - b; j++) {
+    int sum = 0;
+    for (y = -a; y <= a; y++)
+      for (x = -b; x <= b; x++)
+        sum += W[y][x] * F[i+y][j+x];
+    G[i][j] = sum;
+  }
+```
+
+### Operações lineares e não lineares
+
+Operadores **lineares** e **não lineares** constituem classificações importantes no Processamento Digital de Imagens, sendo amplamente utilizadas, por exemplo, na classificação de filtros.
+
+Seja um operador $H$ que produz a imagem de saída $g(x,y)$ a partir da imagem de entrada $f(x,y)$, de acordo com a relação
+
+$$
+H[f(x,y)] = g(x,y).
+$$
+
+Diz-se que o operador $H$ é **linear** se satisfaz a seguinte condição:
+
+$$
+H[a_i f_i(x,y) + a_j f_j(x,y)]
+= a_i H[f_i(x,y)] + a_j H[f_j(x,y)]
+$$
+
+ou, de forma equivalente,
+
+$$
+= a_i g_i(x,y) + a_j g_j(x,y).
+$$
+
+Essas relações expressam as propriedades de **aditividade** e **homogeneidade**, que caracterizam os operadores lineares.
+
+### Exemplos de Filtros
+
+Os filtros passa-baixa, cuja a soma dos coeficientes do kernel é um (ou próxima de um) tem o efeito de atenuar as altas frequências e preservar as baixas frequências. Na prática significa suavização da imagem.
+
+![Filtros](/imgs/cap3/filtros.png){width="80%"}
+
+Um filtro passa-alta realça bordas e detalhes, atenuando as baixas frequências (regiões suaves). Em PDI, isso é feito com kernels cuja soma dos coeficientes é zero (ou próxima de zero).
+
+**Regra Prática:**
+
+-   Passa-baixa = a soma dos coeficientes no kernel é 1 (um);
+-   Passa-alta = a soma dos coeficientes no kernel é 0 (zero);
+-   High-boost (realce) = preserva a imagem, a soma dos coeficientes no kernel é maior que 1 (um).
+
+No exemplo interativo em sequência, esses diversos filtros podem ser testados:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/2T58I4gUQ" width="100%" height="550" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/2T58I4gUQ>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/2T58I4gUQ width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+## Considerações sobre Ruído
+
+O ruído é uma variação indesejada nos valores de intensidade da imagem, geralmente introduzida durante a aquisição ou transmissão. Técnicas de melhoramento devem considerar a presença de ruído, pois operações de realce podem amplificá-lo.
+
+Assim, o melhoramento de imagens frequentemente envolve um compromisso entre **realce de detalhes** e **supressão de ruído**.
+
+### Ruído Sal e Pimenta
+
+O **ruído sal e pimenta** é um tipo de ruído impulsivo muito comum em **processamento digital de imagens**. Ele se manifesta como pixels isolados com valores extremos, geralmente **preto (0)** e **branco (255)** em imagens em tons de cinza, lembrando grãos de sal e pimenta espalhados sobre a imagem.
+
+Esse ruído costuma surgir devido a:
+
+-   falhas em sensores de aquisição;
+-   erros de transmissão de dados;
+-   conversões analógico-digitais defeituosas;
+-   pixels mortos ou saturados.
+
+Diferentemente de ruídos aditivos, o ruído sal e pimenta **não afeta todos os pixels**, mas apenas uma fração deles, substituindo seus valores originais por valores extremos.
+
+#### Modelo matemático
+
+O modelo clássico do ruído sal e pimenta pode ser descrito por:
+
+$$
+g(x,y) =
+\begin{cases}
+0, & \text{com probabilidade } p_p \\
+255, & \text{com probabilidade } p_s \\
+f(x,y), & \text{com probabilidade } 1 - (p_p + p_s)
+\end{cases}
+$$
+
+onde:
+
+-   $f(x,y)$ é a imagem original;
+-   $g(x,y)$ é a imagem corrompida;
+-   $p_p$ é a probabilidade de ocorrência da *pimenta* (pixel preto);
+-   $p_s$ é a probabilidade de ocorrência do *sal* (pixel branco).
+
+#### Características principais
+
+-   Ruído **não gaussiano**;
+-   Afeta pixels de forma **esparsa e abrupta**;
+-   Facilmente perceptível visualmente;
+-   Pode degradar significativamente bordas e detalhes finos.
+
+#### Técnicas de remoção
+
+Filtros lineares, como o **filtro da média**, não são adequados para esse tipo de ruído, pois tendem a borrar a imagem. A abordagem mais eficaz é o uso de **filtros não lineares**, em especial:
+
+-   **Filtro da mediana**: remove impulsos preservando bordas;
+-   **Filtro da mediana adaptativo**: ajusta o tamanho da janela conforme a densidade do ruído.
+
+O filtro da mediana substitui o valor do pixel pelo valor mediano de sua vizinhança, sendo especialmente eficiente para eliminar pixels extremos isolados.
+
+No exemplo interativo em sequência está um programa que permite carregar uma imagem (que é convertida em tons de cinza), gerar ruído sal e pimenta de acordo com probabilidades definidas e em seguida aplicar o filtro da mediana para remoção do ruído, para demonstração destes conceitos.
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/xk5SXodH3" width="100%" height="450" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/xk5SXodH3>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/xk5SXodH3 width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+## Considerações Finais
+
+O melhoramento de imagens desempenha um papel fundamental no processamento digital, servindo tanto para aprimorar a visualização quanto para preparar imagens para etapas posteriores, como segmentação e reconhecimento.
+
+As técnicas apresentadas neste capítulo fornecem uma base conceitual para o entendimento do melhoramento no domínio espacial, sendo essenciais para o estudo de métodos mais avançados de processamento e análise de imagens.

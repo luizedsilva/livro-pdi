@@ -1,0 +1,47 @@
+{
+  "index.qmd": {
+    "index.html": "e4212aeb"
+  },
+  "chapters/intro.qmd": {
+    "intro.html": "5b54d38b"
+  },
+  "chapters/amostragem.qmd": {
+    "amostragem.html": "33752c34"
+  },
+  "chapters/summary.qmd": {
+    "summary.html": "733f2141"
+  },
+  "chapters/references.qmd": {
+    "references.html": "7f1bc30b"
+  },
+  "chapters/melhoramento.qmd": {
+    "melhoramento.html": "18bd7634"
+  },
+  "chapters/fourier.qmd": {
+    "fourier.html": "80abbc3c"
+  },
+  "chapters/compressao.qmd": {
+    "compressao.html": "b71b1e2e"
+  },
+  "chapters/cor.qmd": {
+    "cor.html": "669fd1cf"
+  },
+  "chapters/morfobinaria.qmd": {
+    "morfobinaria.html": "0d1e0fec"
+  },
+  "chapters/morfocinza.qmd": {
+    "morfocinza.html": "a64fff72"
+  },
+  "chapters/segmentacao.qmd": {
+    "segmentacao.html": "73e2641d"
+  },
+  "chapters/representacao.qmd": {
+    "representacao.html": "96619d3c"
+  },
+  "chapters/interpretacao.qmd": {
+    "interpretacao.html": "cdc86b67"
+  },
+  "chapters/opencv.qmd": {
+    "opencv.html": "f76c4400"
+  }
+}
