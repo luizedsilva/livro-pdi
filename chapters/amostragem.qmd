@@ -12,7 +12,7 @@ Um sistema de processamento de imagens pode ser descrito como um conjunto de eta
 
 Essa estrutura é inspirada, em muitos aspectos, no próprio sistema visual humano, que serve como referência para o desenvolvimento de modelos computacionais de visão.
 
-![Elementos de um sistema de processamento de imagens](/imgs/cap2/sistema.svg){#fig-sistema}
+![Elementos de um sistema de processamento de imagens](/imgs/cap2/sistema.png){#fig-sistema width=80%}
 
 ### O Olho Humano e a Formação da Imagem
 
@@ -28,7 +28,7 @@ A retina possui duas classes principais de fotorreceptores: **bastonetes** e **c
 
 A região da **fóvea**, uma pequena depressão circular localizada no centro da retina, concentra uma grande densidade de cones, sendo responsável pela alta acuidade visual. Essa característica inspira o projeto de sensores de imagem, como os dispositivos CCD e CMOS, que utilizam matrizes de elementos sensíveis à luz para capturar imagens digitais.
 
-![Bastonetes e Cones](/imgs/cap2/bastonetes_cones.jpg){#fig-cones}
+![Bastonetes e Cones](/imgs/cap2/conesbastonetes.png){#fig-cones}
 
 ## Ilusões de Ótica e Percepção
 
@@ -46,13 +46,13 @@ Fenômenos como o efeito Mach (Figura @fig-mach), a percepção de contraste e d
 
 O espectro visível (Figura @fig-espectro) corresponde a uma pequena faixa do espectro eletromagnético, compreendida aproximadamente entre os comprimentos de onda do violeta ao vermelho. Embora estreita, essa faixa é suficiente para representar uma grande variedade de informações visuais utilizadas em aplicações cotidianas.
 
-![Espectro visível da luz](/imgs/cap2/espectro.svg){#fig-espectro}
+![Espectro visível da luz](/imgs/cap2/espectro.png){#fig-espectro}
 
 ### Sensores de Imagem
 
 A aquisição de imagens digitais é realizada por sensores que convertem energia luminosa em sinais elétricos. Um sensor simples consiste em um material sensível à luz que gera uma tensão proporcional à intensidade luminosa incidente.
 
-![Sensores para aquisição de imagens](/imgs/cap2/sensor1.png)
+![Sensores para aquisição de imagens](/imgs/cap2/sensor1.png){width=80%}
 
 Os sensores podem ser classificados em:
 

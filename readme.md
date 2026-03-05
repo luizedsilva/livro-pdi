@@ -8,21 +8,21 @@ O livro é publicado automaticamente através do **GitHub Pages**.
 
 O projeto utiliza os seguintes recursos:
 
-* **Quarto Book** — estrutura e geração do livro em HTML e PDF.
-* **p5.js** — exemplos interativos e visualizações gráficas em JavaScript.
-* **GeoGebra** — gráficos matemáticos interativos incorporados ao conteúdo.
-* **Excalidraw** — criação de diagramas e figuras didáticas.
+-   **Quarto Book** — estrutura e geração do livro em HTML e PDF.
+-   **p5.js** — exemplos interativos e visualizações gráficas em JavaScript.
+-   **GeoGebra** — gráficos matemáticos interativos incorporados ao conteúdo.
+-   **Excalidraw** — criação de diagramas e figuras didáticas.
 
 ## Quarto Book
 
 O livro é estruturado utilizando o sistema **Quarto Book**, que permite escrever capítulos em arquivos `.qmd` e gerar automaticamente diferentes formatos de saída, como:
 
-* HTML (para visualização online)
-* PDF (via LaTeX)
+-   HTML (para visualização online)
+-   PDF (via LaTeX)
 
 Para compilar o livro localmente:
 
-```bash
+``` bash
 quarto render
 ```
 
@@ -46,19 +46,19 @@ Neste projeto o Excalidraw é executado **localmente via Docker**, permitindo cr
 
 ### Construir a imagem Docker
 
-```bash
+``` bash
 docker build -t excalidraw/excalidraw .
 ```
 
 ### Executar o Excalidraw
 
-```bash
+``` bash
 docker run --rm -dit --name excalidraw -p 5000:80 excalidraw/excalidraw:latest
 ```
 
 Após iniciar o container, o editor estará disponível em:
 
-```
+```         
 http://localhost:5000
 ```
 
@@ -66,7 +66,7 @@ http://localhost:5000
 
 Uma estrutura do projeto é:
 
-```
+```         
 livro-pdi/
 │
 ├── _quarto.yml

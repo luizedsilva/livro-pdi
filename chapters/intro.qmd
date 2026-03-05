@@ -8,8 +8,7 @@ O processamento de imagens é uma área multidisciplinar, com aplicações que v
 
 ## O que é uma Imagem Digital
 
-Uma imagem pode ser definida matematicamente como uma função bidimensional
-( f(x,y) ), em que (x) e (y) representam coordenadas espaciais em um plano, e o valor de (f(x,y)) corresponde à **intensidade luminosa** ou **nível de cinza** naquele ponto.
+Uma imagem pode ser definida matematicamente como uma função bidimensional ( f(x,y) ), em que (x) e (y) representam coordenadas espaciais em um plano, e o valor de (f(x,y)) corresponde à **intensidade luminosa** ou **nível de cinza** naquele ponto.
 
 Quando as coordenadas espaciais e os valores de intensidade assumem valores **discretos e finitos**, a imagem é denominada **imagem digital**. Nesse contexto, uma imagem digital é formada por um conjunto finito de elementos organizados em uma grade, chamados de **pixels** (*picture elements*), sendo cada pixel identificado por sua posição ((x,y)) e por um valor associado de intensidade.
 
@@ -19,15 +18,15 @@ O **Processamento Digital de Imagens** refere-se, portanto, ao conjunto de técn
 
 O PDI está intimamente relacionado a outras duas áreas: **Análise de Imagens** e **Visão Computacional**. Embora relacionadas, essas áreas possuem focos distintos:
 
-* **Processamento de Imagens**: concentra-se na transformação da imagem, tendo como saída outra imagem (por exemplo, redução de ruído ou melhoria de contraste).
-* **Análise de Imagens**: busca extrair atributos e descrições relevantes dos objetos presentes na imagem.
-* **Visão Computacional**: tem como objetivo final atribuir significado às imagens, simulando aspectos da percepção visual humana.
+-   **Processamento de Imagens**: concentra-se na transformação da imagem, tendo como saída outra imagem (por exemplo, redução de ruído ou melhoria de contraste).
+-   **Análise de Imagens**: busca extrair atributos e descrições relevantes dos objetos presentes na imagem.
+-   **Visão Computacional**: tem como objetivo final atribuir significado às imagens, simulando aspectos da percepção visual humana.
 
 Esses processos podem ser organizados em três níveis:
 
-* **Nível baixo**: operações básicas, como filtragem de ruído e realce de contraste;
-* **Nível médio**: segmentação e descrição de objetos;
-* **Nível alto**: interpretação e reconhecimento, ou seja, “dar sentido” aos objetos detectados.
+-   **Nível baixo**: operações básicas, como filtragem de ruído e realce de contraste;
+-   **Nível médio**: segmentação e descrição de objetos;
+-   **Nível alto**: interpretação e reconhecimento, ou seja, “dar sentido” aos objetos detectados.
 
 ## Origem e Evolução do Processamento Digital de Imagens
 
@@ -47,12 +46,12 @@ Na década de 1960, o avanço do PDI esteve fortemente ligado à **corrida espac
 
 As imagens utilizadas em PDI não se limitam à luz visível. Elas podem ser obtidas em diferentes faixas do **espectro eletromagnético**, incluindo:
 
-* raios gama e raios X (aplicações médicas e industriais),
-* ultravioleta (análise de materiais e superfícies),
-* visível (fotografia, vigilância, inspeção),
-* infravermelho (sensoriamento térmico e satélites),
-* micro-ondas e ondas de rádio (radar, ressonância magnética),
-* além de imagens sísmicas e microscopia eletrônica.
+-   raios gama e raios X (aplicações médicas e industriais),
+-   ultravioleta (análise de materiais e superfícies),
+-   visível (fotografia, vigilância, inspeção),
+-   infravermelho (sensoriamento térmico e satélites),
+-   micro-ondas e ondas de rádio (radar, ressonância magnética),
+-   além de imagens sísmicas e microscopia eletrônica.
 
 Essa diversidade amplia significativamente o campo de aplicações do processamento digital de imagens.
 
@@ -62,14 +61,13 @@ Essa diversidade amplia significativamente o campo de aplicações do processame
 
 De forma geral, um sistema de PDI envolve etapas fundamentais como:
 
-1. **Aquisição da imagem** por sensores;
-2. **Pré-processamento**, incluindo realce e restauração;
-3. **Segmentação**, para separar objetos de interesse;
-4. **Representação e descrição**, por meio de atributos;
-5. **Reconhecimento e interpretação**, apoiados por uma base de conhecimento.
+1.  **Aquisição da imagem** por sensores;
+2.  **Pré-processamento**, incluindo realce e restauração;
+3.  **Segmentação**, para separar objetos de interesse;
+4.  **Representação e descrição**, por meio de atributos;
+5.  **Reconhecimento e interpretação**, apoiados por uma base de conhecimento.
 
 Essas etapas são suportadas por componentes como sensores de imagem, hardware especializado, software de processamento, sistemas de armazenamento e dispositivos de visualização.
-
 
 ![Passos Fundamentais do Processamento de Imagens](/imgs/cap1/passos.png)
 
@@ -77,5 +75,4 @@ Essas etapas são suportadas por componentes como sensores de imagem, hardware e
 
 Este livro abordará os conceitos fundamentais do processamento digital de imagens, estabelecendo as bases matemáticas, computacionais e conceituais necessárias para disciplinas mais avançadas, como visão computacional e aprendizado de máquina aplicado a imagens. Ao final, espera-se que o aluno seja capaz de compreender, implementar e analisar algoritmos básicos de PDI, reconhecendo suas aplicações práticas em diferentes áreas do conhecimento.
 
----
-
+------------------------------------------------------------------------
