@@ -12,13 +12,13 @@ Um sistema de processamento de imagens pode ser descrito como um conjunto de eta
 
 Essa estrutura é inspirada, em muitos aspectos, no próprio sistema visual humano, que serve como referência para o desenvolvimento de modelos computacionais de visão.
 
-![Elementos de um sistema de processamento de imagens](/imgs/cap2/sistema.png){#fig-sistema width=80%}
+![Elementos de um sistema de processamento de imagens](/imgs/cap2/sistema.png){#fig-sistema fig-align="center" width="60%"}
 
 ### O Olho Humano e a Formação da Imagem
 
 O olho humano funciona como um sofisticado sistema óptico (Figura @fig-olho). A luz proveniente dos objetos atravessa a córnea e o cristalino, sendo focalizada sobre a retina. Na retina encontram‑se os fotorreceptores, responsáveis por converter a energia luminosa em sinais elétricos que são transmitidos ao cérebro pelo nervo óptico.
 
-![Olho humano](/imgs/cap2/olho.png){#fig-olho}
+![Olho humano](/imgs/cap2/olho.png){#fig-olho fig-align="center" width="80%"}
 
 A imagem formada na retina é invertida, e o cérebro realiza a interpretação e a reconstrução da cena observada. Esse processo evidencia que a percepção visual não é apenas um fenômeno físico, mas também cognitivo.
 
@@ -28,7 +28,7 @@ A retina possui duas classes principais de fotorreceptores: **bastonetes** e **c
 
 A região da **fóvea**, uma pequena depressão circular localizada no centro da retina, concentra uma grande densidade de cones, sendo responsável pela alta acuidade visual. Essa característica inspira o projeto de sensores de imagem, como os dispositivos CCD e CMOS, que utilizam matrizes de elementos sensíveis à luz para capturar imagens digitais.
 
-![Bastonetes e Cones](/imgs/cap2/conesbastonetes.png){#fig-cones}
+![Bastonetes e Cones](/imgs/cap2/conesbastonetes.png){#fig-cones fig-align="center" width="80%"}
 
 ## Ilusões de Ótica e Percepção
 
@@ -36,9 +36,9 @@ O estudo das ilusões de ótica revela limitações e particularidades do sistem
 
 Fenômenos como o efeito Mach (Figura @fig-mach), a percepção de contraste e distorções associadas a linhas e formas (Figura @fig-linhas) demonstram que a intensidade percebida nem sempre corresponde à intensidade física real. Esses efeitos são relevantes em PDI, pois técnicas de realce e segmentação exploram princípios semelhantes aos do sistema visual humano.
 
-![Efeito mach](/imgs/cap2/mach.png){#fig-mach}
+![Efeito mach](/imgs/cap2/mach.png){#fig-mach fig-align="center" width="60%"}
 
-![Efeito de linhas](/imgs/cap2/linhas.png){#fig-linhas}
+![Efeito de linhas](/imgs/cap2/linhas.png){#fig-linhas fig-align="center" width="50%"}
 
 ## Imagens Digitais e Sensores
 
@@ -52,16 +52,16 @@ O espectro visível (Figura @fig-espectro) corresponde a uma pequena faixa do es
 
 A aquisição de imagens digitais é realizada por sensores que convertem energia luminosa em sinais elétricos. Um sensor simples consiste em um material sensível à luz que gera uma tensão proporcional à intensidade luminosa incidente.
 
-![Sensores para aquisição de imagens](/imgs/cap2/sensor1.png){width=80%}
+![Sensores para aquisição de imagens](/imgs/cap2/sensor1.png){fig-align="center" width="50%"}
 
 Os sensores podem ser classificados em:
 
 -   **Sensores lineares**, que capturam imagens linha a linha;
 -   **Sensores matriciais**, que utilizam uma matriz bidimensional de elementos sensíveis à luz, sendo os mais comuns em câmeras digitais modernas.
 
-![Sensor Linear](/imgs/cap2/sensorlinear.png)
+![Sensor Linear](/imgs/cap2/sensorlinear.png){fig-align="center" width="80%"}
 
-![Sensor Matricial](/imgs/cap2/sensormatricial.png)
+![Sensor Matricial](/imgs/cap2/sensormatricial.png){fig-align="center" width="60%"}
 
 ## Amostragem
 
@@ -71,7 +71,7 @@ A amostragem corresponde à discretização espacial da imagem. Uma cena contín
 
 Matematicamente, considera‑se uma função contínua de intensidade (f(x,y)), que, após a amostragem, passa a ser definida apenas em posições discretas de (x) e (y).
 
-![Ilustração dos processos de amostragem e quantização de um sinal contínuo.](/imgs/cap2/amostragem.png){#fig-amostragem-quantizacao width=80%}
+![Ilustração dos processos de amostragem e quantização de um sinal contínuo.](/imgs/cap2/amostragem.png){#fig-amostragem-quantizacao fig-align="center" width="80%"}
 
 ### Resolução Espacial
 
@@ -107,19 +107,21 @@ Reduções na quantização podem introduzir efeitos visuais indesejados, como p
 
 Uma imagem digital pode ser representada como uma **matriz numérica**, em que cada elemento corresponde ao valor de intensidade de um pixel. A Figura @fig-binaria, ilustra os valores dos pixels (1 ou 0) numa imagem binária. Para imagens em tons de cinza, essa matriz contém valores escalares, conforme ilustrado na @fig-cinza.
 
-![Ilustração dos pixels numa Imagem Binária](/imgs/cap2/binaria.png){#fig-binaria}
+![Ilustração dos pixels numa Imagem Binária](/imgs/cap2/binaria.png){#fig-binaria fig-align="center" width="80%"}
 
-![Ilustração dos pixels numa Imagem em Tons de Cinza](/imgs/cap2/cinza.png){#fig-cinza}
+![Ilustração dos pixels numa Imagem em Tons de Cinza](/imgs/cap2/cinza.png){#fig-cinza fig-align="center" width="80%"}
 
 O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, movimente o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom), dos pixels correspondentes na região selecionada.
 
-::: {.content-visible when-format="html"}
+:::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
 
+::: {style="display:flex; justify-content:center;"}
 <iframe src="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" width="100%" height="500" style="border:none; overflow:hiddeln;">
 
 </iframe>
 :::
+::::
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
@@ -138,21 +140,23 @@ Para imagens coloridas, a representação pode envolver:
 -   tabelas de cores;
 -   camadas de cores, como os canais vermelho, verde e azul (RGB). (Figura @fig-colorida)
 
-![Ilustração dos pixels numa Imagem Colorida](/imgs/cap2/colorida.png){#fig-colorida}
+![Ilustração dos pixels numa Imagem Colorida](/imgs/cap2/colorida.png){#fig-colorida fig-align="center" width="80%"}
 
 Além da representação matricial, a imagem também pode ser interpretada como uma superfície tridimensional, na qual as coordenadas espaciais definem a posição do pixel e a intensidade define a altura da superfície (Figura @fig-superficie).
 
-![Ilustração da imagem com superfície](/imgs/cap2/superficie.png){#fig-superficie}
+![Ilustração da imagem com superfície](/imgs/cap2/superficie.png){#fig-superficie fig-align="center" width="80%"}
 
 O exemplo interativo seguinte permite uma visualização de uma imagem como superfície:
 
-::: {.content-visible when-format="html"}
+:::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
 
+::: {style="display:flex; justify-content:center;"}
 <iframe src="https://editor.p5js.org/luizedsilva/full/7vlY9trVV" width="100%" height="600" style="border:none; overflow:hiddeln;">
 
 </iframe>
 :::
+::::
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->

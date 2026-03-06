@@ -28,6 +28,7 @@ bibliography: references.bib
 
 format:
   html:
+    css: styles.css
     date-format: "DD/MM/YYYY"
     theme:
       - cosmo

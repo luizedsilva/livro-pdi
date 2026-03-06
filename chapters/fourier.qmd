@@ -18,7 +18,7 @@ Essa mudança de representação permite compreender e manipular característica
 
 A resolução de muitos problemas torna-se complexa quando realizada diretamente no domínio original. Operações como divisão, convolução ou correlação frequentemente exigem alto custo computacional ou manipulações algébricas trabalhosas. Uma estratégia clássica para contornar essa dificuldade consiste em **transformar o problema para outro domínio**, no qual as operações envolvidas se tornam mais simples.
 
-![Mudança de domínio](/imgs/cap4/mudancadominio.png){#fig-mudanca width="80%"}
+![Mudança de domínio](/imgs/cap4/mudancadominio.png){#fig-mudanca fig-align="center" width="60%"}
 
 O diagrama da @fig-mudanca ilustra esse princípio por meio de um exemplo elementar. No domínio original, a relação
 
@@ -68,13 +68,13 @@ O código completo e a demonstração interativa estão disponíveis em:
 :::
 ::::
 
-O exemplo ilustrativo seguinte, adaptado do código de **Daniel Shiffman**[^fourier-1], demonstra como uma série de Fourier pode ser utilizada para representar uma onda quadrada.
+O exemplo ilustrativo seguinte, adaptado do código de **Daniel Shiffman**[^1], demonstra como uma série de Fourier pode ser utilizada para representar uma onda quadrada.
 
-[^fourier-1]:  (<https://thecodingtrain.com/CodingChallenges/125-fourier-series.html>)
+[^1]: (<https://thecodingtrain.com/CodingChallenges/125-fourier-series.html>)
 
 Nesse exemplo, cada **termo da série** é representado por um **círculo trigonométrico** (*epiciclo*). O **raio de cada círculo** corresponde à **amplitude** do termo, enquanto a **frequência** é representada pela **velocidade de rotação** do círculo. Os círculos são conectados de forma sequencial, de modo que o **centro de cada círculo** coincide com a **extremidade do raio do círculo anterior**, conforme ilustrado na @fig-epiciclo.
 
-![Representação dos termos como Epiciclos](/imgs/cap4/epiciclo.png){#fig-epiciclo width="80%"}
+![Representação dos termos como Epiciclos](/imgs/cap4/epiciclo.png){#fig-epiciclo fig-align="center" width="80%"}
 
 A **soma dos termos da série** é obtida pela **projeção vertical** (eixo $y$) do vetor resultante, formado pelo encadeamento dos raios de todos os círculos. À medida que mais termos são adicionados, a forma de onda resultante aproxima-se progressivamente de uma **onda quadrada**, evidenciando o princípio fundamental da série de Fourier: a representação de funções periódicas complexas como a soma de senos e cossenos.
 
@@ -174,7 +174,7 @@ $$
 
 A @fig-transformacao1 ilustra essa transformação contínua unidimensional:
 
-![Transformação: a) função simples, b) transformada calculada e c) espectro](/imgs/cap4/g4.svg){#fig-transformacao1 width="100%"}
+![Transformação: a) função simples, b) transformada calculada e c) espectro](/imgs/cap4/g4.svg){#fig-transformacao1 fig-align="center" width="80%"}
 
 A simulação em Geogebra em sequência demonstra essa função pulso, o espectro calculado e o módulo do espectro:
 
@@ -493,7 +493,7 @@ O código completo e a demonstração interativa estão disponíveis em:
 
 A @fig-amostra a seguir ilustra um conjunto discreto de amostras de um sinal unidimensional no domínio espacial. Esse exemplo simples permite compreender, de forma concreta, como a **Transformada Discreta de Fourier (DFT)** decompõe um sinal em suas componentes de frequência.
 
-![Amostras do sinal no domínio espacial](/imgs/cap4/amostra.png){#fig-amostra width="80%"}
+![Amostras do sinal no domínio espacial](/imgs/cap4/amostra.png){#fig-amostra fig-align="center" width="70%"}
 
 Considere o sinal discreto $f(x)$, definido para $x = 0,1,2,3$, com valores $f(0)=1$, $f(1)=2$, $f(2)=4$ e $f(3)=3$, obtidos de uma função $f(t)$. O coeficiente de frequência zero da DFT, $F(0)$, corresponde à soma de todas as amostras do sinal e representa a **componente DC**(*Direct Current*), isto é, o valor médio escalado do sinal. Assim, tem-se:
 
@@ -628,7 +628,7 @@ $$
 
 O centro do espectro corresponde às baixas frequências, associadas às variações suaves de intensidade. À medida que se afasta do centro, encontram-se as altas frequências, responsáveis por bordas e detalhes finos.
 
-O filtro ideal passa-baixa possui uma transição abrupta entre as frequências preservadas e as atenuadas. Sua definição é:
+O filtro ideal (representado na @fig-filtros a) passa-baixa possui uma transição abrupta entre as frequências preservadas e as atenuadas. Sua definição é:
 
 $$
 H(u,v) =
@@ -638,27 +638,13 @@ H(u,v) =
 \end{cases}
 $$
 
-::::::: columns
-::: {.column width="10%"}
-:::
+onde $D_0$ representa a frequência de corte. Embora simples, esse filtro pode introduzir artefatos como o **fenômeno de Gibbs**[^2] devido à descontinuidade na resposta espectral.
 
-::: {.column width="35%"}
-![Filtro Ideal](/imgs/cap4/ideal.jpg){width="60%"}
-:::
+[^2]: (<https://pt.wikipedia.org/wiki/Fen%C3%B4meno_de_Gibbs>)
 
-::: {.column width="10%"}
-:::
+![Filtros para Transformada de Fourier](/imgs/cap4/filtros.png){#fig-filtros fig-align="center" width="60%"}
 
-::: {.column width="40%"}
-![Filtro Ideal (superfície)](/imgs/cap4/surface-ideal.png){width="60%"}
-:::
-:::::::
-
-onde $D_0$ representa a frequência de corte. Embora simples, esse filtro pode introduzir artefatos como o **fenômeno de Gibbs**[^fourier-2] devido à descontinuidade na resposta espectral.
-
-[^fourier-2]:  (<https://pt.wikipedia.org/wiki/Fen%C3%B4meno_de_Gibbs>)
-
-O filtro gaussiano apresenta uma transição suave e contínua, evitando descontinuidades abruptas. Sua expressão é:
+O filtro gaussiano (representado na @fig-filtros b) apresenta uma transição suave e contínua, evitando descontinuidades abruptas. Sua expressão é:
 
 $$
 H(u,v) =
@@ -667,23 +653,7 @@ $$
 
 Esse filtro não produz ringing significativo e resulta em suavização progressiva das altas frequências.
 
-::::::: columns
-::: {.column width="10%"}
-:::
-
-::: {.column width="34%"}
-![Filtro Gaussiano](/imgs/cap4/gaussian.jpg){width="60%"}
-:::
-
-::: {.column width="10%"}
-:::
-
-::: {.column width="40%"}
-![Filtro Gaussiano (superfície)](/imgs/cap4/surface-gaussian.png){width="60%"}
-:::
-:::::::
-
-O filtro Butterworth representa um compromisso entre o ideal e o gaussiano. Sua formulação é:
+O filtro Butterworth (representado na @fig-filtros c) representa um compromisso entre o ideal e o gaussiano. Sua formulação é:
 
 $$
 H(u,v) =
@@ -691,22 +661,6 @@ H(u,v) =
 $$
 
 onde $D_0$ é a frequência de corte e $n$ é a ordem do filtro. Para valores pequenos de $n$, a transição é suave. À medida que $n$ aumenta, o comportamento aproxima-se do filtro ideal.
-
-::::::: columns
-::: {.column width="10%"}
-:::
-
-::: {.column width="34%"}
-![Filtro Butterworth](/imgs/cap4/butter.jpg){width="60%"}
-:::
-
-::: {.column width="10%"}
-:::
-
-::: {.column width="40%"}
-![Filtro Butterworth (superfície)](/imgs/cap4/surface-butter.png){width="60%"}
-:::
-:::::::
 
 O exemplo interativo seguinte apresenta uma visualização 3D destes três filtros. Pode-se escolher o raio do Corte e a Ordem (para o caso do filtro Butterworth):
 

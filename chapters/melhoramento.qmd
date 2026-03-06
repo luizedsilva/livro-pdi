@@ -27,7 +27,7 @@ $$
 
 Essas diferentes definições de vizinhança são importantes porque determinam como os pixels são considerados conectados em uma imagem. Dependendo da aplicação, pode-se utilizar a vizinhança de 4 ou de 8 pixels para definir conectividade, propagação de regiões ou cálculo de operadores locais.
 
-![Ilustração das relações de vizinhança dos pixels](/imgs/cap3/vizinhanca.png)
+![Ilustração das relações de vizinhança dos pixels](/imgs/cap3/vizinhanca.png){fig-align="center" width="70%"}
 
 ### Medidas de Distância dos pixels
 
@@ -59,7 +59,7 @@ O nome distância xadrez vem do fato de que ela corresponde ao número mínimo d
 
 Essas três medidas de distância são amplamente utilizadas em algoritmos de processamento de imagens, e a escolha de qual utilizar depende do tipo de conectividade e da modelagem geométrica desejada para o problema.
 
-![Medidas de distância em imagens digitais](/imgs/cap3/distancia.png)
+![Medidas de distância em imagens digitais](/imgs/cap3/distancia.png){fig-align="center" width="80%"}
 
 ### Adjacência de Conectividade dos Pixels
 
@@ -93,11 +93,11 @@ Os pixels que **não pertencem a nenhuma região de interesse** são denominados
 
 A **fronteira** de uma região — também chamada de **borda** ou **contorno** — é formada pelos pixels que delimitam a separação entre a região e o fundo. Essa fronteira pode ser definida de duas maneiras. A **borda interna** é o conjunto de pixels da própria região que possuem pelo menos um vizinho pertencente ao fundo da imagem. Já a **borda externa** é composta pelos pixels do fundo que possuem pelo menos um vizinho pertencente à região.
 
-![Ilustração de uma região, borda interna e borda externa](/imgs/cap3/regiao-borda.png)
+![Ilustração de uma região, borda interna e borda externa](/imgs/cap3/regiao-borda.png){fig-align="center" width="80%"}
 
 Ao definir regiões e fronteiras, é importante evitar o chamado **paradoxo da conectividade**, que ocorre quando diferentes critérios de vizinhança produzem ambiguidades na definição de conectividade entre pixels. Para evitar esse problema, utiliza-se uma regra complementar: se a **vizinhança de 8 pixels (**$N_8$) for utilizada para definir a borda, então a **vizinhança de 4 pixels (**$N_4$) deve ser utilizada para definir a região. De forma equivalente, se a borda for definida utilizando $N_4$, a região deve ser definida utilizando $N_8$.
 
-![Ilustração do paradoxo da conectividade](/imgs/cap3/paradoxo.png)
+![Ilustração do paradoxo da conectividade](/imgs/cap3/paradoxo.png){fig-align="center" width="60%"}
 
 ## Conceito de Melhoramento de Imagens
 
@@ -383,7 +383,7 @@ Essas relações expressam as propriedades de **aditividade** e **homogeneidade*
 
 Os filtros passa-baixa, cuja a soma dos coeficientes do kernel é um (ou próxima de um) tem o efeito de atenuar as altas frequências e preservar as baixas frequências. Na prática significa suavização da imagem.
 
-![Filtros](/imgs/cap3/filtros.png){width="80%"}
+![Filtros](/imgs/cap3/filtros.png){fig-align="center" width="50%"}
 
 Um filtro passa-alta realça bordas e detalhes, atenuando as baixas frequências (regiões suaves). Em PDI, isso é feito com kernels cuja soma dos coeficientes é zero (ou próxima de zero).
 

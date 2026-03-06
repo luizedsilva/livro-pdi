@@ -32,15 +32,15 @@ Esses processos podem ser organizados em três níveis:
 
 Os primeiros registros associados ao processamento de imagens remontam ao início do século XX. Em 1921, imagens foram transmitidas entre Londres e Nova York por meio de cabos submarinos, reduzindo drasticamente o tempo de envio de fotografias. Posteriormente, técnicas como o uso de **fitas perfuradas** permitiram melhorias manuais nas imagens recebidas.
 
-![Primeira imagem transmitida](/imgs/cap1/origem1.png)
+![Primeira imagem transmitida](/imgs/cap1/origem1.png){fig-align="center" width="40%"}
 
 Na década de 1960, o avanço do PDI esteve fortemente ligado à **corrida espacial**, com o uso de computadores para melhorar imagens capturadas por sondas espaciais, como as primeiras imagens digitais da Lua. Já na década de 1970, a área ganhou grande impulso na **medicina**, com o surgimento da tomografia computadorizada, que possibilitou a reconstrução de imagens internas do corpo humano a partir de dados capturados por sensores.
 
-![Imagem obtida com fita perfurada](/imgs/cap1/origem2.png)
+![Imagem obtida com fita perfurada](/imgs/cap1/origem2.png){fig-align="center" width="30%"}
 
-![Transmitida com 16 tons de cinza](/imgs/cap1/origem3.png)
+![Transmitida com 16 tons de cinza](/imgs/cap1/origem3.png){fig-align="center" width="50%"}
 
-![Transmitida com 16 tons de cinza](/imgs/cap1/origem4.png)
+![Transmitida com 16 tons de cinza](/imgs/cap1/origem4.png){fig-align="center" width="50%"}
 
 ## Imagens e o Espectro Eletromagnético
 
@@ -55,7 +55,7 @@ As imagens utilizadas em PDI não se limitam à luz visível. Elas podem ser obt
 
 Essa diversidade amplia significativamente o campo de aplicações do processamento digital de imagens.
 
-![Espectro Eletromagnético (fonte: Khan Academy)](/imgs/cap1/espectro.png)
+![Espectro Eletromagnético (fonte: Khan Academy)](/imgs/cap1/espectro.png){fig-align="center" width="80%"}
 
 ## Passos Fundamentais do Processamento Digital de Imagens
 
@@ -69,7 +69,7 @@ De forma geral, um sistema de PDI envolve etapas fundamentais como:
 
 Essas etapas são suportadas por componentes como sensores de imagem, hardware especializado, software de processamento, sistemas de armazenamento e dispositivos de visualização.
 
-![Passos Fundamentais do Processamento de Imagens](/imgs/cap1/passos.png)
+![Passos Fundamentais do Processamento de Imagens](/imgs/cap1/passos.png){fig-align="center" width="80%"}
 
 ## Organização do Livro
 
