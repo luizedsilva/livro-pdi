@@ -68,9 +68,9 @@ O código completo e a demonstração interativa estão disponíveis em:
 :::
 ::::
 
-O exemplo ilustrativo seguinte, adaptado do código de **Daniel Shiffman**[^1], demonstra como uma série de Fourier pode ser utilizada para representar uma onda quadrada.
+O exemplo ilustrativo seguinte, adaptado do código de **Daniel Shiffman**[^fourier-1], demonstra como uma série de Fourier pode ser utilizada para representar uma onda quadrada.
 
-[^1]: (<https://thecodingtrain.com/CodingChallenges/125-fourier-series.html>)
+[^fourier-1]: (<https://thecodingtrain.com/CodingChallenges/125-fourier-series.html>)
 
 Nesse exemplo, cada **termo da série** é representado por um **círculo trigonométrico** (*epiciclo*). O **raio de cada círculo** corresponde à **amplitude** do termo, enquanto a **frequência** é representada pela **velocidade de rotação** do círculo. Os círculos são conectados de forma sequencial, de modo que o **centro de cada círculo** coincide com a **extremidade do raio do círculo anterior**, conforme ilustrado na @fig-epiciclo.
 
@@ -638,9 +638,9 @@ H(u,v) =
 \end{cases}
 $$
 
-onde $D_0$ representa a frequência de corte. Embora simples, esse filtro pode introduzir artefatos como o **fenômeno de Gibbs**[^2] devido à descontinuidade na resposta espectral.
+onde $D_0$ representa a frequência de corte. Embora simples, esse filtro pode introduzir artefatos como o **fenômeno de Gibbs**[^fourier-2] devido à descontinuidade na resposta espectral.
 
-[^2]: (<https://pt.wikipedia.org/wiki/Fen%C3%B4meno_de_Gibbs>)
+[^fourier-2]: (<https://pt.wikipedia.org/wiki/Fen%C3%B4meno_de_Gibbs>)
 
 ![Filtros para Transformada de Fourier](/imgs/cap4/filtros.png){#fig-filtros fig-align="center" width="60%"}
 

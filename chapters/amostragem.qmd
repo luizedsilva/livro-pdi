@@ -16,7 +16,7 @@ Essa estrutura é inspirada, em muitos aspectos, no próprio sistema visual huma
 
 ### O Olho Humano e a Formação da Imagem
 
-O olho humano funciona como um sofisticado sistema óptico (Figura @fig-olho). A luz proveniente dos objetos atravessa a córnea e o cristalino, sendo focalizada sobre a retina. Na retina encontram‑se os fotorreceptores, responsáveis por converter a energia luminosa em sinais elétricos que são transmitidos ao cérebro pelo nervo óptico.
+O olho humano funciona como um sofisticado sistema óptico (@fig-olho). A luz proveniente dos objetos atravessa a córnea e o cristalino, sendo focalizada sobre a retina. Na retina encontram‑se os fotorreceptores, responsáveis por converter a energia luminosa em sinais elétricos que são transmitidos ao cérebro pelo nervo óptico.
 
 ![Olho humano](/imgs/cap2/olho.png){#fig-olho fig-align="center" width="80%"}
 
@@ -24,7 +24,7 @@ A imagem formada na retina é invertida, e o cérebro realiza a interpretação 
 
 ### Fóvea, Cones e Bastonetes
 
-A retina possui duas classes principais de fotorreceptores: **bastonetes** e **cones**, Figura @fig-cones. Os bastonetes são altamente sensíveis à luz e estão associados à percepção de brilho, enquanto os cones são responsáveis pela percepção de cores.
+A retina possui duas classes principais de fotorreceptores: **bastonetes** e **cones**, @fig-cones. Os bastonetes são altamente sensíveis à luz e estão associados à percepção de brilho, enquanto os cones são responsáveis pela percepção de cores.
 
 A região da **fóvea**, uma pequena depressão circular localizada no centro da retina, concentra uma grande densidade de cones, sendo responsável pela alta acuidade visual. Essa característica inspira o projeto de sensores de imagem, como os dispositivos CCD e CMOS, que utilizam matrizes de elementos sensíveis à luz para capturar imagens digitais.
 
@@ -34,7 +34,7 @@ A região da **fóvea**, uma pequena depressão circular localizada no centro da
 
 O estudo das ilusões de ótica revela limitações e particularidades do sistema visual humano. Em situações onde o cérebro não consegue interpretar corretamente os estímulos visuais, ele tende a completar a informação com base em experiências prévias e padrões memorizados.
 
-Fenômenos como o efeito Mach (Figura @fig-mach), a percepção de contraste e distorções associadas a linhas e formas (Figura @fig-linhas) demonstram que a intensidade percebida nem sempre corresponde à intensidade física real. Esses efeitos são relevantes em PDI, pois técnicas de realce e segmentação exploram princípios semelhantes aos do sistema visual humano.
+Fenômenos como o efeito Mach (@fig-mach), a percepção de contraste e distorções associadas a linhas e formas (@fig-linhas) demonstram que a intensidade percebida nem sempre corresponde à intensidade física real. Esses efeitos são relevantes em PDI, pois técnicas de realce e segmentação exploram princípios semelhantes aos do sistema visual humano.
 
 ![Efeito mach](/imgs/cap2/mach.png){#fig-mach fig-align="center" width="60%"}
 
@@ -44,7 +44,7 @@ Fenômenos como o efeito Mach (Figura @fig-mach), a percepção de contraste e d
 
 ### Espectro Visível
 
-O espectro visível (Figura @fig-espectro) corresponde a uma pequena faixa do espectro eletromagnético, compreendida aproximadamente entre os comprimentos de onda do violeta ao vermelho. Embora estreita, essa faixa é suficiente para representar uma grande variedade de informações visuais utilizadas em aplicações cotidianas.
+O espectro visível (@fig-espectro) corresponde a uma pequena faixa do espectro eletromagnético, compreendida aproximadamente entre os comprimentos de onda do violeta ao vermelho. Embora estreita, essa faixa é suficiente para representar uma grande variedade de informações visuais utilizadas em aplicações cotidianas.
 
 ![Espectro visível da luz](/imgs/cap2/espectro.png){#fig-espectro}
 
@@ -105,7 +105,7 @@ Reduções na quantização podem introduzir efeitos visuais indesejados, como p
 
 ## Representação da Imagem Digital
 
-Uma imagem digital pode ser representada como uma **matriz numérica**, em que cada elemento corresponde ao valor de intensidade de um pixel. A Figura @fig-binaria, ilustra os valores dos pixels (1 ou 0) numa imagem binária. Para imagens em tons de cinza, essa matriz contém valores escalares, conforme ilustrado na @fig-cinza.
+Uma imagem digital pode ser representada como uma **matriz numérica**, em que cada elemento corresponde ao valor de intensidade de um pixel. A @fig-binaria, ilustra os valores dos pixels (1 ou 0) numa imagem binária. Para imagens em tons de cinza, essa matriz contém valores escalares, conforme ilustrado na @fig-cinza.
 
 ![Ilustração dos pixels numa Imagem Binária](/imgs/cap2/binaria.png){#fig-binaria fig-align="center" width="80%"}
 
@@ -138,11 +138,11 @@ O código completo e a demonstração interativa estão disponíveis em:
 Para imagens coloridas, a representação pode envolver:
 
 -   tabelas de cores;
--   camadas de cores, como os canais vermelho, verde e azul (RGB). (Figura @fig-colorida)
+-   camadas de cores, como os canais vermelho, verde e azul (RGB). (@fig-colorida)
 
 ![Ilustração dos pixels numa Imagem Colorida](/imgs/cap2/colorida.png){#fig-colorida fig-align="center" width="80%"}
 
-Além da representação matricial, a imagem também pode ser interpretada como uma superfície tridimensional, na qual as coordenadas espaciais definem a posição do pixel e a intensidade define a altura da superfície (Figura @fig-superficie).
+Além da representação matricial, a imagem também pode ser interpretada como uma superfície tridimensional, na qual as coordenadas espaciais definem a posição do pixel e a intensidade define a altura da superfície (@fig-superficie).
 
 ![Ilustração da imagem com superfície](/imgs/cap2/superficie.png){#fig-superficie fig-align="center" width="80%"}
 
