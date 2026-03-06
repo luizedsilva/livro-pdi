@@ -156,6 +156,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -370,7 +371,7 @@ N_8(p) = N_4(p) \cup N_D(p).\
 <p>Essas diferentes definições de vizinhança são importantes porque determinam como os pixels são considerados conectados em uma imagem. Dependendo da aplicação, pode-se utilizar a vizinhança de 4 ou de 8 pixels para definir conectividade, propagação de regiões ou cálculo de operadores locais.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/cap3/vizinhanca.png" class="img-fluid figure-img"></p>
+<p><img src="../imgs/cap3/vizinhanca.png" class="img-fluid figure-img" style="width:70.0%"></p>
 <figcaption>Ilustração das relações de vizinhança dos pixels</figcaption>
 </figure>
 </div>
@@ -396,7 +397,7 @@ d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
 <p>Essas três medidas de distância são amplamente utilizadas em algoritmos de processamento de imagens, e a escolha de qual utilizar depende do tipo de conectividade e da modelagem geométrica desejada para o problema.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/cap3/distancia.png" class="img-fluid figure-img"></p>
+<p><img src="../imgs/cap3/distancia.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption>Medidas de distância em imagens digitais</figcaption>
 </figure>
 </div>
@@ -424,14 +425,14 @@ d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
 <p>A <strong>fronteira</strong> de uma região — também chamada de <strong>borda</strong> ou <strong>contorno</strong> — é formada pelos pixels que delimitam a separação entre a região e o fundo. Essa fronteira pode ser definida de duas maneiras. A <strong>borda interna</strong> é o conjunto de pixels da própria região que possuem pelo menos um vizinho pertencente ao fundo da imagem. Já a <strong>borda externa</strong> é composta pelos pixels do fundo que possuem pelo menos um vizinho pertencente à região.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/cap3/regiao-borda.png" class="img-fluid figure-img"></p>
+<p><img src="../imgs/cap3/regiao-borda.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption>Ilustração de uma região, borda interna e borda externa</figcaption>
 </figure>
 </div>
 <p>Ao definir regiões e fronteiras, é importante evitar o chamado <strong>paradoxo da conectividade</strong>, que ocorre quando diferentes critérios de vizinhança produzem ambiguidades na definição de conectividade entre pixels. Para evitar esse problema, utiliza-se uma regra complementar: se a <strong>vizinhança de 8 pixels (</strong><span class="math inline">\(N_8\)</span>) for utilizada para definir a borda, então a <strong>vizinhança de 4 pixels (</strong><span class="math inline">\(N_4\)</span>) deve ser utilizada para definir a região. De forma equivalente, se a borda for definida utilizando <span class="math inline">\(N_4\)</span>, a região deve ser definida utilizando <span class="math inline">\(N_8\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/cap3/paradoxo.png" class="img-fluid figure-img"></p>
+<p><img src="../imgs/cap3/paradoxo.png" class="img-fluid figure-img" style="width:60.0%"></p>
 <figcaption>Ilustração do paradoxo da conectividade</figcaption>
 </figure>
 </div>
@@ -679,7 +680,7 @@ H[a_i f_i(x,y) + a_j f_j(x,y)]
 <p>Os filtros passa-baixa, cuja a soma dos coeficientes do kernel é um (ou próxima de um) tem o efeito de atenuar as altas frequências e preservar as baixas frequências. Na prática significa suavização da imagem.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/cap3/filtros.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="../imgs/cap3/filtros.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Filtros</figcaption>
 </figure>
 </div>

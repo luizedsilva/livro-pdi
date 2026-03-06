@@ -136,6 +136,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -334,10 +335,10 @@ window.Quarto = {
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="sistema-de-processamento-de-imagens"><span class="header-section-number">2.1.1</span> Sistema de Processamento de Imagens</h3>
 <p>Um sistema de processamento de imagens pode ser descrito como um conjunto de etapas que envolvem <strong>aquisição</strong>, <strong>processamento</strong>, <strong>armazenamento</strong> e <strong>saída</strong> de imagens, conforme ilustrado em <a href="#fig-sistema" class="quarto-xref">Figura&nbsp;<span>2.1</span></a>. A aquisição é realizada por dispositivos como câmeras de vídeo e scanners, enquanto o processamento ocorre em um computador. A saída pode ser exibida em monitores, impressoras ou outros dispositivos gráficos, e o armazenamento é feito em mídias digitais.</p>
 <p>Essa estrutura é inspirada, em muitos aspectos, no próprio sistema visual humano, que serve como referência para o desenvolvimento de modelos computacionais de visão.</p>
-<div id="fig-sistema" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-sistema" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sistema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/sistema.png" class="img-fluid figure-img" style="width:80.0%">
+<img src="../imgs/cap2/sistema.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sistema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.1: Elementos de um sistema de processamento de imagens
@@ -348,10 +349,10 @@ Figura&nbsp;2.1: Elementos de um sistema de processamento de imagens
 <section id="o-olho-humano-e-a-formação-da-imagem" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="o-olho-humano-e-a-formação-da-imagem"><span class="header-section-number">2.1.2</span> O Olho Humano e a Formação da Imagem</h3>
 <p>O olho humano funciona como um sofisticado sistema óptico (Figura <a href="#fig-olho" class="quarto-xref">Figura&nbsp;<span>2.2</span></a>). A luz proveniente dos objetos atravessa a córnea e o cristalino, sendo focalizada sobre a retina. Na retina encontram‑se os fotorreceptores, responsáveis por converter a energia luminosa em sinais elétricos que são transmitidos ao cérebro pelo nervo óptico.</p>
-<div id="fig-olho" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-olho" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-olho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/olho.png" class="img-fluid figure-img">
+<img src="../imgs/cap2/olho.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-olho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.2: Olho humano
@@ -364,10 +365,10 @@ Figura&nbsp;2.2: Olho humano
 <h3 data-number="2.1.3" class="anchored" data-anchor-id="fóvea-cones-e-bastonetes"><span class="header-section-number">2.1.3</span> Fóvea, Cones e Bastonetes</h3>
 <p>A retina possui duas classes principais de fotorreceptores: <strong>bastonetes</strong> e <strong>cones</strong>, Figura <a href="#fig-cones" class="quarto-xref">Figura&nbsp;<span>2.3</span></a>. Os bastonetes são altamente sensíveis à luz e estão associados à percepção de brilho, enquanto os cones são responsáveis pela percepção de cores.</p>
 <p>A região da <strong>fóvea</strong>, uma pequena depressão circular localizada no centro da retina, concentra uma grande densidade de cones, sendo responsável pela alta acuidade visual. Essa característica inspira o projeto de sensores de imagem, como os dispositivos CCD e CMOS, que utilizam matrizes de elementos sensíveis à luz para capturar imagens digitais.</p>
-<div id="fig-cones" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-cones" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/conesbastonetes.png" class="img-fluid figure-img">
+<img src="../imgs/cap2/conesbastonetes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.3: Bastonetes e Cones
@@ -380,20 +381,20 @@ Figura&nbsp;2.3: Bastonetes e Cones
 <h2 data-number="2.2" class="anchored" data-anchor-id="ilusões-de-ótica-e-percepção"><span class="header-section-number">2.2</span> Ilusões de Ótica e Percepção</h2>
 <p>O estudo das ilusões de ótica revela limitações e particularidades do sistema visual humano. Em situações onde o cérebro não consegue interpretar corretamente os estímulos visuais, ele tende a completar a informação com base em experiências prévias e padrões memorizados.</p>
 <p>Fenômenos como o efeito Mach (Figura <a href="#fig-mach" class="quarto-xref">Figura&nbsp;<span>2.4</span></a>), a percepção de contraste e distorções associadas a linhas e formas (Figura <a href="#fig-linhas" class="quarto-xref">Figura&nbsp;<span>2.5</span></a>) demonstram que a intensidade percebida nem sempre corresponde à intensidade física real. Esses efeitos são relevantes em PDI, pois técnicas de realce e segmentação exploram princípios semelhantes aos do sistema visual humano.</p>
-<div id="fig-mach" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-mach" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mach-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/mach.png" class="img-fluid figure-img">
+<img src="../imgs/cap2/mach.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mach-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.4: Efeito mach
 </figcaption>
 </figure>
 </div>
-<div id="fig-linhas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-linhas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-linhas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/linhas.png" class="img-fluid figure-img">
+<img src="../imgs/cap2/linhas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linhas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.5: Efeito de linhas
@@ -422,7 +423,7 @@ Figura&nbsp;2.6: Espectro visível da luz
 <p>A aquisição de imagens digitais é realizada por sensores que convertem energia luminosa em sinais elétricos. Um sensor simples consiste em um material sensível à luz que gera uma tensão proporcional à intensidade luminosa incidente.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/cap2/sensor1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="../imgs/cap2/sensor1.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Sensores para aquisição de imagens</figcaption>
 </figure>
 </div>
@@ -433,13 +434,13 @@ Figura&nbsp;2.6: Espectro visível da luz
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/cap2/sensorlinear.png" class="img-fluid figure-img"></p>
+<p><img src="../imgs/cap2/sensorlinear.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption>Sensor Linear</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/cap2/sensormatricial.png" class="img-fluid figure-img"></p>
+<p><img src="../imgs/cap2/sensormatricial.png" class="img-fluid figure-img" style="width:60.0%"></p>
 <figcaption>Sensor Matricial</figcaption>
 </figure>
 </div>
@@ -451,10 +452,10 @@ Figura&nbsp;2.6: Espectro visível da luz
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="conceito-de-amostragem"><span class="header-section-number">2.4.1</span> Conceito de Amostragem</h3>
 <p>A amostragem corresponde à discretização espacial da imagem. Uma cena contínua é convertida em um conjunto finito de pontos, organizados em uma grade regular. Cada ponto da grade representa um <strong>pixel</strong> da imagem digital.</p>
 <p>Matematicamente, considera‑se uma função contínua de intensidade (f(x,y)), que, após a amostragem, passa a ser definida apenas em posições discretas de (x) e (y).</p>
-<div id="fig-amostragem-quantizacao" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-amostragem-quantizacao" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-amostragem-quantizacao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/amostragem.png" class="img-fluid figure-img" style="width:80.0%">
+<img src="../imgs/cap2/amostragem.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-amostragem-quantizacao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.7: Ilustração dos processos de amostragem e quantização de um sinal contínuo.
@@ -493,20 +494,20 @@ L = 2^k
 <section id="representação-da-imagem-digital" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="representação-da-imagem-digital"><span class="header-section-number">2.6</span> Representação da Imagem Digital</h2>
 <p>Uma imagem digital pode ser representada como uma <strong>matriz numérica</strong>, em que cada elemento corresponde ao valor de intensidade de um pixel. A Figura <a href="#fig-binaria" class="quarto-xref">Figura&nbsp;<span>2.8</span></a>, ilustra os valores dos pixels (1 ou 0) numa imagem binária. Para imagens em tons de cinza, essa matriz contém valores escalares, conforme ilustrado na <a href="#fig-cinza" class="quarto-xref">Figura&nbsp;<span>2.9</span></a>.</p>
-<div id="fig-binaria" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-binaria" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-binaria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/binaria.png" class="img-fluid figure-img">
+<img src="../imgs/cap2/binaria.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binaria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.8: Ilustração dos pixels numa Imagem Binária
 </figcaption>
 </figure>
 </div>
-<div id="fig-cinza" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-cinza" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cinza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/cinza.png" class="img-fluid figure-img">
+<img src="../imgs/cap2/cinza.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cinza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.9: Ilustração dos pixels numa Imagem em Tons de Cinza
@@ -515,17 +516,19 @@ Figura&nbsp;2.9: Ilustração dos pixels numa Imagem em Tons de Cinza
 </div>
 <p>O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, movimente o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom), dos pixels correspondentes na região selecionada.</p>
 <!-- Conteúdo interativo (HTML) -->
+<div style="display:flex; justify-content:center;">
 <iframe src="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" width="100%" height="500" style="border:none; overflow:hiddeln;">
 </iframe>
+</div>
 <p>Para imagens coloridas, a representação pode envolver:</p>
 <ul>
 <li>tabelas de cores;</li>
 <li>camadas de cores, como os canais vermelho, verde e azul (RGB). (Figura <a href="#fig-colorida" class="quarto-xref">Figura&nbsp;<span>2.10</span></a>)</li>
 </ul>
-<div id="fig-colorida" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-colorida" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-colorida-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/colorida.png" class="img-fluid figure-img">
+<img src="../imgs/cap2/colorida.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorida-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.10: Ilustração dos pixels numa Imagem Colorida
@@ -533,10 +536,10 @@ Figura&nbsp;2.10: Ilustração dos pixels numa Imagem Colorida
 </figure>
 </div>
 <p>Além da representação matricial, a imagem também pode ser interpretada como uma superfície tridimensional, na qual as coordenadas espaciais definem a posição do pixel e a intensidade define a altura da superfície (Figura <a href="#fig-superficie" class="quarto-xref">Figura&nbsp;<span>2.11</span></a>).</p>
-<div id="fig-superficie" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-superficie" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-superficie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/superficie.png" class="img-fluid figure-img">
+<img src="../imgs/cap2/superficie.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-superficie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2.11: Ilustração da imagem com superfície
@@ -545,8 +548,10 @@ Figura&nbsp;2.11: Ilustração da imagem com superfície
 </div>
 <p>O exemplo interativo seguinte permite uma visualização de uma imagem como superfície:</p>
 <!-- Conteúdo interativo (HTML) -->
+<div style="display:flex; justify-content:center;">
 <iframe src="https://editor.p5js.org/luizedsilva/full/7vlY9trVV" width="100%" height="600" style="border:none; overflow:hiddeln;">
 </iframe>
+</div>
 </section>
 <section id="os-formatos-pbm-pgm-e-ppm-de-imagens" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="os-formatos-pbm-pgm-e-ppm-de-imagens"><span class="header-section-number">2.7</span> Os formatos PBM, PGM e PPM de imagens</h2>

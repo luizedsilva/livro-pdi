@@ -101,6 +101,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -309,10 +310,10 @@ window.Quarto = {
 <section id="mudança-de-domínio-como-estratégia-de-simplificação" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="mudança-de-domínio-como-estratégia-de-simplificação"><span class="header-section-number">4.2.1</span> Mudança de domínio como estratégia de simplificação</h3>
 <p>A resolução de muitos problemas torna-se complexa quando realizada diretamente no domínio original. Operações como divisão, convolução ou correlação frequentemente exigem alto custo computacional ou manipulações algébricas trabalhosas. Uma estratégia clássica para contornar essa dificuldade consiste em <strong>transformar o problema para outro domínio</strong>, no qual as operações envolvidas se tornam mais simples.</p>
-<div id="fig-mudanca" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-mudanca" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mudanca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap4/mudancadominio.png" class="img-fluid figure-img" style="width:80.0%">
+<img src="../imgs/cap4/mudancadominio.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mudanca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;4.1: Mudança de domínio
@@ -344,10 +345,10 @@ y = \frac{x}{z}
 </iframe>
 <p>O exemplo ilustrativo seguinte, adaptado do código de <strong>Daniel Shiffman</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, demonstra como uma série de Fourier pode ser utilizada para representar uma onda quadrada.</p>
 <p>Nesse exemplo, cada <strong>termo da série</strong> é representado por um <strong>círculo trigonométrico</strong> (<em>epiciclo</em>). O <strong>raio de cada círculo</strong> corresponde à <strong>amplitude</strong> do termo, enquanto a <strong>frequência</strong> é representada pela <strong>velocidade de rotação</strong> do círculo. Os círculos são conectados de forma sequencial, de modo que o <strong>centro de cada círculo</strong> coincide com a <strong>extremidade do raio do círculo anterior</strong>, conforme ilustrado na <a href="#fig-epiciclo" class="quarto-xref">Figura&nbsp;<span>4.2</span></a>.</p>
-<div id="fig-epiciclo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-epiciclo" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-epiciclo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap4/epiciclo.png" class="img-fluid figure-img" style="width:80.0%">
+<img src="../imgs/cap4/epiciclo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-epiciclo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;4.2: Representação dos termos como Epiciclos
@@ -423,10 +424,10 @@ F(\mu)
 \sin \theta = \frac{e^{j\theta} - e^{-j\theta}}{2j}
 \]</span></p>
 <p>A <a href="#fig-transformacao1" class="quarto-xref">Figura&nbsp;<span>4.3</span></a> ilustra essa transformação contínua unidimensional:</p>
-<div id="fig-transformacao1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-transformacao1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transformacao1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap4/g4.svg" class="img-fluid figure-img" style="width:100.0%">
+<img src="../imgs/cap4/g4.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-transformacao1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;4.3: Transformação: a) função simples, b) transformada calculada e c) espectro
@@ -709,10 +710,10 @@ M = 2^n
 <section id="um-exemplo-1" class="level4" data-number="4.5.4.1">
 <h4 data-number="4.5.4.1" class="anchored" data-anchor-id="um-exemplo-1"><span class="header-section-number">4.5.4.1</span> Um exemplo</h4>
 <p>A <a href="#fig-amostra" class="quarto-xref">Figura&nbsp;<span>4.4</span></a> a seguir ilustra um conjunto discreto de amostras de um sinal unidimensional no domínio espacial. Esse exemplo simples permite compreender, de forma concreta, como a <strong>Transformada Discreta de Fourier (DFT)</strong> decompõe um sinal em suas componentes de frequência.</p>
-<div id="fig-amostra" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-amostra" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-amostra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap4/amostra.png" class="img-fluid figure-img" style="width:80.0%">
+<img src="../imgs/cap4/amostra.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-amostra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;4.4: Amostras do sinal no domínio espacial
@@ -794,7 +795,7 @@ D(u,v) =
 \sqrt{(u - M/2)^2 + (v - N/2)^2}.
 \]</span></p>
 <p>O centro do espectro corresponde às baixas frequências, associadas às variações suaves de intensidade. À medida que se afasta do centro, encontram-se as altas frequências, responsáveis por bordas e detalhes finos.</p>
-<p>O filtro ideal passa-baixa possui uma transição abrupta entre as frequências preservadas e as atenuadas. Sua definição é:</p>
+<p>O filtro ideal (representado na <a href="#fig-filtros" class="quarto-xref">Figura&nbsp;<span>4.5</span></a> a) passa-baixa possui uma transição abrupta entre as frequências preservadas e as atenuadas. Sua definição é:</p>
 <p><span class="math display">\[
 H(u,v) =
 \begin{cases}
@@ -802,82 +803,29 @@ H(u,v) =
 0, &amp; D(u,v) &gt; D_0
 \end{cases}
 \]</span></p>
-<div class="columns">
-<div class="column" style="width:10%;">
-
-</div><div class="column" style="width:35%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap4/ideal.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Filtro Ideal</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap4/surface-ideal.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Filtro Ideal (superfície)</figcaption>
-</figure>
-</div>
-</div>
-</div>
 <p>onde <span class="math inline">\(D_0\)</span> representa a frequência de corte. Embora simples, esse filtro pode introduzir artefatos como o <strong>fenômeno de Gibbs</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> devido à descontinuidade na resposta espectral.</p>
-<p>O filtro gaussiano apresenta uma transição suave e contínua, evitando descontinuidades abruptas. Sua expressão é:</p>
+<div id="fig-filtros" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-filtros-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap4/filtros.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-filtros-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.5: Filtros para Transformada de Fourier
+</figcaption>
+</figure>
+</div>
+<p>O filtro gaussiano (representado na <a href="#fig-filtros" class="quarto-xref">Figura&nbsp;<span>4.5</span></a> b) apresenta uma transição suave e contínua, evitando descontinuidades abruptas. Sua expressão é:</p>
 <p><span class="math display">\[
 H(u,v) =
 e^{-\frac{D(u,v)^2}{2D_0^2}}.
 \]</span></p>
 <p>Esse filtro não produz ringing significativo e resulta em suavização progressiva das altas frequências.</p>
-<div class="columns">
-<div class="column" style="width:10%;">
-
-</div><div class="column" style="width:34%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap4/gaussian.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Filtro Gaussiano</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap4/surface-gaussian.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Filtro Gaussiano (superfície)</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>O filtro Butterworth representa um compromisso entre o ideal e o gaussiano. Sua formulação é:</p>
+<p>O filtro Butterworth (representado na <a href="#fig-filtros" class="quarto-xref">Figura&nbsp;<span>4.5</span></a> c) representa um compromisso entre o ideal e o gaussiano. Sua formulação é:</p>
 <p><span class="math display">\[
 H(u,v) =
 \frac{1}{1 + \left(\frac{D(u,v)}{D_0}\right)^{2n}},
 \]</span></p>
 <p>onde <span class="math inline">\(D_0\)</span> é a frequência de corte e <span class="math inline">\(n\)</span> é a ordem do filtro. Para valores pequenos de <span class="math inline">\(n\)</span>, a transição é suave. À medida que <span class="math inline">\(n\)</span> aumenta, o comportamento aproxima-se do filtro ideal.</p>
-<div class="columns">
-<div class="column" style="width:10%;">
-
-</div><div class="column" style="width:34%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap4/butter.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Filtro Butterworth</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap4/surface-butter.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Filtro Butterworth (superfície)</figcaption>
-</figure>
-</div>
-</div>
-</div>
 <p>O exemplo interativo seguinte apresenta uma visualização 3D destes três filtros. Pode-se escolher o raio do Corte e a Ordem (para o caso do filtro Butterworth):</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/kkrvpU7ra" width="100%" height="600" style="border:none; overflow:hiddeln;">
