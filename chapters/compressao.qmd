@@ -40,7 +40,7 @@ O **modelo genérico de compressão de imagens** consiste em um processo utiliza
 
 ![Modelo genérico de compressão de imagens](/imgs/cap5/codifica.png){#fig-codifica fig-align="center" width="80%"}
 
-O processo de compressão normalmente envolve **duas fases principais: a codificação e a decodificação**. Na fase de **codificação**, a imagem original é analisada e transformada em uma representação mais compacta, reduzindo a quantidade de bits necessária para armazenar ou transmitir os dados. Esse processo pode envolver diferentes estratégias, como remoção de redundâncias, transformação dos dados ou eliminação de informações consideradas menos relevantes para a percepção visual humana. Já na fase de **decodificação**, os dados comprimidos são processados para reconstruir a imagem, produzindo uma versão que pode ser idêntica à original ou apresentar pequenas diferenças, dependendo do método de compressão utilizado.
+O processo de compressão normalmente envolve **duas fases principais: a codificação e a decodificação** (conforme ilustrada na @fig-codifica). Na fase de **codificação**, a imagem original é analisada e transformada em uma representação mais compacta, reduzindo a quantidade de bits necessária para armazenar ou transmitir os dados. Esse processo pode envolver diferentes estratégias, como remoção de redundâncias, transformação dos dados ou eliminação de informações consideradas menos relevantes para a percepção visual humana. Já na fase de **decodificação**, os dados comprimidos são processados para reconstruir a imagem, produzindo uma versão que pode ser idêntica à original ou apresentar pequenas diferenças, dependendo do método de compressão utilizado.
 
 A ideia fundamental por trás da compressão é **explorar padrões e redundâncias presentes na imagem**. Em muitas imagens, determinados valores ou padrões de pixels aparecem com maior frequência que outros. Assim, é possível representar esses elementos mais frequentes utilizando **uma quantidade menor de bits**, enquanto elementos menos frequentes podem ser representados com códigos maiores. Esse princípio está presente em diversos métodos de compressão, como os esquemas de codificação estatística, nos quais símbolos mais frequentes recebem códigos mais curtos.
 
@@ -308,13 +308,15 @@ O **algoritmo de Huffman** é um método de compressão de dados amplamente util
 
 A ideia central da codificação de Huffman é construir um **código de comprimento variável**, no qual cada símbolo é representado por uma sequência de bits cujo tamanho depende de sua probabilidade de ocorrência. Diferentemente dos códigos de comprimento fixo, em que todos os símbolos são representados pelo mesmo número de bits, a codificação de Huffman permite que símbolos mais comuns utilizem menos bits, reduzindo o tamanho total da informação codificada.
 
-O processo de construção do código de Huffman inicia-se com a **determinação da frequência de ocorrência de cada símbolo** presente nos dados. Em seguida, esses símbolos são organizados em uma estrutura conhecida como **árvore binária de Huffman**. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores. Esse processo continua até que todos os nós estejam conectados em uma única árvore.
+O processo de construção do código de Huffman inicia-se com a **determinação da frequência de ocorrência de cada símbolo** presente nos dados (conforme ilustrado na @fig-huffman). Em seguida, esses símbolos são organizados em uma estrutura conhecida como **árvore binária de Huffman**. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores (iterações i = 1, 2, 3 e 4 na @fig-huffman). Esse processo continua até que todos os nós estejam conectados em uma única árvore.
 
-![Iterações para construção de uma árvore de Huffman](/imgs/cap5/huffman.png){fig-align="center" width="60%"}
+![Iterações para construção de uma árvore de Huffman](/imgs/cap5/huffman.png){#fig-huffman fig-align="center" width="60%"}
 
 Após a construção da árvore, os códigos binários são obtidos percorrendo-se os caminhos da raiz até cada folha da árvore. Normalmente, atribui-se o valor **0 para um ramo à esquerda** e **1 para um ramo à direita**. Assim, cada símbolo recebe um código binário correspondente ao caminho percorrido até ele. Uma característica importante desses códigos é que eles são **códigos prefixos**, ou seja, nenhum código é prefixo de outro. Isso garante que a sequência de bits possa ser decodificada de forma inequívoca.
 
-``` c
+O código @algo-huffman, apresenta de forma simplificada os passos do algoritmo de Huffman, onde $n$ é o número de folhas, portanto o número de nós internos será $n-1$. A cada iteração é preenchido um novo nó interno da árvore, $p1$ (menor frequência) e $p2$ (segunda menor frequência) são colocados à esquerda e direita do novo nó $p$ e são removidos da fila de prioridadas (ou lista, onde os nós são ordenados pela frequência). O novo nó armazena a soma das frequências de $p1$ e $p2$ e é colocado na fila de prioridades. Para facilitar o percurso da folha para raiz, cada filho é ligado ao pai ( $node[p1].father = p$).
+
+``` {#algo-huffman .c}
 (...)
 for (int i = 0; i < n-1; i++) 
 {
@@ -404,14 +406,14 @@ Mais recentemente, o formato WebP foi desenvolvido com foco em aplicações na w
 
 Cada um desses padrões apresenta características específicas que os tornam mais adequados para determinados tipos de aplicação. Enquanto alguns priorizam altas taxas de compressão com pequenas perdas perceptuais, outros enfatizam a preservação exata da informação original. Assim, a escolha do formato de compressão depende do equilíbrio desejado entre qualidade visual, eficiência de armazenamento e complexidade computacional do processo de codificação e decodificação.
 
-
 ### Formato JPEG
 
 As etapas da codificação JPEG estão representadas na @fig-etapas.
 
 ![Etapas da codificação JPEG](/imgs/cap5/etapas.png){#fig-etapas align="center" fig-align="center" width="80%"}
 
-#### Conversão YCbCr{.unnumbered}
+#### Conversão YCbCr {.unnumbered}
+
 A primeira etapa do processo de compressão JPEG consiste na conversão da imagem do espaço de cores RGB para o espaço de cores YCbCr. No formato RGB, cada pixel é representado pelas intensidades das três componentes de cor primárias: vermelho (R), verde (G) e azul (B). Embora esse modelo seja adequado para dispositivos de exibição, ele não é o mais apropriado para compressão, pois mistura informações de brilho e de cor. Para tornar o processo de compressão mais eficiente, o JPEG realiza uma transformação que separa essas duas informações.
 
 ![Conversão RGB para YCbCr](/imgs/cap5/luminancia.png){fig-align="center" width="60%"}
@@ -438,7 +440,7 @@ A principal vantagem dessa transformação é permitir que as componentes de cro
 
 Após a conversão para o espaço YCbCr, cada componente da imagem é tratada separadamente nas etapas seguintes do algoritmo JPEG. Em geral, a componente de luminância preserva maior quantidade de detalhes, enquanto as componentes de crominância podem sofrer maior redução de informação. Essa etapa inicial de transformação de cores, portanto, prepara os dados da imagem para as fases posteriores do processo de compressão, que incluem a divisão da imagem em blocos, a aplicação da Transformada Discreta do Cosseno (DCT), a quantização e a codificação dos coeficientes.
 
-#### Transformada do Cosseno Discreto (DCT){.unnumbered}
+#### Transformada do Cosseno Discreto (DCT) {.unnumbered}
 
 A Transformada Discreta do Cosseno (DCT) é uma das etapas centrais do algoritmo de compressão JPEG. Após a conversão da imagem para o espaço de cores YCbCr e a divisão da imagem em blocos de (8 \times 8) pixels, cada bloco é transformado do domínio espacial para o domínio da frequência. Essa transformação permite representar a informação da imagem em termos de diferentes componentes de frequência, separando as variações lentas (baixas frequências) das variações rápidas (altas frequências) da intensidade luminosa.
 
@@ -468,7 +470,7 @@ A principal finalidade da DCT no JPEG é **concentrar a maior parte da energia d
 
 Após a aplicação da DCT, cada bloco de (8 \times 8) pixels é transformado em uma matriz de (8 \times 8) coeficientes de frequência. Esses coeficientes passam então pelo processo de quantização e, posteriormente, pelas etapas de reorganização em zig-zag e codificação entrópica. Dessa forma, a DCT desempenha um papel essencial no JPEG ao converter a informação da imagem para um formato no qual a redundância pode ser explorada de maneira eficiente pelo processo de compressão.
 
-#### Quantização{.unnumbered}
+#### Quantização {.unnumbered}
 
 Após a aplicação da Transformada Discreta do Cosseno (DCT), cada bloco de $8 \times 8$ pixels da imagem passa a ser representado por um conjunto de coeficientes de frequência. Esses coeficientes indicam a contribuição das diferentes frequências espaciais presentes no bloco. A etapa seguinte do algoritmo JPEG é a **quantização**, responsável por reduzir a precisão desses coeficientes e, consequentemente, diminuir a quantidade de informação necessária para representar a imagem.
 
@@ -496,7 +498,7 @@ Nesse modelo, o valor da matriz cresce gradualmente à medida que se aumenta a d
 
 Após a quantização, a matriz de coeficientes resultante contém muitos valores nulos, especialmente nas regiões correspondentes às altas frequências. Essa característica é explorada nas etapas seguintes do algoritmo JPEG, nas quais os coeficientes são reorganizados em ordem de zig-zag e codificados por métodos de compressão entrópica, como a codificação de Huffman. Dessa forma, a quantização desempenha um papel fundamental no JPEG ao reduzir a redundância perceptual da imagem e possibilitar taxas de compressão elevadas com perda visual relativamente pequena.
 
-#### Varredura zig-zag{.unnumbered}
+#### Varredura zig-zag {.unnumbered}
 
 Após a etapa de quantização, cada bloco da imagem é representado por uma matriz de $8 \times 8$ coeficientes quantizados da DCT. Esses coeficientes ainda estão organizados na forma bidimensional correspondente às frequências horizontal e vertical. No entanto, para facilitar as etapas seguintes de compressão, o algoritmo JPEG reorganiza esses coeficientes em uma sequência unidimensional por meio de um processo conhecido como **varredura em zig-zag**.
 
@@ -510,7 +512,7 @@ Outro aspecto relevante é a distinção entre o primeiro coeficiente da sequên
 
 Dessa forma, a operação de zig-zag desempenha um papel fundamental no processo de compressão JPEG, pois reorganiza os coeficientes de frequência de maneira a explorar a concentração de energia nas baixas frequências e a presença de longas sequências de zeros nas altas frequências. Essa reorganização aumenta a eficiência das técnicas de codificação utilizadas nas etapas subsequentes, contribuindo para a obtenção de elevadas taxas de compressão com boa qualidade visual da imagem reconstruída.
 
-#### Codificação da Corrida da Cadeia{.unnumbered}
+#### Codificação da Corrida da Cadeia {.unnumbered}
 
 Após a reorganização dos coeficientes quantizados por meio da varredura em zig-zag, obtém-se uma sequência unidimensional de 64 valores para cada bloco de $8 \times 8$. Nessa sequência, o primeiro elemento corresponde ao coeficiente DC e os demais representam os coeficientes AC. Como resultado da quantização, muitos coeficientes de alta frequência tornam-se iguais a zero, especialmente na parte final da sequência. Para explorar essa característica e reduzir ainda mais a quantidade de dados, o algoritmo JPEG utiliza a técnica de **Run-Length Encoding (RLE)**, ou codificação por comprimento de sequência.
 
@@ -534,7 +536,7 @@ Além disso, o padrão JPEG define símbolos especiais para lidar com casos part
 
 Após a aplicação da RLE, os pares gerados ainda não constituem a forma final comprimida. Esses pares são então codificados por meio de **codificação de Huffman**, que atribui códigos binários mais curtos aos padrões mais frequentes. Dessa forma, a combinação entre varredura em zig-zag, codificação RLE e codificação de Huffman permite explorar tanto a redundância estrutural quanto a redundância estatística dos coeficientes da DCT, contribuindo significativamente para a eficiência do algoritmo de compressão JPEG.
 
-#### Codificação Huffman{.unnumbered}
+#### Codificação Huffman {.unnumbered}
 
 Após a aplicação da varredura em zig-zag e da codificação por comprimento de sequência (Run-Length Encoding – RLE), os coeficientes do bloco passam a ser representados por uma sequência de símbolos que descrevem tanto os valores dos coeficientes quanto a quantidade de zeros que os precedem. Entretanto, esses símbolos ainda podem ser representados de forma mais eficiente por meio de técnicas de compressão estatística. Para esse propósito, o padrão JPEG utiliza a **codificação de Huffman**, um método de codificação entrópica que atribui códigos binários de diferentes comprimentos aos símbolos de acordo com sua frequência de ocorrência.
 
@@ -542,11 +544,11 @@ A codificação de Huffman baseia-se no princípio de que símbolos que aparecem
 
 Para os **coeficientes DC**, o algoritmo JPEG utiliza codificação diferencial. Em vez de codificar diretamente o valor do coeficiente DC de cada bloco, o sistema codifica a diferença entre o coeficiente DC atual e o coeficiente DC do bloco anterior. Como essas diferenças tendem a assumir valores pequenos, sua representação se torna mais eficiente. Primeiramente determina-se a **categoria** do valor da diferença, que corresponde ao número de bits necessários para representar sua magnitude. Essa categoria é então codificada utilizando uma tabela de Huffman específica para coeficientes DC. Em seguida, são acrescentados os bits que representam a magnitude do valor.
 
-Para os **coeficientes AC**, a codificação utiliza os pares gerados pela etapa de RLE. Cada símbolo é representado por um par ((r, s)), onde (r) indica o número de zeros consecutivos antes do coeficiente e (s) representa a categoria (ou tamanho em bits) do coeficiente diferente de zero. Esse par ((r, s)) é codificado utilizando uma tabela de Huffman específica para coeficientes AC. Após o código de Huffman correspondente ao par, são acrescentados os bits que representam a magnitude do coeficiente.
+Para os **coeficientes AC**, a codificação utiliza os pares gerados pela etapa de RLE. Cada símbolo é representado por um par $(r, s)$, onde $r$ indica o número de zeros consecutivos antes do coeficiente e $s$ representa a categoria (ou tamanho em bits) do coeficiente diferente de zero. Esse par $(r, s)$ é codificado utilizando uma tabela de Huffman específica para coeficientes AC. Após o código de Huffman correspondente ao par, são acrescentados os bits que representam a magnitude do coeficiente.
 
-O padrão JPEG define também alguns símbolos especiais utilizados durante a codificação dos coeficientes AC. Um deles é o **End of Block (EOB)**, que indica que todos os coeficientes restantes do bloco são iguais a zero. Outro símbolo é o **Zero Run Length (ZRL)**, que representa uma sequência de 16 zeros consecutivos. Esses símbolos contribuem para aumentar a eficiência da compressão, pois sequências longas de zeros são muito comuns após a quantização.
+O padrão JPEG define também alguns símbolos especiais utilizados durante a codificação dos coeficientes AC. Um deles é o **End of Block (EOB)** que representa o par (0,0), que indica que todos os coeficientes restantes do bloco são iguais a zero. Outro símbolo é o **Zero Run Length (ZRL)**, que representa uma sequência de 16 zeros consecutivos (0,15). Esses símbolos contribuem para aumentar a eficiência da compressão, pois sequências longas de zeros são muito comuns após a quantização.
 
-Embora o padrão JPEG forneça tabelas de Huffman padrão, ele também permite que tabelas personalizadas sejam utilizadas. Essas tabelas podem ser geradas a partir das estatísticas de uma imagem ou de um conjunto de imagens, permitindo otimizar a codificação para determinados tipos de conteúdo. Entretanto, na prática, muitas implementações utilizam as tabelas padrão devido à sua simplicidade e boa eficiência em uma ampla variedade de imagens.
+Embora o padrão JPEG forneça tabelas de Huffman padrão, ele também permite que tabelas personalizadas sejam utilizadas. Essas tabelas podem ser geradas a partir das estatísticas de uma imagem ou de um conjunto de imagens, permitindo otimizar a codificação para determinados tipos de conteúdo. Entretanto, na prática, muitas implementações utilizam as tabelas padrão (luminância e crominância) devido à sua simplicidade e boa eficiência em uma ampla variedade de imagens.
 
 Dessa forma, a codificação de Huffman constitui a etapa final do processo de compressão JPEG, responsável por transformar os símbolos gerados nas etapas anteriores em uma sequência compacta de bits. Ao explorar as probabilidades de ocorrência dos diferentes símbolos, essa técnica reduz ainda mais o tamanho dos dados, contribuindo para a alta eficiência do formato JPEG na compressão de imagens digitais.
 
@@ -572,6 +574,35 @@ O código completo e a demonstração interativa estão disponíveis em:
 :::
 ::::
 
+### Formato Base-64
+
+Em algumas situações, dados binários precisam ser transmitidos ou armazenados em sistemas que foram projetados para manipular apenas **texto**. Nesses casos utiliza-se um mecanismo de codificação conhecido como **Base-64**. Embora essa codificação aumente o tamanho dos dados, ela permite representar informações binárias utilizando apenas **caracteres ASCII imprimíveis**, evitando problemas de interpretação ou corrupção durante a transmissão.
+
+Esse tipo de codificação é frequentemente utilizado em protocolos de comunicação baseados em texto, como o SMTP, amplamente empregado para envio de correio eletrônico. Também é comum em formatos de troca de dados como JSON e XML. Nesses ambientes, a presença de bytes arbitrários pode causar problemas, pois determinados valores binários podem ser interpretados como **caracteres de controle**, responsáveis por indicar comandos especiais, quebras de linha ou final de mensagem. Assim, ao converter os dados binários para um conjunto limitado de caracteres seguros, a codificação Base-64 garante que as informações possam ser transmitidas corretamente nesses sistemas.
+
+O princípio da codificação Base-64 consiste em representar os dados binários utilizando um conjunto de **64 símbolos diferentes**. Cada um desses símbolos corresponde a um valor codificado em **6 bits**, pois $2^6 = 64$. Dessa forma, cada caractere da codificação Base-64 representa exatamente um grupo de seis bits da sequência original de dados.
+
+O processo de codificação ocorre agrupando inicialmente os dados binários em blocos de **3 bytes**, o que corresponde a **24 bits**. Em seguida, esses 24 bits são reorganizados em **quatro grupos de 6 bits**. Cada um desses grupos é então convertido em um caractere da tabela Base-64. Como resultado, três bytes da sequência original passam a ser representados por quatro caracteres codificados. Isso implica um aumento aproximado de **33% no tamanho dos dados**, já que 24 bits passam a ser representados por 32 bits.
+
+A tabela de conversão da Base-64 é formada pelos caracteres A–Z, a–z, 0–9, além dos símbolos + e /. Quando o número total de bytes do arquivo não é múltiplo de três, caracteres de preenchimento (=) são utilizados para completar a codificação final.
+
+#### Tabela de Conversão {.unumbered}
+
+| Valor | Caractere | Valor | Caractere |
+|-------|-----------|-------|-----------|
+| 0–25  | A–Z       | 52-61 | 0-9       |
+| 26–51 | a–z       | 62    | \+        |
+| 63    | /         |       |           |
+
+Para ilustrar o processo, considere a sequência de caracteres **"Man"**. Cada caractere é inicialmente convertido para sua representação binária em ASCII. Assim, os caracteres $M$, $a$ e $n$ correspondem respectivamente às sequências $01001101$, $01100001$ e $01101110$. Ao concatenar esses valores obtemos uma sequência de 24 bits. Essa sequência é então dividida em quatro grupos de 6 bits, resultando nos valores $010011$, $010110$, $000101$ e $101110$. Convertendo esses grupos para seus valores decimais correspondentes e consultando a tabela Base-64, obtêm-se os caracteres T, W, F e u. Dessa forma, a sequência **"Man"** é representada na codificação Base-64 como **"TWFu"**.
+
+A codificação Base-64 é amplamente utilizada em diversas aplicações computacionais. Entre suas aplicações mais comuns estão o envio de anexos em mensagens de correio eletrônico, a incorporação de imagens diretamente em documentos HTML ou CSS, o armazenamento de dados binários em estruturas JSON e a transmissão de informações em interfaces de programação de aplicações (APIs) baseadas em texto. Apesar do aumento no tamanho dos dados, essa técnica garante que informações binárias possam ser transportadas com segurança em ambientes que suportam apenas conteúdo textual.
+
+**Imagem dentro de HTML:**
+
+``` html
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...">
+```
 
 ## Considerações Finais
 
