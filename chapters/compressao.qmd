@@ -457,12 +457,12 @@ Os termos (C(u)) e (C(v)) são fatores de normalização utilizados para garanti
 $$
 C(k)=
 \begin{cases}
-\frac{1}{\sqrt{2}}, & k=0 \
+\frac{1}{\sqrt{2}}, & k=0 \\
 1, & k>0
 \end{cases}
 $$
 
-Esses fatores ajustam a amplitude do coeficiente DC em relação aos coeficientes AC. O fator adicional (\frac{1}{4}) presente na equação decorre da normalização da transformada para blocos de dimensão (8 \times 8).
+Esses fatores ajustam a amplitude do coeficiente DC em relação aos coeficientes AC. O fator adicional $\frac{1}{4}$ presente na equação decorre da normalização da transformada para blocos de dimensão $8 \times 8$.
 
 A principal finalidade da DCT no JPEG é **concentrar a maior parte da energia da imagem em poucos coeficientes de baixa frequência**. Em imagens naturais, as variações de intensidade costumam ser suaves, o que faz com que os coeficientes associados às baixas frequências tenham valores maiores, enquanto muitos coeficientes de alta frequência tendem a assumir valores pequenos ou próximos de zero. Essa propriedade é fundamental para a etapa seguinte do algoritmo, a **quantização**, na qual os coeficientes de menor importância perceptual podem ser reduzidos ou eliminados, permitindo uma compressão significativa da imagem.
 
@@ -470,7 +470,7 @@ Após a aplicação da DCT, cada bloco de (8 \times 8) pixels é transformado em
 
 #### Quantização{.unnumbered}
 
-Após a aplicação da Transformada Discreta do Cosseno (DCT), cada bloco de (8 \times 8) pixels da imagem passa a ser representado por um conjunto de coeficientes de frequência. Esses coeficientes indicam a contribuição das diferentes frequências espaciais presentes no bloco. A etapa seguinte do algoritmo JPEG é a **quantização**, responsável por reduzir a precisão desses coeficientes e, consequentemente, diminuir a quantidade de informação necessária para representar a imagem.
+Após a aplicação da Transformada Discreta do Cosseno (DCT), cada bloco de $8 \times 8$ pixels da imagem passa a ser representado por um conjunto de coeficientes de frequência. Esses coeficientes indicam a contribuição das diferentes frequências espaciais presentes no bloco. A etapa seguinte do algoritmo JPEG é a **quantização**, responsável por reduzir a precisão desses coeficientes e, consequentemente, diminuir a quantidade de informação necessária para representar a imagem.
 
 A quantização é a principal etapa responsável pela perda de informação no processo de compressão JPEG. Nessa fase, os coeficientes obtidos pela DCT são divididos por valores previamente definidos em uma matriz de quantização. Após essa divisão, os resultados são arredondados para o inteiro mais próximo. Esse processo reduz a precisão dos coeficientes, especialmente aqueles associados às altas frequências, que têm menor impacto perceptual na qualidade visual da imagem.
 
@@ -480,11 +480,11 @@ $$
 F_Q(u,v)=\operatorname{round}\left(\frac{F(u,v)}{k\cdot Q(u,v)}\right)
 $$
 
-Nessa equação, (F(u,v)) representa o coeficiente obtido pela DCT na posição ((u,v)), enquanto (F_Q(u,v)) corresponde ao coeficiente quantizado. A matriz (Q(u,v)) é chamada de **matriz de quantização** e define o peso aplicado a cada coeficiente de frequência. O parâmetro (k) é um fator de compressão que controla o grau de redução aplicado aos coeficientes: valores maiores de (k) produzem maior compressão, porém com maior perda de qualidade na imagem reconstruída.
+Nessa equação, (F(u,v)) representa o coeficiente obtido pela DCT na posição $(u,v)$, enquanto $F_Q(u,v)$ corresponde ao coeficiente quantizado. A matriz $Q(u,v)$ é chamada de **matriz de quantização** e define o peso aplicado a cada coeficiente de frequência. O parâmetro $k$ é um fator de compressão que controla o grau de redução aplicado aos coeficientes: valores maiores de $k$ produzem maior compressão, porém com maior perda de qualidade na imagem reconstruída.
 
 O padrão JPEG não impõe uma única matriz de quantização obrigatória. O comitê responsável pela padronização permitiu que diferentes matrizes fossem utilizadas, possibilitando ajustes conforme a aplicação desejada. Entretanto, juntamente com o padrão foram publicadas matrizes recomendadas, obtidas a partir de diversos experimentos com imagens reais. Essas matrizes foram projetadas de modo a explorar as características do sistema visual humano, aplicando quantização mais agressiva nas frequências altas, que são menos perceptíveis ao observador.
 
-De modo geral, os elementos da matriz de quantização aumentam à medida que se afastam da posição ((0,0)), correspondente às baixas frequências. Isso significa que os coeficientes associados às altas frequências são divididos por valores maiores, tornando-se frequentemente iguais a zero após o arredondamento. Esse comportamento é fundamental para aumentar a eficiência das etapas posteriores de compressão, pois sequências de zeros podem ser representadas de forma muito compacta durante a codificação.
+De modo geral, os elementos da matriz de quantização aumentam à medida que se afastam da posição $(0,0)$, correspondente às baixas frequências. Isso significa que os coeficientes associados às altas frequências são divididos por valores maiores, tornando-se frequentemente iguais a zero após o arredondamento. Esse comportamento é fundamental para aumentar a eficiência das etapas posteriores de compressão, pois sequências de zeros podem ser representadas de forma muito compacta durante a codificação.
 
 Uma família de matrizes de quantização pode ser gerada de forma paramétrica, permitindo controlar a intensidade da compressão por meio de um fator ajustável. Uma forma simples de definir essa família de matrizes é dada por:
 
@@ -498,9 +498,9 @@ Após a quantização, a matriz de coeficientes resultante contém muitos valore
 
 #### Varredura zig-zag{.unnumbered}
 
-Após a etapa de quantização, cada bloco da imagem é representado por uma matriz de (8 \times 8) coeficientes quantizados da DCT. Esses coeficientes ainda estão organizados na forma bidimensional correspondente às frequências horizontal e vertical. No entanto, para facilitar as etapas seguintes de compressão, o algoritmo JPEG reorganiza esses coeficientes em uma sequência unidimensional por meio de um processo conhecido como **varredura em zig-zag**.
+Após a etapa de quantização, cada bloco da imagem é representado por uma matriz de $8 \times 8$ coeficientes quantizados da DCT. Esses coeficientes ainda estão organizados na forma bidimensional correspondente às frequências horizontal e vertical. No entanto, para facilitar as etapas seguintes de compressão, o algoritmo JPEG reorganiza esses coeficientes em uma sequência unidimensional por meio de um processo conhecido como **varredura em zig-zag**.
 
-A operação de zig-zag consiste em percorrer a matriz de coeficientes seguindo um padrão diagonal específico que começa no canto superior esquerdo da matriz e termina no canto inferior direito. Esse percurso é projetado de modo que os coeficientes de **baixa frequência**, localizados próximos da posição ((0,0)), sejam visitados primeiro, enquanto os coeficientes de **alta frequência**, que normalmente aparecem nas regiões inferiores e à direita da matriz, sejam visitados posteriormente. Como resultado, a matriz bidimensional de coeficientes é convertida em um vetor de 64 elementos.
+A operação de zig-zag consiste em percorrer a matriz de coeficientes seguindo um padrão diagonal específico que começa no canto superior esquerdo da matriz e termina no canto inferior direito. Esse percurso é projetado de modo que os coeficientes de **baixa frequência**, localizados próximos da posição $(0,0)$, sejam visitados primeiro, enquanto os coeficientes de **alta frequência**, que normalmente aparecem nas regiões inferiores e à direita da matriz, sejam visitados posteriormente. Como resultado, a matriz bidimensional de coeficientes é convertida em um vetor de 64 elementos.
 
 A principal motivação para esse tipo de ordenação está relacionada às propriedades estatísticas dos coeficientes após a quantização. Em imagens naturais, a maior parte da energia do sinal está concentrada nas baixas frequências. Assim, os primeiros coeficientes da matriz tendem a possuir valores relativamente grandes, enquanto muitos coeficientes de alta frequência tornam-se iguais a zero após a quantização. Ao organizar os coeficientes seguindo o padrão em zig-zag, o algoritmo agrupa os valores mais significativos no início da sequência e concentra longas sequências de zeros na parte final.
 
@@ -512,7 +512,7 @@ Dessa forma, a operação de zig-zag desempenha um papel fundamental no processo
 
 #### Codificação da Corrida da Cadeia{.unnumbered}
 
-Após a reorganização dos coeficientes quantizados por meio da varredura em zig-zag, obtém-se uma sequência unidimensional de 64 valores para cada bloco de (8 \times 8). Nessa sequência, o primeiro elemento corresponde ao coeficiente DC e os demais representam os coeficientes AC. Como resultado da quantização, muitos coeficientes de alta frequência tornam-se iguais a zero, especialmente na parte final da sequência. Para explorar essa característica e reduzir ainda mais a quantidade de dados, o algoritmo JPEG utiliza a técnica de **Run-Length Encoding (RLE)**, ou codificação por comprimento de sequência.
+Após a reorganização dos coeficientes quantizados por meio da varredura em zig-zag, obtém-se uma sequência unidimensional de 64 valores para cada bloco de $8 \times 8$. Nessa sequência, o primeiro elemento corresponde ao coeficiente DC e os demais representam os coeficientes AC. Como resultado da quantização, muitos coeficientes de alta frequência tornam-se iguais a zero, especialmente na parte final da sequência. Para explorar essa característica e reduzir ainda mais a quantidade de dados, o algoritmo JPEG utiliza a técnica de **Run-Length Encoding (RLE)**, ou codificação por comprimento de sequência.
 
 A codificação RLE consiste em representar sequências consecutivas de valores repetidos de forma compacta, armazenando apenas o valor repetido e o número de vezes que ele ocorre consecutivamente. No contexto do JPEG, essa técnica é aplicada principalmente às sequências de zeros presentes entre os coeficientes AC. Em vez de armazenar explicitamente cada zero, o algoritmo registra quantos zeros aparecem antes do próximo coeficiente diferente de zero.
 
