@@ -295,6 +295,7 @@ window.Quarto = {
   <li><a href="#padrões-de-compressão-de-imagens" id="toc-padrões-de-compressão-de-imagens" class="nav-link" data-scroll-target="#padrões-de-compressão-de-imagens"><span class="header-section-number">5.8</span> Padrões de Compressão de Imagens</a>
   <ul class="collapse">
   <li><a href="#formato-jpeg" id="toc-formato-jpeg" class="nav-link" data-scroll-target="#formato-jpeg"><span class="header-section-number">5.8.1</span> Formato JPEG</a></li>
+  <li><a href="#formato-base-64" id="toc-formato-base-64" class="nav-link" data-scroll-target="#formato-base-64"><span class="header-section-number">5.8.2</span> Formato Base-64</a></li>
   </ul></li>
   <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">5.9</span> Considerações Finais</a></li>
   </ul>
@@ -358,7 +359,7 @@ Figura&nbsp;5.1: Modelo genérico de compressão de imagens
 </figcaption>
 </figure>
 </div>
-<p>O processo de compressão normalmente envolve <strong>duas fases principais: a codificação e a decodificação</strong>. Na fase de <strong>codificação</strong>, a imagem original é analisada e transformada em uma representação mais compacta, reduzindo a quantidade de bits necessária para armazenar ou transmitir os dados. Esse processo pode envolver diferentes estratégias, como remoção de redundâncias, transformação dos dados ou eliminação de informações consideradas menos relevantes para a percepção visual humana. Já na fase de <strong>decodificação</strong>, os dados comprimidos são processados para reconstruir a imagem, produzindo uma versão que pode ser idêntica à original ou apresentar pequenas diferenças, dependendo do método de compressão utilizado.</p>
+<p>O processo de compressão normalmente envolve <strong>duas fases principais: a codificação e a decodificação</strong> (conforme ilustrada na <a href="#fig-codifica" class="quarto-xref">Figura&nbsp;<span>5.1</span></a>). Na fase de <strong>codificação</strong>, a imagem original é analisada e transformada em uma representação mais compacta, reduzindo a quantidade de bits necessária para armazenar ou transmitir os dados. Esse processo pode envolver diferentes estratégias, como remoção de redundâncias, transformação dos dados ou eliminação de informações consideradas menos relevantes para a percepção visual humana. Já na fase de <strong>decodificação</strong>, os dados comprimidos são processados para reconstruir a imagem, produzindo uma versão que pode ser idêntica à original ou apresentar pequenas diferenças, dependendo do método de compressão utilizado.</p>
 <p>A ideia fundamental por trás da compressão é <strong>explorar padrões e redundâncias presentes na imagem</strong>. Em muitas imagens, determinados valores ou padrões de pixels aparecem com maior frequência que outros. Assim, é possível representar esses elementos mais frequentes utilizando <strong>uma quantidade menor de bits</strong>, enquanto elementos menos frequentes podem ser representados com códigos maiores. Esse princípio está presente em diversos métodos de compressão, como os esquemas de codificação estatística, nos quais símbolos mais frequentes recebem códigos mais curtos.</p>
 <p>De maneira geral, os métodos de compressão podem ser classificados em <strong>compressão sem perdas (lossless)</strong> e <strong>compressão com perdas (lossy)</strong>. Na compressão sem perdas, a imagem reconstruída após a decodificação é <strong>exatamente igual à imagem original</strong>, preservando todas as informações. Já na compressão com perdas, algumas informações são descartadas durante o processo de codificação, permitindo alcançar taxas de compressão maiores, porém introduzindo pequenas distorções na imagem reconstruída. A escolha do método depende da aplicação e do nível de fidelidade desejado.</p>
 <section id="redundância-de-dados" class="level3" data-number="5.1.1">
@@ -662,27 +663,32 @@ MSE =
 <p>Algoritmos clássicos incluem a codificação de Huffman, que utiliza árvores binárias para atribuir códigos mais curtos a símbolos mais frequentes, e a codificação aritmética, que alcança taxas de compressão próximas ao limite teórico da entropia.</p>
 <p>O <strong>algoritmo de Huffman</strong> é um método de compressão de dados amplamente utilizado baseado em <strong>codificação estatística sem perdas</strong>. Ele foi proposto por David A. Huffman em 1952 e tem como objetivo reduzir o número médio de bits necessários para representar um conjunto de símbolos. Esse algoritmo explora a frequência de ocorrência dos símbolos, atribuindo códigos menores aos símbolos mais frequentes e códigos maiores aos símbolos menos frequentes, resultando em uma representação mais eficiente dos dados.</p>
 <p>A ideia central da codificação de Huffman é construir um <strong>código de comprimento variável</strong>, no qual cada símbolo é representado por uma sequência de bits cujo tamanho depende de sua probabilidade de ocorrência. Diferentemente dos códigos de comprimento fixo, em que todos os símbolos são representados pelo mesmo número de bits, a codificação de Huffman permite que símbolos mais comuns utilizem menos bits, reduzindo o tamanho total da informação codificada.</p>
-<p>O processo de construção do código de Huffman inicia-se com a <strong>determinação da frequência de ocorrência de cada símbolo</strong> presente nos dados. Em seguida, esses símbolos são organizados em uma estrutura conhecida como <strong>árvore binária de Huffman</strong>. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores. Esse processo continua até que todos os nós estejam conectados em uma única árvore.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap5/huffman.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Iterações para construção de uma árvore de Huffman</figcaption>
+<p>O processo de construção do código de Huffman inicia-se com a <strong>determinação da frequência de ocorrência de cada símbolo</strong> presente nos dados (conforme ilustrado na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>5.3</span></a>). Em seguida, esses símbolos são organizados em uma estrutura conhecida como <strong>árvore binária de Huffman</strong>. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores (iterações i = 1, 2, 3 e 4 na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>5.3</span></a>). Esse processo continua até que todos os nós estejam conectados em uma única árvore.</p>
+<div id="fig-huffman" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-huffman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap5/huffman.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-huffman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.3: Iterações para construção de uma árvore de Huffman
+</figcaption>
 </figure>
 </div>
 <p>Após a construção da árvore, os códigos binários são obtidos percorrendo-se os caminhos da raiz até cada folha da árvore. Normalmente, atribui-se o valor <strong>0 para um ramo à esquerda</strong> e <strong>1 para um ramo à direita</strong>. Assim, cada símbolo recebe um código binário correspondente ao caminho percorrido até ele. Uma característica importante desses códigos é que eles são <strong>códigos prefixos</strong>, ou seja, nenhum código é prefixo de outro. Isso garante que a sequência de bits possa ser decodificada de forma inequívoca.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">(...)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   p <span class="op">=</span> n <span class="op">+</span> i<span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>   p1 <span class="op">=</span> pqMinDel<span class="op">(&amp;</span>root<span class="op">);</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>   p2 <span class="op">=</span> pqMinDel<span class="op">(&amp;</span>root<span class="op">);</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>   node<span class="op">[</span>p1<span class="op">].</span>father <span class="op">=</span> p<span class="op">;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>   node<span class="op">[</span>p2<span class="op">].</span>father <span class="op">=</span> p<span class="op">;</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>   node<span class="op">[</span>p<span class="op">].</span>freq <span class="op">=</span> node<span class="op">[</span>p1<span class="op">].</span>freq <span class="op">+</span> node<span class="op">[</span>p2<span class="op">].</span>freq<span class="op">;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>   node<span class="op">[</span>p<span class="op">].</span>left <span class="op">=</span> p1<span class="op">;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>   node<span class="op">[</span>p<span class="op">].</span>right <span class="op">=</span> p2<span class="op">;</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>   pqIns<span class="op">(&amp;</span>root<span class="op">,</span> p<span class="op">);</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O código <span class="citation" data-cites="algo-huffman">(<a href="references.html#ref-algo-huffman" role="doc-biblioref"><strong>algo-huffman?</strong></a>)</span>, apresenta de forma simplificada os passos do algoritmo de Huffman, onde <span class="math inline">\(n\)</span> é o número de folhas, portanto o número de nós internos será <span class="math inline">\(n-1\)</span>. A cada iteração é preenchido um novo nó interno da árvore, <span class="math inline">\(p1\)</span> (menor frequência) e <span class="math inline">\(p2\)</span> (segunda menor frequência) são colocados à esquerda e direita do novo nó <span class="math inline">\(p\)</span> e são removidos da fila de prioridadas (ou lista, onde os nós são ordenados pela frequência). O novo nó armazena a soma das frequências de <span class="math inline">\(p1\)</span> e <span class="math inline">\(p2\)</span> e é colocado na fila de prioridades. Para facilitar o percurso da folha para raiz, cada filho é ligado ao pai ( <span class="math inline">\(node[p1].father = p\)</span>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="algo-huffman"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="algo-huffman-1"><a href="#algo-huffman-1" aria-hidden="true" tabindex="-1"></a><span class="op">(...)</span></span>
+<span id="algo-huffman-2"><a href="#algo-huffman-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> </span>
+<span id="algo-huffman-3"><a href="#algo-huffman-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="algo-huffman-4"><a href="#algo-huffman-4" aria-hidden="true" tabindex="-1"></a>   p <span class="op">=</span> n <span class="op">+</span> i<span class="op">;</span></span>
+<span id="algo-huffman-5"><a href="#algo-huffman-5" aria-hidden="true" tabindex="-1"></a>   p1 <span class="op">=</span> pqMinDel<span class="op">(&amp;</span>root<span class="op">);</span></span>
+<span id="algo-huffman-6"><a href="#algo-huffman-6" aria-hidden="true" tabindex="-1"></a>   p2 <span class="op">=</span> pqMinDel<span class="op">(&amp;</span>root<span class="op">);</span></span>
+<span id="algo-huffman-7"><a href="#algo-huffman-7" aria-hidden="true" tabindex="-1"></a>   node<span class="op">[</span>p1<span class="op">].</span>father <span class="op">=</span> p<span class="op">;</span></span>
+<span id="algo-huffman-8"><a href="#algo-huffman-8" aria-hidden="true" tabindex="-1"></a>   node<span class="op">[</span>p2<span class="op">].</span>father <span class="op">=</span> p<span class="op">;</span></span>
+<span id="algo-huffman-9"><a href="#algo-huffman-9" aria-hidden="true" tabindex="-1"></a>   node<span class="op">[</span>p<span class="op">].</span>freq <span class="op">=</span> node<span class="op">[</span>p1<span class="op">].</span>freq <span class="op">+</span> node<span class="op">[</span>p2<span class="op">].</span>freq<span class="op">;</span></span>
+<span id="algo-huffman-10"><a href="#algo-huffman-10" aria-hidden="true" tabindex="-1"></a>   node<span class="op">[</span>p<span class="op">].</span>left <span class="op">=</span> p1<span class="op">;</span></span>
+<span id="algo-huffman-11"><a href="#algo-huffman-11" aria-hidden="true" tabindex="-1"></a>   node<span class="op">[</span>p<span class="op">].</span>right <span class="op">=</span> p2<span class="op">;</span></span>
+<span id="algo-huffman-12"><a href="#algo-huffman-12" aria-hidden="true" tabindex="-1"></a>   pqIns<span class="op">(&amp;</span>root<span class="op">,</span> p<span class="op">);</span></span>
+<span id="algo-huffman-13"><a href="#algo-huffman-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Na fase de <strong>codificação</strong>, cada símbolo do conjunto de dados é substituído pelo código binário correspondente definido pela árvore de Huffman. Já na fase de <strong>decodificação</strong>, a sequência de bits é interpretada percorrendo a árvore binária desde a raiz até alcançar um nó folha, identificando o símbolo correspondente. Esse processo é repetido até que toda a sequência codificada seja decodificada.</p>
 <p>A codificação de Huffman é amplamente utilizada em diversos padrões e sistemas de compressão de dados, incluindo formatos de imagem, áudio e vídeo. Por ser um método <strong>sem perdas</strong>, ele garante que os dados reconstruídos após a decodificação sejam <strong>idênticos aos dados originais</strong>, tornando-o adequado para aplicações nas quais a preservação exata da informação é essencial. Em sistemas de compressão de imagens, o algoritmo de Huffman frequentemente aparece como uma etapa final de codificação, após processos de transformação e quantização dos dados.</p>
 <!-- Conteúdo interativo (HTML) -->
@@ -712,14 +718,14 @@ MSE =
 <p>Cada um desses padrões apresenta características específicas que os tornam mais adequados para determinados tipos de aplicação. Enquanto alguns priorizam altas taxas de compressão com pequenas perdas perceptuais, outros enfatizam a preservação exata da informação original. Assim, a escolha do formato de compressão depende do equilíbrio desejado entre qualidade visual, eficiência de armazenamento e complexidade computacional do processo de codificação e decodificação.</p>
 <section id="formato-jpeg" class="level3" data-number="5.8.1">
 <h3 data-number="5.8.1" class="anchored" data-anchor-id="formato-jpeg"><span class="header-section-number">5.8.1</span> Formato JPEG</h3>
-<p>As etapas da codificação JPEG estão representadas na <a href="#fig-etapas" class="quarto-xref">Figura&nbsp;<span>5.3</span></a>.</p>
-<div id="fig-etapas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-align="center">
+<p>As etapas da codificação JPEG estão representadas na <a href="#fig-etapas" class="quarto-xref">Figura&nbsp;<span>5.4</span></a>.</p>
+<div id="fig-etapas" class="quarto-float quarto-figure quarto-figure-center anchored" data-align="center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-etapas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap5/etapas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" data-align="center">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-etapas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.3: Etapas da codificação JPEG
+Figura&nbsp;5.4: Etapas da codificação JPEG
 </figcaption>
 </figure>
 </div>
@@ -816,14 +822,59 @@ Q(i,j)=1+\left[(i+j)\cdot \text{fator}\right],\quad i,j=0,1,\ldots,N-1
 <p>Após a aplicação da varredura em zig-zag e da codificação por comprimento de sequência (Run-Length Encoding – RLE), os coeficientes do bloco passam a ser representados por uma sequência de símbolos que descrevem tanto os valores dos coeficientes quanto a quantidade de zeros que os precedem. Entretanto, esses símbolos ainda podem ser representados de forma mais eficiente por meio de técnicas de compressão estatística. Para esse propósito, o padrão JPEG utiliza a <strong>codificação de Huffman</strong>, um método de codificação entrópica que atribui códigos binários de diferentes comprimentos aos símbolos de acordo com sua frequência de ocorrência.</p>
 <p>A codificação de Huffman baseia-se no princípio de que símbolos que aparecem com maior frequência devem receber códigos binários mais curtos, enquanto símbolos menos frequentes recebem códigos mais longos. Dessa forma, a representação média dos dados tende a utilizar menos bits, reduzindo o tamanho final do arquivo comprimido. No JPEG, os códigos de Huffman são aplicados tanto aos coeficientes DC quanto aos coeficientes AC, porém de maneiras ligeiramente diferentes.</p>
 <p>Para os <strong>coeficientes DC</strong>, o algoritmo JPEG utiliza codificação diferencial. Em vez de codificar diretamente o valor do coeficiente DC de cada bloco, o sistema codifica a diferença entre o coeficiente DC atual e o coeficiente DC do bloco anterior. Como essas diferenças tendem a assumir valores pequenos, sua representação se torna mais eficiente. Primeiramente determina-se a <strong>categoria</strong> do valor da diferença, que corresponde ao número de bits necessários para representar sua magnitude. Essa categoria é então codificada utilizando uma tabela de Huffman específica para coeficientes DC. Em seguida, são acrescentados os bits que representam a magnitude do valor.</p>
-<p>Para os <strong>coeficientes AC</strong>, a codificação utiliza os pares gerados pela etapa de RLE. Cada símbolo é representado por um par ((r, s)), onde (r) indica o número de zeros consecutivos antes do coeficiente e (s) representa a categoria (ou tamanho em bits) do coeficiente diferente de zero. Esse par ((r, s)) é codificado utilizando uma tabela de Huffman específica para coeficientes AC. Após o código de Huffman correspondente ao par, são acrescentados os bits que representam a magnitude do coeficiente.</p>
-<p>O padrão JPEG define também alguns símbolos especiais utilizados durante a codificação dos coeficientes AC. Um deles é o <strong>End of Block (EOB)</strong>, que indica que todos os coeficientes restantes do bloco são iguais a zero. Outro símbolo é o <strong>Zero Run Length (ZRL)</strong>, que representa uma sequência de 16 zeros consecutivos. Esses símbolos contribuem para aumentar a eficiência da compressão, pois sequências longas de zeros são muito comuns após a quantização.</p>
-<p>Embora o padrão JPEG forneça tabelas de Huffman padrão, ele também permite que tabelas personalizadas sejam utilizadas. Essas tabelas podem ser geradas a partir das estatísticas de uma imagem ou de um conjunto de imagens, permitindo otimizar a codificação para determinados tipos de conteúdo. Entretanto, na prática, muitas implementações utilizam as tabelas padrão devido à sua simplicidade e boa eficiência em uma ampla variedade de imagens.</p>
+<p>Para os <strong>coeficientes AC</strong>, a codificação utiliza os pares gerados pela etapa de RLE. Cada símbolo é representado por um par <span class="math inline">\((r, s)\)</span>, onde <span class="math inline">\(r\)</span> indica o número de zeros consecutivos antes do coeficiente e <span class="math inline">\(s\)</span> representa a categoria (ou tamanho em bits) do coeficiente diferente de zero. Esse par <span class="math inline">\((r, s)\)</span> é codificado utilizando uma tabela de Huffman específica para coeficientes AC. Após o código de Huffman correspondente ao par, são acrescentados os bits que representam a magnitude do coeficiente.</p>
+<p>O padrão JPEG define também alguns símbolos especiais utilizados durante a codificação dos coeficientes AC. Um deles é o <strong>End of Block (EOB)</strong> que representa o par (0,0), que indica que todos os coeficientes restantes do bloco são iguais a zero. Outro símbolo é o <strong>Zero Run Length (ZRL)</strong>, que representa uma sequência de 16 zeros consecutivos (0,15). Esses símbolos contribuem para aumentar a eficiência da compressão, pois sequências longas de zeros são muito comuns após a quantização.</p>
+<p>Embora o padrão JPEG forneça tabelas de Huffman padrão, ele também permite que tabelas personalizadas sejam utilizadas. Essas tabelas podem ser geradas a partir das estatísticas de uma imagem ou de um conjunto de imagens, permitindo otimizar a codificação para determinados tipos de conteúdo. Entretanto, na prática, muitas implementações utilizam as tabelas padrão (luminância e crominância) devido à sua simplicidade e boa eficiência em uma ampla variedade de imagens.</p>
 <p>Dessa forma, a codificação de Huffman constitui a etapa final do processo de compressão JPEG, responsável por transformar os símbolos gerados nas etapas anteriores em uma sequência compacta de bits. Ao explorar as probabilidades de ocorrência dos diferentes símbolos, essa técnica reduz ainda mais o tamanho dos dados, contribuindo para a alta eficiência do formato JPEG na compressão de imagens digitais.</p>
 <p>O exemplo interativo seguinte demonstra as etapas de codificação para um bloco 8x8:</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/crAHlJNHf" width="100%" height="600" style="border:none; overflow:hiddeln;">
 </iframe>
+</section>
+</section>
+<section id="formato-base-64" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="formato-base-64"><span class="header-section-number">5.8.2</span> Formato Base-64</h3>
+<p>Em algumas situações, dados binários precisam ser transmitidos ou armazenados em sistemas que foram projetados para manipular apenas <strong>texto</strong>. Nesses casos utiliza-se um mecanismo de codificação conhecido como <strong>Base-64</strong>. Embora essa codificação aumente o tamanho dos dados, ela permite representar informações binárias utilizando apenas <strong>caracteres ASCII imprimíveis</strong>, evitando problemas de interpretação ou corrupção durante a transmissão.</p>
+<p>Esse tipo de codificação é frequentemente utilizado em protocolos de comunicação baseados em texto, como o SMTP, amplamente empregado para envio de correio eletrônico. Também é comum em formatos de troca de dados como JSON e XML. Nesses ambientes, a presença de bytes arbitrários pode causar problemas, pois determinados valores binários podem ser interpretados como <strong>caracteres de controle</strong>, responsáveis por indicar comandos especiais, quebras de linha ou final de mensagem. Assim, ao converter os dados binários para um conjunto limitado de caracteres seguros, a codificação Base-64 garante que as informações possam ser transmitidas corretamente nesses sistemas.</p>
+<p>O princípio da codificação Base-64 consiste em representar os dados binários utilizando um conjunto de <strong>64 símbolos diferentes</strong>. Cada um desses símbolos corresponde a um valor codificado em <strong>6 bits</strong>, pois <span class="math inline">\(2^6 = 64\)</span>. Dessa forma, cada caractere da codificação Base-64 representa exatamente um grupo de seis bits da sequência original de dados.</p>
+<p>O processo de codificação ocorre agrupando inicialmente os dados binários em blocos de <strong>3 bytes</strong>, o que corresponde a <strong>24 bits</strong>. Em seguida, esses 24 bits são reorganizados em <strong>quatro grupos de 6 bits</strong>. Cada um desses grupos é então convertido em um caractere da tabela Base-64. Como resultado, três bytes da sequência original passam a ser representados por quatro caracteres codificados. Isso implica um aumento aproximado de <strong>33% no tamanho dos dados</strong>, já que 24 bits passam a ser representados por 32 bits.</p>
+<p>A tabela de conversão da Base-64 é formada pelos caracteres A–Z, a–z, 0–9, além dos símbolos + e /. Quando o número total de bytes do arquivo não é múltiplo de três, caracteres de preenchimento (=) são utilizados para completar a codificação final.</p>
+<section id="tabela-de-conversão" class="level4 unumbered" data-number="5.8.2.1">
+<h4 class="unumbered anchored" data-number="5.8.2.1" data-anchor-id="tabela-de-conversão"><span class="header-section-number">5.8.2.1</span> Tabela de Conversão</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Valor</th>
+<th>Caractere</th>
+<th>Valor</th>
+<th>Caractere</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0–25</td>
+<td>A–Z</td>
+<td>52-61</td>
+<td>0-9</td>
+</tr>
+<tr class="even">
+<td>26–51</td>
+<td>a–z</td>
+<td>62</td>
+<td>+</td>
+</tr>
+<tr class="odd">
+<td>63</td>
+<td>/</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Para ilustrar o processo, considere a sequência de caracteres <strong>“Man”</strong>. Cada caractere é inicialmente convertido para sua representação binária em ASCII. Assim, os caracteres <span class="math inline">\(M\)</span>, <span class="math inline">\(a\)</span> e <span class="math inline">\(n\)</span> correspondem respectivamente às sequências <span class="math inline">\(01001101\)</span>, <span class="math inline">\(01100001\)</span> e <span class="math inline">\(01101110\)</span>. Ao concatenar esses valores obtemos uma sequência de 24 bits. Essa sequência é então dividida em quatro grupos de 6 bits, resultando nos valores <span class="math inline">\(010011\)</span>, <span class="math inline">\(010110\)</span>, <span class="math inline">\(000101\)</span> e <span class="math inline">\(101110\)</span>. Convertendo esses grupos para seus valores decimais correspondentes e consultando a tabela Base-64, obtêm-se os caracteres T, W, F e u. Dessa forma, a sequência <strong>“Man”</strong> é representada na codificação Base-64 como <strong>“TWFu”</strong>.</p>
+<p>A codificação Base-64 é amplamente utilizada em diversas aplicações computacionais. Entre suas aplicações mais comuns estão o envio de anexos em mensagens de correio eletrônico, a incorporação de imagens diretamente em documentos HTML ou CSS, o armazenamento de dados binários em estruturas JSON e a transmissão de informações em interfaces de programação de aplicações (APIs) baseadas em texto. Apesar do aumento no tamanho dos dados, essa técnica garante que informações binárias possam ser transportadas com segurança em ambientes que suportam apenas conteúdo textual.</p>
+<p><strong>Imagem dentro de HTML:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 </section>
