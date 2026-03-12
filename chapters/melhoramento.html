@@ -297,8 +297,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#vizinhança-dos-pixels" id="toc-vizinhança-dos-pixels" class="nav-link" data-scroll-target="#vizinhança-dos-pixels"><span class="header-section-number">3.1.1</span> Vizinhança dos Pixels</a></li>
   <li><a href="#medidas-de-distância-dos-pixels" id="toc-medidas-de-distância-dos-pixels" class="nav-link" data-scroll-target="#medidas-de-distância-dos-pixels"><span class="header-section-number">3.1.2</span> Medidas de Distância dos pixels</a></li>
-  <li><a href="#adjacência-de-conectividade-dos-pixels" id="toc-adjacência-de-conectividade-dos-pixels" class="nav-link" data-scroll-target="#adjacência-de-conectividade-dos-pixels"><span class="header-section-number">3.1.3</span> Adjacência de Conectividade dos Pixels</a></li>
-  <li><a href="#região-e-borda" id="toc-região-e-borda" class="nav-link" data-scroll-target="#região-e-borda"><span class="header-section-number">3.1.4</span> Região e Borda</a></li>
+  <li><a href="#algoritmo-transformada-de-distância-em-imagem-binária" id="toc-algoritmo-transformada-de-distância-em-imagem-binária" class="nav-link" data-scroll-target="#algoritmo-transformada-de-distância-em-imagem-binária"><span class="header-section-number">3.1.3</span> Algoritmo: Transformada de Distância em Imagem Binária</a></li>
+  <li><a href="#adjacência-e-conectividade-dos-pixels" id="toc-adjacência-e-conectividade-dos-pixels" class="nav-link" data-scroll-target="#adjacência-e-conectividade-dos-pixels"><span class="header-section-number">3.1.4</span> Adjacência e Conectividade dos Pixels</a></li>
+  <li><a href="#região-e-borda" id="toc-região-e-borda" class="nav-link" data-scroll-target="#região-e-borda"><span class="header-section-number">3.1.5</span> Região e Borda</a></li>
+  <li><a href="#algoritmo-rotulagem-de-componentes-conectados" id="toc-algoritmo-rotulagem-de-componentes-conectados" class="nav-link" data-scroll-target="#algoritmo-rotulagem-de-componentes-conectados"><span class="header-section-number">3.1.6</span> Algoritmo: Rotulagem de Componentes Conectados</a></li>
   </ul></li>
   <li><a href="#conceito-de-melhoramento-de-imagens" id="toc-conceito-de-melhoramento-de-imagens" class="nav-link" data-scroll-target="#conceito-de-melhoramento-de-imagens"><span class="header-section-number">3.2</span> Conceito de Melhoramento de Imagens</a></li>
   <li><a href="#domínios-de-processamento" id="toc-domínios-de-processamento" class="nav-link" data-scroll-target="#domínios-de-processamento"><span class="header-section-number">3.3</span> Domínios de Processamento</a></li>
@@ -402,8 +404,49 @@ d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
 </figure>
 </div>
 </section>
-<section id="adjacência-de-conectividade-dos-pixels" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="adjacência-de-conectividade-dos-pixels"><span class="header-section-number">3.1.3</span> Adjacência de Conectividade dos Pixels</h3>
+<section id="algoritmo-transformada-de-distância-em-imagem-binária" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="algoritmo-transformada-de-distância-em-imagem-binária"><span class="header-section-number">3.1.3</span> Algoritmo: Transformada de Distância em Imagem Binária</h3>
+<p>Considere uma <strong>imagem binária</strong> na qual as regiões de pixels com valor <strong>1</strong> representam objetos, e deseja-se calcular a <strong>distância de cada pixel do objeto até o fundo (pixels 0)</strong>.</p>
+<p>O algoritmo possui <strong>duas fases</strong> e o resultado será uma <strong>imagem em tons de cinza</strong>, onde o valor de cada pixel indica sua distância ao fundo.</p>
+<hr>
+<p><strong>Entrada:</strong> imagem binária <code>I</code><br>
+<strong>Saída:</strong> imagem de distâncias <code>D</code></p>
+<p>Inicialize <code>D</code> da seguinte forma:</p>
+<p>para cada pixel <code>(x,y)</code><br>
+ se <code>I(x,y) = 0</code> então<br>
+  <code>D(x,y) ← 0</code><br>
+ senão<br>
+  <code>D(x,y) ← ∞</code></p>
+<hr>
+<p><strong>Fase 1 — Varredura direta</strong></p>
+<p>para <code>y = 0</code> até <code>altura − 1</code><br>
+ para <code>x = 0</code> até <code>largura − 1</code></p>
+<p>  <code>p ← D(x,y)</code><br>
+  <code>a ← D(x,y−1)</code> // vizinho acima<br>
+  <code>b ← D(x−1,y)</code> // vizinho à esquerda</p>
+<p>  se <code>p ≠ 0</code> então<br>
+   <code>D(x,y) ← min(a + 1, b + 1)</code></p>
+<hr>
+<p><strong>Fase 2 — Varredura inversa</strong></p>
+<p><code>maxDist ← 0</code></p>
+<p>para <code>y = altura − 1</code> até <code>0</code><br>
+ para <code>x = largura − 1</code> até <code>0</code></p>
+<p>  <code>p ← D(x,y)</code><br>
+  <code>a ← D(x+1,y)</code> // vizinho à direita<br>
+  <code>b ← D(x,y+1)</code> // vizinho abaixo</p>
+<p>  se <code>p ≠ 0</code> então<br>
+   <code>D(x,y) ← min(a + 1, b + 1, p)</code></p>
+<p>  se <code>D(x,y) &gt; maxDist</code> então<br>
+   <code>maxDist ← D(x,y)</code></p>
+<hr>
+<p>Ao final do processo o <strong>maior valor atribuído a <span class="math inline">\(maxDist\)</span> </strong> corresponde ao <strong>maior nível de cinza</strong>, ou seja, <strong>à maior distância ao fundo</strong> encontrada na imagem.</p>
+<p>Em sequência um simulador desse algoritmo:</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/rp0vlNYIX" width="100%" height="500" style="border:none; overflow:hiddeln;">
+</iframe>
+</section>
+<section id="adjacência-e-conectividade-dos-pixels" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="adjacência-e-conectividade-dos-pixels"><span class="header-section-number">3.1.4</span> Adjacência e Conectividade dos Pixels</h3>
 <p>Em processamento de imagens, o conceito de <strong>adjacência</strong> é usado para determinar quando dois pixels podem ser considerados vizinhos pertencentes a uma mesma região. Para isso, define-se inicialmente um conjunto <span class="math inline">\(V\)</span> de valores de intensidade que serão utilizados para estabelecer essa relação. Esse conjunto depende do tipo de imagem analisada. Por exemplo, em uma imagem binária pode-se considerar <span class="math inline">\(V = \{1\}\)</span>, representando os pixels do objeto. Em imagens em tons de cinza, <span class="math inline">\(V\)</span> pode ser um subconjunto dos níveis de cinza, e em imagens coloridas pode corresponder a uma determinada cor ou faixa de cores.</p>
 <p>Dados dois pixels <span class="math inline">\(p\)</span> e <span class="math inline">\(q\)</span>, dizemos que eles possuem <strong>adjacência-4</strong> ou <strong>adjacência-8</strong> quando satisfazem duas condições: ambos possuem valores de intensidade pertencentes ao conjunto <span class="math inline">\(V\)</span> e, além disso, são vizinhos segundo a definição de vizinhança adotada. No caso da adjacência-4, os pixels devem pertencer à vizinhança <span class="math inline">\(N_4\)</span>. Já na adjacência-8, eles devem pertencer à vizinhança <span class="math inline">\(N_8\)</span>.</p>
 <p>A partir do conceito de adjacência, pode-se definir um <strong>caminho</strong> entre dois pixels. Um caminho de <span class="math inline">\(p = (i_1, j_1)\)</span> até <span class="math inline">\(q = (i_n, j_n)\)</span> é uma sequência de pixels distintos</p>
@@ -418,8 +461,8 @@ d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
 <p>Considere agora <span class="math inline">\(S\)</span> como um subconjunto de pixels de uma imagem. Dizemos que dois pixels <span class="math inline">\(p\)</span> e <span class="math inline">\(q\)</span> estão <strong>conectados em</strong> <span class="math inline">\(S\)</span> se existir um caminho entre eles formado exclusivamente por pixels pertencentes ao conjunto <span class="math inline">\(S\)</span>.</p>
 <p>O conjunto de todos os pixels de <span class="math inline">\(S\)</span> que estão conectados a um determinado pixel <span class="math inline">\(p\)</span> recebe o nome de <strong>componente conexo</strong>. Em outras palavras, uma componente conexa é uma região da imagem formada por pixels adjacentes entre si e que satisfazem o critério de pertencimento ao conjunto <span class="math inline">\(V\)</span>.</p>
 </section>
-<section id="região-e-borda" class="level3" data-number="3.1.4">
-<h3 data-number="3.1.4" class="anchored" data-anchor-id="região-e-borda"><span class="header-section-number">3.1.4</span> Região e Borda</h3>
+<section id="região-e-borda" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="região-e-borda"><span class="header-section-number">3.1.5</span> Região e Borda</h3>
 <p>O conjunto de pontos conectados em uma imagem forma uma <strong>região</strong> da imagem. Uma região corresponde, portanto, a um grupo de pixels adjacentes que compartilham determinadas propriedades, como o mesmo valor de intensidade ou pertencimento ao conjunto <span class="math inline">\(V\)</span>. Em muitos contextos de análise de imagens, essa região também pode ser interpretada como uma <strong>forma</strong> presente na imagem.</p>
 <p>Os pixels que <strong>não pertencem a nenhuma região de interesse</strong> são denominados <strong>fundo da imagem</strong>. O fundo representa a parte da imagem que não faz parte dos objetos ou estruturas que se deseja analisar.</p>
 <p>A <strong>fronteira</strong> de uma região — também chamada de <strong>borda</strong> ou <strong>contorno</strong> — é formada pelos pixels que delimitam a separação entre a região e o fundo. Essa fronteira pode ser definida de duas maneiras. A <strong>borda interna</strong> é o conjunto de pixels da própria região que possuem pelo menos um vizinho pertencente ao fundo da imagem. Já a <strong>borda externa</strong> é composta pelos pixels do fundo que possuem pelo menos um vizinho pertencente à região.</p>
@@ -436,6 +479,48 @@ d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
 <figcaption>Ilustração do paradoxo da conectividade</figcaption>
 </figure>
 </div>
+<p>Em sequência um algoritmo muito útil em processamento de imagens, utilizado para atribuir um rótulo diferente para cada uma das regiões gráficas encontradas numa imagem binária (onde a forma é identificada por pixel igual a um). O resultado final é uma imagem em tons de cinza, com o número máximo de tons de cinza igual ao número de regiões encontradas na imagem.</p>
+</section>
+<section id="algoritmo-rotulagem-de-componentes-conectados" class="level3" data-number="3.1.6">
+<h3 data-number="3.1.6" class="anchored" data-anchor-id="algoritmo-rotulagem-de-componentes-conectados"><span class="header-section-number">3.1.6</span> Algoritmo: Rotulagem de Componentes Conectados</h3>
+<p><strong>Entrada:</strong> imagem binária <code>I</code><br>
+<strong>Saída:</strong> imagem rotulada <code>L</code></p>
+<p>Inicialize a imagem de rótulos <code>L</code> com zeros.</p>
+<p><code>proximoRotulo ← 1</code></p>
+<hr>
+<p><strong>Primeira varredura</strong></p>
+<p>para <code>y = 0</code> até <code>altura − 1</code><br>
+ para <code>x = 0</code> até <code>largura − 1</code></p>
+<p>  <code>p ← I(x,y)</code></p>
+<p>  se <code>p = 0</code> então<br>
+   continue para o próximo pixel</p>
+<p>  <code>r ← L(x,y−1)</code> // vizinho acima<br>
+  <code>t ← L(x−1,y)</code> // vizinho à esquerda</p>
+<p>  se <code>r = 0</code> e <code>t = 0</code> então<br>
+   <code>L(x,y) ← proximoRotulo</code><br>
+   <code>proximoRotulo ← proximoRotulo + 1</code></p>
+<p>  senão se <code>r ≠ 0</code> e <code>t = 0</code> então<br>
+   <code>L(x,y) ← r</code></p>
+<p>  senão se <code>r = 0</code> e <code>t ≠ 0</code> então<br>
+   <code>L(x,y) ← t</code></p>
+<p>  senão</p>
+<p>   se <code>r = t</code> então<br>
+    <code>L(x,y) ← r</code></p>
+<p>   senão<br>
+    <code>L(x,y) ← r</code><br>
+    registre que <code>r</code> e <code>t</code> são equivalentes</p>
+<hr>
+<p><strong>Resolução de equivalências</strong></p>
+<p>Determine as <strong>classes de equivalência</strong> entre os rótulos.</p>
+<hr>
+<p><strong>Segunda varredura</strong></p>
+<p>para cada pixel <code>(x,y)</code> da imagem</p>
+<p> se <code>L(x,y) ≠ 0</code> então<br>
+  substitua <code>L(x,y)</code> pelo <strong>representante da sua classe de equivalência</strong></p>
+<p>Em sequência um simulador desse algoritmo:</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/nAeHKMA9H" width="100%" height="500" style="border:none; overflow:hiddeln;">
+</iframe>
 </section>
 </section>
 <section id="conceito-de-melhoramento-de-imagens" class="level2" data-number="3.2">

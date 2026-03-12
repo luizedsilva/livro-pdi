@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Luiz Eduardo da Silva">
-<meta name="dcterms.date" content="2026-06-03">
+<meta name="dcterms.date" content="2026-12-03">
 
 <title>Processamento de Imagens</title>
 <style>
@@ -22,7 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -236,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">06/03/2026</p>
+      <p class="date">12/03/2026</p>
     </div>
   </div>
   
@@ -250,6 +270,9 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="prefácio" class="level1 unnumbered">
 <h1 class="unnumbered">Prefácio</h1>
+<p>Este livro não tem a pretensão de abordar em profundidade todos os temas relacionados ao Processamento Digital de Imagens (PDI). Trata-se de uma obra introdutória, cujo objetivo principal é apresentar os conceitos fundamentais da área de forma acessível e organizada, servindo como um ponto de partida para estudantes e interessados no assunto.</p>
+<p>Nos capítulos seguintes estão reunidos materiais que foram desenvolvidos e utilizados pelo autor ao longo de vários anos em atividades de ensino. Esses conteúdos foram selecionados com base na experiência em sala de aula e correspondem ao conjunto de conceitos considerados essenciais para uma compreensão inicial do processamento de imagens. A proposta é oferecer uma visão clara dos principais fundamentos, acompanhada de exemplos e ilustrações que facilitem a compreensão.</p>
+<p>Para um estudo mais aprofundado do tema, recomenda-se a consulta a obras clássicas da área, que tratam o assunto com maior rigor teórico e abrangência. Entre os textos mais conhecidos está Digital Image Processing, de Rafael C. Gonzalez e Richard E. Woods (<span class="citation" data-cites="gonzalez2010processamento">Gonzalez e Woods (<a href="chapters/references.html#ref-gonzalez2010processamento" role="doc-biblioref">2010</a>)</span>, <span class="citation" data-cites="gonzalez2018digital">Gonzalez e Woods (<a href="chapters/references.html#ref-gonzalez2018digital" role="doc-biblioref">2018</a>)</span>), amplamente utilizado em cursos de graduação e pós-graduação. Outras referências importantes incluem Digital Image Processing de William K. Pratt e Fundamentals of Digital Image Processing de Anil K. Jain (<span class="citation" data-cites="pratt2007digital">Pratt (<a href="chapters/references.html#ref-pratt2007digital" role="doc-biblioref">2007</a>)</span>, <span class="citation" data-cites="jain1989fundamentals">Jain (<a href="chapters/references.html#ref-jain1989fundamentals" role="doc-biblioref">1989</a>)</span>), entre outros (<span class="citation" data-cites="sonka2014image">Sonka, Hlavac, e Boyle (<a href="chapters/references.html#ref-sonka2014image" role="doc-biblioref">2014</a>)</span>, <span class="citation" data-cites="szeliski2022computer">Szeliski (<a href="chapters/references.html#ref-szeliski2022computer" role="doc-biblioref">2022</a>)</span>), que também são obras tradicionais na formação de pesquisadores e profissionais da área. Essas leituras complementam e aprofundam os conceitos apresentados neste livro.</p>
 <p>Este é o livro gerado apartir dos slides da disciplina de <strong>Processamento de Imagens</strong>. A geração foi realizada usando a ferramenta <strong>Quarto book</strong> com o auxílio do Chat-GPT 5.2, mas todo o conteúdo foi verificado e aprovado pelo autor.</p>
 <p>Para aprender mais sobre <strong>Quarto book</strong> visite: <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
 <p>Alguns exemplos do livro serão apresentados usando p5.js. A <strong>p5.js</strong> é uma biblioteca JavaScript de código aberto, inspirada na linguagem <em>Processing</em>, concebida para tornar a programação visual e interativa mais acessível. Ao abstrair a complexidade do desenvolvimento web, ela permite a criação de gráficos, animações e interações de forma simples e intuitiva, favorecendo tanto iniciantes quanto usuários experientes.</p>
@@ -259,8 +282,30 @@ ul.task-list li input[type="checkbox"] {
 <iframe src="https://editor.p5js.org/luizedsilva/full/J9qjHybzR" width="100%" height="500" style="border:none; overflow:hiddeln;">
 </iframe>
 <p>Para aprender mais sobre <strong>p5.js</strong> visite: <a href="https://editor.p5js.org/about" class="uri">https://editor.p5js.org/about</a>.</p>
+<p>Para a apresentação e visualização de algumas equações e conceitos matemáticos, foi utilizado o software <strong>GeoGebra</strong>. Essa ferramenta permite explorar de forma interativa gráficos, funções e relações matemáticas, facilitando a compreensão de conceitos importantes apresentados ao longo do texto. O uso de recursos interativos contribui para tornar a visualização das equações mais clara e intuitiva para o leitor. Para saber mais sobre essa ferramenta e acessar seus recursos, visite o site oficial do GeoGebra: <a href="https://www.geogebra.org" class="uri">https://www.geogebra.org</a>.</p>
+<p>As figuras utilizadas neste livro foram construídas com o auxílio do <strong>Excalidraw</strong>, uma ferramenta de desenho vetorial simples e intuitiva, bastante adequada para a criação de diagramas e ilustrações didáticas. O Excalidraw permite produzir gráficos e esquemas com um estilo visual claro, favorecendo a comunicação de ideias e conceitos apresentados no texto. Mais informações sobre essa ferramenta podem ser encontradas em: <a href="https://excalidraw.com" class="uri">https://excalidraw.com</a>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-gonzalez2010processamento" class="csl-entry" role="listitem">
+Gonzalez, Rafael C., e Richard E. Woods. 2010. <em>Processamento Digital de Imagens</em>. 3º ed. São Paulo: Pearson Prentice Hall.
+</div>
+<div id="ref-gonzalez2018digital" class="csl-entry" role="listitem">
+———. 2018. <em>Digital Image Processing</em>. 4º ed. New York: Pearson.
+</div>
+<div id="ref-jain1989fundamentals" class="csl-entry" role="listitem">
+Jain, Anil K. 1989. <em>Fundamentals of Digital Image Processing</em>. Englewood Cliffs: Prentice Hall.
+</div>
+<div id="ref-pratt2007digital" class="csl-entry" role="listitem">
+Pratt, William K. 2007. <em>Digital Image Processing: PIKS Scientific Inside</em>. 4º ed. Hoboken: Wiley-Interscience.
+</div>
+<div id="ref-sonka2014image" class="csl-entry" role="listitem">
+Sonka, Milan, Vaclav Hlavac, e Roger Boyle. 2014. <em>Image Processing, Analysis, and Machine Vision</em>. 4º ed. Stamford: Cengage Learning.
+</div>
+<div id="ref-szeliski2022computer" class="csl-entry" role="listitem">
+Szeliski, Richard. 2022. <em>Computer Vision: Algorithms and Applications</em>. 2º ed. Cham: Springer.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
