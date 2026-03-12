@@ -34,6 +34,10 @@ format:
       - cosmo
       - brand
   pdf:
+    include-in-header:
+      text: |
+        \usepackage{algorithm}
+        \usepackage{algpseudocode}
     pdf-engine: lualatex
     code-block-options:
       fontsize: \small

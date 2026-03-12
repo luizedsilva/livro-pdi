@@ -69,7 +69,7 @@ Os sensores podem ser classificados em:
 
 A amostragem corresponde à discretização espacial da imagem. Uma cena contínua é convertida em um conjunto finito de pontos, organizados em uma grade regular. Cada ponto da grade representa um **pixel** da imagem digital.
 
-Matematicamente, considera‑se uma função contínua de intensidade (f(x,y)), que, após a amostragem, passa a ser definida apenas em posições discretas de (x) e (y).
+Matematicamente, considera‑se uma função contínua de intensidade $f(x,y)$, que, após a amostragem, passa a ser definida apenas em posições discretas de $x$ e $y$. A @fig-amostragem-quantizacao, apresenta um exemplo do processo de amostragem e quantização para um sinal unidimensional em vermelho.
 
 ![Ilustração dos processos de amostragem e quantização de um sinal contínuo.](/imgs/cap2/amostragem.png){#fig-amostragem-quantizacao fig-align="center" width="80%"}
 
@@ -226,39 +226,54 @@ Abaixo o código em linguagem C para ler arquivo nesses formatos
  * Returns:
  *   image structure
  *-------------------------------------------------------------------------+*/
+void erro(char *msg)
+{
+    puts(msg);
+    exit(1);
+}
+
 image img_get(char *name, int tp)
 {
-    char lines[100];
+    char line[200];
     int nr, nc, ml;
     image img;
-    FILE *fimg;
-    /*--- PNM = "P1" or "P2" or "P3" ---*/
-    fgets(lines, 80, fimg);
-    /*--- Comment lines ---*/
-    fgets(lines, 80, fimg);
-    while (strchr(lines, '#'))
-        fgets(lines, 80, fimg);
-    sscanf(lines, "%d %d", &nc, &nr);
+    FILE *f;
+    f = fopen(name, "rt");
+    if (!f)
+        erro("Abertura do arquivo de imagem");
+    fgets(line, 200, f); // leitura do cabecaho
+    if (line[0] != 'P' || line[1] != (tp + '0'))
+        erro("Tipo do arquivo errado!");
+    fgets(line, 200, f); // leitura dos comentario
+    while (line[0] == '#')
+        fgets(line, 200, f);
+    sscanf(line, "%d %d", &nc, &nr); // leitura do numero de colunas e numero de linhas
     if (tp != BW)
-        fscanf(fimg, "%d", &ml);
+        fscanf(f, "%d", &ml); // leitura máxima intensidade
     else
         ml = 1;
-    img = img_create(nr, nc, ml, tp);
+    img = malloc(sizeof(struct image));
+    img->nr = nr;
+    img->nc = nc;
+    img->ml = ml;
+    img->tp = tp;
+    img->px = malloc(nr * nc * sizeof(int));
     for (int i = 0; i < nr * nc; i++)
-      if (tp != COLOR)
-      {
-        int k;
-        fscanf(fimg, "%d", &k);
-        img->px[i] = k;
-      }
-      else
-      {
-        int r, g, b;
-        fscanf(fimg, "%d %d %d", &r, &g, &b);
-        img->px[i] = (r << 16) + (g << 8) + b;
+    {
+        if (tp != COLOR)
+        {
+            int k;
+            fscanf(f, "%d", &k);
+            img->px[i] = k;
+        }
+        else
+        {
+            int r, g, b;
+            fscanf(f, "%d %d %d", &r, &g, &b);
+            img->px[i] = (r << 16) | (g << 8) | b;
+        }
     }
-    fclose(fimg);
-    img_info(name, img);
+    fclose(f);
     return img;
 }
 ```
@@ -277,50 +292,53 @@ Abaixo o código para gravar a imagem nestes formatos.
  *-------------------------------------------------------------------------*/
 void img_put(image img, char *name, int tp)
 {
-    int count;
-    FILE *fimg;
-    fprintf(fimg, "P%c\n", tp + '0');
-    fputs(CREATOR, fimg);
-    fprintf(fimg, "%d  %d\n", img->nc, img->nr);
+    int count = 0;
+    FILE *f = fopen(name, "wt");
+    if (!f)
+        erro("Erro na criação do arquivo de imagem");
+    fprintf(f, "P%c\n", tp + '0');
+    fputs("# Imagem gerada por Luiz Eduardo\n", f);
+    fprintf(f, "%d %d\n", img->nc, img->nr);
     if (tp != BW)
-        fprintf(fimg, "%d\n", img->ml);
-    count = 0;
+        fprintf(f, "%d\n", img->ml);
     for (int i = 0; i < img->nr * img->nc; i++)
     {
         if (tp != COLOR)
         {
-            int x = img->px[i];
-            fprintf(fimg, "%3d ", x);
+            int k = img->px[i];
+            fprintf(f, "%3d ", k);
         }
         else
         {
-            int r = (img->px[i] >> 16) & 0xFF;
-            int g = (img->px[i] >> 8) & 0xFF;
-            int b = img->px[i] & 0xFF;
-            fprintf(fimg, "%3d %3d %3d ", r, g, b);
+            int r = (img->px[i] >> 16) & (0xFF);
+            int g = (img->px[i] >> 8) & (0xFF);
+            int b = img->px[i] & (0xFF);
+            fprintf(f, "%d %d %d ", r, g, b);
         }
         count++;
-        if (count > PER_LINE)
+        if (count > 50)
         {
-            fprintf(fimg, "\n");
+            fprintf(f, "\n");
             count = 0;
         }
     }
-    fclose(fimg);
 }
 ```
 
 Onde a imagem (*image*) está representada na seguinte estrutura:
 
 ``` {.c fontsize="\\small"}
-#define CREATOR "# CREATOR: Image Processing using C-Ansi - ByDu\n"
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct
+typedef struct image
 {
-    int *px;        // pixels vector
-    int nr, nc, ml; // nr = n.rows, nc = n.columns, ml = max level
-    int tp;         // tp = type
-} * image;
+    int nr,  // numero de linhas
+        nc,  // numero de colunas
+        ml,  // maximo nivel de cinza
+        tp;  // tipo (BW, GRAY, COLOR)
+    int *px; // vetor de pixels (nr * nc)
+} *image;
 
 enum
 {
@@ -333,51 +351,19 @@ enum
 Um programa para abrir uma imagem em formato PGM, calcular o negativo da imagem, salvar o resultado e chamar um visualizador de imagem para apresentar o resultado é o seguinte:
 
 ``` {.c fontsize="\\small"}
-image neg_pgm(image In)
-{
-    image Out = img_clone(In);
-    for (int i = 0; i < In->nr * In->nc; i++)
-        Out->px[i] = In->ml - In->px[i];
-    return Out;
-}
-
-void msg(char *s)
-{
-    printf("\nNegative image");
-    printf("\n-------------------------------");
-    printf("\nUsage:  %s  image-name[.pnm] tp\n\n", s);
-    printf("    image-name[.pnm] is image file file \n");
-    printf("    tp = image type (1 = BW, 2 = Gray, 3 = Color)\n\n");
-    exit(1);
-}
-
-/*-------------------------------------------------------------------------
- * main function
- *-------------------------------------------------------------------------*/
 int main(int argc, char *argv[])
 {
-    int nc, nr, ml, tp;
-    char *p, nameIn[100], nameOut[100], cmd[110];
-    image In, Out;
-
-    //-- define input/output file name
-    img_name(argv[1], nameIn, nameOut, GRAY, GRAY);
-
-    //-- read image
-    In = img_get(nameIn, tp);
-
-    //-- transformation
-    Out = neg_pgm(In);
-
-    //-- save image
-    img_put(Out, nameOut, tp);
-
-    //-- show image
-    sprintf(cmd, "%s %s &", VIEW, nameOut);
-    system(cmd);
-    img_free(In);
-    img_free(Out);
-    return 0;
+    image In;
+    if (argc < 2)
+    {
+        puts("Tem que passar o nome do arquivo de imagem!");
+        exit(1);
+    }
+    In = img_get(argv[1], GRAY);
+    for (int i = 0; i < In->nr * In->nc; i++)
+        In->px[i] = 255 - In->px[i];
+    img_put(In, "saida.pgm", GRAY);
+    system("eog saida.pgm &");
 }
 ```
 

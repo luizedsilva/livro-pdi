@@ -8,7 +8,7 @@ O processamento de imagens é uma área multidisciplinar, com aplicações que v
 
 ## O que é uma Imagem Digital
 
-Uma imagem pode ser definida matematicamente como uma função bidimensional ( f(x,y) ), em que (x) e (y) representam coordenadas espaciais em um plano, e o valor de (f(x,y)) corresponde à **intensidade luminosa** ou **nível de cinza** naquele ponto.
+Uma imagem pode ser definida matematicamente como uma função bidimensional $f(x,y)$, em que $x$ e (y) representam coordenadas espaciais em um plano, e o valor de (f(x,y)) corresponde à **intensidade luminosa** ou **nível de cinza** naquele ponto.
 
 Quando as coordenadas espaciais e os valores de intensidade assumem valores **discretos e finitos**, a imagem é denominada **imagem digital**. Nesse contexto, uma imagem digital é formada por um conjunto finito de elementos organizados em uma grade, chamados de **pixels** (*picture elements*), sendo cada pixel identificado por sua posição ((x,y)) e por um valor associado de intensidade.
 

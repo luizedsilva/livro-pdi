@@ -61,7 +61,85 @@ Essas três medidas de distância são amplamente utilizadas em algoritmos de pr
 
 ![Medidas de distância em imagens digitais](/imgs/cap3/distancia.png){fig-align="center" width="80%"}
 
-### Adjacência de Conectividade dos Pixels
+### Algoritmo: Transformada de Distância em Imagem Binária
+
+Considere uma **imagem binária** na qual as regiões de pixels com valor **1** representam objetos, e deseja-se calcular a **distância de cada pixel do objeto até o fundo (pixels 0)**.  
+
+O algoritmo possui **duas fases** e o resultado será uma **imagem em tons de cinza**, onde o valor de cada pixel indica sua distância ao fundo.
+
+---
+
+**Entrada:** imagem binária `I`  
+**Saída:** imagem de distâncias `D`
+
+Inicialize `D` da seguinte forma:
+
+para cada pixel `(x,y)`  
+ se `I(x,y) = 0` então  
+  `D(x,y) ← 0`  
+ senão  
+  `D(x,y) ← ∞`
+
+---
+
+**Fase 1 — Varredura direta**
+
+para `y = 0` até `altura − 1`  
+ para `x = 0` até `largura − 1`
+
+  `p ← D(x,y)`  
+  `a ← D(x,y−1)`  // vizinho acima  
+  `b ← D(x−1,y)`  // vizinho à esquerda  
+
+  se `p ≠ 0` então  
+   `D(x,y) ← min(a + 1, b + 1)`
+
+---
+
+**Fase 2 — Varredura inversa**
+
+`maxDist ← 0`
+
+para `y = altura − 1` até `0`  
+ para `x = largura − 1` até `0`
+
+  `p ← D(x,y)`  
+  `a ← D(x+1,y)`  // vizinho à direita  
+  `b ← D(x,y+1)`  // vizinho abaixo  
+
+  se `p ≠ 0` então  
+   `D(x,y) ← min(a + 1, b + 1, p)`
+
+  se `D(x,y) > maxDist` então  
+   `maxDist ← D(x,y)`
+
+---
+
+Ao final do processo o **maior valor atribuído a $maxDist$ ** corresponde ao **maior nível de cinza**, ou seja, **à maior distância ao fundo** encontrada na imagem.
+
+Em sequência um simulador desse algoritmo:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/rp0vlNYIX" width="100%" height="500" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/rp0vlNYIX>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/rp0vlNYIX width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+### Adjacência e Conectividade dos Pixels
 
 Em processamento de imagens, o conceito de **adjacência** é usado para determinar quando dois pixels podem ser considerados vizinhos pertencentes a uma mesma região. Para isso, define-se inicialmente um conjunto $V$ de valores de intensidade que serão utilizados para estabelecer essa relação. Esse conjunto depende do tipo de imagem analisada. Por exemplo, em uma imagem binária pode-se considerar $V = \{1\}$, representando os pixels do objeto. Em imagens em tons de cinza, $V$ pode ser um subconjunto dos níveis de cinza, e em imagens coloridas pode corresponder a uma determinada cor ou faixa de cores.
 
@@ -98,6 +176,90 @@ A **fronteira** de uma região — também chamada de **borda** ou **contorno** 
 Ao definir regiões e fronteiras, é importante evitar o chamado **paradoxo da conectividade**, que ocorre quando diferentes critérios de vizinhança produzem ambiguidades na definição de conectividade entre pixels. Para evitar esse problema, utiliza-se uma regra complementar: se a **vizinhança de 8 pixels (**$N_8$) for utilizada para definir a borda, então a **vizinhança de 4 pixels (**$N_4$) deve ser utilizada para definir a região. De forma equivalente, se a borda for definida utilizando $N_4$, a região deve ser definida utilizando $N_8$.
 
 ![Ilustração do paradoxo da conectividade](/imgs/cap3/paradoxo.png){fig-align="center" width="60%"}
+
+Em sequência um algoritmo muito útil em processamento de imagens, utilizado para atribuir um rótulo diferente para cada uma das regiões gráficas encontradas numa imagem binária (onde a forma é identificada por pixel igual a um). O resultado final é uma imagem em tons de cinza, com o número máximo de tons de cinza igual ao número de regiões encontradas na imagem.
+
+### Algoritmo: Rotulagem de Componentes Conectados
+
+
+**Entrada:** imagem binária `I`  
+**Saída:** imagem rotulada `L`
+
+Inicialize a imagem de rótulos `L` com zeros.
+
+`proximoRotulo ← 1`
+
+---
+
+**Primeira varredura**
+
+para `y = 0` até `altura − 1`  
+ para `x = 0` até `largura − 1`
+
+  `p ← I(x,y)`
+
+  se `p = 0` então  
+   continue para o próximo pixel
+
+  `r ← L(x,y−1)`  // vizinho acima  
+  `t ← L(x−1,y)`  // vizinho à esquerda  
+
+  se `r = 0` e `t = 0` então  
+   `L(x,y) ← proximoRotulo`  
+   `proximoRotulo ← proximoRotulo + 1`
+
+  senão se `r ≠ 0` e `t = 0` então  
+   `L(x,y) ← r`
+
+  senão se `r = 0` e `t ≠ 0` então  
+   `L(x,y) ← t`
+
+  senão
+
+   se `r = t` então  
+    `L(x,y) ← r`
+
+   senão  
+    `L(x,y) ← r`  
+    registre que `r` e `t` são equivalentes
+
+---
+
+**Resolução de equivalências**
+
+Determine as **classes de equivalência** entre os rótulos.
+
+---
+
+**Segunda varredura**
+
+para cada pixel `(x,y)` da imagem
+
+ se `L(x,y) ≠ 0` então  
+  substitua `L(x,y)` pelo **representante da sua classe de equivalência**
+
+Em sequência um simulador desse algoritmo:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/nAeHKMA9H" width="100%" height="500" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/nAeHKMA9H>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/nAeHKMA9H width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
 
 ## Conceito de Melhoramento de Imagens
 
