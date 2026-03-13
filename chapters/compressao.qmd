@@ -310,14 +310,14 @@ A ideia central da codificação de Huffman é construir um **código de comprim
 
 O processo de construção do código de Huffman inicia-se com a **determinação da frequência de ocorrência de cada símbolo** presente nos dados (conforme ilustrado na @fig-huffman). Em seguida, esses símbolos são organizados em uma estrutura conhecida como **árvore binária de Huffman**. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores (iterações i = 1, 2, 3 e 4 na @fig-huffman). Esse processo continua até que todos os nós estejam conectados em uma única árvore.
 
-![Iterações para construção de uma árvore de Huffman](/imgs/cap5/huffman.png){#fig-huffman fig-align="center" width="60%"}
+![Iterações para construção de uma árvore de Huffman](/imgs/cap5/huffman.png){#fig-huffman fig-align="center" width="80%"}
 
 Após a construção da árvore, os códigos binários são obtidos percorrendo-se os caminhos da raiz até cada folha da árvore. Normalmente, atribui-se o valor **0 para um ramo à esquerda** e **1 para um ramo à direita**. Assim, cada símbolo recebe um código binário correspondente ao caminho percorrido até ele. Uma característica importante desses códigos é que eles são **códigos prefixos**, ou seja, nenhum código é prefixo de outro. Isso garante que a sequência de bits possa ser decodificada de forma inequívoca.
 
-O código @algo-huffman, apresenta de forma simplificada os passos do algoritmo de Huffman, onde $n$ é o número de folhas, portanto o número de nós internos será $n-1$. A cada iteração é preenchido um novo nó interno da árvore, $p1$ (menor frequência) e $p2$ (segunda menor frequência) são colocados à esquerda e direita do novo nó $p$ e são removidos da fila de prioridadas (ou lista, onde os nós são ordenados pela frequência). O novo nó armazena a soma das frequências de $p1$ e $p2$ e é colocado na fila de prioridades. Para facilitar o percurso da folha para raiz, cada filho é ligado ao pai ( $node[p1].father = p$).
+O código na @lst-huffman, apresenta de forma simplificada os passos do algoritmo de Huffman, onde $n$ é o número de folhas, portanto o número de nós internos será $n-1$. A cada iteração é preenchido um novo nó interno da árvore, onde os filhos $p1$ (menor frequência) e $p2$ (segunda menor frequência) são colocados à esquerda e direita do novo nó pai $p$ e são removidos da fila de prioridadas (ou lista, onde os nós são ordenados pela frequência). O novo nó $p$ armazena a soma das frequências de $p1$ e $p2$ e é inserido na fila de prioridades. Para facilitar o percurso da folha para raiz, cada filho é ligado ao pai ( $node[p1].father = p$).
 
-``` {#algo-huffman .c}
-(...)
+::: {#lst-huffman}
+```{.c}
 for (int i = 0; i < n-1; i++) 
 {
    p = n + i;
@@ -331,10 +331,13 @@ for (int i = 0; i < n-1; i++)
    pqIns(&root, p);
 }
 ```
+:::
 
 Na fase de **codificação**, cada símbolo do conjunto de dados é substituído pelo código binário correspondente definido pela árvore de Huffman. Já na fase de **decodificação**, a sequência de bits é interpretada percorrendo a árvore binária desde a raiz até alcançar um nó folha, identificando o símbolo correspondente. Esse processo é repetido até que toda a sequência codificada seja decodificada.
 
 A codificação de Huffman é amplamente utilizada em diversos padrões e sistemas de compressão de dados, incluindo formatos de imagem, áudio e vídeo. Por ser um método **sem perdas**, ele garante que os dados reconstruídos após a decodificação sejam **idênticos aos dados originais**, tornando-o adequado para aplicações nas quais a preservação exata da informação é essencial. Em sistemas de compressão de imagens, o algoritmo de Huffman frequentemente aparece como uma etapa final de codificação, após processos de transformação e quantização dos dados.
+
+A simulação em sequência apresenta a árvore construída a partir das frequências. No exemplo, as frequências 5, 9, 12, 13, 16 e 45, separados por espaço, são as frequências dos pixels (símbolos) 1, 2, 3, 4, 5 e 6, respectivamente.
 
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
@@ -586,7 +589,7 @@ O processo de codificação ocorre agrupando inicialmente os dados binários em 
 
 A tabela de conversão da Base-64 é formada pelos caracteres A–Z, a–z, 0–9, além dos símbolos + e /. Quando o número total de bytes do arquivo não é múltiplo de três, caracteres de preenchimento (=) são utilizados para completar a codificação final.
 
-#### Tabela de Conversão {.unumbered}
+#### Tabela de Conversão {.unnumbered}
 
 | Valor | Caractere | Valor | Caractere |
 |-------|-----------|-------|-----------|
