@@ -408,38 +408,70 @@ d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="algoritmo-transformada-de-distância-em-imagem-binária"><span class="header-section-number">3.1.3</span> Algoritmo: Transformada de Distância em Imagem Binária</h3>
 <p>Considere uma <strong>imagem binária</strong> na qual as regiões de pixels com valor <strong>1</strong> representam objetos, e deseja-se calcular a <strong>distância de cada pixel do objeto até o fundo (pixels 0)</strong>.</p>
 <p>O algoritmo possui <strong>duas fases</strong> e o resultado será uma <strong>imagem em tons de cinza</strong>, onde o valor de cada pixel indica sua distância ao fundo.</p>
-<hr>
-<p><strong>Entrada:</strong> imagem binária <code>I</code><br>
-<strong>Saída:</strong> imagem de distâncias <code>D</code></p>
-<p>Inicialize <code>D</code> da seguinte forma:</p>
-<p>para cada pixel <code>(x,y)</code><br>
- se <code>I(x,y) = 0</code> então<br>
-  <code>D(x,y) ← 0</code><br>
- senão<br>
-  <code>D(x,y) ← ∞</code></p>
-<hr>
-<p><strong>Fase 1 — Varredura direta</strong></p>
-<p>para <code>y = 0</code> até <code>altura − 1</code><br>
- para <code>x = 0</code> até <code>largura − 1</code></p>
-<p>  <code>p ← D(x,y)</code><br>
-  <code>a ← D(x,y−1)</code> // vizinho acima<br>
-  <code>b ← D(x−1,y)</code> // vizinho à esquerda</p>
-<p>  se <code>p ≠ 0</code> então<br>
-   <code>D(x,y) ← min(a + 1, b + 1)</code></p>
-<hr>
-<p><strong>Fase 2 — Varredura inversa</strong></p>
-<p><code>maxDist ← 0</code></p>
-<p>para <code>y = altura − 1</code> até <code>0</code><br>
- para <code>x = largura − 1</code> até <code>0</code></p>
-<p>  <code>p ← D(x,y)</code><br>
-  <code>a ← D(x+1,y)</code> // vizinho à direita<br>
-  <code>b ← D(x,y+1)</code> // vizinho abaixo</p>
-<p>  se <code>p ≠ 0</code> então<br>
-   <code>D(x,y) ← min(a + 1, b + 1, p)</code></p>
-<p>  se <code>D(x,y) &gt; maxDist</code> então<br>
-   <code>maxDist ← D(x,y)</code></p>
-<hr>
-<p>Ao final do processo o <strong>maior valor atribuído a <span class="math inline">\(maxDist\)</span> </strong> corresponde ao <strong>maior nível de cinza</strong>, ou seja, <strong>à maior distância ao fundo</strong> encontrada na imagem.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Algoritmo TransformadaDistancia<span class="op">(</span>I<span class="op">)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Entrada<span class="op">:</span>  imagem binária I<span class="op">[</span>altura<span class="op">][</span>largura<span class="op">]</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Saída<span class="op">:</span>    imagem de distâncias D<span class="op">[</span>altura<span class="op">][</span>largura<span class="op">]</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">/* Inicialização */</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> y <span class="op">&lt;</span> altura<span class="op">;</span> y<span class="op">++)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> largura<span class="op">;</span> x<span class="op">++)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>I<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            D<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            D<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> INF<span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">/* Fase 1 — Varredura direta */</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> y <span class="op">&lt;</span> altura<span class="op">;</span> y<span class="op">++)</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> largura<span class="op">;</span> x<span class="op">++)</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> D<span class="op">[</span>y<span class="op">][</span>x<span class="op">];</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> D<span class="op">[</span>y<span class="op">-</span><span class="dv">1</span><span class="op">][</span>x<span class="op">];</span>   <span class="co">// vizinho acima</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> D<span class="op">[</span>y<span class="op">][</span>x<span class="op">-</span><span class="dv">1</span><span class="op">];</span>   <span class="co">// vizinho à esquerda</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>p <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            D<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> min<span class="op">(</span>a <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> b <span class="op">+</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">/* Fase 2 — Varredura inversa */</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>maxDist <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> altura<span class="op">-</span><span class="dv">1</span><span class="op">;</span> y <span class="op">&gt;=</span> <span class="dv">0</span><span class="op">;</span> y<span class="op">--)</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> largura<span class="op">-</span><span class="dv">1</span><span class="op">;</span> x <span class="op">&gt;=</span> <span class="dv">0</span><span class="op">;</span> x<span class="op">--)</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> D<span class="op">[</span>y<span class="op">][</span>x<span class="op">];</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> D<span class="op">[</span>y<span class="op">][</span>x<span class="op">+</span><span class="dv">1</span><span class="op">];</span>   <span class="co">// vizinho à direita</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> D<span class="op">[</span>y<span class="op">+</span><span class="dv">1</span><span class="op">][</span>x<span class="op">];</span>   <span class="co">// vizinho abaixo</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>p <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            D<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> min<span class="op">(</span>a <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> b <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> p<span class="op">);</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>D<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">&gt;</span> maxDist<span class="op">)</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>            maxDist <span class="op">=</span> D<span class="op">[</span>y<span class="op">][</span>x<span class="op">];</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> D<span class="op">;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ao final do processo o <strong>maior valor atribuído a</strong> <span class="math inline">\(maxDist\)</span> corresponde ao <strong>maior nível de cinza</strong>, ou seja, <strong>à maior distância ao fundo</strong> encontrada na imagem.</p>
 <p>Em sequência um simulador desse algoritmo:</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/rp0vlNYIX" width="100%" height="500" style="border:none; overflow:hiddeln;">
@@ -483,40 +515,86 @@ d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
 </section>
 <section id="algoritmo-rotulagem-de-componentes-conectados" class="level3" data-number="3.1.6">
 <h3 data-number="3.1.6" class="anchored" data-anchor-id="algoritmo-rotulagem-de-componentes-conectados"><span class="header-section-number">3.1.6</span> Algoritmo: Rotulagem de Componentes Conectados</h3>
-<p><strong>Entrada:</strong> imagem binária <code>I</code><br>
-<strong>Saída:</strong> imagem rotulada <code>L</code></p>
-<p>Inicialize a imagem de rótulos <code>L</code> com zeros.</p>
-<p><code>proximoRotulo ← 1</code></p>
-<hr>
-<p><strong>Primeira varredura</strong></p>
-<p>para <code>y = 0</code> até <code>altura − 1</code><br>
- para <code>x = 0</code> até <code>largura − 1</code></p>
-<p>  <code>p ← I(x,y)</code></p>
-<p>  se <code>p = 0</code> então<br>
-   continue para o próximo pixel</p>
-<p>  <code>r ← L(x,y−1)</code> // vizinho acima<br>
-  <code>t ← L(x−1,y)</code> // vizinho à esquerda</p>
-<p>  se <code>r = 0</code> e <code>t = 0</code> então<br>
-   <code>L(x,y) ← proximoRotulo</code><br>
-   <code>proximoRotulo ← proximoRotulo + 1</code></p>
-<p>  senão se <code>r ≠ 0</code> e <code>t = 0</code> então<br>
-   <code>L(x,y) ← r</code></p>
-<p>  senão se <code>r = 0</code> e <code>t ≠ 0</code> então<br>
-   <code>L(x,y) ← t</code></p>
-<p>  senão</p>
-<p>   se <code>r = t</code> então<br>
-    <code>L(x,y) ← r</code></p>
-<p>   senão<br>
-    <code>L(x,y) ← r</code><br>
-    registre que <code>r</code> e <code>t</code> são equivalentes</p>
-<hr>
-<p><strong>Resolução de equivalências</strong></p>
-<p>Determine as <strong>classes de equivalência</strong> entre os rótulos.</p>
-<hr>
-<p><strong>Segunda varredura</strong></p>
-<p>para cada pixel <code>(x,y)</code> da imagem</p>
-<p> se <code>L(x,y) ≠ 0</code> então<br>
-  substitua <code>L(x,y)</code> pelo <strong>representante da sua classe de equivalência</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Algoritmo RotulacaoComponentes<span class="op">(</span>I<span class="op">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Entrada<span class="op">:</span>  imagem binária I<span class="op">[</span>altura<span class="op">][</span>largura<span class="op">]</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Saída<span class="op">:</span>    imagem rotulada L<span class="op">[</span>altura<span class="op">][</span>largura<span class="op">]</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* Inicialização */</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> y <span class="op">&lt;</span> altura<span class="op">;</span> y<span class="op">++)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> largura<span class="op">;</span> x<span class="op">++)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        L<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>proximoRotulo <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">/* Primeira varredura */</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> y <span class="op">&lt;</span> altura<span class="op">;</span> y<span class="op">++)</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> largura<span class="op">;</span> x<span class="op">++)</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> I<span class="op">[</span>y<span class="op">][</span>x<span class="op">];</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>p <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> L<span class="op">[</span>y<span class="op">-</span><span class="dv">1</span><span class="op">][</span>x<span class="op">];</span>   <span class="co">// vizinho acima</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        t <span class="op">=</span> L<span class="op">[</span>y<span class="op">][</span>x<span class="op">-</span><span class="dv">1</span><span class="op">];</span>   <span class="co">// vizinho à esquerda</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>r <span class="op">==</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> t <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>            L<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> proximoRotulo<span class="op">;</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            proximoRotulo<span class="op">++;</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>r <span class="op">!=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> t <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>            L<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> r<span class="op">;</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>r <span class="op">==</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> t <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>            L<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> t<span class="op">;</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>r <span class="op">==</span> t<span class="op">)</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>                L<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> r<span class="op">;</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>                L<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> r<span class="op">;</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>                registrarEquivalencia<span class="op">(</span>r<span class="op">,</span> t<span class="op">);</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co">/* Resolução de equivalências */</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>determinarClassesDeEquivalencia<span class="op">();</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">/* Segunda varredura */</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> y <span class="op">&lt;</span> altura<span class="op">;</span> y<span class="op">++)</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> largura<span class="op">;</span> x<span class="op">++)</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>L<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>            L<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> representante<span class="op">(</span>L<span class="op">[</span>y<span class="op">][</span>x<span class="op">]);</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> L<span class="op">;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Em sequência um simulador desse algoritmo:</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/nAeHKMA9H" width="100%" height="500" style="border:none; overflow:hiddeln;">
@@ -591,14 +669,14 @@ g(x,y) = c\,\left[f(x,y)\right]^{\gamma}
 <p>O histograma de uma imagem descreve a distribuição dos níveis de intensidade dos pixels. Ele fornece uma representação estatística que é amplamente utilizada para análise e melhoramento de imagens.</p>
 <p>Imagens com baixo contraste tendem a apresentar histogramas concentrados em uma faixa estreita de valores, enquanto imagens com bom contraste exibem histogramas mais espalhados ao longo da escala de intensidades.</p>
 <p>Algoritmo para calcular o histograma de uma imagem:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// atribuir valor zero a todos elementos do vetor</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> L<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  Histo<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">// calcular distribuição dos níveis de cinza </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">// para cada pixel da imagem</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> M<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> N<span class="op">;</span> j<span class="op">++)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     Histo <span class="op">[</span>Img<span class="op">[</span>i<span class="op">][</span>j<span class="op">]]</span> <span class="op">=</span> Histo <span class="op">[</span>Img<span class="op">[</span>i<span class="op">][</span>j<span class="op">]]+</span><span class="dv">1</span><span class="op">;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// atribuir valor zero a todos elementos do vetor</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> L<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  Histo<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">// calcular distribuição dos níveis de cinza </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">// para cada pixel da imagem</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> M<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> N<span class="op">;</span> j<span class="op">++)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>     Histo <span class="op">[</span>Img<span class="op">[</span>i<span class="op">][</span>j<span class="op">]]</span> <span class="op">=</span> Histo <span class="op">[</span>Img<span class="op">[</span>i<span class="op">][</span>j<span class="op">]]+</span><span class="dv">1</span><span class="op">;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="equalização-de-histograma" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="equalização-de-histograma"><span class="header-section-number">3.7</span> Equalização de Histograma</h2>
@@ -733,14 +811,14 @@ w(y,x)\, f(i+y, j+x)
 </section>
 <section id="pseudocódigo-da-convolução" class="level3" data-number="3.8.3">
 <h3 data-number="3.8.3" class="anchored" data-anchor-id="pseudocódigo-da-convolução"><span class="header-section-number">3.8.3</span> Pseudocódigo da Convolução</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> a<span class="op">;</span> i <span class="op">&lt;</span> nl <span class="op">-</span> a<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> b<span class="op">;</span> j <span class="op">&lt;</span> nc <span class="op">-</span> b<span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="op">-</span>a<span class="op">;</span> y <span class="op">&lt;=</span> a<span class="op">;</span> y<span class="op">++)</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="op">-</span>b<span class="op">;</span> x <span class="op">&lt;=</span> b<span class="op">;</span> x<span class="op">++)</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> W<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">*</span> F<span class="op">[</span>i<span class="op">+</span>y<span class="op">][</span>j<span class="op">+</span>x<span class="op">];</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    G<span class="op">[</span>i<span class="op">][</span>j<span class="op">]</span> <span class="op">=</span> sum<span class="op">;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> a<span class="op">;</span> i <span class="op">&lt;</span> nl <span class="op">-</span> a<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> b<span class="op">;</span> j <span class="op">&lt;</span> nc <span class="op">-</span> b<span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="op">-</span>a<span class="op">;</span> y <span class="op">&lt;=</span> a<span class="op">;</span> y<span class="op">++)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="op">-</span>b<span class="op">;</span> x <span class="op">&lt;=</span> b<span class="op">;</span> x<span class="op">++)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> W<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">*</span> F<span class="op">[</span>i<span class="op">+</span>y<span class="op">][</span>j<span class="op">+</span>x<span class="op">];</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    G<span class="op">[</span>i<span class="op">][</span>j<span class="op">]</span> <span class="op">=</span> sum<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="operações-lineares-e-não-lineares" class="level3" data-number="3.8.4">
 <h3 data-number="3.8.4" class="anchored" data-anchor-id="operações-lineares-e-não-lineares"><span class="header-section-number">3.8.4</span> Operações lineares e não lineares</h3>
