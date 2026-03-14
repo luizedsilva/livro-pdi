@@ -63,59 +63,77 @@ Essas três medidas de distância são amplamente utilizadas em algoritmos de pr
 
 ### Algoritmo: Transformada de Distância em Imagem Binária
 
-Considere uma **imagem binária** na qual as regiões de pixels com valor **1** representam objetos, e deseja-se calcular a **distância de cada pixel do objeto até o fundo (pixels 0)**.  
+Considere uma **imagem binária** na qual as regiões de pixels com valor **1** representam objetos, e deseja-se calcular a **distância de cada pixel do objeto até o fundo (pixels 0)**.
 
 O algoritmo possui **duas fases** e o resultado será uma **imagem em tons de cinza**, onde o valor de cada pixel indica sua distância ao fundo.
 
----
+``` c
+Algoritmo TransformadaDistancia(I)
 
-**Entrada:** imagem binária `I`  
-**Saída:** imagem de distâncias `D`
+Entrada:  imagem binária I[altura][largura]
+Saída:    imagem de distâncias D[altura][largura]
 
-Inicialize `D` da seguinte forma:
 
-para cada pixel `(x,y)`  
- se `I(x,y) = 0` então  
-  `D(x,y) ← 0`  
- senão  
-  `D(x,y) ← ∞`
+/* Inicialização */
 
----
+for (y = 0; y < altura; y++)
+{
+    for (x = 0; x < largura; x++)
+    {
+        if (I[y][x] == 0)
+            D[y][x] = 0;
+        else
+            D[y][x] = INF;
+    }
+}
 
-**Fase 1 — Varredura direta**
 
-para `y = 0` até `altura − 1`  
- para `x = 0` até `largura − 1`
+/* Fase 1 — Varredura direta */
 
-  `p ← D(x,y)`  
-  `a ← D(x,y−1)`  // vizinho acima  
-  `b ← D(x−1,y)`  // vizinho à esquerda  
+for (y = 0; y < altura; y++)
+{
+    for (x = 0; x < largura; x++)
+    {
+        p = D[y][x];
+        a = D[y-1][x];   // vizinho acima
+        b = D[y][x-1];   // vizinho à esquerda
 
-  se `p ≠ 0` então  
-   `D(x,y) ← min(a + 1, b + 1)`
+        if (p != 0)
+        {
+            D[y][x] = min(a + 1, b + 1);
+        }
+    }
+}
 
----
 
-**Fase 2 — Varredura inversa**
+/* Fase 2 — Varredura inversa */
 
-`maxDist ← 0`
+maxDist = 0;
 
-para `y = altura − 1` até `0`  
- para `x = largura − 1` até `0`
+for (y = altura-1; y >= 0; y--)
+{
+    for (x = largura-1; x >= 0; x--)
+    {
+        p = D[y][x];
+        a = D[y][x+1];   // vizinho à direita
+        b = D[y+1][x];   // vizinho abaixo
 
-  `p ← D(x,y)`  
-  `a ← D(x+1,y)`  // vizinho à direita  
-  `b ← D(x,y+1)`  // vizinho abaixo  
+        if (p != 0)
+        {
+            D[y][x] = min(a + 1, b + 1, p);
+        }
 
-  se `p ≠ 0` então  
-   `D(x,y) ← min(a + 1, b + 1, p)`
+        if (D[y][x] > maxDist)
+        {
+            maxDist = D[y][x];
+        }
+    }
+}
 
-  se `D(x,y) > maxDist` então  
-   `maxDist ← D(x,y)`
+return D;
+```
 
----
-
-Ao final do processo o **maior valor atribuído a $maxDist$ ** corresponde ao **maior nível de cinza**, ou seja, **à maior distância ao fundo** encontrada na imagem.
+Ao final do processo o **maior valor atribuído a** $maxDist$ corresponde ao **maior nível de cinza**, ou seja, **à maior distância ao fundo** encontrada na imagem.
 
 Em sequência um simulador desse algoritmo:
 
@@ -181,62 +199,88 @@ Em sequência um algoritmo muito útil em processamento de imagens, utilizado pa
 
 ### Algoritmo: Rotulagem de Componentes Conectados
 
+``` c
+Algoritmo RotulacaoComponentes(I)
 
-**Entrada:** imagem binária `I`  
-**Saída:** imagem rotulada `L`
+Entrada:  imagem binária I[altura][largura]
+Saída:    imagem rotulada L[altura][largura]
 
-Inicialize a imagem de rótulos `L` com zeros.
+/* Inicialização */
 
-`proximoRotulo ← 1`
+for (y = 0; y < altura; y++)
+{
+    for (x = 0; x < largura; x++)
+    {
+        L[y][x] = 0;
+    }
+}
 
----
+proximoRotulo = 1;
 
-**Primeira varredura**
 
-para `y = 0` até `altura − 1`  
- para `x = 0` até `largura − 1`
+/* Primeira varredura */
 
-  `p ← I(x,y)`
+for (y = 0; y < altura; y++)
+{
+    for (x = 0; x < largura; x++)
+    {
+        p = I[y][x];
 
-  se `p = 0` então  
-   continue para o próximo pixel
+        if (p == 0)
+            continue;
 
-  `r ← L(x,y−1)`  // vizinho acima  
-  `t ← L(x−1,y)`  // vizinho à esquerda  
+        r = L[y-1][x];   // vizinho acima
+        t = L[y][x-1];   // vizinho à esquerda
 
-  se `r = 0` e `t = 0` então  
-   `L(x,y) ← proximoRotulo`  
-   `proximoRotulo ← proximoRotulo + 1`
+        if (r == 0 && t == 0)
+        {
+            L[y][x] = proximoRotulo;
+            proximoRotulo++;
+        }
+        else if (r != 0 && t == 0)
+        {
+            L[y][x] = r;
+        }
+        else if (r == 0 && t != 0)
+        {
+            L[y][x] = t;
+        }
+        else
+        {
+            if (r == t)
+            {
+                L[y][x] = r;
+            }
+            else
+            {
+                L[y][x] = r;
+                registrarEquivalencia(r, t);
+            }
+        }
+    }
+}
 
-  senão se `r ≠ 0` e `t = 0` então  
-   `L(x,y) ← r`
 
-  senão se `r = 0` e `t ≠ 0` então  
-   `L(x,y) ← t`
+/* Resolução de equivalências */
 
-  senão
+determinarClassesDeEquivalencia();
 
-   se `r = t` então  
-    `L(x,y) ← r`
 
-   senão  
-    `L(x,y) ← r`  
-    registre que `r` e `t` são equivalentes
+/* Segunda varredura */
 
----
+for (y = 0; y < altura; y++)
+{
+    for (x = 0; x < largura; x++)
+    {
+        if (L[y][x] != 0)
+        {
+            L[y][x] = representante(L[y][x]);
+        }
+    }
+}
 
-**Resolução de equivalências**
-
-Determine as **classes de equivalência** entre os rótulos.
-
----
-
-**Segunda varredura**
-
-para cada pixel `(x,y)` da imagem
-
- se `L(x,y) ≠ 0` então  
-  substitua `L(x,y)` pelo **representante da sua classe de equivalência**
+return L;
+```
 
 Em sequência um simulador desse algoritmo:
 
@@ -259,7 +303,6 @@ O código completo e a demonstração interativa estão disponíveis em:
 {{< qrcode https://editor.p5js.org/luizedsilva/full/nAeHKMA9H width=100 height=100 pdfheight=3cm >}}
 :::
 ::::
-
 
 ## Conceito de Melhoramento de Imagens
 

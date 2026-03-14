@@ -317,7 +317,7 @@ Após a construção da árvore, os códigos binários são obtidos percorrendo-
 O código na @lst-huffman, apresenta de forma simplificada os passos do algoritmo de Huffman, onde $n$ é o número de folhas, portanto o número de nós internos será $n-1$. A cada iteração é preenchido um novo nó interno da árvore, onde os filhos $p1$ (menor frequência) e $p2$ (segunda menor frequência) são colocados à esquerda e direita do novo nó pai $p$ e são removidos da fila de prioridadas (ou lista, onde os nós são ordenados pela frequência). O novo nó $p$ armazena a soma das frequências de $p1$ e $p2$ e é inserido na fila de prioridades. Para facilitar o percurso da folha para raiz, cada filho é ligado ao pai ( $node[p1].father = p$).
 
 ::: {#lst-huffman}
-```{.c}
+``` c
 for (int i = 0; i < n-1; i++) 
 {
    p = n + i;
@@ -369,7 +369,81 @@ O processo de compressão ocorre da seguinte forma. O algoritmo percorre a sequ�
 
 Uma característica importante da LZW é que **tanto o codificador quanto o decodificador constroem o mesmo dicionário de forma incremental**, seguindo exatamente as mesmas regras. Por esse motivo, **não é necessário transmitir o dicionário junto com os dados comprimidos**, o que contribui para a eficiência do método. Durante a descompressão, os códigos recebidos são utilizados para reconstruir as sequências originais, enquanto o dicionário é atualizado da mesma forma que ocorreu na compressão.
 
+``` c
+LZW_Encode(T)
+{
+    Dictionary D;
+    int next;
+
+    /* inicializa o dicionário com todos os símbolos */
+    for each symbol a in alphabet Σ
+        D.insert(a, code(a));
+
+    next = D.size();
+
+    string w = "";
+    List output;
+
+    for each symbol k in T
+    {
+        if (D.contains(w + k))
+        {
+            w = w + k;
+        }
+        else
+        {
+            output.append(D[w]);
+            D.insert(w + k, next);
+            next = next + 1;
+            w = k;
+        }
+    }
+
+    if (w != "")
+        output.append(D[w]);
+
+    return output;
+}
+```
+
 Outra vantagem significativa da LZW é que **a compressão e a descompressão podem ser realizadas em uma única passada sobre os dados**. Isso significa que o algoritmo processa a informação sequencialmente, sem necessidade de múltiplas leituras ou análises prévias do conteúdo. Essa propriedade torna a técnica particularmente adequada para aplicações em tempo real ou em sistemas com recursos limitados.
+
+``` c
+LZW_Decode(C)
+{
+    Dictionary D;
+    int next;
+
+    /* inicializa o dicionário com todos os símbolos */
+    for each symbol a in alphabet Σ
+        D.insert(code(a), a);
+
+    next = D.size();
+
+    int c = first(C);
+    string w = D[c];
+    string output = w;
+
+    for each code k in remaining(C)
+    {
+        string entry;
+
+        if (D.contains(k))
+            entry = D[k];
+        else
+            entry = w + first(w);
+
+        output = output + entry;
+
+        D.insert(next, w + first(entry));
+        next = next + 1;
+
+        w = entry;
+    }
+
+    return output;
+}
+```
 
 Além disso, o algoritmo apresenta **implementação relativamente simples e execução rápida**, pois baseia-se principalmente em operações de busca e inserção em um dicionário. Como consequência, a LZW tornou-se uma das técnicas de compressão mais utilizadas em aplicações práticas, especialmente em sistemas de armazenamento e transmissão de imagens e documentos digitais.
 
@@ -445,9 +519,9 @@ Após a conversão para o espaço YCbCr, cada componente da imagem é tratada se
 
 #### Transformada do Cosseno Discreto (DCT) {.unnumbered}
 
-A Transformada Discreta do Cosseno (DCT) é uma das etapas centrais do algoritmo de compressão JPEG. Após a conversão da imagem para o espaço de cores YCbCr e a divisão da imagem em blocos de (8 \times 8) pixels, cada bloco é transformado do domínio espacial para o domínio da frequência. Essa transformação permite representar a informação da imagem em termos de diferentes componentes de frequência, separando as variações lentas (baixas frequências) das variações rápidas (altas frequências) da intensidade luminosa.
+A Transformada Discreta do Cosseno (DCT) é uma das etapas centrais do algoritmo de compressão JPEG. Após a conversão da imagem para o espaço de cores YCbCr e a divisão da imagem em blocos de $8 \times 8$ pixels, cada bloco é transformado do domínio espacial para o domínio da frequência. Essa transformação permite representar a informação da imagem em termos de diferentes componentes de frequência, separando as variações lentas (baixas frequências) das variações rápidas (altas frequências) da intensidade luminosa.
 
-A DCT utilizada no JPEG é a chamada **DCT bidimensional**, aplicada a cada bloco de (8 \times 8). Essa transformação calcula um conjunto de coeficientes que representam a contribuição das diferentes frequências presentes no bloco. O coeficiente localizado na posição ((0,0)) corresponde à componente de frequência zero, também chamada de **coeficiente DC**, que representa o valor médio do bloco. Os demais coeficientes são chamados de **coeficientes AC** e descrevem variações espaciais da intensidade, correspondendo a diferentes padrões de frequência horizontal e vertical.
+A DCT utilizada no JPEG é a chamada **DCT bidimensional**, aplicada a cada bloco de $8 \times 8$. Essa transformação calcula um conjunto de coeficientes que representam a contribuição das diferentes frequências presentes no bloco. O coeficiente localizado na posição $(0,0)$ corresponde à componente de frequência zero, também chamada de **coeficiente DC**, que representa o valor médio do bloco. Os demais coeficientes são chamados de **coeficientes AC** e descrevem variações espaciais da intensidade, correspondendo a diferentes padrões de frequência horizontal e vertical.
 
 A expressão matemática da DCT bidimensional aplicada a um bloco de imagem pode ser escrita como:
 
@@ -455,7 +529,7 @@ $$
 F(u,v)=\frac{1}{4}C(u)C(v)\sum_{x=0}^{7}\sum_{y=0}^{7} f(x,y)\cos\left(\frac{(2x+1)u\pi}{16}\right)\cos\left(\frac{(2y+1)v\pi}{16}\right)
 $$
 
-Nessa equação, (f(x,y)) representa o valor do pixel localizado na posição ((x,y)) do bloco original, enquanto (F(u,v)) representa o coeficiente transformado correspondente às frequências horizontal (u) e vertical (v). Os índices (x) e (y) percorrem as posições do bloco de imagem no domínio espacial, enquanto (u) e (v) indicam as diferentes frequências no domínio transformado.
+Nessa equação, $f(x,y)$ representa o valor do pixel localizado na posição $(x,y)$ do bloco original, enquanto $F(u,v)$ representa o coeficiente transformado correspondente às frequências horizontal $u$ e vertical $v$. Os índices $x$ e $y$ percorrem as posições do bloco de imagem no domínio espacial, enquanto $u$ e $v$ indicam as diferentes frequências no domínio transformado.
 
 Os termos (C(u)) e (C(v)) são fatores de normalização utilizados para garantir a ortogonalidade da transformação e são definidos por:
 
@@ -471,7 +545,7 @@ Esses fatores ajustam a amplitude do coeficiente DC em relação aos coeficiente
 
 A principal finalidade da DCT no JPEG é **concentrar a maior parte da energia da imagem em poucos coeficientes de baixa frequência**. Em imagens naturais, as variações de intensidade costumam ser suaves, o que faz com que os coeficientes associados às baixas frequências tenham valores maiores, enquanto muitos coeficientes de alta frequência tendem a assumir valores pequenos ou próximos de zero. Essa propriedade é fundamental para a etapa seguinte do algoritmo, a **quantização**, na qual os coeficientes de menor importância perceptual podem ser reduzidos ou eliminados, permitindo uma compressão significativa da imagem.
 
-Após a aplicação da DCT, cada bloco de (8 \times 8) pixels é transformado em uma matriz de (8 \times 8) coeficientes de frequência. Esses coeficientes passam então pelo processo de quantização e, posteriormente, pelas etapas de reorganização em zig-zag e codificação entrópica. Dessa forma, a DCT desempenha um papel essencial no JPEG ao converter a informação da imagem para um formato no qual a redundância pode ser explorada de maneira eficiente pelo processo de compressão.
+Após a aplicação da DCT, cada bloco de $8 \times 8$ pixels é transformado em uma matriz de $8 \times 8$ coeficientes de frequência. Esses coeficientes passam então pelo processo de quantização e, posteriormente, pelas etapas de reorganização em zig-zag e codificação entrópica. Dessa forma, a DCT desempenha um papel essencial no JPEG ao converter a informação da imagem para um formato no qual a redundância pode ser explorada de maneira eficiente pelo processo de compressão.
 
 #### Quantização {.unnumbered}
 
@@ -485,7 +559,7 @@ $$
 F_Q(u,v)=\operatorname{round}\left(\frac{F(u,v)}{k\cdot Q(u,v)}\right)
 $$
 
-Nessa equação, (F(u,v)) representa o coeficiente obtido pela DCT na posição $(u,v)$, enquanto $F_Q(u,v)$ corresponde ao coeficiente quantizado. A matriz $Q(u,v)$ é chamada de **matriz de quantização** e define o peso aplicado a cada coeficiente de frequência. O parâmetro $k$ é um fator de compressão que controla o grau de redução aplicado aos coeficientes: valores maiores de $k$ produzem maior compressão, porém com maior perda de qualidade na imagem reconstruída.
+Nessa equação, $F(u,v)$ representa o coeficiente obtido pela DCT na posição $(u,v)$, enquanto $F_Q(u,v)$ corresponde ao coeficiente quantizado. A matriz $Q(u,v)$ é chamada de **matriz de quantização** e define o peso aplicado a cada coeficiente de frequência. O parâmetro $k$ é um fator de compressão que controla o grau de redução aplicado aos coeficientes: valores maiores de $k$ produzem maior compressão, porém com maior perda de qualidade na imagem reconstruída.
 
 O padrão JPEG não impõe uma única matriz de quantização obrigatória. O comitê responsável pela padronização permitiu que diferentes matrizes fossem utilizadas, possibilitando ajustes conforme a aplicação desejada. Entretanto, juntamente com o padrão foram publicadas matrizes recomendadas, obtidas a partir de diversos experimentos com imagens reais. Essas matrizes foram projetadas de modo a explorar as características do sistema visual humano, aplicando quantização mais agressiva nas frequências altas, que são menos perceptíveis ao observador.
 
@@ -555,7 +629,7 @@ Embora o padrão JPEG forneça tabelas de Huffman padrão, ele também permite q
 
 Dessa forma, a codificação de Huffman constitui a etapa final do processo de compressão JPEG, responsável por transformar os símbolos gerados nas etapas anteriores em uma sequência compacta de bits. Ao explorar as probabilidades de ocorrência dos diferentes símbolos, essa técnica reduz ainda mais o tamanho dos dados, contribuindo para a alta eficiência do formato JPEG na compressão de imagens digitais.
 
-O exemplo interativo seguinte demonstra as etapas de codificação para um bloco 8x8:
+O exemplo interativo seguinte demonstra as etapas de codificação para um bloco $8 \times 8$. Com o botão "Passo", as transformações do bloco $8 \times 8$ é modificado para apresentar o resultado da etapa realizada (deslocamento, DCT, Quantização, zig-zag, RLE e Huffman). As etapas zig-zag, RLE e Huffman são apresentadas concomitantemente. São apresentados a contagem de zeros antes de cada coeficiente DCT e para cada par (run, coeficiente), são mostrados a direita do bloco a diferença $DC_i - DC_{i-1}$ (considerasse $DC_{i-1}=-17$ nesta simulação) para codificação do coeficiente DC e para todos os coeficientes são mostrados a categoria, o prefixo e a mantissa consultadas nas tabelas DC e AC de Huffman:
 
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
