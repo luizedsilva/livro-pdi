@@ -6,21 +6,29 @@ Este capítulo apresenta os fundamentos das **imagens coloridas**, abordando os 
 
 ## Percepção da Cor
 
-A percepção da cor é resultado da interação da luz com o sistema visual humano. A luz visível corresponde a uma faixa restrita do espectro eletromagnético e, ao atingir a retina, estimula diferentes tipos de fotorreceptores.
+A percepção de cores é resultado de um processo fisiológico e psicológico realizado pelo sistema visual humano. A luz refletida pelos objetos é captada pelos olhos e convertida em sinais elétricos pelos fotorreceptores presentes na retina. Esses sinais são então transmitidos ao cérebro, que os interpreta e produz a sensação de cor. Entretanto, o mecanismo completo pelo qual o cérebro processa e interpreta essas informações ainda não é totalmente compreendido. Por esse motivo, a percepção de cor é frequentemente descrita como um fenômeno **fisiopsicológico**, pois envolve tanto mecanismos físicos de detecção da luz quanto processos cognitivos de interpretação.
 
-O olho humano possui três tipos principais de cones, cada um sensível a uma faixa específica de comprimentos de onda, aproximadamente associada às cores vermelha, verde e azul. A combinação das respostas desses cones permite a percepção de uma grande variedade de cores.
+Um passo fundamental para a compreensão da natureza da luz e das cores foi dado em 1666 por Isaac Newton. Em seus experimentos, Newton demonstrou que a luz branca não é uma entidade simples, mas sim uma combinação de diferentes componentes de luz. Ao fazer um feixe de luz branca atravessar um prisma de vidro, observou-se que a luz emergente se separa em várias cores distintas. Esse fenômeno ocorre porque cada componente da luz possui comprimentos de onda diferentes, que são desviados de maneira distinta ao atravessar o prisma.
 
-Esse mecanismo fisiológico fundamenta muitos dos modelos de cor utilizados em Processamento de Imagens.
+![Dispersão da luz branca](/imgs/cap6/prisma.png){fig-align="center" width="80%"}
+
+O conjunto de cores resultante desse experimento é denominado **espectro visível da luz**. Ele corresponde à faixa do espectro eletromagnético que pode ser percebida pelo olho humano e costuma ser representado como uma sequência contínua de cores que se estende do violeta ao vermelho.
+
+Para fins didáticos, esse espectro costuma ser dividido em seis regiões principais: violeta, azul, verde, amarelo, laranja e vermelho. No entanto, essas regiões não apresentam limites abruptos. Na realidade, as cores variam de forma contínua ao longo do espectro, de modo que uma tonalidade se transforma gradualmente na seguinte. Assim, entre duas cores adjacentes existem inúmeras tonalidades intermediárias que não podem ser classificadas de maneira absoluta como pertencentes a apenas uma região específica.
+
+Fisicamente, cada cor do espectro está associada a um intervalo de comprimentos de onda da luz visível. De maneira aproximada, o violeta corresponde à faixa entre 380 e 450 nm, o azul entre 450 e 495 nm, o verde entre 495 e 570 nm, o amarelo entre 570 e 590 nm, o laranja entre 590 e 620 nm e o vermelho entre 620 e 750 nm. Essa relação entre comprimento de onda e cor percebida é fundamental em diversas áreas, como fotografia, computação gráfica e processamento de imagens, pois permite modelar matematicamente a formação e a reprodução das cores em diferentes dispositivos.
 
 ## Conceitos Básicos de Cor
 
-Uma cor pode ser descrita por atributos perceptuais fundamentais, tais como:
+A descrição e o estudo das cores podem ser realizados a partir de **atributos perceptuais**, isto é, características que correspondem à forma como o sistema visual humano percebe as cores. Esses atributos permitem representar e diferenciar cores de maneira mais intuitiva, aproximando a descrição matemática da experiência visual humana. De modo geral, uma cor pode ser caracterizada por três propriedades fundamentais: **matiz**, **saturação** e **brilho**.
 
-* **Matiz (hue)**: corresponde à tonalidade dominante da cor;
-* **Saturação**: indica o grau de pureza da cor;
-* **Brilho ou intensidade**: representa a quantidade de luz associada à cor.
+A **matiz** (*hue*) corresponde à tonalidade dominante da cor, sendo a característica que permite distinguir uma cor de outra no espectro visível. Em termos práticos, a matiz identifica se uma cor é percebida como vermelha, azul, verde, amarela, entre outras. Esse atributo está relacionado principalmente ao **comprimento de onda predominante da luz** que atinge o olho humano.
 
-Esses atributos são utilizados para definir modelos de cor que facilitam a representação e o processamento computacional de imagens coloridas.
+A **saturação** indica o grau de pureza ou intensidade da cor. Cores altamente saturadas apresentam tonalidades vivas e intensas, enquanto cores com baixa saturação tendem a parecer mais esmaecidas ou próximas de tons de cinza. Em outras palavras, a saturação expressa o quanto uma cor está misturada com luz branca ou com outras cores, afetando a vivacidade da tonalidade percebida.
+
+O **brilho**, também denominado **intensidade** ou **luminosidade**, representa a quantidade de luz associada à cor. Esse atributo está relacionado à percepção de quão clara ou escura uma cor é. Cores com maior brilho são percebidas como mais claras, enquanto cores com menor brilho aparecem mais escuras.
+
+Esses três atributos perceptuais são amplamente utilizados na definição de **modelos de cor**, que são representações matemáticas destinadas a descrever e manipular cores em sistemas computacionais. Modelos como HSV (*Hue, Saturation, Value*) e HSL (*Hue, Saturation, Lightness*) organizam as cores justamente com base nesses parâmetros perceptuais, facilitando tarefas como edição de imagens, segmentação de cores e desenvolvimento de algoritmos de **processamento de imagens digitais**.
 
 ## Modelo de Cor RGB
 
@@ -50,9 +58,9 @@ O canal adicional K no modelo CMYK é utilizado para melhorar o contraste e redu
 
 O modelo **HSV (Hue, Saturation, Value)** foi desenvolvido para representar cores de forma mais próxima à percepção humana. Nesse modelo:
 
-* H representa a matiz;
-* S representa a saturação;
-* V representa o valor ou brilho.
+-   H representa a matiz;
+-   S representa a saturação;
+-   V representa o valor ou brilho.
 
 O modelo HSV é particularmente útil em aplicações de segmentação e reconhecimento, pois permite separar informações de cor da intensidade luminosa.
 
@@ -72,11 +80,11 @@ Essa representação permite que técnicas clássicas de processamento em tons d
 
 O uso de imagens coloridas é essencial em diversas aplicações, tais como:
 
-* segmentação baseada em cor;
-* reconhecimento de objetos;
-* análise de cenas naturais;
-* visão computacional em robótica;
-* processamento de imagens médicas e industriais.
+-   segmentação baseada em cor;
+-   reconhecimento de objetos;
+-   análise de cenas naturais;
+-   visão computacional em robótica;
+-   processamento de imagens médicas e industriais.
 
 A escolha adequada do modelo de cor é determinante para o sucesso dessas aplicações.
 

@@ -68,14 +68,12 @@ Considere uma **imagem binária** na qual as regiões de pixels com valor **1** 
 O algoritmo possui **duas fases** e o resultado será uma **imagem em tons de cinza**, onde o valor de cada pixel indica sua distância ao fundo.
 
 ``` c
-Algoritmo TransformadaDistancia(I)
+Algoritmo TransformadaDistancia(I, D)
 
 Entrada:  imagem binária I[altura][largura]
 Saída:    imagem de distâncias D[altura][largura]
 
-
 /* Inicialização */
-
 for (y = 0; y < altura; y++)
 {
     for (x = 0; x < largura; x++)
@@ -89,7 +87,6 @@ for (y = 0; y < altura; y++)
 
 
 /* Fase 1 — Varredura direta */
-
 for (y = 0; y < altura; y++)
 {
     for (x = 0; x < largura; x++)
@@ -105,11 +102,8 @@ for (y = 0; y < altura; y++)
     }
 }
 
-
 /* Fase 2 — Varredura inversa */
-
 maxDist = 0;
-
 for (y = altura-1; y >= 0; y--)
 {
     for (x = largura-1; x >= 0; x--)
@@ -117,19 +111,16 @@ for (y = altura-1; y >= 0; y--)
         p = D[y][x];
         a = D[y][x+1];   // vizinho à direita
         b = D[y+1][x];   // vizinho abaixo
-
         if (p != 0)
         {
             D[y][x] = min(a + 1, b + 1, p);
         }
-
         if (D[y][x] > maxDist)
         {
             maxDist = D[y][x];
         }
     }
 }
-
 return D;
 ```
 
@@ -200,13 +191,12 @@ Em sequência um algoritmo muito útil em processamento de imagens, utilizado pa
 ### Algoritmo: Rotulagem de Componentes Conectados
 
 ``` c
-Algoritmo RotulacaoComponentes(I)
+Algoritmo RotulacaoComponentes(I, L)
 
 Entrada:  imagem binária I[altura][largura]
 Saída:    imagem rotulada L[altura][largura]
 
 /* Inicialização */
-
 for (y = 0; y < altura; y++)
 {
     for (x = 0; x < largura; x++)
@@ -217,21 +207,16 @@ for (y = 0; y < altura; y++)
 
 proximoRotulo = 1;
 
-
 /* Primeira varredura */
-
 for (y = 0; y < altura; y++)
 {
     for (x = 0; x < largura; x++)
     {
         p = I[y][x];
-
         if (p == 0)
             continue;
-
         r = L[y-1][x];   // vizinho acima
         t = L[y][x-1];   // vizinho à esquerda
-
         if (r == 0 && t == 0)
         {
             L[y][x] = proximoRotulo;
@@ -265,9 +250,7 @@ for (y = 0; y < altura; y++)
 
 determinarClassesDeEquivalencia();
 
-
 /* Segunda varredura */
-
 for (y = 0; y < altura; y++)
 {
     for (x = 0; x < largura; x++)
@@ -278,7 +261,6 @@ for (y = 0; y < altura; y++)
         }
     }
 }
-
 return L;
 ```
 
