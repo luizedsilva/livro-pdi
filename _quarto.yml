@@ -4,7 +4,8 @@ project:
 lang: pt-BR
 
 book:
-  title: "Processamento de Imagens"
+  title: "Processamento Digital de Imagens"
+  subtitle: "Uma abordagem interativa com p5.js"
   author: "Luiz Eduardo da Silva"
   date: today
   chapters:

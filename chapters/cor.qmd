@@ -34,19 +34,25 @@ Esses três atributos perceptuais são amplamente utilizados na definição de *
 
 ## Modelo de Cor RGB
 
-O modelo **RGB (Red, Green, Blue)** é o mais utilizado em dispositivos de aquisição e exibição de imagens, como câmeras, monitores e scanners. Nesse modelo, cada cor é representada como uma combinação aditiva das componentes vermelha, verde e azul.
+O modelo RGB representa as cores a partir da combinação de três componentes espectrais primárias: vermelho (*red*), verde (*green*) e azul (*blue*). Cada cor é definida por um triplo de valores que indicam a intensidade de cada uma dessas componentes. Esse modelo pode ser interpretado geometricamente como um sistema de coordenadas cartesianas tridimensional, no qual cada eixo corresponde a uma das cores primárias.
 
-Uma imagem colorida RGB pode ser representada por três matrizes bidimensionais, correspondentes aos canais R, G e B. Cada pixel é descrito por um vetor tridimensional:
+![Cubo RGB](/imgs/cap6/rgb.png){fig-align="center" width="60%"}
 
-$$
-\mathbf{c}(x,y) = [R(x,y),, G(x,y),, B(x,y)]
-$$
+No cubo RGB, o ponto de origem (0,0,0) representa a ausência total de luz, ou seja, a cor preta (*black*). À medida que os valores das componentes aumentam, a cor resultante torna-se mais clara. No extremo oposto do cubo, o ponto (1,1,1) representa a presença máxima das três componentes, resultando na cor branca (*white*).
 
-O modelo RGB é intuitivo e eficiente para dispositivos de hardware, mas não é sempre o mais adequado para tarefas de análise de imagens.
+Os vértices localizados sobre os eixos correspondem às cores primárias: azul em (0,0,1), verde em (0,1,0) e vermelho em (1,0,0). Esses pontos indicam que apenas uma das componentes está presente com intensidade máxima, enquanto as demais são nulas.
+
+As demais cores são obtidas pela combinação dessas componentes. Por exemplo, o ponto (0,1,1), localizado no plano formado pelos eixos verde e azul, representa a cor ciano (*cyan*), que resulta da mistura dessas duas cores primárias. De forma análoga, o ponto (1,0,1) corresponde ao magenta (*magenta*), e o ponto (1,1,0) ao amarelo (*yellow*).
+
+Assim, o cubo RGB fornece uma representação intuitiva e geométrica do espaço de cores, permitindo visualizar como diferentes combinações das componentes primárias geram todas as demais cores perceptíveis nesse modelo.
 
 ## Modelo de Cor CMY e CMYK
 
-Os modelos **CMY (Cyan, Magenta, Yellow)** e **CMYK (Cyan, Magenta, Yellow, Black)** são amplamente utilizados em sistemas de impressão. Diferentemente do RGB, esses modelos são baseados na mistura **subtrativa** de cores.
+O modelo CMY é um modelo de cores baseado nas componentes ciano (*cyan*), magenta (*magenta*) e amarelo (*yellow*), sendo amplamente utilizado em processos de impressão. Diferentemente do modelo RGB, que é aditivo (baseado na emissão de luz), o modelo CMY é subtrativo, pois descreve como as cores são formadas pela absorção de luz refletida por uma superfície.
+
+Nesse modelo, parte-se da cor branca, que representa a reflexão total da luz (equivalente ao papel em branco). À medida que as tintas são aplicadas, certas componentes da luz são absorvidas (subtraídas), modificando a cor percebida. Cada uma das cores primárias do modelo CMY atua removendo uma componente do modelo RGB: o ciano absorve o vermelho, o magenta absorve o verde e o amarelo absorve o azul.
+
+As cores no modelo CMY também podem ser representadas em um sistema de coordenadas tridimensional, semelhante ao cubo RGB. O ponto (0,0,0) corresponde ao branco (ausência de tinta), enquanto o ponto (1,1,1) representa a combinação máxima das três tintas, que idealmente resultaria em preto. No entanto, devido a imperfeições dos pigmentos, essa combinação geralmente produz um tom escuro acinzentado, motivo pelo qual, na prática, utiliza-se o modelo estendido CMYK, com a adição da tinta preta (*black*).
 
 A conversão entre RGB e CMY pode ser expressa de forma simples, considerando valores normalizados:
 
@@ -54,23 +60,156 @@ $$
 C = 1 - R, \quad M = 1 - G, \quad Y = 1 - B
 $$
 
+As combinações entre as componentes CMY geram outras cores. Por exemplo, a mistura de ciano e magenta produz azul, a mistura de ciano e amarelo resulta em verde, e a combinação de magenta e amarelo gera vermelho. Essas relações evidenciam que o modelo CMY é, na prática, o complementar do modelo RGB.
+
 O canal adicional K no modelo CMYK é utilizado para melhorar o contraste e reduzir o consumo de tinta.
 
 ## Modelo de Cor HSV
 
-O modelo **HSV (Hue, Saturation, Value)** foi desenvolvido para representar cores de forma mais próxima à percepção humana. Nesse modelo:
+O modelo HSV (*Hue, Saturation, Value*) é uma representação de cores que busca se aproximar da forma como os seres humanos percebem e descrevem as cores. Assim como o modelo HSI, ele separa a informação cromática da informação de brilho, facilitando tarefas de análise e processamento de imagens.
 
--   H representa a matiz;
--   S representa a saturação;
--   V representa o valor ou brilho.
+No modelo HSV, as cores são representadas em uma geometria conhecida como **hexcone** (ou cone hexagonal). Nessa representação, o eixo vertical corresponde ao **valor (V)**, que indica o brilho da cor. O valor varia de 0 (preto) até 1 (máximo brilho). Diferentemente do modelo HSI, o topo do modelo HSV não corresponde ao branco puro necessariamente, mas à cor mais intensa possível para uma determinada matiz.
 
-O modelo HSV é particularmente útil em aplicações de segmentação e reconhecimento, pois permite separar informações de cor da intensidade luminosa.
+A **matiz (H – hue)** representa o tipo da cor e é dada por um ângulo ao redor do eixo vertical. Esse ângulo varia de 0° a 360°, sendo que diferentes intervalos correspondem a cores perceptuais distintas: 0° representa o vermelho, 120° o verde e 240° o azul. As demais cores são obtidas por valores intermediários desse ângulo.
+
+A **saturação (S)** indica o quão “pura” ou “intensa” é a cor. No modelo HSV, a saturação mede a proximidade da cor em relação ao eixo central do cone. Quando (S = 0), a cor está no eixo e corresponde a um tom de cinza (sem cor definida). Quando (S = 1), a cor está na superfície externa do cone, apresentando máxima pureza.
+
+No exemplo interativo em sequência está um cone que representa as matiz, saturação e o valor no modelo de cores HSV. Arraste o cone com o mouse para uma visualização tridimensional do cone:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0" width="100%" height="550" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0 width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+### Interpretação geométrica
+
+-   O **eixo vertical (V)** vai do preto até as cores mais brilhantes.
+-   A **saturação (S)** é a distância radial em relação ao eixo central.
+-   A **matiz (H)** é o ângulo ao redor do eixo, determinando a cor.
+
+Dessa forma, o modelo HSV pode ser visualizado como um conjunto de “discos” empilhados: cada disco corresponde a um valor de brilho, e dentro de cada disco as cores variam em matiz e saturação.
+
+### Conversão de RGB para HSV
+
+Com os valores dos componentes de cor R, G e B, definidas no intervalo entre 0 e 1, o modelo HSV pode ser calculado através das seguintes equações:
+
+$$ 
+H = \left\{  
+            \begin{array}{cl}
+                    0 & \text{se } MAX = MIN \\
+                    60 \times \frac{G-B}{MAX-MIN} + 0 & \text{se } MAX = R \text{ e } G \geq B \\
+                    60 \times \frac{G-B}{MAX-MIN} + 360 & \text{se } MAX = R \text{ e } G < B \\
+                    60 \times \frac{B-R}{MAX-MIN} + 120 & \text{se } MAX = G \\
+                    60 \times \frac{R-G}{MAX-MIN} + 240 & \text{se } MAX = B \\             
+            \end{array} 
+        \right. 
+$$
+
+$$ 
+S = \left\{ 
+           \begin{array}{cl}
+            0 & \text{se } MAX = 0 \\
+            \frac{MAX- MIN}{MAX} & \text{caso contrário} 
+           \end{array}
+        \right. 
+$$
+
+$$ 
+V = MAX 
+$$
+
+No exemplo interativo em sequência está uma representação usando o círculo de cores e o triângulo que liga branco, o preto e todas as matizes da cor escolhida no modelo HSI. Clique no círculo de cores para selecionar a matiz. No triângulo correspondente estão representados o vértice da matiz selecionada, o vértice da cor branca e o vértice cor preta. O triângulo é pintado com as variações de saturação e intensidade da matiz selecionada:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/_iighNxoE" width="100%" height="550" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/_iighNxoE>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/_iighNxoE width=100 height=100 pdfheight=3cm >}}
+:::
+::::
 
 ## Modelo de Cor HSI
 
-O modelo **HSI (Hue, Saturation, Intensity)** é semelhante ao HSV, mas utiliza a intensidade como componente separada. Essa característica o torna adequado para aplicações em que se deseja processar a intensidade independentemente da cor.
+O modelo HSI (*Hue, Saturation, Intensity*) descreve as cores de uma forma mais próxima da percepção humana, separando a informação de cor (matiz e saturação) da informação de brilho (intensidade). Essa separação é especialmente útil em processamento de imagens, pois permite manipular iluminação e cor de forma independente.
 
-Em muitos algoritmos de processamento, operações são realizadas apenas sobre o canal de intensidade, preservando as informações cromáticas.
+No modelo HSI, a **intensidade (I)** representa o brilho da cor e é definida ao longo de um eixo vertical que vai do preto (0,0,0) ao branco (1,1,1). Esse eixo corresponde à linha onde as três componentes RGB possuem o mesmo valor, ou seja, tons de cinza. Quanto maior o valor de intensidade, mais clara é a cor.
+
+A **saturação (S)** indica o grau de pureza da cor. Geometricamente, ela corresponde à distância entre a cor e o eixo de intensidade. Cores localizadas exatamente sobre esse eixo possuem saturação zero (tons de cinza), enquanto cores mais afastadas do eixo são mais saturadas, ou seja, mais “vivas”.
+
+A **matiz (H – hue)** representa o tipo da cor (vermelho, verde, azul, etc.). Ela é determinada pelo ângulo no plano perpendicular ao eixo de intensidade. Esse plano pode ser entendido como um triângulo formado pela interseção do cubo RGB com um plano de intensidade constante. Por exemplo, no plano que passa pela cor ciano, os vértices do triângulo ajudam a definir a matiz das cores presentes naquele nível de intensidade.
+
+![Modelo HSI](/imgs/cap6/hsi.png){fig-align="center" width="80%"}
+
+### Conversão de RGB para HSI
+
+Considere uma cor no modelo RGB com componentes normalizadas no intervalo $[0,1]$, ou seja, $R$, $G$ e $B$.
+
+$$ 
+H = \left\{  \begin{array}{ll}
+\theta & se \quad B \leq G \\
+360 - \theta & se \quad B > G 
+\end{array} 
+\right. 
+$$
+
+onde: $$ 
+\theta = \cos^{-1}\left\{\frac{\frac{1}{2}[(R-G) + (R-B)]}{\sqrt{(R-G)^2 + (R-B)(G-B)}}\right\}
+$$
+
+$$ 
+S = 1 - \frac{3}{(R + G + B)}[\min (R,G,B)] 
+$$ $$ 
+I = \frac{1}{3}(R + G + B) 
+$$
+
+No exemplo interativo em sequência estão implementados todas as conversões RGB para HSI e para HSV:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/ig_qS3rmq" width="100%" height="550" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/ig_qS3rmq>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/ig_qS3rmq width=100 height=100 pdfheight=3cm >}}
+:::
+::::
 
 ## Representação de Imagens Coloridas
 
