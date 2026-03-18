@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Morfologia Matemática em Tons de Cinza – Processamento de Imagens</title>
+<title>7&nbsp; Morfologia Matemática – Processamento de Imagens</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/segmentacao.html" rel="next">
-<link href="../chapters/morfobinaria.html" rel="prev">
+<link href="../chapters/cor.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -113,7 +113,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/morfocinza.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Morfologia Matemática em Tons de Cinza</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/morfologia.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -182,44 +182,38 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/morfobinaria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática Binária</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/morfocinza.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Morfologia Matemática em Tons de Cinza</span></span></a>
+  <a href="../chapters/morfologia.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/segmentacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/representacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/interpretacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/opencv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Conclusão</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Conclusão</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -238,16 +232,26 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#imagens-em-tons-de-cinza" id="toc-imagens-em-tons-de-cinza" class="nav-link active" data-scroll-target="#imagens-em-tons-de-cinza"><span class="header-section-number">8.1</span> Imagens em Tons de Cinza</a></li>
-  <li><a href="#fundamentos-da-morfologia-em-tons-de-cinza" id="toc-fundamentos-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">8.2</span> Fundamentos da Morfologia em Tons de Cinza</a></li>
-  <li><a href="#elemento-estruturante" id="toc-elemento-estruturante" class="nav-link" data-scroll-target="#elemento-estruturante"><span class="header-section-number">8.3</span> Elemento Estruturante</a></li>
-  <li><a href="#dilatação-em-tons-de-cinza" id="toc-dilatação-em-tons-de-cinza" class="nav-link" data-scroll-target="#dilatação-em-tons-de-cinza"><span class="header-section-number">8.4</span> Dilatação em Tons de Cinza</a></li>
-  <li><a href="#erosão-em-tons-de-cinza" id="toc-erosão-em-tons-de-cinza" class="nav-link" data-scroll-target="#erosão-em-tons-de-cinza"><span class="header-section-number">8.5</span> Erosão em Tons de Cinza</a></li>
-  <li><a href="#abertura-em-tons-de-cinza" id="toc-abertura-em-tons-de-cinza" class="nav-link" data-scroll-target="#abertura-em-tons-de-cinza"><span class="header-section-number">8.6</span> Abertura em Tons de Cinza</a></li>
-  <li><a href="#fechamento-em-tons-de-cinza" id="toc-fechamento-em-tons-de-cinza" class="nav-link" data-scroll-target="#fechamento-em-tons-de-cinza"><span class="header-section-number">8.7</span> Fechamento em Tons de Cinza</a></li>
-  <li><a href="#propriedades-das-operações-morfológicas" id="toc-propriedades-das-operações-morfológicas" class="nav-link" data-scroll-target="#propriedades-das-operações-morfológicas"><span class="header-section-number">8.8</span> Propriedades das Operações Morfológicas</a></li>
-  <li><a href="#aplicações-da-morfologia-em-tons-de-cinza" id="toc-aplicações-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">8.9</span> Aplicações da Morfologia em Tons de Cinza</a></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">8.10</span> Considerações Finais</a></li>
+  <li><a href="#imagens-binárias" id="toc-imagens-binárias" class="nav-link active" data-scroll-target="#imagens-binárias"><span class="header-section-number">7.1</span> Imagens Binárias</a></li>
+  <li><a href="#conceitos-fundamentais-da-morfologia-matemática" id="toc-conceitos-fundamentais-da-morfologia-matemática" class="nav-link" data-scroll-target="#conceitos-fundamentais-da-morfologia-matemática"><span class="header-section-number">7.2</span> Conceitos Fundamentais da Morfologia Matemática</a></li>
+  <li><a href="#elemento-estruturante" id="toc-elemento-estruturante" class="nav-link" data-scroll-target="#elemento-estruturante"><span class="header-section-number">7.3</span> Elemento Estruturante</a></li>
+  <li><a href="#dilatação" id="toc-dilatação" class="nav-link" data-scroll-target="#dilatação"><span class="header-section-number">7.4</span> Dilatação</a></li>
+  <li><a href="#erosão" id="toc-erosão" class="nav-link" data-scroll-target="#erosão"><span class="header-section-number">7.5</span> Erosão</a></li>
+  <li><a href="#abertura" id="toc-abertura" class="nav-link" data-scroll-target="#abertura"><span class="header-section-number">7.6</span> Abertura</a></li>
+  <li><a href="#fechamento" id="toc-fechamento" class="nav-link" data-scroll-target="#fechamento"><span class="header-section-number">7.7</span> Fechamento</a></li>
+  <li><a href="#propriedades-das-operações-morfológicas" id="toc-propriedades-das-operações-morfológicas" class="nav-link" data-scroll-target="#propriedades-das-operações-morfológicas"><span class="header-section-number">7.8</span> Propriedades das Operações Morfológicas</a></li>
+  <li><a href="#aplicações-da-morfologia-binária" id="toc-aplicações-da-morfologia-binária" class="nav-link" data-scroll-target="#aplicações-da-morfologia-binária"><span class="header-section-number">7.9</span> Aplicações da Morfologia Binária</a></li>
+  <li><a href="#morfologia-matemática-em-tons-de-cinza" id="toc-morfologia-matemática-em-tons-de-cinza" class="nav-link" data-scroll-target="#morfologia-matemática-em-tons-de-cinza"><span class="header-section-number">7.10</span> Morfologia Matemática em Tons de Cinza</a></li>
+  <li><a href="#imagens-em-tons-de-cinza" id="toc-imagens-em-tons-de-cinza" class="nav-link" data-scroll-target="#imagens-em-tons-de-cinza"><span class="header-section-number">7.11</span> Imagens em Tons de Cinza</a></li>
+  <li><a href="#fundamentos-da-morfologia-em-tons-de-cinza" id="toc-fundamentos-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.12</span> Fundamentos da Morfologia em Tons de Cinza</a></li>
+  <li><a href="#elemento-estruturante-1" id="toc-elemento-estruturante-1" class="nav-link" data-scroll-target="#elemento-estruturante-1"><span class="header-section-number">7.13</span> Elemento Estruturante</a></li>
+  <li><a href="#dilatação-em-tons-de-cinza" id="toc-dilatação-em-tons-de-cinza" class="nav-link" data-scroll-target="#dilatação-em-tons-de-cinza"><span class="header-section-number">7.14</span> Dilatação em Tons de Cinza</a></li>
+  <li><a href="#erosão-em-tons-de-cinza" id="toc-erosão-em-tons-de-cinza" class="nav-link" data-scroll-target="#erosão-em-tons-de-cinza"><span class="header-section-number">7.15</span> Erosão em Tons de Cinza</a></li>
+  <li><a href="#abertura-em-tons-de-cinza" id="toc-abertura-em-tons-de-cinza" class="nav-link" data-scroll-target="#abertura-em-tons-de-cinza"><span class="header-section-number">7.16</span> Abertura em Tons de Cinza</a></li>
+  <li><a href="#fechamento-em-tons-de-cinza" id="toc-fechamento-em-tons-de-cinza" class="nav-link" data-scroll-target="#fechamento-em-tons-de-cinza"><span class="header-section-number">7.17</span> Fechamento em Tons de Cinza</a></li>
+  <li><a href="#propriedades-das-operações-morfológicas-1" id="toc-propriedades-das-operações-morfológicas-1" class="nav-link" data-scroll-target="#propriedades-das-operações-morfológicas-1"><span class="header-section-number">7.18</span> Propriedades das Operações Morfológicas</a></li>
+  <li><a href="#aplicações-da-morfologia-em-tons-de-cinza" id="toc-aplicações-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.19</span> Aplicações da Morfologia em Tons de Cinza</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">7.20</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -256,7 +260,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Morfologia Matemática em Tons de Cinza</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática</span></h1>
 </div>
 
 
@@ -273,20 +277,105 @@ window.Quarto = {
 </header>
 
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../chapters/imgs/morfologia.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>A <strong>Morfologia Matemática</strong> é uma área do Processamento Digital de Imagens dedicada à análise e ao processamento da forma geométrica dos objetos presentes em uma imagem. Diferentemente de técnicas baseadas diretamente em valores de intensidade, a morfologia foca na <strong>estrutura espacial</strong> dos objetos, sendo especialmente eficaz no tratamento de imagens binárias.</p>
+<p>Este capítulo apresenta os fundamentos da <strong>morfologia matemática binária</strong> e da morfologia numérica (em tons de cinza), introduzindo seus principais operadores e discutindo suas aplicações em tarefas como filtragem, segmentação e análise de formas.</p>
+<section id="imagens-binárias" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="imagens-binárias"><span class="header-section-number">7.1</span> Imagens Binárias</h2>
+<p>Uma imagem binária é uma imagem digital na qual cada pixel pode assumir apenas dois valores possíveis, geralmente representados por 0 e 1. Esses valores indicam, respectivamente, a ausência ou a presença de um objeto em determinada posição da imagem.</p>
+<p>Imagens binárias são frequentemente obtidas a partir de imagens em tons de cinza por meio de processos de limiarização. Sua simplicidade torna-as adequadas para a aplicação de operações morfológicas, nas quais a forma e a conectividade dos objetos são os principais aspectos analisados.</p>
+</section>
+<section id="conceitos-fundamentais-da-morfologia-matemática" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="conceitos-fundamentais-da-morfologia-matemática"><span class="header-section-number">7.2</span> Conceitos Fundamentais da Morfologia Matemática</h2>
+<p>A morfologia matemática baseia-se na teoria dos conjuntos. Uma imagem binária pode ser interpretada como um conjunto de pontos no plano bidimensional, correspondentes aos pixels de valor 1.</p>
+<p>As operações morfológicas envolvem dois conjuntos principais:</p>
+<ul>
+<li><strong>Imagem</strong>: o conjunto que representa os objetos de interesse;</li>
+<li><strong>Elemento estruturante</strong>: um pequeno conjunto que define a forma e a escala da operação.</li>
+</ul>
+<p>O elemento estruturante atua como uma sonda que percorre a imagem, permitindo analisar e modificar suas estruturas geométricas.</p>
+</section>
+<section id="elemento-estruturante" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="elemento-estruturante"><span class="header-section-number">7.3</span> Elemento Estruturante</h2>
+<p>O <strong>elemento estruturante</strong> é um componente central da morfologia matemática. Ele pode assumir diferentes formas, como linhas, quadrados, discos ou cruzes, e possui um ponto de origem que define sua posição relativa durante as operações.</p>
+<p>A escolha do elemento estruturante influencia diretamente o resultado das operações morfológicas, pois determina quais características geométricas serão preservadas, realçadas ou removidas.</p>
+</section>
+<section id="dilatação" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="dilatação"><span class="header-section-number">7.4</span> Dilatação</h2>
+<p>A <strong>dilatação</strong> é uma operação morfológica que tende a expandir as regiões dos objetos em uma imagem binária. Formalmente, a dilatação de um conjunto (A) por um elemento estruturante (B) é definida como:</p>
+<p><span class="math display">\[
+A \oplus B = \{ z \mid (\hat{B})_z \cap A \neq \varnothing \}
+\]</span></p>
+<p>onde <span class="math inline">\(\hat{B}\)</span> representa a reflexão do elemento estruturante (B).</p>
+<p>A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos.</p>
+</section>
+<section id="erosão" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="erosão"><span class="header-section-number">7.5</span> Erosão</h2>
+<p>A <strong>erosão</strong> é a operação dual da dilatação e tem como efeito principal a redução das regiões dos objetos. A erosão de um conjunto (A) por um elemento estruturante (B) é definida como:</p>
+<p><span class="math display">\[
+A \ominus B = \{ z \mid B_z \subseteq A \}
+\]</span></p>
+<p>Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.</p>
+</section>
+<section id="abertura" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="abertura"><span class="header-section-number">7.6</span> Abertura</h2>
+<p>A <strong>abertura</strong> é uma operação composta, definida como a erosão seguida de uma dilatação utilizando o mesmo elemento estruturante:</p>
+<p><span class="math display">\[
+A \circ B = (A \ominus B) \oplus B
+\]</span></p>
+<p>A abertura é utilizada para remover objetos pequenos e detalhes finos, preservando a forma geral das estruturas maiores presentes na imagem.</p>
+</section>
+<section id="fechamento" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="fechamento"><span class="header-section-number">7.7</span> Fechamento</h2>
+<p>O <strong>fechamento</strong> é a operação dual da abertura, definida como a dilatação seguida de uma erosão:</p>
+<p><span class="math display">\[
+A \bullet B = (A \oplus B) \ominus B
+\]</span></p>
+<p>Essa operação é eficaz para preencher pequenas lacunas e buracos nos objetos, além de suavizar contornos externos.</p>
+</section>
+<section id="propriedades-das-operações-morfológicas" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="propriedades-das-operações-morfológicas"><span class="header-section-number">7.8</span> Propriedades das Operações Morfológicas</h2>
+<p>As operações morfológicas apresentam propriedades importantes, como:</p>
+<ul>
+<li><strong>Idempotência</strong>: a aplicação repetida de abertura ou fechamento não altera o resultado após a primeira aplicação;</li>
+<li><strong>Dualidade</strong>: erosão e dilatação, assim como abertura e fechamento, são operações duais;</li>
+<li><strong>Invariância por translação</strong>: o resultado das operações não depende da posição absoluta dos objetos na imagem.</li>
+</ul>
+<p>Essas propriedades fornecem uma base teórica sólida para o uso da morfologia matemática em sistemas de processamento de imagens.</p>
+</section>
+<section id="aplicações-da-morfologia-binária" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="aplicações-da-morfologia-binária"><span class="header-section-number">7.9</span> Aplicações da Morfologia Binária</h2>
+<p>A morfologia matemática binária é amplamente utilizada em diversas aplicações, tais como:</p>
+<ul>
+<li>remoção de ruído impulsivo;</li>
+<li>preenchimento de regiões;</li>
+<li>extração de contornos;</li>
+<li>análise de conectividade;</li>
+<li>pré-processamento para segmentação e reconhecimento de padrões.</li>
+</ul>
+<p>Sua simplicidade conceitual e eficiência computacional fazem da morfologia uma ferramenta essencial em PDI.</p>
+</section>
+<section id="morfologia-matemática-em-tons-de-cinza" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="morfologia-matemática-em-tons-de-cinza"><span class="header-section-number">7.10</span> Morfologia Matemática em Tons de Cinza</h2>
 <p>A <strong>Morfologia Matemática em tons de cinza</strong> estende os conceitos da morfologia binária para imagens cujos pixels assumem valores de intensidade em um intervalo contínuo ou discreto mais amplo. Enquanto a morfologia binária opera sobre conjuntos, a morfologia em tons de cinza trabalha diretamente com <strong>funções de intensidade</strong>, permitindo a análise e o processamento da forma considerando variações graduais de brilho.</p>
 <p>Este capítulo apresenta os fundamentos teóricos e operacionais da morfologia matemática em tons de cinza, destacando seus principais operadores e aplicações em processamento e análise de imagens.</p>
-<section id="imagens-em-tons-de-cinza" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="imagens-em-tons-de-cinza"><span class="header-section-number">8.1</span> Imagens em Tons de Cinza</h2>
+</section>
+<section id="imagens-em-tons-de-cinza" class="level2" data-number="7.11">
+<h2 data-number="7.11" class="anchored" data-anchor-id="imagens-em-tons-de-cinza"><span class="header-section-number">7.11</span> Imagens em Tons de Cinza</h2>
 <p>Uma imagem em tons de cinza pode ser modelada como uma função bidimensional (f(x,y)), na qual cada ponto ((x,y)) assume um valor de intensidade pertencente a um conjunto ordenado, normalmente ({0,1,,L-1}). Essa representação permite descrever variações suaves de brilho, essenciais para a análise de superfícies, texturas e estruturas naturais.</p>
 <p>Diferentemente das imagens binárias, as operações morfológicas em tons de cinza consideram <strong>relações de ordem</strong> entre intensidades, e não apenas a presença ou ausência de pixels.</p>
 </section>
-<section id="fundamentos-da-morfologia-em-tons-de-cinza" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">8.2</span> Fundamentos da Morfologia em Tons de Cinza</h2>
+<section id="fundamentos-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.12">
+<h2 data-number="7.12" class="anchored" data-anchor-id="fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.12</span> Fundamentos da Morfologia em Tons de Cinza</h2>
 <p>A morfologia matemática em tons de cinza baseia-se em operadores de <strong>máximo</strong> e <strong>mínimo</strong> aplicados localmente à imagem, utilizando um <strong>elemento estruturante</strong> que também pode ser definido como uma função.</p>
 <p>Seja (f) a imagem de entrada e (b) um elemento estruturante. As operações morfológicas são definidas de forma a preservar e analisar a geometria das superfícies de intensidade da imagem.</p>
 </section>
-<section id="elemento-estruturante" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="elemento-estruturante"><span class="header-section-number">8.3</span> Elemento Estruturante</h2>
+<section id="elemento-estruturante-1" class="level2" data-number="7.13">
+<h2 data-number="7.13" class="anchored" data-anchor-id="elemento-estruturante-1"><span class="header-section-number">7.13</span> Elemento Estruturante</h2>
 <p>Na morfologia em tons de cinza, o elemento estruturante pode ser:</p>
 <ul>
 <li><strong>Plano (flat)</strong>: assume valor constante, geralmente zero;</li>
@@ -294,40 +383,40 @@ window.Quarto = {
 </ul>
 <p>Elementos estruturantes planos são os mais utilizados na prática, pois simplificam as operações e facilitam a interpretação dos resultados.</p>
 </section>
-<section id="dilatação-em-tons-de-cinza" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="dilatação-em-tons-de-cinza"><span class="header-section-number">8.4</span> Dilatação em Tons de Cinza</h2>
+<section id="dilatação-em-tons-de-cinza" class="level2" data-number="7.14">
+<h2 data-number="7.14" class="anchored" data-anchor-id="dilatação-em-tons-de-cinza"><span class="header-section-number">7.14</span> Dilatação em Tons de Cinza</h2>
 <p>A <strong>dilatação</strong> em tons de cinza tende a realçar regiões claras e expandir máximos locais. Para um elemento estruturante plano, a dilatação é definida como:</p>
 <p><span class="math display">\[
 (f \oplus b)(x,y) = \max_{(s,t) \in b} { f(x - s, y - t) }
 \]</span></p>
 <p>Essa operação eleva os valores de intensidade nas vizinhanças definidas pelo elemento estruturante, sendo útil para realçar detalhes claros e preencher vales rasos.</p>
 </section>
-<section id="erosão-em-tons-de-cinza" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="erosão-em-tons-de-cinza"><span class="header-section-number">8.5</span> Erosão em Tons de Cinza</h2>
+<section id="erosão-em-tons-de-cinza" class="level2" data-number="7.15">
+<h2 data-number="7.15" class="anchored" data-anchor-id="erosão-em-tons-de-cinza"><span class="header-section-number">7.15</span> Erosão em Tons de Cinza</h2>
 <p>A <strong>erosão</strong> em tons de cinza é a operação dual da dilatação e tem como efeito principal a atenuação de regiões claras e a expansão de mínimos locais. Para um elemento estruturante plano, a erosão é definida como:</p>
 <p><span class="math display">\[
 (f \ominus b)(x,y) = \min_{(s,t) \in b} { f(x + s, y + t) }
 \]</span></p>
 <p>Essa operação é utilizada para eliminar picos isolados e reduzir variações abruptas de intensidade.</p>
 </section>
-<section id="abertura-em-tons-de-cinza" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="abertura-em-tons-de-cinza"><span class="header-section-number">8.6</span> Abertura em Tons de Cinza</h2>
+<section id="abertura-em-tons-de-cinza" class="level2" data-number="7.16">
+<h2 data-number="7.16" class="anchored" data-anchor-id="abertura-em-tons-de-cinza"><span class="header-section-number">7.16</span> Abertura em Tons de Cinza</h2>
 <p>A <strong>abertura</strong> em tons de cinza é definida como a erosão seguida de uma dilatação:</p>
 <p><span class="math display">\[
 f \circ b = (f \ominus b) \oplus b
 \]</span></p>
 <p>A abertura suaviza a imagem, removendo picos brilhantes menores que o elemento estruturante, enquanto preserva a forma geral das regiões maiores.</p>
 </section>
-<section id="fechamento-em-tons-de-cinza" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="fechamento-em-tons-de-cinza"><span class="header-section-number">8.7</span> Fechamento em Tons de Cinza</h2>
+<section id="fechamento-em-tons-de-cinza" class="level2" data-number="7.17">
+<h2 data-number="7.17" class="anchored" data-anchor-id="fechamento-em-tons-de-cinza"><span class="header-section-number">7.17</span> Fechamento em Tons de Cinza</h2>
 <p>O <strong>fechamento</strong> é a operação dual da abertura, definido como:</p>
 <p><span class="math display">\[
 f \bullet b = (f \oplus b) \ominus b
 \]</span></p>
 <p>Essa operação é eficaz para preencher vales escuros e suavizar descontinuidades negativas na superfície de intensidade.</p>
 </section>
-<section id="propriedades-das-operações-morfológicas" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="propriedades-das-operações-morfológicas"><span class="header-section-number">8.8</span> Propriedades das Operações Morfológicas</h2>
+<section id="propriedades-das-operações-morfológicas-1" class="level2" data-number="7.18">
+<h2 data-number="7.18" class="anchored" data-anchor-id="propriedades-das-operações-morfológicas-1"><span class="header-section-number">7.18</span> Propriedades das Operações Morfológicas</h2>
 <p>As operações morfológicas em tons de cinza compartilham diversas propriedades com suas contrapartes binárias, tais como:</p>
 <ul>
 <li><strong>Dualidade</strong> entre erosão e dilatação;</li>
@@ -337,8 +426,8 @@ f \bullet b = (f \oplus b) \ominus b
 </ul>
 <p>Essas propriedades garantem previsibilidade e consistência no comportamento dos operadores morfológicos.</p>
 </section>
-<section id="aplicações-da-morfologia-em-tons-de-cinza" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">8.9</span> Aplicações da Morfologia em Tons de Cinza</h2>
+<section id="aplicações-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.19">
+<h2 data-number="7.19" class="anchored" data-anchor-id="aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.19</span> Aplicações da Morfologia em Tons de Cinza</h2>
 <p>A morfologia matemática em tons de cinza é amplamente utilizada em aplicações como:</p>
 <ul>
 <li>realce e suavização de imagens;</li>
@@ -349,8 +438,8 @@ f \bullet b = (f \oplus b) \ominus b
 </ul>
 <p>Sua capacidade de preservar características geométricas torna-a especialmente útil em imagens naturais e médicas.</p>
 </section>
-<section id="considerações-finais" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">8.10</span> Considerações Finais</h2>
+<section id="considerações-finais" class="level2" data-number="7.20">
+<h2 data-number="7.20" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">7.20</span> Considerações Finais</h2>
 <p>A morfologia matemática em tons de cinza amplia significativamente o alcance das técnicas morfológicas, permitindo o processamento direto de imagens com variações graduais de intensidade. A compreensão de seus operadores fundamentais é essencial para o desenvolvimento de métodos avançados de análise e processamento de imagens.</p>
 <p>Os conceitos apresentados neste capítulo estabelecem a base para aplicações mais complexas, incluindo morfologia multiescala e transformações morfológicas avançadas.</p>
 
@@ -760,13 +849,13 @@ f \bullet b = (f \oplus b) \ominus b
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/morfobinaria.html" class="pagination-link" aria-label="Morfologia Matemática Binária">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática Binária</span></span>
+      <a href="../chapters/cor.html" class="pagination-link" aria-label="Imagens Coloridas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/segmentacao.html" class="pagination-link" aria-label="Segmentação de Imagens">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

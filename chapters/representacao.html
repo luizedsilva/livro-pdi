@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Representação e Descrição de Imagens – Processamento de Imagens</title>
+<title>9&nbsp; Representação e Descrição de Imagens – Processamento de Imagens</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/representacao.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/representacao.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -182,44 +182,38 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/morfobinaria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática Binária</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/morfocinza.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Morfologia Matemática em Tons de Cinza</span></span></a>
+  <a href="../chapters/morfologia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/segmentacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/representacao.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/interpretacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/opencv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Conclusão</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Conclusão</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -238,20 +232,20 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#representação-de-regiões" id="toc-representação-de-regiões" class="nav-link active" data-scroll-target="#representação-de-regiões"><span class="header-section-number">10.1</span> Representação de Regiões</a></li>
-  <li><a href="#representação-por-contorno" id="toc-representação-por-contorno" class="nav-link" data-scroll-target="#representação-por-contorno"><span class="header-section-number">10.2</span> Representação por Contorno</a>
+  <li><a href="#representação-de-regiões" id="toc-representação-de-regiões" class="nav-link active" data-scroll-target="#representação-de-regiões"><span class="header-section-number">9.1</span> Representação de Regiões</a></li>
+  <li><a href="#representação-por-contorno" id="toc-representação-por-contorno" class="nav-link" data-scroll-target="#representação-por-contorno"><span class="header-section-number">9.2</span> Representação por Contorno</a>
   <ul class="collapse">
-  <li><a href="#codificação-por-cadeia" id="toc-codificação-por-cadeia" class="nav-link" data-scroll-target="#codificação-por-cadeia"><span class="header-section-number">10.2.1</span> Codificação por Cadeia</a></li>
-  <li><a href="#assinaturas-de-forma" id="toc-assinaturas-de-forma" class="nav-link" data-scroll-target="#assinaturas-de-forma"><span class="header-section-number">10.2.2</span> Assinaturas de Forma</a></li>
+  <li><a href="#codificação-por-cadeia" id="toc-codificação-por-cadeia" class="nav-link" data-scroll-target="#codificação-por-cadeia"><span class="header-section-number">9.2.1</span> Codificação por Cadeia</a></li>
+  <li><a href="#assinaturas-de-forma" id="toc-assinaturas-de-forma" class="nav-link" data-scroll-target="#assinaturas-de-forma"><span class="header-section-number">9.2.2</span> Assinaturas de Forma</a></li>
   </ul></li>
-  <li><a href="#representação-por-região" id="toc-representação-por-região" class="nav-link" data-scroll-target="#representação-por-região"><span class="header-section-number">10.3</span> Representação por Região</a></li>
-  <li><a href="#descrição-de-regiões" id="toc-descrição-de-regiões" class="nav-link" data-scroll-target="#descrição-de-regiões"><span class="header-section-number">10.4</span> Descrição de Regiões</a></li>
-  <li><a href="#descritores-geométricos" id="toc-descritores-geométricos" class="nav-link" data-scroll-target="#descritores-geométricos"><span class="header-section-number">10.5</span> Descritores Geométricos</a></li>
-  <li><a href="#momentos-de-imagem" id="toc-momentos-de-imagem" class="nav-link" data-scroll-target="#momentos-de-imagem"><span class="header-section-number">10.6</span> Momentos de Imagem</a></li>
-  <li><a href="#descritores-de-textura" id="toc-descritores-de-textura" class="nav-link" data-scroll-target="#descritores-de-textura"><span class="header-section-number">10.7</span> Descritores de Textura</a></li>
-  <li><a href="#normalização-e-invariância" id="toc-normalização-e-invariância" class="nav-link" data-scroll-target="#normalização-e-invariância"><span class="header-section-number">10.8</span> Normalização e Invariância</a></li>
-  <li><a href="#aplicações-de-representação-e-descrição" id="toc-aplicações-de-representação-e-descrição" class="nav-link" data-scroll-target="#aplicações-de-representação-e-descrição"><span class="header-section-number">10.9</span> Aplicações de Representação e Descrição</a></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">10.10</span> Considerações Finais</a></li>
+  <li><a href="#representação-por-região" id="toc-representação-por-região" class="nav-link" data-scroll-target="#representação-por-região"><span class="header-section-number">9.3</span> Representação por Região</a></li>
+  <li><a href="#descrição-de-regiões" id="toc-descrição-de-regiões" class="nav-link" data-scroll-target="#descrição-de-regiões"><span class="header-section-number">9.4</span> Descrição de Regiões</a></li>
+  <li><a href="#descritores-geométricos" id="toc-descritores-geométricos" class="nav-link" data-scroll-target="#descritores-geométricos"><span class="header-section-number">9.5</span> Descritores Geométricos</a></li>
+  <li><a href="#momentos-de-imagem" id="toc-momentos-de-imagem" class="nav-link" data-scroll-target="#momentos-de-imagem"><span class="header-section-number">9.6</span> Momentos de Imagem</a></li>
+  <li><a href="#descritores-de-textura" id="toc-descritores-de-textura" class="nav-link" data-scroll-target="#descritores-de-textura"><span class="header-section-number">9.7</span> Descritores de Textura</a></li>
+  <li><a href="#normalização-e-invariância" id="toc-normalização-e-invariância" class="nav-link" data-scroll-target="#normalização-e-invariância"><span class="header-section-number">9.8</span> Normalização e Invariância</a></li>
+  <li><a href="#aplicações-de-representação-e-descrição" id="toc-aplicações-de-representação-e-descrição" class="nav-link" data-scroll-target="#aplicações-de-representação-e-descrição"><span class="header-section-number">9.9</span> Aplicações de Representação e Descrição</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">9.10</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -260,7 +254,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></h1>
 </div>
 
 
@@ -277,10 +271,15 @@ window.Quarto = {
 </header>
 
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../chapters/imgs/representa.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 <p>Após a segmentação, o próximo passo em um sistema de Processamento Digital de Imagens consiste em <strong>representar</strong> e <strong>descrever</strong> as regiões ou objetos identificados. Enquanto a segmentação define <em>onde</em> estão os objetos, a representação e a descrição determinam <em>como</em> esses objetos serão caracterizados para análise posterior, classificação ou reconhecimento.</p>
 <p>Este capítulo aborda os conceitos fundamentais de representação e descrição de imagens, apresentando técnicas clássicas utilizadas para extrair características relevantes de regiões segmentadas.</p>
-<section id="representação-de-regiões" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="representação-de-regiões"><span class="header-section-number">10.1</span> Representação de Regiões</h2>
+<section id="representação-de-regiões" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="representação-de-regiões"><span class="header-section-number">9.1</span> Representação de Regiões</h2>
 <p>A representação de uma região tem como objetivo codificar sua forma e estrutura de maneira adequada ao processamento computacional. Uma boa representação deve ser compacta, discriminativa e robusta a variações irrelevantes.</p>
 <p>As técnicas de representação podem ser classificadas em duas categorias principais:</p>
 <ul>
@@ -289,22 +288,22 @@ window.Quarto = {
 </ul>
 <p>A escolha do tipo de representação depende da aplicação e das propriedades que se deseja analisar.</p>
 </section>
-<section id="representação-por-contorno" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="representação-por-contorno"><span class="header-section-number">10.2</span> Representação por Contorno</h2>
+<section id="representação-por-contorno" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="representação-por-contorno"><span class="header-section-number">9.2</span> Representação por Contorno</h2>
 <p>Na representação por contorno, apenas os pixels que delimitam a região são considerados. Essa abordagem é eficiente quando a forma do objeto é o principal atributo de interesse.</p>
-<section id="codificação-por-cadeia" class="level3" data-number="10.2.1">
-<h3 data-number="10.2.1" class="anchored" data-anchor-id="codificação-por-cadeia"><span class="header-section-number">10.2.1</span> Codificação por Cadeia</h3>
+<section id="codificação-por-cadeia" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="codificação-por-cadeia"><span class="header-section-number">9.2.1</span> Codificação por Cadeia</h3>
 <p>A <strong>codificação por cadeia</strong> descreve um contorno como uma sequência de direções discretas, geralmente baseadas na conectividade 4 ou 8. Cada segmento do contorno é representado por um símbolo que indica a direção do próximo pixel.</p>
 <p>Essa técnica produz uma representação compacta e é particularmente útil para análise de forma, embora seja sensível a ruídos e pequenas variações no contorno.</p>
 </section>
-<section id="assinaturas-de-forma" class="level3" data-number="10.2.2">
-<h3 data-number="10.2.2" class="anchored" data-anchor-id="assinaturas-de-forma"><span class="header-section-number">10.2.2</span> Assinaturas de Forma</h3>
+<section id="assinaturas-de-forma" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="assinaturas-de-forma"><span class="header-section-number">9.2.2</span> Assinaturas de Forma</h3>
 <p>Uma assinatura de forma representa o contorno por meio de uma função unidimensional, geralmente baseada na distância entre pontos do contorno e um ponto de referência, como o centroide.</p>
 <p>Assinaturas facilitam a comparação entre formas, mas podem perder informações locais importantes.</p>
 </section>
 </section>
-<section id="representação-por-região" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="representação-por-região"><span class="header-section-number">10.3</span> Representação por Região</h2>
+<section id="representação-por-região" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="representação-por-região"><span class="header-section-number">9.3</span> Representação por Região</h2>
 <p>As representações por região utilizam todos os pixels que compõem o objeto. Essa abordagem é mais adequada quando propriedades internas, como textura ou intensidade média, são relevantes.</p>
 <p>Entre as representações por região mais comuns estão:</p>
 <ul>
@@ -314,13 +313,13 @@ window.Quarto = {
 </ul>
 <p>Essas representações tendem a ser mais robustas a ruídos locais no contorno.</p>
 </section>
-<section id="descrição-de-regiões" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="descrição-de-regiões"><span class="header-section-number">10.4</span> Descrição de Regiões</h2>
+<section id="descrição-de-regiões" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="descrição-de-regiões"><span class="header-section-number">9.4</span> Descrição de Regiões</h2>
 <p>A descrição de uma região consiste na extração de <strong>atributos quantitativos</strong>, também chamados de <em>features</em>, que caracterizam propriedades geométricas, topológicas ou estatísticas do objeto.</p>
 <p>Esses atributos formam um vetor de características utilizado em etapas posteriores, como classificação ou reconhecimento de padrões.</p>
 </section>
-<section id="descritores-geométricos" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="descritores-geométricos"><span class="header-section-number">10.5</span> Descritores Geométricos</h2>
+<section id="descritores-geométricos" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="descritores-geométricos"><span class="header-section-number">9.5</span> Descritores Geométricos</h2>
 <p>Descritores geométricos caracterizam a forma e o tamanho das regiões. Exemplos comuns incluem:</p>
 <ul>
 <li><strong>área</strong>, definida pelo número de pixels da região;</li>
@@ -330,8 +329,8 @@ window.Quarto = {
 </ul>
 <p>Esses descritores são amplamente utilizados devido à sua simplicidade e interpretação intuitiva.</p>
 </section>
-<section id="momentos-de-imagem" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="momentos-de-imagem"><span class="header-section-number">10.6</span> Momentos de Imagem</h2>
+<section id="momentos-de-imagem" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="momentos-de-imagem"><span class="header-section-number">9.6</span> Momentos de Imagem</h2>
 <p>Os <strong>momentos de imagem</strong> fornecem uma descrição global da distribuição espacial dos pixels em uma região. O momento de ordem ((p,q)) é definido como:</p>
 <p><span class="math display">\[
 m_{pq} = \sum_x \sum_y x^p y^q f(x,y)
@@ -339,18 +338,18 @@ m_{pq} = \sum_x \sum_y x^p y^q f(x,y)
 <p>Momentos podem ser utilizados para calcular propriedades como área, centroide e orientação principal do objeto.</p>
 <p>Momentos invariantes, como os <strong>momentos de Hu</strong>, são particularmente importantes por serem invariantes a transformações geométricas como translação, rotação e escala.</p>
 </section>
-<section id="descritores-de-textura" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="descritores-de-textura"><span class="header-section-number">10.7</span> Descritores de Textura</h2>
+<section id="descritores-de-textura" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="descritores-de-textura"><span class="header-section-number">9.7</span> Descritores de Textura</h2>
 <p>Descritores de textura capturam padrões locais de variação de intensidade dentro de uma região. Esses descritores são úteis para diferenciar objetos com formas semelhantes, mas texturas distintas.</p>
 <p>Entre os métodos clássicos de descrição de textura destacam-se matrizes de coocorrência, filtros estatísticos e medidas baseadas em frequência.</p>
 </section>
-<section id="normalização-e-invariância" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="normalização-e-invariância"><span class="header-section-number">10.8</span> Normalização e Invariância</h2>
+<section id="normalização-e-invariância" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="normalização-e-invariância"><span class="header-section-number">9.8</span> Normalização e Invariância</h2>
 <p>Para que descritores sejam eficazes em sistemas de reconhecimento, é desejável que sejam invariantes a transformações irrelevantes, como mudanças de posição, orientação ou escala.</p>
 <p>Técnicas de normalização são frequentemente aplicadas para garantir comparabilidade entre objetos extraídos de imagens diferentes.</p>
 </section>
-<section id="aplicações-de-representação-e-descrição" class="level2" data-number="10.9">
-<h2 data-number="10.9" class="anchored" data-anchor-id="aplicações-de-representação-e-descrição"><span class="header-section-number">10.9</span> Aplicações de Representação e Descrição</h2>
+<section id="aplicações-de-representação-e-descrição" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="aplicações-de-representação-e-descrição"><span class="header-section-number">9.9</span> Aplicações de Representação e Descrição</h2>
 <p>A representação e a descrição de imagens são etapas fundamentais em aplicações como:</p>
 <ul>
 <li>reconhecimento de padrões;</li>
@@ -361,8 +360,8 @@ m_{pq} = \sum_x \sum_y x^p y^q f(x,y)
 </ul>
 <p>A qualidade dos descritores influencia diretamente o desempenho dessas aplicações.</p>
 </section>
-<section id="considerações-finais" class="level2" data-number="10.10">
-<h2 data-number="10.10" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">10.10</span> Considerações Finais</h2>
+<section id="considerações-finais" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">9.10</span> Considerações Finais</h2>
 <p>A representação e a descrição de imagens constituem o elo entre a segmentação e o reconhecimento de padrões. A escolha adequada de representações e descritores é essencial para capturar as características relevantes dos objetos e garantir o sucesso das etapas posteriores.</p>
 <p>Os conceitos apresentados neste capítulo fornecem uma base sólida para o estudo de técnicas avançadas de análise de imagens e aprendizado de máquina aplicado à visão computacional.</p>
 
@@ -773,12 +772,12 @@ m_{pq} = \sum_x \sum_y x^p y^q f(x,y)
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/segmentacao.html" class="pagination-link" aria-label="Segmentação de Imagens">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/interpretacao.html" class="pagination-link" aria-label="Reconhecimento e Interpretação de Imagens Coloridas">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

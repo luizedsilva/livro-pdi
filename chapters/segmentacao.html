@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Segmentação de Imagens – Processamento de Imagens</title>
+<title>8&nbsp; Segmentação de Imagens – Processamento de Imagens</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/representacao.html" rel="next">
-<link href="../chapters/morfocinza.html" rel="prev">
+<link href="../chapters/morfologia.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -113,7 +113,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/segmentacao.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/segmentacao.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -182,44 +182,38 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/morfobinaria.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática Binária</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/morfocinza.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Morfologia Matemática em Tons de Cinza</span></span></a>
+  <a href="../chapters/morfologia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/segmentacao.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/representacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/interpretacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/opencv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Conclusão</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Conclusão</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -238,23 +232,23 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#conceito-de-segmentação" id="toc-conceito-de-segmentação" class="nav-link active" data-scroll-target="#conceito-de-segmentação"><span class="header-section-number">9.1</span> Conceito de Segmentação</a></li>
-  <li><a href="#abordagens-gerais-para-segmentação" id="toc-abordagens-gerais-para-segmentação" class="nav-link" data-scroll-target="#abordagens-gerais-para-segmentação"><span class="header-section-number">9.2</span> Abordagens Gerais para Segmentação</a></li>
-  <li><a href="#segmentação-baseada-em-descontinuidades" id="toc-segmentação-baseada-em-descontinuidades" class="nav-link" data-scroll-target="#segmentação-baseada-em-descontinuidades"><span class="header-section-number">9.3</span> Segmentação Baseada em Descontinuidades</a>
+  <li><a href="#conceito-de-segmentação" id="toc-conceito-de-segmentação" class="nav-link active" data-scroll-target="#conceito-de-segmentação"><span class="header-section-number">8.1</span> Conceito de Segmentação</a></li>
+  <li><a href="#abordagens-gerais-para-segmentação" id="toc-abordagens-gerais-para-segmentação" class="nav-link" data-scroll-target="#abordagens-gerais-para-segmentação"><span class="header-section-number">8.2</span> Abordagens Gerais para Segmentação</a></li>
+  <li><a href="#segmentação-baseada-em-descontinuidades" id="toc-segmentação-baseada-em-descontinuidades" class="nav-link" data-scroll-target="#segmentação-baseada-em-descontinuidades"><span class="header-section-number">8.3</span> Segmentação Baseada em Descontinuidades</a>
   <ul class="collapse">
-  <li><a href="#detecção-de-bordas" id="toc-detecção-de-bordas" class="nav-link" data-scroll-target="#detecção-de-bordas"><span class="header-section-number">9.3.1</span> Detecção de Bordas</a></li>
-  <li><a href="#operadores-de-detecção" id="toc-operadores-de-detecção" class="nav-link" data-scroll-target="#operadores-de-detecção"><span class="header-section-number">9.3.2</span> Operadores de Detecção</a></li>
+  <li><a href="#detecção-de-bordas" id="toc-detecção-de-bordas" class="nav-link" data-scroll-target="#detecção-de-bordas"><span class="header-section-number">8.3.1</span> Detecção de Bordas</a></li>
+  <li><a href="#operadores-de-detecção" id="toc-operadores-de-detecção" class="nav-link" data-scroll-target="#operadores-de-detecção"><span class="header-section-number">8.3.2</span> Operadores de Detecção</a></li>
   </ul></li>
-  <li><a href="#segmentação-baseada-em-similaridades" id="toc-segmentação-baseada-em-similaridades" class="nav-link" data-scroll-target="#segmentação-baseada-em-similaridades"><span class="header-section-number">9.4</span> Segmentação Baseada em Similaridades</a>
+  <li><a href="#segmentação-baseada-em-similaridades" id="toc-segmentação-baseada-em-similaridades" class="nav-link" data-scroll-target="#segmentação-baseada-em-similaridades"><span class="header-section-number">8.4</span> Segmentação Baseada em Similaridades</a>
   <ul class="collapse">
-  <li><a href="#limiarização" id="toc-limiarização" class="nav-link" data-scroll-target="#limiarização"><span class="header-section-number">9.4.1</span> Limiarização</a></li>
-  <li><a href="#limiarização-global-e-adaptativa" id="toc-limiarização-global-e-adaptativa" class="nav-link" data-scroll-target="#limiarização-global-e-adaptativa"><span class="header-section-number">9.4.2</span> Limiarização Global e Adaptativa</a></li>
+  <li><a href="#limiarização" id="toc-limiarização" class="nav-link" data-scroll-target="#limiarização"><span class="header-section-number">8.4.1</span> Limiarização</a></li>
+  <li><a href="#limiarização-global-e-adaptativa" id="toc-limiarização-global-e-adaptativa" class="nav-link" data-scroll-target="#limiarização-global-e-adaptativa"><span class="header-section-number">8.4.2</span> Limiarização Global e Adaptativa</a></li>
   </ul></li>
-  <li><a href="#segmentação-por-crescimento-de-regiões" id="toc-segmentação-por-crescimento-de-regiões" class="nav-link" data-scroll-target="#segmentação-por-crescimento-de-regiões"><span class="header-section-number">9.5</span> Segmentação por Crescimento de Regiões</a></li>
-  <li><a href="#segmentação-por-divisão-e-fusão" id="toc-segmentação-por-divisão-e-fusão" class="nav-link" data-scroll-target="#segmentação-por-divisão-e-fusão"><span class="header-section-number">9.6</span> Segmentação por Divisão e Fusão</a></li>
-  <li><a href="#segmentação-baseada-em-morfologia" id="toc-segmentação-baseada-em-morfologia" class="nav-link" data-scroll-target="#segmentação-baseada-em-morfologia"><span class="header-section-number">9.7</span> Segmentação Baseada em Morfologia</a></li>
-  <li><a href="#desafios-da-segmentação" id="toc-desafios-da-segmentação" class="nav-link" data-scroll-target="#desafios-da-segmentação"><span class="header-section-number">9.8</span> Desafios da Segmentação</a></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">9.9</span> Considerações Finais</a></li>
+  <li><a href="#segmentação-por-crescimento-de-regiões" id="toc-segmentação-por-crescimento-de-regiões" class="nav-link" data-scroll-target="#segmentação-por-crescimento-de-regiões"><span class="header-section-number">8.5</span> Segmentação por Crescimento de Regiões</a></li>
+  <li><a href="#segmentação-por-divisão-e-fusão" id="toc-segmentação-por-divisão-e-fusão" class="nav-link" data-scroll-target="#segmentação-por-divisão-e-fusão"><span class="header-section-number">8.6</span> Segmentação por Divisão e Fusão</a></li>
+  <li><a href="#segmentação-baseada-em-morfologia" id="toc-segmentação-baseada-em-morfologia" class="nav-link" data-scroll-target="#segmentação-baseada-em-morfologia"><span class="header-section-number">8.7</span> Segmentação Baseada em Morfologia</a></li>
+  <li><a href="#desafios-da-segmentação" id="toc-desafios-da-segmentação" class="nav-link" data-scroll-target="#desafios-da-segmentação"><span class="header-section-number">8.8</span> Desafios da Segmentação</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">8.9</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -263,7 +257,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Segmentação de Imagens</span></h1>
 </div>
 
 
@@ -280,10 +274,15 @@ window.Quarto = {
 </header>
 
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../chapters/imgs/segmenta.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 <p>A <strong>segmentação de imagens</strong> é uma das etapas mais importantes do Processamento Digital de Imagens, pois tem como objetivo particionar uma imagem em regiões ou objetos que sejam significativos para uma determinada aplicação. Diferentemente do melhoramento, cujo foco é a aparência visual, a segmentação busca <strong>identificar e separar estruturas relevantes</strong>, servindo como base para tarefas posteriores como reconhecimento, descrição e interpretação.</p>
 <p>O sucesso de um sistema de visão computacional está fortemente relacionado à qualidade da segmentação realizada. Por essa razão, a segmentação é considerada uma das tarefas mais desafiadoras da área.</p>
-<section id="conceito-de-segmentação" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="conceito-de-segmentação"><span class="header-section-number">9.1</span> Conceito de Segmentação</h2>
+<section id="conceito-de-segmentação" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="conceito-de-segmentação"><span class="header-section-number">8.1</span> Conceito de Segmentação</h2>
 <p>Segmentar uma imagem consiste em dividi-la em subconjuntos disjuntos, de modo que cada região seja homogênea segundo um critério pré-definido, como intensidade, cor, textura ou forma. Em termos formais, a segmentação deve satisfazer propriedades como:</p>
 <ul>
 <li>cada pixel pertence a uma única região;</li>
@@ -292,8 +291,8 @@ window.Quarto = {
 </ul>
 <p>Esses critérios variam conforme o domínio da aplicação e as características da imagem.</p>
 </section>
-<section id="abordagens-gerais-para-segmentação" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="abordagens-gerais-para-segmentação"><span class="header-section-number">9.2</span> Abordagens Gerais para Segmentação</h2>
+<section id="abordagens-gerais-para-segmentação" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="abordagens-gerais-para-segmentação"><span class="header-section-number">8.2</span> Abordagens Gerais para Segmentação</h2>
 <p>As técnicas de segmentação podem ser agrupadas em duas grandes categorias:</p>
 <ul>
 <li><strong>segmentação baseada em descontinuidades</strong>, que explora mudanças abruptas nos valores de intensidade;</li>
@@ -301,24 +300,24 @@ window.Quarto = {
 </ul>
 <p>Cada abordagem apresenta vantagens e limitações, sendo comum a combinação de múltiplas técnicas em aplicações práticas.</p>
 </section>
-<section id="segmentação-baseada-em-descontinuidades" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="segmentação-baseada-em-descontinuidades"><span class="header-section-number">9.3</span> Segmentação Baseada em Descontinuidades</h2>
+<section id="segmentação-baseada-em-descontinuidades" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="segmentação-baseada-em-descontinuidades"><span class="header-section-number">8.3</span> Segmentação Baseada em Descontinuidades</h2>
 <p>As técnicas baseadas em descontinuidades identificam pontos, linhas ou bordas na imagem. A presença de uma borda geralmente indica uma transição entre regiões distintas.</p>
-<section id="detecção-de-bordas" class="level3" data-number="9.3.1">
-<h3 data-number="9.3.1" class="anchored" data-anchor-id="detecção-de-bordas"><span class="header-section-number">9.3.1</span> Detecção de Bordas</h3>
+<section id="detecção-de-bordas" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="detecção-de-bordas"><span class="header-section-number">8.3.1</span> Detecção de Bordas</h3>
 <p>A detecção de bordas baseia-se na identificação de variações significativas de intensidade. Operadores diferenciais, como gradientes e Laplacianos, são amplamente utilizados para esse fim.</p>
 <p>O resultado desse processo é uma imagem que destaca as bordas dos objetos, que podem ser posteriormente utilizadas para definir regiões.</p>
 </section>
-<section id="operadores-de-detecção" class="level3" data-number="9.3.2">
-<h3 data-number="9.3.2" class="anchored" data-anchor-id="operadores-de-detecção"><span class="header-section-number">9.3.2</span> Operadores de Detecção</h3>
+<section id="operadores-de-detecção" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="operadores-de-detecção"><span class="header-section-number">8.3.2</span> Operadores de Detecção</h3>
 <p>Diversos operadores foram propostos para detecção de bordas, incluindo operadores clássicos como Roberts, Prewitt e Sobel. Esses operadores utilizam máscaras convolucionais para estimar derivadas espaciais da imagem.</p>
 </section>
 </section>
-<section id="segmentação-baseada-em-similaridades" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="segmentação-baseada-em-similaridades"><span class="header-section-number">9.4</span> Segmentação Baseada em Similaridades</h2>
+<section id="segmentação-baseada-em-similaridades" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="segmentação-baseada-em-similaridades"><span class="header-section-number">8.4</span> Segmentação Baseada em Similaridades</h2>
 <p>Na segmentação baseada em similaridades, pixels com características semelhantes são agrupados em regiões. Essa abordagem assume que objetos de interesse apresentam propriedades relativamente homogêneas.</p>
-<section id="limiarização" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="limiarização"><span class="header-section-number">9.4.1</span> Limiarização</h3>
+<section id="limiarização" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="limiarização"><span class="header-section-number">8.4.1</span> Limiarização</h3>
 <p>A <strong>limiarização</strong> é uma das técnicas mais simples e utilizadas de segmentação. Ela consiste em classificar pixels com base em um ou mais valores de limiar.</p>
 <p>Em sua forma mais simples, um único limiar (T) é utilizado:</p>
 <p><span class="math display">\[
@@ -330,33 +329,33 @@ g(x,y) =
 \]</span></p>
 <p>A escolha adequada do limiar é crucial para o sucesso da segmentação.</p>
 </section>
-<section id="limiarização-global-e-adaptativa" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="limiarização-global-e-adaptativa"><span class="header-section-number">9.4.2</span> Limiarização Global e Adaptativa</h3>
+<section id="limiarização-global-e-adaptativa" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="limiarização-global-e-adaptativa"><span class="header-section-number">8.4.2</span> Limiarização Global e Adaptativa</h3>
 <p>Na limiarização global, um único valor de limiar é aplicado a toda a imagem. Já na limiarização adaptativa, o limiar varia conforme regiões locais da imagem, sendo mais adequada para imagens com iluminação não uniforme.</p>
 </section>
 </section>
-<section id="segmentação-por-crescimento-de-regiões" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="segmentação-por-crescimento-de-regiões"><span class="header-section-number">9.5</span> Segmentação por Crescimento de Regiões</h2>
+<section id="segmentação-por-crescimento-de-regiões" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="segmentação-por-crescimento-de-regiões"><span class="header-section-number">8.5</span> Segmentação por Crescimento de Regiões</h2>
 <p>O crescimento de regiões inicia-se a partir de pixels-semente e expande as regiões incorporando pixels vizinhos que satisfaçam critérios de similaridade.</p>
 <p>Essa técnica é intuitiva e permite bom controle sobre a segmentação, mas depende fortemente da escolha das sementes iniciais.</p>
 </section>
-<section id="segmentação-por-divisão-e-fusão" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="segmentação-por-divisão-e-fusão"><span class="header-section-number">9.6</span> Segmentação por Divisão e Fusão</h2>
+<section id="segmentação-por-divisão-e-fusão" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="segmentação-por-divisão-e-fusão"><span class="header-section-number">8.6</span> Segmentação por Divisão e Fusão</h2>
 <p>A segmentação por divisão e fusão combina duas estratégias complementares. Inicialmente, a imagem é dividida em regiões menores até que um critério de homogeneidade seja satisfeito. Em seguida, regiões adjacentes semelhantes são fundidas.</p>
 <p>Esse método é frequentemente implementado por meio de estruturas hierárquicas, como árvores quadtree.</p>
 </section>
-<section id="segmentação-baseada-em-morfologia" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="segmentação-baseada-em-morfologia"><span class="header-section-number">9.7</span> Segmentação Baseada em Morfologia</h2>
+<section id="segmentação-baseada-em-morfologia" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="segmentação-baseada-em-morfologia"><span class="header-section-number">8.7</span> Segmentação Baseada em Morfologia</h2>
 <p>Operações morfológicas podem ser utilizadas para auxiliar na segmentação, especialmente em imagens binárias ou em tons de cinza. Técnicas como abertura, fechamento e reconstrução morfológica permitem remover ruídos e separar objetos conectados.</p>
 <p>A morfologia matemática é particularmente útil como etapa de pré-processamento ou pós-processamento em sistemas de segmentação.</p>
 </section>
-<section id="desafios-da-segmentação" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="desafios-da-segmentação"><span class="header-section-number">9.8</span> Desafios da Segmentação</h2>
+<section id="desafios-da-segmentação" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="desafios-da-segmentação"><span class="header-section-number">8.8</span> Desafios da Segmentação</h2>
 <p>Apesar dos inúmeros métodos existentes, a segmentação continua sendo um problema aberto em muitas aplicações. Fatores como ruído, variações de iluminação, oclusões e diversidade de formas tornam difícil a definição de critérios universais.</p>
 <p>Por esse motivo, a segmentação é frequentemente ajustada ao problema específico e integrada a outras etapas do processamento de imagens.</p>
 </section>
-<section id="considerações-finais" class="level2" data-number="9.9">
-<h2 data-number="9.9" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">9.9</span> Considerações Finais</h2>
+<section id="considerações-finais" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">8.9</span> Considerações Finais</h2>
 <p>A segmentação de imagens constitui um passo essencial para a interpretação automática de cenas. A escolha da técnica adequada depende das características da imagem e dos objetivos da aplicação.</p>
 <p>Os métodos apresentados neste capítulo fornecem uma base conceitual para o desenvolvimento de sistemas de segmentação robustos, que podem ser combinados com técnicas avançadas de aprendizado de máquina e visão computacional.</p>
 
@@ -766,13 +765,13 @@ g(x,y) =
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/morfocinza.html" class="pagination-link" aria-label="Morfologia Matemática em Tons de Cinza">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Morfologia Matemática em Tons de Cinza</span></span>
+      <a href="../chapters/morfologia.html" class="pagination-link" aria-label="Morfologia Matemática">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/representacao.html" class="pagination-link" aria-label="Representação e Descrição de Imagens">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Representação e Descrição de Imagens</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
