@@ -545,7 +545,7 @@ Figura&nbsp;2.11: Ilustração da imagem com superfície
 </figcaption>
 </figure>
 </div>
-<p>O exemplo interativo seguinte permite uma visualização de uma imagem como superfície:</p>
+<p>O exemplo interativo seguinte permite uma visualização de uma imagem como superfície. Use o mouse para movimentar a imagem representada como superfície.</p>
 <!-- Conteúdo interativo (HTML) -->
 <div style="display:flex; justify-content:center;">
 <iframe src="https://editor.p5js.org/luizedsilva/full/7vlY9trVV" width="100%" height="600" style="border:none; overflow:hiddeln;">
@@ -582,7 +582,13 @@ Figura&nbsp;2.11: Ilustração da imagem com superfície
 <p>Em conjunto, os formatos PBM, PGM e PPM desempenham um papel fundamental no ensino do Processamento Digital de Imagens, pois tornam explícita a relação entre a representação numérica e a aparência visual das imagens. Ao trabalhar com esses formatos, o estudante pode compreender de forma concreta conceitos como pixel, nível de cinza, cor e quantização, estabelecendo uma base sólida para o estudo de técnicas mais avançadas.</p>
 <section id="para-ler-um-arquivo-pnm" class="level3" data-number="2.7.1">
 <h3 data-number="2.7.1" class="anchored" data-anchor-id="para-ler-um-arquivo-pnm"><span class="header-section-number">2.7.1</span> Para ler um arquivo PNM</h3>
-<p>Abaixo o código em linguagem C para ler arquivo nesses formatos</p>
+<p>O código na <a href="#lst-readimg" class="quarto-xref">Listagem&nbsp;<span>2.1</span></a> está a implementação da função para ler arquivo nos formatos PBM, PGM ou PPM.</p>
+<div id="lst-readimg" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-readimg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listagem&nbsp;2.1
+</figcaption>
+<div aria-describedby="lst-readimg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-fontsize="\small"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-------------------------------------------------------------------------</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"> * Read pnm ascii image</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"> * Params (in):</span></span>
@@ -605,16 +611,16 @@ Figura&nbsp;2.11: Ilustração da imagem com superfície
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">FILE</span> <span class="op">*</span>f<span class="op">;</span></span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> fopen<span class="op">(</span>name<span class="op">,</span> <span class="st">"rt"</span><span class="op">);</span></span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>f<span class="op">)</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        erro<span class="op">(</span><span class="st">"Abertura do arquivo de imagem"</span><span class="op">);</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        erro<span class="op">(</span><span class="st">"Erro: Abertura da imagem"</span><span class="op">);</span></span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    fgets<span class="op">(</span>line<span class="op">,</span> <span class="dv">200</span><span class="op">,</span> f<span class="op">);</span> <span class="co">// leitura do cabecaho</span></span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>line<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">!=</span> <span class="ch">'P'</span> <span class="op">||</span> line<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">!=</span> <span class="op">(</span>tp <span class="op">+</span> <span class="ch">'0'</span><span class="op">))</span></span>
 <span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        erro<span class="op">(</span><span class="st">"Tipo do arquivo errado!"</span><span class="op">);</span></span>
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    fgets<span class="op">(</span>line<span class="op">,</span> <span class="dv">200</span><span class="op">,</span> f<span class="op">);</span> <span class="co">// leitura dos comentario</span></span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>line<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">==</span> <span class="ch">'#'</span><span class="op">)</span></span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        fgets<span class="op">(</span>line<span class="op">,</span> <span class="dv">200</span><span class="op">,</span> f<span class="op">);</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    sscanf<span class="op">(</span>line<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>nc<span class="op">,</span> <span class="op">&amp;</span>nr<span class="op">);</span> <span class="co">// leitura do numero de colunas e numero de linhas</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    sscanf<span class="op">(</span>line<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>nc<span class="op">,</span> <span class="op">&amp;</span>nr<span class="op">);</span> <span class="co">// número de linhas e colunas</span></span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>tp <span class="op">!=</span> BW<span class="op">)</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        fscanf<span class="op">(</span>f<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>ml<span class="op">);</span> <span class="co">// leitura máxima intensidade</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        fscanf<span class="op">(</span>f<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>ml<span class="op">);</span> <span class="co">// máxima intensidade</span></span>
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
 <span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        ml <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
 <span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span><span class="kw">struct</span> image<span class="op">));</span></span>
@@ -641,10 +647,19 @@ Figura&nbsp;2.11: Ilustração da imagem com superfície
 <span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    fclose<span class="op">(</span>f<span class="op">);</span></span>
 <span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> img<span class="op">;</span></span>
 <span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
+</div>
 </section>
 <section id="salvar-um-arquivo-pnm" class="level3" data-number="2.7.2">
 <h3 data-number="2.7.2" class="anchored" data-anchor-id="salvar-um-arquivo-pnm"><span class="header-section-number">2.7.2</span> Salvar um arquivo PNM</h3>
-<p>Abaixo o código para gravar a imagem nestes formatos.</p>
+<p>O código na <a href="#lst-writeimg" class="quarto-xref">Listagem&nbsp;<span>2.2</span></a> está a função em linguagem C para gravar a imagem nestes formatos.</p>
+<div id="lst-writeimg" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-writeimg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listagem&nbsp;2.2
+</figcaption>
+<div aria-describedby="lst-writeimg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-------------------------------------------------------------------------</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"> * Write pnm image</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"> * Params:</span></span>
@@ -657,7 +672,7 @@ Figura&nbsp;2.11: Ilustração da imagem com superfície
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">FILE</span> <span class="op">*</span>f <span class="op">=</span> fopen<span class="op">(</span>name<span class="op">,</span> <span class="st">"wt"</span><span class="op">);</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>f<span class="op">)</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        erro<span class="op">(</span><span class="st">"Erro na criação do arquivo de imagem"</span><span class="op">);</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        erro<span class="op">(</span><span class="st">"Erro: Criação do arquivo de imagem"</span><span class="op">);</span></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    fprintf<span class="op">(</span>f<span class="op">,</span> <span class="st">"P</span><span class="sc">%c\n</span><span class="st">"</span><span class="op">,</span> tp <span class="op">+</span> <span class="ch">'0'</span><span class="op">);</span></span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    fputs<span class="op">(</span><span class="st">"# Imagem gerada por Luiz Eduardo</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> f<span class="op">);</span></span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    fprintf<span class="op">(</span>f<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> img<span class="op">-&gt;</span>nc<span class="op">,</span> img<span class="op">-&gt;</span>nr<span class="op">);</span></span>
@@ -685,7 +700,16 @@ Figura&nbsp;2.11: Ilustração da imagem com superfície
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Onde a imagem (<em>image</em>) está representada na seguinte estrutura:</p>
+</div>
+</figure>
+</div>
+<p>A imagem (<em>image</em>) está representada na estrutura da <a href="#lst-estrutura" class="quarto-xref">Listagem&nbsp;<span>2.3</span></a>.</p>
+<div id="lst-estrutura" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-estrutura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listagem&nbsp;2.3
+</figcaption>
+<div aria-describedby="lst-estrutura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-fontsize="\small"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -704,21 +728,34 @@ Figura&nbsp;2.11: Ilustração da imagem com superfície
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    GRAY<span class="op">,</span></span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    COLOR</span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Um programa para abrir uma imagem em formato PGM, calcular o negativo da imagem, salvar o resultado e chamar um visualizador de imagem para apresentar o resultado é o seguinte:</p>
+</div>
+</figure>
+</div>
+<p>Um programa para abrir uma imagem em formato PGM, calcular o negativo da imagem, salvar o resultado e chamar um visualizador de imagem para apresentar o resultado está na <a href="#lst-exemplo" class="quarto-xref">Listagem&nbsp;<span>2.4</span></a>.</p>
+<div id="lst-exemplo" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-exemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listagem&nbsp;2.4
+</figcaption>
+<div aria-describedby="lst-exemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-fontsize="\small"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    image In<span class="op">;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>argc <span class="op">&lt;</span> <span class="dv">2</span><span class="op">)</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        puts<span class="op">(</span><span class="st">"Tem que passar o nome do arquivo de imagem!"</span><span class="op">);</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    In <span class="op">=</span> img_get<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">],</span> GRAY<span class="op">);</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> In<span class="op">-&gt;</span>nr <span class="op">*</span> In<span class="op">-&gt;</span>nc<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        In<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="dv">255</span> <span class="op">-</span> In<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    img_put<span class="op">(</span>In<span class="op">,</span> <span class="st">"saida.pgm"</span><span class="op">,</span> GRAY<span class="op">);</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    system<span class="op">(</span><span class="st">"eog saida.pgm &amp;"</span><span class="op">);</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">\n</span><span class="st">Negativo de uma imagem</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">\n\t</span><span class="st">Uso: </span><span class="sc">%s</span><span class="st"> &lt;nome-imagem&gt;.pgm</span><span class="sc">\n\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    In <span class="op">=</span> img_get<span class="op">(</span>argv<span class="op">[</span><span class="dv">1</span><span class="op">],</span> GRAY<span class="op">);</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> In<span class="op">-&gt;</span>nr <span class="op">*</span> In<span class="op">-&gt;</span>nc<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        In<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="dv">255</span> <span class="op">-</span> In<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    img_put<span class="op">(</span>In<span class="op">,</span> <span class="st">"saida.pgm"</span><span class="op">,</span> GRAY<span class="op">);</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    system<span class="op">(</span><span class="st">"eog saida.pgm &amp;"</span><span class="op">);</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
+</div>
 </section>
 </section>
 <section id="considerações-finais" class="level2" data-number="2.8">

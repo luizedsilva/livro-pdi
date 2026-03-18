@@ -707,8 +707,14 @@ Listagem&nbsp;5.1
 <h2 data-number="5.7" class="anchored" data-anchor-id="codificação-lzw"><span class="header-section-number">5.7</span> Codificação LZW</h2>
 <p>A <strong>codificação de Lempel–Ziv–Welch (LZW)</strong> é uma técnica de compressão de dados <strong>sem perda</strong> amplamente utilizada em arquivos e formatos de imagem, como GIF e TIFF. O método foi proposto por <strong>Terry Welch</strong> em 1984 como uma melhoria das técnicas de compressão desenvolvidas anteriormente por <strong>Abraham Lempel</strong> e <strong>Jacob Ziv</strong>. A ideia central da LZW é substituir sequências de símbolos por <strong>códigos numéricos de tamanho fixo</strong>, reduzindo a quantidade de dados necessária para representar a informação original.</p>
 <p>Diferentemente de outros métodos de compressão estatísticos, como a codificação de Huffman, a técnica LZW <strong>não requer conhecimento prévio das probabilidades de ocorrência dos símbolos da fonte</strong>. Em vez disso, ela constrói dinamicamente um <strong>dicionário de sequências de símbolos</strong> durante o processo de compressão. Inicialmente, esse dicionário contém apenas os símbolos básicos do alfabeto da fonte (por exemplo, os valores possíveis de pixels ou caracteres). À medida que a sequência de entrada é analisada, novas combinações de símbolos são identificadas e adicionadas ao dicionário, cada uma associada a uma palavra-código.</p>
-<p>O processo de compressão ocorre da seguinte forma. O algoritmo percorre a sequência de entrada procurando a <strong>maior sequência de símbolos que já esteja presente no dicionário</strong>. Quando essa sequência é encontrada, o algoritmo emite o código correspondente e acrescenta ao dicionário uma nova entrada formada pela sequência reconhecida seguida do próximo símbolo da entrada. Dessa forma, o dicionário cresce progressivamente, passando a representar padrões mais longos e frequentes presentes nos dados.</p>
-<p>Uma característica importante da LZW é que <strong>tanto o codificador quanto o decodificador constroem o mesmo dicionário de forma incremental</strong>, seguindo exatamente as mesmas regras. Por esse motivo, <strong>não é necessário transmitir o dicionário junto com os dados comprimidos</strong>, o que contribui para a eficiência do método. Durante a descompressão, os códigos recebidos são utilizados para reconstruir as sequências originais, enquanto o dicionário é atualizado da mesma forma que ocorreu na compressão.</p>
+<p>O processo de compressão ocorre conforme <a href="#lst-lzwencode" class="quarto-xref">Listagem&nbsp;<span>5.2</span></a>. O algoritmo percorre a sequência de entrada procurando a <strong>maior sequência de símbolos que já esteja presente no dicionário</strong>. Quando essa sequência é encontrada, o algoritmo emite o código correspondente e acrescenta ao dicionário uma nova entrada formada pela sequência reconhecida seguida do próximo símbolo da entrada. Dessa forma, o dicionário cresce progressivamente, passando a representar padrões mais longos e frequentes presentes nos dados.</p>
+<p>Uma característica importante da LZW é que <strong>tanto o codificador quanto o decodificador constroem o mesmo dicionário de forma incremental</strong>, seguindo exatamente as mesmas regras. Por esse motivo, <strong>não é necessário transmitir o dicionário junto com os dados comprimidos</strong>, o que contribui para a eficiência do método. Durante a descompressão (<a href="#lst-lzwdecode" class="quarto-xref">Listagem&nbsp;<span>5.3</span></a>), os códigos recebidos são utilizados para reconstruir as sequências originais, enquanto o dicionário é atualizado da mesma forma que ocorreu na compressão.</p>
+<div id="lst-lzwencode" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-lzwencode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listagem&nbsp;5.2
+</figcaption>
+<div aria-describedby="lst-lzwencode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>LZW_Encode<span class="op">(</span>T<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    Dictionary D<span class="op">;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> next<span class="op">;</span></span>
@@ -732,7 +738,16 @@ Listagem&nbsp;5.1
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        output<span class="op">.</span>append<span class="op">(</span>D<span class="op">[</span>w<span class="op">]);</span></span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output<span class="op">;</span></span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
+</div>
 <p>Outra vantagem significativa da LZW é que <strong>a compressão e a descompressão podem ser realizadas em uma única passada sobre os dados</strong>. Isso significa que o algoritmo processa a informação sequencialmente, sem necessidade de múltiplas leituras ou análises prévias do conteúdo. Essa propriedade torna a técnica particularmente adequada para aplicações em tempo real ou em sistemas com recursos limitados.</p>
+<div id="lst-lzwdecode" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-lzwdecode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listagem&nbsp;5.3
+</figcaption>
+<div aria-describedby="lst-lzwdecode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>LZW_Decode<span class="op">(</span>C<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    Dictionary D<span class="op">;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> next<span class="op">;</span></span>
@@ -756,6 +771,9 @@ Listagem&nbsp;5.1
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output<span class="op">;</span></span>
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
+</div>
 <p>Além disso, o algoritmo apresenta <strong>implementação relativamente simples e execução rápida</strong>, pois baseia-se principalmente em operações de busca e inserção em um dicionário. Como consequência, a LZW tornou-se uma das técnicas de compressão mais utilizadas em aplicações práticas, especialmente em sistemas de armazenamento e transmissão de imagens e documentos digitais.</p>
 <p>Em resumo, a codificação LZW destaca-se por combinar <strong>simplicidade, eficiência e independência de conhecimento estatístico prévio</strong>, utilizando um dicionário adaptativo para representar padrões repetidos nos dados e reduzir o volume de informação necessário para armazená-los ou transmiti-los.</p>
 <!-- Conteúdo interativo (HTML) -->
@@ -773,7 +791,7 @@ Listagem&nbsp;5.1
 <section id="formato-jpeg" class="level3" data-number="5.8.1">
 <h3 data-number="5.8.1" class="anchored" data-anchor-id="formato-jpeg"><span class="header-section-number">5.8.1</span> Formato JPEG</h3>
 <p>As etapas da codificação JPEG estão representadas na <a href="#fig-etapas" class="quarto-xref">Figura&nbsp;<span>5.4</span></a>.</p>
-<div id="fig-etapas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-align="center">
+<div id="fig-etapas" class="quarto-float quarto-figure quarto-figure-center anchored" data-align="center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-etapas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap5/etapas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" data-align="center">
