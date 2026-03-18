@@ -1,6 +1,8 @@
 
 ## Segmentação de Imagens
 
+![](/chapters/imgs/segmenta.png){fig-align="center" width="60%"}
+
 A **segmentação de imagens** é uma das etapas mais importantes do Processamento Digital de Imagens, pois tem como objetivo particionar uma imagem em regiões ou objetos que sejam significativos para uma determinada aplicação. Diferentemente do melhoramento, cujo foco é a aparência visual, a segmentação busca **identificar e separar estruturas relevantes**, servindo como base para tarefas posteriores como reconhecimento, descrição e interpretação.
 
 O sucesso de um sistema de visão computacional está fortemente relacionado à qualidade da segmentação realizada. Por essa razão, a segmentação é considerada uma das tarefas mais desafiadoras da área.

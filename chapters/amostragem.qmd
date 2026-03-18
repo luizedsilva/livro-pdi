@@ -1,5 +1,7 @@
 ## Amostragem e Quantização
 
+![](/chapters/imgs/amostra.png){fig-align="center" width="60%"}
+
 A representação digital de imagens é um dos pilares fundamentais do Processamento Digital de Imagens (PDI). Para que uma cena do mundo real possa ser manipulada por um computador, é necessário transformá‑la de uma forma contínua, tanto no espaço quanto na intensidade luminosa, em uma representação discreta. Esse processo ocorre por meio de duas etapas essenciais: **amostragem** e **quantização**.
 
 Neste capítulo são apresentados os fundamentos conceituais dessas etapas, relacionando‑as à percepção visual humana, aos sensores de aquisição de imagens e aos modelos matemáticos utilizados para representar imagens digitais.

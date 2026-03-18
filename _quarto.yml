@@ -15,8 +15,7 @@ book:
     - chapters/fourier.qmd
     - chapters/compressao.qmd
     - chapters/cor.qmd
-    - chapters/morfobinaria.qmd
-    - chapters/morfocinza.qmd
+    - chapters/morfologia.qmd
     - chapters/segmentacao.qmd
     - chapters/representacao.qmd
     - chapters/interpretacao.qmd

@@ -1,6 +1,8 @@
 
 ## Representação e Descrição de Imagens
 
+![](/chapters/imgs/representa.png){fig-align="center" width="60%"}
+
 Após a segmentação, o próximo passo em um sistema de Processamento Digital de Imagens consiste em **representar** e **descrever** as regiões ou objetos identificados. Enquanto a segmentação define *onde* estão os objetos, a representação e a descrição determinam *como* esses objetos serão caracterizados para análise posterior, classificação ou reconhecimento.
 
 Este capítulo aborda os conceitos fundamentais de representação e descrição de imagens, apresentando técnicas clássicas utilizadas para extrair características relevantes de regiões segmentadas.

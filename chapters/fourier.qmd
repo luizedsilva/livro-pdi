@@ -1,5 +1,7 @@
 ## Transformada de Fourier
 
+![](/chapters/imgs/fourier.png){fig-align="center" width="60%"}
+
 A análise de imagens no domínio espacial, embora intuitiva e amplamente utilizada, apresenta limitações quando se deseja compreender a distribuição de padrões periódicos, texturas e estruturas repetitivas. Para superar essas limitações, recorre-se à análise no **domínio da frequência**, na qual a imagem é representada como uma combinação de componentes senoidais de diferentes frequências.
 
 A **Transformada de Fourier** constitui a principal ferramenta matemática para essa mudança de domínio, sendo fundamental em diversas áreas do Processamento Digital de Imagens, como filtragem, compressão, restauração e análise de textura.
@@ -176,27 +178,7 @@ A @fig-transformacao1 ilustra essa transformação contínua unidimensional:
 
 ![Transformação: a) função simples, b) transformada calculada e c) espectro](/imgs/cap4/g4.svg){#fig-transformacao1 fig-align="center" width="80%"}
 
-A simulação em Geogebra em sequência demonstra essa função pulso, o espectro calculado e o módulo do espectro:
-
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://www.geogebra.org/calculator/f6gyatmc?embed" width="700" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
-
-</iframe>
-:::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://www.geogebra.org/calculator/f6gyatmc?embed>
-
-{{< qrcode https://www.geogebra.org/calculator/f6gyatmc?embed width=100 height=100 pdfheight=3cm >}}
-:::
-::::
+A simulação em Geogebra ([abrir exemplo no GeoGebra](https://www.geogebra.org/calculator/f6gyatmc){target="_blank"}) demonstra essa função pulso, o espectro calculado e o módulo do espectro.
 
 ### Transformada Discreta de Fourier para uma Variável
 

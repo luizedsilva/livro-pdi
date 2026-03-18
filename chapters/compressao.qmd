@@ -1,5 +1,7 @@
 ## Compressão de Imagens
 
+![](/chapters/imgs/compressao.png){fig-align="center" width="60%"}
+
 O crescimento acelerado da produção e do armazenamento de imagens digitais impõe desafios significativos relacionados ao uso eficiente de memória e largura de banda. Imagens digitais, especialmente aquelas com alta resolução e profundidade de bits, demandam grandes quantidades de espaço para armazenamento e transmissão. Nesse contexto, a **compressão de imagens** surge como uma área fundamental do Processamento Digital de Imagens (PDI).
 
 Considere um vídeo em resolução **SD (720 × 480)** com **30 quadros por segundo**, onde cada pixel é representado por **3 bytes** (RGB).
@@ -370,38 +372,27 @@ O processo de compressão ocorre da seguinte forma. O algoritmo percorre a sequ�
 Uma característica importante da LZW é que **tanto o codificador quanto o decodificador constroem o mesmo dicionário de forma incremental**, seguindo exatamente as mesmas regras. Por esse motivo, **não é necessário transmitir o dicionário junto com os dados comprimidos**, o que contribui para a eficiência do método. Durante a descompressão, os códigos recebidos são utilizados para reconstruir as sequências originais, enquanto o dicionário é atualizado da mesma forma que ocorreu na compressão.
 
 ``` c
-LZW_Encode(T)
-{
+LZW_Encode(T) {
     Dictionary D;
     int next;
-
     /* inicializa o dicionário com todos os símbolos */
     for each symbol a in alphabet Σ
         D.insert(a, code(a));
-
     next = D.size();
-
     string w = "";
     List output;
-
-    for each symbol k in T
-    {
+    for each symbol k in T {
         if (D.contains(w + k))
-        {
             w = w + k;
-        }
-        else
-        {
+        else {
             output.append(D[w]);
             D.insert(w + k, next);
             next = next + 1;
             w = k;
         }
     }
-
     if (w != "")
         output.append(D[w]);
-
     return output;
 }
 ```
@@ -409,38 +400,27 @@ LZW_Encode(T)
 Outra vantagem significativa da LZW é que **a compressão e a descompressão podem ser realizadas em uma única passada sobre os dados**. Isso significa que o algoritmo processa a informação sequencialmente, sem necessidade de múltiplas leituras ou análises prévias do conteúdo. Essa propriedade torna a técnica particularmente adequada para aplicações em tempo real ou em sistemas com recursos limitados.
 
 ``` c
-LZW_Decode(C)
-{
+LZW_Decode(C) {
     Dictionary D;
     int next;
-
     /* inicializa o dicionário com todos os símbolos */
     for each symbol a in alphabet Σ
         D.insert(code(a), a);
-
     next = D.size();
-
     int c = first(C);
     string w = D[c];
     string output = w;
-
-    for each code k in remaining(C)
-    {
+    for each code k in remaining(C) {
         string entry;
-
         if (D.contains(k))
             entry = D[k];
         else
             entry = w + first(w);
-
         output = output + entry;
-
         D.insert(next, w + first(entry));
         next = next + 1;
-
         w = entry;
     }
-
     return output;
 }
 ```

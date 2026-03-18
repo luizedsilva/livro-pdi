@@ -1,6 +1,8 @@
 
 # Introdução ao OpenCV
 
+![](/chapters/imgs/python.png){fig-align="center" width="60%"}
+
 O OpenCV (Open Source Computer Vision Library) é uma biblioteca amplamente utilizada para o desenvolvimento de aplicações em visão computacional e processamento digital de imagens. Criado originalmente pela Intel, o OpenCV é distribuído como software livre e oferece suporte a múltiplas linguagens, com grande destaque para Python e C++.
 
 Este capítulo apresenta os conceitos fundamentais do OpenCV, sua estrutura básica e exemplos práticos de uso.

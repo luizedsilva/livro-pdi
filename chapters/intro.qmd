@@ -1,5 +1,7 @@
 # Introdução ao Processamento Digital de Imagens
 
+![](/chapters/imgs/captura.png){fig-align="center" width="60%"}
+
 ## Apresentação
 
 Um curso sobre **Processamento Digital de Imagens (PDI)** integra a formação em **Ciência da Computação** e tem como objetivo estudar técnicas computacionais para aquisição, representação, transformação e interpretação de imagens digitais. Ao longo do curso, o estudante será introduzido aos fundamentos teóricos e práticos que permitem extrair informações relevantes de imagens por meio de algoritmos implementados em computadores digitais.

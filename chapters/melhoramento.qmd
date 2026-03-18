@@ -1,5 +1,7 @@
 ## Melhoramento de Imagens
 
+![](/chapters/imgs/melhoramento.png){fig-align="center" width="60%"}
+
 O melhoramento de imagens é uma das etapas mais importantes do Processamento Digital de Imagens (PDI). Diferentemente de outras áreas, como segmentação ou reconhecimento de padrões, o objetivo principal do melhoramento não é extrair informações quantitativas da imagem, mas **tornar a imagem mais adequada à interpretação humana ou a etapas posteriores de processamento**.
 
 As técnicas de melhoramento atuam diretamente sobre os valores de intensidade dos pixels, buscando realçar detalhes, reduzir imperfeições ou evidenciar características de interesse, sem alterar o conteúdo essencial da cena.
@@ -75,52 +77,35 @@ Saída:    imagem de distâncias D[altura][largura]
 
 /* Inicialização */
 for (y = 0; y < altura; y++)
-{
-    for (x = 0; x < largura; x++)
-    {
+    for (x = 0; x < largura; x++) {
         if (I[y][x] == 0)
             D[y][x] = 0;
         else
             D[y][x] = INF;
     }
-}
-
 
 /* Fase 1 — Varredura direta */
 for (y = 0; y < altura; y++)
-{
-    for (x = 0; x < largura; x++)
-    {
+    for (x = 0; x < largura; x++) {
         p = D[y][x];
         a = D[y-1][x];   // vizinho acima
         b = D[y][x-1];   // vizinho à esquerda
-
         if (p != 0)
-        {
             D[y][x] = min(a + 1, b + 1);
-        }
     }
-}
 
 /* Fase 2 — Varredura inversa */
 maxDist = 0;
 for (y = altura-1; y >= 0; y--)
-{
-    for (x = largura-1; x >= 0; x--)
-    {
+    for (x = largura-1; x >= 0; x--) {
         p = D[y][x];
         a = D[y][x+1];   // vizinho à direita
         b = D[y+1][x];   // vizinho abaixo
         if (p != 0)
-        {
             D[y][x] = min(a + 1, b + 1, p);
-        }
         if (D[y][x] > maxDist)
-        {
             maxDist = D[y][x];
-        }
     }
-}
 return D;
 ```
 
@@ -198,53 +183,36 @@ Saída:    imagem rotulada L[altura][largura]
 
 /* Inicialização */
 for (y = 0; y < altura; y++)
-{
     for (x = 0; x < largura; x++)
-    {
         L[y][x] = 0;
-    }
-}
 
 proximoRotulo = 1;
 
 /* Primeira varredura */
 for (y = 0; y < altura; y++)
-{
-    for (x = 0; x < largura; x++)
-    {
+    for (x = 0; x < largura; x++) {
         p = I[y][x];
         if (p == 0)
             continue;
         r = L[y-1][x];   // vizinho acima
         t = L[y][x-1];   // vizinho à esquerda
-        if (r == 0 && t == 0)
-        {
+        if (r == 0 && t == 0) {
             L[y][x] = proximoRotulo;
             proximoRotulo++;
         }
         else if (r != 0 && t == 0)
-        {
             L[y][x] = r;
-        }
         else if (r == 0 && t != 0)
-        {
             L[y][x] = t;
-        }
-        else
-        {
+        else {
             if (r == t)
-            {
                 L[y][x] = r;
-            }
-            else
-            {
+            else {
                 L[y][x] = r;
                 registrarEquivalencia(r, t);
             }
         }
     }
-}
-
 
 /* Resolução de equivalências */
 
@@ -252,15 +220,9 @@ determinarClassesDeEquivalencia();
 
 /* Segunda varredura */
 for (y = 0; y < altura; y++)
-{
     for (x = 0; x < largura; x++)
-    {
         if (L[y][x] != 0)
-        {
             L[y][x] = representante(L[y][x]);
-        }
-    }
-}
 return L;
 ```
 

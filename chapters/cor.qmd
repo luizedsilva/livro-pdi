@@ -1,5 +1,7 @@
 ## Imagens Coloridas
 
+![](/chapters/imgs/cores.png){fig-align="center" width="60%"}
+
 A maioria das informações visuais percebidas pelo ser humano envolve cor. Em Processamento Digital de Imagens, o uso da cor amplia significativamente a capacidade de análise, interpretação e representação de cenas, tornando sistemas computacionais mais próximos da percepção humana.
 
 Este capítulo apresenta os fundamentos das **imagens coloridas**, abordando os princípios da percepção da cor, os principais modelos de cor utilizados em sistemas computacionais e as formas de representação e manipulação de imagens coloridas.

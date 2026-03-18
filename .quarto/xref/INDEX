@@ -43,5 +43,8 @@
   },
   "chapters/opencv.qmd": {
     "opencv.html": "f76c4400"
+  },
+  "chapters/morfologia.qmd": {
+    "morfologia.html": "8140cff3"
   }
 }
