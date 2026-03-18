@@ -67,8 +67,9 @@ Essas três medidas de distância são amplamente utilizadas em algoritmos de pr
 
 Considere uma **imagem binária** na qual as regiões de pixels com valor **1** representam objetos, e deseja-se calcular a **distância de cada pixel do objeto até o fundo (pixels 0)**.
 
-O algoritmo possui **duas fases** e o resultado será uma **imagem em tons de cinza**, onde o valor de cada pixel indica sua distância ao fundo.
+O algoritmo (@lst-distancia) possui **duas fases** e o resultado será uma **imagem em tons de cinza**, onde o valor de cada pixel indica sua distância ao fundo.
 
+::: {#lst-distancia}
 ``` c
 Algoritmo TransformadaDistancia(I, D)
 
@@ -108,6 +109,7 @@ for (y = altura-1; y >= 0; y--)
     }
 return D;
 ```
+:::
 
 Ao final do processo o **maior valor atribuído a** $maxDist$ corresponde ao **maior nível de cinza**, ou seja, **à maior distância ao fundo** encontrada na imagem.
 
@@ -171,10 +173,9 @@ Ao definir regiões e fronteiras, é importante evitar o chamado **paradoxo da c
 
 ![Ilustração do paradoxo da conectividade](/imgs/cap3/paradoxo.png){fig-align="center" width="60%"}
 
-Em sequência um algoritmo muito útil em processamento de imagens, utilizado para atribuir um rótulo diferente para cada uma das regiões gráficas encontradas numa imagem binária (onde a forma é identificada por pixel igual a um). O resultado final é uma imagem em tons de cinza, com o número máximo de tons de cinza igual ao número de regiões encontradas na imagem.
+Na @lst-rotula está algoritmo utilizado para atribuir um rótulo diferente para cada uma das regiões gráficas encontradas numa imagem binária (onde a forma é identificada por pixel igual a um). O resultado final é uma imagem em tons de cinza, com o número máximo de tons de cinza igual ao número de regiões encontradas na imagem.
 
-### Algoritmo: Rotulagem de Componentes Conectados
-
+::: {#lst-rotula}
 ``` c
 Algoritmo RotulacaoComponentes(I, L)
 
@@ -225,6 +226,7 @@ for (y = 0; y < altura; y++)
             L[y][x] = representante(L[y][x]);
 return L;
 ```
+:::
 
 Em sequência um simulador desse algoritmo:
 
@@ -359,14 +361,53 @@ O código completo e a demonstração interativa estão disponíveis em:
 :::
 ::::
 
+### Transformação Linear por Partes
+
+Uma abordagem bastante flexível para a transformação pontual dos níveis de intensidade de uma imagem é o uso de funções lineares por partes. Nesse tipo de transformação, o mapeamento entre os níveis de cinza de entrada e saída é definido por diferentes segmentos lineares ao longo da faixa dinâmica da imagem. Isso permite ajustar de forma independente diferentes regiões de intensidade, possibilitando, por exemplo, realçar detalhes em áreas escuras ou comprimir variações em regiões muito claras. A principal vantagem dessa técnica é sua flexibilidade, enquanto a principal desvantagem é a necessidade de definir um maior número de parâmetros.
+
+A função de transformação pode ser definida por quatro pontos: $A = (0,0)$, $B = (x_1,y_1)$, $C = (x_2,y_2)$ e $D = (L−1,L−1)$, onde L representa o número de níveis de cinza. Esses pontos dividem a função em três trechos: $A–B$, $B–C$ e $C–D$. Cada um desses trechos é descrito por uma função linear distinta, permitindo controlar de forma localizada o comportamento da transformação.
+
+De maneira geral, a reta que liga dois pontos $(x_1,y_1)$ e $(x_2,y_2)$ pode ser descrita pela equação $y = a \times x + b$, em que o coeficiente angular $a$ é dado por $(y_2 − y_1)/(x_2 − x_1)$, e o termo independente $b$ é calculado como $b = y_2 − a·x_2$. Assim, para cada trecho da função ($A–B$, $B–C$ e $C–D$), é possível determinar uma equação linear específica que define o mapeamento dos níveis de intensidade naquele intervalo.
+
+Como exemplo, considere uma imagem com 8 níveis de cinza, variando de 0 a 7 e que os pontos intermediários são $B = (2,5)$ e $C = (4,6)$. A partir desses valores, obtêm-se três segmentos com comportamentos distintos: um crescimento acentuado entre $A$ e $B$, que amplia os níveis mais baixos; um crescimento mais suave entre $B$ e $C$; e uma região de compressão entre $C$ e $D$, que reduz a variação dos níveis mais altos. Calculando as equações correspondentes e arredondando os valores, obtém-se o vetor de transformação $T = [0, 3, 5, 6, 6, 6, 7, 7]$, conforme ilustrado na @fig-partes.
+
+![Transformação linear por partes](/imgs/cap3/partes.png){#fig-partes fig-align="center" width="80%"}
+
+Essa transformação evidencia um comportamento importante: há um aumento de contraste nas regiões escuras da imagem, uma transição moderada nos níveis intermediários e uma compressão nas regiões claras. Esse tipo de controle é particularmente útil em aplicações de processamento de imagens, pois permite enfatizar características relevantes em diferentes faixas de intensidade.
+
+Na prática, a implementação dessa transformação é geralmente feita por meio de uma tabela de consulta (Look-Up Table — LUT), na qual cada nível de intensidade de entrada é substituído diretamente pelo valor correspondente de saída. Isso torna o processo eficiente e adequado para aplicações em tempo real.
+
+O exemplo interativo seguinte demonstra a transformação linear por partes. Mova os pontos B (vermelho) e C(verde) para ajustar o contraste da imagem.
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/2ZjbPla9T" width="100%" height="400" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/2ZjbPla9T>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/2ZjbPla9T width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
 ## Histograma de Imagens
 
 O histograma de uma imagem descreve a distribuição dos níveis de intensidade dos pixels. Ele fornece uma representação estatística que é amplamente utilizada para análise e melhoramento de imagens.
 
 Imagens com baixo contraste tendem a apresentar histogramas concentrados em uma faixa estreita de valores, enquanto imagens com bom contraste exibem histogramas mais espalhados ao longo da escala de intensidades.
 
-Algoritmo para calcular o histograma de uma imagem:
+Algoritmo para calcular o histograma de uma imagem está em @lst-histograma.
 
+::: {#lst-histograma}
 ``` c
 // atribuir valor zero a todos elementos do vetor
 for (i = 0; i < L; i++)
@@ -377,6 +418,7 @@ for (i = 0; i < M; i++)
   for (j = 0; j < N; j++)
      Histo [Img[i][j]] = Histo [Img[i][j]]+1;
 ```
+:::
 
 ## Equalização de Histograma
 
@@ -490,8 +532,9 @@ onde:
 -   $w(y,x)$ é a máscara de convolução;
 -   $a$ e $b$ definem o tamanho do kernel.
 
-### Pseudocódigo da Convolução
+O pseudocódigo da convolução está na @lst-convolucao.
 
+::: {#lst-convolucao}
 ``` c
 for (i = a; i < nl - a; i++)
   for (j = b; j < nc - b; j++) {
@@ -502,6 +545,7 @@ for (i = a; i < nl - a; i++)
     G[i][j] = sum;
   }
 ```
+:::
 
 ### Operações lineares e não lineares
 
@@ -619,7 +663,7 @@ Filtros lineares, como o **filtro da média**, não são adequados para esse tip
 
 O filtro da mediana substitui o valor do pixel pelo valor mediano de sua vizinhança, sendo especialmente eficiente para eliminar pixels extremos isolados.
 
-No exemplo interativo em sequência está um programa que permite carregar uma imagem (que é convertida em tons de cinza), gerar ruído sal e pimenta de acordo com probabilidades definidas e em seguida aplicar o filtro da mediana para remoção do ruído, para demonstração destes conceitos.
+No exemplo interativo seguinte está um programa que permite carregar uma imagem (que é convertida em tons de cinza), gerar ruído sal e pimenta de acordo com probabilidades definidas e em seguida aplicar o filtro da mediana para remoção do ruído, para demonstração destes conceitos.
 
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->

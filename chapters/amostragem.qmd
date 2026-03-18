@@ -148,7 +148,7 @@ Além da representação matricial, a imagem também pode ser interpretada como 
 
 ![Ilustração da imagem com superfície](/imgs/cap2/superficie.png){#fig-superficie fig-align="center" width="80%"}
 
-O exemplo interativo seguinte permite uma visualização de uma imagem como superfície:
+O exemplo interativo seguinte permite uma visualização de uma imagem como superfície. Use o mouse para movimentar a imagem representada como superfície.
 
 :::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
@@ -217,8 +217,10 @@ Em conjunto, os formatos PBM, PGM e PPM desempenham um papel fundamental no ensi
 
 ### Para ler um arquivo PNM
 
-Abaixo o código em linguagem C para ler arquivo nesses formatos
 
+O código na @lst-readimg está a implementação da função para ler arquivo nos formatos PBM, PGM ou PPM.
+
+:::{#lst-readimg}
 ``` {.c fontsize="\\small"}
 /*-------------------------------------------------------------------------
  * Read pnm ascii image
@@ -242,16 +244,16 @@ image img_get(char *name, int tp)
     FILE *f;
     f = fopen(name, "rt");
     if (!f)
-        erro("Abertura do arquivo de imagem");
+        erro("Erro: Abertura da imagem");
     fgets(line, 200, f); // leitura do cabecaho
     if (line[0] != 'P' || line[1] != (tp + '0'))
         erro("Tipo do arquivo errado!");
     fgets(line, 200, f); // leitura dos comentario
     while (line[0] == '#')
         fgets(line, 200, f);
-    sscanf(line, "%d %d", &nc, &nr); // leitura do numero de colunas e numero de linhas
+    sscanf(line, "%d %d", &nc, &nr); // número de linhas e colunas
     if (tp != BW)
-        fscanf(f, "%d", &ml); // leitura máxima intensidade
+        fscanf(f, "%d", &ml); // máxima intensidade
     else
         ml = 1;
     img = malloc(sizeof(struct image));
@@ -279,11 +281,14 @@ image img_get(char *name, int tp)
     return img;
 }
 ```
+:::
+
 
 ### Salvar um arquivo PNM
 
-Abaixo o código para gravar a imagem nestes formatos.
+O código na @lst-writeimg está a função em linguagem C para gravar a imagem nestes formatos.
 
+:::{#lst-writeimg}
 ``` c
 /*-------------------------------------------------------------------------
  * Write pnm image
@@ -297,7 +302,7 @@ void img_put(image img, char *name, int tp)
     int count = 0;
     FILE *f = fopen(name, "wt");
     if (!f)
-        erro("Erro na criação do arquivo de imagem");
+        erro("Erro: Criação do arquivo de imagem");
     fprintf(f, "P%c\n", tp + '0');
     fputs("# Imagem gerada por Luiz Eduardo\n", f);
     fprintf(f, "%d %d\n", img->nc, img->nr);
@@ -326,9 +331,11 @@ void img_put(image img, char *name, int tp)
     }
 }
 ```
+:::
 
-Onde a imagem (*image*) está representada na seguinte estrutura:
+A imagem (*image*) está representada na estrutura da @lst-estrutura.
 
+:::{#lst-estrutura}
 ``` {.c fontsize="\\small"}
 #include <stdio.h>
 #include <stdlib.h>
@@ -349,16 +356,19 @@ enum
     COLOR
 };
 ```
+:::
 
-Um programa para abrir uma imagem em formato PGM, calcular o negativo da imagem, salvar o resultado e chamar um visualizador de imagem para apresentar o resultado é o seguinte:
+Um programa para abrir uma imagem em formato PGM, calcular o negativo da imagem, salvar o resultado e chamar um visualizador de imagem para apresentar o resultado está na @lst-exemplo.
 
+:::{#lst-exemplo}
 ``` {.c fontsize="\\small"}
 int main(int argc, char *argv[])
 {
     image In;
     if (argc < 2)
     {
-        puts("Tem que passar o nome do arquivo de imagem!");
+        printf("\nNegativo de uma imagem\n");
+        printf("\n\tUso: %s <nome-imagem>.pgm\n\n", argv[0]);
         exit(1);
     }
     In = img_get(argv[1], GRAY);
@@ -368,6 +378,7 @@ int main(int argc, char *argv[])
     system("eog saida.pgm &");
 }
 ```
+:::
 
 ## Considerações Finais
 

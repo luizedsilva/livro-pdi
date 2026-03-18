@@ -367,10 +367,11 @@ A **codificação de Lempel–Ziv–Welch (LZW)** é uma técnica de compressão
 
 Diferentemente de outros métodos de compressão estatísticos, como a codificação de Huffman, a técnica LZW **não requer conhecimento prévio das probabilidades de ocorrência dos símbolos da fonte**. Em vez disso, ela constrói dinamicamente um **dicionário de sequências de símbolos** durante o processo de compressão. Inicialmente, esse dicionário contém apenas os símbolos básicos do alfabeto da fonte (por exemplo, os valores possíveis de pixels ou caracteres). À medida que a sequência de entrada é analisada, novas combinações de símbolos são identificadas e adicionadas ao dicionário, cada uma associada a uma palavra-código.
 
-O processo de compressão ocorre da seguinte forma. O algoritmo percorre a sequência de entrada procurando a **maior sequência de símbolos que já esteja presente no dicionário**. Quando essa sequência é encontrada, o algoritmo emite o código correspondente e acrescenta ao dicionário uma nova entrada formada pela sequência reconhecida seguida do próximo símbolo da entrada. Dessa forma, o dicionário cresce progressivamente, passando a representar padrões mais longos e frequentes presentes nos dados.
+O processo de compressão ocorre conforme @lst-lzwencode. O algoritmo percorre a sequência de entrada procurando a **maior sequência de símbolos que já esteja presente no dicionário**. Quando essa sequência é encontrada, o algoritmo emite o código correspondente e acrescenta ao dicionário uma nova entrada formada pela sequência reconhecida seguida do próximo símbolo da entrada. Dessa forma, o dicionário cresce progressivamente, passando a representar padrões mais longos e frequentes presentes nos dados.
 
-Uma característica importante da LZW é que **tanto o codificador quanto o decodificador constroem o mesmo dicionário de forma incremental**, seguindo exatamente as mesmas regras. Por esse motivo, **não é necessário transmitir o dicionário junto com os dados comprimidos**, o que contribui para a eficiência do método. Durante a descompressão, os códigos recebidos são utilizados para reconstruir as sequências originais, enquanto o dicionário é atualizado da mesma forma que ocorreu na compressão.
+Uma característica importante da LZW é que **tanto o codificador quanto o decodificador constroem o mesmo dicionário de forma incremental**, seguindo exatamente as mesmas regras. Por esse motivo, **não é necessário transmitir o dicionário junto com os dados comprimidos**, o que contribui para a eficiência do método. Durante a descompressão (@lst-lzwdecode), os códigos recebidos são utilizados para reconstruir as sequências originais, enquanto o dicionário é atualizado da mesma forma que ocorreu na compressão.
 
+::: {#lst-lzwencode}
 ``` c
 LZW_Encode(T) {
     Dictionary D;
@@ -396,9 +397,11 @@ LZW_Encode(T) {
     return output;
 }
 ```
+:::
 
 Outra vantagem significativa da LZW é que **a compressão e a descompressão podem ser realizadas em uma única passada sobre os dados**. Isso significa que o algoritmo processa a informação sequencialmente, sem necessidade de múltiplas leituras ou análises prévias do conteúdo. Essa propriedade torna a técnica particularmente adequada para aplicações em tempo real ou em sistemas com recursos limitados.
 
+::: {#lst-lzwdecode}
 ``` c
 LZW_Decode(C) {
     Dictionary D;
@@ -424,6 +427,7 @@ LZW_Decode(C) {
     return output;
 }
 ```
+:::
 
 Além disso, o algoritmo apresenta **implementação relativamente simples e execução rápida**, pois baseia-se principalmente em operações de busca e inserção em um dicionário. Como consequência, a LZW tornou-se uma das técnicas de compressão mais utilizadas em aplicações práticas, especialmente em sistemas de armazenamento e transmissão de imagens e documentos digitais.
 
