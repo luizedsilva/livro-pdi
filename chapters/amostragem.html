@@ -589,64 +589,55 @@ Figura&nbsp;2.11: Ilustração da imagem com superfície
 Listagem&nbsp;2.1
 </figcaption>
 <div aria-describedby="lst-readimg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-fontsize="\small"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-------------------------------------------------------------------------</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-fontsize="\small"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"> * Read pnm ascii image</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"> * Params (in):</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"> *   name = image file name</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"> *   tp = image type (BW, GRAY or COLOR)</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"> * Returns:</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"> *   image structure</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"> *-------------------------------------------------------------------------+*/</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> erro<span class="op">(</span><span class="dt">char</span> <span class="op">*</span>msg<span class="op">)</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span>msg<span class="op">);</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>image img_get<span class="op">(</span><span class="dt">char</span> <span class="op">*</span>name<span class="op">,</span> <span class="dt">int</span> tp<span class="op">)</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> line<span class="op">[</span><span class="dv">200</span><span class="op">];</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> nr<span class="op">,</span> nc<span class="op">,</span> ml<span class="op">;</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    image img<span class="op">;</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">FILE</span> <span class="op">*</span>f<span class="op">;</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> fopen<span class="op">(</span>name<span class="op">,</span> <span class="st">"rt"</span><span class="op">);</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>f<span class="op">)</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        erro<span class="op">(</span><span class="st">"Erro: Abertura da imagem"</span><span class="op">);</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    fgets<span class="op">(</span>line<span class="op">,</span> <span class="dv">200</span><span class="op">,</span> f<span class="op">);</span> <span class="co">// leitura do cabecaho</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>line<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">!=</span> <span class="ch">'P'</span> <span class="op">||</span> line<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">!=</span> <span class="op">(</span>tp <span class="op">+</span> <span class="ch">'0'</span><span class="op">))</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        erro<span class="op">(</span><span class="st">"Tipo do arquivo errado!"</span><span class="op">);</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    fgets<span class="op">(</span>line<span class="op">,</span> <span class="dv">200</span><span class="op">,</span> f<span class="op">);</span> <span class="co">// leitura dos comentario</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>line<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">==</span> <span class="ch">'#'</span><span class="op">)</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        fgets<span class="op">(</span>line<span class="op">,</span> <span class="dv">200</span><span class="op">,</span> f<span class="op">);</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    sscanf<span class="op">(</span>line<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>nc<span class="op">,</span> <span class="op">&amp;</span>nr<span class="op">);</span> <span class="co">// número de linhas e colunas</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>tp <span class="op">!=</span> BW<span class="op">)</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        fscanf<span class="op">(</span>f<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>ml<span class="op">);</span> <span class="co">// máxima intensidade</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        ml <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span><span class="kw">struct</span> image<span class="op">));</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>nr <span class="op">=</span> nr<span class="op">;</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>nc <span class="op">=</span> nc<span class="op">;</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>ml <span class="op">=</span> ml<span class="op">;</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>tp <span class="op">=</span> tp<span class="op">;</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>px <span class="op">=</span> malloc<span class="op">(</span>nr <span class="op">*</span> nc <span class="op">*</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">));</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nr <span class="op">*</span> nc<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>tp <span class="op">!=</span> COLOR<span class="op">)</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> k<span class="op">;</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>            fscanf<span class="op">(</span>f<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>k<span class="op">);</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>            img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> k<span class="op">;</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> r<span class="op">,</span> g<span class="op">,</span> b<span class="op">;</span></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>            fscanf<span class="op">(</span>f<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>r<span class="op">,</span> <span class="op">&amp;</span>g<span class="op">,</span> <span class="op">&amp;</span>b<span class="op">);</span></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>            img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="op">(</span>r <span class="op">&lt;&lt;</span> <span class="dv">16</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span>g <span class="op">&lt;&lt;</span> <span class="dv">8</span><span class="op">)</span> <span class="op">|</span> b<span class="op">;</span></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    fclose<span class="op">(</span>f<span class="op">);</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> img<span class="op">;</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> erro<span class="op">(</span><span class="dt">char</span> <span class="op">*</span>msg<span class="op">)</span> <span class="op">{</span> puts<span class="op">(</span>msg<span class="op">);</span> exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>image img_get<span class="op">(</span><span class="dt">char</span> <span class="op">*</span>name<span class="op">,</span> <span class="dt">int</span> tp<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> line<span class="op">[</span><span class="dv">200</span><span class="op">];</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> nr<span class="op">,</span> nc<span class="op">,</span> ml<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    image img<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">FILE</span> <span class="op">*</span>f<span class="op">;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> fopen<span class="op">(</span>name<span class="op">,</span> <span class="st">"rt"</span><span class="op">);</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>f<span class="op">)</span> erro<span class="op">(</span><span class="st">"Erro: Abertura da imagem"</span><span class="op">);</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    fgets<span class="op">(</span>line<span class="op">,</span> <span class="dv">200</span><span class="op">,</span> f<span class="op">);</span> <span class="co">// leitura do cabecaho</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>line<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">!=</span> <span class="ch">'P'</span> <span class="op">||</span> line<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">!=</span> <span class="op">(</span>tp <span class="op">+</span> <span class="ch">'0'</span><span class="op">))</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        erro<span class="op">(</span><span class="st">"Tipo do arquivo errado!"</span><span class="op">);</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    fgets<span class="op">(</span>line<span class="op">,</span> <span class="dv">200</span><span class="op">,</span> f<span class="op">);</span> <span class="co">// leitura dos comentario</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>line<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">==</span> <span class="ch">'#'</span><span class="op">)</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        fgets<span class="op">(</span>line<span class="op">,</span> <span class="dv">200</span><span class="op">,</span> f<span class="op">);</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    sscanf<span class="op">(</span>line<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>nc<span class="op">,</span> <span class="op">&amp;</span>nr<span class="op">);</span> <span class="co">// número de linhas e colunas</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>tp <span class="op">!=</span> BW<span class="op">)</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        fscanf<span class="op">(</span>f<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>ml<span class="op">);</span> <span class="co">// máxima intensidade</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        ml <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span><span class="kw">struct</span> image<span class="op">));</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>nr <span class="op">=</span> nr<span class="op">;</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>nc <span class="op">=</span> nc<span class="op">;</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>ml <span class="op">=</span> ml<span class="op">;</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>tp <span class="op">=</span> tp<span class="op">;</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>px <span class="op">=</span> malloc<span class="op">(</span>nr <span class="op">*</span> nc <span class="op">*</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">));</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nr <span class="op">*</span> nc<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>tp <span class="op">!=</span> COLOR<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> k<span class="op">;</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>            fscanf<span class="op">(</span>f<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>k<span class="op">);</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>            img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> k<span class="op">;</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> r<span class="op">,</span> g<span class="op">,</span> b<span class="op">;</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>            fscanf<span class="op">(</span>f<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st"> </span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>r<span class="op">,</span> <span class="op">&amp;</span>g<span class="op">,</span> <span class="op">&amp;</span>b<span class="op">);</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>            img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="op">(</span>r <span class="op">&lt;&lt;</span> <span class="dv">16</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span>g <span class="op">&lt;&lt;</span> <span class="dv">8</span><span class="op">)</span> <span class="op">|</span> b<span class="op">;</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    fclose<span class="op">(</span>f<span class="op">);</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> img<span class="op">;</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </figure>
 </div>
@@ -660,13 +651,13 @@ Listagem&nbsp;2.1
 Listagem&nbsp;2.2
 </figcaption>
 <div aria-describedby="lst-writeimg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-------------------------------------------------------------------------</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"> * Write pnm image</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"> * Params:</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"> *   img = image structure</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"> *   name = image file name</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"> *   tp = image type (BW, GRAY or COLOR)</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"> *-------------------------------------------------------------------------*/</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> img_put<span class="op">(</span>image img<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>name<span class="op">,</span> <span class="dt">int</span> tp<span class="op">)</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
