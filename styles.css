@@ -1,8 +1,49 @@
 iframe,
-canvas,
-svg,
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+/* Remove visual de site */
+.navbar {
+  box-shadow: none;
+  border-bottom: none;
+}
+
+/* Bloco de título (estilo livro) */
+.quarto-title-block {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Título principal */
+.quarto-title-block .title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Subtítulo */
+.quarto-title-block .subtitle {
+  font-size: 1.3rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* Autor */
+.quarto-title-block .author {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+h1.title {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }

@@ -222,29 +222,23 @@ O código na @lst-readimg está a implementação da função para ler arquivo n
 
 :::{#lst-readimg}
 ``` {.c fontsize="\\small"}
-/*-------------------------------------------------------------------------
+/*
  * Read pnm ascii image
  * Params (in):
  *   name = image file name
  *   tp = image type (BW, GRAY or COLOR)
  * Returns:
  *   image structure
- *-------------------------------------------------------------------------+*/
-void erro(char *msg)
-{
-    puts(msg);
-    exit(1);
-}
+ */
+void erro(char *msg) { puts(msg); exit(1); }
 
-image img_get(char *name, int tp)
-{
+image img_get(char *name, int tp) {
     char line[200];
     int nr, nc, ml;
     image img;
     FILE *f;
     f = fopen(name, "rt");
-    if (!f)
-        erro("Erro: Abertura da imagem");
+    if (!f) erro("Erro: Abertura da imagem");
     fgets(line, 200, f); // leitura do cabecaho
     if (line[0] != 'P' || line[1] != (tp + '0'))
         erro("Tipo do arquivo errado!");
@@ -262,16 +256,13 @@ image img_get(char *name, int tp)
     img->ml = ml;
     img->tp = tp;
     img->px = malloc(nr * nc * sizeof(int));
-    for (int i = 0; i < nr * nc; i++)
-    {
-        if (tp != COLOR)
-        {
+    for (int i = 0; i < nr * nc; i++) {
+        if (tp != COLOR) {
             int k;
             fscanf(f, "%d", &k);
             img->px[i] = k;
         }
-        else
-        {
+        else {
             int r, g, b;
             fscanf(f, "%d %d %d", &r, &g, &b);
             img->px[i] = (r << 16) | (g << 8) | b;
@@ -290,13 +281,13 @@ O código na @lst-writeimg está a função em linguagem C para gravar a imagem 
 
 :::{#lst-writeimg}
 ``` c
-/*-------------------------------------------------------------------------
+/*
  * Write pnm image
  * Params:
  *   img = image structure
  *   name = image file name
  *   tp = image type (BW, GRAY or COLOR)
- *-------------------------------------------------------------------------*/
+ */
 void img_put(image img, char *name, int tp)
 {
     int count = 0;

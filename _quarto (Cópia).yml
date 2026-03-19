@@ -5,9 +5,8 @@ lang: pt-BR
 
 book:
   title: "Processamento Digital de Imagens"
-  subtitle: "Uma abordagem interativa com P5.js"
+  subtitle: "Uma abordagem interativa com p5.js"
   author: "Luiz Eduardo da Silva"
-  cover-image: capa.png
   date: today
   chapters:
     - index.qmd
@@ -30,18 +29,17 @@ bibliography: references.bib
 format:
   html:
     css: styles.css
-    page-layout: article
-    navigation:
-      position: bottom
     date-format: "DD/MM/YYYY"
     theme:
       - cosmo
       - brand
   pdf:
-    documentclass: book
+    include-in-header:
+      text: |
+        \usepackage{algorithm}
+        \usepackage{algpseudocode}
     pdf-engine: lualatex
-    include-in-header: header.tex
-    geometry:
-      - paperwidth=17cm
-      - paperheight=24cm
-      - margin=2cm
+    code-block-options:
+      fontsize: \small
+    documentclass: book
+    babel-lang: brazil

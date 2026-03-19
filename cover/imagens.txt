@@ -1,0 +1,9 @@
+amostragem.png
+amostra.png
+epiciclo.png
+espectro.png
+hsi.png
+huffman.png
+paradoxo.png
+prisma.png
+rgb.png
