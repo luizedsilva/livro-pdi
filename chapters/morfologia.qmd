@@ -2,15 +2,85 @@
 
 ![](/chapters/imgs/morfologia.png){fig-align="center" width="60%"}
 
-A **Morfologia Matemática** é uma área do Processamento Digital de Imagens dedicada à análise e ao processamento da forma geométrica dos objetos presentes em uma imagem. Diferentemente de técnicas baseadas diretamente em valores de intensidade, a morfologia foca na **estrutura espacial** dos objetos, sendo especialmente eficaz no tratamento de imagens binárias.
+A **Morfologia Matemática** é um ramo não linear do **processamento digital de imagens**, desenvolvido na década de 1960 por **George Matheron** e **Jean Serra**. Essa área surgiu no contexto da análise de estruturas geométricas, tendo como principal objetivo extrair informações relevantes de imagens a partir da manipulação de suas formas.
 
-Este capítulo apresenta os fundamentos da **morfologia matemática binária** e da morfologia numérica (em tons de cinza), introduzindo seus principais operadores e discutindo suas aplicações em tarefas como filtragem, segmentação e análise de formas.
+Os trabalhos iniciais de Matheron e Serra foram fundamentados na ideia de que a informação contida em uma imagem pode ser analisada por meio de transformações baseadas em forma e estrutura. Nesse contexto, foram definidas duas operações fundamentais que constituem a base da morfologia matemática: a **dilatação** e a **erosão**. Essas operações permitem modificar a geometria dos objetos presentes na imagem, possibilitando tanto a expansão quanto a contração de suas regiões.
+
+Originalmente, a teoria foi desenvolvida para **imagens binárias**, nas quais os pixels assumem apenas dois valores (tipicamente 0 e 1). Posteriormente, essa abordagem foi estendida para imagens em **tons de cinza**, permitindo uma aplicação mais ampla em problemas reais, nos quais as imagens possuem múltiplos níveis de intensidade.
+
+A ideia central da morfologia matemática consiste em comparar a imagem de interesse com uma pequena forma previamente definida, chamada **elemento estruturante**. Esse elemento funciona como uma sonda que percorre a imagem, avaliando como sua forma se ajusta às estruturas presentes. A partir dessa comparação, é possível identificar padrões, destacar regiões específicas e extrair características importantes. O resultado das operações morfológicas depende diretamente da forma, do tamanho e da orientação do elemento estruturante utilizado.
+
+O conjunto de transformações morfológicas é bastante amplo e abrange diversas aplicações no processamento de imagens. Essas operações são amplamente utilizadas na filtragem de ruídos, permitindo a remoção de pequenas imperfeições, e na segmentação de imagens, auxiliando na separação de objetos de interesse do fundo. Também desempenham um papel importante na restauração de imagens degradadas e na detecção de arestas, contribuindo para a identificação de contornos. Além disso, são empregadas na análise de textura e na extração de características relevantes, fundamentais em tarefas de reconhecimento de padrões. Outras aplicações incluem a esqueletização e o afinamento de estruturas, que simplificam a representação dos objetos, bem como a análise de forma e de componentes conectados. As transformações morfológicas também são úteis no preenchimento de regiões e curvas, além de contribuírem para técnicas de compressão de dados.
+
+Devido à sua capacidade de analisar e manipular estruturas geométricas, a morfologia matemática tem sido aplicada com sucesso em diversas áreas. Na visão robótica, é utilizada para interpretar o ambiente, detectar obstáculos e reconhecer objetos. Na inspeção industrial e na microscopia, auxilia na identificação de defeitos, medições de precisão e análise de materiais em escala microscópica. No processamento de imagens médicas, contribui para a segmentação de órgãos, detecção de anomalias e apoio ao diagnóstico. No sensoriamento remoto, é empregada na análise de imagens de satélite, como na identificação de áreas urbanas, vegetação e corpos d’água. Na biologia, apoia o estudo de estruturas celulares e tecidos, enquanto na metalurgia é utilizada para examinar a microestrutura de materiais. Além disso, nos sistemas de leitura automática de caracteres (OCR), a morfologia é fundamental para a limpeza, segmentação e reconhecimento de letras e números.
+
+Assim, a morfologia matemática constitui uma ferramenta poderosa e versátil para a análise estrutural de imagens, sendo amplamente utilizada em problemas que envolvem reconhecimento de padrões, segmentação e interpretação de cenas.
 
 ## Imagens Binárias
 
-Uma imagem binária é uma imagem digital na qual cada pixel pode assumir apenas dois valores possíveis, geralmente representados por 0 e 1. Esses valores indicam, respectivamente, a ausência ou a presença de um objeto em determinada posição da imagem.
+As **imagens binárias** constituem a forma mais simples de representação no processamento digital de imagens. Nesse tipo de imagem, cada pixel pode assumir apenas dois valores possíveis, normalmente **0** ou **1**, representando, respectivamente, o fundo e o objeto de interesse. Essa simplicidade torna as imagens binárias particularmente adequadas para análises estruturais e geométricas, sendo amplamente utilizadas em morfologia matemática.
 
-Imagens binárias são frequentemente obtidas a partir de imagens em tons de cinza por meio de processos de limiarização. Sua simplicidade torna-as adequadas para a aplicação de operações morfológicas, nas quais a forma e a conectividade dos objetos são os principais aspectos analisados.
+Uma maneira conveniente e poderosa de representar imagens binárias é por meio da **teoria dos conjuntos**. Nesse contexto, uma imagem pode ser interpretada como um conjunto de pontos no plano discreto. Mais especificamente, considera-se que cada pixel com valor 1 pertence ao conjunto, enquanto os pixels com valor 0 não pertencem.
+
+Assim, uma imagem binária $A$ pode ser definida como:
+
+$$
+A = \{ (x, y) \in \mathbb{Z}^2 \mid f(x,y) = 1 \}
+$$
+
+onde $f(x,y)$ é a função que descreve a imagem. Dessa forma, a imagem deixa de ser vista apenas como uma matriz e passa a ser tratada como um conjunto de coordenadas no espaço bidimensional discreto.
+
+Essa representação é fundamental para a morfologia matemática, pois permite aplicar diretamente operações clássicas da teoria dos conjuntos. A seguir, revisamos as principais operações utilizadas.
+
+![Operações de conjuntos sobre imagens: a) Imagem X b) complemento de X c) simétrico de X e d) X transladado](/imgs/cap7/conjunto1.png){#fig-conjunto1 fig-align="center" width="80%"}
+
+### União {.unnumbered}
+
+A **união** de dois conjuntos $A$ e $B$ corresponde ao conjunto de todos os pontos que pertencem a pelo menos um dos conjuntos:
+
+$$
+A \cup B = \{ z \mid z \in A \ \text{ou} \ z \in B \}
+$$
+
+No contexto de imagens, a união combina os objetos presentes em ambas as imagens.
+
+### Interseção {.unnumbered}
+
+A **interseção** corresponde aos pontos que pertencem simultaneamente aos dois conjuntos:
+
+$$
+A \cap B = \{ z \mid z \in A \ \text{e} \ z \in B \}
+$$
+
+Essa operação destaca apenas as regiões comuns entre duas imagens.
+
+### Complemento {.unnumbered}
+
+O complemento $X^c$ do conjunto $X$ 'e dado por $$X^c = \{p \in D_I: I(p) = 0\}$$ Para a imagem binária da @fig-conjunto1 a) $$X = \{(-1,0),(-1,1),(0,-1),(0,0),(0,1),(1,0)\}$$ $$X^c = \{(-1,-1),(1,-1),(1,1),(2,-1),(2,0),(2,1)\}$$
+
+No caso de imagens, o complemento inverte os valores: pixels 1 tornam-se 0, e vice-versa.
+
+### Conjunto Simétrico {.unnumbered}
+
+O conjunto simétrico $\breve{X}$ do conjunto $X$ é dado por $$\breve{X} = \{-p: p \in X\}$$ Para a imagem da @fig-conjunto1: $$X = \{(-1,0),(-1,1),(0,-1),(0,0),(0,1),(1,0)\}$$ $$\breve{X} = \{(1,0),(1,-1),(0,1),(0,0),(0,-1),(-1,0)\}$$
+
+No caso de imagens, todas as coordenadas dos pontos do conjunto imagem são multiplicados por -1. Uma outra forma de interpretar essa operação é através do empelhamento dos pontos com relação a diagonal principal, representada por uma linha vermelha pontilha da imagem $X$ e no seu conjunto simétrico $\breve{X}$, na @fig-conjunto1.
+
+### Translação {.unnumbered}
+
+A translação $X_u$ do conjunto $X$ por um vetor $u$ é dado por $$X_u = \{q: q = p+u, p \in X\}$$ Seja $$X = \{(-1,0),(-1,1),(0,-1),(0,0),(0,1),(1,0)\}$$ Para a @fig-conjunto1 e $u = (1,0)$: $$X_u = \{(0,0),(0,1),(1,-1),(1,0),(1,1),(2,0)\}$$
+
+Essa operação é essencial em morfologia matemática, pois o elemento estruturante é frequentemente transladado ao longo da imagem para realizar comparações locais.
+
+![Operações de conjuntos sobre imagens](/imgs/cap7/conjunto2.png){#fig-conjunto2 fig-align="center" width="60%"}
+
+### Diferença {.unnumbered}
+
+O conjunto diferen\c{c}a $X\backslash Y$ dos conjuntos $X$ e $Y$ 'e dado por $$X\backslash Y = X \cap Y^c$$
+
+Em imagens, essa operação remove de $A$ as regiões que coincidem com $B$, conforme ilustrado na @fig-conjunto2.
+
+A representação de imagens binárias como conjuntos e o uso dessas operações formam a base matemática das transformações morfológicas. A partir dessa fundamentação, é possível definir de maneira rigorosa operações como erosão e dilatação, que serão apresentadas nas próximas seções.
 
 ## Conceitos Fundamentais da Morfologia Matemática
 
@@ -18,8 +88,8 @@ A morfologia matemática baseia-se na teoria dos conjuntos. Uma imagem binária 
 
 As operações morfológicas envolvem dois conjuntos principais:
 
-* **Imagem**: o conjunto que representa os objetos de interesse;
-* **Elemento estruturante**: um pequeno conjunto que define a forma e a escala da operação.
+-   **Imagem**: o conjunto que representa os objetos de interesse;
+-   **Elemento estruturante**: um pequeno conjunto que define a forma e a escala da operação.
 
 O elemento estruturante atua como uma sonda que percorre a imagem, permitindo analisar e modificar suas estruturas geométricas.
 
@@ -29,55 +99,205 @@ O **elemento estruturante** é um componente central da morfologia matemática. 
 
 A escolha do elemento estruturante influencia diretamente o resultado das operações morfológicas, pois determina quais características geométricas serão preservadas, realçadas ou removidas.
 
-## Dilatação
+## As operações morfológicas
 
-A **dilatação** é uma operação morfológica que tende a expandir as regiões dos objetos em uma imagem binária. Formalmente, a dilatação de um conjunto (A) por um elemento estruturante (B) é definida como:
+Seja o elemento estruturante $B_p$ um subconjunto finito centrado em $p$, e seja $I$ uma imagem binária. Neste caso, podemos considerar que:
 
-$$
-A \oplus B = \{ z \mid (\hat{B})_z \cap A \neq \varnothing \}
-$$
+-   $B_p$ está incluído em $I$ (notação $B_p \subset I$).
+-   $B_p$ intercepta $I$ (notação $B_p \cap I \neq \emptyset$).
+-   $B_p$ não intercepta $I$ (notação $B_p \cap I = \emptyset$).
 
-onde $\hat{B}$ representa a reflexão do elemento estruturante (B).
+A dilatação de $I$ por $B_p$, denotada por $\delta_B(I)$ ou $I \oplus B$, pode ser definida de forma intuitiva como o conjunto de todos os pontos $p$ tal que $B_p$ intercepta $I$. A erosão, por sua vez, de $I$ por $B_p$, denotada por $\varepsilon_B(I)$ ou $I \ominus B$, é o conjunto de todos os pontos $p$ tal que $B_p$ está incluído em $I$.
 
-A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos.
+### Dilatação {.unnumbered}
 
-## Erosão
-
-A **erosão** é a operação dual da dilatação e tem como efeito principal a redução das regiões dos objetos. A erosão de um conjunto (A) por um elemento estruturante (B) é definida como:
+A **dilatação** é uma operação morfológica que tende a expandir as regiões dos objetos em uma imagem binária. Formalmente, a dilatação de um conjunto Imagem $A$ por um elemento estruturante $B$ é definida como:
 
 $$
-A \ominus B = \{ z \mid B_z \subseteq A \}
+\delta_B(I) = I \oplus B = \{p:I \cap B_p \neq \emptyset\} = 
+\bigcup_{b \in \breve{B}} I_b
+$$
+
+onde $\breve{B}$ representa a reflexão (conjunto simétrico) do elemento estruturante $B$.
+
+A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos. O processo de dilatação é realizado como uma convolução do elemento estruturante.
+
+O código interativo em sequência demostra o funcionamento da operação de dilatação. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da dilatação:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="550" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/3OTqYoR4G>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/3OTqYoR4G width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+### Erosão {.unnumbered}
+
+A **erosão** é a operação dual da dilatação e tem como efeito principal a redução das regiões dos objetos. A erosão de um conjunto Imagem $A$ por um elemento estruturante $B$ é definida como:
+
+$$
+\varepsilon_B(I) = I \ominus B = \{p:\breve{B}_p \subseteq I\} = 
+\bigcap_{b \in B} I_b
 $$
 
 Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.
 
-## Abertura
+O código interativo em sequência demostra o funcionamento da operação de erosão. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da erosão:
 
-A **abertura** é uma operação composta, definida como a erosão seguida de uma dilatação utilizando o mesmo elemento estruturante:
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="550" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/TrZU1VgSn>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/TrZU1VgSn width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+### Abertura e Fechamento {.unnumbered}
+
+A abertura e o fechamento são operações morfológicas fundamentais derivadas da erosão e da dilatação. Essas operações atuam diretamente sobre a forma dos objetos na imagem, promovendo alterações estruturais controladas.
+
+A **abertura** tem como principal efeito a remoção de estruturas pequenas e finas, suavizando os contornos dos objetos e eliminando detalhes indesejados, como ruídos ou saliências estreitas. Já o **fechamento** atua de forma complementar, preenchendo pequenos buracos, conectando regiões próximas separadas por estruturas finas e também suavizando os contornos.
+
+Devido a essas características, ambas as operações são amplamente utilizadas em processos de filtragem morfológica, sendo especialmente úteis para a limpeza e o refinamento de imagens, preservando as estruturas principais enquanto removem imperfeições menores.
+
+Formalmente, a operação de abertura de uma imagem binária $I$ por um elemento estruturante $B$, denotada por $\gamma_B(I)$ ou $I \circ B$, é dada pela equação:
 
 $$
-A \circ B = (A \ominus B) \oplus B
+\gamma_B(I) = I \circ B = \delta_B (\varepsilon_B(I))
 $$
 
-A abertura é utilizada para remover objetos pequenos e detalhes finos, preservando a forma geral das estruturas maiores presentes na imagem.
-
-## Fechamento
-
-O **fechamento** é a operação dual da abertura, definida como a dilatação seguida de uma erosão:
+O fechamento de uma imagem binária $I$ por um elemento estruturante $B$, denotado por $\varphi_B(I)$ ou $I \bullet B$, é:
 
 $$
-A \bullet B = (A \oplus B) \ominus B
+\varphi_B(I) = I \bullet B = \varepsilon_B (\delta_B(I))
 $$
 
-Essa operação é eficaz para preencher pequenas lacunas e buracos nos objetos, além de suavizar contornos externos.
+### Operação Hit or Miss (Tudo ou nada) {.unnumbered}
+
+A operação **tudo-ou-nada** (*hit-or-miss transform*) é uma operação morfológica utilizada para detectar padrões específicos em uma imagem binária. Diferentemente da erosão e da dilatação, que modificam formas, essa operação é voltada para o reconhecimento exato de configurações locais.
+
+Ela funciona a partir de dois elementos estruturantes complementares: um que define os pixels que devem estar presentes (valor 1) e outro que define os pixels que devem estar ausentes (valor 0). Dessa forma, a operação estabelece um padrão completo que precisa ser respeitado na vizinhança analisada.
+
+A ideia central é que, para cada posição da imagem, verifica-se se o padrão definido pelos elementos estruturantes é totalmente satisfeito. Se todas as condições forem atendidas, o resultado naquele ponto é 1; caso contrário, é 0, caracterizando o comportamento de “tudo ou nada”.
+
+Formalmente, essa operação pode ser interpretada como a combinação de duas erosões: uma aplicada à imagem original e outra aplicada ao complemento da imagem. A detecção ocorre somente quando há correspondência exata entre o padrão desejado e a região da imagem.
+
+Essa operação é especialmente útil em tarefas como detecção de cantos, cruzamentos ou terminações de linhas, bem como na identificação de padrões estruturais específicos em imagens binárias. Por sua natureza rigorosa, o *hit-or-miss* é sensível a variações e ruídos, sendo geralmente aplicado em imagens previamente processadas ou filtradas.
+
+### Afinamento e Espessamento {.unnumbered}
+
+O **afinamento** (*thinning*) é uma operação morfológica utilizada para reduzir a espessura dos objetos em uma imagem binária, preservando sua estrutura essencial e conectividade. O objetivo principal é transformar regiões espessas em representações mais finas, geralmente com largura de um pixel, sem alterar significativamente a forma original dos objetos.
+
+Essa operação é realizada de forma iterativa, removendo pixels das bordas dos objetos de acordo com critérios específicos. Em cada etapa, apenas os pixels que não comprometem a conectividade ou a topologia da estrutura são eliminados. Dessa forma, evita-se que o objeto seja fragmentado ou que partes importantes sejam perdidas durante o processo.
+
+O afinamento pode ser visto como uma aplicação sucessiva da operação tudo-ou-nada com diferentes elementos estruturantes, que identificam padrões de pixels que podem ser removidos com segurança. Esses padrões são projetados para preservar características como continuidade e ramificações.
+
+O resultado do afinamento é frequentemente chamado de **esqueleto** da imagem, pois mantém a forma básica e a estrutura dos objetos, mas com espessura mínima. Essa representação é muito útil em diversas aplicações, como reconhecimento de padrões, análise de formas, processamento de caracteres (OCR) e extração de características.
+
+Devido à sua natureza iterativa e dependente de condições locais, o afinamento pode ser sensível a ruídos. Por isso, é comum aplicar etapas de pré-processamento, como filtragem ou abertura, para melhorar a qualidade do resultado final.
+
+Formalmente, o afinamento de uma imagem binária $I$ pelo elemento estruturante $B$, denotado por $I \bigcirc B$, pode ser definido em termos de uma transformação Tudo ou Nada:
+
+$$ 
+I \bigcirc B = I \backslash (I \otimes B)
+$$
+
+Definido desta forma, o afinamento elimina apenas pontos da borda de $I$. O afinamento deve ser aplicado até a idempotência, considerando-se uma sequência de elementos estruturantes homotópicos (que preservam a topologia da imagem) $B^1,B^2,...$ aplicados iterativamente assim:
+
+$$
+\begin{array}{c}
+I^1 = I \bigcirc B^1\\
+I^2 = I^1 \bigcirc B^2\\
+I^3 = I^2 \bigcirc B^3\\
+        . . .
+\end{array}
+$$
+
+O **espessamento** (*thickening*) é uma operação morfológica que tem como objetivo aumentar a espessura dos objetos em uma imagem binária, preservando sua forma e conectividade. Ele pode ser entendido como o processo complementar ao afinamento, pois, em vez de remover pixels das bordas, adiciona pixels de maneira controlada.
+
+Essa operação também é realizada de forma iterativa, analisando a vizinhança de cada pixel por meio de elementos estruturantes. Em cada etapa, novos pixels são incorporados aos objetos apenas quando determinadas condições são satisfeitas, garantindo que a estrutura original não seja distorcida ou desconectada.
+
+Assim como no afinamento, o espessamento pode ser formulado com base na operação tudo-ou-nada. Nesse caso, padrões específicos são utilizados para identificar onde os pixels devem ser adicionados. Quando um padrão é reconhecido, um novo pixel é inserido na posição correspondente, promovendo o crescimento do objeto.
+
+O espessamento é útil em aplicações onde se deseja reforçar estruturas finas, preencher pequenas falhas ou tornar regiões mais evidentes. Ele também pode ser empregado na reconstrução de formas ou na preparação de imagens para etapas posteriores de processamento.
+
+Por ser uma operação que adiciona informação à imagem, o espessamento pode amplificar ruídos ou imperfeições. Por isso, assim como no afinamento, é recomendável aplicar técnicas de pré-processamento para garantir melhores resultados.
+
+Formalmente, o espessamento é o dual morfológico do afinamento e é definido por:
+
+$$
+I \bigodot B = I \cup (I \otimes B)
+$$
+
+Onde $B$ é um elemento estruturante homotópico de espessamento (complemento da família homotópica empregada no afinamento). Esta operação pode ser obtida a partir de um processamento sequencial do tipo:
+
+$$
+\begin{array}{c}
+I^1 = I \bigodot B^1\\
+I^2 = I^1 \bigodot B^2\\
+I^3 = I^2 \bigodot B^3\\
+        . . .
+\end{array}
+$$
+
+Na @fig-familia está representada uma família homotópica para afinamento ou espessamento
+
+![Família homotópica](/imgs/cap7/familia.png){fig-align="center" width="80%" #fig-familia}
+
+O exemplo interativo seguinte simula o processo de afinamento para uma imagem considerando a família homotópia da @fig-familia. Os controles na simulação servem para executar o algoritmo de afinamento passo a passo, resetar a simulação, interromper ou continuar de forma automática. Ainda é possível controlar a velocidade da simulação automática. A cada passo é mostrado o elemento da família homotópica que está sendo utilizado para o afinamento na imagem e abaixo dela.
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" width="100%" height="550" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/cFSmoa_OL>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/cFSmoa_OL width=100 height=100 pdfheight=3cm >}}
+:::
+::::
 
 ## Propriedades das Operações Morfológicas
 
 As operações morfológicas apresentam propriedades importantes, como:
 
-* **Idempotência**: a aplicação repetida de abertura ou fechamento não altera o resultado após a primeira aplicação;
-* **Dualidade**: erosão e dilatação, assim como abertura e fechamento, são operações duais;
-* **Invariância por translação**: o resultado das operações não depende da posição absoluta dos objetos na imagem.
+-   **Idempotência**: a aplicação repetida de abertura ou fechamento não altera o resultado após a primeira aplicação;
+-   **Dualidade**: erosão e dilatação, assim como abertura e fechamento, são operações duais;
+-   **Invariância por translação**: o resultado das operações não depende da posição absoluta dos objetos na imagem.
 
 Essas propriedades fornecem uma base teórica sólida para o uso da morfologia matemática em sistemas de processamento de imagens.
 
@@ -85,14 +305,13 @@ Essas propriedades fornecem uma base teórica sólida para o uso da morfologia m
 
 A morfologia matemática binária é amplamente utilizada em diversas aplicações, tais como:
 
-* remoção de ruído impulsivo;
-* preenchimento de regiões;
-* extração de contornos;
-* análise de conectividade;
-* pré-processamento para segmentação e reconhecimento de padrões.
+-   remoção de ruído impulsivo;
+-   preenchimento de regiões;
+-   extração de contornos;
+-   análise de conectividade;
+-   pré-processamento para segmentação e reconhecimento de padrões.
 
 Sua simplicidade conceitual e eficiência computacional fazem da morfologia uma ferramenta essencial em PDI.
-
 
 ## Morfologia Matemática em Tons de Cinza
 
@@ -116,8 +335,8 @@ Seja (f) a imagem de entrada e (b) um elemento estruturante. As operações morf
 
 Na morfologia em tons de cinza, o elemento estruturante pode ser:
 
-* **Plano (flat)**: assume valor constante, geralmente zero;
-* **Não plano (non-flat)**: definido por uma função com valores variados.
+-   **Plano (flat)**: assume valor constante, geralmente zero;
+-   **Não plano (non-flat)**: definido por uma função com valores variados.
 
 Elementos estruturantes planos são os mais utilizados na prática, pois simplificam as operações e facilitam a interpretação dos resultados.
 
@@ -165,10 +384,10 @@ Essa operação é eficaz para preencher vales escuros e suavizar descontinuidad
 
 As operações morfológicas em tons de cinza compartilham diversas propriedades com suas contrapartes binárias, tais como:
 
-* **Dualidade** entre erosão e dilatação;
-* **Idempotência** da abertura e do fechamento;
-* **Invariância por translação**;
-* **Extensividade** da dilatação e **antiextensividade** da erosão.
+-   **Dualidade** entre erosão e dilatação;
+-   **Idempotência** da abertura e do fechamento;
+-   **Invariância por translação**;
+-   **Extensividade** da dilatação e **antiextensividade** da erosão.
 
 Essas propriedades garantem previsibilidade e consistência no comportamento dos operadores morfológicos.
 
@@ -176,11 +395,11 @@ Essas propriedades garantem previsibilidade e consistência no comportamento dos
 
 A morfologia matemática em tons de cinza é amplamente utilizada em aplicações como:
 
-* realce e suavização de imagens;
-* supressão de ruído impulsivo;
-* extração de estruturas relevantes;
-* pré-processamento para segmentação;
-* análise de superfícies e texturas.
+-   realce e suavização de imagens;
+-   supressão de ruído impulsivo;
+-   extração de estruturas relevantes;
+-   pré-processamento para segmentação;
+-   análise de superfícies e texturas.
 
 Sua capacidade de preservar características geométricas torna-a especialmente útil em imagens naturais e médicas.
 
