@@ -197,6 +197,28 @@ $$
 \varphi_B(I) = I \bullet B = \varepsilon_B (\delta_B(I))
 $$
 
+O exemplo interativo seguinte está a implementação da operações de erosão, dilatação, abertura e fechamento para imagens pbm:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/6VAsB0SBo" width="100%" height="550" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/6VAsB0SBo>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/6VAsB0SBo width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
 ### Operação Hit or Miss (Tudo ou nada) {.unnumbered}
 
 A operação **tudo-ou-nada** (*hit-or-miss transform*) é uma operação morfológica utilizada para detectar padrões específicos em uma imagem binária. Diferentemente da erosão e da dilatação, que modificam formas, essa operação é voltada para o reconhecimento exato de configurações locais.
@@ -290,6 +312,29 @@ O código completo e a demonstração interativa estão disponíveis em:
 {{< qrcode https://editor.p5js.org/luizedsilva/full/cFSmoa_OL width=100 height=100 pdfheight=3cm >}}
 :::
 ::::
+
+O exemplo interativo seguinte é aplicado para uma silhueta de um homem:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/8aSI6XMnX" width="100%" height="550" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/8aSI6XMnX>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/8aSI6XMnX width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
 
 ## Propriedades das Operações Morfológicas
 
