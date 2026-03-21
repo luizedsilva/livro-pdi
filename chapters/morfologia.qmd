@@ -120,6 +120,8 @@ $$
 
 onde $\breve{B}$ representa a reflexão (conjunto simétrico) do elemento estruturante $B$.
 
+![Dilatação como erosão](/imgs/cap7/dilatacao-conjunto.png){fig-align="center" width="80%"}
+
 A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos. O processo de dilatação é realizado como uma convolução do elemento estruturante.
 
 O código interativo em sequência demostra o funcionamento da operação de dilatação. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da dilatação:
@@ -127,7 +129,7 @@ O código interativo em sequência demostra o funcionamento da operação de dil
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
 
-<iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="550" style="border:none; overflow:hiddeln;">
+<iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="250" style="border:none; overflow:hiddeln;">
 
 </iframe>
 :::
@@ -155,12 +157,14 @@ $$
 
 Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.
 
+![Erosão como união](/imgs/cap7/erosao-conjunto.png){fig-align="center" width="80%"}
+
 O código interativo em sequência demostra o funcionamento da operação de erosão. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da erosão:
 
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
 
-<iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="550" style="border:none; overflow:hiddeln;">
+<iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="250" style="border:none; overflow:hiddeln;">
 
 </iframe>
 :::
@@ -289,14 +293,14 @@ $$
 
 Na @fig-familia está representada uma família homotópica para afinamento ou espessamento
 
-![Família homotópica](/imgs/cap7/familia.png){fig-align="center" width="80%" #fig-familia}
+![Família homotópica](/imgs/cap7/familia.png){#fig-familia fig-align="center" width="80%"}
 
 O exemplo interativo seguinte simula o processo de afinamento para uma imagem considerando a família homotópia da @fig-familia. Os controles na simulação servem para executar o algoritmo de afinamento passo a passo, resetar a simulação, interromper ou continuar de forma automática. Ainda é possível controlar a velocidade da simulação automática. A cada passo é mostrado o elemento da família homotópica que está sendo utilizado para o afinamento na imagem e abaixo dela.
 
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
 
-<iframe src="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" width="100%" height="550" style="border:none; overflow:hiddeln;">
+<iframe src="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" width="100%" height="300" style="border:none; overflow:hiddeln;">
 
 </iframe>
 :::
@@ -334,7 +338,6 @@ O código completo e a demonstração interativa estão disponíveis em:
 {{< qrcode https://editor.p5js.org/luizedsilva/full/8aSI6XMnX width=100 height=100 pdfheight=3cm >}}
 :::
 ::::
-
 
 ## Propriedades das Operações Morfológicas
 
