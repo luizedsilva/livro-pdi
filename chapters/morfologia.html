@@ -402,11 +402,15 @@ Figura&nbsp;7.2: Operações de conjuntos sobre imagens
 \delta_B(I) = I \oplus B = \{p:I \cap B_p \neq \emptyset\} =
 \bigcup_{b \in \breve{B}} I_b
 \]</span></p>
-<p>onde <span class="math inline">\(\breve{B}\)</span> representa a reflexão (conjunto simétrico) do elemento estruturante <span class="math inline">\(B\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap7/dilatacao-conjunto.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Dilatação como erosão</figcaption>
+<p>onde <span class="math inline">\(\breve{B}\)</span> representa a reflexão (conjunto simétrico) do elemento estruturante <span class="math inline">\(B\)</span>. A <a href="#fig-dilatacao-conjunto" class="quarto-xref">Figura&nbsp;<span>7.3</span></a> mostra a dilatação como a união de várias translações da imagem, realizadas a partir de cada ponto do elemento estruturante refletido (simétrico)</p>
+<div id="fig-dilatacao-conjunto" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dilatacao-conjunto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap7/dilatacao-conjunto.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dilatacao-conjunto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.3: Dilatação como união
+</figcaption>
 </figure>
 </div>
 <p>A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos. O processo de dilatação é realizado como uma convolução do elemento estruturante.</p>
@@ -422,13 +426,18 @@ Figura&nbsp;7.2: Operações de conjuntos sobre imagens
 \varepsilon_B(I) = I \ominus B = \{p:\breve{B}_p \subseteq I\} =
 \bigcap_{b \in B} I_b
 \]</span></p>
-<p>Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap7/erosao-conjunto.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Erosão como união</figcaption>
+<p>A <a href="#fig-erosao-conjunto" class="quarto-xref">Figura&nbsp;<span>7.4</span></a> mostra a erosão como a interseção de várias translações da imagem, realizadas a partir de cada ponto do elemento estruturante original.</p>
+<div id="fig-erosao-conjunto" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-erosao-conjunto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap7/erosao-conjunto.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-erosao-conjunto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.4: Erosão como interseção
+</figcaption>
 </figure>
 </div>
+<p>Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.</p>
 <p>O código interativo em sequência demostra o funcionamento da operação de erosão. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da erosão:</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="250" style="border:none; overflow:hiddeln;">
@@ -498,18 +507,18 @@ I^3 = I^2 \bigodot B^3\\
         . . .
 \end{array}
 \]</span></p>
-<p>Na <a href="#fig-familia" class="quarto-xref">Figura&nbsp;<span>7.3</span></a> está representada uma família homotópica para afinamento ou espessamento</p>
+<p>Na <a href="#fig-familia" class="quarto-xref">Figura&nbsp;<span>7.5</span></a> está representada uma família homotópica para afinamento ou espessamento</p>
 <div id="fig-familia" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-familia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap7/familia.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-familia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7.3: Família homotópica
+Figura&nbsp;7.5: Família homotópica
 </figcaption>
 </figure>
 </div>
-<p>O exemplo interativo seguinte simula o processo de afinamento para uma imagem considerando a família homotópia da <a href="#fig-familia" class="quarto-xref">Figura&nbsp;<span>7.3</span></a>. Os controles na simulação servem para executar o algoritmo de afinamento passo a passo, resetar a simulação, interromper ou continuar de forma automática. Ainda é possível controlar a velocidade da simulação automática. A cada passo é mostrado o elemento da família homotópica que está sendo utilizado para o afinamento na imagem e abaixo dela.</p>
+<p>O exemplo interativo seguinte simula o processo de afinamento para uma imagem considerando a família homotópia da <a href="#fig-familia" class="quarto-xref">Figura&nbsp;<span>7.5</span></a>. Os controles na simulação servem para executar o algoritmo de afinamento passo a passo, resetar a simulação, interromper ou continuar de forma automática. Ainda é possível controlar a velocidade da simulação automática. A cada passo é mostrado o elemento da família homotópica que está sendo utilizado para o afinamento na imagem e abaixo dela.</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" width="100%" height="300" style="border:none; overflow:hiddeln;">
 </iframe>
