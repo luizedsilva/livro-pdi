@@ -403,10 +403,16 @@ Figura&nbsp;7.2: Operações de conjuntos sobre imagens
 \bigcup_{b \in \breve{B}} I_b
 \]</span></p>
 <p>onde <span class="math inline">\(\breve{B}\)</span> representa a reflexão (conjunto simétrico) do elemento estruturante <span class="math inline">\(B\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap7/dilatacao-conjunto.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Dilatação como erosão</figcaption>
+</figure>
+</div>
 <p>A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos. O processo de dilatação é realizado como uma convolução do elemento estruturante.</p>
 <p>O código interativo em sequência demostra o funcionamento da operação de dilatação. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da dilatação:</p>
 <!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="550" style="border:none; overflow:hiddeln;">
+<iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="250" style="border:none; overflow:hiddeln;">
 </iframe>
 </section>
 <section id="erosão" class="level3 unnumbered">
@@ -417,9 +423,15 @@ Figura&nbsp;7.2: Operações de conjuntos sobre imagens
 \bigcap_{b \in B} I_b
 \]</span></p>
 <p>Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap7/erosao-conjunto.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Erosão como união</figcaption>
+</figure>
+</div>
 <p>O código interativo em sequência demostra o funcionamento da operação de erosão. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da erosão:</p>
 <!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="550" style="border:none; overflow:hiddeln;">
+<iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="250" style="border:none; overflow:hiddeln;">
 </iframe>
 </section>
 <section id="abertura-e-fechamento" class="level3 unnumbered">
@@ -499,7 +511,7 @@ Figura&nbsp;7.3: Família homotópica
 </div>
 <p>O exemplo interativo seguinte simula o processo de afinamento para uma imagem considerando a família homotópia da <a href="#fig-familia" class="quarto-xref">Figura&nbsp;<span>7.3</span></a>. Os controles na simulação servem para executar o algoritmo de afinamento passo a passo, resetar a simulação, interromper ou continuar de forma automática. Ainda é possível controlar a velocidade da simulação automática. A cada passo é mostrado o elemento da família homotópica que está sendo utilizado para o afinamento na imagem e abaixo dela.</p>
 <!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" width="100%" height="550" style="border:none; overflow:hiddeln;">
+<iframe src="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" width="100%" height="300" style="border:none; overflow:hiddeln;">
 </iframe>
 <p>O exemplo interativo seguinte é aplicado para uma silhueta de um homem:</p>
 <!-- Conteúdo interativo (HTML) -->
