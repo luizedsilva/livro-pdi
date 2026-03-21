@@ -41,3 +41,9 @@ Para aprender mais sobre **p5.js** visite: <https://editor.p5js.org/about>.
 Para a apresentação e visualização de algumas equações e conceitos matemáticos, foi utilizado o software **GeoGebra**. Essa ferramenta permite explorar de forma interativa gráficos, funções e relações matemáticas, facilitando a compreensão de conceitos importantes apresentados ao longo do texto. O uso de recursos interativos contribui para tornar a visualização das equações mais clara e intuitiva para o leitor. Para saber mais sobre essa ferramenta e acessar seus recursos, visite o site oficial do GeoGebra: <https://www.geogebra.org>.
 
 As figuras utilizadas neste livro foram construídas com o auxílio do **Excalidraw**, uma ferramenta de desenho vetorial simples e intuitiva, bastante adequada para a criação de diagramas e ilustrações didáticas. O Excalidraw permite produzir gráficos e esquemas com um estilo visual claro, favorecendo a comunicação de ideias e conceitos apresentados no texto. Mais informações sobre essa ferramenta podem ser encontradas em: <https://excalidraw.com>.
+
+::: {.license}
+![](/cc-by-sa.png)
+
+Este trabalho está licenciado sob a Licença Creative Commons CC BY-SA 4.0.
+:::

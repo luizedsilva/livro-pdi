@@ -3,10 +3,16 @@ project:
 
 lang: pt-BR
 
+licence: "CC BY-SA 4.0"
+
 book:
   title: "Processamento Digital de Imagens"
   subtitle: "Uma abordagem interativa com P5.js"
-  author: "Luiz Eduardo da Silva"
+  author:
+    - name: "Luiz Eduardo da Silva"
+      affiliation: "Universidade Federal de Alfenas"
+    - name: "Tiago Silveira"
+      affiliation: "Universidade Federal de Alfenas"
   cover-image: capa.png
   date: today
   chapters:

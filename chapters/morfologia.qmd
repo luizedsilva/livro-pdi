@@ -118,9 +118,9 @@ $$
 \bigcup_{b \in \breve{B}} I_b
 $$
 
-onde $\breve{B}$ representa a reflexão (conjunto simétrico) do elemento estruturante $B$.
+onde $\breve{B}$ representa a reflexão (conjunto simétrico) do elemento estruturante $B$. A @fig-dilatacao-conjunto mostra a dilatação como a união de várias translações da imagem, realizadas a partir de cada ponto do elemento estruturante refletido (simétrico)
 
-![Dilatação como erosão](/imgs/cap7/dilatacao-conjunto.png){fig-align="center" width="80%"}
+![Dilatação como união](/imgs/cap7/dilatacao-conjunto.png){#fig-dilatacao-conjunto fig-align="center" width="80%"}
 
 A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos. O processo de dilatação é realizado como uma convolução do elemento estruturante.
 
@@ -155,9 +155,11 @@ $$
 \bigcap_{b \in B} I_b
 $$
 
-Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.
+A @fig-erosao-conjunto mostra a erosão como a interseção de várias translações da imagem, realizadas a partir de cada ponto do elemento estruturante original.
 
-![Erosão como união](/imgs/cap7/erosao-conjunto.png){fig-align="center" width="80%"}
+![Erosão como interseção](/imgs/cap7/erosao-conjunto.png){#fig-erosao-conjunto fig-align="center" width="80%"}
+
+Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.
 
 O código interativo em sequência demostra o funcionamento da operação de erosão. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da erosão:
 
