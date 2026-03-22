@@ -23,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -252,20 +271,23 @@ window.Quarto = {
   <li><a href="#abertura-e-fechamento" id="toc-abertura-e-fechamento" class="nav-link" data-scroll-target="#abertura-e-fechamento">Abertura e Fechamento</a></li>
   <li><a href="#operação-hit-or-miss-tudo-ou-nada" id="toc-operação-hit-or-miss-tudo-ou-nada" class="nav-link" data-scroll-target="#operação-hit-or-miss-tudo-ou-nada">Operação Hit or Miss (Tudo ou nada)</a></li>
   <li><a href="#afinamento-e-espessamento" id="toc-afinamento-e-espessamento" class="nav-link" data-scroll-target="#afinamento-e-espessamento">Afinamento e Espessamento</a></li>
+  <li><a href="#operações-geodésicas" id="toc-operações-geodésicas" class="nav-link" data-scroll-target="#operações-geodésicas">Operações Geodésicas</a></li>
+  <li><a href="#dilatação-geodésica" id="toc-dilatação-geodésica" class="nav-link" data-scroll-target="#dilatação-geodésica">Dilatação geodésica</a></li>
+  <li><a href="#erosão-geodésica" id="toc-erosão-geodésica" class="nav-link" data-scroll-target="#erosão-geodésica">Erosão geodésica</a></li>
+  <li><a href="#reconstrução-geodésica" id="toc-reconstrução-geodésica" class="nav-link" data-scroll-target="#reconstrução-geodésica">Reconstrução geodésica</a></li>
   </ul></li>
   <li><a href="#propriedades-das-operações-morfológicas" id="toc-propriedades-das-operações-morfológicas" class="nav-link" data-scroll-target="#propriedades-das-operações-morfológicas"><span class="header-section-number">7.5</span> Propriedades das Operações Morfológicas</a></li>
   <li><a href="#aplicações-da-morfologia-binária" id="toc-aplicações-da-morfologia-binária" class="nav-link" data-scroll-target="#aplicações-da-morfologia-binária"><span class="header-section-number">7.6</span> Aplicações da Morfologia Binária</a></li>
-  <li><a href="#morfologia-matemática-em-tons-de-cinza" id="toc-morfologia-matemática-em-tons-de-cinza" class="nav-link" data-scroll-target="#morfologia-matemática-em-tons-de-cinza"><span class="header-section-number">7.7</span> Morfologia Matemática em Tons de Cinza</a></li>
-  <li><a href="#imagens-em-tons-de-cinza" id="toc-imagens-em-tons-de-cinza" class="nav-link" data-scroll-target="#imagens-em-tons-de-cinza"><span class="header-section-number">7.8</span> Imagens em Tons de Cinza</a></li>
-  <li><a href="#fundamentos-da-morfologia-em-tons-de-cinza" id="toc-fundamentos-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.9</span> Fundamentos da Morfologia em Tons de Cinza</a></li>
-  <li><a href="#elemento-estruturante-1" id="toc-elemento-estruturante-1" class="nav-link" data-scroll-target="#elemento-estruturante-1"><span class="header-section-number">7.10</span> Elemento Estruturante</a></li>
-  <li><a href="#dilatação-em-tons-de-cinza" id="toc-dilatação-em-tons-de-cinza" class="nav-link" data-scroll-target="#dilatação-em-tons-de-cinza"><span class="header-section-number">7.11</span> Dilatação em Tons de Cinza</a></li>
-  <li><a href="#erosão-em-tons-de-cinza" id="toc-erosão-em-tons-de-cinza" class="nav-link" data-scroll-target="#erosão-em-tons-de-cinza"><span class="header-section-number">7.12</span> Erosão em Tons de Cinza</a></li>
-  <li><a href="#abertura-em-tons-de-cinza" id="toc-abertura-em-tons-de-cinza" class="nav-link" data-scroll-target="#abertura-em-tons-de-cinza"><span class="header-section-number">7.13</span> Abertura em Tons de Cinza</a></li>
-  <li><a href="#fechamento-em-tons-de-cinza" id="toc-fechamento-em-tons-de-cinza" class="nav-link" data-scroll-target="#fechamento-em-tons-de-cinza"><span class="header-section-number">7.14</span> Fechamento em Tons de Cinza</a></li>
-  <li><a href="#propriedades-das-operações-morfológicas-1" id="toc-propriedades-das-operações-morfológicas-1" class="nav-link" data-scroll-target="#propriedades-das-operações-morfológicas-1"><span class="header-section-number">7.15</span> Propriedades das Operações Morfológicas</a></li>
-  <li><a href="#aplicações-da-morfologia-em-tons-de-cinza" id="toc-aplicações-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.16</span> Aplicações da Morfologia em Tons de Cinza</a></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">7.17</span> Considerações Finais</a></li>
+  <li><a href="#imagens-em-tons-de-cinza" id="toc-imagens-em-tons-de-cinza" class="nav-link" data-scroll-target="#imagens-em-tons-de-cinza"><span class="header-section-number">7.7</span> Imagens em Tons de Cinza</a></li>
+  <li><a href="#fundamentos-da-morfologia-em-tons-de-cinza" id="toc-fundamentos-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.8</span> Fundamentos da Morfologia em Tons de Cinza</a></li>
+  <li><a href="#elemento-estruturante-1" id="toc-elemento-estruturante-1" class="nav-link" data-scroll-target="#elemento-estruturante-1"><span class="header-section-number">7.9</span> Elemento Estruturante</a></li>
+  <li><a href="#dilatação-em-tons-de-cinza" id="toc-dilatação-em-tons-de-cinza" class="nav-link" data-scroll-target="#dilatação-em-tons-de-cinza"><span class="header-section-number">7.10</span> Dilatação em Tons de Cinza</a></li>
+  <li><a href="#erosão-em-tons-de-cinza" id="toc-erosão-em-tons-de-cinza" class="nav-link" data-scroll-target="#erosão-em-tons-de-cinza"><span class="header-section-number">7.11</span> Erosão em Tons de Cinza</a></li>
+  <li><a href="#abertura-em-tons-de-cinza" id="toc-abertura-em-tons-de-cinza" class="nav-link" data-scroll-target="#abertura-em-tons-de-cinza"><span class="header-section-number">7.12</span> Abertura em Tons de Cinza</a></li>
+  <li><a href="#fechamento-em-tons-de-cinza" id="toc-fechamento-em-tons-de-cinza" class="nav-link" data-scroll-target="#fechamento-em-tons-de-cinza"><span class="header-section-number">7.13</span> Fechamento em Tons de Cinza</a></li>
+  <li><a href="#propriedades-das-operações-morfológicas-1" id="toc-propriedades-das-operações-morfológicas-1" class="nav-link" data-scroll-target="#propriedades-das-operações-morfológicas-1"><span class="header-section-number">7.14</span> Propriedades das Operações Morfológicas</a></li>
+  <li><a href="#aplicações-da-morfologia-em-tons-de-cinza" id="toc-aplicações-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.15</span> Aplicações da Morfologia em Tons de Cinza</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">7.16</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -416,7 +438,7 @@ Figura&nbsp;7.3: Dilatação como união
 <p>A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos. O processo de dilatação é realizado como uma convolução do elemento estruturante.</p>
 <p>O código interativo em sequência demostra o funcionamento da operação de dilatação. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da dilatação:</p>
 <!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="250" style="border:none; overflow:hiddeln;">
+<iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="400" style="border:none; overflow:hiddeln;">
 </iframe>
 </section>
 <section id="erosão" class="level3 unnumbered">
@@ -440,7 +462,7 @@ Figura&nbsp;7.4: Erosão como interseção
 <p>Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.</p>
 <p>O código interativo em sequência demostra o funcionamento da operação de erosão. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da erosão:</p>
 <!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="250" style="border:none; overflow:hiddeln;">
+<iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="400" style="border:none; overflow:hiddeln;">
 </iframe>
 </section>
 <section id="abertura-e-fechamento" class="level3 unnumbered">
@@ -522,9 +544,95 @@ Figura&nbsp;7.5: Família homotópica
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" width="100%" height="300" style="border:none; overflow:hiddeln;">
 </iframe>
-<p>O exemplo interativo seguinte é aplicado para uma silhueta de um homem:</p>
+<p>No exemplo interativo seguinte está uma implementação do algoritmo rápido de afinamento de <span class="citation" data-cites="zhang1984thinning">Zhang e Suen (<a href="references.html#ref-zhang1984thinning" role="doc-biblioref">1984</a>)</span> para aplicação à silhueta de um homem.</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/8aSI6XMnX" width="100%" height="550" style="border:none; overflow:hiddeln;">
+</iframe>
+</section>
+<section id="operações-geodésicas" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="operações-geodésicas">Operações Geodésicas</h3>
+<p>As operações geodésicas em morfologia matemática tratam da análise de distâncias e caminhos definidos no interior de um conjunto, geralmente associado a um objeto em uma imagem binária. Diferentemente das medidas clássicas de distância, que consideram o espaço como um todo, as operações geodésicas levam em conta apenas os pontos pertencentes ao conjunto de interesse, respeitando sua forma e sua conectividade.</p>
+<p>Sejam <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> dois pontos pertencentes a um conjunto <span class="math inline">\(A\)</span>, conforme ilustrado na <a href="#fig-distancia-geodesica" class="quarto-xref">Figura&nbsp;<span>7.6</span></a>. Define-se como distância geodésica <span class="math inline">\(d_A(x,y)\)</span> o comprimento do menor caminho que conecta <span class="math inline">\(x\)</span> a <span class="math inline">\(y\)</span>, sendo esse caminho inteiramente contido em <span class="math inline">\(A\)</span>. Em outras palavras, considera-se o menor percurso possível entre esses pontos sem sair da região definida por <span class="math inline">\(A\)</span>. Caso não exista tal caminho — isto é, se <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pertencem a componentes desconexas — a distância geodésica é definida como infinita.</p>
+<div id="fig-distancia-geodesica" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-distancia-geodesica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap7/distancia-geodesica.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distancia-geodesica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.6: Distância geodésica
+</figcaption>
+</figure>
+</div>
+<p>Essa definição pode ser interpretada de forma intuitiva ao se considerar uma imagem binária: os pontos pertencentes ao objeto formam uma região pela qual é permitido “caminhar”, enquanto o fundo atua como uma barreira. Assim, a distância geodésica corresponde ao menor número de passos necessários para ir de um ponto a outro, deslocando-se apenas por pixels vizinhos pertencentes ao objeto, de acordo com uma conectividade previamente definida, como 4 ou 8 vizinhos.</p>
+<p>A distância geodésica difere da distância euclidiana justamente por levar em consideração a geometria e a topologia do objeto. Enquanto a distância euclidiana corresponde ao comprimento da linha reta entre dois pontos, a distância geodésica acompanha a forma do objeto, podendo resultar em caminhos mais longos quando há curvaturas ou obstáculos internos.</p>
+<p>Esse conceito constitui a base para diversas operações em morfologia matemática, como dilatações e erosões geodésicas, além da reconstrução morfológica. Nessas operações, a propagação ou retração de regiões ocorre de forma controlada, sendo limitada por um conjunto máscara, o que permite preservar estruturas relevantes da imagem. Dessa forma, as operações geodésicas são fundamentais em aplicações como segmentação, extração de esqueletos e análise de formas.</p>
+<p>A partir da métrica geodésica <span class="math inline">\(d_A\)</span>, pode-se estender o conceito de distância para medir a separação entre um ponto e um subconjunto de <span class="math inline">\(A\)</span>. Seja <span class="math inline">\(x \in A\)</span> e <span class="math inline">\(B \subseteq A\)</span>. Define-se a distância geodésica entre o ponto <span class="math inline">\(x\)</span> e o conjunto <span class="math inline">\(B\)</span>, denotada por <span class="math inline">\(d_A(x,B)\)</span>, como a menor distância geodésica entre <span class="math inline">\(x\)</span> e qualquer ponto <span class="math inline">\(y\)</span> pertencente a <span class="math inline">\(B\)</span>. Em outras palavras, considera-se todos os possíveis caminhos, inteiramente contidos em <span class="math inline">\(A\)</span>, que ligam <span class="math inline">\(x\)</span> a pontos de <span class="math inline">\(B\)</span>, e escolhe-se aquele de menor comprimento.</p>
+<p>Formalmente, essa definição pode ser expressa como: <span class="math display">\[
+d_A(x,B) = \inf_{y \in B} d_A(x,y)
+\]</span></p>
+<p>ou seja, <span class="math inline">\(d_A(x,B)\)</span> é o ínfimo das distâncias geodésicas entre <span class="math inline">\(x\)</span> e cada elemento <span class="math inline">\(y\)</span> do conjunto <span class="math inline">\(B\)</span>. Quando existe pelo menos um caminho conectando <span class="math inline">\(x\)</span> a algum ponto de <span class="math inline">\(B\)</span> dentro de <span class="math inline">\(A\)</span>, essa distância será finita; caso contrário, será infinita.</p>
+<p>Um dos principais interesses no uso dessa função está na sua capacidade de tratar adequadamente problemas de conectividade. Como a distância é calculada apenas ao longo de caminhos contidos em <span class="math inline">\(A\)</span>, ela reflete diretamente a estrutura topológica do conjunto. Dessa forma, é possível distinguir naturalmente regiões conectadas de regiões desconexas, o que é fundamental em diversas aplicações de processamento de imagens, como segmentação, reconstrução morfológica e análise de componentes conectados.</p>
+<p>Todas as operações morfológicas, como dilatação e erosão, podem ser reinterpretadas a partir da métrica geodésica. Nesse contexto, considera-se um conjunto <span class="math inline">\(X\)</span> que define o domínio <span class="math inline">\(ou máscara\)</span> e um subconjunto <span class="math inline">\(Y \subseteq X\)</span>, sobre o qual se deseja aplicar a operação. A ideia central é utilizar a distância geodésica em <span class="math inline">\(X\)</span> para definir regiões de influência em torno dos pontos.</p>
+<p>Para isso, define-se a bola geodésica de raio <span class="math inline">\(\lambda\)</span> centrada em um ponto <span class="math inline">\(x \in X\)</span>, denotada por <span class="math inline">\(B_X(x,\lambda)\)</span>, como o conjunto de todos os pontos de <span class="math inline">\(X\)</span> cuja distância geodésica até <span class="math inline">\(x\)</span> é menor ou igual a <span class="math inline">\(\lambda\)</span>. Em termos formais: <span class="math display">\[
+B_X(x,\lambda) = \{ y \in X : d_X(x,y) \leq \lambda \}.
+\]</span> Essa bola representa, portanto, todos os pontos que podem ser alcançados a partir de <span class="math inline">\(x\)</span> por caminhos contidos em <span class="math inline">\(X\)</span> com comprimento limitado por <span class="math inline">\(\lambda\)</span>.</p>
+<p>Com base nessa definição, a dilatação geodésica de <span class="math inline">\(Y\)</span> em <span class="math inline">\(X\)</span> com raio <span class="math inline">\(\lambda\)</span>, denotada por <span class="math inline">\(\delta_X^{\lambda}(Y)\)</span>, pode ser descrita como o conjunto de todos os pontos <span class="math inline">\(x \in X\)</span> cuja bola geodésica intercepta <span class="math inline">\(Y\)</span>. Em outras palavras, um ponto <span class="math inline">\(x\)</span> pertence à dilatação se for possível alcançar algum ponto de <span class="math inline">\(Y\)</span> a partir de <span class="math inline">\(x\)</span> por um caminho em <span class="math inline">\(X\)</span> de comprimento no máximo <span class="math inline">\(\lambda\)</span>. Formalmente:</p>
+<p><span class="math display">\[
+\delta_X^\lambda(Y) = \{ x \in X : B_X(x,\lambda) \cap Y \neq \emptyset \}.
+\]</span></p>
+<p>Essa formulação mostra que a dilatação geodésica pode ser interpretada como uma expansão de <span class="math inline">\(Y\)</span> dentro de <span class="math inline">\(X\)</span>, limitada pela estrutura do próprio conjunto <span class="math inline">\(X\)</span>. Diferentemente da dilatação clássica, que se baseia apenas em um elemento estruturante fixo, a dilatação geodésica respeita a geometria e a conectividade do domínio, impedindo que a expansão ultrapasse regiões proibidas. Essa característica torna as operações geodésicas particularmente adequadas para aplicações em que é necessário controlar a propagação dentro de formas complexas, como na reconstrução morfológica e na segmentação de imagens.</p>
+</section>
+<section id="dilatação-geodésica" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="dilatação-geodésica">Dilatação geodésica</h3>
+<p>A dilatação geodésica de ordem <span class="math inline">\(n\)</span>, definida no espaço <span class="math inline">\(\mathbb{Z}^2\)</span>, pode ser obtida por meio da aplicação iterativa de dilatações geodésicas elementares de ordem 1. Ou seja, a dilatação geodésica de ordem maior é construída a partir da repetição sucessiva da operação básica.</p>
+<p>A dilatação geodésica unitária é definida por: <span class="math display">\[
+\delta^{1}_{X}(Y) = (Y \oplus B) \cap X,
+\]</span></p>
+<p>onde <span class="math inline">\(B\)</span> é o elemento estruturante e <span class="math inline">\(X\)</span> atua como máscara, limitando o crescimento do conjunto <span class="math inline">\(Y\)</span>.</p>
+<p>A partir dessa definição, a dilatação geodésica de ordem <span class="math inline">\(n\)</span> é obtida pela composição iterativa dessa operação, isto é, aplicando-se <span class="math inline">\(n\)</span> vezes a dilatação geodésica unitária sobre o resultado anterior: <span class="math display">\[
+\delta^{n}_{X}(Y) = \underbrace{\delta^{1}_{X}\big(\delta^{1}_{X}(\cdots \delta^{1}_{X}(Y)\cdots)\big)}_{\text{n vezes}}.
+\]</span></p>
+<p>Essa formulação evidencia que a dilatação geodésica ocorre de maneira progressiva, expandindo o conjunto <span class="math inline">\(Y\)</span> dentro do domínio <span class="math inline">\(X\)</span> passo a passo, sempre respeitando as restrições impostas pela máscara.</p>
+</section>
+<section id="erosão-geodésica" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="erosão-geodésica">Erosão geodésica</h3>
+<p>De forma análoga à dilatação geodésica, pode-se definir a erosão geodésica a partir da métrica geodésica. Seja <span class="math inline">\(Y \subseteq X\)</span>. O conjunto <span class="math inline">\(\lambda\)</span>-erodido de <span class="math inline">\(Y\)</span> em <span class="math inline">\(X\)</span> é formado pelos pontos <span class="math inline">\(x \in X\)</span> cuja bola geodésica de raio <span class="math inline">\(\lambda\)</span>, centrada em <span class="math inline">\(x\)</span>, está completamente contida em <span class="math inline">\(Y\)</span>. Intuitivamente, isso significa que apenas os pontos suficientemente “internos” a <span class="math inline">\(Y\)</span>, isto é, afastados de suas bordas segundo a distância geodésica em <span class="math inline">\(X\)</span>, permanecem após a erosão.</p>
+<p>Formalmente, a erosão geodésica é definida por: <span class="math display">\[
+\varepsilon^{\lambda}_{X}(Y) = \{ x \in X : B_X(x,\lambda) \subseteq Y \}.
+\]</span></p>
+<p>Nessa expressão, <span class="math inline">\(B_X(x,\lambda)\)</span> representa a bola geodésica centrada em <span class="math inline">\(x\)</span>, isto é, o conjunto de todos os pontos de <span class="math inline">\(X\)</span> cuja distância geodésica até <span class="math inline">\(x\)</span> é menor ou igual a <span class="math inline">\(\lambda\)</span>.</p>
+<p>Essa definição evidencia que a erosão geodésica atua como um processo de contração controlada de <span class="math inline">\(Y\)</span>, eliminando regiões próximas às bordas e preservando apenas as partes que possuem “espessura” suficiente dentro do domínio <span class="math inline">\(X\)</span>. Diferentemente da erosão clássica, a versão geodésica respeita as restrições impostas pela máscara <span class="math inline">\(X\)</span>, impedindo que a operação considere pontos fora desse domínio.</p>
+<p>Do ponto de vista prático, a erosão geodésica é particularmente útil em aplicações que exigem análise da estrutura interna dos objetos, como a remoção de ruídos finos, a identificação de regiões centrais e o refinamento de segmentações. Assim como na dilatação geodésica, essa operação preserva a conectividade definida em <span class="math inline">\(X\)</span>, tornando-se uma ferramenta importante no processamento e na análise de imagens digitais.</p>
+</section>
+<section id="reconstrução-geodésica" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="reconstrução-geodésica">Reconstrução geodésica</h3>
+<p>Sejam <span class="math inline">\(I\)</span> e <span class="math inline">\(J\)</span> duas imagens binárias definidas sobre o mesmo domínio discreto <span class="math inline">\(D\)</span>, tais que <span class="math inline">\(J \subseteq I\)</span>, conforme ilustrado na <a href="#fig-reconstrucao" class="quarto-xref">Figura&nbsp;<span>7.7</span></a>. Isso significa que, para todo ponto <span class="math inline">\(p \in D\)</span>, sempre que <span class="math inline">\(J(p) = 1\)</span>, então necessariamente <span class="math inline">\(I(p) = 1\)</span>. Nesse contexto, a imagem <span class="math inline">\(J\)</span> é denominada <strong>imagem marcadora</strong>, pois indica os pontos iniciais a partir dos quais uma operação será conduzida, enquanto <span class="math inline">\(I\)</span> é chamada de <strong>imagem máscara</strong>, pois define as restrições espaciais dentro das quais essa operação pode ocorrer. Seja ainda <span class="math inline">\(I_1, I_2, \ldots, I_n\)</span> a decomposição de <span class="math inline">\(I\)</span> em seus componentes conexos.</p>
+<div id="fig-reconstrucao" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-reconstrucao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap7/reconstrucao.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reconstrucao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.7: Reconstrução geodésica
+</figcaption>
+</figure>
+</div>
+<p>A reconstrução morfológica de <span class="math inline">\(I\)</span> a partir do marcador <span class="math inline">\(J\)</span>, denotada por <span class="math inline">\(\rho_I(J)\)</span>, é definida como a união de todos os componentes conexos de <span class="math inline">\(I\)</span> que contêm pelo menos um ponto pertencente a <span class="math inline">\(J\)</span>. Em outras palavras, selecionam-se apenas as regiões de <span class="math inline">\(I\)</span> que são “atingidas” pelo marcador <span class="math inline">\(J\)</span>, descartando aquelas que não possuem qualquer conexão com ele. Formalmente, essa operação é expressa por: <span class="math display">\[
+\rho_I(J) = \bigcup_{J \cap I_k \neq \emptyset} I_k.
+\]</span></p>
+<p>Do ponto de vista intuitivo, a reconstrução pode ser entendida como um processo de “propagação” a partir dos pontos marcados em <span class="math inline">\(J\)</span>, que se expande dentro da máscara <span class="math inline">\(I\)</span>, mas sem ultrapassar seus limites. Essa propagação ocorre ao longo dos caminhos definidos pela conectividade da imagem, garantindo que apenas os componentes conectados ao marcador sejam preservados.</p>
+<p>Essa operação é amplamente utilizada em processamento de imagens, especialmente em tarefas de segmentação, remoção de objetos indesejados e filtragem baseada em conectividade. Por exemplo, é possível eliminar pequenos ruídos preservando apenas regiões relevantes previamente marcadas, ou ainda reconstruir partes de objetos a partir de sementes iniciais, sempre respeitando a estrutura definida pela máscara <span class="math inline">\(I\)</span>.</p>
+<p>A reconstrução morfológica é, em geral, formulada a partir do conceito de distância geodésica. Nesse contexto, ela pode ser obtida por meio da aplicação iterativa da dilatação geodésica elementar do marcador (J) sob a máscara (I), até que o processo se estabilize, isto é, até atingir a idempotência (quando novas iterações não produzem mais alterações).</p>
+<p>Formalmente, a reconstrução é dada por: <span class="math display">\[
+\rho_I(J) = \bigcup_{n \geq 1} \delta^n_I(J),
+\]</span></p>
+<p>o que indica que o resultado corresponde à união das sucessivas dilatações geodésicas de (J) em (I), realizadas até que não haja mais crescimento do conjunto.</p>
+<p>O exemplo seguinte ilustra, de forma visual e interativa, a aplicação de <strong>operações geodésicas</strong> em imagens binárias. Inicialmente, é gerada uma imagem contendo caracteres aleatórios, que em seguida é convertida para uma representação binária, na qual os objetos (letras) são definidos por pixels brancos e o fundo por pixels pretos.</p>
+<p>Na etapa seguinte, aplica-se a <strong>erosão binária</strong> com um elemento estruturante retangular de tamanho ajustável. Essa operação reduz os objetos, removendo partes finas e possíveis conexões estreitas, gerando uma imagem simplificada. O resultado da erosão é utilizado como <strong>imagem marcadora</strong>, enquanto a imagem binária original atua como <strong>máscara</strong>.</p>
+<p>A <strong>reconstrução geodésica</strong> é então realizada por um processo iterativo de crescimento da imagem marcadora, limitado pela máscara. A cada passo, os pixels se expandem apenas para regiões permitidas, preservando a conectividade original. O processo termina quando não há mais alterações.</p>
+<p>Como resultado, são reconstruídas apenas as letras do texto gerado que satisfazem as propriedades de largura e altura definidas pelo elemento estruturante.</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/cEQHgceVN" width="100%" height="600" style="border:none; overflow:hiddeln;">
 </iframe>
 </section>
 </section>
@@ -540,33 +648,22 @@ Figura&nbsp;7.5: Família homotópica
 </section>
 <section id="aplicações-da-morfologia-binária" class="level2" data-number="7.6">
 <h2 data-number="7.6" class="anchored" data-anchor-id="aplicações-da-morfologia-binária"><span class="header-section-number">7.6</span> Aplicações da Morfologia Binária</h2>
-<p>A morfologia matemática binária é amplamente utilizada em diversas aplicações, tais como:</p>
-<ul>
-<li>remoção de ruído impulsivo;</li>
-<li>preenchimento de regiões;</li>
-<li>extração de contornos;</li>
-<li>análise de conectividade;</li>
-<li>pré-processamento para segmentação e reconhecimento de padrões.</li>
-</ul>
-<p>Sua simplicidade conceitual e eficiência computacional fazem da morfologia uma ferramenta essencial em PDI.</p>
-</section>
-<section id="morfologia-matemática-em-tons-de-cinza" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="morfologia-matemática-em-tons-de-cinza"><span class="header-section-number">7.7</span> Morfologia Matemática em Tons de Cinza</h2>
+<p>A morfologia matemática binária é amplamente utilizada em diversas aplicações no processamento digital de imagens, desempenhando um papel fundamental em diferentes etapas de análise e interpretação. Entre suas principais aplicações destacam-se a remoção de ruído impulsivo, o preenchimento de regiões, a extração de contornos e a análise de conectividade entre componentes da imagem. Além disso, a morfologia é frequentemente empregada como etapa de pré-processamento em tarefas mais complexas, como segmentação e reconhecimento de padrões, contribuindo para a melhoria da qualidade dos resultados. Sua simplicidade conceitual, aliada à sua eficiência computacional, torna a morfologia matemática uma ferramenta essencial no processamento de imagens digitais. ## Morfologia Matemática em Tons de Cinza</p>
 <p>A <strong>Morfologia Matemática em tons de cinza</strong> estende os conceitos da morfologia binária para imagens cujos pixels assumem valores de intensidade em um intervalo contínuo ou discreto mais amplo. Enquanto a morfologia binária opera sobre conjuntos, a morfologia em tons de cinza trabalha diretamente com <strong>funções de intensidade</strong>, permitindo a análise e o processamento da forma considerando variações graduais de brilho.</p>
 <p>Este capítulo apresenta os fundamentos teóricos e operacionais da morfologia matemática em tons de cinza, destacando seus principais operadores e aplicações em processamento e análise de imagens.</p>
 </section>
-<section id="imagens-em-tons-de-cinza" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="imagens-em-tons-de-cinza"><span class="header-section-number">7.8</span> Imagens em Tons de Cinza</h2>
+<section id="imagens-em-tons-de-cinza" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="imagens-em-tons-de-cinza"><span class="header-section-number">7.7</span> Imagens em Tons de Cinza</h2>
 <p>Uma imagem em tons de cinza pode ser modelada como uma função bidimensional (f(x,y)), na qual cada ponto ((x,y)) assume um valor de intensidade pertencente a um conjunto ordenado, normalmente ({0,1,,L-1}). Essa representação permite descrever variações suaves de brilho, essenciais para a análise de superfícies, texturas e estruturas naturais.</p>
 <p>Diferentemente das imagens binárias, as operações morfológicas em tons de cinza consideram <strong>relações de ordem</strong> entre intensidades, e não apenas a presença ou ausência de pixels.</p>
 </section>
-<section id="fundamentos-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.9</span> Fundamentos da Morfologia em Tons de Cinza</h2>
+<section id="fundamentos-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.8</span> Fundamentos da Morfologia em Tons de Cinza</h2>
 <p>A morfologia matemática em tons de cinza baseia-se em operadores de <strong>máximo</strong> e <strong>mínimo</strong> aplicados localmente à imagem, utilizando um <strong>elemento estruturante</strong> que também pode ser definido como uma função.</p>
 <p>Seja (f) a imagem de entrada e (b) um elemento estruturante. As operações morfológicas são definidas de forma a preservar e analisar a geometria das superfícies de intensidade da imagem.</p>
 </section>
-<section id="elemento-estruturante-1" class="level2" data-number="7.10">
-<h2 data-number="7.10" class="anchored" data-anchor-id="elemento-estruturante-1"><span class="header-section-number">7.10</span> Elemento Estruturante</h2>
+<section id="elemento-estruturante-1" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="elemento-estruturante-1"><span class="header-section-number">7.9</span> Elemento Estruturante</h2>
 <p>Na morfologia em tons de cinza, o elemento estruturante pode ser:</p>
 <ul>
 <li><strong>Plano (flat)</strong>: assume valor constante, geralmente zero;</li>
@@ -574,40 +671,40 @@ Figura&nbsp;7.5: Família homotópica
 </ul>
 <p>Elementos estruturantes planos são os mais utilizados na prática, pois simplificam as operações e facilitam a interpretação dos resultados.</p>
 </section>
-<section id="dilatação-em-tons-de-cinza" class="level2" data-number="7.11">
-<h2 data-number="7.11" class="anchored" data-anchor-id="dilatação-em-tons-de-cinza"><span class="header-section-number">7.11</span> Dilatação em Tons de Cinza</h2>
+<section id="dilatação-em-tons-de-cinza" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="dilatação-em-tons-de-cinza"><span class="header-section-number">7.10</span> Dilatação em Tons de Cinza</h2>
 <p>A <strong>dilatação</strong> em tons de cinza tende a realçar regiões claras e expandir máximos locais. Para um elemento estruturante plano, a dilatação é definida como:</p>
 <p><span class="math display">\[
 (f \oplus b)(x,y) = \max_{(s,t) \in b} { f(x - s, y - t) }
 \]</span></p>
 <p>Essa operação eleva os valores de intensidade nas vizinhanças definidas pelo elemento estruturante, sendo útil para realçar detalhes claros e preencher vales rasos.</p>
 </section>
-<section id="erosão-em-tons-de-cinza" class="level2" data-number="7.12">
-<h2 data-number="7.12" class="anchored" data-anchor-id="erosão-em-tons-de-cinza"><span class="header-section-number">7.12</span> Erosão em Tons de Cinza</h2>
+<section id="erosão-em-tons-de-cinza" class="level2" data-number="7.11">
+<h2 data-number="7.11" class="anchored" data-anchor-id="erosão-em-tons-de-cinza"><span class="header-section-number">7.11</span> Erosão em Tons de Cinza</h2>
 <p>A <strong>erosão</strong> em tons de cinza é a operação dual da dilatação e tem como efeito principal a atenuação de regiões claras e a expansão de mínimos locais. Para um elemento estruturante plano, a erosão é definida como:</p>
 <p><span class="math display">\[
 (f \ominus b)(x,y) = \min_{(s,t) \in b} { f(x + s, y + t) }
 \]</span></p>
 <p>Essa operação é utilizada para eliminar picos isolados e reduzir variações abruptas de intensidade.</p>
 </section>
-<section id="abertura-em-tons-de-cinza" class="level2" data-number="7.13">
-<h2 data-number="7.13" class="anchored" data-anchor-id="abertura-em-tons-de-cinza"><span class="header-section-number">7.13</span> Abertura em Tons de Cinza</h2>
+<section id="abertura-em-tons-de-cinza" class="level2" data-number="7.12">
+<h2 data-number="7.12" class="anchored" data-anchor-id="abertura-em-tons-de-cinza"><span class="header-section-number">7.12</span> Abertura em Tons de Cinza</h2>
 <p>A <strong>abertura</strong> em tons de cinza é definida como a erosão seguida de uma dilatação:</p>
 <p><span class="math display">\[
 f \circ b = (f \ominus b) \oplus b
 \]</span></p>
 <p>A abertura suaviza a imagem, removendo picos brilhantes menores que o elemento estruturante, enquanto preserva a forma geral das regiões maiores.</p>
 </section>
-<section id="fechamento-em-tons-de-cinza" class="level2" data-number="7.14">
-<h2 data-number="7.14" class="anchored" data-anchor-id="fechamento-em-tons-de-cinza"><span class="header-section-number">7.14</span> Fechamento em Tons de Cinza</h2>
+<section id="fechamento-em-tons-de-cinza" class="level2" data-number="7.13">
+<h2 data-number="7.13" class="anchored" data-anchor-id="fechamento-em-tons-de-cinza"><span class="header-section-number">7.13</span> Fechamento em Tons de Cinza</h2>
 <p>O <strong>fechamento</strong> é a operação dual da abertura, definido como:</p>
 <p><span class="math display">\[
 f \bullet b = (f \oplus b) \ominus b
 \]</span></p>
 <p>Essa operação é eficaz para preencher vales escuros e suavizar descontinuidades negativas na superfície de intensidade.</p>
 </section>
-<section id="propriedades-das-operações-morfológicas-1" class="level2" data-number="7.15">
-<h2 data-number="7.15" class="anchored" data-anchor-id="propriedades-das-operações-morfológicas-1"><span class="header-section-number">7.15</span> Propriedades das Operações Morfológicas</h2>
+<section id="propriedades-das-operações-morfológicas-1" class="level2" data-number="7.14">
+<h2 data-number="7.14" class="anchored" data-anchor-id="propriedades-das-operações-morfológicas-1"><span class="header-section-number">7.14</span> Propriedades das Operações Morfológicas</h2>
 <p>As operações morfológicas em tons de cinza compartilham diversas propriedades com suas contrapartes binárias, tais como:</p>
 <ul>
 <li><strong>Dualidade</strong> entre erosão e dilatação;</li>
@@ -617,8 +714,8 @@ f \bullet b = (f \oplus b) \ominus b
 </ul>
 <p>Essas propriedades garantem previsibilidade e consistência no comportamento dos operadores morfológicos.</p>
 </section>
-<section id="aplicações-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.16">
-<h2 data-number="7.16" class="anchored" data-anchor-id="aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.16</span> Aplicações da Morfologia em Tons de Cinza</h2>
+<section id="aplicações-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.15">
+<h2 data-number="7.15" class="anchored" data-anchor-id="aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.15</span> Aplicações da Morfologia em Tons de Cinza</h2>
 <p>A morfologia matemática em tons de cinza é amplamente utilizada em aplicações como:</p>
 <ul>
 <li>realce e suavização de imagens;</li>
@@ -629,12 +726,17 @@ f \bullet b = (f \oplus b) \ominus b
 </ul>
 <p>Sua capacidade de preservar características geométricas torna-a especialmente útil em imagens naturais e médicas.</p>
 </section>
-<section id="considerações-finais" class="level2" data-number="7.17">
-<h2 data-number="7.17" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">7.17</span> Considerações Finais</h2>
+<section id="considerações-finais" class="level2" data-number="7.16">
+<h2 data-number="7.16" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">7.16</span> Considerações Finais</h2>
 <p>A morfologia matemática em tons de cinza amplia significativamente o alcance das técnicas morfológicas, permitindo o processamento direto de imagens com variações graduais de intensidade. A compreensão de seus operadores fundamentais é essencial para o desenvolvimento de métodos avançados de análise e processamento de imagens.</p>
 <p>Os conceitos apresentados neste capítulo estabelecem a base para aplicações mais complexas, incluindo morfologia multiescala e transformações morfológicas avançadas.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-zhang1984thinning" class="csl-entry" role="listitem">
+Zhang, T. Y., e C. Y. Suen. 1984. <span>“A fast parallel algorithm for thinning digital patterns”</span>. <em>Communications of the ACM</em> 27 (3): 236–39.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
