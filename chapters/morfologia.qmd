@@ -129,7 +129,7 @@ O código interativo em sequência demostra o funcionamento da operação de dil
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
 
-<iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="250" style="border:none; overflow:hiddeln;">
+<iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="400" style="border:none; overflow:hiddeln;">
 
 </iframe>
 :::
@@ -166,7 +166,7 @@ O código interativo em sequência demostra o funcionamento da operação de ero
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
 
-<iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="250" style="border:none; overflow:hiddeln;">
+<iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="400" style="border:none; overflow:hiddeln;">
 
 </iframe>
 :::
@@ -319,7 +319,7 @@ O código completo e a demonstração interativa estão disponíveis em:
 :::
 ::::
 
-O exemplo interativo seguinte é aplicado para uma silhueta de um homem:
+No exemplo interativo seguinte está uma implementação do algoritmo rápido de afinamento de @zhang1984thinning para aplicação à silhueta de um homem.
 
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
@@ -341,6 +341,124 @@ O código completo e a demonstração interativa estão disponíveis em:
 :::
 ::::
 
+### Operações Geodésicas {.unnumbered}
+
+As operações geodésicas em morfologia matemática tratam da análise de distâncias e caminhos definidos no interior de um conjunto, geralmente associado a um objeto em uma imagem binária. Diferentemente das medidas clássicas de distância, que consideram o espaço como um todo, as operações geodésicas levam em conta apenas os pontos pertencentes ao conjunto de interesse, respeitando sua forma e sua conectividade.
+
+Sejam $x$ e $y$ dois pontos pertencentes a um conjunto $A$, conforme ilustrado na @fig-distancia-geodesica. Define-se como distância geodésica $d_A(x,y)$ o comprimento do menor caminho que conecta $x$ a $y$, sendo esse caminho inteiramente contido em $A$. Em outras palavras, considera-se o menor percurso possível entre esses pontos sem sair da região definida por $A$. Caso não exista tal caminho — isto é, se $x$ e $y$ pertencem a componentes desconexas — a distância geodésica é definida como infinita.
+
+![Distância geodésica](/imgs/cap7/distancia-geodesica.png){#fig-distancia-geodesica fig-align="center" width="50%"}
+
+Essa definição pode ser interpretada de forma intuitiva ao se considerar uma imagem binária: os pontos pertencentes ao objeto formam uma região pela qual é permitido “caminhar”, enquanto o fundo atua como uma barreira. Assim, a distância geodésica corresponde ao menor número de passos necessários para ir de um ponto a outro, deslocando-se apenas por pixels vizinhos pertencentes ao objeto, de acordo com uma conectividade previamente definida, como 4 ou 8 vizinhos.
+
+A distância geodésica difere da distância euclidiana justamente por levar em consideração a geometria e a topologia do objeto. Enquanto a distância euclidiana corresponde ao comprimento da linha reta entre dois pontos, a distância geodésica acompanha a forma do objeto, podendo resultar em caminhos mais longos quando há curvaturas ou obstáculos internos.
+
+Esse conceito constitui a base para diversas operações em morfologia matemática, como dilatações e erosões geodésicas, além da reconstrução morfológica. Nessas operações, a propagação ou retração de regiões ocorre de forma controlada, sendo limitada por um conjunto máscara, o que permite preservar estruturas relevantes da imagem. Dessa forma, as operações geodésicas são fundamentais em aplicações como segmentação, extração de esqueletos e análise de formas.
+
+A partir da métrica geodésica $d_A$, pode-se estender o conceito de distância para medir a separação entre um ponto e um subconjunto de $A$. Seja $x \in A$ e $B \subseteq A$. Define-se a distância geodésica entre o ponto $x$ e o conjunto $B$, denotada por $d_A(x,B)$, como a menor distância geodésica entre $x$ e qualquer ponto $y$ pertencente a $B$. Em outras palavras, considera-se todos os possíveis caminhos, inteiramente contidos em $A$, que ligam $x$ a pontos de $B$, e escolhe-se aquele de menor comprimento.
+
+Formalmente, essa definição pode ser expressa como: $$
+d_A(x,B) = \inf_{y \in B} d_A(x,y)
+$$
+
+ou seja, $d_A(x,B)$ é o ínfimo das distâncias geodésicas entre $x$ e cada elemento $y$ do conjunto $B$. Quando existe pelo menos um caminho conectando $x$ a algum ponto de $B$ dentro de $A$, essa distância será finita; caso contrário, será infinita.
+
+Um dos principais interesses no uso dessa função está na sua capacidade de tratar adequadamente problemas de conectividade. Como a distância é calculada apenas ao longo de caminhos contidos em $A$, ela reflete diretamente a estrutura topológica do conjunto. Dessa forma, é possível distinguir naturalmente regiões conectadas de regiões desconexas, o que é fundamental em diversas aplicações de processamento de imagens, como segmentação, reconstrução morfológica e análise de componentes conectados.
+
+Todas as operações morfológicas, como dilatação e erosão, podem ser reinterpretadas a partir da métrica geodésica. Nesse contexto, considera-se um conjunto $X$ que define o domínio $ou máscara$ e um subconjunto $Y \subseteq X$, sobre o qual se deseja aplicar a operação. A ideia central é utilizar a distância geodésica em $X$ para definir regiões de influência em torno dos pontos.
+
+Para isso, define-se a bola geodésica de raio $\lambda$ centrada em um ponto $x \in X$, denotada por $B_X(x,\lambda)$, como o conjunto de todos os pontos de $X$ cuja distância geodésica até $x$ é menor ou igual a $\lambda$. Em termos formais: $$
+B_X(x,\lambda) = \{ y \in X : d_X(x,y) \leq \lambda \}.
+$$ Essa bola representa, portanto, todos os pontos que podem ser alcançados a partir de $x$ por caminhos contidos em $X$ com comprimento limitado por $\lambda$.
+
+Com base nessa definição, a dilatação geodésica de $Y$ em $X$ com raio $\lambda$, denotada por $\delta_X^{\lambda}(Y)$, pode ser descrita como o conjunto de todos os pontos $x \in X$ cuja bola geodésica intercepta $Y$. Em outras palavras, um ponto $x$ pertence à dilatação se for possível alcançar algum ponto de $Y$ a partir de $x$ por um caminho em $X$ de comprimento no máximo $\lambda$. Formalmente:
+
+$$
+\delta_X^\lambda(Y) = \{ x \in X : B_X(x,\lambda) \cap Y \neq \emptyset \}.
+$$
+
+Essa formulação mostra que a dilatação geodésica pode ser interpretada como uma expansão de $Y$ dentro de $X$, limitada pela estrutura do próprio conjunto $X$. Diferentemente da dilatação clássica, que se baseia apenas em um elemento estruturante fixo, a dilatação geodésica respeita a geometria e a conectividade do domínio, impedindo que a expansão ultrapasse regiões proibidas. Essa característica torna as operações geodésicas particularmente adequadas para aplicações em que é necessário controlar a propagação dentro de formas complexas, como na reconstrução morfológica e na segmentação de imagens.
+
+### Dilatação geodésica {.unnumbered}
+
+A dilatação geodésica de ordem $n$, definida no espaço $\mathbb{Z}^2$, pode ser obtida por meio da aplicação iterativa de dilatações geodésicas elementares de ordem 1. Ou seja, a dilatação geodésica de ordem maior é construída a partir da repetição sucessiva da operação básica.
+
+A dilatação geodésica unitária é definida por: $$
+\delta^{1}_{X}(Y) = (Y \oplus B) \cap X,
+$$
+
+onde $B$ é o elemento estruturante e $X$ atua como máscara, limitando o crescimento do conjunto $Y$.
+
+A partir dessa definição, a dilatação geodésica de ordem $n$ é obtida pela composição iterativa dessa operação, isto é, aplicando-se $n$ vezes a dilatação geodésica unitária sobre o resultado anterior: $$
+\delta^{n}_{X}(Y) = \underbrace{\delta^{1}_{X}\big(\delta^{1}_{X}(\cdots \delta^{1}_{X}(Y)\cdots)\big)}_{\text{n vezes}}.
+$$
+
+Essa formulação evidencia que a dilatação geodésica ocorre de maneira progressiva, expandindo o conjunto $Y$ dentro do domínio $X$ passo a passo, sempre respeitando as restrições impostas pela máscara.
+
+### Erosão geodésica {.unnumbered}
+
+De forma análoga à dilatação geodésica, pode-se definir a erosão geodésica a partir da métrica geodésica. Seja $Y \subseteq X$. O conjunto $\lambda$-erodido de $Y$ em $X$ é formado pelos pontos $x \in X$ cuja bola geodésica de raio $\lambda$, centrada em $x$, está completamente contida em $Y$. Intuitivamente, isso significa que apenas os pontos suficientemente “internos” a $Y$, isto é, afastados de suas bordas segundo a distância geodésica em $X$, permanecem após a erosão.
+
+Formalmente, a erosão geodésica é definida por: $$
+\varepsilon^{\lambda}_{X}(Y) = \{ x \in X : B_X(x,\lambda) \subseteq Y \}.
+$$
+
+Nessa expressão, $B_X(x,\lambda)$ representa a bola geodésica centrada em $x$, isto é, o conjunto de todos os pontos de $X$ cuja distância geodésica até $x$ é menor ou igual a $\lambda$.
+
+Essa definição evidencia que a erosão geodésica atua como um processo de contração controlada de $Y$, eliminando regiões próximas às bordas e preservando apenas as partes que possuem “espessura” suficiente dentro do domínio $X$. Diferentemente da erosão clássica, a versão geodésica respeita as restrições impostas pela máscara $X$, impedindo que a operação considere pontos fora desse domínio.
+
+Do ponto de vista prático, a erosão geodésica é particularmente útil em aplicações que exigem análise da estrutura interna dos objetos, como a remoção de ruídos finos, a identificação de regiões centrais e o refinamento de segmentações. Assim como na dilatação geodésica, essa operação preserva a conectividade definida em $X$, tornando-se uma ferramenta importante no processamento e na análise de imagens digitais.
+
+### Reconstrução geodésica {.unnumbered}
+
+Sejam $I$ e $J$ duas imagens binárias definidas sobre o mesmo domínio discreto $D$, tais que $J \subseteq I$, conforme ilustrado na @fig-reconstrucao. Isso significa que, para todo ponto $p \in D$, sempre que $J(p) = 1$, então necessariamente $I(p) = 1$. Nesse contexto, a imagem $J$ é denominada **imagem marcadora**, pois indica os pontos iniciais a partir dos quais uma operação será conduzida, enquanto $I$ é chamada de **imagem máscara**, pois define as restrições espaciais dentro das quais essa operação pode ocorrer. Seja ainda $I_1, I_2, \ldots, I_n$ a decomposição de $I$ em seus componentes conexos.
+
+![Reconstrução geodésica](/imgs/cap7/reconstrucao.png){#fig-reconstrucao fig-align="center" width="80%"}
+
+A reconstrução morfológica de $I$ a partir do marcador $J$, denotada por $\rho_I(J)$, é definida como a união de todos os componentes conexos de $I$ que contêm pelo menos um ponto pertencente a $J$. Em outras palavras, selecionam-se apenas as regiões de $I$ que são “atingidas” pelo marcador $J$, descartando aquelas que não possuem qualquer conexão com ele. Formalmente, essa operação é expressa por: $$
+\rho_I(J) = \bigcup_{J \cap I_k \neq \emptyset} I_k.
+$$
+
+Do ponto de vista intuitivo, a reconstrução pode ser entendida como um processo de “propagação” a partir dos pontos marcados em $J$, que se expande dentro da máscara $I$, mas sem ultrapassar seus limites. Essa propagação ocorre ao longo dos caminhos definidos pela conectividade da imagem, garantindo que apenas os componentes conectados ao marcador sejam preservados.
+
+Essa operação é amplamente utilizada em processamento de imagens, especialmente em tarefas de segmentação, remoção de objetos indesejados e filtragem baseada em conectividade. Por exemplo, é possível eliminar pequenos ruídos preservando apenas regiões relevantes previamente marcadas, ou ainda reconstruir partes de objetos a partir de sementes iniciais, sempre respeitando a estrutura definida pela máscara $I$.
+
+A reconstrução morfológica é, em geral, formulada a partir do conceito de distância geodésica. Nesse contexto, ela pode ser obtida por meio da aplicação iterativa da dilatação geodésica elementar do marcador (J) sob a máscara (I), até que o processo se estabilize, isto é, até atingir a idempotência (quando novas iterações não produzem mais alterações).
+
+Formalmente, a reconstrução é dada por: $$
+\rho_I(J) = \bigcup_{n \geq 1} \delta^n_I(J),
+$$
+
+o que indica que o resultado corresponde à união das sucessivas dilatações geodésicas de (J) em (I), realizadas até que não haja mais crescimento do conjunto.
+
+O exemplo seguinte ilustra, de forma visual e interativa, a aplicação de **operações geodésicas** em imagens binárias. Inicialmente, é gerada uma imagem contendo caracteres aleatórios, que em seguida é convertida para uma representação binária, na qual os objetos (letras) são definidos por pixels brancos e o fundo por pixels pretos.
+
+Na etapa seguinte, aplica-se a **erosão binária** com um elemento estruturante retangular de tamanho ajustável. Essa operação reduz os objetos, removendo partes finas e possíveis conexões estreitas, gerando uma imagem simplificada. O resultado da erosão é utilizado como **imagem marcadora**, enquanto a imagem binária original atua como **máscara**.
+
+A **reconstrução geodésica** é então realizada por um processo iterativo de crescimento da imagem marcadora, limitado pela máscara. A cada passo, os pixels se expandem apenas para regiões permitidas, preservando a conectividade original. O processo termina quando não há mais alterações.
+
+Como resultado, são reconstruídas apenas as letras do texto gerado que satisfazem as propriedades de largura e altura definidas pelo elemento estruturante.
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/cEQHgceVN" width="100%" height="600" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/cEQHgceVN>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/cEQHgceVN width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
 ## Propriedades das Operações Morfológicas
 
 As operações morfológicas apresentam propriedades importantes, como:
@@ -353,17 +471,7 @@ Essas propriedades fornecem uma base teórica sólida para o uso da morfologia m
 
 ## Aplicações da Morfologia Binária
 
-A morfologia matemática binária é amplamente utilizada em diversas aplicações, tais como:
-
--   remoção de ruído impulsivo;
--   preenchimento de regiões;
--   extração de contornos;
--   análise de conectividade;
--   pré-processamento para segmentação e reconhecimento de padrões.
-
-Sua simplicidade conceitual e eficiência computacional fazem da morfologia uma ferramenta essencial em PDI.
-
-## Morfologia Matemática em Tons de Cinza
+A morfologia matemática binária é amplamente utilizada em diversas aplicações no processamento digital de imagens, desempenhando um papel fundamental em diferentes etapas de análise e interpretação. Entre suas principais aplicações destacam-se a remoção de ruído impulsivo, o preenchimento de regiões, a extração de contornos e a análise de conectividade entre componentes da imagem. Além disso, a morfologia é frequentemente empregada como etapa de pré-processamento em tarefas mais complexas, como segmentação e reconhecimento de padrões, contribuindo para a melhoria da qualidade dos resultados. Sua simplicidade conceitual, aliada à sua eficiência computacional, torna a morfologia matemática uma ferramenta essencial no processamento de imagens digitais. \## Morfologia Matemática em Tons de Cinza
 
 A **Morfologia Matemática em tons de cinza** estende os conceitos da morfologia binária para imagens cujos pixels assumem valores de intensidade em um intervalo contínuo ou discreto mais amplo. Enquanto a morfologia binária opera sobre conjuntos, a morfologia em tons de cinza trabalha diretamente com **funções de intensidade**, permitindo a análise e o processamento da forma considerando variações graduais de brilho.
 
