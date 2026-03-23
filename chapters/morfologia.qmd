@@ -76,7 +76,7 @@ Essa operação é essencial em morfologia matemática, pois o elemento estrutur
 
 ### Diferença {.unnumbered}
 
-O conjunto diferen\c{c}a $X\backslash Y$ dos conjuntos $X$ e $Y$ 'e dado por $$X\backslash Y = X \cap Y^c$$
+O conjunto diferença $X\backslash Y$ dos conjuntos $X$ e $Y$ é dado por $$X\backslash Y = X \cap Y^c$$
 
 Em imagens, essa operação remove de $A$ as regiões que coincidem com $B$, conforme ilustrado na @fig-conjunto2.
 
@@ -99,7 +99,7 @@ O **elemento estruturante** é um componente central da morfologia matemática. 
 
 A escolha do elemento estruturante influencia diretamente o resultado das operações morfológicas, pois determina quais características geométricas serão preservadas, realçadas ou removidas.
 
-## As operações morfológicas
+## As Operações Morfológicas
 
 Seja o elemento estruturante $B_p$ um subconjunto finito centrado em $p$, e seja $I$ uma imagem binária. Neste caso, podemos considerar que:
 
@@ -433,7 +433,7 @@ o que indica que o resultado corresponde à união das sucessivas dilatações g
 
 O exemplo seguinte ilustra, de forma visual e interativa, a aplicação de **operações geodésicas** em imagens binárias. Inicialmente, é gerada uma imagem contendo caracteres aleatórios, que em seguida é convertida para uma representação binária, na qual os objetos (letras) são definidos por pixels brancos e o fundo por pixels pretos.
 
-Na etapa seguinte, aplica-se a **erosão binária** com um elemento estruturante retangular de tamanho ajustável. Essa operação reduz os objetos, removendo partes finas e possíveis conexões estreitas, gerando uma imagem simplificada. O resultado da erosão é utilizado como **imagem marcadora**, enquanto a imagem binária original atua como **máscara**.
+Na etapa seguinte, aplica-se a **erosão binária** com um elemento estruturante retangular de tamanho ajustável. Essa operação tem o efeito de manter os componentes que contém as propriedades de altura e largura do elemento estruturante selecionado. O resultado da erosão é utilizado como **imagem marcadora**, enquanto a imagem binária original atua como **máscara**.
 
 A **reconstrução geodésica** é então realizada por um processo iterativo de crescimento da imagem marcadora, limitado pela máscara. A cada passo, os pixels se expandem apenas para regiões permitidas, preservando a conectividade original. O processo termina quando não há mais alterações.
 
@@ -473,23 +473,26 @@ Essas propriedades fornecem uma base teórica sólida para o uso da morfologia m
 
 A morfologia matemática binária é amplamente utilizada em diversas aplicações no processamento digital de imagens, desempenhando um papel fundamental em diferentes etapas de análise e interpretação. Entre suas principais aplicações destacam-se a remoção de ruído impulsivo, o preenchimento de regiões, a extração de contornos e a análise de conectividade entre componentes da imagem. Além disso, a morfologia é frequentemente empregada como etapa de pré-processamento em tarefas mais complexas, como segmentação e reconhecimento de padrões, contribuindo para a melhoria da qualidade dos resultados. Sua simplicidade conceitual, aliada à sua eficiência computacional, torna a morfologia matemática uma ferramenta essencial no processamento de imagens digitais. \## Morfologia Matemática em Tons de Cinza
 
-A **Morfologia Matemática em tons de cinza** estende os conceitos da morfologia binária para imagens cujos pixels assumem valores de intensidade em um intervalo contínuo ou discreto mais amplo. Enquanto a morfologia binária opera sobre conjuntos, a morfologia em tons de cinza trabalha diretamente com **funções de intensidade**, permitindo a análise e o processamento da forma considerando variações graduais de brilho.
+## Morfologia em tons de cinza (numérica)
 
-Este capítulo apresenta os fundamentos teóricos e operacionais da morfologia matemática em tons de cinza, destacando seus principais operadores e aplicações em processamento e análise de imagens.
+As operações morfológicas clássicas — como dilatação, erosão, abertura e fechamento — foram originalmente definidas para imagens binárias, nas quais os pixels pertencem ou não a um conjunto. No entanto, essas operações podem ser naturalmente estendidas para imagens em níveis de cinza, dando origem à chamada **morfologia numérica**. Nessa abordagem, em vez de trabalhar apenas com valores discretos (0 ou 1), os pixels passam a assumir valores inteiros dentro de um intervalo, representando diferentes intensidades.
 
-## Imagens em Tons de Cinza
+Nas imagens binárias, as operações morfológicas são formuladas com base em operações de conjuntos, como união e interseção. Já no caso de imagens em níveis de cinza ou coloridas, essa interpretação não é mais adequada, pois não há apenas presença ou ausência de um pixel, mas sim diferentes graus de intensidade. Assim, as operações deixam de representar inclusão ou remoção de pixels e passam a promover **modificações graduais nos valores de intensidade**.
 
-Uma imagem em tons de cinza pode ser modelada como uma função bidimensional (f(x,y)), na qual cada ponto ((x,y)) assume um valor de intensidade pertencente a um conjunto ordenado, normalmente ({0,1,\dots,L-1}). Essa representação permite descrever variações suaves de brilho, essenciais para a análise de superfícies, texturas e estruturas naturais.
+Para viabilizar essa generalização, as operações de conjunto são substituídas por operações aritméticas. Em particular, a **união** é associada ao operador máximo (max), enquanto a **interseção** corresponde ao operador mínimo (min). Dessa forma, a dilatação em níveis de cinza consiste em atribuir a cada pixel o maior valor encontrado em sua vizinhança definida pelo elemento estruturante, enquanto a erosão atribui o menor valor dessa mesma vizinhança.
 
-Diferentemente das imagens binárias, as operações morfológicas em tons de cinza consideram **relações de ordem** entre intensidades, e não apenas a presença ou ausência de pixels.
+Essa interpretação permite entender a dilatação como uma operação que tende a **expandir regiões claras** (aumentando os valores de intensidade), enquanto a erosão tende a **expandir regiões escuras** (reduzindo os valores). Como consequência, as operações compostas, como abertura e fechamento, mantêm suas propriedades fundamentais: a abertura suaviza contornos e remove detalhes brilhantes pequenos, enquanto o fechamento preenche pequenas regiões escuras e conecta estruturas próximas.
+
+Portanto, a morfologia numérica preserva a essência das operações morfológicas binárias, mas adapta sua formulação para lidar com a riqueza de informações presente em imagens em tons de cinza. Essa extensão amplia significativamente o campo de aplicação da morfologia matemática, tornando-a uma ferramenta poderosa para filtragem, realce e análise de imagens reais.
+
 
 ## Fundamentos da Morfologia em Tons de Cinza
 
 A morfologia matemática em tons de cinza baseia-se em operadores de **máximo** e **mínimo** aplicados localmente à imagem, utilizando um **elemento estruturante** que também pode ser definido como uma função.
 
-Seja (f) a imagem de entrada e (b) um elemento estruturante. As operações morfológicas são definidas de forma a preservar e analisar a geometria das superfícies de intensidade da imagem.
+Seja $f$ a imagem de entrada e $b$ um elemento estruturante. As operações morfológicas são definidas de forma a preservar e analisar a geometria das superfícies de intensidade da imagem.
 
-## Elemento Estruturante
+### Elemento Estruturante{.unnumbered}
 
 Na morfologia em tons de cinza, o elemento estruturante pode ser:
 
@@ -498,7 +501,7 @@ Na morfologia em tons de cinza, o elemento estruturante pode ser:
 
 Elementos estruturantes planos são os mais utilizados na prática, pois simplificam as operações e facilitam a interpretação dos resultados.
 
-## Dilatação em Tons de Cinza
+### Dilatação em Tons de Cinza {.unnumbered}
 
 A **dilatação** em tons de cinza tende a realçar regiões claras e expandir máximos locais. Para um elemento estruturante plano, a dilatação é definida como:
 
@@ -508,7 +511,7 @@ $$
 
 Essa operação eleva os valores de intensidade nas vizinhanças definidas pelo elemento estruturante, sendo útil para realçar detalhes claros e preencher vales rasos.
 
-## Erosão em Tons de Cinza
+### Erosão em Tons de Cinza {.unnumbered}
 
 A **erosão** em tons de cinza é a operação dual da dilatação e tem como efeito principal a atenuação de regiões claras e a expansão de mínimos locais. Para um elemento estruturante plano, a erosão é definida como:
 
@@ -518,7 +521,7 @@ $$
 
 Essa operação é utilizada para eliminar picos isolados e reduzir variações abruptas de intensidade.
 
-## Abertura em Tons de Cinza
+### Abertura em Tons de Cinza {.unnumbered}
 
 A **abertura** em tons de cinza é definida como a erosão seguida de uma dilatação:
 
@@ -528,7 +531,7 @@ $$
 
 A abertura suaviza a imagem, removendo picos brilhantes menores que o elemento estruturante, enquanto preserva a forma geral das regiões maiores.
 
-## Fechamento em Tons de Cinza
+### Fechamento em Tons de Cinza{.unnumbered}
 
 O **fechamento** é a operação dual da abertura, definido como:
 
@@ -538,16 +541,38 @@ $$
 
 Essa operação é eficaz para preencher vales escuros e suavizar descontinuidades negativas na superfície de intensidade.
 
-## Propriedades das Operações Morfológicas
+### Top hat e Bottom hat{.unnumbered}
 
-As operações morfológicas em tons de cinza compartilham diversas propriedades com suas contrapartes binárias, tais como:
+As operações **top-hat** e **bottom-hat** são obtidas a partir da combinação das operações morfológicas de **abertura** e **fechamento** com a subtração de imagens. Essas transformações são particularmente úteis para destacar detalhes locais e reduzir efeitos indesejados de iluminação não uniforme, sendo amplamente empregadas em tarefas de realce e análise de imagens.
 
--   **Dualidade** entre erosão e dilatação;
--   **Idempotência** da abertura e do fechamento;
--   **Invariância por translação**;
--   **Extensividade** da dilatação e **antiextensividade** da erosão.
+A operação **top-hat**, também chamada de *white top-hat*, é definida como a diferença entre a imagem original ( f ) e sua abertura por um elemento estruturante ( b ), isto é, ( \text{That}(f) = f - (f \circ b) ). Como a abertura tende a remover pequenos objetos claros que não conseguem conter o elemento estruturante, o resultado dessa subtração corresponde exatamente a esses elementos removidos. Dessa forma, o top-hat atua como um operador que evidencia pequenos detalhes brilhantes presentes na imagem, especialmente quando estes estão sobre um fundo mais escuro ou com variações suaves de intensidade.
 
-Essas propriedades garantem previsibilidade e consistência no comportamento dos operadores morfológicos.
+Por outro lado, a operação **bottom-hat**, ou *black top-hat*, é definida como a diferença entre o fechamento da imagem e a imagem original, ou seja, ( \text{Bhat}(f) = (f \bullet b) - f ). O fechamento tem como efeito principal eliminar pequenas regiões escuras, preenchendo cavidades e suavizando descontinuidades negativas. Assim, ao subtrair a imagem original do resultado do fechamento, obtêm-se exatamente essas regiões escuras removidas. Consequentemente, o bottom-hat é utilizado para destacar pequenos objetos escuros ou detalhes negativos presentes na imagem, especialmente quando situados sobre fundos mais claros.
+
+De maneira geral, essas duas operações podem ser interpretadas como filtros morfológicos que isolam componentes locais da imagem. Enquanto o top-hat evidencia estruturas claras que foram eliminadas pela abertura, o bottom-hat destaca estruturas escuras removidas pelo fechamento. Em ambos os casos, essas operações atuam como ferramentas eficazes para realçar detalhes finos e compensar variações de fundo, sendo particularmente úteis em aplicações como inspeção visual, análise biomédica e processamento de documentos.
+
+O exemplo interativo seguinte apresenta essas operações:
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/8ekG_1FsO" width="100%" height="600" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/8ekG_1FsO>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/8ekG_1FsO width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
 
 ## Aplicações da Morfologia em Tons de Cinza
 
@@ -563,6 +588,14 @@ Sua capacidade de preservar características geométricas torna-a especialmente 
 
 ## Considerações Finais
 
-A morfologia matemática em tons de cinza amplia significativamente o alcance das técnicas morfológicas, permitindo o processamento direto de imagens com variações graduais de intensidade. A compreensão de seus operadores fundamentais é essencial para o desenvolvimento de métodos avançados de análise e processamento de imagens.
+Ao longo deste capítulo, foram apresentados os principais fundamentos da **morfologia matemática**, tanto no contexto de imagens binárias quanto em níveis de cinza. Partindo de operações básicas como **dilatação** e **erosão**, foi possível compreender como a interação entre a imagem e o elemento estruturante permite modificar, analisar e extrair informações relevantes com base na forma e na estrutura dos objetos presentes.
 
-Os conceitos apresentados neste capítulo estabelecem a base para aplicações mais complexas, incluindo morfologia multiescala e transformações morfológicas avançadas.
+No caso das imagens binárias, as operações morfológicas mostraram-se ferramentas intuitivas e eficazes para manipulação de formas, permitindo expandir, reduzir, conectar ou separar regiões. A partir dessas operações elementares, foram introduzidas transformações mais elaboradas, como **abertura** e **fechamento**, que possibilitam a remoção seletiva de ruídos e a preservação de características estruturais importantes. Essas operações evidenciam o papel fundamental do elemento estruturante, cuja forma e tamanho determinam diretamente o tipo de processamento realizado.
+
+A extensão desses conceitos para imagens em níveis de cinza amplia significativamente o poder da morfologia matemática. Nesse contexto, as operações passam a atuar sobre valores de intensidade, sendo interpretadas como filtros não lineares baseados em máximos e mínimos locais. Isso permite não apenas a manipulação da geometria dos objetos, mas também o controle de variações de brilho e contraste, tornando a morfologia uma ferramenta versátil para o processamento de imagens reais.
+
+Além das operações clássicas, foram discutidas transformações derivadas, como **gradiente morfológico**, **top-hat** e **bottom-hat**, que permitem destacar bordas, realçar detalhes finos e compensar variações de iluminação. Essas operações demonstram como a combinação de operadores básicos pode gerar técnicas mais sofisticadas, capazes de evidenciar informações específicas da imagem de maneira eficiente.
+
+De modo geral, a morfologia matemática se destaca por sua abordagem baseada na forma, diferenciando-se de métodos puramente baseados em intensidade ou frequência. Sua natureza não linear e sua dependência do elemento estruturante conferem grande flexibilidade, permitindo sua adaptação a diferentes tipos de problemas e aplicações. Entre essas aplicações, destacam-se a segmentação de imagens, a remoção de ruídos, a análise de formas, o processamento de imagens médicas e a inspeção automatizada.
+
+Por fim, é importante ressaltar que o sucesso das operações morfológicas depende fortemente da escolha adequada do elemento estruturante, bem como da compreensão das características da imagem a ser processada. Assim, mais do que um conjunto de operações isoladas, a morfologia matemática constitui um **arcabouço conceitual poderoso**, que, quando bem aplicado, permite explorar de forma eficaz a estrutura e os detalhes das imagens digitais.
