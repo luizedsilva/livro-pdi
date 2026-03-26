@@ -328,7 +328,7 @@ void img_put(image img, char *name, int tp)
 ```
 :::
 
-A imagem (*image*) está representada na estrutura da @lst-estrutura.
+A imagem (*image*) está representada na estrutura da @lst-estrutura que contém ainda algumas rotinas utilitárias.
 
 :::{#lst-estrutura}
 ``` {.c fontsize="\\small"}
@@ -350,6 +350,35 @@ enum
     GRAY,
     COLOR
 };
+
+/*
+ * Image allocation and free routines
+ *   nr = number of rows
+ *   nc = number of columns
+ *   ml = max gray level
+ *   tp = type of image
+ */
+image img_create(int nr, int nc, int ml, int tp)
+{
+    image img = malloc(sizeof(image *));
+    img->px = malloc(nr * nc * sizeof(int));
+    img->nr = nr;
+    img->nc = nc;
+    img->ml = ml;
+    img->tp = tp;
+    return img;
+}
+
+image img_clone(image In)
+{
+    return img_create(In->nr, In->nc, In->ml, In->tp);
+}
+
+int img_free(image Im)
+{
+    free(Im->px);
+    free(Im);
+}
 ```
 :::
 

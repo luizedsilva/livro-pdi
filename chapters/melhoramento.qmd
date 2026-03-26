@@ -275,7 +275,7 @@ $$
 g(x,y) = T\left[f(x,y)\right]
 $$
 
-em que (f(x,y)) representa a imagem de entrada, (g(x,y)) a imagem resultante e (T) um operador definido sobre os valores de intensidade.
+em que $f(x,y)$ representa a imagem de entrada, $g(x,y)$ a imagem resultante e $T$ um operador definido sobre os valores de intensidade.
 
 Essas operações podem ser aplicadas a um único pixel ou a uma vizinhança de pixels, dependendo da técnica utilizada.
 
@@ -283,7 +283,7 @@ Essas operações podem ser aplicadas a um único pixel ou a uma vizinhança de 
 
 As transformações de intensidade são operações pontuais, nas quais o valor de cada pixel da imagem de saída depende exclusivamente do valor do pixel correspondente na imagem de entrada.
 
-Essas transformações mapeiam um nível de cinza de entrada (r) para um nível de saída (s), conforme representado no gráfico gerado no exemplo seguinte (onde $L$ representa a quantidade de níveis de cinza):
+Essas transformações mapeiam um nível de cinza de entrada $r$ para um nível de saída $s$, conforme representado no gráfico gerado no exemplo seguinte (onde $L$ representa a quantidade de níveis de cinza):
 
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
@@ -313,11 +313,11 @@ $$
 g(x,y) = a\,f(x,y) + b
 $$
 
-Os parâmetros (a) e (b) controlam, respectivamente, o contraste e o brilho da imagem. Valores maiores de (a) ampliam o contraste, enquanto o termo (b) desloca os níveis de intensidade.
+Os parâmetros $a$ e $b$ controlam, respectivamente, o contraste e o brilho da imagem. Valores maiores de $a$ ampliam o contraste, enquanto o termo $b$ desloca os níveis de intensidade.
 
 ### Transformações Logarítmicas
 
-Transformações logarítmicas são utilizadas para expandir valores de baixa intensidade e comprimir valores elevados, sendo especialmente úteis em imagens que apresentam grande variação dinâmica.
+Transformações logarítmicas (da @lst-logaritmica) são utilizadas para expandir valores de baixa intensidade e comprimir valores elevados, sendo especialmente úteis em imagens que apresentam grande variação dinâmica.
 
 Uma forma típica é dada por:
 
@@ -333,13 +333,49 @@ $$
 
 Onde $max = L-1$ é a máxima intensidade de pixel na imagem, ou seja, o maior valor retornado para a função imagem $f(x,y)$.
 
+:::{#lst-logaritmica}
+```{.c}
+image logarithm (image img)
+{
+    image out = img_clone(img);
+    int w = img->nc;
+    int h = img->nr;
+    int max = img->ml;
+    int T[max + 1];
+    for (int i = 0; i < max + 1; i++)
+        T[i] = log(i + 1) / log(max + 1) * max;
+    for (int i = 0; i < h * w; i++)
+        out->px[i] = T[img->px[i]];
+    return out;
+}
+```
+:::
+
 ### Transformações de Potência
 
-As transformações de potência, também conhecidas como correção gama, são definidas por:
+As transformações de potência (da @lst-potencia), também conhecidas como correção gama, são definidas por:
 
 $$
 g(x,y) = c\,\left[f(x,y)\right]^{\gamma}
 $$
+
+:::{#lst-potencia}
+```{.c}
+image power(image img, float gamma)
+{
+    image out = img_clone(img);
+    int w = img->nc;
+    int h = img->nr;
+    int max = img->ml;
+    int T[max + 1];
+    for (int i = 0; i < max + 1; i++)
+        T[i] = pow(i, gamma) / pow(max + 1, gamma) * max;
+    for (int i = 0; i < h * w; i++)
+        out->px[i] = T[img->px[i]];
+    return out;
+}
+```
+:::
 
 O parâmetro ($\gamma$) controla a forma da curva de transformação. Valores de ($\gamma < 1$) tem o efeito de clarear a imagem, enquanto valores de ($\gamma > 1$) escurecem a imagem. O exemplo interativo abaixo ilustra essa transformação:
 
@@ -409,19 +445,6 @@ Imagens com baixo contraste tendem a apresentar histogramas concentrados em uma 
 
 Algoritmo para calcular o histograma de uma imagem está em @lst-histograma.
 
-::: {#lst-histograma}
-``` c
-// atribuir valor zero a todos elementos do vetor
-for (i = 0; i < L; i++)
-  Histo[i] = 0;
-// calcular distribuição dos níveis de cinza 
-// para cada pixel da imagem
-for (i = 0; i < M; i++)
-  for (j = 0; j < N; j++)
-     Histo [Img[i][j]] = Histo [Img[i][j]]+1;
-```
-:::
-
 ## Equalização de Histograma
 
 A equalização de histograma é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.
@@ -462,7 +485,43 @@ A Tabela a seguir apresenta o **histograma da imagem**, a **probabilidade de oco
 
 Observa-se que o valor $n_k$ corresponde ao **número de pixels com intensidade** $r_k$, enquanto $n_k/MN$ representa a **probabilidade de ocorrência** desse nível de cinza na imagem.
 
-Esse procedimento define uma **tabela de consulta (LUT)** que mapeia cada nível de entrada $r_k$ para um novo nível $s_k$, redistribuindo os níveis de cinza de forma mais uniforme e aumentando o contraste global da imagem.
+Esse procedimento (da @lst-histograma) define uma **tabela de consulta (LUT)** que mapeia cada nível de entrada $r_k$ para um novo nível $s_k$, redistribuindo os níveis de cinza de forma mais uniforme e aumentando o contraste global da imagem.
+
+:::{#lst-histograma}
+```{.c}
+image equalization(image in)
+{
+    image out = img_clone(in);
+    int M = in->nc;     // nro de colunas da imagem
+    int N = in->nr;     // nro de linhas da imagem
+    int L = in->ml + 1; // nro de tons de cinza na imagem
+    int n[L];           // n[k] = nro de pixels de intensidade k
+    int T[L];           // funcao de transformacao
+    int sum;            // soma de frequencias
+
+    // calculo do histograma
+    for (int i = 0; i < L; i++)
+        n[i] = 0;
+    for (int i = 0; i < M * N; i++)
+        n[in->px[i]]++;
+
+    // funcao de transformacao T (LUT)
+    sum = n[0];
+    T[0] = 1.0 * (L - 1) / (M * N) * sum;
+    for (int i = 1; i < L; i++)
+    {
+        sum = sum + n[i];
+        T[i] = 1.0 * (L - 1) / (M * N) * sum;
+    }
+
+    // Equalizacao do histograma
+    for (int i = 0; i < M * N; i++)
+        out->px[i] = T[in->px[i]];
+
+    return out;
+}
+```
+:::
 
 O exemplo interativo a seguir apresenta a implementação do algoritmo de **equalização de histograma**. No exemplo, pode-se carregar qualquer imagem, mas somente as intensidades (tons de cinza), são utilizadas. Para imagem carregada será apresentada a imagem original, o seu histograma correspondente, a imagem equalizada e o histograma equalizado.
 
