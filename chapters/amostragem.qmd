@@ -530,4 +530,3 @@ Para o exemplo fornecido:
 * 60 × 60 → 3600 linhas
 * 80 × 80 → 6400 colunas
 
-```

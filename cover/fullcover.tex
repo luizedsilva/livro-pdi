@@ -16,10 +16,19 @@
 \begin{tikzpicture}[remember picture,overlay]
 
 % =========================
+% FUNDO (IMAGEM)
+% =========================
+\node at (current page.center)
+{\includegraphics[width=\paperwidth,height=\paperheight]{fundo.png}};
+
+\fill[white, opacity=0.2]
+(current page.south west) rectangle (current page.north east);
+
+% =========================
 % FUNDO (GRADIENTE)
 % =========================
-\shade[top color=gray!10,bottom color=black!50]
-(current page.south west) rectangle (current page.north east);
+% \shade[top color=gray!10,bottom color=black!50]
+% (current page.south west) rectangle (current page.north east);
 
 % =========================
 % REGIÕES (CAPA / LOMBADA / CONTRA)
@@ -32,63 +41,106 @@
 % CAPA (FRENTE)
 % =========================
 
-% TÍTULO
-\node[align=center, text=black!80]
-at ($(front)+(0,9)$)
+% =========================
+% FAIXA DO TÍTULO
+% =========================
+% \fill[black, opacity=0.7]
+% ($(front)+(-7cm,7cm)$) rectangle ($(front)+(7cm,11cm)$);
+
+% sombra
+\node[align=center, text=black]
+at ($(front)+(0.15cm,4.85cm)$)
 {
-{\Huge\bfseries Processamento Digital de Imagens}\\[0.6cm]
-{\large Uma abordagem interativa com {\ttfamily p5.js}}
+\Huge\bfseries Processamento Digital de Imagens\\[0.6cm]
+\large Uma abordagem interativa com {\ttfamily p5.js}
 };
 
-% AUTOR
-\node[align=center, text=black!80]
-at ($(front)+(0,-9)$)
-{\large Luiz Eduardo da Silva};
+% texto principal
+\node[align=center, text=white]
+at ($(front)+(0.15cm,5cm)$)
+{
+\Huge\bfseries Processamento Digital de Imagens\\[0.6cm]
+\large Uma abordagem interativa com {\ttfamily p5.js}
+};
+
+% =========================
+% FAIXA DO AUTOR
+% =========================
+% \fill[black, opacity=0.7]
+% ($(front)+(-7cm,-11cm)$) rectangle ($(front)+(7cm,-7cm)$);
+
+% sombra
+\node[align=center, text=black]
+at ($(front)+(0.15cm,-9.15cm)$)
+{
+\Large Luiz Eduardo da Silva\\
+\\
+\Large Tiago Silveira
+};
+
+% texto principal
+\node[align=center, text=white]
+at ($(front)+(0,-9cm)$)
+{
+\Large Luiz Eduardo da Silva\\
+\\
+\Large Tiago Silveira
+};
 
 % =========================
 % IMAGENS TRANSPARENTES (FUNDO)
 % =========================
 
-\begin{scope}[opacity=0.20]
+% \begin{scope}[opacity=0.20]
 
-\node at ($(current page.center)+(12,8)$)
-{\includegraphics[width=12cm,angle=0]{rgb.png}};
+% \node at ($(current page.center)+(12,8)$)
+% {\includegraphics[width=12cm,angle=0]{rgb.png}};
 
-\node at ($(current page.center)+(-12,8)$)
-{\includegraphics[width=12cm,angle=0]{hsi.png}};
+% \node at ($(current page.center)+(-12,8)$)
+% {\includegraphics[width=12cm,angle=0]{hsi.png}};
 
-\node at ($(current page.center)+(13,-9)$)
-{\includegraphics[width=16cm,angle=0]{espectro.png}};
+% \node at ($(current page.center)+(13,-9)$)
+% {\includegraphics[width=16cm,angle=0]{espectro.png}};
 
-\node at ($(current page.center)+(-12,-5)$)
-{\includegraphics[width=12cm,angle=0]{huffman.png}};
+% \node at ($(current page.center)+(-12,-5)$)
+% {\includegraphics[width=12cm,angle=0]{huffman.png}};
+
+% \node at ($(current page.center)+(0,-7)$)
+% {\includegraphics[width=9cm,angle=0]{amostragem.png}};
+
+% \node at ($(current page.center)+(13,0)$)
+% {\includegraphics[width=14cm,angle=0]{epiciclo.png}};
 
 % \node at ($(current page.center)+(0,7)$)
-% {\includegraphics[width=14cm,angle=0]{prisma.png}};
+% {\includegraphics[width=10cm,angle=0]{paradoxo.png}};
 
-\node at ($(current page.center)+(0,-7)$)
-{\includegraphics[width=9cm,angle=0]{amostragem.png}};
-
-\node at ($(current page.center)+(13,0)$)
-{\includegraphics[width=14cm,angle=0]{epiciclo.png}};
-
-\node at ($(current page.center)+(0,7)$)
-{\includegraphics[width=10cm,angle=0]{paradoxo.png}};
-
-\end{scope}
+% \end{scope}
 
 % =========================
 % LOMBADA
 % =========================
-\node[rotate=90, text=black!80]
+% =========================
+% FUNDO LOMBADA
+% =========================
+\fill[black, opacity=0.9]
+($(spine)+(-1cm,-15cm)$) rectangle ($(spine)+(1cm,15cm)$);
+
+\node[rotate=90, text=white]
 at (spine)
-{\large Processamento Digital de Imagens};
+{\large\bfseries Processamento Digital de Imagens};
 
 % =========================
 % CONTRACAPA
 % =========================
-\node[text=black!80, align=center]
-at ($(back)+(0,0)$)
+
+% =========================
+% FUNDO CONTRACAPA
+% =========================
+\fill[black, opacity=0.6]
+($(back)+(-7cm,-12cm)$) rectangle ($(back)+(7cm,12cm)$);
+
+\node[text=white, align=center]
+at ($(back)+(0,2cm)$)
 {
 \small
 Este livro apresenta conceitos fundamentais de\\
@@ -98,9 +150,8 @@ visual e interativa.\\[0.5cm]
 Inclui exemplos práticos utilizando {\ttfamily p5.js}.
 };
 
-% ANO
-\node[text=black!80]
-at ($(back)+(0,-10)$)
+\node[text=white]
+at ($(back)+(0,-10cm)$)
 {\small 2026};
 
 \end{tikzpicture}

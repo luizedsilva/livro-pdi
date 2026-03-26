@@ -107,9 +107,9 @@ $$
 |\nabla I(x,y)| \approx |G_x| + |G_y|
 $$
 
-Por exemplo, O filtro de Sobel define aproximações discretas para as derivadas parciais $G_x$ e $G_y$ por meio de convoluções com máscaras específicas, que combinam diferenciação e suavização.
+Por exemplo, o filtro de Sobel define aproximações discretas para as derivadas parciais $G_x$ e $G_y$ por meio de convoluções com máscaras específicas, que combinam diferenciação e suavização.
 
-Por exemplo, $G_x$ pode ser escrito como:
+Assim, $G_x$ pode ser escrito como:
 
 $$
 \begin{aligned}
@@ -130,7 +130,7 @@ $$
 Ou o filtro Lapraciano, que mede a variação da variação da intensidade da imagem, ou seja, corresponde à segunda derivada espacial, indicando quão rapidamente o valor do pixel está mudando em relação aos seus vizinhos. Por essa característica, ele é especialmente eficaz em destacar regiões onde ocorrem mudanças bruscas de intensidade, que correspondem às bordas dos objetos na imagem. Diferentemente do gradiente, que fornece informação direcional (indicando a orientação da borda), o Laplaciano é um operador não direcional, produzindo apenas um valor escalar com sinal, que indica se a região corresponde a um máximo ou mínimo local de intensidade:
 
 $$
-\bigtriangledown^2 I= \frac{\delta^2 I}{\delta x^I} + \frac{\delta^2 I}{\delta y^2}
+\bigtriangledown^2 I= \frac{\delta^2 I}{\delta x^2} + \frac{\delta^2 I}{\delta y^2}
 $$
 
 $$
@@ -192,7 +192,7 @@ Esse processo é repetido até que a fila de prioridade esteja vazia, garantindo
 
 Ao final do algoritmo, a imagem estará segmentada em regiões associadas aos marcadores iniciais, separadas por linhas de watershed que representam as fronteiras entre diferentes bacias de atração.
 
-O exemplo interativo seguinte apresenta uma simulação desse algoritmo de watershed por marcadores para uma imagem unidimensional. Inicialmente, estão marcados os pontos $a, f, g$, a cada passo os pontos vizinhos das regiões marcadas são colocados nas filas apropriadas. O pontos de watershed são marcados com cor amarela.
+O exemplo interativo seguinte apresenta uma simulação desse algoritmo de watershed por marcadores para uma imagem unidimensional. Inicialmente, estão marcados os pontos $a = 1$, $f = 2$ e $h = 3$. A cada passo os pontos vizinhos das regiões marcadas são colocados nas filas apropriadas. O pontos de watershed são marcados com cor amarela (valor = 4).
 
 ::: {.content-visible when-format="html"}
 <!-- Conteúdo interativo (HTML) -->
