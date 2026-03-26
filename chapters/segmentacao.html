@@ -234,23 +234,20 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#conceito-de-segmentação" id="toc-conceito-de-segmentação" class="nav-link active" data-scroll-target="#conceito-de-segmentação"><span class="header-section-number">8.1</span> Conceito de Segmentação</a></li>
-  <li><a href="#abordagens-gerais-para-segmentação" id="toc-abordagens-gerais-para-segmentação" class="nav-link" data-scroll-target="#abordagens-gerais-para-segmentação"><span class="header-section-number">8.2</span> Abordagens Gerais para Segmentação</a></li>
-  <li><a href="#segmentação-baseada-em-descontinuidades" id="toc-segmentação-baseada-em-descontinuidades" class="nav-link" data-scroll-target="#segmentação-baseada-em-descontinuidades"><span class="header-section-number">8.3</span> Segmentação Baseada em Descontinuidades</a>
+  <li><a href="#conceito-formal" id="toc-conceito-formal" class="nav-link active" data-scroll-target="#conceito-formal"><span class="header-section-number">8.1</span> Conceito Formal</a></li>
+  <li><a href="#principais-abordagens" id="toc-principais-abordagens" class="nav-link" data-scroll-target="#principais-abordagens"><span class="header-section-number">8.2</span> Principais Abordagens</a>
   <ul class="collapse">
-  <li><a href="#detecção-de-bordas" id="toc-detecção-de-bordas" class="nav-link" data-scroll-target="#detecção-de-bordas"><span class="header-section-number">8.3.1</span> Detecção de Bordas</a></li>
-  <li><a href="#operadores-de-detecção" id="toc-operadores-de-detecção" class="nav-link" data-scroll-target="#operadores-de-detecção"><span class="header-section-number">8.3.2</span> Operadores de Detecção</a></li>
+  <li><a href="#segmentação-por-limiarização" id="toc-segmentação-por-limiarização" class="nav-link" data-scroll-target="#segmentação-por-limiarização">Segmentação por Limiarização</a></li>
+  <li><a href="#segmentação-por-detecção-de-bordas" id="toc-segmentação-por-detecção-de-bordas" class="nav-link" data-scroll-target="#segmentação-por-detecção-de-bordas">Segmentação por Detecção de Bordas</a></li>
+  <li><a href="#segmentação-por-regiões" id="toc-segmentação-por-regiões" class="nav-link" data-scroll-target="#segmentação-por-regiões">Segmentação por Regiões</a></li>
+  <li><a href="#segmentação-por-morfologia-matemática-e-watershed" id="toc-segmentação-por-morfologia-matemática-e-watershed" class="nav-link" data-scroll-target="#segmentação-por-morfologia-matemática-e-watershed">Segmentação por Morfologia Matemática e Watershed</a></li>
+  <li><a href="#segmentação-baseada-em-clustering" id="toc-segmentação-baseada-em-clustering" class="nav-link" data-scroll-target="#segmentação-baseada-em-clustering">Segmentação Baseada em Clustering</a></li>
+  <li><a href="#segmentação-com-inteligência-artificial" id="toc-segmentação-com-inteligência-artificial" class="nav-link" data-scroll-target="#segmentação-com-inteligência-artificial">Segmentação com Inteligência Artificial</a></li>
   </ul></li>
-  <li><a href="#segmentação-baseada-em-similaridades" id="toc-segmentação-baseada-em-similaridades" class="nav-link" data-scroll-target="#segmentação-baseada-em-similaridades"><span class="header-section-number">8.4</span> Segmentação Baseada em Similaridades</a>
-  <ul class="collapse">
-  <li><a href="#limiarização" id="toc-limiarização" class="nav-link" data-scroll-target="#limiarização"><span class="header-section-number">8.4.1</span> Limiarização</a></li>
-  <li><a href="#limiarização-global-e-adaptativa" id="toc-limiarização-global-e-adaptativa" class="nav-link" data-scroll-target="#limiarização-global-e-adaptativa"><span class="header-section-number">8.4.2</span> Limiarização Global e Adaptativa</a></li>
-  </ul></li>
-  <li><a href="#segmentação-por-crescimento-de-regiões" id="toc-segmentação-por-crescimento-de-regiões" class="nav-link" data-scroll-target="#segmentação-por-crescimento-de-regiões"><span class="header-section-number">8.5</span> Segmentação por Crescimento de Regiões</a></li>
-  <li><a href="#segmentação-por-divisão-e-fusão" id="toc-segmentação-por-divisão-e-fusão" class="nav-link" data-scroll-target="#segmentação-por-divisão-e-fusão"><span class="header-section-number">8.6</span> Segmentação por Divisão e Fusão</a></li>
-  <li><a href="#segmentação-baseada-em-morfologia" id="toc-segmentação-baseada-em-morfologia" class="nav-link" data-scroll-target="#segmentação-baseada-em-morfologia"><span class="header-section-number">8.7</span> Segmentação Baseada em Morfologia</a></li>
-  <li><a href="#desafios-da-segmentação" id="toc-desafios-da-segmentação" class="nav-link" data-scroll-target="#desafios-da-segmentação"><span class="header-section-number">8.8</span> Desafios da Segmentação</a></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">8.9</span> Considerações Finais</a></li>
+  <li><a href="#avaliação-da-segmentação" id="toc-avaliação-da-segmentação" class="nav-link" data-scroll-target="#avaliação-da-segmentação"><span class="header-section-number">8.3</span> Avaliação da Segmentação</a></li>
+  <li><a href="#desafios" id="toc-desafios" class="nav-link" data-scroll-target="#desafios"><span class="header-section-number">8.4</span> Desafios</a></li>
+  <li><a href="#aplicações" id="toc-aplicações" class="nav-link" data-scroll-target="#aplicações"><span class="header-section-number">8.5</span> Aplicações</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">8.6</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -281,85 +278,197 @@ window.Quarto = {
 <p><img src="../chapters/imgs/segmenta.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
-<p>A <strong>segmentação de imagens</strong> é uma das etapas mais importantes do Processamento Digital de Imagens, pois tem como objetivo particionar uma imagem em regiões ou objetos que sejam significativos para uma determinada aplicação. Diferentemente do melhoramento, cujo foco é a aparência visual, a segmentação busca <strong>identificar e separar estruturas relevantes</strong>, servindo como base para tarefas posteriores como reconhecimento, descrição e interpretação.</p>
-<p>O sucesso de um sistema de visão computacional está fortemente relacionado à qualidade da segmentação realizada. Por essa razão, a segmentação é considerada uma das tarefas mais desafiadoras da área.</p>
-<section id="conceito-de-segmentação" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="conceito-de-segmentação"><span class="header-section-number">8.1</span> Conceito de Segmentação</h2>
-<p>Segmentar uma imagem consiste em dividi-la em subconjuntos disjuntos, de modo que cada região seja homogênea segundo um critério pré-definido, como intensidade, cor, textura ou forma. Em termos formais, a segmentação deve satisfazer propriedades como:</p>
-<ul>
-<li>cada pixel pertence a uma única região;</li>
-<li>regiões adjacentes são distintas segundo o critério adotado;</li>
-<li>a união de todas as regiões reconstrói a imagem original.</li>
-</ul>
-<p>Esses critérios variam conforme o domínio da aplicação e as características da imagem.</p>
+<p>A segmentação de imagens consiste no processo de dividir uma imagem em regiões distintas e significativas, de modo a simplificar sua representação e tornar sua análise mais eficiente. Em vez de tratar a imagem como um conjunto de pixels isolados, a segmentação permite organizá-la em partes coerentes, facilitando a identificação de objetos ou estruturas de interesse. Cada uma dessas regiões deve apresentar alguma forma de homogeneidade, seja em termos de intensidade, cor, textura ou forma, garantindo que os elementos agrupados compartilhem características semelhantes.</p>
+<p>Essa etapa desempenha um papel central no processamento de imagens, pois geralmente é um dos primeiros passos em sistemas mais complexos de interpretação visual. Ao isolar regiões relevantes, a segmentação reduz a complexidade dos dados e direciona as etapas subsequentes — como classificação, reconhecimento ou análise — para áreas específicas da imagem. Dessa forma, ela atua como uma ponte entre o processamento de baixo nível (baseado em pixels) e a compreensão de alto nível (baseada em objetos).</p>
+<p>A importância da segmentação se evidencia em diversas aplicações práticas. Na visão computacional, ela é utilizada para identificar e localizar objetos em cenas. Em reconhecimento de padrões, permite extrair características relevantes para classificação. Na área médica, desempenha papel crucial na análise de imagens, como na detecção de tumores em exames de tomografia ou ressonância magnética. Já na inspeção industrial, possibilita a identificação de defeitos, controle de qualidade e automação de processos produtivos. Em todos esses contextos, a qualidade da segmentação impacta diretamente o desempenho das etapas seguintes do sistema.</p>
+<section id="conceito-formal" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="conceito-formal"><span class="header-section-number">8.1</span> Conceito Formal</h2>
+<p>Do ponto de vista matemático, a segmentação de imagens pode ser definida como a decomposição de uma imagem <span class="math inline">\(I\)</span> em um conjunto finito de regiões <span class="math inline">\(R_1, R_2, \dots, R_n\)</span>, de modo que essas regiões representem partes coerentes e significativas da imagem. Essa formulação busca garantir que a segmentação não seja apenas uma divisão arbitrária, mas sim uma organização estruturada baseada em propriedades relevantes dos dados.</p>
+<p>A primeira condição estabelece que a união de todas as regiões deve reconstruir completamente a imagem original, ou seja, <span class="math inline">\(\bigcup_{i=1}^{n} R_i = I\)</span>. Isso significa que todo pixel da imagem deve pertencer a alguma região segmentada, garantindo que não haja perda de informação durante o processo. Em outras palavras, a segmentação deve cobrir integralmente a imagem.</p>
+<p>A segunda condição impõe que as regiões sejam disjuntas entre si, isto é, <span class="math inline">\(R_i \cap R_j = \emptyset\)</span>, para <span class="math inline">\(i \neq j\)</span>. Essa propriedade assegura que cada pixel pertença a uma única região, evitando ambiguidades na representação. Assim, não pode haver sobreposição entre regiões, o que mantém a consistência da segmentação.</p>
+<p>Além dessas restrições estruturais, cada região <span class="math inline">\(R_i\)</span> deve satisfazer um critério de homogeneidade previamente definido. Esse critério pode variar conforme a aplicação e pode envolver características como intensidade dos pixels, cor, textura ou outras propriedades extraídas da imagem. A ideia central é que os pixels dentro de uma mesma região sejam, de alguma forma, semelhantes entre si.</p>
+<p>Por fim, exige-se que regiões adjacentes não sejam homogêneas segundo o mesmo critério. Ou seja, se duas regiões vizinhas pudessem ser unificadas sem violar o critério de homogeneidade, então a segmentação não seria considerada adequada. Essa condição garante que a divisão seja significativa, evitando tanto a fragmentação excessiva quanto a fusão indevida de regiões distintas.</p>
+<p>Em conjunto, essas propriedades definem uma base formal para a segmentação de imagens, orientando o desenvolvimento de algoritmos que buscam particionar a imagem de maneira coerente, completa e relevante para a aplicação em questão.</p>
 </section>
-<section id="abordagens-gerais-para-segmentação" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="abordagens-gerais-para-segmentação"><span class="header-section-number">8.2</span> Abordagens Gerais para Segmentação</h2>
-<p>As técnicas de segmentação podem ser agrupadas em duas grandes categorias:</p>
-<ul>
-<li><strong>segmentação baseada em descontinuidades</strong>, que explora mudanças abruptas nos valores de intensidade;</li>
-<li><strong>segmentação baseada em similaridades</strong>, que agrupa pixels com características semelhantes.</li>
-</ul>
-<p>Cada abordagem apresenta vantagens e limitações, sendo comum a combinação de múltiplas técnicas em aplicações práticas.</p>
-</section>
-<section id="segmentação-baseada-em-descontinuidades" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="segmentação-baseada-em-descontinuidades"><span class="header-section-number">8.3</span> Segmentação Baseada em Descontinuidades</h2>
-<p>As técnicas baseadas em descontinuidades identificam pontos, linhas ou bordas na imagem. A presença de uma borda geralmente indica uma transição entre regiões distintas.</p>
-<section id="detecção-de-bordas" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="detecção-de-bordas"><span class="header-section-number">8.3.1</span> Detecção de Bordas</h3>
-<p>A detecção de bordas baseia-se na identificação de variações significativas de intensidade. Operadores diferenciais, como gradientes e Laplacianos, são amplamente utilizados para esse fim.</p>
-<p>O resultado desse processo é uma imagem que destaca as bordas dos objetos, que podem ser posteriormente utilizadas para definir regiões.</p>
-</section>
-<section id="operadores-de-detecção" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="operadores-de-detecção"><span class="header-section-number">8.3.2</span> Operadores de Detecção</h3>
-<p>Diversos operadores foram propostos para detecção de bordas, incluindo operadores clássicos como Roberts, Prewitt e Sobel. Esses operadores utilizam máscaras convolucionais para estimar derivadas espaciais da imagem.</p>
-</section>
-</section>
-<section id="segmentação-baseada-em-similaridades" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="segmentação-baseada-em-similaridades"><span class="header-section-number">8.4</span> Segmentação Baseada em Similaridades</h2>
-<p>Na segmentação baseada em similaridades, pixels com características semelhantes são agrupados em regiões. Essa abordagem assume que objetos de interesse apresentam propriedades relativamente homogêneas.</p>
-<section id="limiarização" class="level3" data-number="8.4.1">
-<h3 data-number="8.4.1" class="anchored" data-anchor-id="limiarização"><span class="header-section-number">8.4.1</span> Limiarização</h3>
-<p>A <strong>limiarização</strong> é uma das técnicas mais simples e utilizadas de segmentação. Ela consiste em classificar pixels com base em um ou mais valores de limiar.</p>
-<p>Em sua forma mais simples, um único limiar (T) é utilizado:</p>
+<section id="principais-abordagens" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="principais-abordagens"><span class="header-section-number">8.2</span> Principais Abordagens</h2>
+<section id="segmentação-por-limiarização" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="segmentação-por-limiarização">Segmentação por Limiarização</h3>
+<p>A segmentação por limiarização é uma das técnicas mais simples e amplamente utilizadas em processamento de imagens. Ela se baseia na ideia de separar objetos de interesse do fundo a partir dos níveis de intensidade dos pixels. Nesse método, define-se um valor de limiar <span class="math inline">\(T\)</span> que permite classificar cada pixel da imagem <span class="math inline">\(I(x,y)\)</span> em duas classes: objeto ou fundo. Formalmente, pode-se expressar essa operação como:</p>
 <p><span class="math display">\[
 g(x,y) =
 \begin{cases}
-1, &amp; f(x,y) \geq T \\
-0, &amp; f(x,y) &lt; T
+1 &amp; \text{se } I(x,y) \geq T \\
+0 &amp; \text{se } I(x,y) &lt; T
 \end{cases}
 \]</span></p>
-<p>A escolha adequada do limiar é crucial para o sucesso da segmentação.</p>
+<p>onde <span class="math inline">\(g(x,y)\)</span> representa a imagem binarizada resultante.</p>
+<p>Uma das abordagens mais básicas é a limiarização global, na qual um único valor de limiar <span class="math inline">\(T\)</span> é utilizado para toda a imagem. Esse método é eficaz quando há boa separação entre os níveis de intensidade do objeto e do fundo, como em imagens com histogramas bimodais. No entanto, em situações onde a iluminação não é uniforme, essa abordagem pode apresentar resultados insatisfatórios.</p>
+<p>A detecção de pontos isolados, por exemplo, pode ser obtida de maneira direta, utilizando a máscara abaixo e aplicando a operação de convolução em toda a imagem. Dizemos que um ponto foi detectado se:</p>
+<p><span class="math display">\[
+|R| &gt; T
+\]</span></p>
+<p>onde <span class="math inline">\(T\)</span> é um limiar não-negativo e <span class="math inline">\(R\)</span> é o resultado da aplicação da máscara.</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+-1 &amp; -1 &amp; -1 \\
+-1 &amp; 8  &amp; -1 \\
+-1 &amp; -1 &amp; -1
+\end{bmatrix}
+\]</span></p>
+<p>O código interativo seguinte exemplifica essa abordagem. No exemplo, pode-se escolher o nível de ruído sal e pimenta na imagem e o limiar. É possível verificar que o ruído (ponto isolado) se mistura com algumas bordas da imagem.</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/BxhAHtDlu" width="100%" height="600" style="border:none; overflow:hiddeln;">
+</iframe>
+<p>Essa é uma abordagem mais básicas de limiarização global, na qual um único valor de limiar <span class="math inline">\(T\)</span> é utilizado para toda a imagem. Esse método é eficaz quando há boa separação entre os níveis de intensidade do objeto e do fundo, como em imagens com histogramas bimodais. No entanto, em situações onde a iluminação não é uniforme, essa abordagem pode apresentar resultados insatisfatórios.</p>
+<p>Para contornar esse problema, utiliza-se a limiarização adaptativa, em que o valor de <span class="math inline">\(T\)</span> varia ao longo da imagem, sendo calculado com base em características locais, como média ou mediana de regiões vizinhas. Isso permite uma melhor adaptação a variações de iluminação e melhora a segmentação em imagens mais complexas.</p>
+<p>Outra técnica amplamente utilizada é o método de Otsu, que determina automaticamente o valor ótimo de limiar a partir da análise do histograma da imagem. Esse método busca maximizar a variância entre classes (objeto e fundo), ou, de forma equivalente, minimizar a variância intra-classes. Por não exigir intervenção manual, o método de Otsu é bastante popular em aplicações práticas.</p>
+<p>Entre as principais vantagens da limiarização estão sua simplicidade de implementação e baixo custo computacional, o que a torna adequada para aplicações em tempo real ou sistemas com recursos limitados. Por outro lado, essa técnica apresenta limitações importantes, sendo sensível a ruídos e a variações de iluminação. Em imagens com baixo contraste ou histogramas pouco definidos, a escolha de um limiar adequado torna-se difícil, comprometendo a qualidade da segmentação.</p>
 </section>
-<section id="limiarização-global-e-adaptativa" class="level3" data-number="8.4.2">
-<h3 data-number="8.4.2" class="anchored" data-anchor-id="limiarização-global-e-adaptativa"><span class="header-section-number">8.4.2</span> Limiarização Global e Adaptativa</h3>
-<p>Na limiarização global, um único valor de limiar é aplicado a toda a imagem. Já na limiarização adaptativa, o limiar varia conforme regiões locais da imagem, sendo mais adequada para imagens com iluminação não uniforme.</p>
+<section id="segmentação-por-detecção-de-bordas" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="segmentação-por-detecção-de-bordas">Segmentação por Detecção de Bordas</h3>
+<p>A segmentação por detecção de bordas baseia-se na identificação de descontinuidades nos níveis de intensidade da imagem. Essas descontinuidades geralmente correspondem aos contornos de objetos, ou seja, às regiões onde há transições abruptas de intensidade. Dessa forma, ao detectar bordas, torna-se possível delinear estruturas presentes na imagem e, consequentemente, segmentá-las.</p>
+<p>Esse tipo de abordagem utiliza operadores diferenciais que realçam variações locais de intensidade. Entre os operadores mais conhecidos estão os filtros de Sobel e Prewitt, que aproximam o gradiente da imagem em direções específicas. O gradiente pode ser representado por:</p>
+<p><span class="math display">\[
+|\nabla I(x,y)| = \sqrt{G_x^2 + G_y^2}
+\]</span></p>
+<p>onde <span class="math inline">\(G_x\)</span> e <span class="math inline">\(G_y\)</span> representam as derivadas da imagem nas direções horizontal e vertical, respectivamente. Regiões onde o valor do gradiente é elevado indicam a presença de bordas.</p>
+<p>Na prática computacional, muitas vezes utiliza-se uma aproximação mais eficiente:</p>
+<p><span class="math display">\[
+|\nabla I(x,y)| \approx |G_x| + |G_y|
+\]</span></p>
+<p>Por exemplo, O filtro de Sobel define aproximações discretas para as derivadas parciais <span class="math inline">\(G_x\)</span> e <span class="math inline">\(G_y\)</span> por meio de convoluções com máscaras específicas, que combinam diferenciação e suavização.</p>
+<p>Por exemplo, <span class="math inline">\(G_x\)</span> pode ser escrito como:</p>
+<p><span class="math display">\[
+\begin{aligned}
+G_x =\;&amp; [I(x+1,y-1) + 2I(x+1,y) + I(x+1,y+1)] \\
+      &amp;- [I(x-1,y-1) + 2I(x-1,y) + I(x-1,y+1)]
+\end{aligned}
+\]</span></p>
+<p>e <span class="math inline">\(G_y\)</span> de forma análoga:</p>
+<p><span class="math display">\[
+\begin{aligned}
+G_y =\;&amp; [I(x-1,y+1) + 2I(x,y+1) + I(x+1,y+1)] \\
+      &amp;- [I(x-1,y-1) + 2I(x,y-1) + I(x+1,y-1)]
+\end{aligned}
+\]</span></p>
+<p>Ou o filtro Lapraciano, que mede a variação da variação da intensidade da imagem, ou seja, corresponde à segunda derivada espacial, indicando quão rapidamente o valor do pixel está mudando em relação aos seus vizinhos. Por essa característica, ele é especialmente eficaz em destacar regiões onde ocorrem mudanças bruscas de intensidade, que correspondem às bordas dos objetos na imagem. Diferentemente do gradiente, que fornece informação direcional (indicando a orientação da borda), o Laplaciano é um operador não direcional, produzindo apenas um valor escalar com sinal, que indica se a região corresponde a um máximo ou mínimo local de intensidade:</p>
+<p><span class="math display">\[
+\bigtriangledown^2 I= \frac{\delta^2 I}{\delta x^I} + \frac{\delta^2 I}{\delta y^2}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\delta^2 I}{\delta x^2} = I(x+1,y) + I(x-1,y) - 2I(x,y)
+\]</span></p>
+<p><span class="math display">\[
+\frac{\delta^2 I}{\delta y^2} = I(x,y+1) + I(x,y-1) - 2I(x,y)
+\]</span></p>
+<p><span class="math display">\[
+\bigtriangledown^2 I = I(x+1,y) + I(x-1,y) + I(x,y+1) + I(x,y-1)- 4I(x,y)
+\]</span></p>
+<p>Outro método amplamente utilizado é o detector de Canny, que combina várias etapas, como suavização com filtro Gaussiano, cálculo do gradiente, supressão de não-máximos e limiarização com histerese. Esse método é mais robusto à presença de ruído e tende a produzir bordas mais finas e bem definidas.</p>
+<p>Apesar de sua eficiência na detecção de contornos, a segmentação baseada em bordas apresenta limitações importantes. Em muitos casos, as bordas detectadas podem ser incompletas ou apresentar ruídos, dificultando a formação de regiões fechadas. Além disso, variações suaves de intensidade ou baixa qualidade da imagem podem comprometer a detecção adequada das bordas, exigindo etapas adicionais de processamento para obter uma segmentação consistente.</p>
+</section>
+<section id="segmentação-por-regiões" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="segmentação-por-regiões">Segmentação por Regiões</h3>
+<p>A segmentação por regiões baseia-se no princípio de similaridade entre pixels, buscando agrupar aqueles que compartilham características semelhantes, como intensidade, cor ou textura. Diferentemente dos métodos baseados em bordas, que focam nas descontinuidades, essa abordagem enfatiza a homogeneidade interna das regiões, resultando em segmentações mais coerentes em termos de agrupamento de áreas.</p>
+<p>Uma das estratégias mais conhecidas dentro dessa abordagem é o crescimento de regiões. Nesse método, o processo tem início a partir de um conjunto de sementes, que podem ser definidas manualmente ou automaticamente. A partir dessas sementes, as regiões são expandidas iterativamente, incorporando pixels vizinhos que satisfaçam um critério de similaridade. Esse critério pode ser, por exemplo, a diferença de intensidade entre o pixel candidato e a média da região, frequentemente expressa como <span class="math inline">\(|I(x,y) - \mu_R| &lt; T\)</span>, onde <span class="math inline">\(\mu_R\)</span> representa a média da região e <span class="math inline">\(T\)</span> um limiar de tolerância. O processo continua até que nenhum novo pixel possa ser adicionado às regiões existentes.</p>
+<p>Outra abordagem importante é o método de divisão e fusão. Nesse caso, a imagem é inicialmente considerada como uma única região e, caso não satisfaça um critério de homogeneidade, é subdividida em partes menores. Uma forma comum de realizar essa divisão é por meio de estruturas hierárquicas, como o quadtree, em que a imagem é recursivamente particionada em quatro sub-regiões. Após a etapa de divisão, regiões adjacentes que apresentem características semelhantes podem ser fundidas, garantindo uma segmentação mais equilibrada.</p>
+<p>Essas técnicas são particularmente eficazes em imagens onde as regiões possuem propriedades bem definidas e relativamente uniformes. No entanto, a escolha dos critérios de similaridade e dos limiares adequados é fundamental para o sucesso do método, podendo influenciar diretamente na qualidade da segmentação obtida.</p>
+</section>
+<section id="segmentação-por-morfologia-matemática-e-watershed" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="segmentação-por-morfologia-matemática-e-watershed">Segmentação por Morfologia Matemática e Watershed</h3>
+<p>A segmentação baseada em morfologia matemática utiliza operadores que exploram a forma e a estrutura dos objetos presentes na imagem. Esses operadores são aplicados com o auxílio de um elemento estruturante <span class="math inline">\(B\)</span>, que define a vizinhança considerada nas operações. Entre as principais operações morfológicas estão a erosão e a dilatação. A erosão tende a reduzir as regiões claras da imagem, sendo útil para remover pequenos ruídos e separar objetos conectados, enquanto a dilatação expande essas regiões, preenchendo falhas e conectando componentes próximos.</p>
+<p>A partir dessas operações básicas, definem-se operações compostas, como a abertura e o fechamento. A abertura, dada por <span class="math inline">\(A \circ B = (A \ominus B) \oplus B\)</span>, é eficaz na remoção de pequenos objetos ou ruídos, preservando a forma geral das estruturas maiores. Já o fechamento, definido como <span class="math inline">\(A \bullet B = (A \oplus B) \ominus B\)</span>, é utilizado para preencher lacunas e suavizar contornos. Essas operações são amplamente empregadas no refinamento de segmentações, na separação de objetos conectados e na eliminação de imperfeições.</p>
+<p>Outra abordagem importante é a segmentação por watershed, que interpreta a imagem como uma superfície topográfica, na qual os níveis de intensidade representam altitudes. Nessa interpretação, regiões de baixa intensidade correspondem a vales ou bacias, enquanto regiões de alta intensidade representam divisores de água. O algoritmo simula um processo de inundação, no qual a água começa a preencher as bacias a partir de mínimos locais, e barreiras são construídas quando diferentes regiões em crescimento se encontram.</p>
+<p>Esse processo resulta na divisão da imagem em regiões distintas, associadas às bacias formadas. No entanto, um problema comum do método watershed é a supersegmentação, causada pela presença de múltiplos mínimos locais, muitas vezes decorrentes de ruído ou pequenas variações na imagem. Para contornar esse problema, é comum utilizar técnicas baseadas em marcadores, nas quais pontos de interesse (internos aos objetos e ao fundo) são previamente definidos, guiando o processo de segmentação e produzindo resultados mais consistentes e controlados.</p>
+<section id="algoritmo-de-watershed-por-marcadores" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="algoritmo-de-watershed-por-marcadores">Algoritmo de Watershed por Marcadores</h4>
+<p>O algoritmo de watershed baseado em marcadores pode ser descrito como um processo de inundação controlada a partir de regiões previamente rotuladas. A imagem é interpretada como uma superfície topográfica, onde os níveis de cinza representam altitudes. O objetivo é expandir as regiões a partir dos marcadores, respeitando a topologia da imagem e identificando as linhas de separação (watershed).</p>
+<p>Inicialmente, cada marcador recebe um rótulo distinto, representando uma região de origem. Em seguida, constrói-se uma fila de prioridade organizada por níveis de cinza, isto é, para cada nível <span class="math inline">\(h\)</span> existe um conjunto de pixels associados a essa altitude.</p>
+<p>O algoritmo não insere os marcadores diretamente na fila. Em vez disso, apenas os pixels vizinhos aos marcadores são inseridos, com prioridade correspondente ao seu nível de cinza. A partir desse ponto, o processo iterativo de expansão das regiões é iniciado.</p>
+<p>Para cada pixel <span class="math inline">\(x\)</span> extraído da fila de prioridade, executam-se os seguintes passos:</p>
+<ol type="1">
+<li><p>Analisa-se a vizinhança de <span class="math inline">\(x\)</span> e identifica-se o conjunto de rótulos distintos presentes em seus vizinhos já rotulados, desconsiderando rótulos de borda (watershed).</p></li>
+<li><p>Se os vizinhos de <span class="math inline">\(x\)</span> pertencem a uma única região, ou seja, existe apenas um rótulo distinto, então <span class="math inline">\(x\)</span> é incorporado a essa região e recebe o mesmo rótulo.</p></li>
+<li><p>Se os vizinhos de <span class="math inline">\(x\)</span> pertencem a duas ou mais regiões com rótulos distintos, então <span class="math inline">\(x\)</span> é classificado como ponto de watershed, recebendo um rótulo especial (por exemplo, <span class="math inline">\(4\)</span>), indicando que ele pertence à linha de separação entre regiões.</p></li>
+<li><p>Caso <span class="math inline">\(x\)</span> tenha sido rotulado (como região ou watershed), todos os seus vizinhos ainda não rotulados e que não estejam na fila de prioridade são inseridos na fila, com prioridade correspondente ao seu nível de cinza.</p></li>
+</ol>
+<p>Esse processo é repetido até que a fila de prioridade esteja vazia, garantindo que todos os pixels alcançáveis a partir dos marcadores sejam processados.</p>
+<p>Ao final do algoritmo, a imagem estará segmentada em regiões associadas aos marcadores iniciais, separadas por linhas de watershed que representam as fronteiras entre diferentes bacias de atração.</p>
+<p>O exemplo interativo seguinte apresenta uma simulação desse algoritmo de watershed por marcadores para uma imagem unidimensional. Inicialmente, estão marcados os pontos <span class="math inline">\(a, f, g\)</span>, a cada passo os pontos vizinhos das regiões marcadas são colocados nas filas apropriadas. O pontos de watershed são marcados com cor amarela.</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/pdFTjSFE0" width="100%" height="600" style="border:none; overflow:hiddeln;">
+</iframe>
+<p>Os exemplos seguintes demonstram o mesmo algoritmo para imagens. O primeiro exemplo mostra a execução do algoritmo de forma bidimensional. E o segundo mostra a mesma imagem como um relevo tridimensional. Existe uma marca para cada região da imagem. E o crescimento da regiões (inundação do relevo) é realizado até que são encontradas as linhas divisoras de água (watershed).</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/mk25edaHn" width="100%" height="650" style="border:none; overflow:hiddeln;">
+</iframe>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/vG7r2Wnd4" width="100%" height="650" style="border:none; overflow:hiddeln;">
+</iframe>
+<p>O exemplo interativo seguinte está a implementação para segmentação de imagens reais. Pode-se carregar uma imagem. Para execução do algoritmo basta clicar dentro de alguma região. O clique define um marcador. O outro marcador é a borda da imagem. O algoritmo é então aplicado sobre a imagem de gradiente morfológico (dilatação menos erosão) que evidencia as bordas. Uma linha vermelha seja adicionada a imagem, como resultado da operação de watershed para identificação da borda que contorna o ponto marcado.</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/5fXyn6cyw" width="100%" height="600" style="border:none; overflow:hiddeln;">
+</iframe>
 </section>
 </section>
-<section id="segmentação-por-crescimento-de-regiões" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="segmentação-por-crescimento-de-regiões"><span class="header-section-number">8.5</span> Segmentação por Crescimento de Regiões</h2>
-<p>O crescimento de regiões inicia-se a partir de pixels-semente e expande as regiões incorporando pixels vizinhos que satisfaçam critérios de similaridade.</p>
-<p>Essa técnica é intuitiva e permite bom controle sobre a segmentação, mas depende fortemente da escolha das sementes iniciais.</p>
+<section id="segmentação-baseada-em-clustering" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="segmentação-baseada-em-clustering">Segmentação Baseada em Clustering</h3>
+<p>A segmentação baseada em clustering fundamenta-se no agrupamento de pixels de acordo com a similaridade entre suas características. Diferentemente de abordagens que exploram diretamente a estrutura espacial da imagem, esses métodos tratam os pixels como pontos em um espaço de características, no qual atributos como intensidade, cor e posição são utilizados para formar grupos homogêneos. O objetivo é particionar esse espaço em conjuntos distintos, de modo que pixels pertencentes ao mesmo grupo sejam mais semelhantes entre si do que em relação aos demais.</p>
+<p>Um dos algoritmos mais utilizados nessa abordagem é o K-means, que busca dividir os dados em <span class="math inline">\(K\)</span> grupos previamente definidos. O algoritmo funciona iterativamente, alternando entre a atribuição de cada pixel ao centroide mais próximo e a atualização dos centroides com base na média dos elementos do grupo. Formalmente, o método procura minimizar a soma das distâncias quadráticas entre os pontos e seus respectivos centroides, conforme expresso por:</p>
+<p><span class="math display">\[
+J = \sum_{k=1}^{K} \sum_{x_i \in C_k} | x_i - \mu_k |^2
+\]</span></p>
+<p>onde <span class="math inline">\(C_k\)</span> representa o conjunto de pontos do cluster <span class="math inline">\(k\)</span> e <span class="math inline">\(\mu_k\)</span> seu centroide.</p>
+<p>O código exemplo seguinte implementa essa técnica para imagens:</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/7ooZnvesJ" width="100%" height="600" style="border:none; overflow:hiddeln;">
+</iframe>
+<p>Outro método relevante é o Mean Shift, que não exige a definição prévia do número de grupos. Esse algoritmo baseia-se na estimativa de densidade de probabilidade no espaço de características, deslocando iterativamente cada ponto em direção às regiões de maior densidade. Como resultado, os pontos convergem para modos da distribuição, formando clusters de maneira automática.</p>
+<p>A escolha dos atributos utilizados no processo de agrupamento é fundamental para o sucesso da segmentação. Características como intensidade são adequadas para imagens em tons de cinza, enquanto a cor é amplamente utilizada em imagens RGB. A inclusão da posição espacial dos pixels também pode melhorar os resultados, ao favorecer a formação de regiões mais compactas e coerentes. Dessa forma, a segmentação por clustering oferece uma abordagem flexível e poderosa, especialmente em cenários onde a separação entre regiões não é claramente definida por limiares simples.</p>
 </section>
-<section id="segmentação-por-divisão-e-fusão" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="segmentação-por-divisão-e-fusão"><span class="header-section-number">8.6</span> Segmentação por Divisão e Fusão</h2>
-<p>A segmentação por divisão e fusão combina duas estratégias complementares. Inicialmente, a imagem é dividida em regiões menores até que um critério de homogeneidade seja satisfeito. Em seguida, regiões adjacentes semelhantes são fundidas.</p>
-<p>Esse método é frequentemente implementado por meio de estruturas hierárquicas, como árvores quadtree.</p>
+<section id="segmentação-com-inteligência-artificial" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="segmentação-com-inteligência-artificial">Segmentação com Inteligência Artificial</h3>
+<p>A segmentação com inteligência artificial representa uma das abordagens mais avançadas e eficazes no processamento de imagens moderno. Diferentemente dos métodos clássicos, que dependem de regras explícitas e critérios definidos manualmente, essas técnicas são capazes de aprender automaticamente padrões complexos diretamente a partir dos dados. Isso permite lidar com cenários desafiadores, como variações de iluminação, ruído, oclusões e grande diversidade de formas e texturas.</p>
+<p>Entre os principais modelos utilizados destacam-se as redes neurais convolucionais (CNNs), que exploram a estrutura espacial das imagens por meio de operações de convolução. Essas redes aprendem representações hierárquicas, начиная desde características simples, como bordas e texturas, até padrões mais abstratos, como formas e objetos completos. Essa capacidade torna as CNNs particularmente adequadas para tarefas de segmentação.</p>
+<p>Arquiteturas específicas foram desenvolvidas para segmentação de imagens, como a U-Net, amplamente utilizada em aplicações médicas. Esse modelo apresenta uma estrutura em formato de “U”, composta por um caminho de contração (encoder), responsável pela extração de características, e um caminho de expansão (decoder), que reconstrói a segmentação com precisão espacial. Outro modelo relevante é o Mask R-CNN, que estende técnicas de detecção de objetos ao fornecer, além das caixas delimitadoras, máscaras de segmentação para cada objeto identificado na imagem.</p>
+<p>Esses métodos são capazes de produzir segmentações altamente precisas, mesmo em imagens complexas, desde que sejam treinados com conjuntos de dados adequados e bem anotados. No entanto, sua aplicação envolve desafios, como a necessidade de grande quantidade de dados rotulados, alto custo computacional e maior complexidade de implementação. Ainda assim, a segmentação baseada em inteligência artificial tem se consolidado como uma das principais abordagens em aplicações de ponta, como diagnóstico médico, veículos autônomos e análise de cenas em tempo real.</p>
 </section>
-<section id="segmentação-baseada-em-morfologia" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="segmentação-baseada-em-morfologia"><span class="header-section-number">8.7</span> Segmentação Baseada em Morfologia</h2>
-<p>Operações morfológicas podem ser utilizadas para auxiliar na segmentação, especialmente em imagens binárias ou em tons de cinza. Técnicas como abertura, fechamento e reconstrução morfológica permitem remover ruídos e separar objetos conectados.</p>
-<p>A morfologia matemática é particularmente útil como etapa de pré-processamento ou pós-processamento em sistemas de segmentação.</p>
 </section>
-<section id="desafios-da-segmentação" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="desafios-da-segmentação"><span class="header-section-number">8.8</span> Desafios da Segmentação</h2>
-<p>Apesar dos inúmeros métodos existentes, a segmentação continua sendo um problema aberto em muitas aplicações. Fatores como ruído, variações de iluminação, oclusões e diversidade de formas tornam difícil a definição de critérios universais.</p>
-<p>Por esse motivo, a segmentação é frequentemente ajustada ao problema específico e integrada a outras etapas do processamento de imagens.</p>
+<section id="avaliação-da-segmentação" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="avaliação-da-segmentação"><span class="header-section-number">8.3</span> Avaliação da Segmentação</h2>
+<p>A avaliação da segmentação de imagens é uma etapa fundamental para medir a qualidade dos resultados obtidos por diferentes métodos. Em geral, essa avaliação é realizada por meio da comparação entre a segmentação produzida pelo algoritmo e uma segmentação de referência, conhecida como <em>ground truth</em>, que representa a resposta ideal, geralmente obtida por anotação manual ou por especialistas.</p>
+<p>Entre os critérios mais utilizados estão as métricas de precisão (<em>precision</em>) e revocação (<em>recall</em>). A precisão mede a proporção de pixels corretamente identificados como pertencentes ao objeto em relação ao total de pixels classificados como objeto pelo algoritmo, sendo definida como <span class="math inline">\(\text{Precisão} = \frac{TP}{TP + FP}\)</span>, onde <span class="math inline">\(TP\)</span> representa os verdadeiros positivos e <span class="math inline">\(FP\)</span> os falsos positivos. Já o recall mede a capacidade do método de identificar todos os pixels que realmente pertencem ao objeto, sendo dado por <span class="math inline">\(\text{Recall} = \frac{TP}{TP + FN}\)</span>, onde <span class="math inline">\(FN\)</span> corresponde aos falsos negativos.</p>
+<p>Outra métrica amplamente utilizada é o índice de Jaccard, também conhecido como <em>Intersection over Union</em> (IoU). Essa medida avalia a sobreposição entre a segmentação obtida e o <em>ground truth</em>, sendo definida como:</p>
+<p><span class="math display">\[
+\text{IoU} = \frac{|A \cap B|}{|A \cup B|}
+\]</span></p>
+<p>onde <span class="math inline">\(A\)</span> representa o conjunto de pixels segmentados pelo algoritmo e <span class="math inline">\(B\)</span> o conjunto de pixels da segmentação de referência. Quanto maior o valor de IoU, maior a concordância entre as duas segmentações.</p>
+<p>A comparação com o <em>ground truth</em> permite uma análise objetiva do desempenho dos métodos, sendo essencial em aplicações que exigem alta precisão, como na área médica ou em sistemas críticos. No entanto, a obtenção de dados de referência confiáveis pode ser trabalhosa e, em alguns casos, sujeita a variações entre diferentes anotadores. Ainda assim, essas métricas constituem ferramentas indispensáveis para o desenvolvimento e validação de algoritmos de segmentação.</p>
 </section>
-<section id="considerações-finais" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">8.9</span> Considerações Finais</h2>
-<p>A segmentação de imagens constitui um passo essencial para a interpretação automática de cenas. A escolha da técnica adequada depende das características da imagem e dos objetivos da aplicação.</p>
-<p>Os métodos apresentados neste capítulo fornecem uma base conceitual para o desenvolvimento de sistemas de segmentação robustos, que podem ser combinados com técnicas avançadas de aprendizado de máquina e visão computacional.</p>
+<section id="desafios" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="desafios"><span class="header-section-number">8.4</span> Desafios</h2>
+<p>A segmentação de imagens enfrenta diversos desafios que podem comprometer significativamente a qualidade dos resultados. Um dos principais problemas é a presença de ruído, que introduz variações indesejadas nos níveis de intensidade dos pixels. Esse ruído pode gerar falsas bordas, dificultar a identificação de regiões homogêneas e levar a erros na classificação dos pixels.</p>
+<p>Outro desafio importante está relacionado às variações de iluminação. Mudanças na intensidade da luz ao longo da imagem podem fazer com que regiões pertencentes ao mesmo objeto apresentem valores distintos, dificultando a aplicação de métodos baseados em limiarização ou similaridade. Esse problema é especialmente crítico em ambientes não controlados, onde a iluminação não é uniforme.</p>
+<p>A presença de objetos sobrepostos ou parcialmente ocluídos também representa uma dificuldade significativa. Nesses casos, os contornos dos objetos podem não estar claramente definidos, o que compromete tanto métodos baseados em bordas quanto abordagens por regiões. A separação adequada desses objetos exige técnicas mais sofisticadas, muitas vezes combinando diferentes estratégias de segmentação.</p>
+<p>Além disso, imagens com texturas complexas podem dificultar a definição de critérios de homogeneidade. Regiões texturizadas apresentam variações naturais que podem ser interpretadas erroneamente como mudanças de região, levando à supersegmentação. Isso exige o uso de descritores mais robustos ou métodos que considerem informações contextuais.</p>
+<p>Por fim, a escolha de parâmetros adequados é um desafio recorrente em muitos algoritmos de segmentação. Valores como limiares, tamanhos de janelas ou critérios de similaridade influenciam diretamente o resultado final. A definição desses parâmetros pode depender do tipo de imagem e da aplicação, exigindo ajustes empíricos ou métodos automáticos de otimização.</p>
+</section>
+<section id="aplicações" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="aplicações"><span class="header-section-number">8.5</span> Aplicações</h2>
+<p>A segmentação de imagens possui um amplo espectro de aplicações, sendo uma etapa essencial em diversos sistemas de análise e interpretação visual. Sua capacidade de isolar regiões de interesse permite extrair informações relevantes de forma mais eficiente, servindo como base para tarefas mais complexas.</p>
+<p>Na área de diagnóstico médico, a segmentação é amplamente utilizada para identificar estruturas anatômicas e detectar anomalias em exames de imagem, como tomografias, ressonâncias magnéticas e radiografias. Aplicações incluem a delimitação de órgãos, a detecção de tumores e o acompanhamento da evolução de doenças, contribuindo diretamente para a tomada de decisão clínica.</p>
+<p>Em veículos autônomos, a segmentação desempenha um papel crucial na compreensão do ambiente ao redor. Ela é utilizada para identificar elementos como faixas de rodagem, pedestres, veículos e obstáculos, permitindo que o sistema tome decisões seguras em tempo real. Nesse contexto, a segmentação semântica e a segmentação por instâncias são particularmente importantes.</p>
+<p>Na agricultura de precisão, técnicas de segmentação são aplicadas para monitorar culturas, identificar pragas, avaliar o estado de saúde das plantas e estimar produtividade. A análise de imagens obtidas por drones ou satélites permite segmentar áreas específicas, auxiliando no manejo eficiente dos recursos agrícolas.</p>
+<p>No reconhecimento facial, a segmentação é utilizada para isolar regiões relevantes do rosto, como olhos, nariz e boca, facilitando a extração de características e a identificação de indivíduos. Esse processo melhora a robustez dos sistemas de reconhecimento, especialmente em condições variadas de iluminação e expressão.</p>
+<p>Por fim, na análise de documentos, a segmentação permite separar diferentes componentes de uma imagem, como texto, figuras, tabelas e fundo. Isso é fundamental para aplicações como digitalização, reconhecimento óptico de caracteres (OCR) e organização automática de documentos, contribuindo para a automação de processos e a recuperação eficiente de informações.</p>
+</section>
+<section id="considerações-finais" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">8.6</span> Considerações Finais</h2>
+<p>A segmentação de imagens constitui uma etapa central no processamento de imagens, desempenhando um papel fundamental na transição entre a análise de baixo nível, baseada em pixels, e a interpretação de alto nível, orientada a objetos e significados. Ao particionar a imagem em regiões relevantes, ela fornece uma representação mais estruturada dos dados, facilitando tarefas posteriores como reconhecimento, classificação e análise semântica.</p>
+<p>Entretanto, não existe um método universal capaz de atender de forma satisfatória a todos os cenários. A escolha da técnica de segmentação depende de diversos fatores, incluindo o tipo de imagem, a natureza dos objetos de interesse, as condições de aquisição e os requisitos da aplicação. Em muitos casos, a combinação de diferentes abordagens pode ser necessária para alcançar resultados mais robustos.</p>
+<p>Os métodos clássicos, como limiarização, detecção de bordas e segmentação por regiões, continuam sendo amplamente utilizados devido à sua simplicidade, interpretabilidade e baixo custo computacional. Por outro lado, abordagens mais recentes baseadas em aprendizado profundo têm ganhado destaque, especialmente em aplicações complexas, por sua capacidade de modelar padrões sofisticados e produzir segmentações de alta precisão.</p>
+<p>Dessa forma, a segmentação de imagens permanece como um campo ativo de pesquisa e desenvolvimento, no qual avanços teóricos e tecnológicos continuam ampliando suas possibilidades de aplicação e melhorando a qualidade dos resultados obtidos.</p>
 
 
 </section>

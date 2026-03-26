@@ -298,6 +298,22 @@ window.Quarto = {
   <li><a href="#salvar-um-arquivo-pnm" id="toc-salvar-um-arquivo-pnm" class="nav-link" data-scroll-target="#salvar-um-arquivo-pnm"><span class="header-section-number">2.7.2</span> Salvar um arquivo PNM</a></li>
   </ul></li>
   <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">2.8</span> Considerações Finais</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">2.9</span> 📝 Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1-conceitual" id="toc-exercício-1-conceitual" class="nav-link" data-scroll-target="#exercício-1-conceitual">🔹 Exercício 1 — Conceitual</a></li>
+  <li><a href="#exercício-2-análise-visual" id="toc-exercício-2-análise-visual" class="nav-link" data-scroll-target="#exercício-2-análise-visual">🔹 Exercício 2 — Análise visual</a></li>
+  <li><a href="#exercício-3-cálculo-de-resolução" id="toc-exercício-3-cálculo-de-resolução" class="nav-link" data-scroll-target="#exercício-3-cálculo-de-resolução">🔹 Exercício 3 — Cálculo de resolução</a></li>
+  <li><a href="#exercício-4-quantização-prática" id="toc-exercício-4-quantização-prática" class="nav-link" data-scroll-target="#exercício-4-quantização-prática">🔹 Exercício 4 — Quantização prática</a></li>
+  <li><a href="#exercício-5-amostragem-prática" id="toc-exercício-5-amostragem-prática" class="nav-link" data-scroll-target="#exercício-5-amostragem-prática">🔹 Exercício 5 — Amostragem prática</a></li>
+  <li><a href="#exercício-6-comparação" id="toc-exercício-6-comparação" class="nav-link" data-scroll-target="#exercício-6-comparação">🔹 Exercício 6 — Comparação</a></li>
+  <li><a href="#questão-reflexiva" id="toc-questão-reflexiva" class="nav-link" data-scroll-target="#questão-reflexiva">📚 Questão reflexiva</a></li>
+  </ul></li>
+  <li><a href="#atividade-prática---fotomosaico-de-fotos" id="toc-atividade-prática---fotomosaico-de-fotos" class="nav-link" data-scroll-target="#atividade-prática---fotomosaico-de-fotos"><span class="header-section-number">2.10</span> Atividade Prática - “Fotomosaico de fotos”</a>
+  <ul class="collapse">
+  <li><a href="#objetivo" id="toc-objetivo" class="nav-link" data-scroll-target="#objetivo">Objetivo</a></li>
+  <li><a href="#problema" id="toc-problema" class="nav-link" data-scroll-target="#problema">Problema</a></li>
+  <li><a href="#descrição" id="toc-descrição" class="nav-link" data-scroll-target="#descrição">Descrição</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -755,8 +771,187 @@ Listagem&nbsp;2.4
 <h2 data-number="2.8" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">2.8</span> Considerações Finais</h2>
 <p>A amostragem e a quantização constituem a base da representação digital de imagens. A escolha adequada da resolução espacial e da profundidade de quantização é fundamental para garantir um equilíbrio entre qualidade visual, custo computacional e requisitos de armazenamento.</p>
 <p>A compreensão desses conceitos é essencial para o estudo de técnicas mais avançadas de processamento de imagens, como filtragem, segmentação, compressão e reconhecimento de padrões, abordadas nos capítulos seguintes.</p>
+</section>
+<section id="exercícios" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">2.9</span> 📝 Exercícios</h2>
+<section id="exercício-1-conceitual" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercício-1-conceitual">🔹 Exercício 1 — Conceitual</h3>
+<p>Explique com suas palavras:</p>
+<ol type="a">
+<li>O que é <strong>amostragem</strong> em imagens digitais<br>
+</li>
+<li>O que é <strong>quantização</strong><br>
+</li>
+<li>Qual o impacto de cada um na qualidade da imagem</li>
+</ol>
+<hr>
+</section>
+<section id="exercício-2-análise-visual" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercício-2-análise-visual">🔹 Exercício 2 — Análise visual</h3>
+<p>Considere uma imagem em tons de cinza:</p>
+<ol type="a">
+<li>O que acontece ao reduzir pela metade:</li>
+</ol>
+<ul>
+<li>o número de linhas e colunas (amostragem)?<br>
+</li>
+<li>o número de tons de cinza (quantização)?</li>
+</ul>
+<ol start="2" type="a">
+<li>Qual das duas alterações tende a causar maior perda perceptual? Justifique.</li>
+</ol>
+<hr>
+</section>
+<section id="exercício-3-cálculo-de-resolução" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercício-3-cálculo-de-resolução">🔹 Exercício 3 — Cálculo de resolução</h3>
+<p>Uma imagem possui:</p>
+<ul>
+<li>512 × 512 pixels<br>
+</li>
+<li>256 níveis de cinza</li>
+</ul>
+<p>Responda:</p>
+<ol type="a">
+<li>Quantos pixels possui a imagem?<br>
+</li>
+<li>Quantos bits são necessários por pixel?<br>
+</li>
+<li>Qual o tamanho da imagem em bytes?</li>
+</ol>
+<hr>
+</section>
+<section id="exercício-4-quantização-prática" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercício-4-quantização-prática">🔹 Exercício 4 — Quantização prática</h3>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Leia uma imagem em tons de cinza<br>
+</li>
+<li>Reduza o número de níveis de cinza para:</li>
+</ol>
+<ul>
+<li>128<br>
+</li>
+<li>64<br>
+</li>
+<li>32<br>
+</li>
+<li>16</li>
+</ul>
+<ol start="3" type="a">
+<li>Mostre ou salve os resultados</li>
+</ol>
+<p>👉 Compare visualmente os resultados.</p>
+<hr>
+</section>
+<section id="exercício-5-amostragem-prática" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercício-5-amostragem-prática">🔹 Exercício 5 — Amostragem prática</h3>
+<p>Implemente um programa que reduza a resolução de uma imagem:</p>
+<ul>
+<li>1/2 da largura e altura<br>
+</li>
+<li>1/4 da largura e altura</li>
+</ul>
+<p>Compare os resultados com a imagem original.</p>
+<hr>
+</section>
+<section id="exercício-6-comparação" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercício-6-comparação">🔹 Exercício 6 — Comparação</h3>
+<p>Compare os efeitos de:</p>
+<ul>
+<li>Reduzir apenas a amostragem<br>
+</li>
+<li>Reduzir apenas a quantização<br>
+</li>
+<li>Reduzir ambos</li>
+</ul>
+<p>👉 Qual combinação produz maior degradação? Explique.</p>
+<hr>
+</section>
+<section id="questão-reflexiva" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="questão-reflexiva">📚 Questão reflexiva</h3>
+<p>Explique como os conceitos de amostragem e quantização influenciam:</p>
+<ul>
+<li>Compressão de imagens<br>
+</li>
+<li>Qualidade visual<br>
+</li>
+<li>Uso em aplicações reais (ex: redes sociais, medicina, satélites)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="atividade-prática---fotomosaico-de-fotos" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="atividade-prática---fotomosaico-de-fotos"><span class="header-section-number">2.10</span> Atividade Prática - “Fotomosaico de fotos”</h2>
+<hr>
+<section id="objetivo" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="objetivo">Objetivo</h3>
+<p>O objetivo desse atividade é explorar os conceitos iniciais da disciplina de processamento de imagens como: vizinhança dos pixels, amostragem e quantização e operações pontuais para clareamento e escurecimento de imagens.</p>
+<hr>
+</section>
+<section id="problema" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="problema">Problema</h3>
+<p>É possível obter uma boa representação de uma imagem, mesmo sacrificando o número de linhas e colunas (amostragem) e/ou o número de tons (quantização) de uma imagem qualquer.</p>
+<p>O problema de processamento de imagens proposto para essa atividade será construir uma ferramenta para composição de um fotomosaico de imagens, conforme ilustrado nas Figuras abaixo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap2/mosaico.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption>Foto mosaico de fotos de cães</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap2/detalhe.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption>Detalhe ampliado na imagem anterior</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="descrição" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="descrição">Descrição</h3>
+<ol type="1">
+<li>Nessa atividade você deverá construir uma ferramenta que, a partir de um arquivo de configuração (<code>config.txt</code>) da fotomontagem e de uma coleção de imagens armazenadas em formato PGM, gere o fotomosaico de fotos, conforme ilustrado anteriormente.</li>
+</ol>
+<pre class="text"><code>32 60 80
+10
+cao3.pgm
+cao2.pgm
+cao1.pgm
+cao4.pgm
+cao5.pgm
+cao6.pgm
+cao7.pgm
+cao8.pgm
+cao9.pgm
+cao10.pgm</code></pre>
+<ol start="2" type="1">
+<li><p>O arquivo <code>config.txt</code> deve estar organizado da seguinte forma:</p>
+<ol type="a">
+<li>A primeira linha do arquivo deve conter três números que definem:</li>
+</ol>
+<ul>
+<li>Número <strong>NT</strong> de tons de cinza do mosaico (NT = 32, no exemplo)</li>
+<li>Número <strong>NL</strong> de linhas</li>
+<li>Número <strong>NC</strong> de colunas</li>
+</ul>
+<ol start="2" type="a">
+<li><p>A segunda linha contém o número <strong>N</strong> de imagens que serão utilizadas na montagem (no exemplo, N = 10).</p></li>
+<li><p>Da terceira linha em diante, o arquivo contém os nomes das imagens. A primeira imagem da lista é utilizada como imagem base. As demais imagens serão iconizadas e ajustadas (clareadas ou escurecidas) para serem utilizadas como “pixels” na composição.</p></li>
+</ol></li>
+<li><p>A partir desse arquivo de configuração, o programa deverá gerar uma imagem do fotomosaico com dimensões:</p></li>
+</ol>
+<ul>
+<li><strong>NL × NL linhas</strong></li>
+<li><strong>NC × NC colunas</strong></li>
+</ul>
+<p>Para o exemplo fornecido:</p>
+<ul>
+<li>60 × 60 → 3600 linhas</li>
+<li>80 × 80 → 6400 colunas</li>
+</ul>
+<p>```</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

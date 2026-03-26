@@ -368,7 +368,7 @@ Figura&nbsp;4.2: Representação dos termos como Epiciclos
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="definição-matemática"><span class="header-section-number">4.3.1</span> Definição Matemática</h3>
 <p>A <strong>Transformada de Fourier contínua unidimensional</strong> de uma função <span class="math inline">\(f(t)\)</span> é definida por:</p>
 <p><span class="math display">\[
-F(\mu) = \int_{-\infty}^{\infty} f(t), e^{-j 2\pi \mu t}, dt
+F(\mu) = \int_{-\infty}^{\infty} f(t)\, e^{-j 2\pi \mu t}\, dt
 \]</span></p>
 <p>onde:</p>
 <ul>
@@ -400,7 +400,7 @@ e^{j\theta} = \cos\theta + j\sin\theta
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="transformada-inversa-de-fourier-unidimensional"><span class="header-section-number">4.3.3</span> Transformada Inversa de Fourier Unidimensional</h3>
 <p>A reconstrução do sinal original a partir de sua representação em frequência é realizada pela <strong>Transformada Inversa de Fourier</strong>, definida por:</p>
 <p><span class="math display">\[
-f(t) = \int_{-\infty}^{\infty} F(\mu), e^{j 2\pi \mu t}, d\mu
+f(t) = \int_{-\infty}^{\infty} F(\mu)\, e^{j 2\pi \mu t}\, d\mu
 \]</span></p>
 <p>Essa relação garante que a Transformada de Fourier <strong>não perde informação</strong>: o sinal pode ser transformado para o domínio da frequência e recuperado integralmente, desde que todas as frequências sejam consideradas.</p>
 <section id="um-exemplo" class="level4" data-number="4.3.3.1">
@@ -529,13 +529,13 @@ F(u,v)\, e^{j2\pi(ux + vy)} \, du\,dv
 <p>Seja uma imagem digital <span class="math inline">\(f(x,y)\)</span> de dimensões <span class="math inline">\(M \times N\)</span>. A Transformada Discreta de Fourier bidimensional é definida por:</p>
 <p><span class="math display">\[
 F(u,v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} f(x,y)
-, e^{-j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
+\, e^{-j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
 \]</span></p>
 <p>onde (u) e (v) representam as coordenadas no domínio da frequência e (j) é a unidade imaginária.</p>
 <p>A transformada inversa permite recuperar a imagem original a partir de sua representação espectral:</p>
 <p><span class="math display">\[
 f(x,y) = \frac{1}{MN} \sum_{u=0}^{M-1} \sum_{v=0}^{N-1} F(u,v)
-, e^{j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
+\, e^{j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
 \]</span></p>
 </section>
 </section>
