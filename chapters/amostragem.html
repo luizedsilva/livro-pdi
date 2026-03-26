@@ -712,7 +712,7 @@ Listagem&nbsp;2.2
 </div>
 </figure>
 </div>
-<p>A imagem (<em>image</em>) está representada na estrutura da <a href="#lst-estrutura" class="quarto-xref">Listagem&nbsp;<span>2.3</span></a>.</p>
+<p>A imagem (<em>image</em>) está representada na estrutura da <a href="#lst-estrutura" class="quarto-xref">Listagem&nbsp;<span>2.3</span></a> que contém ainda algumas rotinas utilitárias.</p>
 <div id="lst-estrutura" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-estrutura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -736,7 +736,36 @@ Listagem&nbsp;2.3
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    BW <span class="op">=</span> <span class="dv">1</span><span class="op">,</span></span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    GRAY<span class="op">,</span></span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    COLOR</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"> * Image allocation and free routines</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"> *   nr = number of rows</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"> *   nc = number of columns</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"> *   ml = max gray level</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"> *   tp = type of image</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>image img_create<span class="op">(</span><span class="dt">int</span> nr<span class="op">,</span> <span class="dt">int</span> nc<span class="op">,</span> <span class="dt">int</span> ml<span class="op">,</span> <span class="dt">int</span> tp<span class="op">)</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    image img <span class="op">=</span> malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span>image <span class="op">*));</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>px <span class="op">=</span> malloc<span class="op">(</span>nr <span class="op">*</span> nc <span class="op">*</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">));</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>nr <span class="op">=</span> nr<span class="op">;</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>nc <span class="op">=</span> nc<span class="op">;</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>ml <span class="op">=</span> ml<span class="op">;</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    img<span class="op">-&gt;</span>tp <span class="op">=</span> tp<span class="op">;</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> img<span class="op">;</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>image img_clone<span class="op">(</span>image In<span class="op">)</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> img_create<span class="op">(</span>In<span class="op">-&gt;</span>nr<span class="op">,</span> In<span class="op">-&gt;</span>nc<span class="op">,</span> In<span class="op">-&gt;</span>ml<span class="op">,</span> In<span class="op">-&gt;</span>tp<span class="op">);</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> img_free<span class="op">(</span>image Im<span class="op">)</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    free<span class="op">(</span>Im<span class="op">-&gt;</span>px<span class="op">);</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    free<span class="op">(</span>Im<span class="op">);</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </figure>
 </div>

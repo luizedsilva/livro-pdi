@@ -577,13 +577,13 @@ Listagem&nbsp;3.2
 <p><span class="math display">\[
 g(x,y) = T\left[f(x,y)\right]
 \]</span></p>
-<p>em que (f(x,y)) representa a imagem de entrada, (g(x,y)) a imagem resultante e (T) um operador definido sobre os valores de intensidade.</p>
+<p>em que <span class="math inline">\(f(x,y)\)</span> representa a imagem de entrada, <span class="math inline">\(g(x,y)\)</span> a imagem resultante e <span class="math inline">\(T\)</span> um operador definido sobre os valores de intensidade.</p>
 <p>Essas operações podem ser aplicadas a um único pixel ou a uma vizinhança de pixels, dependendo da técnica utilizada.</p>
 </section>
 <section id="transformações-de-intensidade" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="transformações-de-intensidade"><span class="header-section-number">3.5</span> Transformações de Intensidade</h2>
 <p>As transformações de intensidade são operações pontuais, nas quais o valor de cada pixel da imagem de saída depende exclusivamente do valor do pixel correspondente na imagem de entrada.</p>
-<p>Essas transformações mapeiam um nível de cinza de entrada (r) para um nível de saída (s), conforme representado no gráfico gerado no exemplo seguinte (onde <span class="math inline">\(L\)</span> representa a quantidade de níveis de cinza):</p>
+<p>Essas transformações mapeiam um nível de cinza de entrada <span class="math inline">\(r\)</span> para um nível de saída <span class="math inline">\(s\)</span>, conforme representado no gráfico gerado no exemplo seguinte (onde <span class="math inline">\(L\)</span> representa a quantidade de níveis de cinza):</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/N451LEXKV" width="100%" height="500" style="border:none; overflow:hiddeln;">
 </iframe>
@@ -593,11 +593,11 @@ g(x,y) = T\left[f(x,y)\right]
 <p><span class="math display">\[
 g(x,y) = a\,f(x,y) + b
 \]</span></p>
-<p>Os parâmetros (a) e (b) controlam, respectivamente, o contraste e o brilho da imagem. Valores maiores de (a) ampliam o contraste, enquanto o termo (b) desloca os níveis de intensidade.</p>
+<p>Os parâmetros <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> controlam, respectivamente, o contraste e o brilho da imagem. Valores maiores de <span class="math inline">\(a\)</span> ampliam o contraste, enquanto o termo <span class="math inline">\(b\)</span> desloca os níveis de intensidade.</p>
 </section>
 <section id="transformações-logarítmicas" class="level3" data-number="3.5.2">
 <h3 data-number="3.5.2" class="anchored" data-anchor-id="transformações-logarítmicas"><span class="header-section-number">3.5.2</span> Transformações Logarítmicas</h3>
-<p>Transformações logarítmicas são utilizadas para expandir valores de baixa intensidade e comprimir valores elevados, sendo especialmente úteis em imagens que apresentam grande variação dinâmica.</p>
+<p>Transformações logarítmicas (da <a href="#lst-logaritmica" class="quarto-xref">Listagem&nbsp;<span>3.3</span></a>) são utilizadas para expandir valores de baixa intensidade e comprimir valores elevados, sendo especialmente úteis em imagens que apresentam grande variação dinâmica.</p>
 <p>Uma forma típica é dada por:</p>
 <p><span class="math display">\[
 g(x,y) = c\,\log\!\left(1 + f(x,y)\right)
@@ -607,13 +607,57 @@ g(x,y) = c\,\log\!\left(1 + f(x,y)\right)
 c = \frac{max}{\log(1 + max)}
 \]</span></p>
 <p>Onde <span class="math inline">\(max = L-1\)</span> é a máxima intensidade de pixel na imagem, ou seja, o maior valor retornado para a função imagem <span class="math inline">\(f(x,y)\)</span>.</p>
+<div id="lst-logaritmica" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-logaritmica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listagem&nbsp;3.3
+</figcaption>
+<div aria-describedby="lst-logaritmica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>image logarithm <span class="op">(</span>image img<span class="op">)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    image out <span class="op">=</span> img_clone<span class="op">(</span>img<span class="op">);</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> w <span class="op">=</span> img<span class="op">-&gt;</span>nc<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> h <span class="op">=</span> img<span class="op">-&gt;</span>nr<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> max <span class="op">=</span> img<span class="op">-&gt;</span>ml<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> T<span class="op">[</span>max <span class="op">+</span> <span class="dv">1</span><span class="op">];</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> max <span class="op">+</span> <span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        T<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> log<span class="op">(</span>i <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">/</span> log<span class="op">(</span>max <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">*</span> max<span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> h <span class="op">*</span> w<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        out<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> T<span class="op">[</span>img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]];</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
+</div>
 </section>
 <section id="transformações-de-potência" class="level3" data-number="3.5.3">
 <h3 data-number="3.5.3" class="anchored" data-anchor-id="transformações-de-potência"><span class="header-section-number">3.5.3</span> Transformações de Potência</h3>
-<p>As transformações de potência, também conhecidas como correção gama, são definidas por:</p>
+<p>As transformações de potência (da <a href="#lst-potencia" class="quarto-xref">Listagem&nbsp;<span>3.4</span></a>), também conhecidas como correção gama, são definidas por:</p>
 <p><span class="math display">\[
 g(x,y) = c\,\left[f(x,y)\right]^{\gamma}
 \]</span></p>
+<div id="lst-potencia" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-potencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listagem&nbsp;3.4
+</figcaption>
+<div aria-describedby="lst-potencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>image power<span class="op">(</span>image img<span class="op">,</span> <span class="dt">float</span> gamma<span class="op">)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    image out <span class="op">=</span> img_clone<span class="op">(</span>img<span class="op">);</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> w <span class="op">=</span> img<span class="op">-&gt;</span>nc<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> h <span class="op">=</span> img<span class="op">-&gt;</span>nr<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> max <span class="op">=</span> img<span class="op">-&gt;</span>ml<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> T<span class="op">[</span>max <span class="op">+</span> <span class="dv">1</span><span class="op">];</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> max <span class="op">+</span> <span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        T<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> pow<span class="op">(</span>i<span class="op">,</span> gamma<span class="op">)</span> <span class="op">/</span> pow<span class="op">(</span>max <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> gamma<span class="op">)</span> <span class="op">*</span> max<span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> h <span class="op">*</span> w<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        out<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> T<span class="op">[</span>img<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]];</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
+</div>
 <p>O parâmetro (<span class="math inline">\(\gamma\)</span>) controla a forma da curva de transformação. Valores de (<span class="math inline">\(\gamma &lt; 1\)</span>) tem o efeito de clarear a imagem, enquanto valores de (<span class="math inline">\(\gamma &gt; 1\)</span>) escurecem a imagem. O exemplo interativo abaixo ilustra essa transformação:</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/wtDvsM5Ym" width="100%" height="380" style="border:none; overflow:hiddeln;">
@@ -647,24 +691,7 @@ Figura&nbsp;3.1: Transformação linear por partes
 <h2 data-number="3.6" class="anchored" data-anchor-id="histograma-de-imagens"><span class="header-section-number">3.6</span> Histograma de Imagens</h2>
 <p>O histograma de uma imagem descreve a distribuição dos níveis de intensidade dos pixels. Ele fornece uma representação estatística que é amplamente utilizada para análise e melhoramento de imagens.</p>
 <p>Imagens com baixo contraste tendem a apresentar histogramas concentrados em uma faixa estreita de valores, enquanto imagens com bom contraste exibem histogramas mais espalhados ao longo da escala de intensidades.</p>
-<p>Algoritmo para calcular o histograma de uma imagem está em <a href="#lst-histograma" class="quarto-xref">Listagem&nbsp;<span>3.3</span></a>.</p>
-<div id="lst-histograma" class="listing quarto-float quarto-figure quarto-figure-left anchored">
-<figure class="quarto-float quarto-float-lst figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-histograma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listagem&nbsp;3.3
-</figcaption>
-<div aria-describedby="lst-histograma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// atribuir valor zero a todos elementos do vetor</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> L<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  Histo<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">// calcular distribuição dos níveis de cinza </span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">// para cada pixel da imagem</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> M<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> N<span class="op">;</span> j<span class="op">++)</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>     Histo <span class="op">[</span>Img<span class="op">[</span>i<span class="op">][</span>j<span class="op">]]</span> <span class="op">=</span> Histo <span class="op">[</span>Img<span class="op">[</span>i<span class="op">][</span>j<span class="op">]]+</span><span class="dv">1</span><span class="op">;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</figure>
-</div>
+<p>Algoritmo para calcular o histograma de uma imagem está em <a href="#lst-histograma" class="quarto-xref">Listagem&nbsp;<span>3.5</span></a>.</p>
 </section>
 <section id="equalização-de-histograma" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="equalização-de-histograma"><span class="header-section-number">3.7</span> Equalização de Histograma</h2>
@@ -764,7 +791,47 @@ s_k = T(r_k) = (L - 1)\sum_{j=0}^{k} p_r(r_j)
 </tbody>
 </table>
 <p>Observa-se que o valor <span class="math inline">\(n_k\)</span> corresponde ao <strong>número de pixels com intensidade</strong> <span class="math inline">\(r_k\)</span>, enquanto <span class="math inline">\(n_k/MN\)</span> representa a <strong>probabilidade de ocorrência</strong> desse nível de cinza na imagem.</p>
-<p>Esse procedimento define uma <strong>tabela de consulta (LUT)</strong> que mapeia cada nível de entrada <span class="math inline">\(r_k\)</span> para um novo nível <span class="math inline">\(s_k\)</span>, redistribuindo os níveis de cinza de forma mais uniforme e aumentando o contraste global da imagem.</p>
+<p>Esse procedimento (da <a href="#lst-histograma" class="quarto-xref">Listagem&nbsp;<span>3.5</span></a>) define uma <strong>tabela de consulta (LUT)</strong> que mapeia cada nível de entrada <span class="math inline">\(r_k\)</span> para um novo nível <span class="math inline">\(s_k\)</span>, redistribuindo os níveis de cinza de forma mais uniforme e aumentando o contraste global da imagem.</p>
+<div id="lst-histograma" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-histograma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listagem&nbsp;3.5
+</figcaption>
+<div aria-describedby="lst-histograma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>image equalization<span class="op">(</span>image in<span class="op">)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    image out <span class="op">=</span> img_clone<span class="op">(</span>in<span class="op">);</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> M <span class="op">=</span> in<span class="op">-&gt;</span>nc<span class="op">;</span>     <span class="co">// nro de colunas da imagem</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> N <span class="op">=</span> in<span class="op">-&gt;</span>nr<span class="op">;</span>     <span class="co">// nro de linhas da imagem</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> L <span class="op">=</span> in<span class="op">-&gt;</span>ml <span class="op">+</span> <span class="dv">1</span><span class="op">;</span> <span class="co">// nro de tons de cinza na imagem</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n<span class="op">[</span>L<span class="op">];</span>           <span class="co">// n[k] = nro de pixels de intensidade k</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> T<span class="op">[</span>L<span class="op">];</span>           <span class="co">// funcao de transformacao</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> sum<span class="op">;</span>            <span class="co">// soma de frequencias</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// calculo do histograma</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> L<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        n<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> M <span class="op">*</span> N<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        n<span class="op">[</span>in<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]]++;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// funcao de transformacao T (LUT)</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    sum <span class="op">=</span> n<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    T<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="fl">1.0</span> <span class="op">*</span> <span class="op">(</span>L <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span>M <span class="op">*</span> N<span class="op">)</span> <span class="op">*</span> sum<span class="op">;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> L<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">=</span> sum <span class="op">+</span> n<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        T<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="fl">1.0</span> <span class="op">*</span> <span class="op">(</span>L <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span>M <span class="op">*</span> N<span class="op">)</span> <span class="op">*</span> sum<span class="op">;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Equalizacao do histograma</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> M <span class="op">*</span> N<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        out<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> T<span class="op">[</span>in<span class="op">-&gt;</span>px<span class="op">[</span>i<span class="op">]];</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
+</div>
 <p>O exemplo interativo a seguir apresenta a implementação do algoritmo de <strong>equalização de histograma</strong>. No exemplo, pode-se carregar qualquer imagem, mas somente as intensidades (tons de cinza), são utilizadas. Para imagem carregada será apresentada a imagem original, o seu histograma correspondente, a imagem equalizada e o histograma equalizado.</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/nFphWvonZ" width="100%" height="500" style="border:none; overflow:hiddeln;">
@@ -796,21 +863,21 @@ w(y,x)\, f(i+y, j+x)
 <li><span class="math inline">\(w(y,x)\)</span> é a máscara de convolução;</li>
 <li><span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> definem o tamanho do kernel.</li>
 </ul>
-<p>O pseudocódigo da convolução está na <a href="#lst-convolucao" class="quarto-xref">Listagem&nbsp;<span>3.4</span></a>.</p>
+<p>O pseudocódigo da convolução está na <a href="#lst-convolucao" class="quarto-xref">Listagem&nbsp;<span>3.6</span></a>.</p>
 <div id="lst-convolucao" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-convolucao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listagem&nbsp;3.4
+Listagem&nbsp;3.6
 </figcaption>
 <div aria-describedby="lst-convolucao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> a<span class="op">;</span> i <span class="op">&lt;</span> nl <span class="op">-</span> a<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> b<span class="op">;</span> j <span class="op">&lt;</span> nc <span class="op">-</span> b<span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="op">-</span>a<span class="op">;</span> y <span class="op">&lt;=</span> a<span class="op">;</span> y<span class="op">++)</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="op">-</span>b<span class="op">;</span> x <span class="op">&lt;=</span> b<span class="op">;</span> x<span class="op">++)</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> W<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">*</span> F<span class="op">[</span>i<span class="op">+</span>y<span class="op">][</span>j<span class="op">+</span>x<span class="op">];</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    G<span class="op">[</span>i<span class="op">][</span>j<span class="op">]</span> <span class="op">=</span> sum<span class="op">;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> a<span class="op">;</span> i <span class="op">&lt;</span> nl <span class="op">-</span> a<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>j <span class="op">=</span> b<span class="op">;</span> j <span class="op">&lt;</span> nc <span class="op">-</span> b<span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="op">-</span>a<span class="op">;</span> y <span class="op">&lt;=</span> a<span class="op">;</span> y<span class="op">++)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="op">-</span>b<span class="op">;</span> x <span class="op">&lt;=</span> b<span class="op">;</span> x<span class="op">++)</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        sum <span class="op">+=</span> W<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">*</span> F<span class="op">[</span>i<span class="op">+</span>y<span class="op">][</span>j<span class="op">+</span>x<span class="op">];</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    G<span class="op">[</span>i<span class="op">][</span>j<span class="op">]</span> <span class="op">=</span> sum<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </figure>
 </div>
