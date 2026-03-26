@@ -337,8 +337,8 @@ g(x,y) =
 <p><span class="math display">\[
 |\nabla I(x,y)| \approx |G_x| + |G_y|
 \]</span></p>
-<p>Por exemplo, O filtro de Sobel define aproximações discretas para as derivadas parciais <span class="math inline">\(G_x\)</span> e <span class="math inline">\(G_y\)</span> por meio de convoluções com máscaras específicas, que combinam diferenciação e suavização.</p>
-<p>Por exemplo, <span class="math inline">\(G_x\)</span> pode ser escrito como:</p>
+<p>Por exemplo, o filtro de Sobel define aproximações discretas para as derivadas parciais <span class="math inline">\(G_x\)</span> e <span class="math inline">\(G_y\)</span> por meio de convoluções com máscaras específicas, que combinam diferenciação e suavização.</p>
+<p>Assim, <span class="math inline">\(G_x\)</span> pode ser escrito como:</p>
 <p><span class="math display">\[
 \begin{aligned}
 G_x =\;&amp; [I(x+1,y-1) + 2I(x+1,y) + I(x+1,y+1)] \\
@@ -354,7 +354,7 @@ G_y =\;&amp; [I(x-1,y+1) + 2I(x,y+1) + I(x+1,y+1)] \\
 \]</span></p>
 <p>Ou o filtro Lapraciano, que mede a variação da variação da intensidade da imagem, ou seja, corresponde à segunda derivada espacial, indicando quão rapidamente o valor do pixel está mudando em relação aos seus vizinhos. Por essa característica, ele é especialmente eficaz em destacar regiões onde ocorrem mudanças bruscas de intensidade, que correspondem às bordas dos objetos na imagem. Diferentemente do gradiente, que fornece informação direcional (indicando a orientação da borda), o Laplaciano é um operador não direcional, produzindo apenas um valor escalar com sinal, que indica se a região corresponde a um máximo ou mínimo local de intensidade:</p>
 <p><span class="math display">\[
-\bigtriangledown^2 I= \frac{\delta^2 I}{\delta x^I} + \frac{\delta^2 I}{\delta y^2}
+\bigtriangledown^2 I= \frac{\delta^2 I}{\delta x^2} + \frac{\delta^2 I}{\delta y^2}
 \]</span></p>
 <p><span class="math display">\[
 \frac{\delta^2 I}{\delta x^2} = I(x+1,y) + I(x-1,y) - 2I(x,y)
@@ -395,7 +395,7 @@ G_y =\;&amp; [I(x-1,y+1) + 2I(x,y+1) + I(x+1,y+1)] \\
 </ol>
 <p>Esse processo é repetido até que a fila de prioridade esteja vazia, garantindo que todos os pixels alcançáveis a partir dos marcadores sejam processados.</p>
 <p>Ao final do algoritmo, a imagem estará segmentada em regiões associadas aos marcadores iniciais, separadas por linhas de watershed que representam as fronteiras entre diferentes bacias de atração.</p>
-<p>O exemplo interativo seguinte apresenta uma simulação desse algoritmo de watershed por marcadores para uma imagem unidimensional. Inicialmente, estão marcados os pontos <span class="math inline">\(a, f, g\)</span>, a cada passo os pontos vizinhos das regiões marcadas são colocados nas filas apropriadas. O pontos de watershed são marcados com cor amarela.</p>
+<p>O exemplo interativo seguinte apresenta uma simulação desse algoritmo de watershed por marcadores para uma imagem unidimensional. Inicialmente, estão marcados os pontos <span class="math inline">\(a = 1\)</span>, <span class="math inline">\(f = 2\)</span> e <span class="math inline">\(h = 3\)</span>. A cada passo os pontos vizinhos das regiões marcadas são colocados nas filas apropriadas. O pontos de watershed são marcados com cor amarela (valor = 4).</p>
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/pdFTjSFE0" width="100%" height="600" style="border:none; overflow:hiddeln;">
 </iframe>
