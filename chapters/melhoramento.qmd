@@ -126,6 +126,8 @@ Em sequência um simulador desse algoritmo:
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+![](/imgs/cap3/p5js-distance.png){width="60%" fig-align="center"}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 

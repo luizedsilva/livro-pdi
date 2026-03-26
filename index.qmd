@@ -27,6 +27,8 @@ Exemplo de código embutido usando p5js:
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+![](/p5js-negative.png){width="60%" fig-align="center"}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 

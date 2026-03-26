@@ -107,7 +107,7 @@ O código completo e a demonstração interativa estão disponíveis em:
 A **Transformada de Fourier contínua unidimensional** de uma função $f(t)$ é definida por:
 
 $$
-F(\mu) = \int_{-\infty}^{\infty} f(t), e^{-j 2\pi \mu t}, dt
+F(\mu) = \int_{-\infty}^{\infty} f(t)\, e^{-j 2\pi \mu t}\, dt
 $$
 
 onde:
@@ -144,7 +144,7 @@ Em muitas aplicações práticas, especialmente em Processamento de Imagens, a a
 A reconstrução do sinal original a partir de sua representação em frequência é realizada pela **Transformada Inversa de Fourier**, definida por:
 
 $$
-f(t) = \int_{-\infty}^{\infty} F(\mu), e^{j 2\pi \mu t}, d\mu
+f(t) = \int_{-\infty}^{\infty} F(\mu)\, e^{j 2\pi \mu t}\, d\mu
 $$
 
 Essa relação garante que a Transformada de Fourier **não perde informação**: o sinal pode ser transformado para o domínio da frequência e recuperado integralmente, desde que todas as frequências sejam consideradas.
@@ -287,7 +287,7 @@ Seja uma imagem digital $f(x,y)$ de dimensões $M \times N$. A Transformada Disc
 
 $$
 F(u,v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} f(x,y)
-, e^{-j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
+\, e^{-j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
 $$
 
 onde (u) e (v) representam as coordenadas no domínio da frequência e (j) é a unidade imaginária.
@@ -296,7 +296,7 @@ A transformada inversa permite recuperar a imagem original a partir de sua repre
 
 $$
 f(x,y) = \frac{1}{MN} \sum_{u=0}^{M-1} \sum_{v=0}^{N-1} F(u,v)
-, e^{j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
+\, e^{j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
 $$
 
 ## Transformada Rápida de Fourier (FFT)

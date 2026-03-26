@@ -128,6 +128,8 @@ O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visu
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+![](/imgs/cap2/p5js-zoom.png){width="60%" fig-align="center"}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -162,6 +164,8 @@ O exemplo interativo seguinte permite uma visualização de uma imagem como supe
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+![](/imgs/cap2/p5js-surface.png){width="60%" fig-align="center"}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -376,3 +380,154 @@ int main(int argc, char *argv[])
 A amostragem e a quantização constituem a base da representação digital de imagens. A escolha adequada da resolução espacial e da profundidade de quantização é fundamental para garantir um equilíbrio entre qualidade visual, custo computacional e requisitos de armazenamento.
 
 A compreensão desses conceitos é essencial para o estudo de técnicas mais avançadas de processamento de imagens, como filtragem, segmentação, compressão e reconhecimento de padrões, abordadas nos capítulos seguintes.
+
+
+## 📝 Exercícios
+
+### 🔹 Exercício 1 — Conceitual{.unnumbered}
+Explique com suas palavras:
+
+a) O que é **amostragem** em imagens digitais  
+b) O que é **quantização**  
+c) Qual o impacto de cada um na qualidade da imagem  
+
+---
+
+### 🔹 Exercício 2 — Análise visual{.unnumbered}
+Considere uma imagem em tons de cinza:
+
+a) O que acontece ao reduzir pela metade:
+- o número de linhas e colunas (amostragem)?  
+- o número de tons de cinza (quantização)?  
+
+b) Qual das duas alterações tende a causar maior perda perceptual? Justifique.
+
+---
+
+### 🔹 Exercício 3 — Cálculo de resolução{.unnumbered}
+Uma imagem possui:
+
+- 512 × 512 pixels  
+- 256 níveis de cinza  
+
+Responda:
+
+a) Quantos pixels possui a imagem?  
+b) Quantos bits são necessários por pixel?  
+c) Qual o tamanho da imagem em bytes?
+
+---
+
+### 🔹 Exercício 4 — Quantização prática{.unnumbered}
+Implemente um programa que:
+
+a) Leia uma imagem em tons de cinza  
+b) Reduza o número de níveis de cinza para:
+- 128  
+- 64  
+- 32  
+- 16  
+
+c) Mostre ou salve os resultados  
+
+👉 Compare visualmente os resultados.
+
+---
+
+### 🔹 Exercício 5 — Amostragem prática{.unnumbered}
+Implemente um programa que reduza a resolução de uma imagem:
+
+- 1/2 da largura e altura  
+- 1/4 da largura e altura  
+
+Compare os resultados com a imagem original.
+
+---
+
+### 🔹 Exercício 6 — Comparação{.unnumbered}
+Compare os efeitos de:
+
+- Reduzir apenas a amostragem  
+- Reduzir apenas a quantização  
+- Reduzir ambos  
+
+👉 Qual combinação produz maior degradação? Explique.
+
+---
+
+### 📚 Questão reflexiva{.unnumbered}
+
+Explique como os conceitos de amostragem e quantização influenciam:
+
+- Compressão de imagens  
+- Qualidade visual  
+- Uso em aplicações reais (ex: redes sociais, medicina, satélites)
+
+
+---
+
+## Atividade Prática - "Fotomosaico de fotos"
+
+---
+
+### Objetivo{.unnumbered}
+
+O objetivo desse atividade é explorar os conceitos iniciais da disciplina de processamento de imagens como: vizinhança dos pixels, amostragem e quantização e operações pontuais para clareamento e escurecimento de imagens.
+
+---
+
+### Problema{.unnumbered}
+
+É possível obter uma boa representação de uma imagem, mesmo sacrificando o número de linhas e colunas (amostragem) e/ou o número de tons (quantização) de uma imagem qualquer.
+
+O problema de processamento de imagens proposto para essa atividade será construir uma ferramenta para composição de um fotomosaico de imagens, conforme ilustrado nas Figuras abaixo.
+
+![Foto mosaico de fotos de cães](/imgs/cap2/mosaico.png){width=90%}
+
+![Detalhe ampliado na imagem anterior](/imgs/cap2/detalhe.png){width=90%}
+
+---
+
+### Descrição{.unnumbered}
+
+1. Nessa atividade você deverá construir uma ferramenta que, a partir de um arquivo de configuração (`config.txt`) da fotomontagem e de uma coleção de imagens armazenadas em formato PGM, gere o fotomosaico de fotos, conforme ilustrado anteriormente.
+
+```text
+32 60 80
+10
+cao3.pgm
+cao2.pgm
+cao1.pgm
+cao4.pgm
+cao5.pgm
+cao6.pgm
+cao7.pgm
+cao8.pgm
+cao9.pgm
+cao10.pgm
+````
+
+2. O arquivo `config.txt` deve estar organizado da seguinte forma:
+
+   a) A primeira linha do arquivo deve conter três números que definem:
+
+   * Número **NT** de tons de cinza do mosaico (NT = 32, no exemplo)
+   * Número **NL** de linhas
+   * Número **NC** de colunas
+
+   b) A segunda linha contém o número **N** de imagens que serão utilizadas na montagem (no exemplo, N = 10).
+
+   c) Da terceira linha em diante, o arquivo contém os nomes das imagens.
+   A primeira imagem da lista é utilizada como imagem base. As demais imagens serão iconizadas e ajustadas (clareadas ou escurecidas) para serem utilizadas como “pixels” na composição.
+
+3. A partir desse arquivo de configuração, o programa deverá gerar uma imagem do fotomosaico com dimensões:
+
+* **NL × NL linhas**
+* **NC × NC colunas**
+
+Para o exemplo fornecido:
+
+* 60 × 60 → 3600 linhas
+* 80 × 80 → 6400 colunas
+
+```
