@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>Processamento Digital de Imagens</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -26,7 +29,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -55,15 +57,14 @@ div.csl-indent {
 <link href="./chapters/intro.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5de800ff0d570d78397ee07e50104809.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-66c9649715f74f1e4324758aa2390964.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -283,7 +284,7 @@ div.csl-indent {
 <h1 class="unnumbered">Prefácio</h1><p><img src="capa.png" title="Processamento Digital de Imagens" class="quarto-cover-image nolightbox img-fluid"></p>
 <p>Este livro não tem a pretensão de abordar em profundidade todos os temas relacionados ao Processamento Digital de Imagens (PDI). Trata-se de uma obra introdutória, cujo objetivo principal é apresentar os conceitos fundamentais da área de forma acessível e organizada, servindo como um ponto de partida para estudantes e interessados no assunto.</p>
 <p>Nos capítulos seguintes estão reunidos materiais que foram desenvolvidos e utilizados pelo autor ao longo de vários anos em atividades de ensino. Esses conteúdos foram selecionados com base na experiência em sala de aula e correspondem ao conjunto de conceitos considerados essenciais para uma compreensão inicial do processamento de imagens. A proposta é oferecer uma visão clara dos principais fundamentos, acompanhada de exemplos e ilustrações que facilitem a compreensão.</p>
-<p>Para um estudo mais aprofundado do tema, recomenda-se a consulta a obras clássicas da área, que tratam o assunto com maior rigor teórico e abrangência. Entre os textos mais conhecidos está Digital Image Processing, de Rafael C. Gonzalez e Richard E. Woods (<span class="citation" data-cites="gonzalez2010processamento">Gonzalez e Woods (<a href="chapters/references.html#ref-gonzalez2010processamento" role="doc-biblioref">2010</a>)</span>, <span class="citation" data-cites="gonzalez2018digital">Gonzalez e Woods (<a href="chapters/references.html#ref-gonzalez2018digital" role="doc-biblioref">2018</a>)</span>), amplamente utilizado em cursos de graduação e pós-graduação. Outras referências importantes incluem Digital Image Processing de William K. Pratt e Fundamentals of Digital Image Processing de Anil K. Jain (<span class="citation" data-cites="pratt2007digital">Pratt (<a href="chapters/references.html#ref-pratt2007digital" role="doc-biblioref">2007</a>)</span>, <span class="citation" data-cites="jain1989fundamentals">Jain (<a href="chapters/references.html#ref-jain1989fundamentals" role="doc-biblioref">1989</a>)</span>), entre outros (<span class="citation" data-cites="sonka2014image">Sonka, Hlavac, e Boyle (<a href="chapters/references.html#ref-sonka2014image" role="doc-biblioref">2014</a>)</span>, <span class="citation" data-cites="szeliski2022computer">Szeliski (<a href="chapters/references.html#ref-szeliski2022computer" role="doc-biblioref">2022</a>)</span>), que também são obras tradicionais na formação de pesquisadores e profissionais da área. Essas leituras complementam e aprofundam os conceitos apresentados neste livro.</p>
+<p>Para um estudo mais aprofundado do tema, recomenda-se a consulta a obras clássicas da área, que tratam o assunto com maior rigor teórico e abrangência. Entre os textos mais conhecidos está Digital Image Processing, de Rafael C. Gonzalez e Richard E. Woods (<span class="citation" data-cites="gonzalez2010processamento">Gonzalez e Woods (<a href="chapters/references.html#ref-gonzalez2010processamento" role="doc-biblioref">2010</a>)</span>, <span class="citation" data-cites="gonzalez2018digital">Gonzalez e Woods (<a href="chapters/references.html#ref-gonzalez2018digital" role="doc-biblioref">2018</a>)</span>), amplamente utilizado em cursos de graduação e pós-graduação. Outras referências importantes incluem Digital Image Processing de William K. Pratt e Fundamentals of Digital Image Processing de Anil K. Jain (<span class="citation" data-cites="pratt2007digital">Pratt (<a href="chapters/references.html#ref-pratt2007digital" role="doc-biblioref">2007</a>)</span>, <span class="citation" data-cites="jain1989fundamentals">Jain (<a href="chapters/references.html#ref-jain1989fundamentals" role="doc-biblioref">1989</a>)</span>), entre outros (<span class="citation" data-cites="sonka2014image">Sonka et al. (<a href="chapters/references.html#ref-sonka2014image" role="doc-biblioref">2014</a>)</span>, <span class="citation" data-cites="szeliski2022computer">Szeliski (<a href="chapters/references.html#ref-szeliski2022computer" role="doc-biblioref">2022</a>)</span>), que também são obras tradicionais na formação de pesquisadores e profissionais da área. Essas leituras complementam e aprofundam os conceitos apresentados neste livro.</p>
 <p>Este é o livro gerado apartir dos slides da disciplina de <strong>Processamento de Imagens</strong>. A geração foi realizada usando a ferramenta <strong>Quarto book</strong> com o auxílio do Chat-GPT 5.2, mas todo o conteúdo foi verificado e aprovado pelo autor.</p>
 <p>Para aprender mais sobre <strong>Quarto book</strong> visite: <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
 <p>Alguns exemplos do livro serão apresentados usando p5.js. A <strong>p5.js</strong> é uma biblioteca JavaScript de código aberto, inspirada na linguagem <em>Processing</em>, concebida para tornar a programação visual e interativa mais acessível. Ao abstrair a complexidade do desenvolvimento web, ela permite a criação de gráficos, animações e interações de forma simples e intuitiva, favorecendo tanto iniciantes quanto usuários experientes.</p>
@@ -301,24 +302,24 @@ div.csl-indent {
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-gonzalez2010processamento" class="csl-entry" role="listitem">
-Gonzalez, Rafael C., e Richard E. Woods. 2010. <em>Processamento Digital de Imagens</em>. 3º ed. São Paulo: Pearson Prentice Hall.
+Gonzalez, Rafael C., e Richard E. Woods. 2010. <em>Processamento Digital de Imagens</em>. 3º ed. Pearson Prentice Hall.
 </div>
 <div id="ref-gonzalez2018digital" class="csl-entry" role="listitem">
-———. 2018. <em>Digital Image Processing</em>. 4º ed. New York: Pearson.
+Gonzalez, Rafael C., e Richard E. Woods. 2018. <em>Digital Image Processing</em>. 4º ed. Pearson.
 </div>
 <div id="ref-jain1989fundamentals" class="csl-entry" role="listitem">
-Jain, Anil K. 1989. <em>Fundamentals of Digital Image Processing</em>. Englewood Cliffs: Prentice Hall.
+Jain, Anil K. 1989. <em>Fundamentals of Digital Image Processing</em>. Prentice Hall.
 </div>
 <div id="ref-pratt2007digital" class="csl-entry" role="listitem">
-Pratt, William K. 2007. <em>Digital Image Processing: PIKS Scientific Inside</em>. 4º ed. Hoboken: Wiley-Interscience.
+Pratt, William K. 2007. <em>Digital Image Processing: PIKS Scientific Inside</em>. 4º ed. Wiley-Interscience.
 </div>
 <div id="ref-sonka2014image" class="csl-entry" role="listitem">
-Sonka, Milan, Vaclav Hlavac, e Roger Boyle. 2014. <em>Image Processing, Analysis, and Machine Vision</em>. 4º ed. Stamford: Cengage Learning.
+Sonka, Milan, Vaclav Hlavac, e Roger Boyle. 2014. <em>Image Processing, Analysis, and Machine Vision</em>. 4º ed. Cengage Learning.
 </div>
 <div id="ref-szeliski2022computer" class="csl-entry" role="listitem">
-Szeliski, Richard. 2022. <em>Computer Vision: Algorithms and Applications</em>. 2º ed. Cham: Springer.
+Szeliski, Richard. 2022. <em>Computer Vision: Algorithms and Applications</em>. 2º ed. Springer.
 </div>
 </div>
 </section>
