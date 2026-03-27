@@ -1,0 +1,146 @@
+### Momento de Região
+
+O **momento de região** é uma ferramenta matemática utilizada para descrever a distribuição espacial dos pixels em uma imagem, sendo amplamente empregada na caracterização de formas. A ideia central é análoga ao conceito de momento na física: assim como o momento de massa considera a distribuição de massa em relação a um eixo, os momentos de imagem consideram a distribuição de intensidades (ou simplesmente a presença de pixels) em relação ao sistema de coordenadas.
+
+Para uma imagem bidimensional, o **momento geométrico de ordem $(p,q)$** é definido como:
+
+[
+m_{pq} = \sum_x \sum_y x^p y^q , I(x,y)
+]
+
+onde $I(x,y)$ representa o valor do pixel na posição $(x,y)$. Em imagens binárias, esse valor é tipicamente 1 para pixels pertencentes ao objeto e 0 para o fundo. Assim, o momento $m_{00}$ corresponde simplesmente à **área da região** (número de pixels do objeto), enquanto os momentos de primeira ordem, $m_{10}$ e $m_{01}$, estão relacionados à posição média dos pixels.
+
+A partir desses momentos, é possível calcular o **centroide** da região, que representa o “centro de massa” do objeto:
+
+[
+x_c = \frac{m_{10}}{m_{00}}, \quad y_c = \frac{m_{01}}{m_{00}}
+]
+
+Esse ponto é fundamental, pois serve como referência para a construção de descritores invariantes à translação.
+
+Para eliminar a dependência da posição do objeto na imagem, utilizam-se os **momentos centrais**, definidos como:
+
+[
+\mu_{pq} = \sum_x \sum_y (x - x_c)^p (y - y_c)^q , I(x,y)
+]
+
+Esses momentos descrevem a distribuição dos pixels em relação ao centroide, tornando a representação independente de deslocamentos. Além disso, é possível normalizar esses valores para obter invariância à escala, resultando nos chamados **momentos normalizados**.
+
+Uma das aplicações mais importantes desses conceitos é a construção dos **momentos invariantes de Hu**, que combinam momentos centrais normalizados de forma a produzir descritores invariantes também à rotação. Esses momentos são amplamente utilizados em reconhecimento de padrões, pois permitem comparar formas independentemente de sua posição, orientação ou tamanho.
+
+Em termos intuitivos, momentos de baixa ordem capturam características globais da forma (como área e posição), enquanto momentos de ordem mais alta descrevem detalhes mais finos da distribuição dos pixels. Dessa forma, os momentos de região fornecem uma representação compacta e poderosa, capaz de resumir propriedades essenciais da forma em um conjunto reduzido de valores numéricos.
+
+Os **momentos invariantes de Hu** são um conjunto de sete descritores derivados dos momentos de região, projetados para serem invariantes a **translação, escala e rotação**. Eles são amplamente utilizados em reconhecimento de padrões, pois permitem comparar formas independentemente de sua posição, tamanho ou orientação na imagem.
+
+---
+
+## 📌 Etapas do algoritmo
+
+O cálculo dos momentos invariantes de Hu segue uma sequência bem definida:
+
+### 1. Cálculo dos momentos geométricos
+
+Para uma imagem $I(x,y)$, calcula-se:
+
+[
+m_{pq} = \sum_x \sum_y x^p y^q , I(x,y)
+]
+
+Esses momentos capturam a distribuição dos pixels na imagem.
+
+---
+
+### 2. Cálculo do centroide
+
+A partir dos momentos de primeira ordem:
+
+[
+x_c = \frac{m_{10}}{m_{00}}, \quad y_c = \frac{m_{01}}{m_{00}}
+]
+
+Isso permite remover a dependência da posição (translação).
+
+---
+
+### 3. Momentos centrais
+
+[
+\mu_{pq} = \sum_x \sum_y (x - x_c)^p (y - y_c)^q , I(x,y)
+]
+
+Agora os momentos são invariantes à translação.
+
+---
+
+### 4. Momentos normalizados (invariância à escala)
+
+[
+\eta_{pq} = \frac{\mu_{pq}}{\mu_{00}^{1 + \frac{p+q}{2}}}
+]
+
+Essa normalização elimina o efeito do tamanho do objeto.
+
+---
+
+### 5. Cálculo dos momentos invariantes de Hu
+
+A partir dos momentos normalizados, definem-se os **7 invariantes de Hu**:
+
+[
+\begin{aligned}
+\phi_1 &= \eta_{20} + \eta_{02} \
+\phi_2 &= (\eta_{20} - \eta_{02})^2 + 4\eta_{11}^2 \
+\phi_3 &= (\eta_{30} - 3\eta_{12})^2 + (3\eta_{21} - \eta_{03})^2 \
+\phi_4 &= (\eta_{30} + \eta_{12})^2 + (\eta_{21} + \eta_{03})^2 \
+\phi_5 &= (\eta_{30} - 3\eta_{12})(\eta_{30} + \eta_{12}) \
+&\quad \cdot \left[(\eta_{30} + \eta_{12})^2 - 3(\eta_{21} + \eta_{03})^2\right] \
+&\quad + (3\eta_{21} - \eta_{03})(\eta_{21} + \eta_{03}) \
+&\quad \cdot \left[3(\eta_{30} + \eta_{12})^2 - (\eta_{21} + \eta_{03})^2\right] \
+\phi_6 &= (\eta_{20} - \eta_{02}) \left[(\eta_{30} + \eta_{12})^2 - (\eta_{21} + \eta_{03})^2\right] \
+&\quad + 4\eta_{11}(\eta_{30} + \eta_{12})(\eta_{21} + \eta_{03}) \
+\phi_7 &= (3\eta_{21} - \eta_{03})(\eta_{30} + \eta_{12}) \
+&\quad \cdot \left[(\eta_{30} + \eta_{12})^2 - 3(\eta_{21} + \eta_{03})^2\right] \
+&\quad - (\eta_{30} - 3\eta_{12})(\eta_{21} + \eta_{03}) \
+&\quad \cdot \left[3(\eta_{30} + \eta_{12})^2 - (\eta_{21} + \eta_{03})^2\right]
+\end{aligned}
+]
+
+---
+
+## 🎯 Intuição
+
+* $\phi_1$ e $\phi_2$ → características globais da forma
+* $\phi_3$ a $\phi_7$ → capturam detalhes mais complexos
+* O conjunto completo descreve a forma de maneira robusta
+
+---
+
+## 📊 Propriedades importantes
+
+* ✔ Invariantes à translação
+* ✔ Invariantes à escala
+* ✔ Invariantes à rotação
+* ✔ Sensíveis à forma (bons para classificação)
+
+---
+
+## 💡 Observação prática
+
+Na prática, os valores de Hu podem variar muito em escala. Por isso, é comum aplicar:
+
+[
+\text{Hu}_i = -\operatorname{sign}(\phi_i)\log(|\phi_i|)
+]
+
+Isso melhora a estabilidade numérica e facilita comparações.
+
+---
+
+## 📌 Resumo do algoritmo
+
+1. Calcular $m_{pq}$
+2. Calcular centroide $(x_c, y_c)$
+3. Calcular $\mu_{pq}$
+4. Calcular $\eta_{pq}$
+5. Calcular $\phi_1$ até $\phi_7$
+
