@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>9&nbsp; Representação e Descrição de Imagens – Processamento Digital de Imagens</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -72,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../chapters/segmentacao.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-44ee0976171e9be92e6ebe9be850cd66.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5de800ff0d570d78397ee07e50104809.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -109,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -275,23 +273,24 @@ window.Quarto = {
   <li><a href="#representação-direcional" id="toc-representação-direcional" class="nav-link" data-scroll-target="#representação-direcional"><span class="header-section-number">9.2.1</span> Representação direcional</a></li>
   <li><a href="#exemplo-de-código-de-cadeia" id="toc-exemplo-de-código-de-cadeia" class="nav-link" data-scroll-target="#exemplo-de-código-de-cadeia"><span class="header-section-number">9.2.2</span> Exemplo de código de cadeia</a></li>
   <li><a href="#dependência-do-ponto-inicial" id="toc-dependência-do-ponto-inicial" class="nav-link" data-scroll-target="#dependência-do-ponto-inicial"><span class="header-section-number">9.2.3</span> Dependência do ponto inicial</a></li>
-  <li><a href="#contexto-na-representação-e-descrição" id="toc-contexto-na-representação-e-descrição" class="nav-link" data-scroll-target="#contexto-na-representação-e-descrição"><span class="header-section-number">9.2.4</span> Contexto na representação e descrição</a></li>
-  <li><a href="#algoritmo-de-rastreamento-de-contorno-chain-code" id="toc-algoritmo-de-rastreamento-de-contorno-chain-code" class="nav-link" data-scroll-target="#algoritmo-de-rastreamento-de-contorno-chain-code"><span class="header-section-number">9.2.5</span> Algoritmo de Rastreamento de Contorno (Chain Code)</a></li>
+  <li><a href="#algoritmo-de-rastreamento-de-contorno-chain-code" id="toc-algoritmo-de-rastreamento-de-contorno-chain-code" class="nav-link" data-scroll-target="#algoritmo-de-rastreamento-de-contorno-chain-code"><span class="header-section-number">9.2.4</span> Algoritmo de Rastreamento de Contorno (Chain Code)</a></li>
   </ul></li>
-  <li><a href="#representação-de-regiões" id="toc-representação-de-regiões" class="nav-link" data-scroll-target="#representação-de-regiões"><span class="header-section-number">9.3</span> Representação de Regiões</a></li>
-  <li><a href="#representação-por-contorno" id="toc-representação-por-contorno" class="nav-link" data-scroll-target="#representação-por-contorno"><span class="header-section-number">9.4</span> Representação por Contorno</a>
+  <li><a href="#aproximação-poligonal" id="toc-aproximação-poligonal" class="nav-link" data-scroll-target="#aproximação-poligonal"><span class="header-section-number">9.3</span> Aproximação Poligonal</a>
   <ul class="collapse">
-  <li><a href="#codificação-por-cadeia" id="toc-codificação-por-cadeia" class="nav-link" data-scroll-target="#codificação-por-cadeia"><span class="header-section-number">9.4.1</span> Codificação por Cadeia</a></li>
-  <li><a href="#assinaturas-de-forma" id="toc-assinaturas-de-forma" class="nav-link" data-scroll-target="#assinaturas-de-forma"><span class="header-section-number">9.4.2</span> Assinaturas de Forma</a></li>
+  <li><a href="#conceito-geral" id="toc-conceito-geral" class="nav-link" data-scroll-target="#conceito-geral"><span class="header-section-number">9.3.1</span> Conceito Geral</a></li>
+  <li><a href="#principais-métodos" id="toc-principais-métodos" class="nav-link" data-scroll-target="#principais-métodos"><span class="header-section-number">9.3.2</span> Principais Métodos</a></li>
+  <li><a href="#critérios-de-qualidade" id="toc-critérios-de-qualidade" class="nav-link" data-scroll-target="#critérios-de-qualidade"><span class="header-section-number">9.3.3</span> Critérios de Qualidade</a></li>
+  <li><a href="#aplicações" id="toc-aplicações" class="nav-link" data-scroll-target="#aplicações"><span class="header-section-number">9.3.4</span> Aplicações</a></li>
+  <li><a href="#considerações-práticas" id="toc-considerações-práticas" class="nav-link" data-scroll-target="#considerações-práticas"><span class="header-section-number">9.3.5</span> Considerações Práticas</a></li>
   </ul></li>
-  <li><a href="#representação-por-região" id="toc-representação-por-região" class="nav-link" data-scroll-target="#representação-por-região"><span class="header-section-number">9.5</span> Representação por Região</a></li>
-  <li><a href="#descrição-de-regiões" id="toc-descrição-de-regiões" class="nav-link" data-scroll-target="#descrição-de-regiões"><span class="header-section-number">9.6</span> Descrição de Regiões</a></li>
-  <li><a href="#descritores-geométricos" id="toc-descritores-geométricos" class="nav-link" data-scroll-target="#descritores-geométricos"><span class="header-section-number">9.7</span> Descritores Geométricos</a></li>
-  <li><a href="#momentos-de-imagem" id="toc-momentos-de-imagem" class="nav-link" data-scroll-target="#momentos-de-imagem"><span class="header-section-number">9.8</span> Momentos de Imagem</a></li>
-  <li><a href="#descritores-de-textura" id="toc-descritores-de-textura" class="nav-link" data-scroll-target="#descritores-de-textura"><span class="header-section-number">9.9</span> Descritores de Textura</a></li>
-  <li><a href="#normalização-e-invariância" id="toc-normalização-e-invariância" class="nav-link" data-scroll-target="#normalização-e-invariância"><span class="header-section-number">9.10</span> Normalização e Invariância</a></li>
-  <li><a href="#aplicações-de-representação-e-descrição" id="toc-aplicações-de-representação-e-descrição" class="nav-link" data-scroll-target="#aplicações-de-representação-e-descrição"><span class="header-section-number">9.11</span> Aplicações de Representação e Descrição</a></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">9.12</span> Considerações Finais</a></li>
+  <li><a href="#assinatura-da-forma" id="toc-assinatura-da-forma" class="nav-link" data-scroll-target="#assinatura-da-forma"><span class="header-section-number">9.4</span> Assinatura da forma</a></li>
+  <li><a href="#esqueletização" id="toc-esqueletização" class="nav-link" data-scroll-target="#esqueletização"><span class="header-section-number">9.5</span> Esqueletização</a></li>
+  <li><a href="#descritores-de-região" id="toc-descritores-de-região" class="nav-link" data-scroll-target="#descritores-de-região"><span class="header-section-number">9.6</span> Descritores de Região</a></li>
+  <li><a href="#descritores-de-textura" id="toc-descritores-de-textura" class="nav-link" data-scroll-target="#descritores-de-textura"><span class="header-section-number">9.7</span> Descritores de Textura</a>
+  <ul class="collapse">
+  <li><a href="#matrizes-de-coocorrência-e-matriz-de-diferença" id="toc-matrizes-de-coocorrência-e-matriz-de-diferença" class="nav-link" data-scroll-target="#matrizes-de-coocorrência-e-matriz-de-diferença"><span class="header-section-number">9.7.1</span> Matrizes de Coocorrência e Matriz de diferença</a></li>
+  </ul></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">9.8</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -333,33 +332,30 @@ window.Quarto = {
 <section id="descrição-de-imagens" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="descrição-de-imagens"><span class="header-section-number">9.1</span> Descrição de Imagens</h2>
 <p>Na etapa de descrição, é fundamental que as características escolhidas como <strong>descritores</strong> sejam <strong>robustas</strong> frente a variações comuns que podem ocorrer na imagem. Entre essas variações estão mudanças de <strong>escala (tamanho)</strong>, <strong>rotação</strong> e <strong>translação (posição)</strong> do objeto. Em outras palavras, bons descritores devem representar o objeto de forma consistente, independentemente de como ele aparece na imagem. Essa propriedade é essencial para garantir que o mesmo objeto seja reconhecido corretamente em diferentes condições.</p>
-<p>Nesse contexto, busca-se extrair <strong>assinaturas da imagem</strong>, isto é, representações compactas e distintivas que caracterizem de maneira única uma região ou objeto. Essas assinaturas devem capturar as propriedades mais relevantes, reduzindo a quantidade de dados sem perder informações importantes para a análise.</p>
-<p>Um dos esquemas clássicos de representação de fronteira é o <strong>Código da Cadeia (Chain Code)</strong>. Esse método descreve o contorno de um objeto por meio de uma sequência de direções, gerada a partir da análise da conectividade entre pixels adjacentes. Essa conectividade pode ser definida de duas formas:</p>
-<ul>
-<li><strong>Conectividade-4:</strong> considera apenas os vizinhos nas direções horizontal e vertical.</li>
-<li><strong>Conectividade-8:</strong> inclui também os vizinhos diagonais, permitindo uma representação mais detalhada da fronteira.</li>
-</ul>
-<p>A ideia central do código da cadeia é percorrer a borda do objeto e registrar, a cada passo, a direção do próximo pixel pertencente ao contorno. O resultado é uma sequência (cadeia) de números que codifica toda a forma da fronteira.</p>
-<p>Apesar de sua simplicidade e eficiência, essa técnica apresenta algumas limitações importantes:</p>
-<ul>
-<li>A cadeia gerada pode ser <strong>bastante longa</strong>, especialmente para objetos com contornos complexos.</li>
-<li>O método é <strong>sensível a ruídos</strong>: pequenas irregularidades na fronteira podem causar grandes variações na sequência gerada.</li>
-<li>A representação <strong>depende do ponto inicial</strong> escolhido para iniciar o percurso, o que pode levar a diferentes códigos para o mesmo objeto.</li>
-</ul>
-<p>Devido a essas limitações, o código da cadeia é frequentemente complementado ou transformado (por exemplo, usando formas normalizadas ou diferenciais) para torná-lo mais robusto e adequado a aplicações práticas.</p>
+<p>A representação e a descrição de formas constituem etapas essenciais no processamento digital de imagens, pois permitem transformar objetos visuais em estruturas organizadas e em conjuntos de características que podem ser analisadas computacionalmente. Para isso, existe um conjunto de técnicas consolidadas, cada uma com abordagens e objetivos específicos, que buscam capturar diferentes aspectos das formas presentes nas imagens.</p>
+<p>Uma das estratégias mais clássicas é o <strong>código de cadeia</strong>, que representa o contorno de um objeto como uma sequência de direções discretas. Essa abordagem é simples e eficiente, sendo especialmente útil para descrever a geometria do contorno de maneira compacta, além de preservar a conectividade entre os pontos.</p>
+<p>A <strong>aproximação poligonal</strong> é outra técnica importante, que consiste em simplificar o contorno de uma forma por meio de segmentos de reta. Ao reduzir o número de pontos necessários para representar o objeto, essa abordagem diminui a complexidade dos dados, mantendo apenas os elementos mais relevantes da estrutura geométrica.</p>
+<p>As <strong>assinaturas de forma</strong> representam o contorno por meio de funções unidimensionais, como a distância entre o centroide e a borda em função do ângulo. Essa técnica facilita a análise e a comparação entre formas, pois transforma uma estrutura bidimensional em um vetor ou função que pode ser facilmente manipulado.</p>
+<p>A <strong>esqueletização</strong> (ou <em>skeletonization</em>) busca representar a forma a partir de seu eixo central, preservando a topologia do objeto. O esqueleto reduz a forma a uma estrutura mais simples, composta por linhas finas que mantêm a conectividade e a estrutura global, sendo útil em aplicações como reconhecimento de padrões e análise estrutural.</p>
+<p>Além das abordagens baseadas no contorno, existem os <strong>descritores de região</strong>, que consideram as propriedades internas do objeto, como área, momentos, intensidade e distribuição espacial dos pixels. Esses descritores fornecem uma visão mais global da forma, sendo menos sensíveis a pequenas variações na borda.</p>
+<p>Por fim, a <strong>análise de textura</strong> complementa a descrição ao capturar padrões de variação de intensidade dentro da região. Técnicas como matrizes de coocorrência e filtros permitem identificar características como regularidade, rugosidade e orientação, sendo fundamentais para diferenciar regiões com aparência semelhante, mas com estruturas internas distintas.</p>
 </section>
 <section id="código-de-cadeia" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="código-de-cadeia"><span class="header-section-number">9.2</span> Código de Cadeia</h2>
 <p>O <strong>código de cadeia (chain code)</strong> é uma técnica clássica para representação de fronteiras em imagens binárias. Ele descreve o contorno de um objeto por meio de uma sequência de direções, obtida ao percorrer, de forma ordenada, os pixels que compõem sua borda. Essa abordagem permite transformar uma estrutura bidimensional (a forma do objeto) em uma representação unidimensional (uma sequência numérica), facilitando a análise e comparação de formas.</p>
 <section id="representação-direcional" class="level3" data-number="9.2.1">
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="representação-direcional"><span class="header-section-number">9.2.1</span> Representação direcional</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap9/codigocadeia.png" class="img-fluid figure-img"></p>
-<figcaption>Código de Cadeia</figcaption>
+<div id="fig-codigocadeia" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-codigocadeia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap9/codigocadeia.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-codigocadeia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.1: Código de Cadeia
+</figcaption>
 </figure>
 </div>
-<p>A construção do código de cadeia baseia-se na definição de uma vizinhança entre pixels. Existem duas formas principais:</p>
+<p>A construção do código de cadeia baseia-se na definição de uma vizinhança entre pixels. Existem duas formas principais (conforme ilustrado na <a href="#fig-codigocadeia" class="quarto-xref">Figura&nbsp;<span>9.1</span></a>):</p>
 <ul>
 <li><strong>Código de cadeia 4-direcional:</strong> considera apenas os vizinhos nas direções horizontal e vertical.</li>
 <li><strong>Código de cadeia 8-direcional:</strong> inclui também as direções diagonais, permitindo uma representação mais fiel da geometria da fronteira.</li>
@@ -374,11 +370,11 @@ window.Quarto = {
 <img src="../imgs/cap9/dois.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;9.1: Código de Cadeia
+Figura&nbsp;9.2: Código de Cadeia
 </figcaption>
 </figure>
 </div>
-<p>Considere um objeto cuja fronteira foi percorrida a partir de um pixel inicial (indicado por uma seta). O código de cadeia obtido pode ser representado por uma sequência como:</p>
+<p>Considere um objeto cuja fronteira foi percorrida a partir de um pixel inicial (indicado por uma seta na <a href="#fig-dois" class="quarto-xref">Figura&nbsp;<span>9.2</span></a>). O código de cadeia obtido pode ser representado por uma sequência como:</p>
 <pre><code>000077665555556600000006444444442221111112234445652211</code></pre>
 <p>Cada dígito dessa sequência indica a direção do próximo passo ao longo do contorno. Dessa forma, toda a geometria da borda do objeto é codificada em uma única cadeia de valores inteiros.</p>
 </section>
@@ -389,20 +385,8 @@ Figura&nbsp;9.1: Código de Cadeia
 <pre><code>000000064444444422211111122344456522110000776655555566</code></pre>
 <p>Essa forma normalizada torna o descritor <strong>invariante à escolha do ponto inicial</strong>, permitindo comparações mais robustas entre diferentes objetos.</p>
 </section>
-<section id="contexto-na-representação-e-descrição" class="level3" data-number="9.2.4">
-<h3 data-number="9.2.4" class="anchored" data-anchor-id="contexto-na-representação-e-descrição"><span class="header-section-number">9.2.4</span> Contexto na representação e descrição</h3>
-<p>O código de cadeia está inserido no conjunto de técnicas de <strong>representação e descrição de formas</strong>, ao lado de outros métodos como:</p>
-<ul>
-<li>aproximação poligonal</li>
-<li>assinaturas de forma</li>
-<li>esqueletização</li>
-<li>descritores de região</li>
-<li>análise de textura</li>
-</ul>
-<p>Dentro desse contexto, o código de cadeia destaca-se por sua simplicidade e capacidade de capturar detalhes da fronteira. No entanto, ele também apresenta limitações, como sensibilidade a ruídos e variações locais no contorno, o que pode exigir etapas adicionais de suavização ou simplificação.</p>
-</section>
-<section id="algoritmo-de-rastreamento-de-contorno-chain-code" class="level3" data-number="9.2.5">
-<h3 data-number="9.2.5" class="anchored" data-anchor-id="algoritmo-de-rastreamento-de-contorno-chain-code"><span class="header-section-number">9.2.5</span> Algoritmo de Rastreamento de Contorno (Chain Code)</h3>
+<section id="algoritmo-de-rastreamento-de-contorno-chain-code" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="algoritmo-de-rastreamento-de-contorno-chain-code"><span class="header-section-number">9.2.4</span> Algoritmo de Rastreamento de Contorno (Chain Code)</h3>
 <p>O código de cadeia é construído a partir de um contorno. O algoritmo de rastreamento de contorno (da <a href="#lst-contorno" class="quarto-xref">Listagem&nbsp;<span>9.1</span></a>) tem como objetivo percorrer a fronteira de um objeto binário, identificando todos os pixels pertencentes ao seu contorno de forma ordenada. A seguir, apresenta-se uma versão estruturada e detalhada do procedimento:</p>
 <div id="lst-contorno" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
@@ -411,64 +395,53 @@ Listagem&nbsp;9.1
 </figcaption>
 <div aria-describedby="lst-contorno-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Algoritmo RastreamentoContorno<span class="op">(</span>I<span class="op">,</span> C<span class="op">)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Entrada<span class="op">:</span>  imagem binária I<span class="op">[</span>altura<span class="op">][</span>largura<span class="op">]</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Saída<span class="op">:</span>    lista de pontos <span class="cf">do</span> contorno C</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">/* Passo 1 — Encontrar ponto inicial b0 */</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>encontrado <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> y <span class="op">&lt;</span> altura<span class="op">;</span> y<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> largura<span class="op">;</span> x<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>I<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">==</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            b0 <span class="op">=</span> <span class="op">(</span>x<span class="op">,</span> y<span class="op">);</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            encontrado <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>encontrado <span class="op">==</span> <span class="dv">1</span><span class="op">)</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">/* Definir vizinho inicial (oeste) */</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>c0 <span class="op">=</span> <span class="op">(</span>b0<span class="op">.</span>x <span class="op">-</span> <span class="dv">1</span><span class="op">,</span> b0<span class="op">.</span>y<span class="op">);</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">/* Encontrar b1 */</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> b0<span class="op">;</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> c0<span class="op">;</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> <span class="dv">8</span><span class="op">;</span> k<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    nk <span class="op">=</span> vizinho8<span class="op">(</span>b<span class="op">,</span> c<span class="op">,</span> k<span class="op">);</span>   <span class="co">// vizinhos no sentido horário a partir de c</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>I<span class="op">[</span>nk<span class="op">.</span>y<span class="op">][</span>nk<span class="op">.</span>x<span class="op">]</span> <span class="op">==</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        b1 <span class="op">=</span> nk<span class="op">;</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        c1 <span class="op">=</span> vizinhoAnterior<span class="op">(</span>b<span class="op">,</span> nk<span class="op">);</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co">/* Inicialização */</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> b1<span class="op">;</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> c1<span class="op">;</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>adicionar b0 à lista C<span class="op">;</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>adicionar b1 à lista C<span class="op">;</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co">/* Passos 3–5 — Rastreamento */</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>b <span class="op">!=</span> b0 <span class="op">||</span> prox <span class="op">!=</span> b1<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> <span class="dv">8</span><span class="op">;</span> k<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        nk <span class="op">=</span> vizinho8<span class="op">(</span>b<span class="op">,</span> c<span class="op">,</span> k<span class="op">);</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>I<span class="op">[</span>nk<span class="op">.</span>y<span class="op">][</span>nk<span class="op">.</span>x<span class="op">]</span> <span class="op">==</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>            prox <span class="op">=</span> nk<span class="op">;</span></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>            ant  <span class="op">=</span> vizinhoAnterior<span class="op">(</span>b<span class="op">,</span> nk<span class="op">);</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> prox<span class="op">;</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> ant<span class="op">;</span></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>    adicionar b à lista C<span class="op">;</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="co">/* Resultado */</span></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>retornar C<span class="op">;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  Entrada<span class="op">:</span>  imagem binária I<span class="op">[</span>altura<span class="op">][</span>largura<span class="op">]</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  Saída<span class="op">:</span>    lista de pontos <span class="cf">do</span> contorno C</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* Passo 1 — Encontrar ponto inicial b0 */</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>encontrado <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> y <span class="op">&lt;</span> altura<span class="op">;</span> y<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> largura<span class="op">;</span> x<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>I<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">==</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            b0 <span class="op">=</span> <span class="op">(</span>x<span class="op">,</span> y<span class="op">);</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            encontrado <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>encontrado <span class="op">==</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">/* Definir vizinho inicial (oeste) */</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>c0 <span class="op">=</span> <span class="op">(</span>b0<span class="op">.</span>x <span class="op">-</span> <span class="dv">1</span><span class="op">,</span> b0<span class="op">.</span>y<span class="op">);</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">/* Encontrar b1 */</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> b0<span class="op">;</span> c <span class="op">=</span> c0<span class="op">;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> <span class="dv">8</span><span class="op">;</span> k<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* vizinhos no sentido horário a partir de c */</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    nk <span class="op">=</span> vizinho8<span class="op">(</span>b<span class="op">,</span> c<span class="op">,</span> k<span class="op">);</span>   </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>I<span class="op">[</span>nk<span class="op">.</span>y<span class="op">][</span>nk<span class="op">.</span>x<span class="op">]</span> <span class="op">==</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        b1 <span class="op">=</span> nk<span class="op">;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        c1 <span class="op">=</span> vizinhoAnterior<span class="op">(</span>b<span class="op">,</span> nk<span class="op">);</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">/* Inicialização */</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> b1<span class="op">;</span> c <span class="op">=</span> c1<span class="op">;</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>adicionar b0 e b1 à lista C<span class="op">;</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">/* Passos 3–5 — Rastreamento */</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>b <span class="op">!=</span> b0 <span class="op">||</span> prox <span class="op">!=</span> b1<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> <span class="dv">8</span><span class="op">;</span> k<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        nk <span class="op">=</span> vizinho8<span class="op">(</span>b<span class="op">,</span> c<span class="op">,</span> k<span class="op">);</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>I<span class="op">[</span>nk<span class="op">.</span>y<span class="op">][</span>nk<span class="op">.</span>x<span class="op">]</span> <span class="op">==</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>            prox <span class="op">=</span> nk<span class="op">;</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>            ant  <span class="op">=</span> vizinhoAnterior<span class="op">(</span>b<span class="op">,</span> nk<span class="op">);</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> prox<span class="op">;</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> ant<span class="op">;</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    adicionar b à lista C<span class="op">;</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="co">/* Resultado */</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>retornar C<span class="op">;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </figure>
 </div>
@@ -478,92 +451,157 @@ Listagem&nbsp;9.1
 </iframe>
 </section>
 </section>
-<section id="representação-de-regiões" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="representação-de-regiões"><span class="header-section-number">9.3</span> Representação de Regiões</h2>
-<p>A representação de uma região tem como objetivo codificar sua forma e estrutura de maneira adequada ao processamento computacional. Uma boa representação deve ser compacta, discriminativa e robusta a variações irrelevantes.</p>
-<p>As técnicas de representação podem ser classificadas em duas categorias principais:</p>
+<section id="aproximação-poligonal" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="aproximação-poligonal"><span class="header-section-number">9.3</span> Aproximação Poligonal</h2>
+<p>A <strong>aproximação poligonal</strong> é uma estratégia amplamente utilizada no processamento e análise de imagens para representar formas complexas por meio de uma sequência reduzida de segmentos de reta. Essa abordagem consiste em substituir um contorno detalhado — geralmente composto por muitos pontos — por um polígono que preserva suas características essenciais, ao mesmo tempo em que reduz significativamente a quantidade de dados necessários para sua descrição.</p>
+<section id="conceito-geral" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="conceito-geral"><span class="header-section-number">9.3.1</span> Conceito Geral</h3>
+<p>Considere uma borda extraída de uma imagem (por exemplo, após um processo de segmentação). Essa borda é tipicamente representada como uma lista ordenada de pontos. A aproximação poligonal busca selecionar um subconjunto desses pontos, chamados <strong>vértices dominantes</strong>, de modo que a conexão entre eles forme uma representação simplificada da forma original.</p>
+<p>Essa simplificação deve equilibrar dois objetivos principais:</p>
 <ul>
-<li><strong>Representações por contorno</strong>, que descrevem apenas a fronteira do objeto;</li>
-<li><strong>Representações por região</strong>, que utilizam todos os pixels pertencentes ao objeto.</li>
+<li><strong>Redução de complexidade</strong>: diminuir o número de pontos necessários para representar a forma;</li>
+<li><strong>Fidelidade geométrica</strong>: manter a forma resultante o mais próxima possível da original.</li>
 </ul>
-<p>A escolha do tipo de representação depende da aplicação e das propriedades que se deseja analisar.</p>
 </section>
-<section id="representação-por-contorno" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="representação-por-contorno"><span class="header-section-number">9.4</span> Representação por Contorno</h2>
-<p>Na representação por contorno, apenas os pixels que delimitam a região são considerados. Essa abordagem é eficiente quando a forma do objeto é o principal atributo de interesse.</p>
-<section id="codificação-por-cadeia" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="codificação-por-cadeia"><span class="header-section-number">9.4.1</span> Codificação por Cadeia</h3>
-<p>A <strong>codificação por cadeia</strong> descreve um contorno como uma sequência de direções discretas, geralmente baseadas na conectividade 4 ou 8. Cada segmento do contorno é representado por um símbolo que indica a direção do próximo pixel.</p>
-<p>Essa técnica produz uma representação compacta e é particularmente útil para análise de forma, embora seja sensível a ruídos e pequenas variações no contorno.</p>
+<section id="principais-métodos" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="principais-métodos"><span class="header-section-number">9.3.2</span> Principais Métodos</h3>
+<p>Diversos algoritmos podem ser utilizados para realizar a aproximação poligonal. Entre os mais conhecidos, destaca-se o Algoritmo de Douglas-Peucker.</p>
+<section id="algoritmo-de-douglas-peucker" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="algoritmo-de-douglas-peucker">Algoritmo de Douglas-Peucker</h4>
+<p>Este é um dos métodos mais populares. O procedimento é recursivo:</p>
+<ol type="1">
+<li>Conecta-se o primeiro e o último ponto do contorno com um segmento de reta;</li>
+<li>Encontra-se o ponto intermediário mais distante dessa reta;</li>
+<li>Se a distância for maior que um limiar <span class="math inline">\(\varepsilon\)</span>, o ponto é mantido e o processo é repetido para os dois subsegmentos;</li>
+<li>Caso contrário, todos os pontos intermediários são descartados.</li>
+</ol>
+<p>Esse algoritmo permite um controle direto do erro máximo permitido.</p>
+<p>O exemplo interativo seguinte ilustra esse procedimento.</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/yCo-BS7dT" width="100%" height="500" style="border:none; overflow:hiddeln;">
+</iframe>
 </section>
-<section id="assinaturas-de-forma" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="assinaturas-de-forma"><span class="header-section-number">9.4.2</span> Assinaturas de Forma</h3>
-<p>Uma assinatura de forma representa o contorno por meio de uma função unidimensional, geralmente baseada na distância entre pontos do contorno e um ponto de referência, como o centroide.</p>
-<p>Assinaturas facilitam a comparação entre formas, mas podem perder informações locais importantes.</p>
 </section>
+<section id="critérios-de-qualidade" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="critérios-de-qualidade"><span class="header-section-number">9.3.3</span> Critérios de Qualidade</h3>
+<p>A avaliação de uma aproximação poligonal baseia-se em critérios que buscam equilibrar a qualidade da representação com a eficiência computacional. Um dos principais aspectos considerados é o <strong>erro de aproximação</strong>, que mede o quanto o polígono simplificado se afasta do contorno original. Esse erro pode ser definido, por exemplo, como a distância máxima ou média entre os pontos do contorno original e os segmentos do polígono. Quanto menor esse erro, maior a fidelidade da representação, o que é especialmente importante em aplicações que exigem alta precisão geométrica.</p>
+<p>Outro fator relevante é o <strong>número de vértices</strong> utilizados na representação. A redução da quantidade de pontos é justamente um dos objetivos centrais da aproximação poligonal, pois impacta diretamente na eficiência de armazenamento, transmissão e processamento dos dados. No entanto, uma simplificação excessiva — com poucos vértices — pode comprometer significativamente a forma original, eliminando detalhes importantes. Assim, é necessário encontrar um número adequado de vértices que permita representar a forma de maneira compacta, mas ainda informativa.</p>
+<p>Além disso, deve-se considerar a <strong>preservação de características geométricas</strong> relevantes, como cantos, concavidades e convexidades. Esses elementos frequentemente carregam informações essenciais sobre a estrutura da forma e são fundamentais em tarefas como reconhecimento de objetos e análise de padrões. Uma boa aproximação poligonal deve garantir que essas características sejam mantidas, mesmo que outros detalhes menos significativos sejam descartados.</p>
+<p>Dessa forma, observa-se que existe sempre um compromisso entre simplicidade e precisão. Representações mais simples tendem a ser mais eficientes, porém menos fiéis, enquanto representações mais detalhadas aumentam a precisão ao custo de maior complexidade. A escolha do nível de aproximação ideal depende, portanto, dos requisitos específicos da aplicação em questão, exigindo um equilíbrio cuidadoso entre esses dois objetivos.</p>
 </section>
-<section id="representação-por-região" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="representação-por-região"><span class="header-section-number">9.5</span> Representação por Região</h2>
-<p>As representações por região utilizam todos os pixels que compõem o objeto. Essa abordagem é mais adequada quando propriedades internas, como textura ou intensidade média, são relevantes.</p>
-<p>Entre as representações por região mais comuns estão:</p>
+<section id="aplicações" class="level3" data-number="9.3.4">
+<h3 data-number="9.3.4" class="anchored" data-anchor-id="aplicações"><span class="header-section-number">9.3.4</span> Aplicações</h3>
+<p>A aproximação poligonal é utilizada em diversas áreas do processamento de imagens e visão computacional:</p>
 <ul>
-<li>matrizes de pixels;</li>
-<li>histogramas;</li>
-<li>momentos geométricos.</li>
+<li><strong>Compressão de formas</strong>: reduz a quantidade de dados armazenados;</li>
+<li><strong>Reconhecimento de padrões</strong>: facilita a comparação entre objetos;</li>
+<li><strong>Extração de características</strong>: identificação de vértices, ângulos e segmentos;</li>
+<li><strong>Modelagem geométrica</strong>: representação de objetos em sistemas gráficos.</li>
 </ul>
-<p>Essas representações tendem a ser mais robustas a ruídos locais no contorno.</p>
 </section>
-<section id="descrição-de-regiões" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="descrição-de-regiões"><span class="header-section-number">9.6</span> Descrição de Regiões</h2>
-<p>A descrição de uma região consiste na extração de <strong>atributos quantitativos</strong>, também chamados de <em>features</em>, que caracterizam propriedades geométricas, topológicas ou estatísticas do objeto.</p>
-<p>Esses atributos formam um vetor de características utilizado em etapas posteriores, como classificação ou reconhecimento de padrões.</p>
+<section id="considerações-práticas" class="level3" data-number="9.3.5">
+<h3 data-number="9.3.5" class="anchored" data-anchor-id="considerações-práticas"><span class="header-section-number">9.3.5</span> Considerações Práticas</h3>
+<p>Na prática, a escolha do método de aproximação poligonal e de seus parâmetros — em especial o limiar <span class="math inline">\(\varepsilon\)</span> — está diretamente relacionada à finalidade da aplicação. Esse parâmetro controla o grau máximo de desvio permitido entre o contorno original e a representação simplificada, influenciando de forma decisiva o resultado final. Assim, diferentes contextos exigem diferentes configurações, dependendo do nível de detalhe necessário e das restrições de processamento.</p>
+<p>Quando se utilizam valores pequenos de <span class="math inline">\(\varepsilon\)</span>, a aproximação tende a ser mais fiel ao contorno original, preservando melhor suas variações e detalhes geométricos. Nesse caso, um maior número de vértices é mantido, o que resulta em uma representação mais precisa, porém mais complexa. Por outro lado, ao adotar valores maiores de <span class="math inline">\(\varepsilon\)</span>, o algoritmo permite desvios mais significativos, o que leva a uma simplificação mais agressiva do contorno. Consequentemente, o número de vértices diminui, tornando a representação mais compacta, porém com perda de precisão.</p>
+<p>Além da escolha do parâmetro <span class="math inline">\(\varepsilon\)</span>, é importante considerar a influência de ruídos presentes no contorno. Irregularidades decorrentes de processos de aquisição ou segmentação podem introduzir variações indesejadas que afetam negativamente a aproximação poligonal, levando à preservação de pontos irrelevantes ou à distorção da forma simplificada. Por essa razão, é comum aplicar previamente técnicas de suavização, como filtros ou operações morfológicas, com o objetivo de reduzir esses ruídos e obter uma representação mais estável e coerente do contorno antes da simplificação.</p>
 </section>
-<section id="descritores-geométricos" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="descritores-geométricos"><span class="header-section-number">9.7</span> Descritores Geométricos</h2>
-<p>Descritores geométricos caracterizam a forma e o tamanho das regiões. Exemplos comuns incluem:</p>
-<ul>
-<li><strong>área</strong>, definida pelo número de pixels da região;</li>
-<li><strong>perímetro</strong>, correspondente ao comprimento do contorno;</li>
-<li><strong>razão de aspecto</strong>, que relaciona largura e altura;</li>
-<li><strong>circularidade</strong>, que mede o quão próxima a forma está de um círculo.</li>
-</ul>
-<p>Esses descritores são amplamente utilizados devido à sua simplicidade e interpretação intuitiva.</p>
 </section>
-<section id="momentos-de-imagem" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="momentos-de-imagem"><span class="header-section-number">9.8</span> Momentos de Imagem</h2>
-<p>Os <strong>momentos de imagem</strong> fornecem uma descrição global da distribuição espacial dos pixels em uma região. O momento de ordem ((p,q)) é definido como:</p>
+<section id="assinatura-da-forma" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="assinatura-da-forma"><span class="header-section-number">9.4</span> Assinatura da forma</h2>
+<p>A <strong>assinatura da forma</strong> é uma técnica de representação amplamente utilizada no processamento digital de imagens para descrever contornos de objetos de maneira compacta e informativa. Em vez de armazenar todos os pontos do contorno — o que pode ser redundante e custoso — a assinatura transforma a forma em uma função unidimensional, geralmente definida em termos de um parâmetro angular. Essa abordagem reduz a complexidade da representação, ao mesmo tempo em que preserva características essenciais da geometria do objeto.</p>
+<p>Uma das formas mais comuns de definir a assinatura consiste em considerar a distância entre um ponto de referência interno — tipicamente o centroide — e os pontos do contorno, em função do ângulo $ $. Assim, obtém-se uma função $ r() $, que indica o raio da forma em cada direção. Essa representação permite capturar variações na forma de maneira contínua: regiões mais distantes do centro resultam em valores maiores de $ r() $, enquanto regiões mais próximas produzem valores menores. Dessa forma, o comportamento da função reflete diretamente a estrutura geométrica do objeto.</p>
+<p>A assinatura da forma possui propriedades importantes que a tornam especialmente útil em aplicações de análise e reconhecimento. Por exemplo, a periodicidade da função está relacionada à simetria da forma, enquanto picos e vales indicam a presença de vértices, concavidades ou convexidades. Além disso, a assinatura pode ser normalizada para obter invariância a transformações como translação, escala e rotação, o que é fundamental em sistemas de reconhecimento de padrões, onde diferentes instâncias de um mesmo objeto podem aparecer em posições e tamanhos variados.</p>
+<p>Outra vantagem significativa dessa técnica é a facilidade de comparação entre formas. Como a assinatura é representada por uma função ou vetor de valores, torna-se possível aplicar métricas simples — como distância euclidiana ou correlação — para medir a similaridade entre objetos. Isso simplifica tarefas como classificação, agrupamento e recuperação de imagens com base em conteúdo.</p>
+<p>Apesar de suas vantagens, a qualidade da assinatura depende diretamente da precisão na extração do contorno e da escolha adequada do ponto de referência. Ruídos, falhas na segmentação ou contornos incompletos podem comprometer a representação, gerando assinaturas instáveis ou distorcidas. Por isso, é comum empregar técnicas de pré-processamento, como suavização e detecção robusta de bordas, para garantir resultados mais confiáveis.</p>
+<p>Em síntese, a assinatura da forma constitui uma ferramenta eficiente e intuitiva para a descrição de objetos em imagens digitais. Ao converter uma estrutura bidimensional complexa em uma representação unidimensional significativa, ela facilita tanto a análise quanto a comparação de formas, sendo amplamente empregada em diversas aplicações de visão computacional.</p>
+<p>O exemplo interativo seguinte ilustra esta estratégia. A partir do contorno da imagem evidenciado pelo filtro de sobel e uma limiarização (que pode ser ajustada), é gerado o gráfico de assinatura do contorno.</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/KF3cqn6rT" width="100%" height="600" style="border:none; overflow:hiddeln;">
+</iframe>
+</section>
+<section id="esqueletização" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="esqueletização"><span class="header-section-number">9.5</span> Esqueletização</h2>
+<p>A <strong>esqueletização</strong> é uma técnica de representação de formas que busca reduzir uma região a uma estrutura central, fina e conectada, preservando sua topologia e características essenciais. O resultado, conhecido como <strong>esqueleto</strong> (<em>skeleton</em>), pode ser interpretado como o conjunto de pontos equidistantes das bordas do objeto, funcionando como um eixo medial que descreve sua estrutura interna. Essa representação é especialmente útil por manter informações importantes, como conectividade e ramificações, ao mesmo tempo em que reduz significativamente a quantidade de dados. No contexto deste capítulo, a esqueletização pode ser relacionada diretamente à abordagem apresentada na morfologia matemática por meio da operação de <strong>afinamento morfológico</strong> (<em>thinning</em>). O afinamento consiste na remoção iterativa de pixels da borda, sob condições específicas, até que a forma seja reduzida a linhas de espessura unitária, sem quebrar sua conectividade. Dessa forma, o esqueleto obtido por afinamento pode ser visto como uma implementação prática da esqueletização, destacando como operações morfológicas fornecem uma base sólida e eficiente para a representação estrutural de formas em imagens digitais.</p>
+</section>
+<section id="descritores-de-região" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="descritores-de-região"><span class="header-section-number">9.6</span> Descritores de Região</h2>
+<p>Os <strong>descritores de regiões</strong> constituem uma classe importante de técnicas no processamento digital de imagens voltadas à caracterização de objetos a partir de suas áreas internas, e não apenas de seus contornos. Diferentemente dos descritores de borda, que se concentram na forma externa, os descritores de regiões exploram propriedades globais e estatísticas dos pixels que compõem o interior de uma região segmentada, permitindo uma representação mais completa e robusta do objeto.</p>
+<p>Uma das características fundamentais dos descritores de regiões é sua capacidade de capturar <strong>propriedades geométricas globais</strong>, como área, perímetro, compacidade, excentricidade e orientação. A área, por exemplo, corresponde ao número de pixels pertencentes à região, enquanto a compacidade relaciona área e perímetro para indicar o quão “compacta” ou irregular é a forma. Já a excentricidade fornece uma medida do alongamento do objeto, sendo útil para diferenciar formas circulares de formas alongadas. Esses atributos são amplamente utilizados em tarefas de classificação e reconhecimento de padrões.</p>
+<p>Além das propriedades geométricas, os descritores de regiões também podem incorporar <strong>informações estatísticas de intensidade</strong>, como média, variância e histogramas de níveis de cinza ou de cores. Esses descritores são particularmente úteis quando diferentes objetos apresentam formas semelhantes, mas diferem em textura ou tonalidade. Por exemplo, duas regiões com formatos parecidos podem ser distinguidas por suas distribuições de intensidade, o que amplia o poder discriminativo da representação.</p>
+<p>Outro grupo relevante são os <strong>momentos de região</strong>, que fornecem uma descrição mais sofisticada da distribuição espacial dos pixels. Momentos geométricos e momentos invariantes (como os momentos de Hu) são amplamente utilizados por sua capacidade de representar a forma de maneira compacta e, ao mesmo tempo, invariantes a transformações como translação, rotação e escala. Isso os torna extremamente úteis em aplicações onde os objetos podem aparecer em diferentes posições e orientações. O momento de ordem <span class="math inline">\((p,q)\)</span>, por exemplo, é definido como:</p>
 <p><span class="math display">\[
 m_{pq} = \sum_x \sum_y x^p y^q f(x,y)
 \]</span></p>
-<p>Momentos podem ser utilizados para calcular propriedades como área, centroide e orientação principal do objeto.</p>
-<p>Momentos invariantes, como os <strong>momentos de Hu</strong>, são particularmente importantes por serem invariantes a transformações geométricas como translação, rotação e escala.</p>
+<p>Uma vantagem significativa dos descritores de regiões é sua <strong>robustez a ruídos e pequenas irregularidades no contorno</strong>. Como essas técnicas consideram a região como um todo, pequenas variações na borda tendem a ter menor impacto na representação final, em comparação com métodos baseados exclusivamente no contorno. No entanto, essa abordagem também apresenta limitações: descritores de regiões podem não capturar detalhes finos da forma externa, o que pode ser relevante em determinadas aplicações.</p>
+<p>Em síntese, os descritores de regiões oferecem uma forma rica e abrangente de representar objetos em imagens digitais, combinando informações geométricas, estatísticas e estruturais. Sua escolha e aplicação dependem do problema em questão, sendo frequentemente utilizados em conjunto com descritores de contorno para obter uma caracterização mais completa e eficiente das formas presentes na imagem.</p>
 </section>
-<section id="descritores-de-textura" class="level2" data-number="9.9">
-<h2 data-number="9.9" class="anchored" data-anchor-id="descritores-de-textura"><span class="header-section-number">9.9</span> Descritores de Textura</h2>
-<p>Descritores de textura capturam padrões locais de variação de intensidade dentro de uma região. Esses descritores são úteis para diferenciar objetos com formas semelhantes, mas texturas distintas.</p>
-<p>Entre os métodos clássicos de descrição de textura destacam-se matrizes de coocorrência, filtros estatísticos e medidas baseadas em frequência.</p>
+<section id="descritores-de-textura" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="descritores-de-textura"><span class="header-section-number">9.7</span> Descritores de Textura</h2>
+<p>Os <strong>descritores de textura</strong> são técnicas utilizadas no processamento digital de imagens para caracterizar padrões de variação de intensidade ou cor em uma região. Diferentemente dos descritores de forma, que se concentram na geometria dos objetos, os descritores de textura capturam propriedades relacionadas à <strong>organização espacial dos pixels</strong>, como repetição, rugosidade, suavidade e regularidade. Essas características são fundamentais para distinguir regiões que possuem formas semelhantes, mas apresentam padrões internos distintos.</p>
+<p>Uma das abordagens mais comuns para descrever textura baseia-se em <strong>métodos estatísticos</strong>, que analisam a distribuição e a relação entre os níveis de intensidade dos pixels. Entre esses métodos, destacam-se as matrizes de coocorrência de níveis de cinza (GLCM), que consideram a frequência com que pares de pixels com determinados valores ocorrem em posições relativas específicas. A partir dessas matrizes, podem ser extraídas medidas como contraste, homogeneidade, energia e entropia, que fornecem uma descrição quantitativa da textura presente na imagem.</p>
+<p>Outra categoria importante envolve os <strong>descritores estruturais</strong>, que modelam a textura como a repetição de padrões elementares, chamados de primitivas ou texels. Nessa abordagem, busca-se identificar regularidades na disposição desses elementos, sendo particularmente útil em texturas altamente organizadas, como tecidos ou superfícies artificiais. Já os <strong>métodos baseados em filtros</strong> analisam a resposta da imagem a operadores específicos, como filtros de Gabor ou wavelets, permitindo capturar informações em diferentes escalas e orientações. Esses métodos são eficazes para identificar padrões direcionais e frequências espaciais características da textura.</p>
+<p>Além disso, técnicas mais recentes incluem descritores como o <strong>Local Binary Pattern (LBP)</strong>, que codifica a relação entre um pixel e seus vizinhos em uma representação binária simples e eficiente. Esse tipo de descritor tem se destacado por sua robustez a variações de iluminação e baixo custo computacional, sendo amplamente utilizado em aplicações práticas, como reconhecimento facial e análise de superfícies.</p>
+<p>Os descritores de textura desempenham um papel essencial em diversas aplicações, como <strong>segmentação de imagens, classificação de materiais, reconhecimento de padrões e análise médica</strong>. Por exemplo, em imagens médicas, a textura pode ajudar a diferenciar tecidos saudáveis de tecidos patológicos. Em visão computacional, pode ser utilizada para identificar superfícies específicas, como madeira, metal ou vegetação.</p>
+<p>Em síntese, os descritores de textura oferecem uma maneira eficaz de representar padrões complexos presentes nas imagens, complementando outras formas de descrição, como contorno e região. Ao capturar informações sobre a organização interna dos pixels, essas técnicas ampliam significativamente a capacidade de análise e interpretação de imagens digitais em diferentes contextos.</p>
+<section id="matrizes-de-coocorrência-e-matriz-de-diferença" class="level3" data-number="9.7.1">
+<h3 data-number="9.7.1" class="anchored" data-anchor-id="matrizes-de-coocorrência-e-matriz-de-diferença"><span class="header-section-number">9.7.1</span> Matrizes de Coocorrência e Matriz de diferença</h3>
+<p>As <strong>matrizes de coocorrência</strong> e as <strong>matrizes de diferença</strong> são técnicas clássicas de descrição de textura que se baseiam na análise das relações espaciais entre os níveis de intensidade dos pixels. Diferentemente de métodos que consideram apenas estatísticas globais (como média e variância), essas abordagens capturam <strong>como os pixels se organizam em relação aos seus vizinhos</strong>, fornecendo uma representação mais rica da estrutura da textura.</p>
+<section id="matriz-de-coocorrência" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="matriz-de-coocorrência">Matriz de coocorrência</h4>
+<p>A <strong>matriz de coocorrência de níveis de cinza</strong> (GLCM – <em>Gray Level Co-occurrence Matrix</em>) descreve a frequência com que pares de pixels com determinados valores de intensidade ocorrem em uma posição relativa específica. Para construí-la, define-se um deslocamento espacial — por exemplo, um pixel à direita, acima ou em uma determinada direção e distância — e, em seguida, contabiliza-se quantas vezes um pixel com intensidade <span class="math inline">\(i\)</span> ocorre ao lado de um pixel com intensidade <span class="math inline">\(j\)</span>. O resultado é uma matriz em que cada elemento <span class="math inline">\((i,j)\)</span> representa essa frequência de coocorrência. A escolha da direção e da distância influencia diretamente o tipo de padrão capturado, permitindo analisar texturas com diferentes orientações e escalas.</p>
+<p>A partir da matriz de coocorrência, podem ser extraídas diversas medidas estatísticas que caracterizam a textura. Entre as mais utilizadas estão o <strong>contraste</strong>, que indica a variação local de intensidade; a <strong>homogeneidade</strong>, que mede a proximidade dos valores em relação à diagonal da matriz; a <strong>energia</strong>, associada à uniformidade; e a <strong>entropia</strong>, que reflete o grau de desordem da textura. Essas medidas transformam a matriz em um vetor de características compacto, amplamente utilizado em tarefas de classificação e reconhecimento.</p>
+<div id="fig-matco" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-matco-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap9/coocorrencia.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matco-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.3: Matriz de coocorrência
+</figcaption>
+</figure>
+</div>
+<p>O exemplo apresentado na <a href="#fig-matco" class="quarto-xref">Figura&nbsp;<span>9.3</span></a> ilustra a construção de uma <strong>matriz de coocorrência de níveis de cinza (GLCM)</strong> a partir de uma pequena imagem quantizada em quatro níveis (1, 2, 3 e 4).</p>
+<p>Inicialmente, observa-se a imagem original, onde cada pixel possui um valor discreto. Em seguida, define-se uma <strong>relação espacial</strong> — no caso do exemplo, considera-se um deslocamento (por exemplo, um pixel à direita). A partir disso, percorre-se a imagem e, para cada pixel, analisa-se o valor do seu vizinho na direção escolhida, formando pares ordenados do tipo ((i, j)), onde (i) é o valor do pixel de referência e (j) é o valor do vizinho.</p>
+<p>Cada ocorrência desses pares é contabilizada em uma matriz (P(i,j)), na qual as linhas representam o valor do pixel de referência e as colunas representam o valor do pixel vizinho. Por exemplo, se um pixel com valor 3 tem um vizinho com valor 2, incrementa-se a posição (P(3,2)) da matriz. Esse processo é repetido para todos os pixels válidos da imagem.</p>
+<p>Ao final, obtém-se a matriz de coocorrência, que expressa a frequência com que diferentes combinações de níveis de cinza ocorrem na imagem segundo a relação espacial definida. Essa matriz é fundamental para a <strong>extração de características de textura</strong>, pois captura padrões como uniformidade, contraste e repetição de intensidades na imagem.</p>
 </section>
-<section id="normalização-e-invariância" class="level2" data-number="9.10">
-<h2 data-number="9.10" class="anchored" data-anchor-id="normalização-e-invariância"><span class="header-section-number">9.10</span> Normalização e Invariância</h2>
-<p>Para que descritores sejam eficazes em sistemas de reconhecimento, é desejável que sejam invariantes a transformações irrelevantes, como mudanças de posição, orientação ou escala.</p>
-<p>Técnicas de normalização são frequentemente aplicadas para garantir comparabilidade entre objetos extraídos de imagens diferentes.</p>
+<section id="matriz-de-diferença" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="matriz-de-diferença">Matriz de diferença</h4>
+<p>Por sua vez, a <strong>matriz de diferença</strong> (também conhecida como <em>Gray Level Difference Matrix</em> – GLDM) é uma variação conceitualmente mais simples. Em vez de considerar pares ordenados <span class="math inline">\((i,j)\)</span>, ela analisa a <strong>diferença absoluta de intensidade</strong> entre pixels vizinhos. Para um dado deslocamento, calcula-se <span class="math inline">\(|i - j|\)</span> para cada par de pixels e contabiliza-se a frequência de cada valor de diferença. O resultado é um vetor ou matriz que descreve a distribuição dessas diferenças ao longo da imagem. Essa abordagem enfatiza diretamente o grau de variação local, sendo particularmente útil para distinguir texturas suaves (com pequenas diferenças) de texturas rugosas (com grandes variações).</p>
+<div id="fig-matdif" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-matdif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap9/diferenca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matdif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.4: Matriz de diferença
+</figcaption>
+</figure>
+</div>
+<p>O exemplo da <strong>matriz de diferença</strong> da <a href="#fig-matdif" class="quarto-xref">Figura&nbsp;<span>9.4</span></a> apresenta uma alternativa à matriz de coocorrência para descrever relações espaciais entre níveis de cinza. Enquanto a matriz de coocorrência contabiliza pares ordenados ((i,j)), a matriz de diferença considera apenas o <strong>valor absoluto da diferença entre os níveis de cinza</strong> de pixels vizinhos.</p>
+<p>No exemplo destacado, a região em vermelho indica um par de pixels vizinhos que está sendo analisado. A partir desses dois valores, calcula-se a diferença e incrementa-se a posição correspondente na matriz de diferença. Diferentemente da matriz de coocorrência, que é bidimensional, a matriz de diferença pode ser representada como um <strong>vetor (ou histograma)</strong>, no qual cada posição <span class="math inline">\(D(d)\)</span> armazena o número de ocorrências da diferença <span class="math inline">\(d\)</span>.</p>
+<p>Esse procedimento é repetido para todos os pares de pixels válidos da imagem. Ao final, obtém-se uma distribuição das diferenças de intensidade, que fornece informações importantes sobre a textura da imagem. Por exemplo, imagens com regiões homogêneas tendem a apresentar maiores frequências para diferenças pequenas (próximas de zero), enquanto imagens com bordas e variações intensas apresentam maior dispersão nos valores de diferença.</p>
+<p>Assim, a matriz de diferença constitui uma representação mais compacta da textura, sendo especialmente útil quando se deseja reduzir a complexidade da análise sem perder a informação essencial sobre variações locais de intensidade.</p>
+<p>A principal diferença entre essas duas técnicas está no nível de detalhamento da representação. A matriz de coocorrência preserva a informação completa sobre as combinações de intensidades entre pares de pixels, oferecendo uma descrição mais rica, porém com maior custo computacional. Já a matriz de diferença simplifica essa relação ao focar apenas na magnitude da variação, resultando em uma representação mais compacta e eficiente, embora menos detalhada.</p>
+<p>Em termos de aplicação, ambas as abordagens são amplamente utilizadas em <strong>segmentação, classificação de texturas e análise de imagens médicas e industriais</strong>. Muitas vezes, elas são empregadas de forma complementar: a GLCM fornece uma descrição detalhada das relações estruturais, enquanto a matriz de diferença destaca o comportamento das variações locais. Assim, juntas, contribuem para uma caracterização mais robusta e discriminativa das texturas presentes em imagens digitais.</p>
+<p>O exemplo interativo seguinte tem como objetivo ilustrar, de forma visual e intuitiva, o processo de construção da <strong>matriz de coocorrência (GLCM)</strong> e da <strong>matriz de diferença</strong> a partir de uma imagem digital. Inicialmente, a imagem original é exibida juntamente com sua versão em tons de cinza quantizada, permitindo ao usuário observar como os valores contínuos de intensidade são convertidos em um número reduzido de níveis discretos.</p>
+<p>A visualização da imagem quantizada permite compreender como os níveis de cinza são agrupados antes do cálculo das matrizes. Essa etapa reduz a complexidade do problema e torna viável a construção da matriz de coocorrência, que depende de um número limitado de níveis. Além disso, evidencia que tanto a GLCM quanto a matriz de diferença não operam diretamente sobre os valores originais da imagem, mas sim sobre uma representação simplificada, preservando apenas as variações estruturais mais relevantes.</p>
+<p>A partir da imagem quantizada, o algoritmo percorre os pixels considerando uma relação espacial definida — neste exemplo, um deslocamento horizontal de um pixel. Para cada par de pixels vizinhos, são realizadas duas análises complementares. Na primeira, registra-se a ocorrência do par de níveis <span class="math inline">\((i, j)\)</span>, incrementando a posição correspondente na matriz de coocorrência. Essa matriz bidimensional expressa a frequência com que diferentes combinações de intensidades ocorrem na imagem, sendo particularmente útil para capturar padrões de textura, como repetição e orientação.</p>
+<p>Na segunda análise, calcula-se a diferença absoluta entre os níveis dos pixels vizinhos, acumulando os resultados em um vetor unidimensional, conhecido como matriz de diferença. Essa representação sintetiza a informação de variação local de intensidade, destacando o grau de homogeneidade ou contraste presente na imagem. Diferenças pequenas indicam regiões uniformes, enquanto diferenças maiores estão associadas a bordas e transições abruptas.</p>
+<p>A apresentação simultânea da imagem original, da imagem quantizada e das matrizes calculadas permite estabelecer uma relação direta entre a estrutura visual da imagem e os valores obtidos nas representações estatísticas. Dessa forma, o exemplo interativo não apenas demonstra o funcionamento dos algoritmos, mas também contribui para a compreensão conceitual de como descritores de textura são construídos a partir de relações espaciais locais.</p>
+<!-- Conteúdo interativo (HTML) -->
+<iframe src="https://editor.p5js.org/luizedsilva/full/0drz5M5vK" width="100%" height="500" style="border:none; overflow:hiddeln;">
+</iframe>
 </section>
-<section id="aplicações-de-representação-e-descrição" class="level2" data-number="9.11">
-<h2 data-number="9.11" class="anchored" data-anchor-id="aplicações-de-representação-e-descrição"><span class="header-section-number">9.11</span> Aplicações de Representação e Descrição</h2>
-<p>A representação e a descrição de imagens são etapas fundamentais em aplicações como:</p>
-<ul>
-<li>reconhecimento de padrões;</li>
-<li>classificação de objetos;</li>
-<li>análise de formas;</li>
-<li>visão computacional em robótica;</li>
-<li>sistemas de inspeção automática.</li>
-</ul>
-<p>A qualidade dos descritores influencia diretamente o desempenho dessas aplicações.</p>
 </section>
-<section id="considerações-finais" class="level2" data-number="9.12">
-<h2 data-number="9.12" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">9.12</span> Considerações Finais</h2>
-<p>A representação e a descrição de imagens constituem o elo entre a segmentação e o reconhecimento de padrões. A escolha adequada de representações e descritores é essencial para capturar as características relevantes dos objetos e garantir o sucesso das etapas posteriores.</p>
-<p>Os conceitos apresentados neste capítulo fornecem uma base sólida para o estudo de técnicas avançadas de análise de imagens e aprendizado de máquina aplicado à visão computacional.</p>
+</section>
+<section id="considerações-finais" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">9.8</span> Considerações Finais</h2>
+<p>A <strong>descrição e representação de imagens</strong> constituem etapas fundamentais no processamento digital de imagens e na visão computacional, pois permitem transformar dados visuais brutos em informações estruturadas e interpretáveis por sistemas computacionais. Enquanto a <strong>representação</strong> está relacionada à forma como a imagem é modelada internamente — por exemplo, como uma matriz de pixels, um conjunto de regiões segmentadas ou um contorno — a <strong>descrição</strong> refere-se à extração de características relevantes dessas representações, com o objetivo de facilitar tarefas como análise, reconhecimento e classificação.</p>
+<p>A representação de imagens pode assumir diferentes formas, dependendo do nível de abstração desejado. Em um nível mais básico, a imagem é representada como uma matriz de intensidades (em tons de cinza) ou de valores RGB (em imagens coloridas). Em níveis mais avançados, podem ser utilizadas representações baseadas em <strong>bordas</strong>, <strong>regiões</strong> ou <strong>estruturas geométricas</strong>, como grafos ou polígonos. Essas formas de representação reduzem a complexidade dos dados e destacam informações mais relevantes para a aplicação, como a forma de objetos ou a organização espacial dos elementos na imagem.</p>
+<p>A descrição, por sua vez, envolve a extração de <strong>atributos ou características</strong> a partir dessas representações. Esses descritores podem ser de diferentes naturezas, como descritores de <strong>forma</strong> (que capturam a geometria do objeto), descritores de <strong>região</strong> (que analisam propriedades internas, como área e intensidade) e descritores de <strong>textura</strong> (que caracterizam padrões de variação de intensidade). Técnicas como assinatura da forma, momentos invariantes, histogramas e matrizes de coocorrência são exemplos de ferramentas utilizadas nesse processo.</p>
+<p>Um aspecto importante na descrição de imagens é a busca por <strong>invariância</strong> a transformações como translação, rotação e escala, além de robustez a ruídos e variações de iluminação. Essas propriedades são essenciais para garantir que objetos semelhantes sejam reconhecidos como equivalentes, mesmo quando aparecem sob diferentes condições. Para isso, muitas técnicas incluem etapas de normalização ou utilizam descritores matematicamente projetados para serem invariantes.</p>
+<p>Em síntese, a representação e a descrição de imagens são processos complementares: a representação organiza os dados de forma adequada, enquanto a descrição extrai informações significativas a partir dessa organização. Juntas, essas etapas formam a base para sistemas mais complexos de análise de imagens, possibilitando aplicações como reconhecimento de padrões, segmentação automática, classificação de objetos e interpretação inteligente de cenas.</p>
 
 
 </section>
