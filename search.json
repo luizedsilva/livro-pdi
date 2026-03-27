@@ -764,7 +764,27 @@
     "href": "chapters/representacao.html",
     "title": "9  Representação e Descrição de Imagens",
     "section": "",
-    "text": "9.1 Representação de Regiões\nApós a segmentação, o próximo passo em um sistema de Processamento Digital de Imagens consiste em representar e descrever as regiões ou objetos identificados. Enquanto a segmentação define onde estão os objetos, a representação e a descrição determinam como esses objetos serão caracterizados para análise posterior, classificação ou reconhecimento.\nEste capítulo aborda os conceitos fundamentais de representação e descrição de imagens, apresentando técnicas clássicas utilizadas para extrair características relevantes de regiões segmentadas.\nA representação de uma região tem como objetivo codificar sua forma e estrutura de maneira adequada ao processamento computacional. Uma boa representação deve ser compacta, discriminativa e robusta a variações irrelevantes.\nAs técnicas de representação podem ser classificadas em duas categorias principais:\nA escolha do tipo de representação depende da aplicação e das propriedades que se deseja analisar.",
+    "text": "9.1 Descrição de Imagens\nApós a etapa de segmentação, em que a imagem é particionada em regiões de interesse, inicia-se uma fase fundamental no processamento digital de imagens: a representação e descrição dessas regiões. Nesse momento, os conjuntos de pixels identificados deixam de ser apenas agrupamentos e passam a ser organizados em formatos que permitam sua análise, interpretação e uso em etapas posteriores, como reconhecimento de padrões e classificação.\nA representação de uma região pode ser realizada de duas formas principais, dependendo do tipo de informação que se deseja extrair:\nUma vez definida a forma de representação, a etapa seguinte consiste na descrição da região. Nessa fase, são extraídas medidas quantitativas — também chamadas de descritores — que sintetizam as características relevantes do objeto. Esses descritores podem incluir informações como área, perímetro, momentos, compacidade, histogramas de intensidade, entre outros.\nAssim, a representação fornece a estrutura necessária para organizar os dados da região, enquanto a descrição transforma essa estrutura em informações úteis e comparáveis, permitindo que o sistema tome decisões de forma automática e eficiente.\nNa etapa de descrição, é fundamental que as características escolhidas como descritores sejam robustas frente a variações comuns que podem ocorrer na imagem. Entre essas variações estão mudanças de escala (tamanho), rotação e translação (posição) do objeto. Em outras palavras, bons descritores devem representar o objeto de forma consistente, independentemente de como ele aparece na imagem. Essa propriedade é essencial para garantir que o mesmo objeto seja reconhecido corretamente em diferentes condições.\nNesse contexto, busca-se extrair assinaturas da imagem, isto é, representações compactas e distintivas que caracterizem de maneira única uma região ou objeto. Essas assinaturas devem capturar as propriedades mais relevantes, reduzindo a quantidade de dados sem perder informações importantes para a análise.\nUm dos esquemas clássicos de representação de fronteira é o Código da Cadeia (Chain Code). Esse método descreve o contorno de um objeto por meio de uma sequência de direções, gerada a partir da análise da conectividade entre pixels adjacentes. Essa conectividade pode ser definida de duas formas:\nA ideia central do código da cadeia é percorrer a borda do objeto e registrar, a cada passo, a direção do próximo pixel pertencente ao contorno. O resultado é uma sequência (cadeia) de números que codifica toda a forma da fronteira.\nApesar de sua simplicidade e eficiência, essa técnica apresenta algumas limitações importantes:\nDevido a essas limitações, o código da cadeia é frequentemente complementado ou transformado (por exemplo, usando formas normalizadas ou diferenciais) para torná-lo mais robusto e adequado a aplicações práticas.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/representacao.html#descrição-de-imagens",
+    "href": "chapters/representacao.html#descrição-de-imagens",
+    "title": "9  Representação e Descrição de Imagens",
+    "section": "",
+    "text": "Conectividade-4: considera apenas os vizinhos nas direções horizontal e vertical.\nConectividade-8: inclui também os vizinhos diagonais, permitindo uma representação mais detalhada da fronteira.\n\n\n\n\nA cadeia gerada pode ser bastante longa, especialmente para objetos com contornos complexos.\nO método é sensível a ruídos: pequenas irregularidades na fronteira podem causar grandes variações na sequência gerada.\nA representação depende do ponto inicial escolhido para iniciar o percurso, o que pode levar a diferentes códigos para o mesmo objeto.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/representacao.html#código-de-cadeia",
+    "href": "chapters/representacao.html#código-de-cadeia",
+    "title": "9  Representação e Descrição de Imagens",
+    "section": "9.2 Código de Cadeia",
+    "text": "9.2 Código de Cadeia\nO código de cadeia (chain code) é uma técnica clássica para representação de fronteiras em imagens binárias. Ele descreve o contorno de um objeto por meio de uma sequência de direções, obtida ao percorrer, de forma ordenada, os pixels que compõem sua borda. Essa abordagem permite transformar uma estrutura bidimensional (a forma do objeto) em uma representação unidimensional (uma sequência numérica), facilitando a análise e comparação de formas.\n\n9.2.1 Representação direcional\n\n\n\nCódigo de Cadeia\n\n\nA construção do código de cadeia baseia-se na definição de uma vizinhança entre pixels. Existem duas formas principais:\n\nCódigo de cadeia 4-direcional: considera apenas os vizinhos nas direções horizontal e vertical.\nCódigo de cadeia 8-direcional: inclui também as direções diagonais, permitindo uma representação mais fiel da geometria da fronteira.\n\nNo caso 8-direcional, cada movimento entre pixels adjacentes é representado por um número de 0 a 7, indicando a direção do deslocamento. Assim, ao percorrer o contorno de um objeto, obtém-se uma sequência de números que descreve completamente sua forma.\n\n\n9.2.2 Exemplo de código de cadeia\n\n\n\n\n\n\nFigura 9.1: Código de Cadeia\n\n\n\nConsidere um objeto cuja fronteira foi percorrida a partir de um pixel inicial (indicado por uma seta). O código de cadeia obtido pode ser representado por uma sequência como:\n000077665555556600000006444444442221111112234445652211\nCada dígito dessa sequência indica a direção do próximo passo ao longo do contorno. Dessa forma, toda a geometria da borda do objeto é codificada em uma única cadeia de valores inteiros.\n\n\n9.2.3 Dependência do ponto inicial\nUma característica importante do código de cadeia é que ele depende do ponto inicial escolhido para iniciar o rastreamento do contorno. Diferentes pontos de partida podem gerar sequências distintas para o mesmo objeto, embora todas representem a mesma forma.\nPara contornar esse problema, pode-se realizar uma normalização do código da cadeia. Uma abordagem comum consiste em considerar todas as rotações possíveis da sequência e selecionar aquela que corresponde ao menor valor inteiro (interpretação lexicográfica). Aplicando esse procedimento ao exemplo anterior, obtém-se:\n000000064444444422211111122344456522110000776655555566\nEssa forma normalizada torna o descritor invariante à escolha do ponto inicial, permitindo comparações mais robustas entre diferentes objetos.\n\n\n9.2.4 Contexto na representação e descrição\nO código de cadeia está inserido no conjunto de técnicas de representação e descrição de formas, ao lado de outros métodos como:\n\naproximação poligonal\nassinaturas de forma\nesqueletização\ndescritores de região\nanálise de textura\n\nDentro desse contexto, o código de cadeia destaca-se por sua simplicidade e capacidade de capturar detalhes da fronteira. No entanto, ele também apresenta limitações, como sensibilidade a ruídos e variações locais no contorno, o que pode exigir etapas adicionais de suavização ou simplificação.\n\n\n9.2.5 Algoritmo de Rastreamento de Contorno (Chain Code)\nO código de cadeia é construído a partir de um contorno. O algoritmo de rastreamento de contorno (da Listagem 9.1) tem como objetivo percorrer a fronteira de um objeto binário, identificando todos os pixels pertencentes ao seu contorno de forma ordenada. A seguir, apresenta-se uma versão estruturada e detalhada do procedimento:\n\n\n\nListagem 9.1\n\n\nAlgoritmo RastreamentoContorno(I, C)\n\nEntrada:  imagem binária I[altura][largura]\nSaída:    lista de pontos do contorno C\n\n/* Passo 1 — Encontrar ponto inicial b0 */\nencontrado = 0;\nfor (y = 0; y &lt; altura; y++) {\n    for (x = 0; x &lt; largura; x++) {\n        if (I[y][x] == 1) {\n            b0 = (x, y);\n            encontrado = 1;\n            break;\n        }\n    }\n    if (encontrado == 1)\n        break;\n}\n\n/* Definir vizinho inicial (oeste) */\nc0 = (b0.x - 1, b0.y);\n\n/* Encontrar b1 */\nb = b0;\nc = c0;\nfor (k = 0; k &lt; 8; k++) {\n    nk = vizinho8(b, c, k);   // vizinhos no sentido horário a partir de c\n    if (I[nk.y][nk.x] == 1) {\n        b1 = nk;\n        c1 = vizinhoAnterior(b, nk);\n        break;\n    }\n}\n\n/* Inicialização */\nb = b1;\nc = c1;\nadicionar b0 à lista C;\nadicionar b1 à lista C;\n\n/* Passos 3–5 — Rastreamento */\nwhile (b != b0 || prox != b1) {\n\n    for (k = 0; k &lt; 8; k++) {\n        nk = vizinho8(b, c, k);\n        if (I[nk.y][nk.x] == 1) {\n            prox = nk;\n            ant  = vizinhoAnterior(b, nk);\n            break;\n        }\n    }\n\n    b = prox;\n    c = ant;\n    adicionar b à lista C;\n}\n\n/* Resultado */\nretornar C;\n\n\n\nO exemplo interativo seguinte apresenta uma simulação desse algoritmo. A cada passo são apresentados os pixels do contorno que são visitados, o valor de k (direção) e o código de cadeia.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
@@ -773,8 +793,8 @@
     "objectID": "chapters/representacao.html#representação-de-regiões",
     "href": "chapters/representacao.html#representação-de-regiões",
     "title": "9  Representação e Descrição de Imagens",
-    "section": "",
-    "text": "Representações por contorno, que descrevem apenas a fronteira do objeto;\nRepresentações por região, que utilizam todos os pixels pertencentes ao objeto.",
+    "section": "9.3 Representação de Regiões",
+    "text": "9.3 Representação de Regiões\nA representação de uma região tem como objetivo codificar sua forma e estrutura de maneira adequada ao processamento computacional. Uma boa representação deve ser compacta, discriminativa e robusta a variações irrelevantes.\nAs técnicas de representação podem ser classificadas em duas categorias principais:\n\nRepresentações por contorno, que descrevem apenas a fronteira do objeto;\nRepresentações por região, que utilizam todos os pixels pertencentes ao objeto.\n\nA escolha do tipo de representação depende da aplicação e das propriedades que se deseja analisar.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
@@ -783,8 +803,8 @@
     "objectID": "chapters/representacao.html#representação-por-contorno",
     "href": "chapters/representacao.html#representação-por-contorno",
     "title": "9  Representação e Descrição de Imagens",
-    "section": "9.2 Representação por Contorno",
-    "text": "9.2 Representação por Contorno\nNa representação por contorno, apenas os pixels que delimitam a região são considerados. Essa abordagem é eficiente quando a forma do objeto é o principal atributo de interesse.\n\n9.2.1 Codificação por Cadeia\nA codificação por cadeia descreve um contorno como uma sequência de direções discretas, geralmente baseadas na conectividade 4 ou 8. Cada segmento do contorno é representado por um símbolo que indica a direção do próximo pixel.\nEssa técnica produz uma representação compacta e é particularmente útil para análise de forma, embora seja sensível a ruídos e pequenas variações no contorno.\n\n\n9.2.2 Assinaturas de Forma\nUma assinatura de forma representa o contorno por meio de uma função unidimensional, geralmente baseada na distância entre pontos do contorno e um ponto de referência, como o centroide.\nAssinaturas facilitam a comparação entre formas, mas podem perder informações locais importantes.",
+    "section": "9.4 Representação por Contorno",
+    "text": "9.4 Representação por Contorno\nNa representação por contorno, apenas os pixels que delimitam a região são considerados. Essa abordagem é eficiente quando a forma do objeto é o principal atributo de interesse.\n\n9.4.1 Codificação por Cadeia\nA codificação por cadeia descreve um contorno como uma sequência de direções discretas, geralmente baseadas na conectividade 4 ou 8. Cada segmento do contorno é representado por um símbolo que indica a direção do próximo pixel.\nEssa técnica produz uma representação compacta e é particularmente útil para análise de forma, embora seja sensível a ruídos e pequenas variações no contorno.\n\n\n9.4.2 Assinaturas de Forma\nUma assinatura de forma representa o contorno por meio de uma função unidimensional, geralmente baseada na distância entre pontos do contorno e um ponto de referência, como o centroide.\nAssinaturas facilitam a comparação entre formas, mas podem perder informações locais importantes.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
@@ -793,8 +813,8 @@
     "objectID": "chapters/representacao.html#representação-por-região",
     "href": "chapters/representacao.html#representação-por-região",
     "title": "9  Representação e Descrição de Imagens",
-    "section": "9.3 Representação por Região",
-    "text": "9.3 Representação por Região\nAs representações por região utilizam todos os pixels que compõem o objeto. Essa abordagem é mais adequada quando propriedades internas, como textura ou intensidade média, são relevantes.\nEntre as representações por região mais comuns estão:\n\nmatrizes de pixels;\nhistogramas;\nmomentos geométricos.\n\nEssas representações tendem a ser mais robustas a ruídos locais no contorno.",
+    "section": "9.5 Representação por Região",
+    "text": "9.5 Representação por Região\nAs representações por região utilizam todos os pixels que compõem o objeto. Essa abordagem é mais adequada quando propriedades internas, como textura ou intensidade média, são relevantes.\nEntre as representações por região mais comuns estão:\n\nmatrizes de pixels;\nhistogramas;\nmomentos geométricos.\n\nEssas representações tendem a ser mais robustas a ruídos locais no contorno.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
@@ -803,8 +823,8 @@
     "objectID": "chapters/representacao.html#descrição-de-regiões",
     "href": "chapters/representacao.html#descrição-de-regiões",
     "title": "9  Representação e Descrição de Imagens",
-    "section": "9.4 Descrição de Regiões",
-    "text": "9.4 Descrição de Regiões\nA descrição de uma região consiste na extração de atributos quantitativos, também chamados de features, que caracterizam propriedades geométricas, topológicas ou estatísticas do objeto.\nEsses atributos formam um vetor de características utilizado em etapas posteriores, como classificação ou reconhecimento de padrões.",
+    "section": "9.6 Descrição de Regiões",
+    "text": "9.6 Descrição de Regiões\nA descrição de uma região consiste na extração de atributos quantitativos, também chamados de features, que caracterizam propriedades geométricas, topológicas ou estatísticas do objeto.\nEsses atributos formam um vetor de características utilizado em etapas posteriores, como classificação ou reconhecimento de padrões.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
@@ -813,8 +833,8 @@
     "objectID": "chapters/representacao.html#descritores-geométricos",
     "href": "chapters/representacao.html#descritores-geométricos",
     "title": "9  Representação e Descrição de Imagens",
-    "section": "9.5 Descritores Geométricos",
-    "text": "9.5 Descritores Geométricos\nDescritores geométricos caracterizam a forma e o tamanho das regiões. Exemplos comuns incluem:\n\nárea, definida pelo número de pixels da região;\nperímetro, correspondente ao comprimento do contorno;\nrazão de aspecto, que relaciona largura e altura;\ncircularidade, que mede o quão próxima a forma está de um círculo.\n\nEsses descritores são amplamente utilizados devido à sua simplicidade e interpretação intuitiva.",
+    "section": "9.7 Descritores Geométricos",
+    "text": "9.7 Descritores Geométricos\nDescritores geométricos caracterizam a forma e o tamanho das regiões. Exemplos comuns incluem:\n\nárea, definida pelo número de pixels da região;\nperímetro, correspondente ao comprimento do contorno;\nrazão de aspecto, que relaciona largura e altura;\ncircularidade, que mede o quão próxima a forma está de um círculo.\n\nEsses descritores são amplamente utilizados devido à sua simplicidade e interpretação intuitiva.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
@@ -823,8 +843,8 @@
     "objectID": "chapters/representacao.html#momentos-de-imagem",
     "href": "chapters/representacao.html#momentos-de-imagem",
     "title": "9  Representação e Descrição de Imagens",
-    "section": "9.6 Momentos de Imagem",
-    "text": "9.6 Momentos de Imagem\nOs momentos de imagem fornecem uma descrição global da distribuição espacial dos pixels em uma região. O momento de ordem ((p,q)) é definido como:\n\\[\nm_{pq} = \\sum_x \\sum_y x^p y^q f(x,y)\n\\]\nMomentos podem ser utilizados para calcular propriedades como área, centroide e orientação principal do objeto.\nMomentos invariantes, como os momentos de Hu, são particularmente importantes por serem invariantes a transformações geométricas como translação, rotação e escala.",
+    "section": "9.8 Momentos de Imagem",
+    "text": "9.8 Momentos de Imagem\nOs momentos de imagem fornecem uma descrição global da distribuição espacial dos pixels em uma região. O momento de ordem ((p,q)) é definido como:\n\\[\nm_{pq} = \\sum_x \\sum_y x^p y^q f(x,y)\n\\]\nMomentos podem ser utilizados para calcular propriedades como área, centroide e orientação principal do objeto.\nMomentos invariantes, como os momentos de Hu, são particularmente importantes por serem invariantes a transformações geométricas como translação, rotação e escala.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
@@ -833,8 +853,8 @@
     "objectID": "chapters/representacao.html#descritores-de-textura",
     "href": "chapters/representacao.html#descritores-de-textura",
     "title": "9  Representação e Descrição de Imagens",
-    "section": "9.7 Descritores de Textura",
-    "text": "9.7 Descritores de Textura\nDescritores de textura capturam padrões locais de variação de intensidade dentro de uma região. Esses descritores são úteis para diferenciar objetos com formas semelhantes, mas texturas distintas.\nEntre os métodos clássicos de descrição de textura destacam-se matrizes de coocorrência, filtros estatísticos e medidas baseadas em frequência.",
+    "section": "9.9 Descritores de Textura",
+    "text": "9.9 Descritores de Textura\nDescritores de textura capturam padrões locais de variação de intensidade dentro de uma região. Esses descritores são úteis para diferenciar objetos com formas semelhantes, mas texturas distintas.\nEntre os métodos clássicos de descrição de textura destacam-se matrizes de coocorrência, filtros estatísticos e medidas baseadas em frequência.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
@@ -843,8 +863,8 @@
     "objectID": "chapters/representacao.html#normalização-e-invariância",
     "href": "chapters/representacao.html#normalização-e-invariância",
     "title": "9  Representação e Descrição de Imagens",
-    "section": "9.8 Normalização e Invariância",
-    "text": "9.8 Normalização e Invariância\nPara que descritores sejam eficazes em sistemas de reconhecimento, é desejável que sejam invariantes a transformações irrelevantes, como mudanças de posição, orientação ou escala.\nTécnicas de normalização são frequentemente aplicadas para garantir comparabilidade entre objetos extraídos de imagens diferentes.",
+    "section": "9.10 Normalização e Invariância",
+    "text": "9.10 Normalização e Invariância\nPara que descritores sejam eficazes em sistemas de reconhecimento, é desejável que sejam invariantes a transformações irrelevantes, como mudanças de posição, orientação ou escala.\nTécnicas de normalização são frequentemente aplicadas para garantir comparabilidade entre objetos extraídos de imagens diferentes.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
@@ -853,8 +873,8 @@
     "objectID": "chapters/representacao.html#aplicações-de-representação-e-descrição",
     "href": "chapters/representacao.html#aplicações-de-representação-e-descrição",
     "title": "9  Representação e Descrição de Imagens",
-    "section": "9.9 Aplicações de Representação e Descrição",
-    "text": "9.9 Aplicações de Representação e Descrição\nA representação e a descrição de imagens são etapas fundamentais em aplicações como:\n\nreconhecimento de padrões;\nclassificação de objetos;\nanálise de formas;\nvisão computacional em robótica;\nsistemas de inspeção automática.\n\nA qualidade dos descritores influencia diretamente o desempenho dessas aplicações.",
+    "section": "9.11 Aplicações de Representação e Descrição",
+    "text": "9.11 Aplicações de Representação e Descrição\nA representação e a descrição de imagens são etapas fundamentais em aplicações como:\n\nreconhecimento de padrões;\nclassificação de objetos;\nanálise de formas;\nvisão computacional em robótica;\nsistemas de inspeção automática.\n\nA qualidade dos descritores influencia diretamente o desempenho dessas aplicações.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
@@ -863,8 +883,8 @@
     "objectID": "chapters/representacao.html#considerações-finais",
     "href": "chapters/representacao.html#considerações-finais",
     "title": "9  Representação e Descrição de Imagens",
-    "section": "9.10 Considerações Finais",
-    "text": "9.10 Considerações Finais\nA representação e a descrição de imagens constituem o elo entre a segmentação e o reconhecimento de padrões. A escolha adequada de representações e descritores é essencial para capturar as características relevantes dos objetos e garantir o sucesso das etapas posteriores.\nOs conceitos apresentados neste capítulo fornecem uma base sólida para o estudo de técnicas avançadas de análise de imagens e aprendizado de máquina aplicado à visão computacional.",
+    "section": "9.12 Considerações Finais",
+    "text": "9.12 Considerações Finais\nA representação e a descrição de imagens constituem o elo entre a segmentação e o reconhecimento de padrões. A escolha adequada de representações e descritores é essencial para capturar as características relevantes dos objetos e garantir o sucesso das etapas posteriores.\nOs conceitos apresentados neste capítulo fornecem uma base sólida para o estudo de técnicas avançadas de análise de imagens e aprendizado de máquina aplicado à visão computacional.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Representação e Descrição de Imagens</span>"
     ]
