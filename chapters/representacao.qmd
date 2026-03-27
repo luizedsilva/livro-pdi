@@ -3,9 +3,185 @@
 
 ![](/chapters/imgs/representa.png){fig-align="center" width="60%"}
 
-Após a segmentação, o próximo passo em um sistema de Processamento Digital de Imagens consiste em **representar** e **descrever** as regiões ou objetos identificados. Enquanto a segmentação define *onde* estão os objetos, a representação e a descrição determinam *como* esses objetos serão caracterizados para análise posterior, classificação ou reconhecimento.
+Após a etapa de segmentação, em que a imagem é particionada em regiões de interesse, inicia-se uma fase fundamental no processamento digital de imagens: a **representação e descrição** dessas regiões. Nesse momento, os conjuntos de pixels identificados deixam de ser apenas agrupamentos e passam a ser organizados em formatos que permitam sua análise, interpretação e uso em etapas posteriores, como reconhecimento de padrões e classificação.
 
-Este capítulo aborda os conceitos fundamentais de representação e descrição de imagens, apresentando técnicas clássicas utilizadas para extrair características relevantes de regiões segmentadas.
+A **representação** de uma região pode ser realizada de duas formas principais, dependendo do tipo de informação que se deseja extrair:
+
+* **Características externas (fronteira):**
+  Nesse caso, a região é descrita a partir de seus contornos. Essa abordagem é especialmente útil quando o interesse está na **forma** ou na **geometria** do objeto, como em aplicações de reconhecimento de objetos, análise de silhuetas ou identificação de estruturas.
+
+* **Características internas (região):**
+  Aqui, considera-se o conjunto de pixels que compõem a região. Essa forma de representação é mais adequada quando o foco está em propriedades como **cor**, **textura** ou **intensidade**, sendo amplamente utilizada em tarefas de análise de superfícies e classificação baseada em atributos internos.
+
+Uma vez definida a forma de representação, a etapa seguinte consiste na **descrição** da região. Nessa fase, são extraídas medidas quantitativas — também chamadas de **descritores** — que sintetizam as características relevantes do objeto. Esses descritores podem incluir informações como área, perímetro, momentos, compacidade, histogramas de intensidade, entre outros.
+
+Assim, a representação fornece a estrutura necessária para organizar os dados da região, enquanto a descrição transforma essa estrutura em informações úteis e comparáveis, permitindo que o sistema tome decisões de forma automática e eficiente.
+
+## Descrição de Imagens
+
+Na etapa de descrição, é fundamental que as características escolhidas como **descritores** sejam **robustas** frente a variações comuns que podem ocorrer na imagem. Entre essas variações estão mudanças de **escala (tamanho)**, **rotação** e **translação (posição)** do objeto. Em outras palavras, bons descritores devem representar o objeto de forma consistente, independentemente de como ele aparece na imagem. Essa propriedade é essencial para garantir que o mesmo objeto seja reconhecido corretamente em diferentes condições.
+
+Nesse contexto, busca-se extrair **assinaturas da imagem**, isto é, representações compactas e distintivas que caracterizem de maneira única uma região ou objeto. Essas assinaturas devem capturar as propriedades mais relevantes, reduzindo a quantidade de dados sem perder informações importantes para a análise.
+
+Um dos esquemas clássicos de representação de fronteira é o **Código da Cadeia (Chain Code)**. Esse método descreve o contorno de um objeto por meio de uma sequência de direções, gerada a partir da análise da conectividade entre pixels adjacentes. Essa conectividade pode ser definida de duas formas:
+
+* **Conectividade-4:** considera apenas os vizinhos nas direções horizontal e vertical.
+* **Conectividade-8:** inclui também os vizinhos diagonais, permitindo uma representação mais detalhada da fronteira.
+
+A ideia central do código da cadeia é percorrer a borda do objeto e registrar, a cada passo, a direção do próximo pixel pertencente ao contorno. O resultado é uma sequência (cadeia) de números que codifica toda a forma da fronteira.
+
+Apesar de sua simplicidade e eficiência, essa técnica apresenta algumas limitações importantes:
+
+* A cadeia gerada pode ser **bastante longa**, especialmente para objetos com contornos complexos.
+* O método é **sensível a ruídos**: pequenas irregularidades na fronteira podem causar grandes variações na sequência gerada.
+* A representação **depende do ponto inicial** escolhido para iniciar o percurso, o que pode levar a diferentes códigos para o mesmo objeto.
+
+Devido a essas limitações, o código da cadeia é frequentemente complementado ou transformado (por exemplo, usando formas normalizadas ou diferenciais) para torná-lo mais robusto e adequado a aplicações práticas.
+
+## Código de Cadeia
+
+O **código de cadeia (chain code)** é uma técnica clássica para representação de fronteiras em imagens binárias. Ele descreve o contorno de um objeto por meio de uma sequência de direções, obtida ao percorrer, de forma ordenada, os pixels que compõem sua borda. Essa abordagem permite transformar uma estrutura bidimensional (a forma do objeto) em uma representação unidimensional (uma sequência numérica), facilitando a análise e comparação de formas.
+
+### Representação direcional
+
+![Código de Cadeia](/imgs/cap9/codigocadeia.png)
+
+A construção do código de cadeia baseia-se na definição de uma vizinhança entre pixels. Existem duas formas principais:
+
+* **Código de cadeia 4-direcional:** considera apenas os vizinhos nas direções horizontal e vertical.
+* **Código de cadeia 8-direcional:** inclui também as direções diagonais, permitindo uma representação mais fiel da geometria da fronteira.
+
+No caso 8-direcional, cada movimento entre pixels adjacentes é representado por um número de 0 a 7, indicando a direção do deslocamento. Assim, ao percorrer o contorno de um objeto, obtém-se uma sequência de números que descreve completamente sua forma.
+
+### Exemplo de código de cadeia
+
+![Código de Cadeia](/imgs/cap9/dois.png){width="60%" fig-align="center" #fig-dois}
+
+Considere um objeto cuja fronteira foi percorrida a partir de um pixel inicial (indicado por uma seta). O código de cadeia obtido pode ser representado por uma sequência como:
+
+```
+000077665555556600000006444444442221111112234445652211
+```
+
+Cada dígito dessa sequência indica a direção do próximo passo ao longo do contorno. Dessa forma, toda a geometria da borda do objeto é codificada em uma única cadeia de valores inteiros.
+
+
+### Dependência do ponto inicial
+
+Uma característica importante do código de cadeia é que ele **depende do ponto inicial escolhido** para iniciar o rastreamento do contorno. Diferentes pontos de partida podem gerar sequências distintas para o mesmo objeto, embora todas representem a mesma forma.
+
+Para contornar esse problema, pode-se realizar uma **normalização do código da cadeia**. Uma abordagem comum consiste em considerar todas as rotações possíveis da sequência e selecionar aquela que corresponde ao **menor valor inteiro** (interpretação lexicográfica). Aplicando esse procedimento ao exemplo anterior, obtém-se:
+
+```
+000000064444444422211111122344456522110000776655555566
+```
+
+Essa forma normalizada torna o descritor **invariante à escolha do ponto inicial**, permitindo comparações mais robustas entre diferentes objetos.
+
+### Contexto na representação e descrição
+
+O código de cadeia está inserido no conjunto de técnicas de **representação e descrição de formas**, ao lado de outros métodos como:
+
+* aproximação poligonal
+* assinaturas de forma
+* esqueletização
+* descritores de região
+* análise de textura
+
+Dentro desse contexto, o código de cadeia destaca-se por sua simplicidade e capacidade de capturar detalhes da fronteira. No entanto, ele também apresenta limitações, como sensibilidade a ruídos e variações locais no contorno, o que pode exigir etapas adicionais de suavização ou simplificação.
+
+
+### Algoritmo de Rastreamento de Contorno (Chain Code)
+
+O código de cadeia é construído a partir de um contorno. O algoritmo de rastreamento de contorno (da @lst-contorno) tem como objetivo percorrer a fronteira de um objeto binário, identificando todos os pixels pertencentes ao seu contorno de forma ordenada. A seguir, apresenta-se uma versão estruturada e detalhada do procedimento:
+
+:::{#lst-contorno}
+```{.c}
+Algoritmo RastreamentoContorno(I, C)
+
+Entrada:  imagem binária I[altura][largura]
+Saída:    lista de pontos do contorno C
+
+/* Passo 1 — Encontrar ponto inicial b0 */
+encontrado = 0;
+for (y = 0; y < altura; y++) {
+    for (x = 0; x < largura; x++) {
+        if (I[y][x] == 1) {
+            b0 = (x, y);
+            encontrado = 1;
+            break;
+        }
+    }
+    if (encontrado == 1)
+        break;
+}
+
+/* Definir vizinho inicial (oeste) */
+c0 = (b0.x - 1, b0.y);
+
+/* Encontrar b1 */
+b = b0;
+c = c0;
+for (k = 0; k < 8; k++) {
+    nk = vizinho8(b, c, k);   // vizinhos no sentido horário a partir de c
+    if (I[nk.y][nk.x] == 1) {
+        b1 = nk;
+        c1 = vizinhoAnterior(b, nk);
+        break;
+    }
+}
+
+/* Inicialização */
+b = b1;
+c = c1;
+adicionar b0 à lista C;
+adicionar b1 à lista C;
+
+/* Passos 3–5 — Rastreamento */
+while (b != b0 || prox != b1) {
+
+    for (k = 0; k < 8; k++) {
+        nk = vizinho8(b, c, k);
+        if (I[nk.y][nk.x] == 1) {
+            prox = nk;
+            ant  = vizinhoAnterior(b, nk);
+            break;
+        }
+    }
+
+    b = prox;
+    c = ant;
+    adicionar b à lista C;
+}
+
+/* Resultado */
+retornar C;
+```
+:::
+
+O exemplo interativo seguinte apresenta uma simulação desse algoritmo. A cada passo são apresentados os pixels do contorno que são visitados, o valor de k (direção) e o código de cadeia.
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/hE39MhMXE" width="100%" height="600" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+![](/imgs/cap3/p5js-distance.png){width="60%" fig-align="center"}
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/hE39MhMXE>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/hE39MhMXE width=100 height=100 pdfheight=3cm >}}
+:::
+::::
 
 ## Representação de Regiões
 
