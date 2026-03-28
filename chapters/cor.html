@@ -203,7 +203,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/interpretacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -240,12 +240,12 @@ window.Quarto = {
   <li><a href="#modelo-de-cor-cmy-e-cmyk" id="toc-modelo-de-cor-cmy-e-cmyk" class="nav-link" data-scroll-target="#modelo-de-cor-cmy-e-cmyk"><span class="header-section-number">6.4</span> Modelo de Cor CMY e CMYK</a></li>
   <li><a href="#modelo-de-cor-hsv" id="toc-modelo-de-cor-hsv" class="nav-link" data-scroll-target="#modelo-de-cor-hsv"><span class="header-section-number">6.5</span> Modelo de Cor HSV</a>
   <ul class="collapse">
-  <li><a href="#interpretação-geométrica" id="toc-interpretação-geométrica" class="nav-link" data-scroll-target="#interpretação-geométrica"><span class="header-section-number">6.5.1</span> Interpretação geométrica</a></li>
-  <li><a href="#conversão-de-rgb-para-hsv" id="toc-conversão-de-rgb-para-hsv" class="nav-link" data-scroll-target="#conversão-de-rgb-para-hsv"><span class="header-section-number">6.5.2</span> Conversão de RGB para HSV</a></li>
+  <li><a href="#interpretação-geométrica" id="toc-interpretação-geométrica" class="nav-link" data-scroll-target="#interpretação-geométrica">Interpretação geométrica</a></li>
+  <li><a href="#conversão-de-rgb-para-hsv" id="toc-conversão-de-rgb-para-hsv" class="nav-link" data-scroll-target="#conversão-de-rgb-para-hsv">Conversão de RGB para HSV</a></li>
   </ul></li>
   <li><a href="#modelo-de-cor-hsi" id="toc-modelo-de-cor-hsi" class="nav-link" data-scroll-target="#modelo-de-cor-hsi"><span class="header-section-number">6.6</span> Modelo de Cor HSI</a>
   <ul class="collapse">
-  <li><a href="#conversão-de-rgb-para-hsi" id="toc-conversão-de-rgb-para-hsi" class="nav-link" data-scroll-target="#conversão-de-rgb-para-hsi"><span class="header-section-number">6.6.1</span> Conversão de RGB para HSI</a></li>
+  <li><a href="#conversão-de-rgb-para-hsi" id="toc-conversão-de-rgb-para-hsi" class="nav-link" data-scroll-target="#conversão-de-rgb-para-hsi">Conversão de RGB para HSI</a></li>
   </ul></li>
   <li><a href="#representação-de-imagens-coloridas" id="toc-representação-de-imagens-coloridas" class="nav-link" data-scroll-target="#representação-de-imagens-coloridas"><span class="header-section-number">6.7</span> Representação de Imagens Coloridas</a></li>
   <li><a href="#aplicações-de-imagens-coloridas" id="toc-aplicações-de-imagens-coloridas" class="nav-link" data-scroll-target="#aplicações-de-imagens-coloridas"><span class="header-section-number">6.8</span> Aplicações de Imagens Coloridas</a></li>
@@ -340,8 +340,8 @@ C = 1 - R, \quad M = 1 - G, \quad Y = 1 - B
 <!-- Conteúdo interativo (HTML) -->
 <iframe src="https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0" width="100%" height="550" style="border:none; overflow:hiddeln;">
 </iframe>
-<section id="interpretação-geométrica" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="interpretação-geométrica"><span class="header-section-number">6.5.1</span> Interpretação geométrica</h3>
+<section id="interpretação-geométrica" class="level3">
+<h3 class="anchored" data-anchor-id="interpretação-geométrica">Interpretação geométrica</h3>
 <ul>
 <li>O <strong>eixo vertical (V)</strong> vai do preto até as cores mais brilhantes.</li>
 <li>A <strong>saturação (S)</strong> é a distância radial em relação ao eixo central.</li>
@@ -349,8 +349,8 @@ C = 1 - R, \quad M = 1 - G, \quad Y = 1 - B
 </ul>
 <p>Dessa forma, o modelo HSV pode ser visualizado como um conjunto de “discos” empilhados: cada disco corresponde a um valor de brilho, e dentro de cada disco as cores variam em matiz e saturação.</p>
 </section>
-<section id="conversão-de-rgb-para-hsv" class="level3" data-number="6.5.2">
-<h3 data-number="6.5.2" class="anchored" data-anchor-id="conversão-de-rgb-para-hsv"><span class="header-section-number">6.5.2</span> Conversão de RGB para HSV</h3>
+<section id="conversão-de-rgb-para-hsv" class="level3">
+<h3 class="anchored" data-anchor-id="conversão-de-rgb-para-hsv">Conversão de RGB para HSV</h3>
 <p>Com os valores dos componentes de cor R, G e B, definidas no intervalo entre 0 e 1, o modelo HSV pode ser calculado através das seguintes equações:</p>
 <p><span class="math display">\[
 H = \left\{  
@@ -392,8 +392,8 @@ V = MAX
 <figcaption>Modelo HSI</figcaption>
 </figure>
 </div>
-<section id="conversão-de-rgb-para-hsi" class="level3" data-number="6.6.1">
-<h3 data-number="6.6.1" class="anchored" data-anchor-id="conversão-de-rgb-para-hsi"><span class="header-section-number">6.6.1</span> Conversão de RGB para HSI</h3>
+<section id="conversão-de-rgb-para-hsi" class="level3">
+<h3 class="anchored" data-anchor-id="conversão-de-rgb-para-hsi">Conversão de RGB para HSI</h3>
 <p>Considere uma cor no modelo RGB com componentes normalizadas no intervalo <span class="math inline">\([0,1]\)</span>, ou seja, <span class="math inline">\(R\)</span>, <span class="math inline">\(G\)</span> e <span class="math inline">\(B\)</span>.</p>
 <p><span class="math display">\[
 H = \left\{  \begin{array}{ll}

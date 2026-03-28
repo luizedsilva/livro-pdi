@@ -238,7 +238,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/interpretacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -269,30 +269,29 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#descrição-de-imagens" id="toc-descrição-de-imagens" class="nav-link active" data-scroll-target="#descrição-de-imagens"><span class="header-section-number">9.1</span> Descrição de Imagens</a></li>
-  <li><a href="#código-de-cadeia" id="toc-código-de-cadeia" class="nav-link" data-scroll-target="#código-de-cadeia"><span class="header-section-number">9.2</span> Código de Cadeia</a>
+  <li><a href="#código-de-cadeia" id="toc-código-de-cadeia" class="nav-link active" data-scroll-target="#código-de-cadeia"><span class="header-section-number">9.1</span> Código de Cadeia</a>
   <ul class="collapse">
-  <li><a href="#representação-direcional" id="toc-representação-direcional" class="nav-link" data-scroll-target="#representação-direcional"><span class="header-section-number">9.2.1</span> Representação direcional</a></li>
-  <li><a href="#exemplo-de-código-de-cadeia" id="toc-exemplo-de-código-de-cadeia" class="nav-link" data-scroll-target="#exemplo-de-código-de-cadeia"><span class="header-section-number">9.2.2</span> Exemplo de código de cadeia</a></li>
-  <li><a href="#dependência-do-ponto-inicial" id="toc-dependência-do-ponto-inicial" class="nav-link" data-scroll-target="#dependência-do-ponto-inicial"><span class="header-section-number">9.2.3</span> Dependência do ponto inicial</a></li>
-  <li><a href="#algoritmo-de-rastreamento-de-contorno-chain-code" id="toc-algoritmo-de-rastreamento-de-contorno-chain-code" class="nav-link" data-scroll-target="#algoritmo-de-rastreamento-de-contorno-chain-code"><span class="header-section-number">9.2.4</span> Algoritmo de Rastreamento de Contorno (Chain Code)</a></li>
+  <li><a href="#representação-direcional" id="toc-representação-direcional" class="nav-link" data-scroll-target="#representação-direcional">Representação direcional</a></li>
+  <li><a href="#exemplo-de-código-de-cadeia" id="toc-exemplo-de-código-de-cadeia" class="nav-link" data-scroll-target="#exemplo-de-código-de-cadeia">Exemplo de código de cadeia</a></li>
+  <li><a href="#dependência-do-ponto-inicial" id="toc-dependência-do-ponto-inicial" class="nav-link" data-scroll-target="#dependência-do-ponto-inicial">Dependência do ponto inicial</a></li>
+  <li><a href="#algoritmo-de-rastreamento-de-contorno-chain-code" id="toc-algoritmo-de-rastreamento-de-contorno-chain-code" class="nav-link" data-scroll-target="#algoritmo-de-rastreamento-de-contorno-chain-code">Algoritmo de Rastreamento de Contorno (Chain Code)</a></li>
   </ul></li>
-  <li><a href="#aproximação-poligonal" id="toc-aproximação-poligonal" class="nav-link" data-scroll-target="#aproximação-poligonal"><span class="header-section-number">9.3</span> Aproximação Poligonal</a>
+  <li><a href="#aproximação-poligonal" id="toc-aproximação-poligonal" class="nav-link" data-scroll-target="#aproximação-poligonal"><span class="header-section-number">9.2</span> Aproximação Poligonal</a>
   <ul class="collapse">
-  <li><a href="#conceito-geral" id="toc-conceito-geral" class="nav-link" data-scroll-target="#conceito-geral"><span class="header-section-number">9.3.1</span> Conceito Geral</a></li>
-  <li><a href="#principais-métodos" id="toc-principais-métodos" class="nav-link" data-scroll-target="#principais-métodos"><span class="header-section-number">9.3.2</span> Principais Métodos</a></li>
-  <li><a href="#critérios-de-qualidade" id="toc-critérios-de-qualidade" class="nav-link" data-scroll-target="#critérios-de-qualidade"><span class="header-section-number">9.3.3</span> Critérios de Qualidade</a></li>
-  <li><a href="#aplicações" id="toc-aplicações" class="nav-link" data-scroll-target="#aplicações"><span class="header-section-number">9.3.4</span> Aplicações</a></li>
-  <li><a href="#considerações-práticas" id="toc-considerações-práticas" class="nav-link" data-scroll-target="#considerações-práticas"><span class="header-section-number">9.3.5</span> Considerações Práticas</a></li>
+  <li><a href="#conceito-geral" id="toc-conceito-geral" class="nav-link" data-scroll-target="#conceito-geral">Conceito Geral</a></li>
+  <li><a href="#principais-métodos" id="toc-principais-métodos" class="nav-link" data-scroll-target="#principais-métodos">Principais Métodos</a></li>
+  <li><a href="#critérios-de-qualidade" id="toc-critérios-de-qualidade" class="nav-link" data-scroll-target="#critérios-de-qualidade">Critérios de Qualidade</a></li>
+  <li><a href="#aplicações" id="toc-aplicações" class="nav-link" data-scroll-target="#aplicações">Aplicações</a></li>
+  <li><a href="#considerações-práticas" id="toc-considerações-práticas" class="nav-link" data-scroll-target="#considerações-práticas">Considerações Práticas</a></li>
   </ul></li>
-  <li><a href="#assinatura-da-forma" id="toc-assinatura-da-forma" class="nav-link" data-scroll-target="#assinatura-da-forma"><span class="header-section-number">9.4</span> Assinatura da forma</a></li>
-  <li><a href="#esqueletização" id="toc-esqueletização" class="nav-link" data-scroll-target="#esqueletização"><span class="header-section-number">9.5</span> Esqueletização</a></li>
-  <li><a href="#descritores-de-região" id="toc-descritores-de-região" class="nav-link" data-scroll-target="#descritores-de-região"><span class="header-section-number">9.6</span> Descritores de Região</a></li>
-  <li><a href="#descritores-de-textura" id="toc-descritores-de-textura" class="nav-link" data-scroll-target="#descritores-de-textura"><span class="header-section-number">9.7</span> Descritores de Textura</a>
+  <li><a href="#assinatura-da-forma" id="toc-assinatura-da-forma" class="nav-link" data-scroll-target="#assinatura-da-forma"><span class="header-section-number">9.3</span> Assinatura da forma</a></li>
+  <li><a href="#esqueletização" id="toc-esqueletização" class="nav-link" data-scroll-target="#esqueletização"><span class="header-section-number">9.4</span> Esqueletização</a></li>
+  <li><a href="#descritores-de-região" id="toc-descritores-de-região" class="nav-link" data-scroll-target="#descritores-de-região"><span class="header-section-number">9.5</span> Descritores de Região</a></li>
+  <li><a href="#descritores-de-textura" id="toc-descritores-de-textura" class="nav-link" data-scroll-target="#descritores-de-textura"><span class="header-section-number">9.6</span> Descritores de Textura</a>
   <ul class="collapse">
-  <li><a href="#matrizes-de-coocorrência-e-matriz-de-diferença" id="toc-matrizes-de-coocorrência-e-matriz-de-diferença" class="nav-link" data-scroll-target="#matrizes-de-coocorrência-e-matriz-de-diferença"><span class="header-section-number">9.7.1</span> Matrizes de Coocorrência e Matriz de diferença</a></li>
+  <li><a href="#matrizes-de-coocorrência-e-matriz-de-diferença" id="toc-matrizes-de-coocorrência-e-matriz-de-diferença" class="nav-link" data-scroll-target="#matrizes-de-coocorrência-e-matriz-de-diferença">Matrizes de Coocorrência e Matriz de diferença</a></li>
   </ul></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">9.8</span> Considerações Finais</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">9.7</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -331,8 +330,6 @@ window.Quarto = {
 </ul>
 <p>Uma vez definida a forma de representação, a etapa seguinte consiste na <strong>descrição</strong> da região. Nessa fase, são extraídas medidas quantitativas — também chamadas de <strong>descritores</strong> — que sintetizam as características relevantes do objeto. Esses descritores podem incluir informações como área, perímetro, momentos, compacidade, histogramas de intensidade, entre outros.</p>
 <p>Assim, a representação fornece a estrutura necessária para organizar os dados da região, enquanto a descrição transforma essa estrutura em informações úteis e comparáveis, permitindo que o sistema tome decisões de forma automática e eficiente.</p>
-<section id="descrição-de-imagens" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="descrição-de-imagens"><span class="header-section-number">9.1</span> Descrição de Imagens</h2>
 <p>Na etapa de descrição, é fundamental que as características escolhidas como <strong>descritores</strong> sejam <strong>robustas</strong> frente a variações comuns que podem ocorrer na imagem. Entre essas variações estão mudanças de <strong>escala (tamanho)</strong>, <strong>rotação</strong> e <strong>translação (posição)</strong> do objeto. Em outras palavras, bons descritores devem representar o objeto de forma consistente, independentemente de como ele aparece na imagem. Essa propriedade é essencial para garantir que o mesmo objeto seja reconhecido corretamente em diferentes condições.</p>
 <p>A representação e a descrição de formas constituem etapas essenciais no processamento digital de imagens, pois permitem transformar objetos visuais em estruturas organizadas e em conjuntos de características que podem ser analisadas computacionalmente. Para isso, existe um conjunto de técnicas consolidadas, cada uma com abordagens e objetivos específicos, que buscam capturar diferentes aspectos das formas presentes nas imagens.</p>
 <p>Uma das estratégias mais clássicas é o <strong>código de cadeia</strong>, que representa o contorno de um objeto como uma sequência de direções discretas. Essa abordagem é simples e eficiente, sendo especialmente útil para descrever a geometria do contorno de maneira compacta, além de preservar a conectividade entre os pontos.</p>
@@ -341,12 +338,11 @@ window.Quarto = {
 <p>A <strong>esqueletização</strong> (ou <em>skeletonization</em>) busca representar a forma a partir de seu eixo central, preservando a topologia do objeto. O esqueleto reduz a forma a uma estrutura mais simples, composta por linhas finas que mantêm a conectividade e a estrutura global, sendo útil em aplicações como reconhecimento de padrões e análise estrutural.</p>
 <p>Além das abordagens baseadas no contorno, existem os <strong>descritores de região</strong>, que consideram as propriedades internas do objeto, como área, momentos, intensidade e distribuição espacial dos pixels. Esses descritores fornecem uma visão mais global da forma, sendo menos sensíveis a pequenas variações na borda.</p>
 <p>Por fim, a <strong>análise de textura</strong> complementa a descrição ao capturar padrões de variação de intensidade dentro da região. Técnicas como matrizes de coocorrência e filtros permitem identificar características como regularidade, rugosidade e orientação, sendo fundamentais para diferenciar regiões com aparência semelhante, mas com estruturas internas distintas.</p>
-</section>
-<section id="código-de-cadeia" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="código-de-cadeia"><span class="header-section-number">9.2</span> Código de Cadeia</h2>
+<section id="código-de-cadeia" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="código-de-cadeia"><span class="header-section-number">9.1</span> Código de Cadeia</h2>
 <p>O <strong>código de cadeia (chain code)</strong> é uma técnica clássica para representação de fronteiras em imagens binárias. Ele descreve o contorno de um objeto por meio de uma sequência de direções, obtida ao percorrer, de forma ordenada, os pixels que compõem sua borda. Essa abordagem permite transformar uma estrutura bidimensional (a forma do objeto) em uma representação unidimensional (uma sequência numérica), facilitando a análise e comparação de formas.</p>
-<section id="representação-direcional" class="level3" data-number="9.2.1">
-<h3 data-number="9.2.1" class="anchored" data-anchor-id="representação-direcional"><span class="header-section-number">9.2.1</span> Representação direcional</h3>
+<section id="representação-direcional" class="level3">
+<h3 class="anchored" data-anchor-id="representação-direcional">Representação direcional</h3>
 <div id="fig-codigocadeia" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-codigocadeia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -364,8 +360,8 @@ Figura&nbsp;9.1: Código de Cadeia
 </ul>
 <p>No caso 8-direcional, cada movimento entre pixels adjacentes é representado por um número de 0 a 7, indicando a direção do deslocamento. Assim, ao percorrer o contorno de um objeto, obtém-se uma sequência de números que descreve completamente sua forma.</p>
 </section>
-<section id="exemplo-de-código-de-cadeia" class="level3" data-number="9.2.2">
-<h3 data-number="9.2.2" class="anchored" data-anchor-id="exemplo-de-código-de-cadeia"><span class="header-section-number">9.2.2</span> Exemplo de código de cadeia</h3>
+<section id="exemplo-de-código-de-cadeia" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-de-código-de-cadeia">Exemplo de código de cadeia</h3>
 <div id="fig-dois" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -380,15 +376,15 @@ Figura&nbsp;9.2: Código de Cadeia
 <pre><code>000077665555556600000006444444442221111112234445652211</code></pre>
 <p>Cada dígito dessa sequência indica a direção do próximo passo ao longo do contorno. Dessa forma, toda a geometria da borda do objeto é codificada em uma única cadeia de valores inteiros.</p>
 </section>
-<section id="dependência-do-ponto-inicial" class="level3" data-number="9.2.3">
-<h3 data-number="9.2.3" class="anchored" data-anchor-id="dependência-do-ponto-inicial"><span class="header-section-number">9.2.3</span> Dependência do ponto inicial</h3>
+<section id="dependência-do-ponto-inicial" class="level3">
+<h3 class="anchored" data-anchor-id="dependência-do-ponto-inicial">Dependência do ponto inicial</h3>
 <p>Uma característica importante do código de cadeia é que ele <strong>depende do ponto inicial escolhido</strong> para iniciar o rastreamento do contorno. Diferentes pontos de partida podem gerar sequências distintas para o mesmo objeto, embora todas representem a mesma forma.</p>
 <p>Para contornar esse problema, pode-se realizar uma <strong>normalização do código da cadeia</strong>. Uma abordagem comum consiste em considerar todas as rotações possíveis da sequência e selecionar aquela que corresponde ao <strong>menor valor inteiro</strong> (interpretação lexicográfica). Aplicando esse procedimento ao exemplo anterior, obtém-se:</p>
 <pre><code>000000064444444422211111122344456522110000776655555566</code></pre>
 <p>Essa forma normalizada torna o descritor <strong>invariante à escolha do ponto inicial</strong>, permitindo comparações mais robustas entre diferentes objetos.</p>
 </section>
-<section id="algoritmo-de-rastreamento-de-contorno-chain-code" class="level3" data-number="9.2.4">
-<h3 data-number="9.2.4" class="anchored" data-anchor-id="algoritmo-de-rastreamento-de-contorno-chain-code"><span class="header-section-number">9.2.4</span> Algoritmo de Rastreamento de Contorno (Chain Code)</h3>
+<section id="algoritmo-de-rastreamento-de-contorno-chain-code" class="level3">
+<h3 class="anchored" data-anchor-id="algoritmo-de-rastreamento-de-contorno-chain-code">Algoritmo de Rastreamento de Contorno (Chain Code)</h3>
 <p>O código de cadeia é construído a partir de um contorno. O algoritmo de rastreamento de contorno (da <a href="#lst-contorno" class="quarto-xref">Listagem&nbsp;<span>9.1</span></a>) tem como objetivo percorrer a fronteira de um objeto binário, identificando todos os pixels pertencentes ao seu contorno de forma ordenada. A seguir, apresenta-se uma versão estruturada e detalhada do procedimento:</p>
 <div id="lst-contorno" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
@@ -453,11 +449,11 @@ Listagem&nbsp;9.1
 </iframe>
 </section>
 </section>
-<section id="aproximação-poligonal" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="aproximação-poligonal"><span class="header-section-number">9.3</span> Aproximação Poligonal</h2>
+<section id="aproximação-poligonal" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="aproximação-poligonal"><span class="header-section-number">9.2</span> Aproximação Poligonal</h2>
 <p>A <strong>aproximação poligonal</strong> é uma estratégia amplamente utilizada no processamento e análise de imagens para representar formas complexas por meio de uma sequência reduzida de segmentos de reta. Essa abordagem consiste em substituir um contorno detalhado — geralmente composto por muitos pontos — por um polígono que preserva suas características essenciais, ao mesmo tempo em que reduz significativamente a quantidade de dados necessários para sua descrição.</p>
-<section id="conceito-geral" class="level3" data-number="9.3.1">
-<h3 data-number="9.3.1" class="anchored" data-anchor-id="conceito-geral"><span class="header-section-number">9.3.1</span> Conceito Geral</h3>
+<section id="conceito-geral" class="level3">
+<h3 class="anchored" data-anchor-id="conceito-geral">Conceito Geral</h3>
 <p>Considere uma borda extraída de uma imagem (por exemplo, após um processo de segmentação). Essa borda é tipicamente representada como uma lista ordenada de pontos. A aproximação poligonal busca selecionar um subconjunto desses pontos, chamados <strong>vértices dominantes</strong>, de modo que a conexão entre eles forme uma representação simplificada da forma original.</p>
 <p>Essa simplificação deve equilibrar dois objetivos principais:</p>
 <ul>
@@ -465,8 +461,8 @@ Listagem&nbsp;9.1
 <li><strong>Fidelidade geométrica</strong>: manter a forma resultante o mais próxima possível da original.</li>
 </ul>
 </section>
-<section id="principais-métodos" class="level3" data-number="9.3.2">
-<h3 data-number="9.3.2" class="anchored" data-anchor-id="principais-métodos"><span class="header-section-number">9.3.2</span> Principais Métodos</h3>
+<section id="principais-métodos" class="level3">
+<h3 class="anchored" data-anchor-id="principais-métodos">Principais Métodos</h3>
 <p>Diversos algoritmos podem ser utilizados para realizar a aproximação poligonal. Entre os mais conhecidos, destaca-se o Algoritmo de Douglas-Peucker.</p>
 <section id="algoritmo-de-douglas-peucker" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="algoritmo-de-douglas-peucker">Algoritmo de Douglas-Peucker</h4>
@@ -484,15 +480,15 @@ Listagem&nbsp;9.1
 </iframe>
 </section>
 </section>
-<section id="critérios-de-qualidade" class="level3" data-number="9.3.3">
-<h3 data-number="9.3.3" class="anchored" data-anchor-id="critérios-de-qualidade"><span class="header-section-number">9.3.3</span> Critérios de Qualidade</h3>
+<section id="critérios-de-qualidade" class="level3">
+<h3 class="anchored" data-anchor-id="critérios-de-qualidade">Critérios de Qualidade</h3>
 <p>A avaliação de uma aproximação poligonal baseia-se em critérios que buscam equilibrar a qualidade da representação com a eficiência computacional. Um dos principais aspectos considerados é o <strong>erro de aproximação</strong>, que mede o quanto o polígono simplificado se afasta do contorno original. Esse erro pode ser definido, por exemplo, como a distância máxima ou média entre os pontos do contorno original e os segmentos do polígono. Quanto menor esse erro, maior a fidelidade da representação, o que é especialmente importante em aplicações que exigem alta precisão geométrica.</p>
 <p>Outro fator relevante é o <strong>número de vértices</strong> utilizados na representação. A redução da quantidade de pontos é justamente um dos objetivos centrais da aproximação poligonal, pois impacta diretamente na eficiência de armazenamento, transmissão e processamento dos dados. No entanto, uma simplificação excessiva — com poucos vértices — pode comprometer significativamente a forma original, eliminando detalhes importantes. Assim, é necessário encontrar um número adequado de vértices que permita representar a forma de maneira compacta, mas ainda informativa.</p>
 <p>Além disso, deve-se considerar a <strong>preservação de características geométricas</strong> relevantes, como cantos, concavidades e convexidades. Esses elementos frequentemente carregam informações essenciais sobre a estrutura da forma e são fundamentais em tarefas como reconhecimento de objetos e análise de padrões. Uma boa aproximação poligonal deve garantir que essas características sejam mantidas, mesmo que outros detalhes menos significativos sejam descartados.</p>
 <p>Dessa forma, observa-se que existe sempre um compromisso entre simplicidade e precisão. Representações mais simples tendem a ser mais eficientes, porém menos fiéis, enquanto representações mais detalhadas aumentam a precisão ao custo de maior complexidade. A escolha do nível de aproximação ideal depende, portanto, dos requisitos específicos da aplicação em questão, exigindo um equilíbrio cuidadoso entre esses dois objetivos.</p>
 </section>
-<section id="aplicações" class="level3" data-number="9.3.4">
-<h3 data-number="9.3.4" class="anchored" data-anchor-id="aplicações"><span class="header-section-number">9.3.4</span> Aplicações</h3>
+<section id="aplicações" class="level3">
+<h3 class="anchored" data-anchor-id="aplicações">Aplicações</h3>
 <p>A aproximação poligonal é utilizada em diversas áreas do processamento de imagens e visão computacional:</p>
 <ul>
 <li><strong>Compressão de formas</strong>: reduz a quantidade de dados armazenados;</li>
@@ -501,15 +497,15 @@ Listagem&nbsp;9.1
 <li><strong>Modelagem geométrica</strong>: representação de objetos em sistemas gráficos.</li>
 </ul>
 </section>
-<section id="considerações-práticas" class="level3" data-number="9.3.5">
-<h3 data-number="9.3.5" class="anchored" data-anchor-id="considerações-práticas"><span class="header-section-number">9.3.5</span> Considerações Práticas</h3>
+<section id="considerações-práticas" class="level3">
+<h3 class="anchored" data-anchor-id="considerações-práticas">Considerações Práticas</h3>
 <p>Na prática, a escolha do método de aproximação poligonal e de seus parâmetros — em especial o limiar <span class="math inline">\(\varepsilon\)</span> — está diretamente relacionada à finalidade da aplicação. Esse parâmetro controla o grau máximo de desvio permitido entre o contorno original e a representação simplificada, influenciando de forma decisiva o resultado final. Assim, diferentes contextos exigem diferentes configurações, dependendo do nível de detalhe necessário e das restrições de processamento.</p>
 <p>Quando se utilizam valores pequenos de <span class="math inline">\(\varepsilon\)</span>, a aproximação tende a ser mais fiel ao contorno original, preservando melhor suas variações e detalhes geométricos. Nesse caso, um maior número de vértices é mantido, o que resulta em uma representação mais precisa, porém mais complexa. Por outro lado, ao adotar valores maiores de <span class="math inline">\(\varepsilon\)</span>, o algoritmo permite desvios mais significativos, o que leva a uma simplificação mais agressiva do contorno. Consequentemente, o número de vértices diminui, tornando a representação mais compacta, porém com perda de precisão.</p>
 <p>Além da escolha do parâmetro <span class="math inline">\(\varepsilon\)</span>, é importante considerar a influência de ruídos presentes no contorno. Irregularidades decorrentes de processos de aquisição ou segmentação podem introduzir variações indesejadas que afetam negativamente a aproximação poligonal, levando à preservação de pontos irrelevantes ou à distorção da forma simplificada. Por essa razão, é comum aplicar previamente técnicas de suavização, como filtros ou operações morfológicas, com o objetivo de reduzir esses ruídos e obter uma representação mais estável e coerente do contorno antes da simplificação.</p>
 </section>
 </section>
-<section id="assinatura-da-forma" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="assinatura-da-forma"><span class="header-section-number">9.4</span> Assinatura da forma</h2>
+<section id="assinatura-da-forma" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="assinatura-da-forma"><span class="header-section-number">9.3</span> Assinatura da forma</h2>
 <p>A <strong>assinatura da forma</strong> é uma técnica de representação amplamente utilizada no processamento digital de imagens para descrever contornos de objetos de maneira compacta e informativa. Em vez de armazenar todos os pontos do contorno — o que pode ser redundante e custoso — a assinatura transforma a forma em uma função unidimensional, geralmente definida em termos de um parâmetro angular. Essa abordagem reduz a complexidade da representação, ao mesmo tempo em que preserva características essenciais da geometria do objeto.</p>
 <p>Uma das formas mais comuns de definir a assinatura consiste em considerar a distância entre um ponto de referência interno — tipicamente o centroide — e os pontos do contorno, em função do ângulo $ $. Assim, obtém-se uma função $ r() $, que indica o raio da forma em cada direção. Essa representação permite capturar variações na forma de maneira contínua: regiões mais distantes do centro resultam em valores maiores de $ r() $, enquanto regiões mais próximas produzem valores menores. Dessa forma, o comportamento da função reflete diretamente a estrutura geométrica do objeto.</p>
 <p>A assinatura da forma possui propriedades importantes que a tornam especialmente útil em aplicações de análise e reconhecimento. Por exemplo, a periodicidade da função está relacionada à simetria da forma, enquanto picos e vales indicam a presença de vértices, concavidades ou convexidades. Além disso, a assinatura pode ser normalizada para obter invariância a transformações como translação, escala e rotação, o que é fundamental em sistemas de reconhecimento de padrões, onde diferentes instâncias de um mesmo objeto podem aparecer em posições e tamanhos variados.</p>
@@ -521,12 +517,12 @@ Listagem&nbsp;9.1
 <iframe src="https://editor.p5js.org/luizedsilva/full/KF3cqn6rT" width="100%" height="600" style="border:none; overflow:hiddeln;">
 </iframe>
 </section>
-<section id="esqueletização" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="esqueletização"><span class="header-section-number">9.5</span> Esqueletização</h2>
+<section id="esqueletização" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="esqueletização"><span class="header-section-number">9.4</span> Esqueletização</h2>
 <p>A <strong>esqueletização</strong> é uma técnica de representação de formas que busca reduzir uma região a uma estrutura central, fina e conectada, preservando sua topologia e características essenciais. O resultado, conhecido como <strong>esqueleto</strong> (<em>skeleton</em>), pode ser interpretado como o conjunto de pontos equidistantes das bordas do objeto, funcionando como um eixo medial que descreve sua estrutura interna. Essa representação é especialmente útil por manter informações importantes, como conectividade e ramificações, ao mesmo tempo em que reduz significativamente a quantidade de dados. No contexto deste capítulo, a esqueletização pode ser relacionada diretamente à abordagem apresentada na morfologia matemática por meio da operação de <strong>afinamento morfológico</strong> (<em>thinning</em>). O afinamento consiste na remoção iterativa de pixels da borda, sob condições específicas, até que a forma seja reduzida a linhas de espessura unitária, sem quebrar sua conectividade. Dessa forma, o esqueleto obtido por afinamento pode ser visto como uma implementação prática da esqueletização, destacando como operações morfológicas fornecem uma base sólida e eficiente para a representação estrutural de formas em imagens digitais.</p>
 </section>
-<section id="descritores-de-região" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="descritores-de-região"><span class="header-section-number">9.6</span> Descritores de Região</h2>
+<section id="descritores-de-região" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="descritores-de-região"><span class="header-section-number">9.5</span> Descritores de Região</h2>
 <p>Os <strong>descritores de regiões</strong> constituem uma classe importante de técnicas no processamento digital de imagens voltadas à caracterização de objetos a partir de suas áreas internas, e não apenas de seus contornos. Diferentemente dos descritores de borda, que se concentram na forma externa, os descritores de regiões exploram propriedades globais e estatísticas dos pixels que compõem o interior de uma região segmentada, permitindo uma representação mais completa e robusta do objeto.</p>
 <p>Uma das características fundamentais dos descritores de regiões é sua capacidade de capturar <strong>propriedades geométricas globais</strong>, como área, perímetro, compacidade, excentricidade e orientação. A área, por exemplo, corresponde ao número de pixels pertencentes à região, enquanto a compacidade relaciona área e perímetro para indicar o quão “compacta” ou irregular é a forma. Já a excentricidade fornece uma medida do alongamento do objeto, sendo útil para diferenciar formas circulares de formas alongadas. Esses atributos são amplamente utilizados em tarefas de classificação e reconhecimento de padrões.</p>
 <p>Além das propriedades geométricas, os descritores de regiões também podem incorporar <strong>informações estatísticas de intensidade</strong>, como média, variância e histogramas de níveis de cinza ou de cores. Esses descritores são particularmente úteis quando diferentes objetos apresentam formas semelhantes, mas diferem em textura ou tonalidade. Por exemplo, duas regiões com formatos parecidos podem ser distinguidas por suas distribuições de intensidade, o que amplia o poder discriminativo da representação.</p>
@@ -537,16 +533,16 @@ m_{pq} = \sum_x \sum_y x^p y^q f(x,y)
 <p>Uma vantagem significativa dos descritores de regiões é sua <strong>robustez a ruídos e pequenas irregularidades no contorno</strong>. Como essas técnicas consideram a região como um todo, pequenas variações na borda tendem a ter menor impacto na representação final, em comparação com métodos baseados exclusivamente no contorno. No entanto, essa abordagem também apresenta limitações: descritores de regiões podem não capturar detalhes finos da forma externa, o que pode ser relevante em determinadas aplicações.</p>
 <p>Em síntese, os descritores de regiões oferecem uma forma rica e abrangente de representar objetos em imagens digitais, combinando informações geométricas, estatísticas e estruturais. Sua escolha e aplicação dependem do problema em questão, sendo frequentemente utilizados em conjunto com descritores de contorno para obter uma caracterização mais completa e eficiente das formas presentes na imagem.</p>
 </section>
-<section id="descritores-de-textura" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="descritores-de-textura"><span class="header-section-number">9.7</span> Descritores de Textura</h2>
+<section id="descritores-de-textura" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="descritores-de-textura"><span class="header-section-number">9.6</span> Descritores de Textura</h2>
 <p>Os <strong>descritores de textura</strong> são técnicas utilizadas no processamento digital de imagens para caracterizar padrões de variação de intensidade ou cor em uma região. Diferentemente dos descritores de forma, que se concentram na geometria dos objetos, os descritores de textura capturam propriedades relacionadas à <strong>organização espacial dos pixels</strong>, como repetição, rugosidade, suavidade e regularidade. Essas características são fundamentais para distinguir regiões que possuem formas semelhantes, mas apresentam padrões internos distintos.</p>
 <p>Uma das abordagens mais comuns para descrever textura baseia-se em <strong>métodos estatísticos</strong>, que analisam a distribuição e a relação entre os níveis de intensidade dos pixels. Entre esses métodos, destacam-se as matrizes de coocorrência de níveis de cinza (GLCM), que consideram a frequência com que pares de pixels com determinados valores ocorrem em posições relativas específicas. A partir dessas matrizes, podem ser extraídas medidas como contraste, homogeneidade, energia e entropia, que fornecem uma descrição quantitativa da textura presente na imagem.</p>
 <p>Outra categoria importante envolve os <strong>descritores estruturais</strong>, que modelam a textura como a repetição de padrões elementares, chamados de primitivas ou texels. Nessa abordagem, busca-se identificar regularidades na disposição desses elementos, sendo particularmente útil em texturas altamente organizadas, como tecidos ou superfícies artificiais. Já os <strong>métodos baseados em filtros</strong> analisam a resposta da imagem a operadores específicos, como filtros de Gabor ou wavelets, permitindo capturar informações em diferentes escalas e orientações. Esses métodos são eficazes para identificar padrões direcionais e frequências espaciais características da textura.</p>
 <p>Além disso, técnicas mais recentes incluem descritores como o <strong>Local Binary Pattern (LBP)</strong>, que codifica a relação entre um pixel e seus vizinhos em uma representação binária simples e eficiente. Esse tipo de descritor tem se destacado por sua robustez a variações de iluminação e baixo custo computacional, sendo amplamente utilizado em aplicações práticas, como reconhecimento facial e análise de superfícies.</p>
 <p>Os descritores de textura desempenham um papel essencial em diversas aplicações, como <strong>segmentação de imagens, classificação de materiais, reconhecimento de padrões e análise médica</strong>. Por exemplo, em imagens médicas, a textura pode ajudar a diferenciar tecidos saudáveis de tecidos patológicos. Em visão computacional, pode ser utilizada para identificar superfícies específicas, como madeira, metal ou vegetação.</p>
 <p>Em síntese, os descritores de textura oferecem uma maneira eficaz de representar padrões complexos presentes nas imagens, complementando outras formas de descrição, como contorno e região. Ao capturar informações sobre a organização interna dos pixels, essas técnicas ampliam significativamente a capacidade de análise e interpretação de imagens digitais em diferentes contextos.</p>
-<section id="matrizes-de-coocorrência-e-matriz-de-diferença" class="level3" data-number="9.7.1">
-<h3 data-number="9.7.1" class="anchored" data-anchor-id="matrizes-de-coocorrência-e-matriz-de-diferença"><span class="header-section-number">9.7.1</span> Matrizes de Coocorrência e Matriz de diferença</h3>
+<section id="matrizes-de-coocorrência-e-matriz-de-diferença" class="level3">
+<h3 class="anchored" data-anchor-id="matrizes-de-coocorrência-e-matriz-de-diferença">Matrizes de Coocorrência e Matriz de diferença</h3>
 <p>As <strong>matrizes de coocorrência</strong> e as <strong>matrizes de diferença</strong> são técnicas clássicas de descrição de textura que se baseiam na análise das relações espaciais entre os níveis de intensidade dos pixels. Diferentemente de métodos que consideram apenas estatísticas globais (como média e variância), essas abordagens capturam <strong>como os pixels se organizam em relação aos seus vizinhos</strong>, fornecendo uma representação mais rica da estrutura da textura.</p>
 <section id="matriz-de-coocorrência" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="matriz-de-coocorrência">Matriz de coocorrência</h4>
@@ -597,8 +593,8 @@ Figura&nbsp;9.4: Matriz de diferença
 </section>
 </section>
 </section>
-<section id="considerações-finais" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">9.8</span> Considerações Finais</h2>
+<section id="considerações-finais" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">9.7</span> Considerações Finais</h2>
 <p>A <strong>descrição e representação de imagens</strong> constituem etapas fundamentais no processamento digital de imagens e na visão computacional, pois permitem transformar dados visuais brutos em informações estruturadas e interpretáveis por sistemas computacionais. Enquanto a <strong>representação</strong> está relacionada à forma como a imagem é modelada internamente — por exemplo, como uma matriz de pixels, um conjunto de regiões segmentadas ou um contorno — a <strong>descrição</strong> refere-se à extração de características relevantes dessas representações, com o objetivo de facilitar tarefas como análise, reconhecimento e classificação.</p>
 <p>A representação de imagens pode assumir diferentes formas, dependendo do nível de abstração desejado. Em um nível mais básico, a imagem é representada como uma matriz de intensidades (em tons de cinza) ou de valores RGB (em imagens coloridas). Em níveis mais avançados, podem ser utilizadas representações baseadas em <strong>bordas</strong>, <strong>regiões</strong> ou <strong>estruturas geométricas</strong>, como grafos ou polígonos. Essas formas de representação reduzem a complexidade dos dados e destacam informações mais relevantes para a aplicação, como a forma de objetos ou a organização espacial dos elementos na imagem.</p>
 <p>A descrição, por sua vez, envolve a extração de <strong>atributos ou características</strong> a partir dessas representações. Esses descritores podem ser de diferentes naturezas, como descritores de <strong>forma</strong> (que capturam a geometria do objeto), descritores de <strong>região</strong> (que analisam propriedades internas, como área e intensidade) e descritores de <strong>textura</strong> (que caracterizam padrões de variação de intensidade). Técnicas como assinatura da forma, momentos invariantes, histogramas e matrizes de coocorrência são exemplos de ferramentas utilizadas nesse processo.</p>
@@ -1016,8 +1012,8 @@ Figura&nbsp;9.4: Matriz de diferença
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/interpretacao.html" class="pagination-link" aria-label="Reconhecimento e Interpretação de Imagens Coloridas">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens Coloridas</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/interpretacao.html" class="pagination-link" aria-label="Reconhecimento e Interpretação de Imagens">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
