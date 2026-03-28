@@ -5,6 +5,8 @@ lang: pt-BR
 
 licence: "CC BY-SA 4.0"
 
+number-depth: 2
+
 book:
   title: "Processamento Digital de Imagens"
   subtitle: "Uma abordagem interativa com P5.js"

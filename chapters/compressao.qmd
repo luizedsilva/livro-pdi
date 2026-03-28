@@ -207,13 +207,11 @@ A @fig-red-psico mostra a mesma imagem codificada com diferentes números de ní
 
 Essa propriedade é amplamente explorada em métodos de compressão com perda (*lossy compression*), como os utilizados em formatos de imagem e vídeo amplamente difundidos.
 
-## Compressão sem Perda
+## Compressão com e sem Perda
 
 Na **compressão sem perda**, a imagem reconstruída após a descompressão é idêntica à imagem original. Esse tipo de compressão é essencial em aplicações onde a fidelidade absoluta dos dados é crítica, como imagens médicas, científicas e técnicas.
 
 Métodos comuns de compressão sem perda incluem codificação por comprimento de execução, codificação preditiva e codificação entropia, como os algoritmos de Huffman e aritmético.
-
-## Compressão com Perda
 
 A **compressão com perda** permite pequenas distorções na imagem reconstruída em troca de taxas de compressão significativamente maiores. Esse tipo de compressão é amplamente utilizado em aplicações multimídia, onde a percepção visual é mais importante do que a exatidão pixel a pixel.
 
@@ -300,7 +298,7 @@ Diversos métodos de compressão utilizam transformações matemáticas para con
 
 Essas transformações facilitam a identificação de componentes menos significativas, que podem ser quantizadas de forma mais agressiva.
 
-## Codificação Huffman
+### Codificação Huffman
 
 A codificação entropia é uma etapa essencial em muitos sistemas de compressão. Ela visa representar os dados de forma eficiente, utilizando códigos de comprimento variável baseados na probabilidade de ocorrência dos símbolos.
 
@@ -361,7 +359,7 @@ O código completo e a demonstração interativa estão disponíveis em:
 :::
 ::::
 
-## Codificação LZW
+### Codificação LZW
 
 A **codificação de Lempel–Ziv–Welch (LZW)** é uma técnica de compressão de dados **sem perda** amplamente utilizada em arquivos e formatos de imagem, como GIF e TIFF. O método foi proposto por **Terry Welch** em 1984 como uma melhoria das técnicas de compressão desenvolvidas anteriormente por **Abraham Lempel** e **Jacob Ziv**. A ideia central da LZW é substituir sequências de símbolos por **códigos numéricos de tamanho fixo**, reduzindo a quantidade de dados necessária para representar a informação original.
 

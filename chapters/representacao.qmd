@@ -17,8 +17,6 @@ Uma vez definida a forma de representação, a etapa seguinte consiste na **desc
 
 Assim, a representação fornece a estrutura necessária para organizar os dados da região, enquanto a descrição transforma essa estrutura em informações úteis e comparáveis, permitindo que o sistema tome decisões de forma automática e eficiente.
 
-## Descrição de Imagens
-
 Na etapa de descrição, é fundamental que as características escolhidas como **descritores** sejam **robustas** frente a variações comuns que podem ocorrer na imagem. Entre essas variações estão mudanças de **escala (tamanho)**, **rotação** e **translação (posição)** do objeto. Em outras palavras, bons descritores devem representar o objeto de forma consistente, independentemente de como ele aparece na imagem. Essa propriedade é essencial para garantir que o mesmo objeto seja reconhecido corretamente em diferentes condições.
 
 A representação e a descrição de formas constituem etapas essenciais no processamento digital de imagens, pois permitem transformar objetos visuais em estruturas organizadas e em conjuntos de características que podem ser analisadas computacionalmente. Para isso, existe um conjunto de técnicas consolidadas, cada uma com abordagens e objetivos específicos, que buscam capturar diferentes aspectos das formas presentes nas imagens.
@@ -145,7 +143,7 @@ O exemplo interativo seguinte apresenta uma simulação desse algoritmo. A cada 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap9/cadeia.png){width="60%" fig-align="center"}
+![](/imgs/cap9/p5js-cadeia.png){width="60%" fig-align="center"}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -197,7 +195,7 @@ O exemplo interativo seguinte ilustra esse procedimento.
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap9/poligono.png){width="60%" fig-align="center"}
+![](/imgs/cap9/p5js-poligono.png){width="60%" fig-align="center"}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -263,7 +261,7 @@ O exemplo interativo seguinte ilustra esta estratégia. A partir do contorno da 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap9/assinatura.png){width="60%" fig-align="center"}
+![](/imgs/cap9/p5js-assinatura.png){width="60%" fig-align="center"}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -372,7 +370,7 @@ A apresentação simultânea da imagem original, da imagem quantizada e das matr
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap9/matriz.png){width="60%" fig-align="center"}
+![](/imgs/cap9/p5js-matriz.png){width="60%" fig-align="center"}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
