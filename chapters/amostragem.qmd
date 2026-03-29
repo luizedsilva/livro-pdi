@@ -421,14 +421,18 @@ A compreensão desses conceitos é essencial para o estudo de técnicas mais ava
 
 ::: {.callout-note title="Exercícios"}
 
-### Exercício 1 — Conceitual{.unnumbered}
+**Exercício 1 — Conceitual**
+
 Explique com suas palavras:
 
 a) O que é **amostragem** em imagens digitais  
 b) O que é **quantização**  
 c) Qual o impacto de cada um na qualidade da imagem  
 
-### Exercício 2 — Análise visual{.unnumbered}
+---
+
+**Exercício 2 — Análise visual**
+
 Considere uma imagem em tons de cinza:
 
 a) O que acontece ao reduzir pela metade:
@@ -437,7 +441,10 @@ a) O que acontece ao reduzir pela metade:
 
 b) Qual das duas alterações tende a causar maior perda perceptual? Justifique.
 
-### Exercício 3 — Cálculo de resolução{.unnumbered}
+---
+
+**Exercício 3 — Cálculo de resolução**
+
 Uma imagem possui: 512 × 512 pixels e 256 níveis de cinza  
 
 Responda:
@@ -446,7 +453,10 @@ a) Quantos pixels possui a imagem?
 b) Quantos bits são necessários por pixel?  
 c) Qual o tamanho da imagem em bytes?
 
-### Exercício 4 — Quantização prática{.unnumbered}
+---
+
+**Exercício 4 — Quantização prática**
+
 Implemente um programa que:
 
 a) Leia uma imagem em tons de cinza  
@@ -460,7 +470,10 @@ c) Mostre ou salve os resultados
 
 d) Compare visualmente os resultados.
 
-### Exercício 5 — Amostragem prática{.unnumbered}
+---
+
+**Exercício 5 — Amostragem prática**
+
 Implemente um programa que reduza a resolução de uma imagem:
 
 - 1/2 da largura e altura  
@@ -468,7 +481,10 @@ Implemente um programa que reduza a resolução de uma imagem:
 
 Compare os resultados com a imagem original.
 
-### Exercício 6 — Comparação{.unnumbered}
+---
+
+**Exercício 6 — Comparação**
+
 Compare os efeitos de:
 
 - Reduzir apenas a amostragem  
@@ -477,7 +493,9 @@ Compare os efeitos de:
 
 Qual combinação produz maior degradação? Explique.
 
-### Questão reflexiva{.unnumbered}
+---
+
+**Questão reflexiva**
 
 Explique como os conceitos de amostragem e quantização influenciam:
 
@@ -489,25 +507,25 @@ Explique como os conceitos de amostragem e quantização influenciam:
 
 ::: {.callout-note title="Atividade Prática: Fotomosaico"}
 
-### Objetivo{.unnumbered}
+**Objetivo**
 
 O objetivo desse atividade é explorar os conceitos iniciais da disciplina de processamento de imagens como: vizinhança dos pixels, amostragem e quantização e operações pontuais para clareamento e escurecimento de imagens.
 
 ---
 
-### Problema{.unnumbered}
+**Problema**
 
 É possível obter uma boa representação de uma imagem, mesmo sacrificando o número de linhas e colunas (amostragem) e/ou o número de tons (quantização) de uma imagem qualquer.
 
 O problema de processamento de imagens proposto para essa atividade será construir uma ferramenta para composição de um fotomosaico de imagens, conforme ilustrado nas Figuras abaixo.
 
-![Foto mosaico de fotos de cães](/imgs/cap2/mosaico.png){width=90%}
+![Foto mosaico de fotos de cães](/imgs/cap2/mosaico.png){width=70%}
 
-![Detalhe ampliado na imagem anterior](/imgs/cap2/detalhe.png){width=90%}
+![Detalhe ampliado na imagem anterior](/imgs/cap2/detalhe.png){width=70%}
 
 ---
 
-### Descrição{.unnumbered}
+**Descrição**
 
 1. Nessa atividade você deverá construir uma ferramenta que, a partir de um arquivo de configuração (`config.txt`) da fotomontagem e de uma coleção de imagens armazenadas em formato PGM, gere o fotomosaico de fotos, conforme ilustrado anteriormente.
 
