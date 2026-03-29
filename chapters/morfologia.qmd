@@ -137,6 +137,12 @@ O código interativo em sequência demostra o funcionamento da operação de dil
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-dilatacao.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -173,6 +179,12 @@ O código interativo em sequência demostra o funcionamento da operação de ero
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-erosao.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -215,6 +227,12 @@ O exemplo interativo seguinte está a implementação da operações de erosão,
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-morfo.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -310,6 +328,12 @@ O exemplo interativo seguinte simula o processo de afinamento para uma imagem co
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-simulacao.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -331,6 +355,12 @@ No exemplo interativo seguinte está uma implementação do algoritmo rápido de
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-afinamento.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -450,6 +480,12 @@ Como resultado, são reconstruídas apenas as letras do texto gerado que satisfa
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-geodesica.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -564,6 +600,12 @@ O exemplo interativo seguinte apresenta essas operações:
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-cinza.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -599,3 +641,144 @@ Além das operações clássicas, foram discutidas transformações derivadas, c
 De modo geral, a morfologia matemática se destaca por sua abordagem baseada na forma, diferenciando-se de métodos puramente baseados em intensidade ou frequência. Sua natureza não linear e sua dependência do elemento estruturante conferem grande flexibilidade, permitindo sua adaptação a diferentes tipos de problemas e aplicações. Entre essas aplicações, destacam-se a segmentação de imagens, a remoção de ruídos, a análise de formas, o processamento de imagens médicas e a inspeção automatizada.
 
 Por fim, é importante ressaltar que o sucesso das operações morfológicas depende fortemente da escolha adequada do elemento estruturante, bem como da compreensão das características da imagem a ser processada. Assim, mais do que um conjunto de operações isoladas, a morfologia matemática constitui um **arcabouço conceitual poderoso**, que, quando bem aplicado, permite explorar de forma eficaz a estrutura e os detalhes das imagens digitais.
+
+::: {.callout-note title="Exercícios"}
+
+**Exercício 1 — Conceitual**
+
+Explique com suas palavras:
+
+a) O que é **morfologia matemática**  
+b) Qual o objetivo das operações morfológicas em imagens  
+c) Em que tipos de imagens essas operações são mais utilizadas  
+
+---
+
+**Exercício 2 — Elemento estruturante**
+
+Explique:
+
+a) O que é um **elemento estruturante**  
+b) Como seu formato influencia o resultado das operações  
+c) Dê exemplos de elementos estruturantes comuns (3×3, cruz, disco, etc.)  
+
+---
+
+**Exercício 3 — Erosão**
+
+Explique:
+
+a) O que é a operação de **erosão**  
+b) Qual o efeito da erosão sobre os objetos da imagem  
+c) Em quais situações essa operação é útil  
+
+---
+
+**Exercício 4 — Dilatação**
+
+Explique:
+
+a) O que é a operação de **dilatação**  
+b) Como ela altera os objetos na imagem  
+c) Diferença prática entre dilatação e erosão  
+
+---
+
+**Exercício 5 — Abertura e fechamento**
+
+Explique:
+
+a) O que é **abertura** (erosão seguida de dilatação)  
+b) O que é **fechamento** (dilatação seguida de erosão)  
+c) Em quais situações cada operação é mais adequada  
+
+---
+
+**Exercício 6 — Análise visual**
+
+Considere uma imagem binária com ruído:
+
+a) Que tipo de ruído pode ser removido com abertura?  
+b) Que tipo de falha pode ser corrigida com fechamento?  
+c) Como essas operações afetam a forma dos objetos?  
+
+---
+
+**Exercício 7 — Sequência de operações**
+
+Explique o efeito de aplicar, nessa ordem:
+
+a) Erosão seguida de dilatação  
+b) Dilatação seguida de erosão  
+
+Compare os resultados e discuta as diferenças.
+
+---
+
+**Exercício 8 — Bordas morfológicas**
+
+Explique:
+
+a) Como extrair bordas utilizando operações morfológicas  
+b) Qual a diferença entre borda interna e externa  
+c) Em que aplicações isso pode ser útil  
+
+---
+
+**Exercício 9 — Implementação prática (operações básicas)**
+
+Implemente um programa que:
+
+a) Leia uma imagem binária  
+b) Aplique:
+- erosão  
+- dilatação  
+
+c) Permita escolher o elemento estruturante (ex: 3×3)  
+d) Mostre ou salve os resultados  
+
+---
+
+**Exercício 10 — Implementação prática (abertura e fechamento)**
+
+Implemente um programa que:
+
+a) Aplique abertura  
+b) Aplique fechamento  
+c) Compare os resultados em imagens com ruído  
+
+---
+
+**Exercício 11 — Segmentação**
+
+Utilize operações morfológicas para:
+
+a) Melhorar uma imagem segmentada  
+b) Remover pequenos objetos indesejados  
+c) Preencher falhas em objetos maiores  
+
+---
+
+**Exercício 12 — Comparação**
+
+Compare o uso de morfologia com:
+
+- filtros lineares (ex: média)  
+- técnicas de limiarização  
+
+Explique as vantagens das operações morfológicas.
+
+---
+
+**Questão reflexiva**
+
+Explique a importância da morfologia matemática em aplicações como:
+
+- Análise de documentos  
+- Processamento de imagens médicas  
+- Visão computacional  
+- Reconhecimento de padrões  
+
+Discuta como a escolha do elemento estruturante influencia os resultados.
+
+:::

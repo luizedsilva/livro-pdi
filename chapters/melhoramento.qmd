@@ -803,3 +803,206 @@ O código completo e a demonstração interativa estão disponíveis em:
 O melhoramento de imagens desempenha um papel fundamental no processamento digital, servindo tanto para aprimorar a visualização quanto para preparar imagens para etapas posteriores, como segmentação e reconhecimento.
 
 As técnicas apresentadas neste capítulo fornecem uma base conceitual para o entendimento do melhoramento no domínio espacial, sendo essenciais para o estudo de métodos mais avançados de processamento e análise de imagens.
+
+::: {.callout-note title="Exercícios"}
+
+**Exercício 1 — Conceitual**
+
+Explique com suas palavras:
+
+a) O que é **melhoramento de imagens**  
+b) Qual a diferença entre **melhoramento** e **restauração de imagens**  
+c) Por que o melhoramento depende da percepção humana  
+
+---
+
+**Exercício 2 — Contraste**
+
+Considere uma imagem com baixo contraste:
+
+a) O que caracteriza uma imagem de baixo contraste?  
+b) Como o histograma dessa imagem se apresenta?  
+c) Qual transformação pode ser aplicada para melhorar sua visualização?
+
+---
+
+**Exercício 3 — Transformações de intensidade**
+
+Dadas as transformações abaixo:
+
+- Negativo da imagem  
+- Transformação logarítmica  
+- Transformação potência (gamma)  
+
+Explique:
+
+a) O efeito de cada uma sobre a imagem  
+b) Em quais situações cada transformação é mais indicada  
+
+---
+
+**Exercício 4 — Cálculo de negativo**
+
+Considere uma imagem de 8 bits (níveis de 0 a 255).
+
+a) Qual é a fórmula do negativo de uma imagem?  
+b) Calcule o valor do pixel resultante para os níveis:
+
+- 0  
+- 50  
+- 120  
+- 200  
+- 255  
+
+---
+
+**Exercício 5 — Equalização de histograma**
+
+Explique:
+
+a) O que é o histograma de uma imagem  
+b) O objetivo da equalização de histograma  
+c) Como essa técnica melhora o contraste  
+
+---
+
+**Exercício 6 — Análise de histograma**
+
+Considere os seguintes cenários:
+
+a) Histograma concentrado à esquerda  
+b) Histograma concentrado à direita  
+c) Histograma concentrado no centro  
+
+Para cada caso, descreva:
+
+- Como a imagem aparenta visualmente  
+- Que tipo de transformação pode ser aplicada  
+
+---
+
+**Exercício 7 — Filtros espaciais**
+
+Explique a diferença entre:
+
+a) Filtros lineares e não lineares  
+b) Filtro de média e filtro de mediana  
+
+Indique em quais situações cada um é mais adequado.
+
+---
+
+**Exercício 8 — Suavização**
+
+Explique:
+
+a) O objetivo da suavização de imagens  
+b) Como o filtro de média atua  
+c) Qual o efeito colateral comum desse tipo de filtro  
+
+---
+
+**Exercício 9 — Realce de bordas**
+
+Explique:
+
+a) O que são bordas em uma imagem  
+b) Como operadores como Sobel ou Laplaciano ajudam a detectá-las  
+c) Em quais aplicações esse tipo de técnica é útil  
+
+---
+
+**Exercício 10 — Implementação prática (contraste)**
+
+Implemente um programa que:
+
+a) Leia uma imagem em tons de cinza  
+b) Aplique:
+- negativo  
+- transformação logarítmica  
+- correção gamma (γ = 0.5 e γ = 2.0)  
+
+c) Salve as imagens resultantes  
+d) Compare visualmente os resultados  
+
+---
+
+**Exercício 11 — Implementação prática (filtros)**
+
+Implemente um programa que aplique:
+
+a) Filtro de média 3×3  
+b) Filtro de mediana 3×3  
+
+Compare os resultados em imagens com ruído.
+
+---
+
+**Exercício 12 — Comparação de técnicas**
+
+Compare os efeitos de:
+
+- Suavização  
+- Realce de contraste  
+- Detecção de bordas  
+
+Explique como cada técnica altera a informação da imagem.
+
+---
+
+**Questão reflexiva**
+
+Explique como técnicas de melhoramento de imagens são utilizadas em:
+
+- Diagnóstico médico  
+- Sistemas de vigilância  
+- Sensoriamento remoto  
+- Fotografia digital  
+
+Discuta a importância de escolher corretamente a técnica para cada aplicação.
+
+:::
+
+
+::: {.callout-note title="Atividade Prática: Rotulagem"}
+
+**Objetivo**
+
+O objetivo desta atividade é explorar os conceitos iniciais da disciplina de processamento de imagens, tais como: varredura da imagem, componentes conexos e conectividade 4 e 8.
+
+---
+
+**Problema**
+
+Considere a imagem abaixo de uma bandeja de feijões:
+
+![Imagem de feijões](/imgs/cap3/beans.png){width=90% fig-align="center"}
+
+Para qualquer imagem de entrada com características semelhantes (fundo branco com diversas formas pretas de diferentes tamanhos), desenvolva um programa para contar o número de componentes conexos. Para isso, considere o algoritmo de rotulação de componentes conexos conforme descrito neste capítulo.
+
+---
+
+**Descrição**
+
+1. Desenvolva um programa, baseado no código fornecido para cálculo do negativo de uma imagem, que:
+   - carregue uma imagem no formato PGM;
+   - identifique e conte os componentes conexos;
+   - apresente o resultado.
+
+2. O programa deve receber o nome do arquivo pela linha de comando e produzir a seguinte saída:
+
+```
+#componentes= XX
+```
+
+Onde **XX** é o número de componentes conexos encontrados.
+
+3. Opcionalmente, pode ser gerada uma imagem PGM contendo a rotulação dos componentes.
+
+4. Teste o programa com diferentes imagens.
+
+:::
+
+
+
+

@@ -72,6 +72,12 @@ O código interativo seguinte exemplifica essa abordagem. No exemplo, pode-se es
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-isolado.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -205,6 +211,12 @@ O exemplo interativo seguinte apresenta uma simulação desse algoritmo de water
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-simula.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -227,6 +239,12 @@ Os exemplos seguintes demonstram o mesmo algoritmo para imagens. O primeiro exem
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-watershed2d.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -246,6 +264,12 @@ O código completo e a demonstração interativa estão disponíveis em:
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-watershed3d.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -268,6 +292,12 @@ O exemplo interativo seguinte está a implementação para segmentação de imag
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-watershed.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -302,6 +332,12 @@ O código exemplo seguinte implementa essa técnica para imagens:
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-kmeans.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -379,3 +415,139 @@ Os métodos clássicos, como limiarização, detecção de bordas e segmentaçã
 
 Dessa forma, a segmentação de imagens permanece como um campo ativo de pesquisa e desenvolvimento, no qual avanços teóricos e tecnológicos continuam ampliando suas possibilidades de aplicação e melhorando a qualidade dos resultados obtidos.
 
+::: {.callout-note title="Exercícios"}
+
+**Exercício 1 — Conceitual**
+
+Explique com suas palavras:
+
+a) O que é **segmentação de imagens**  
+b) Qual o objetivo da segmentação no processamento de imagens  
+c) Diferença entre segmentação e reconhecimento  
+
+---
+
+**Exercício 2 — Limiarização**
+
+Explique:
+
+a) O que é **limiarização (thresholding)**  
+b) Diferença entre limiarização global e local  
+c) Em quais situações cada uma é mais adequada  
+
+---
+
+**Exercício 3 — Escolha do limiar**
+
+Explique:
+
+a) Como o histograma pode auxiliar na escolha do limiar  
+b) O que caracteriza um bom limiar  
+c) Problemas ao escolher um limiar inadequado  
+
+---
+
+**Exercício 4 — Método de Otsu**
+
+Explique:
+
+a) O princípio do método de Otsu  
+b) O que significa maximizar a variância entre classes  
+c) Em quais situações esse método funciona bem  
+
+---
+
+**Exercício 5 — Segmentação por regiões**
+
+Explique:
+
+a) O que é crescimento de regiões  
+b) Como escolher sementes (seeds)  
+c) Critérios de similaridade utilizados  
+
+---
+
+**Exercício 6 — Detecção de bordas**
+
+Explique:
+
+a) O que são bordas em uma imagem  
+b) Como operadores como Sobel e Canny são utilizados  
+c) Diferença entre segmentação por bordas e por regiões  
+
+---
+
+**Exercício 7 — Watershed**
+
+Explique:
+
+a) A ideia do algoritmo de watershed  
+b) O conceito de bacias e linhas de divisão  
+c) Problemas comuns (ex: supersegmentação)  
+
+---
+
+**Exercício 8 — Pós-processamento**
+
+Explique:
+
+a) Por que é necessário pós-processar uma segmentação  
+b) Como operações morfológicas ajudam nesse processo  
+c) Exemplos de refinamento de regiões  
+
+---
+
+**Exercício 9 — Implementação prática (limiarização)**
+
+Implemente um programa que:
+
+a) Leia uma imagem em tons de cinza  
+b) Aplique limiarização global  
+c) Permita ao usuário escolher o valor do limiar  
+d) Gere a imagem binária resultante  
+
+---
+
+**Exercício 10 — Implementação prática (Otsu)**
+
+Implemente um programa que:
+
+a) Calcule automaticamente o limiar usando o método de Otsu  
+b) Compare o resultado com limiarização manual  
+
+---
+
+**Exercício 11 — Implementação prática (regiões)**
+
+Implemente um algoritmo de:
+
+a) Crescimento de regiões  
+b) Escolha de uma ou mais sementes  
+c) Segmentação baseada em similaridade  
+
+---
+
+**Exercício 12 — Comparação**
+
+Compare os métodos:
+
+- Limiarização  
+- Crescimento de regiões  
+- Detecção de bordas  
+
+Discuta vantagens, limitações e aplicações de cada um.
+
+---
+
+**Questão reflexiva**
+
+Explique a importância da segmentação de imagens em aplicações como:
+
+- Diagnóstico médico  
+- Veículos autônomos  
+- Reconhecimento facial  
+- Agricultura de precisão  
+
+Discuta os desafios envolvidos na segmentação em imagens reais.
+
+:::

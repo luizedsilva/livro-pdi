@@ -61,6 +61,12 @@ A função denominada "Soma das senóides", apresentada no exemplo interativo em
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-soma.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -90,6 +96,12 @@ A **soma dos termos da série** é obtida pela **projeção vertical** (eixo $y$
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-epiciclo.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -462,6 +474,12 @@ Essa estrutura é conhecida como **butterfly** (imagem seguinte), pois o diagram
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-butterfly8.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -530,6 +548,12 @@ O exemplo interativo seguinte simula os mesmos cálculos com as entradas reorden
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-butterfly4.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -565,6 +589,12 @@ O exemplo interativo a seguir apresenta um demonstração do cálculo do espectr
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-espectro.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -657,6 +687,12 @@ O exemplo interativo seguinte apresenta uma visualização 3D destes três filtr
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-filtro.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -697,6 +733,12 @@ O Exemplo interativo seguinte apresenta uma aplicação do processo de filtragem
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-filtragem.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -715,3 +757,146 @@ Na prática, o uso da **Transformada Rápida de Fourier (FFT)** torna a aplicaç
 ## Considerações Finais
 
 A Transformada de Fourier desempenha um papel central no Processamento Digital de Imagens, fornecendo uma base matemática sólida para a análise e manipulação de informações no domínio da frequência. A compreensão de seus fundamentos é essencial para o estudo de técnicas avançadas de filtragem, restauração e análise espectral de imagens.
+
+::: {.callout-note title="Exercícios"}
+
+**Exercício 1 — Conceitual**
+
+Explique com suas palavras:
+
+a) O que é a **Transformada de Fourier**  
+b) O que significa representar uma imagem no **domínio da frequência**  
+c) Qual a diferença entre domínio espacial e domínio da frequência  
+
+---
+
+**Exercício 2 — Interpretação**
+
+Explique:
+
+a) O que representam as **baixas frequências** em uma imagem  
+b) O que representam as **altas frequências**  
+c) Onde essas frequências aparecem no espectro de Fourier  
+
+---
+
+**Exercício 3 — Visualização do espectro**
+
+Ao calcular a transformada de Fourier de uma imagem:
+
+a) Por que aplicamos o deslocamento (shift) do espectro?  
+b) Por que utilizamos escala logarítmica na visualização?  
+c) O que acontece se visualizarmos o espectro sem essas etapas?
+
+---
+
+**Exercício 4 — Propriedades**
+
+Explique as seguintes propriedades da Transformada de Fourier:
+
+a) Linearidade  
+b) Translação  
+c) Simetria  
+
+---
+
+**Exercício 5 — Cálculo básico**
+
+Considere um sinal discreto simples:
+
+f(x) = [1, 1, 1, 1]
+
+a) Qual é o comportamento da Transformada de Fourier desse sinal?  
+b) O que isso indica sobre suas frequências?
+
+---
+
+**Exercício 6 — Filtros no domínio da frequência**
+
+Explique:
+
+a) O que é um **filtro passa-baixa**  
+b) O que é um **filtro passa-alta**  
+c) Como cada um afeta a imagem  
+
+---
+
+**Exercício 7 — Análise de filtros**
+
+Descreva o efeito dos seguintes filtros:
+
+a) Passa-baixa ideal  
+b) Passa-alta ideal  
+c) Filtro Gaussiano  
+
+Comente sobre possíveis artefatos introduzidos.
+
+---
+
+**Exercício 8 — Relação espaço-frequência**
+
+Explique:
+
+a) Como uma variação rápida na imagem se manifesta no domínio da frequência  
+b) Como uma região uniforme aparece no espectro  
+
+---
+
+**Exercício 9 — Implementação prática (DFT)**
+
+Implemente um programa que:
+
+a) Leia uma imagem em tons de cinza  
+b) Calcule a Transformada Discreta de Fourier (DFT)  
+c) Mostre:
+- o espectro de magnitude  
+- o espectro centralizado  
+
+d) Utilize escala logarítmica para visualização  
+
+---
+
+**Exercício 10 — Implementação prática (filtros)**
+
+Implemente um programa que:
+
+a) Aplique um filtro passa-baixa no domínio da frequência  
+b) Aplique um filtro passa-alta  
+c) Reconstrua a imagem com a transformada inversa  
+
+Compare os resultados com a imagem original.
+
+---
+
+**Exercício 11 — Comparação**
+
+Compare:
+
+- Filtragem no domínio espacial  
+- Filtragem no domínio da frequência  
+
+Quais são as vantagens e desvantagens de cada abordagem?
+
+---
+
+**Exercício 12 — Ruído**
+
+Explique como a Transformada de Fourier pode ser utilizada para:
+
+a) Identificar ruídos periódicos  
+b) Remover esses ruídos  
+
+---
+
+**Questão reflexiva**
+
+Explique a importância da Transformada de Fourier em aplicações como:
+
+- Compressão de imagens  
+- Processamento de sinais  
+- Análise de padrões  
+- Sistemas de comunicação  
+
+Discuta por que essa técnica é fundamental no processamento digital de imagens.
+
+:::

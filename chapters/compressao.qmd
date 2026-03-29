@@ -40,7 +40,7 @@ A compressão tem como objetivo principal reduzir a quantidade de dados necessá
 
 O **modelo genérico de compressão de imagens** consiste em um processo utilizado para **reduzir o tamanho físico dos dados de uma imagem**, com o objetivo de **otimizar sua transmissão e armazenamento**. Imagens digitais geralmente ocupam uma quantidade significativa de memória, principalmente quando possuem alta resolução ou profundidade de bits. Dessa forma, técnicas de compressão tornam-se essenciais em diversas aplicações, como transmissão de imagens pela internet, armazenamento em dispositivos digitais e sistemas multimídia.
 
-![Modelo genérico de compressão de imagens](/imgs/cap5/codifica.png){#fig-codifica fig-align="center" width="80%"}
+![Modelo genérico de compressão de imagens](/imgs/cap6/codifica.png){#fig-codifica fig-align="center" width="80%"}
 
 O processo de compressão normalmente envolve **duas fases principais: a codificação e a decodificação** (conforme ilustrada na @fig-codifica). Na fase de **codificação**, a imagem original é analisada e transformada em uma representação mais compacta, reduzindo a quantidade de bits necessária para armazenar ou transmitir os dados. Esse processo pode envolver diferentes estratégias, como remoção de redundâncias, transformação dos dados ou eliminação de informações consideradas menos relevantes para a percepção visual humana. Já na fase de **decodificação**, os dados comprimidos são processados para reconstruir a imagem, produzindo uma versão que pode ser idêntica à original ou apresentar pequenas diferenças, dependendo do método de compressão utilizado.
 
@@ -190,11 +190,11 @@ Esse princípio é a base de diversos métodos de compressão, como a **codifica
 A redundância psicovisual explora limitações do sistema visual humano. Certas informações podem ser descartadas ou representadas de forma aproximada sem causar impacto perceptível significativo na qualidade da imagem.
 
 ::: {#fig-red-psico layout-ncol="3"}
-![256 tons de cinza](/imgs/cap5/stanford.png)
+![256 tons de cinza](/imgs/cap6/stanford.png)
 
-![16 tons de cinza](/imgs/cap5/stanford16.png)
+![16 tons de cinza](/imgs/cap6/stanford16.png)
 
-![4 tons de cinza](/imgs/cap5/stanford4.png)
+![4 tons de cinza](/imgs/cap6/stanford4.png)
 
 Redundância psicovisual: a mesma imagem representada com **256**, **16** e **4 tons de cinza**.
 :::
@@ -310,7 +310,7 @@ A ideia central da codificação de Huffman é construir um **código de comprim
 
 O processo de construção do código de Huffman inicia-se com a **determinação da frequência de ocorrência de cada símbolo** presente nos dados (conforme ilustrado na @fig-huffman). Em seguida, esses símbolos são organizados em uma estrutura conhecida como **árvore binária de Huffman**. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores (iterações i = 1, 2, 3 e 4 na @fig-huffman). Esse processo continua até que todos os nós estejam conectados em uma única árvore.
 
-![Iterações para construção de uma árvore de Huffman](/imgs/cap5/huffman.png){#fig-huffman fig-align="center" width="80%"}
+![Iterações para construção de uma árvore de Huffman](/imgs/cap6/huffman.png){#fig-huffman fig-align="center" width="80%"}
 
 Após a construção da árvore, os códigos binários são obtidos percorrendo-se os caminhos da raiz até cada folha da árvore. Normalmente, atribui-se o valor **0 para um ramo à esquerda** e **1 para um ramo à direita**. Assim, cada símbolo recebe um código binário correspondente ao caminho percorrido até ele. Uma característica importante desses códigos é que eles são **códigos prefixos**, ou seja, nenhum código é prefixo de outro. Isso garante que a sequência de bits possa ser decodificada de forma inequívoca.
 
@@ -349,6 +349,12 @@ A simulação em sequência apresenta a árvore construída a partir das frequê
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap6/p5js-huffman.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -442,6 +448,12 @@ Em resumo, a codificação LZW destaca-se por combinar **simplicidade, eficiênc
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap6/p5js-lzw.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -467,13 +479,13 @@ Cada um desses padrões apresenta características específicas que os tornam ma
 
 As etapas da codificação JPEG estão representadas na @fig-etapas.
 
-![Etapas da codificação JPEG](/imgs/cap5/etapas.png){#fig-etapas align="center" fig-align="center" width="80%"}
+![Etapas da codificação JPEG](/imgs/cap6/etapas.png){#fig-etapas align="center" fig-align="center" width="80%"}
 
 #### Conversão YCbCr {.unnumbered}
 
 A primeira etapa do processo de compressão JPEG consiste na conversão da imagem do espaço de cores RGB para o espaço de cores YCbCr. No formato RGB, cada pixel é representado pelas intensidades das três componentes de cor primárias: vermelho (R), verde (G) e azul (B). Embora esse modelo seja adequado para dispositivos de exibição, ele não é o mais apropriado para compressão, pois mistura informações de brilho e de cor. Para tornar o processo de compressão mais eficiente, o JPEG realiza uma transformação que separa essas duas informações.
 
-![Conversão RGB para YCbCr](/imgs/cap5/luminancia.png){fig-align="center" width="60%"}
+![Conversão RGB para YCbCr](/imgs/cap6/luminancia.png){fig-align="center" width="60%"}
 
 No espaço de cores YCbCr, cada pixel passa a ser descrito por três componentes distintas: luminância (Y) e duas componentes de crominância (Cb e Cr). A componente Y representa o nível de brilho da imagem, ou seja, a informação de intensidade luminosa que define os contornos e os detalhes estruturais da cena. As componentes Cb e Cr representam as informações de cor, correspondendo aproximadamente às diferenças entre o azul e a luminância, e entre o vermelho e a luminância, respectivamente. Essa separação é fundamental porque o sistema visual humano é muito mais sensível às variações de luminância do que às variações de cor.
 
@@ -622,6 +634,12 @@ O exemplo interativo seguinte demonstra as etapas de codificação para um bloco
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap6/p5js-jpeg.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -674,6 +692,12 @@ O código interativo seguinte demonstra esse processo de codificação:
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap6/p5js-base64.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -688,3 +712,151 @@ O código completo e a demonstração interativa estão disponíveis em:
 A compressão de imagens é uma área central do Processamento Digital de Imagens, possibilitando o armazenamento e a transmissão eficientes de grandes volumes de dados visuais. A escolha do método de compressão adequado depende da aplicação, do nível de fidelidade requerido e das restrições computacionais.
 
 Os conceitos apresentados neste capítulo fornecem a base necessária para o estudo de técnicas modernas de compressão e codificação multimídia, bem como para a compreensão dos principais padrões utilizados na prática.
+
+::: {.callout-note title="Exercícios"}
+
+**Exercício 1 — Conceitual**
+
+Explique com suas palavras:
+
+a) O que é **compressão de imagens**  
+b) Qual a diferença entre compressão **com perdas** e **sem perdas**  
+c) Por que a compressão é necessária em sistemas digitais  
+
+---
+
+**Exercício 2 — Redundância**
+
+Explique os tipos de redundância presentes em imagens:
+
+a) Redundância espacial  
+b) Redundância de codificação  
+c) Redundância perceptual  
+
+Dê exemplos de cada uma.
+
+---
+
+**Exercício 3 — Taxa de compressão**
+
+Explique:
+
+a) O que é **taxa de compressão**  
+b) Como ela é calculada  
+c) Qual a diferença entre taxa de compressão e taxa de bits  
+
+---
+
+**Exercício 4 — Cálculo prático**
+
+Uma imagem possui tamanho original de 1 MB e, após compressão, passa a ter 250 KB.
+
+Responda:
+
+a) Qual a taxa de compressão?  
+b) Qual a redução percentual do tamanho?  
+
+---
+
+**Exercício 5 — Métodos sem perdas**
+
+Explique o funcionamento básico de:
+
+a) Codificação de Huffman  
+b) Codificação por comprimento de corrida (RLE)  
+
+Indique vantagens e limitações de cada método.
+
+---
+
+**Exercício 6 — Métodos com perdas**
+
+Explique:
+
+a) O princípio da compressão com perdas  
+b) Por que é possível descartar informação sem grande impacto visual  
+c) Em quais situações esse tipo de compressão é mais utilizado  
+
+---
+
+**Exercício 7 — JPEG**
+
+Descreva as principais etapas do algoritmo JPEG:
+
+a) Conversão de espaço de cores  
+b) Transformada (DCT)  
+c) Quantização  
+d) Codificação  
+
+Explique o papel de cada etapa.
+
+---
+
+**Exercício 8 — Quantização**
+
+Explique:
+
+a) O que é quantização no contexto de compressão  
+b) Por que ela é a principal fonte de perda no JPEG  
+c) Como a matriz de quantização afeta a qualidade da imagem  
+
+---
+
+**Exercício 9 — Implementação prática (RLE)**
+
+Implemente um programa que:
+
+a) Leia uma imagem em tons de cinza  
+b) Aplique compressão por comprimento de corrida (RLE)  
+c) Mostre o tamanho antes e depois da compressão  
+
+---
+
+**Exercício 10 — Implementação prática (Huffman)**
+
+Implemente um programa que:
+
+a) Calcule a frequência dos níveis de cinza  
+b) Construa a árvore de Huffman  
+c) Gere os códigos para cada símbolo  
+d) Codifique a imagem  
+
+---
+
+**Exercício 11 — Comparação**
+
+Compare:
+
+- Compressão com perdas  
+- Compressão sem perdas  
+
+Analise:
+
+- qualidade da imagem  
+- taxa de compressão  
+- aplicações típicas  
+
+---
+
+**Exercício 12 — Avaliação de qualidade**
+
+Explique:
+
+a) O que é PSNR (Peak Signal-to-Noise Ratio)  
+b) Como ele é utilizado para avaliar compressão  
+c) Limitações dessa métrica  
+
+---
+
+**Questão reflexiva**
+
+Explique a importância da compressão de imagens em aplicações como:
+
+- Internet e redes sociais  
+- Armazenamento em dispositivos móveis  
+- Transmissão de vídeo  
+- Sensoriamento remoto  
+
+Discuta o equilíbrio entre **qualidade** e **tamanho do arquivo**.
+
+:::

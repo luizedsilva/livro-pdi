@@ -143,7 +143,11 @@ O exemplo interativo seguinte apresenta uma simulação desse algoritmo. A cada 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap9/p5js-cadeia.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap9/p5js-cadeia.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -195,7 +199,11 @@ O exemplo interativo seguinte ilustra esse procedimento.
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap9/p5js-poligono.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap9/p5js-poligono.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -261,7 +269,11 @@ O exemplo interativo seguinte ilustra esta estratégia. A partir do contorno da 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap9/p5js-assinatura.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap9/p5js-assinatura.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -370,7 +382,11 @@ A apresentação simultânea da imagem original, da imagem quantizada e das matr
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap9/p5js-matriz.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap9/p5js-matriz.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -394,3 +410,140 @@ Um aspecto importante na descrição de imagens é a busca por **invariância** 
 
 Em síntese, a representação e a descrição de imagens são processos complementares: a representação organiza os dados de forma adequada, enquanto a descrição extrai informações significativas a partir dessa organização. Juntas, essas etapas formam a base para sistemas mais complexos de análise de imagens, possibilitando aplicações como reconhecimento de padrões, segmentação automática, classificação de objetos e interpretação inteligente de cenas.
 
+::: {.callout-note title="Exercícios"}
+
+**Exercício 1 — Conceitual**
+
+Explique com suas palavras:
+
+a) O que significa **representar** uma imagem  
+b) O que significa **descrever** uma imagem  
+c) Qual a diferença entre representação e descrição  
+
+---
+
+**Exercício 2 — Tipos de representação**
+
+Explique:
+
+a) Representação baseada em **regiões**  
+b) Representação baseada em **contornos**  
+c) Vantagens e desvantagens de cada abordagem  
+
+---
+
+**Exercício 3 — Contornos**
+
+Explique:
+
+a) O que é um contorno  
+b) Como ele pode ser obtido a partir de uma imagem binária  
+c) Qual informação é preservada e qual é perdida  
+
+---
+
+**Exercício 4 — Código de cadeia**
+
+Explique:
+
+a) O que é o **código de cadeia (chain code)**  
+b) Diferença entre conectividade 4 e 8  
+c) Como o código representa a forma de um objeto  
+
+---
+
+**Exercício 5 — Propriedades do código de cadeia**
+
+Explique:
+
+a) O que é invariância à rotação  
+b) O que é invariância à translação  
+c) Como normalizar um código de cadeia  
+
+---
+
+**Exercício 6 — Descritores de forma**
+
+Explique:
+
+a) O que são descritores de forma  
+b) Diferença entre descritores globais e locais  
+c) Exemplos de descritores (área, perímetro, compacidade)  
+
+---
+
+**Exercício 7 — Momentos**
+
+Explique:
+
+a) O que são momentos de uma imagem  
+b) Para que servem os momentos invariantes  
+c) Em quais aplicações são utilizados  
+
+---
+
+**Exercício 8 — Aproximação de contornos**
+
+Explique:
+
+a) O que é aproximação poligonal  
+b) Qual o objetivo de simplificar um contorno  
+c) Como isso afeta a precisão da representação  
+
+---
+
+**Exercício 9 — Implementação prática (contornos)**
+
+Implemente um programa que:
+
+a) Leia uma imagem binária  
+b) Extraia o contorno dos objetos  
+c) Armazene os pontos do contorno  
+
+---
+
+**Exercício 10 — Implementação prática (código de cadeia)**
+
+Implemente um programa que:
+
+a) Gere o código de cadeia de um objeto  
+b) Considere conectividade 8  
+c) Exiba a sequência de direções  
+
+---
+
+**Exercício 11 — Implementação prática (descritores)**
+
+Implemente um programa que calcule:
+
+a) Área  
+b) Perímetro  
+c) Compacidade  
+
+Para objetos em uma imagem binária.
+
+---
+
+**Exercício 12 — Comparação**
+
+Compare:
+
+- Representação por contorno  
+- Representação por região  
+
+Explique em quais aplicações cada uma é mais adequada.
+
+---
+
+**Questão reflexiva**
+
+Explique a importância da representação e descrição de imagens em:
+
+- Reconhecimento de padrões  
+- Visão computacional  
+- Análise de formas  
+- Sistemas inteligentes  
+
+Discuta como a escolha dos descritores influencia os resultados.
+
+:::

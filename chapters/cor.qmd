@@ -12,7 +12,7 @@ A percepção de cores é resultado de um processo fisiológico e psicológico r
 
 Um passo fundamental para a compreensão da natureza da luz e das cores foi dado em 1666 por Isaac Newton. Em seus experimentos, Newton demonstrou que a luz branca não é uma entidade simples, mas sim uma combinação de diferentes componentes de luz. Ao fazer um feixe de luz branca atravessar um prisma de vidro, observou-se que a luz emergente se separa em várias cores distintas. Esse fenômeno ocorre porque cada componente da luz possui comprimentos de onda diferentes, que são desviados de maneira distinta ao atravessar o prisma.
 
-![Dispersão da luz branca](/imgs/cap6/prisma.png){fig-align="center" width="80%"}
+![Dispersão da luz branca](/imgs/cap5/prisma.png){fig-align="center" width="80%"}
 
 O conjunto de cores resultante desse experimento é denominado **espectro visível da luz**. Ele corresponde à faixa do espectro eletromagnético que pode ser percebida pelo olho humano e costuma ser representado como uma sequência contínua de cores que se estende do violeta ao vermelho.
 
@@ -36,7 +36,7 @@ Esses três atributos perceptuais são amplamente utilizados na definição de *
 
 O modelo RGB representa as cores a partir da combinação de três componentes espectrais primárias: vermelho (*red*), verde (*green*) e azul (*blue*). Cada cor é definida por um triplo de valores que indicam a intensidade de cada uma dessas componentes. Esse modelo pode ser interpretado geometricamente como um sistema de coordenadas cartesianas tridimensional, no qual cada eixo corresponde a uma das cores primárias.
 
-![Cubo RGB](/imgs/cap6/rgb.png){fig-align="center" width="60%"}
+![Cubo RGB](/imgs/cap5/rgb.png){fig-align="center" width="60%"}
 
 No cubo RGB, o ponto de origem (0,0,0) representa a ausência total de luz, ou seja, a cor preta (*black*). À medida que os valores das componentes aumentam, a cor resultante torna-se mais clara. No extremo oposto do cubo, o ponto (1,1,1) representa a presença máxima das três componentes, resultando na cor branca (*white*).
 
@@ -86,6 +86,12 @@ No exemplo interativo em sequência está um cone que representa as matiz, satur
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap5/p5js-hsvcone.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -146,6 +152,12 @@ No exemplo interativo em sequência está uma representação usando o círculo 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap5/p5js-hsvcirculo.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -165,7 +177,7 @@ A **saturação (S)** indica o grau de pureza da cor. Geometricamente, ela corre
 
 A **matiz (H – hue)** representa o tipo da cor (vermelho, verde, azul, etc.). Ela é determinada pelo ângulo no plano perpendicular ao eixo de intensidade. Esse plano pode ser entendido como um triângulo formado pela interseção do cubo RGB com um plano de intensidade constante. Por exemplo, no plano que passa pela cor ciano, os vértices do triângulo ajudam a definir a matiz das cores presentes naquele nível de intensidade.
 
-![Modelo HSI](/imgs/cap6/hsi.png){fig-align="center" width="80%"}
+![Modelo HSI](/imgs/cap5/hsi.png){fig-align="center" width="80%"}
 
 ### Conversão de RGB para HSI
 
@@ -202,6 +214,12 @@ No exemplo interativo em sequência estão implementados todas as conversões RG
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap5/p5js-cores.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -234,3 +252,146 @@ A escolha adequada do modelo de cor é determinante para o sucesso dessas aplica
 As imagens coloridas desempenham um papel central no Processamento Digital de Imagens moderno. A compreensão dos modelos de cor e de suas características é fundamental para o desenvolvimento de sistemas eficientes e robustos.
 
 O domínio desses conceitos permite selecionar representações adequadas e explorar de forma eficaz as informações cromáticas presentes nas imagens, ampliando as possibilidades de análise e interpretação.
+
+::: {.callout-note title="Exercícios"}
+
+**Exercício 1 — Conceitual**
+
+Explique com suas palavras:
+
+a) O que é uma **imagem colorida**  
+b) Como as cores são representadas digitalmente  
+c) Qual a diferença entre imagens em tons de cinza e coloridas  
+
+---
+
+**Exercício 2 — Modelo RGB**
+
+Explique:
+
+a) O que representam os canais **R, G e B**  
+b) Como a combinação desses canais forma diferentes cores  
+c) O que acontece quando:
+- R = G = B  
+- apenas um canal está ativo  
+
+---
+
+**Exercício 3 — Espaços de cores**
+
+Explique a diferença entre os seguintes espaços de cores:
+
+a) RGB  
+b) HSV (ou HSI)  
+c) YCbCr  
+
+Indique uma aplicação típica para cada um.
+
+---
+
+**Exercício 4 — Conversão de cores**
+
+Explique:
+
+a) Por que é útil converter uma imagem RGB para HSV/HSI  
+b) Em qual componente (H, S ou V/I) geralmente se aplicam técnicas de segmentação  
+c) Vantagens dessa abordagem  
+
+---
+
+**Exercício 5 — Separação de canais**
+
+Considere uma imagem RGB:
+
+a) O que representa cada canal individualmente  
+b) Como seria a aparência visual de cada canal isolado  
+c) Qual informação é perdida ao analisar apenas um canal  
+
+---
+
+**Exercício 6 — Manipulação de cores**
+
+Explique o efeito de:
+
+a) Aumentar o valor do canal vermelho  
+b) Reduzir o canal azul  
+c) Ajustar brilho e saturação  
+
+---
+
+**Exercício 7 — Tons de cinza**
+
+Explique:
+
+a) Como converter uma imagem colorida para tons de cinza  
+b) Por que usamos pesos diferentes para R, G e B  
+c) Qual seria o problema de usar apenas a média simples  
+
+---
+
+**Exercício 8 — Histograma em imagens coloridas**
+
+Explique:
+
+a) Como é definido o histograma em imagens coloridas  
+b) Diferença entre histogramas por canal e histogramas conjuntos  
+c) Como o histograma pode ser usado para melhorar a imagem  
+
+---
+
+**Exercício 9 — Implementação prática (canais RGB)**
+
+Implemente um programa que:
+
+a) Leia uma imagem colorida  
+b) Separe os canais R, G e B  
+c) Gere três imagens correspondentes a cada canal  
+d) Mostre ou salve os resultados  
+
+---
+
+**Exercício 10 — Implementação prática (conversão)**
+
+Implemente um programa que:
+
+a) Converta uma imagem RGB para tons de cinza  
+b) Converta RGB para HSV (ou HSI)  
+c) Mostre cada componente separadamente  
+
+---
+
+**Exercício 11 — Manipulação prática**
+
+Implemente um programa que:
+
+a) Aumente o brilho da imagem  
+b) Aumente a saturação  
+c) Realce uma cor específica (ex: vermelho)  
+
+Compare os resultados.
+
+---
+
+**Exercício 12 — Segmentação por cor**
+
+Desenvolva um algoritmo que:
+
+a) Detecte objetos de uma cor específica (ex: azul ou vermelho)  
+b) Gere uma imagem binária com os objetos detectados  
+
+Dica: utilize o espaço HSV/HSI.
+
+---
+
+**Questão reflexiva**
+
+Explique a importância das imagens coloridas em aplicações como:
+
+- Visão computacional  
+- Diagnóstico médico  
+- Agricultura de precisão  
+- Reconhecimento de objetos  
+
+Discuta por que a escolha do espaço de cores é fundamental em cada caso.
+
+:::
