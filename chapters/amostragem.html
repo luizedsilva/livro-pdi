@@ -953,6 +953,83 @@ cao10.pgm</code></pre>
 </ul>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled" title="Atividade Prática: Arte ASCII">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Atividade Prática: Arte ASCII
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Objetivo</strong></p>
+<p>O objetivo desta atividade é explorar conceitos iniciais de <strong>processamento de imagens</strong>, incluindo <strong>vizinhança de pixels</strong>, <strong>amostragem</strong> e <strong>quantização</strong>.</p>
+<hr>
+<p><strong>Problema</strong></p>
+<p>A arte ASCII é uma técnica de representação de imagens utilizando caracteres de texto. Surgiu nos primórdios da computação, quando os sistemas possuíam baixa resolução e não suportavam gráficos.</p>
+<p>Nesta atividade, você deverá desenvolver um programa capaz de <strong>converter uma imagem em tons de cinza (PGM) em uma representação ASCII</strong>, utilizando caracteres para simular diferentes níveis de intensidade.</p>
+<hr>
+<p><strong>Descrição</strong></p>
+<ol type="1">
+<li><p>Desenvolva um programa que:</p>
+<ol type="a">
+<li><p>Leia uma imagem em tons de cinza no formato <code>.pgm</code></p></li>
+<li><p>Receba como entrada:</p></li>
+</ol>
+<ul>
+<li>número de colunas (amostragem)<br>
+</li>
+<li>número de linhas (amostragem)<br>
+</li>
+<li>string de caracteres (quantização)</li>
+</ul></li>
+<li><p>O programa deverá:</p>
+<ol type="a">
+<li><p>Realizar a <strong>redução da resolução da imagem (amostragem)</strong></p></li>
+<li><p>Mapear os níveis de cinza para caracteres ASCII (<strong>quantização</strong>)</p></li>
+<li><p>Gerar uma representação textual da imagem</p></li>
+</ol></li>
+<li><p>Por fim, o programa deve:</p>
+<ol type="a">
+<li><p>Salvar o resultado em um arquivo texto</p></li>
+<li><p>Preservar a estrutura visual da imagem original</p></li>
+</ol></li>
+</ol>
+<hr>
+<p><strong>Formato da execução</strong></p>
+<p>O programa deve ser executado via linha de comando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./ascii</span> <span class="op">&lt;</span>nome-arquivo-imagem<span class="op">&gt;</span> <span class="op">&lt;</span>ncolunas<span class="op">&gt;</span> <span class="op">&lt;</span>nlinhas<span class="op">&gt;</span> <span class="op">&lt;</span>string<span class="op">&gt;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<p><strong>Exemplo</strong></p>
+<p>Para a imagem:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap2/cao.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Imagem de entrada</figcaption>
+</figure>
+</div>
+<p>O arquivo texto gerado deve ter o seguinte conteúdo:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap2/cao-ascii.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Imagem de entrada</figcaption>
+</figure>
+</div>
+<hr>
+<p><strong>Saída esperada</strong></p>
+<p>O programa deverá gerar um arquivo:</p>
+<pre class="text"><code>result.txt</code></pre>
+<p>contendo a imagem convertida para ASCII.</p>
+<hr>
+<p><strong>Observações</strong></p>
+<ul>
+<li>Caracteres mais densos (como <code>@</code>, <code>#</code>) representam regiões mais escuras.</li>
+<li>Caracteres mais leves (como <code>.</code>, espaço) representam regiões claras.</li>
+<li>A escolha do conjunto de caracteres influencia diretamente a qualidade da imagem final.</li>
+</ul>
+</div>
+</div>
 
 
 </section>

@@ -684,8 +684,172 @@ I = \frac{1}{3}(R + G + B)
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./equaliza_hsv</span> imagem.ppm</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled" title="Atividade Prática: Esteganografia em Imagens">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Atividade Prática: Esteganografia em Imagens
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Objetivo</strong></p>
+<p>O objetivo desta atividade é explorar conceitos de <strong>esteganografia</strong>, utilizando técnicas de <strong>manipulação de bits em imagens digitais</strong> para ocultar e recuperar informações sem alterar perceptivelmente a imagem original.</p>
+<hr>
+<p><strong>Problema</strong></p>
+<p>O termo <strong>esteganografia</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> deriva da junção das palavras gregas <em>estegano</em>, que significa “esconder ou mascarar”, e <em>grafia</em>, que significa “escrita”. Portanto, esteganografia pode ser compreendida como a arte de esconder informações, tornando-as ocultas, assim como a criptografia. O objetivo desta técnica é que esses dados não sejam percebidos por terceiros; ou seja, a presença de mensagens escondidas dentro de arquivos é simplesmente desconhecida. Somente o receptor da mensagem tem conhecimento de sua existência, assim como da maneira como extraí-la.</p>
+<p>Apesar de parecer, a esteganografia e a criptografia são duas áreas com objetivos bastante diferentes. Enquanto a criptografia tem o propósito de impedir que as pessoas saibam o conteúdo de uma mensagem, a esteganografia busca evitar que as pessoas saibam que a mensagem escondida existe. Ou seja, na criptografia, os receptores sabem da existência das mensagens, porém não conseguem, a princípio, lê-las; já a esteganografia tenta fazer com que os receptores não percebam que há uma mensagem naquele meio (imagem, texto, etc.).</p>
+<p>Existem várias formas de esconder mensagens ou arquivos em imagens. Uma das técnicas possíveis é modificar alguns bits (menos relevantes) dos pixels da imagem com as informações que se deseja ocultar. Por exemplo, a modificação do bit menos significativo de uma banda (red) de um pixel de uma imagem colorida não é perceptível ao olho humano. A esteganoanálise dessa modificação, no entanto, pode ser realizada a partir da comparação entre o arquivo original e o arquivo modificado. O ruído, calculado como a diferença entre esses dois arquivos, corresponde à mensagem codificada.</p>
+<hr>
+<p><strong>Descrição</strong></p>
+<ol type="1">
+<li><p>Um arquivo está escondido na imagem <code>.PPM</code>. O arquivo escondido está codificado nos pixels da imagem da seguinte forma:</p>
+<ul>
+<li>o binário dos códigos ASCII do nome original do arquivo (finalizado pelo caractere zero)</li>
+<li>o binário do tamanho do arquivo (em quatro bytes)</li>
+<li>e os bytes do arquivo</li>
+</ul></li>
+<li><p>Os bits (zero ou um) das representações binárias estão armazenados modificando as bandas R, G e B dos pixels em sequência.</p></li>
+</ol>
+<p>Por exemplo, considerando a imagem colorida:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap5/rgb1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>Seja <code>'A'</code>, a primeira letra do nome do arquivo (código ASCII binário <code>01000001</code>). Na codificação, a letra <code>'A'</code> modifica as seguintes bandas dos pixels:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap5/rgb2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>Onde:</p>
+<ul>
+<li><span class="math inline">\(R_1 = r_1 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
+<li><span class="math inline">\(G_2 = g_2 \,\| \,0x01\)</span> codifica o bit <strong>1</strong></li>
+<li><span class="math inline">\(B_3 = b_3 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
+<li><span class="math inline">\(R_4 = r_4 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
+<li><span class="math inline">\(G_5 = g_5 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
+<li><span class="math inline">\(B_6 = b_6 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
+<li><span class="math inline">\(R_7 = r_7 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
+<li><span class="math inline">\(G_8 = g_8 \,\| \,0x01\)</span> codifica o bit <strong>1</strong></li>
+</ul>
+<ol start="3" type="1">
+<li><p>A operação <span class="math inline">\(R_1 = r_1 \,\&amp; \,0xFE\)</span> (AND bit-a-bit) força o último bit para <strong>0</strong>.</p></li>
+<li><p>A operação <span class="math inline">\(G_2 = g_2 \,\| \,0x01\)</span> (OR bit-a-bit) força o último bit para <strong>1</strong>.</p></li>
+<li><p>Após o nome do arquivo, os quatro bytes seguintes representam o tamanho do arquivo.</p></li>
+</ol>
+<hr>
+<p><strong>Exemplo</strong></p>
+<p>Arquivo original:</p>
+<pre class="text"><code>P3
+#Created with GIMP
+10 10
+255
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 140 26 26 197 40 40 197 40 40 140 
+26 26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 197 40 40 209 43 43 209 43 43 197 40 40 40 
+140 26 59 197 40 59 197 40 40 140 26 0 0 0 
+0 0 0 197 40 40 209 43 43 166 53 144 85 61 197
+61 197 85 63 209 43 63 209 43 59 197 40 0 0 0 
+0 0 0 140 26 26 197 40 40 85 61 197 43 63 209 61
+198 90 63 209 43 63 209 43 59 197 40 0 0 0 
+0 0 0 0 0 0 0 0 0 40 59 197 43 63 209 53 147 166
+61 197 85 59 197 40 40 140 26 0 0 0 
+0 0 0 0 0 0 0 0 0 26 40 140 40 59 197 40 
+59 197 26 40 140 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </code></pre>
+<p>Arquivo modificado:</p>
+<pre class="text"><code>P3
+# CREATOR: Image Processing using C-Ansi - ByDu
+#
+10 10
+255
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 1 0 0 0 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 1 1 0 0 0 1 0 
+0 0 0 141 26 26 197 40 40 197 40 40 140 
+26 26 0 1 0 0 0 1 1 0 0 0 1 0 0 0 0 
+0 0 0 197 40 40 209 43 42 209 43 43 197 41 40 40 
+140 27 58 197 40 59 197 40 40 140 26 0 0 0 
+0 0 0 197 40 40 208 43 43 166 52 144 85 61 196 
+60 197 85 63 208 43 63 209 42 58 197 40 0 0 0 
+0 0 0 140 26 26 197 40 40 85 61 196 42 63 209 61 
+198 90 63 209 42 62 209 43 59 196 40 0 0 0 
+0 0 0 0 0 0 0 0 0 40 59 197 43 62 209 53 147 166 
+60 197 85 59 196 40 40 140 26 0 0 0 
+0 0 0 0 0 0 0 0 0 26 40 140 40 59 196 40 
+59 197 26 40 140 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </code></pre>
+<p>Arquivo ocultado: <code>A.txt</code></p>
+<p>Conteúdo:</p>
+<pre class="text"><code>42</code></pre>
+<p>Codificação binária:</p>
+<pre class="text"><code>A(41) 01000001 .(2E) 00101110 
+t(74) 01110100 x(78) 01111000 t(74) 01110100 (0) 00000000
+(0) 00000000 (0) 00000000 (0) 00000000 (2) 00000010
+4(34) 00110100 2(32) 00110010</code></pre>
+<hr>
+<ol start="6" type="1">
+<li>Para que um arquivo possa ser escondido na imagem:</li>
+</ol>
+<ul>
+<li>TN = tamanho do nome (+1 para caractere nulo)</li>
+<li>TA = 4 bytes (tamanho do arquivo)</li>
+<li>NB = número de bytes do arquivo</li>
+<li>nlinhas = número de linhas da imagem</li>
+<li>ncolunas = número de colunas da imagem</li>
+</ul>
+<p>A condição é:</p>
+<p><span class="math display">\[
+8 \times (TN + TA + NB) \leq nlinhas \times ncolunas
+\]</span></p>
+<hr>
+<ol start="7" type="1">
+<li>No exemplo:</li>
+</ol>
+<ul>
+<li>TN = 6</li>
+<li>TA = 4</li>
+<li>NB = 2</li>
+</ul>
+<p>Total: <code>12 × 8 = 96 pixels</code> usados (em uma imagem 10×10 = 100 pixels)</p>
+<hr>
+<ol start="8" type="1">
+<li>Considerando esse esquema, sua tarefa é desenvolver o <strong>decodificador</strong>.</li>
+</ol>
+<p>O programa deve:</p>
+<ul>
+<li>receber o nome da imagem</li>
+<li>extrair o arquivo oculto</li>
+<li>gerar o arquivo em disco</li>
+</ul>
+<p><strong>Formato da execução</strong></p>
+<p>O programa deve suportar duas operações:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./estego</span> <span class="at">-e</span> <span class="op">&lt;</span>entrada.pgm<span class="op">&gt;</span> <span class="op">&lt;</span>saida.pgm<span class="op">&gt;</span> <span class="st">"&lt;mensagem&gt;"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./estego</span> <span class="at">-d</span> <span class="op">&lt;</span>imagem.pgm<span class="op">&gt;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>(https://www.gta.ufrj.br/grad/09_1/versao-final/stegano/introducao.html)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
