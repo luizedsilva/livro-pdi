@@ -782,3 +782,91 @@ Explique a importância da morfologia matemática em aplicações como:
 Discuta como a escolha do elemento estruturante influencia os resultados.
 
 :::
+
+::: {.callout-note title="Atividade Prática: Reconstrução Geodésica"}
+
+**Objetivo**
+
+O objetivo desta atividade é explorar conceitos de **morfologia matemática**, em particular a operação de **reconstrução geodésica**, utilizada para realizar filtragem e seleção de regiões específicas em imagens binárias.
+
+---
+
+**Problema**
+
+Dadas duas imagens binárias definidas no mesmo domínio:
+
+- uma imagem **máscara (I)**  
+- uma imagem **marcadora (J)**, tal que \( J \subseteq I \)
+
+A reconstrução geodésica consiste em recuperar apenas os **componentes conexos da imagem máscara que contêm pontos marcados**.
+
+Nesta atividade, você deverá implementar um programa capaz de reconstruir apenas as regiões de interesse a partir de pontos marcados fornecidos em um arquivo.
+
+---
+
+**Descrição**
+
+1. Desenvolva um programa que:
+
+   a) Leia uma imagem binária no formato **PBM**  
+
+   b) Leia um arquivo texto contendo coordenadas (linha e coluna) dos pontos marcadores  
+
+2. A partir desses dados, o programa deverá:
+
+   a) Interpretar os pontos como a imagem marcadora **J**  
+
+   b) Considerar a imagem original como a máscara **I**  
+
+3. Implemente a **reconstrução geodésica**, que pode ser realizada por:
+
+   - dilatações geodésicas sucessivas até a idempotência  
+   **ou**  
+   - crescimento das regiões a partir das marcas (ex: busca em largura com fila)  
+
+4. O resultado deve conter:
+
+   - apenas os componentes conexos da imagem que possuem pelo menos um ponto marcado  
+
+---
+
+**Exemplo**
+
+Dado um conjunto de coordenadas que marcam posições específicas em uma imagem (por exemplo, caracteres em um texto), o programa deve reconstruir apenas essas regiões, eliminando as demais.
+
+```
+2
+22 435
+22 468
+```
+
+Para imagem abaixo, somente as letras $i$ e $a$ devem ser reconstruídas.
+
+![Exemplo de reconstrução](/imgs/cap7/reconstroi.png){width="80%" fig-align="center"}
+
+---
+
+**Entrada**
+
+- Imagem binária no formato PBM  
+- Arquivo texto contendo coordenadas das marcas  
+
+---
+
+**Saída**
+
+O programa deve gerar:
+
+- Imagem reconstruída contendo apenas as regiões marcadas  
+
+---
+
+**Execução**
+
+O programa deve ser executado via linha de comando:
+
+```bash
+./reconstroi imagem.pbm marcas.txt
+```
+
+:::

@@ -395,3 +395,71 @@ Explique a importância das imagens coloridas em aplicações como:
 Discuta por que a escolha do espaço de cores é fundamental em cada caso.
 
 :::
+
+::: {.callout-note title="Atividade Prática: Equalização de Histograma em Imagens Coloridas (HSV)"}
+
+**Objetivo**
+
+O objetivo desta atividade é explorar o processamento de **imagens coloridas**, incluindo conversão entre espaços de cores, análise de componentes e aplicação de **equalização de histograma** para melhoria de contraste.
+
+---
+
+**Problema**
+
+A equalização de histograma é uma técnica amplamente utilizada para melhorar o contraste de imagens. No entanto, quando aplicada diretamente em imagens coloridas no modelo RGB, pode causar distorções nas cores.
+
+Uma alternativa mais adequada é converter a imagem para o espaço **HSV**, aplicar a equalização apenas no componente de intensidade (V) e, em seguida, reconstruir a imagem colorida.
+
+O problema desta atividade consiste em implementar esse processo.
+
+---
+
+**Descrição**
+
+1. Desenvolva um programa que:
+
+   a) Leia uma imagem colorida no formato **PPM**  
+
+   b) Converta a imagem do espaço **RGB para HSV**  
+
+2. Após a conversão, o programa deverá:
+
+   a) Separar os componentes **H, S e V**  
+
+   b) Aplicar **equalização de histograma** apenas no componente **V (Value / intensidade)**  
+
+3. Em seguida, o programa deve:
+
+   a) Recombinar os componentes H, S e V  
+
+   b) Converter a imagem de volta para o espaço **RGB**  
+
+   c) Gerar a imagem final no formato **PPM**  
+
+---
+
+**Entrada**
+
+- Imagem colorida no formato PPM  
+
+---
+
+**Saída**
+
+O programa deve gerar:
+
+- Imagem original  
+- Componente V antes da equalização  
+- Componente V após a equalização  
+- Imagem final com contraste melhorado  
+
+---
+
+**Execução**
+
+O programa deve ser executado via linha de comando:
+
+```bash
+./equaliza_hsv imagem.ppm
+```
+:::

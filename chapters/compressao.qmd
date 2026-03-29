@@ -860,3 +860,68 @@ Explique a importância da compressão de imagens em aplicações como:
 Discuta o equilíbrio entre **qualidade** e **tamanho do arquivo**.
 
 :::
+
+::: {.callout-note title="Atividade Prática: Descompressão de Imagens (LZW + Base64)"}
+
+**Objetivo**
+
+O objetivo desta atividade é explorar conceitos de **compressão e descompressão de imagens**, implementando um descompactador que utiliza a técnica **LZW (Lempel-Ziv-Welch)** combinada com a codificação **Base64**.
+
+---
+
+**Problema**
+
+Em sistemas de transmissão e armazenamento, é comum representar dados binários em formato textual. Um exemplo disso é o uso da codificação **Base64**, frequentemente combinada com algoritmos de compressão.
+
+Nesta atividade, você deverá desenvolver um programa capaz de **compactar e descompactar uma imagem codificada em um formato que combina LZW (12 bits) e Base64**, reconstruindo a imagem original em formato PGM.
+
+---
+
+**Descrição**
+
+1. Desenvolva um programa que (para descompactar):
+
+   a) Leia um arquivo com extensão `.l64`  
+
+   b) Verifique o formato do arquivo:
+   - primeira linha: `lzw-b64` (número mágico)  
+   - segunda linha: dimensões da imagem (nl, nc)  
+
+2. O programa deverá:
+
+   a) Ler os dados codificados em **Base64**  
+
+   b) Converter os caracteres Base64 em códigos binários de **12 bits**  
+
+   c) Reconstruir a sequência de códigos LZW  
+
+3. Em seguida, o programa deve:
+
+   a) Aplicar o algoritmo de **descompressão LZW**  
+
+   b) Reconstruir os valores dos pixels da imagem  
+
+4. Por fim, o programa deverá:
+
+   a) Gerar a imagem no formato **PGM (P2)**  
+
+   b) Utilizar as dimensões informadas no arquivo  
+
+---
+
+**Formato do arquivo de entrada**
+
+O arquivo `.l64` possui a seguinte estrutura:
+
+```text
+lzw-b64
+<nl> <nc>
+<dados codificados em Base64>
+```
+---
+
+**Para teste**
+
+Desenvolver o compactador
+
+:::

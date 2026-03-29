@@ -900,3 +900,76 @@ Explique a importância da Transformada de Fourier em aplicações como:
 Discuta por que essa técnica é fundamental no processamento digital de imagens.
 
 :::
+
+::: {.callout-note title="Atividade Prática: Remoção de Efeito Moiré com FFT"}
+
+**Objetivo**
+
+O objetivo desta atividade é explorar conceitos da **Transformada Rápida de Fourier (FFT)** aplicados ao processamento de imagens, incluindo análise no domínio da frequência, identificação de ruídos periódicos e filtragem no domínio da frequência.
+
+---
+
+**Problema**
+
+Algumas imagens digitais apresentam padrões indesejados conhecidos como **efeito moiré**, que surgem devido a interferências periódicas.
+
+Esses padrões podem ser difíceis de remover no domínio espacial, mas tornam-se evidentes no **domínio da frequência**, onde aparecem como picos bem definidos.
+
+O problema desta atividade é desenvolver uma ferramenta capaz de remover esse ruído da imagem `cena.pgm`, utilizando técnicas baseadas na Transformada de Fourier.
+
+---
+
+**Descrição**
+
+1. Nessa atividade você deverá desenvolver um programa que:
+
+   a) Leia uma imagem em formato `.pgm`  
+
+   b) Calcule a Transformada de Fourier (FFT) da imagem  
+
+   c) Gere o espectro de magnitude da transformada  
+
+   d) Aplique o deslocamento do espectro (centralização das frequências)  
+
+2. A partir do espectro obtido, o programa deverá:
+
+   a) Identificar visualmente os picos associados ao ruído periódico (moire)  
+
+   b) Criar uma máscara (filtro) para remover essas frequências  
+
+   c) Aplicar o filtro no domínio da frequência  
+
+3. Após a filtragem, o programa deverá:
+
+   a) Calcular a transformada inversa  
+
+   b) Reconstruir a imagem no domínio espacial  
+
+   c) Gerar a imagem final sem o efeito moiré  
+
+---
+
+**Entrada**
+
+- Imagem em tons de cinza no formato PGM (exemplo: `cena.pgm`)
+
+---
+
+**Saída**
+
+O programa deve gerar:
+
+- Espectro de Fourier (imagem visualizável)  
+- Máscara de filtragem aplicada  
+- Imagem reconstruída (filtrada)  
+
+---
+
+**Execução**
+
+O programa deve ser executado via linha de comando:
+
+```bash
+./fft_moire cena.pgm
+```
+:::

@@ -551,3 +551,109 @@ Explique a importância da segmentação de imagens em aplicações como:
 Discuta os desafios envolvidos na segmentação em imagens reais.
 
 :::
+
+::: {.callout-note title="Atividade Prática: Segmentação de Imagens Coloridas com Watershed"}
+
+**Objetivo**
+
+O objetivo desta atividade é explorar técnicas de **segmentação de imagens coloridas**, utilizando o algoritmo **Watershed**, além de aplicar conceitos como cálculo de intensidade, gradiente e filtragem (borramento) em imagens digitais.
+
+---
+
+**Problema**
+
+A segmentação de imagens consiste em dividir uma imagem em regiões de interesse, como separar o objeto principal do fundo.
+
+Nesta atividade, você deverá utilizar o algoritmo **Watershed (Linha Divisora de Águas)** para segmentar uma imagem colorida, isolando o objeto central e aplicando um efeito de **borramento (desfoque)** no restante da imagem (fundo), confomre ilustrado na @fig-borrar.
+
+![Imagem exemplo](/imgs/cap8/borrarfundo.png){width="80%" fig-align="center" #fig-borrar}
+
+O resultado esperado é uma imagem onde:
+
+- o objeto principal permanece nítido  
+- o fundo aparece desfocado  
+
+---
+
+**Descrição**
+
+1. Escolha uma imagem colorida (formato PPM), diferente do exemplo apresentado em aula.
+
+2. Desenvolva um programa (`borre.c`) que execute as seguintes etapas:
+
+---
+
+**Etapa 1 — Conversão para tons de cinza**
+
+Calcule a imagem de intensidade a partir da imagem colorida:
+
+$$
+I = \frac{R + G + B}{3}
+$$
+
+---
+
+**Etapa 2 — Cálculo do gradiente**
+
+- Calcule o gradiente da imagem de intensidades  
+- O objetivo é destacar os contornos da imagem  
+
+---
+
+**Etapa 3 — Segmentação com Watershed**
+
+- Aplique o algoritmo Watershed sobre a imagem de gradiente  
+- O resultado deve classificar os pixels em três categorias:
+
+  - **MARK1** → objeto (região de interesse)  
+  - **MARK2** → fundo  
+  - **WSHED** → contorno entre as regiões  
+
+---
+
+**Etapa 4 — Borramento do fundo**
+
+Utilize o resultado da segmentação para:
+
+- Manter os pixels da região **MARK1** (objeto) inalterados  
+- Aplicar borramento nos pixels da região **MARK2** (fundo)  
+
+O borramento pode ser calculado como:
+
+$$
+\text{borrar}_{i,j} = \frac{1}{(2k+1)^2} \sum_{i=-k}^{k} \sum_{j=-k}^{k} x_{i,j}
+$$
+
+onde:
+
+- \(x\) representa os canais R, G ou B  
+- \(k\) define o tamanho da vizinhança  
+
+---
+
+**Entrada**
+
+- Imagem colorida no formato PPM  
+
+---
+
+**Saída**
+
+O programa deve gerar:
+
+- Imagem em tons de cinza (intensidade)  
+- Imagem do gradiente  
+- Resultado da segmentação (Watershed)  
+- Imagem final com fundo borrado  
+
+---
+
+**Execução**
+
+O programa deve ser executado via linha de comando:
+
+```bash
+./borre imagem.ppm
+```
+
+:::
