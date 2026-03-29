@@ -469,6 +469,151 @@ J = \sum_{k=1}^{K} \sum_{x_i \in C_k} | x_i - \mu_k |^2
 <p>Entretanto, não existe um método universal capaz de atender de forma satisfatória a todos os cenários. A escolha da técnica de segmentação depende de diversos fatores, incluindo o tipo de imagem, a natureza dos objetos de interesse, as condições de aquisição e os requisitos da aplicação. Em muitos casos, a combinação de diferentes abordagens pode ser necessária para alcançar resultados mais robustos.</p>
 <p>Os métodos clássicos, como limiarização, detecção de bordas e segmentação por regiões, continuam sendo amplamente utilizados devido à sua simplicidade, interpretabilidade e baixo custo computacional. Por outro lado, abordagens mais recentes baseadas em aprendizado profundo têm ganhado destaque, especialmente em aplicações complexas, por sua capacidade de modelar padrões sofisticados e produzir segmentações de alta precisão.</p>
 <p>Dessa forma, a segmentação de imagens permanece como um campo ativo de pesquisa e desenvolvimento, no qual avanços teóricos e tecnológicos continuam ampliando suas possibilidades de aplicação e melhorando a qualidade dos resultados obtidos.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercícios">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exercício 1 — Conceitual</strong></p>
+<p>Explique com suas palavras:</p>
+<ol type="a">
+<li>O que é <strong>segmentação de imagens</strong><br>
+</li>
+<li>Qual o objetivo da segmentação no processamento de imagens<br>
+</li>
+<li>Diferença entre segmentação e reconhecimento</li>
+</ol>
+<hr>
+<p><strong>Exercício 2 — Limiarização</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é <strong>limiarização (thresholding)</strong><br>
+</li>
+<li>Diferença entre limiarização global e local<br>
+</li>
+<li>Em quais situações cada uma é mais adequada</li>
+</ol>
+<hr>
+<p><strong>Exercício 3 — Escolha do limiar</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>Como o histograma pode auxiliar na escolha do limiar<br>
+</li>
+<li>O que caracteriza um bom limiar<br>
+</li>
+<li>Problemas ao escolher um limiar inadequado</li>
+</ol>
+<hr>
+<p><strong>Exercício 4 — Método de Otsu</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O princípio do método de Otsu<br>
+</li>
+<li>O que significa maximizar a variância entre classes<br>
+</li>
+<li>Em quais situações esse método funciona bem</li>
+</ol>
+<hr>
+<p><strong>Exercício 5 — Segmentação por regiões</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é crescimento de regiões<br>
+</li>
+<li>Como escolher sementes (seeds)<br>
+</li>
+<li>Critérios de similaridade utilizados</li>
+</ol>
+<hr>
+<p><strong>Exercício 6 — Detecção de bordas</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que são bordas em uma imagem<br>
+</li>
+<li>Como operadores como Sobel e Canny são utilizados<br>
+</li>
+<li>Diferença entre segmentação por bordas e por regiões</li>
+</ol>
+<hr>
+<p><strong>Exercício 7 — Watershed</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>A ideia do algoritmo de watershed<br>
+</li>
+<li>O conceito de bacias e linhas de divisão<br>
+</li>
+<li>Problemas comuns (ex: supersegmentação)</li>
+</ol>
+<hr>
+<p><strong>Exercício 8 — Pós-processamento</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>Por que é necessário pós-processar uma segmentação<br>
+</li>
+<li>Como operações morfológicas ajudam nesse processo<br>
+</li>
+<li>Exemplos de refinamento de regiões</li>
+</ol>
+<hr>
+<p><strong>Exercício 9 — Implementação prática (limiarização)</strong></p>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Leia uma imagem em tons de cinza<br>
+</li>
+<li>Aplique limiarização global<br>
+</li>
+<li>Permita ao usuário escolher o valor do limiar<br>
+</li>
+<li>Gere a imagem binária resultante</li>
+</ol>
+<hr>
+<p><strong>Exercício 10 — Implementação prática (Otsu)</strong></p>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Calcule automaticamente o limiar usando o método de Otsu<br>
+</li>
+<li>Compare o resultado com limiarização manual</li>
+</ol>
+<hr>
+<p><strong>Exercício 11 — Implementação prática (regiões)</strong></p>
+<p>Implemente um algoritmo de:</p>
+<ol type="a">
+<li>Crescimento de regiões<br>
+</li>
+<li>Escolha de uma ou mais sementes<br>
+</li>
+<li>Segmentação baseada em similaridade</li>
+</ol>
+<hr>
+<p><strong>Exercício 12 — Comparação</strong></p>
+<p>Compare os métodos:</p>
+<ul>
+<li>Limiarização<br>
+</li>
+<li>Crescimento de regiões<br>
+</li>
+<li>Detecção de bordas</li>
+</ul>
+<p>Discuta vantagens, limitações e aplicações de cada um.</p>
+<hr>
+<p><strong>Questão reflexiva</strong></p>
+<p>Explique a importância da segmentação de imagens em aplicações como:</p>
+<ul>
+<li>Diagnóstico médico<br>
+</li>
+<li>Veículos autônomos<br>
+</li>
+<li>Reconhecimento facial<br>
+</li>
+<li>Agricultura de precisão</li>
+</ul>
+<p>Discuta os desafios envolvidos na segmentação em imagens reais.</p>
+</div>
+</div>
 
 
 </section>

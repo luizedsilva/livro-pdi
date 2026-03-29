@@ -984,6 +984,221 @@ f(x,y), &amp; \text{com probabilidade } 1 - (p_p + p_s)
 <h2 data-number="3.10" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">3.10</span> Considerações Finais</h2>
 <p>O melhoramento de imagens desempenha um papel fundamental no processamento digital, servindo tanto para aprimorar a visualização quanto para preparar imagens para etapas posteriores, como segmentação e reconhecimento.</p>
 <p>As técnicas apresentadas neste capítulo fornecem uma base conceitual para o entendimento do melhoramento no domínio espacial, sendo essenciais para o estudo de métodos mais avançados de processamento e análise de imagens.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercícios">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exercício 1 — Conceitual</strong></p>
+<p>Explique com suas palavras:</p>
+<ol type="a">
+<li>O que é <strong>melhoramento de imagens</strong><br>
+</li>
+<li>Qual a diferença entre <strong>melhoramento</strong> e <strong>restauração de imagens</strong><br>
+</li>
+<li>Por que o melhoramento depende da percepção humana</li>
+</ol>
+<hr>
+<p><strong>Exercício 2 — Contraste</strong></p>
+<p>Considere uma imagem com baixo contraste:</p>
+<ol type="a">
+<li>O que caracteriza uma imagem de baixo contraste?<br>
+</li>
+<li>Como o histograma dessa imagem se apresenta?<br>
+</li>
+<li>Qual transformação pode ser aplicada para melhorar sua visualização?</li>
+</ol>
+<hr>
+<p><strong>Exercício 3 — Transformações de intensidade</strong></p>
+<p>Dadas as transformações abaixo:</p>
+<ul>
+<li>Negativo da imagem<br>
+</li>
+<li>Transformação logarítmica<br>
+</li>
+<li>Transformação potência (gamma)</li>
+</ul>
+<p>Explique:</p>
+<ol type="a">
+<li>O efeito de cada uma sobre a imagem<br>
+</li>
+<li>Em quais situações cada transformação é mais indicada</li>
+</ol>
+<hr>
+<p><strong>Exercício 4 — Cálculo de negativo</strong></p>
+<p>Considere uma imagem de 8 bits (níveis de 0 a 255).</p>
+<ol type="a">
+<li>Qual é a fórmula do negativo de uma imagem?<br>
+</li>
+<li>Calcule o valor do pixel resultante para os níveis:</li>
+</ol>
+<ul>
+<li>0<br>
+</li>
+<li>50<br>
+</li>
+<li>120<br>
+</li>
+<li>200<br>
+</li>
+<li>255</li>
+</ul>
+<hr>
+<p><strong>Exercício 5 — Equalização de histograma</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é o histograma de uma imagem<br>
+</li>
+<li>O objetivo da equalização de histograma<br>
+</li>
+<li>Como essa técnica melhora o contraste</li>
+</ol>
+<hr>
+<p><strong>Exercício 6 — Análise de histograma</strong></p>
+<p>Considere os seguintes cenários:</p>
+<ol type="a">
+<li>Histograma concentrado à esquerda<br>
+</li>
+<li>Histograma concentrado à direita<br>
+</li>
+<li>Histograma concentrado no centro</li>
+</ol>
+<p>Para cada caso, descreva:</p>
+<ul>
+<li>Como a imagem aparenta visualmente<br>
+</li>
+<li>Que tipo de transformação pode ser aplicada</li>
+</ul>
+<hr>
+<p><strong>Exercício 7 — Filtros espaciais</strong></p>
+<p>Explique a diferença entre:</p>
+<ol type="a">
+<li>Filtros lineares e não lineares<br>
+</li>
+<li>Filtro de média e filtro de mediana</li>
+</ol>
+<p>Indique em quais situações cada um é mais adequado.</p>
+<hr>
+<p><strong>Exercício 8 — Suavização</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O objetivo da suavização de imagens<br>
+</li>
+<li>Como o filtro de média atua<br>
+</li>
+<li>Qual o efeito colateral comum desse tipo de filtro</li>
+</ol>
+<hr>
+<p><strong>Exercício 9 — Realce de bordas</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que são bordas em uma imagem<br>
+</li>
+<li>Como operadores como Sobel ou Laplaciano ajudam a detectá-las<br>
+</li>
+<li>Em quais aplicações esse tipo de técnica é útil</li>
+</ol>
+<hr>
+<p><strong>Exercício 10 — Implementação prática (contraste)</strong></p>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Leia uma imagem em tons de cinza<br>
+</li>
+<li>Aplique:</li>
+</ol>
+<ul>
+<li>negativo<br>
+</li>
+<li>transformação logarítmica<br>
+</li>
+<li>correção gamma (γ = 0.5 e γ = 2.0)</li>
+</ul>
+<ol start="3" type="a">
+<li>Salve as imagens resultantes<br>
+</li>
+<li>Compare visualmente os resultados</li>
+</ol>
+<hr>
+<p><strong>Exercício 11 — Implementação prática (filtros)</strong></p>
+<p>Implemente um programa que aplique:</p>
+<ol type="a">
+<li>Filtro de média 3×3<br>
+</li>
+<li>Filtro de mediana 3×3</li>
+</ol>
+<p>Compare os resultados em imagens com ruído.</p>
+<hr>
+<p><strong>Exercício 12 — Comparação de técnicas</strong></p>
+<p>Compare os efeitos de:</p>
+<ul>
+<li>Suavização<br>
+</li>
+<li>Realce de contraste<br>
+</li>
+<li>Detecção de bordas</li>
+</ul>
+<p>Explique como cada técnica altera a informação da imagem.</p>
+<hr>
+<p><strong>Questão reflexiva</strong></p>
+<p>Explique como técnicas de melhoramento de imagens são utilizadas em:</p>
+<ul>
+<li>Diagnóstico médico<br>
+</li>
+<li>Sistemas de vigilância<br>
+</li>
+<li>Sensoriamento remoto<br>
+</li>
+<li>Fotografia digital</li>
+</ul>
+<p>Discuta a importância de escolher corretamente a técnica para cada aplicação.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Atividade Prática: Rotulagem">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Atividade Prática: Rotulagem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Objetivo</strong></p>
+<p>O objetivo desta atividade é explorar os conceitos iniciais da disciplina de processamento de imagens, tais como: varredura da imagem, componentes conexos e conectividade 4 e 8.</p>
+<hr>
+<p><strong>Problema</strong></p>
+<p>Considere a imagem abaixo de uma bandeja de feijões:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap3/beans.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption>Imagem de feijões</figcaption>
+</figure>
+</div>
+<p>Para qualquer imagem de entrada com características semelhantes (fundo branco com diversas formas pretas de diferentes tamanhos), desenvolva um programa para contar o número de componentes conexos. Para isso, considere o algoritmo de rotulação de componentes conexos conforme descrito neste capítulo.</p>
+<hr>
+<p><strong>Descrição</strong></p>
+<ol type="1">
+<li>Desenvolva um programa, baseado no código fornecido para cálculo do negativo de uma imagem, que:
+<ul>
+<li>carregue uma imagem no formato PGM;</li>
+<li>identifique e conte os componentes conexos;</li>
+<li>apresente o resultado.</li>
+</ul></li>
+<li>O programa deve receber o nome do arquivo pela linha de comando e produzir a seguinte saída:</li>
+</ol>
+<pre><code>#componentes= XX</code></pre>
+<p>Onde <strong>XX</strong> é o número de componentes conexos encontrados.</p>
+<ol start="3" type="1">
+<li><p>Opcionalmente, pode ser gerada uma imagem PGM contendo a rotulação dos componentes.</p></li>
+<li><p>Teste o programa com diferentes imagens.</p></li>
+</ol>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">

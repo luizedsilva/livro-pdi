@@ -600,6 +600,150 @@ Figura&nbsp;9.4: Matriz de diferença
 <p>A descrição, por sua vez, envolve a extração de <strong>atributos ou características</strong> a partir dessas representações. Esses descritores podem ser de diferentes naturezas, como descritores de <strong>forma</strong> (que capturam a geometria do objeto), descritores de <strong>região</strong> (que analisam propriedades internas, como área e intensidade) e descritores de <strong>textura</strong> (que caracterizam padrões de variação de intensidade). Técnicas como assinatura da forma, momentos invariantes, histogramas e matrizes de coocorrência são exemplos de ferramentas utilizadas nesse processo.</p>
 <p>Um aspecto importante na descrição de imagens é a busca por <strong>invariância</strong> a transformações como translação, rotação e escala, além de robustez a ruídos e variações de iluminação. Essas propriedades são essenciais para garantir que objetos semelhantes sejam reconhecidos como equivalentes, mesmo quando aparecem sob diferentes condições. Para isso, muitas técnicas incluem etapas de normalização ou utilizam descritores matematicamente projetados para serem invariantes.</p>
 <p>Em síntese, a representação e a descrição de imagens são processos complementares: a representação organiza os dados de forma adequada, enquanto a descrição extrai informações significativas a partir dessa organização. Juntas, essas etapas formam a base para sistemas mais complexos de análise de imagens, possibilitando aplicações como reconhecimento de padrões, segmentação automática, classificação de objetos e interpretação inteligente de cenas.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercícios">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exercício 1 — Conceitual</strong></p>
+<p>Explique com suas palavras:</p>
+<ol type="a">
+<li>O que significa <strong>representar</strong> uma imagem<br>
+</li>
+<li>O que significa <strong>descrever</strong> uma imagem<br>
+</li>
+<li>Qual a diferença entre representação e descrição</li>
+</ol>
+<hr>
+<p><strong>Exercício 2 — Tipos de representação</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>Representação baseada em <strong>regiões</strong><br>
+</li>
+<li>Representação baseada em <strong>contornos</strong><br>
+</li>
+<li>Vantagens e desvantagens de cada abordagem</li>
+</ol>
+<hr>
+<p><strong>Exercício 3 — Contornos</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é um contorno<br>
+</li>
+<li>Como ele pode ser obtido a partir de uma imagem binária<br>
+</li>
+<li>Qual informação é preservada e qual é perdida</li>
+</ol>
+<hr>
+<p><strong>Exercício 4 — Código de cadeia</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é o <strong>código de cadeia (chain code)</strong><br>
+</li>
+<li>Diferença entre conectividade 4 e 8<br>
+</li>
+<li>Como o código representa a forma de um objeto</li>
+</ol>
+<hr>
+<p><strong>Exercício 5 — Propriedades do código de cadeia</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é invariância à rotação<br>
+</li>
+<li>O que é invariância à translação<br>
+</li>
+<li>Como normalizar um código de cadeia</li>
+</ol>
+<hr>
+<p><strong>Exercício 6 — Descritores de forma</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que são descritores de forma<br>
+</li>
+<li>Diferença entre descritores globais e locais<br>
+</li>
+<li>Exemplos de descritores (área, perímetro, compacidade)</li>
+</ol>
+<hr>
+<p><strong>Exercício 7 — Momentos</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que são momentos de uma imagem<br>
+</li>
+<li>Para que servem os momentos invariantes<br>
+</li>
+<li>Em quais aplicações são utilizados</li>
+</ol>
+<hr>
+<p><strong>Exercício 8 — Aproximação de contornos</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é aproximação poligonal<br>
+</li>
+<li>Qual o objetivo de simplificar um contorno<br>
+</li>
+<li>Como isso afeta a precisão da representação</li>
+</ol>
+<hr>
+<p><strong>Exercício 9 — Implementação prática (contornos)</strong></p>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Leia uma imagem binária<br>
+</li>
+<li>Extraia o contorno dos objetos<br>
+</li>
+<li>Armazene os pontos do contorno</li>
+</ol>
+<hr>
+<p><strong>Exercício 10 — Implementação prática (código de cadeia)</strong></p>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Gere o código de cadeia de um objeto<br>
+</li>
+<li>Considere conectividade 8<br>
+</li>
+<li>Exiba a sequência de direções</li>
+</ol>
+<hr>
+<p><strong>Exercício 11 — Implementação prática (descritores)</strong></p>
+<p>Implemente um programa que calcule:</p>
+<ol type="a">
+<li>Área<br>
+</li>
+<li>Perímetro<br>
+</li>
+<li>Compacidade</li>
+</ol>
+<p>Para objetos em uma imagem binária.</p>
+<hr>
+<p><strong>Exercício 12 — Comparação</strong></p>
+<p>Compare:</p>
+<ul>
+<li>Representação por contorno<br>
+</li>
+<li>Representação por região</li>
+</ul>
+<p>Explique em quais aplicações cada uma é mais adequada.</p>
+<hr>
+<p><strong>Questão reflexiva</strong></p>
+<p>Explique a importância da representação e descrição de imagens em:</p>
+<ul>
+<li>Reconhecimento de padrões<br>
+</li>
+<li>Visão computacional<br>
+</li>
+<li>Análise de formas<br>
+</li>
+<li>Sistemas inteligentes</li>
+</ul>
+<p>Discuta como a escolha dos descritores influencia os resultados.</p>
+</div>
+</div>
 
 
 </section>

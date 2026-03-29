@@ -737,6 +737,156 @@ f \bullet b = (f \oplus b) \ominus b
 <p>Além das operações clássicas, foram discutidas transformações derivadas, como <strong>gradiente morfológico</strong>, <strong>top-hat</strong> e <strong>bottom-hat</strong>, que permitem destacar bordas, realçar detalhes finos e compensar variações de iluminação. Essas operações demonstram como a combinação de operadores básicos pode gerar técnicas mais sofisticadas, capazes de evidenciar informações específicas da imagem de maneira eficiente.</p>
 <p>De modo geral, a morfologia matemática se destaca por sua abordagem baseada na forma, diferenciando-se de métodos puramente baseados em intensidade ou frequência. Sua natureza não linear e sua dependência do elemento estruturante conferem grande flexibilidade, permitindo sua adaptação a diferentes tipos de problemas e aplicações. Entre essas aplicações, destacam-se a segmentação de imagens, a remoção de ruídos, a análise de formas, o processamento de imagens médicas e a inspeção automatizada.</p>
 <p>Por fim, é importante ressaltar que o sucesso das operações morfológicas depende fortemente da escolha adequada do elemento estruturante, bem como da compreensão das características da imagem a ser processada. Assim, mais do que um conjunto de operações isoladas, a morfologia matemática constitui um <strong>arcabouço conceitual poderoso</strong>, que, quando bem aplicado, permite explorar de forma eficaz a estrutura e os detalhes das imagens digitais.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercícios">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exercício 1 — Conceitual</strong></p>
+<p>Explique com suas palavras:</p>
+<ol type="a">
+<li>O que é <strong>morfologia matemática</strong><br>
+</li>
+<li>Qual o objetivo das operações morfológicas em imagens<br>
+</li>
+<li>Em que tipos de imagens essas operações são mais utilizadas</li>
+</ol>
+<hr>
+<p><strong>Exercício 2 — Elemento estruturante</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é um <strong>elemento estruturante</strong><br>
+</li>
+<li>Como seu formato influencia o resultado das operações<br>
+</li>
+<li>Dê exemplos de elementos estruturantes comuns (3×3, cruz, disco, etc.)</li>
+</ol>
+<hr>
+<p><strong>Exercício 3 — Erosão</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é a operação de <strong>erosão</strong><br>
+</li>
+<li>Qual o efeito da erosão sobre os objetos da imagem<br>
+</li>
+<li>Em quais situações essa operação é útil</li>
+</ol>
+<hr>
+<p><strong>Exercício 4 — Dilatação</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é a operação de <strong>dilatação</strong><br>
+</li>
+<li>Como ela altera os objetos na imagem<br>
+</li>
+<li>Diferença prática entre dilatação e erosão</li>
+</ol>
+<hr>
+<p><strong>Exercício 5 — Abertura e fechamento</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é <strong>abertura</strong> (erosão seguida de dilatação)<br>
+</li>
+<li>O que é <strong>fechamento</strong> (dilatação seguida de erosão)<br>
+</li>
+<li>Em quais situações cada operação é mais adequada</li>
+</ol>
+<hr>
+<p><strong>Exercício 6 — Análise visual</strong></p>
+<p>Considere uma imagem binária com ruído:</p>
+<ol type="a">
+<li>Que tipo de ruído pode ser removido com abertura?<br>
+</li>
+<li>Que tipo de falha pode ser corrigida com fechamento?<br>
+</li>
+<li>Como essas operações afetam a forma dos objetos?</li>
+</ol>
+<hr>
+<p><strong>Exercício 7 — Sequência de operações</strong></p>
+<p>Explique o efeito de aplicar, nessa ordem:</p>
+<ol type="a">
+<li>Erosão seguida de dilatação<br>
+</li>
+<li>Dilatação seguida de erosão</li>
+</ol>
+<p>Compare os resultados e discuta as diferenças.</p>
+<hr>
+<p><strong>Exercício 8 — Bordas morfológicas</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>Como extrair bordas utilizando operações morfológicas<br>
+</li>
+<li>Qual a diferença entre borda interna e externa<br>
+</li>
+<li>Em que aplicações isso pode ser útil</li>
+</ol>
+<hr>
+<p><strong>Exercício 9 — Implementação prática (operações básicas)</strong></p>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Leia uma imagem binária<br>
+</li>
+<li>Aplique:</li>
+</ol>
+<ul>
+<li>erosão<br>
+</li>
+<li>dilatação</li>
+</ul>
+<ol start="3" type="a">
+<li>Permita escolher o elemento estruturante (ex: 3×3)<br>
+</li>
+<li>Mostre ou salve os resultados</li>
+</ol>
+<hr>
+<p><strong>Exercício 10 — Implementação prática (abertura e fechamento)</strong></p>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Aplique abertura<br>
+</li>
+<li>Aplique fechamento<br>
+</li>
+<li>Compare os resultados em imagens com ruído</li>
+</ol>
+<hr>
+<p><strong>Exercício 11 — Segmentação</strong></p>
+<p>Utilize operações morfológicas para:</p>
+<ol type="a">
+<li>Melhorar uma imagem segmentada<br>
+</li>
+<li>Remover pequenos objetos indesejados<br>
+</li>
+<li>Preencher falhas em objetos maiores</li>
+</ol>
+<hr>
+<p><strong>Exercício 12 — Comparação</strong></p>
+<p>Compare o uso de morfologia com:</p>
+<ul>
+<li>filtros lineares (ex: média)<br>
+</li>
+<li>técnicas de limiarização</li>
+</ul>
+<p>Explique as vantagens das operações morfológicas.</p>
+<hr>
+<p><strong>Questão reflexiva</strong></p>
+<p>Explique a importância da morfologia matemática em aplicações como:</p>
+<ul>
+<li>Análise de documentos<br>
+</li>
+<li>Processamento de imagens médicas<br>
+</li>
+<li>Visão computacional<br>
+</li>
+<li>Reconhecimento de padrões</li>
+</ul>
+<p>Discuta como a escolha do elemento estruturante influencia os resultados.</p>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">

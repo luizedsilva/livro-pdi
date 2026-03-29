@@ -853,6 +853,154 @@ g(x,y) =
 <section id="considerações-finais" class="level2" data-number="4.8">
 <h2 data-number="4.8" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">4.8</span> Considerações Finais</h2>
 <p>A Transformada de Fourier desempenha um papel central no Processamento Digital de Imagens, fornecendo uma base matemática sólida para a análise e manipulação de informações no domínio da frequência. A compreensão de seus fundamentos é essencial para o estudo de técnicas avançadas de filtragem, restauração e análise espectral de imagens.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercícios">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exercício 1 — Conceitual</strong></p>
+<p>Explique com suas palavras:</p>
+<ol type="a">
+<li>O que é a <strong>Transformada de Fourier</strong><br>
+</li>
+<li>O que significa representar uma imagem no <strong>domínio da frequência</strong><br>
+</li>
+<li>Qual a diferença entre domínio espacial e domínio da frequência</li>
+</ol>
+<hr>
+<p><strong>Exercício 2 — Interpretação</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que representam as <strong>baixas frequências</strong> em uma imagem<br>
+</li>
+<li>O que representam as <strong>altas frequências</strong><br>
+</li>
+<li>Onde essas frequências aparecem no espectro de Fourier</li>
+</ol>
+<hr>
+<p><strong>Exercício 3 — Visualização do espectro</strong></p>
+<p>Ao calcular a transformada de Fourier de uma imagem:</p>
+<ol type="a">
+<li>Por que aplicamos o deslocamento (shift) do espectro?<br>
+</li>
+<li>Por que utilizamos escala logarítmica na visualização?<br>
+</li>
+<li>O que acontece se visualizarmos o espectro sem essas etapas?</li>
+</ol>
+<hr>
+<p><strong>Exercício 4 — Propriedades</strong></p>
+<p>Explique as seguintes propriedades da Transformada de Fourier:</p>
+<ol type="a">
+<li>Linearidade<br>
+</li>
+<li>Translação<br>
+</li>
+<li>Simetria</li>
+</ol>
+<hr>
+<p><strong>Exercício 5 — Cálculo básico</strong></p>
+<p>Considere um sinal discreto simples:</p>
+<p>f(x) = [1, 1, 1, 1]</p>
+<ol type="a">
+<li>Qual é o comportamento da Transformada de Fourier desse sinal?<br>
+</li>
+<li>O que isso indica sobre suas frequências?</li>
+</ol>
+<hr>
+<p><strong>Exercício 6 — Filtros no domínio da frequência</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é um <strong>filtro passa-baixa</strong><br>
+</li>
+<li>O que é um <strong>filtro passa-alta</strong><br>
+</li>
+<li>Como cada um afeta a imagem</li>
+</ol>
+<hr>
+<p><strong>Exercício 7 — Análise de filtros</strong></p>
+<p>Descreva o efeito dos seguintes filtros:</p>
+<ol type="a">
+<li>Passa-baixa ideal<br>
+</li>
+<li>Passa-alta ideal<br>
+</li>
+<li>Filtro Gaussiano</li>
+</ol>
+<p>Comente sobre possíveis artefatos introduzidos.</p>
+<hr>
+<p><strong>Exercício 8 — Relação espaço-frequência</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>Como uma variação rápida na imagem se manifesta no domínio da frequência<br>
+</li>
+<li>Como uma região uniforme aparece no espectro</li>
+</ol>
+<hr>
+<p><strong>Exercício 9 — Implementação prática (DFT)</strong></p>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Leia uma imagem em tons de cinza<br>
+</li>
+<li>Calcule a Transformada Discreta de Fourier (DFT)<br>
+</li>
+<li>Mostre:</li>
+</ol>
+<ul>
+<li>o espectro de magnitude<br>
+</li>
+<li>o espectro centralizado</li>
+</ul>
+<ol start="4" type="a">
+<li>Utilize escala logarítmica para visualização</li>
+</ol>
+<hr>
+<p><strong>Exercício 10 — Implementação prática (filtros)</strong></p>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Aplique um filtro passa-baixa no domínio da frequência<br>
+</li>
+<li>Aplique um filtro passa-alta<br>
+</li>
+<li>Reconstrua a imagem com a transformada inversa</li>
+</ol>
+<p>Compare os resultados com a imagem original.</p>
+<hr>
+<p><strong>Exercício 11 — Comparação</strong></p>
+<p>Compare:</p>
+<ul>
+<li>Filtragem no domínio espacial<br>
+</li>
+<li>Filtragem no domínio da frequência</li>
+</ul>
+<p>Quais são as vantagens e desvantagens de cada abordagem?</p>
+<hr>
+<p><strong>Exercício 12 — Ruído</strong></p>
+<p>Explique como a Transformada de Fourier pode ser utilizada para:</p>
+<ol type="a">
+<li>Identificar ruídos periódicos<br>
+</li>
+<li>Remover esses ruídos</li>
+</ol>
+<hr>
+<p><strong>Questão reflexiva</strong></p>
+<p>Explique a importância da Transformada de Fourier em aplicações como:</p>
+<ul>
+<li>Compressão de imagens<br>
+</li>
+<li>Processamento de sinais<br>
+</li>
+<li>Análise de padrões<br>
+</li>
+<li>Sistemas de comunicação</li>
+</ul>
+<p>Discuta por que essa técnica é fundamental no processamento digital de imagens.</p>
+</div>
+</div>
 
 
 </section>

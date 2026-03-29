@@ -513,6 +513,167 @@ Figura&nbsp;10.7: Camada Dropout
 <p>O capítulo avançou, então, para o estudo das redes neurais artificiais, com destaque para as redes de múltiplas camadas, capazes de modelar relações não lineares e aprender a partir de exemplos. Esse desenvolvimento culminou nas redes neurais convolucionais (CNNs), que representam o estado da arte em reconhecimento de imagens, permitindo a extração automática de características e o aprendizado de representações hierárquicas diretamente a partir dos dados.</p>
 <p>De forma geral, observa-se uma evolução clara: de métodos baseados em descritores definidos manualmente para abordagens que aprendem automaticamente as representações mais adequadas. Ainda assim, os conceitos clássicos permanecem fundamentais, tanto para a compreensão dos modelos modernos quanto para aplicações em que interpretabilidade, simplicidade ou necessidade de dados são fatores relevantes.</p>
 <p>Por fim, destaca-se que o reconhecimento e a interpretação de imagens continuam sendo áreas em constante evolução, impulsionadas pelo avanço do aprendizado de máquina e pelo aumento da disponibilidade de dados. O domínio dos conceitos apresentados neste capítulo fornece uma base sólida para o desenvolvimento de aplicações inteligentes em diversas áreas, como medicina, indústria, segurança e sistemas autônomos.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercícios">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exercício 1 — Conceitual</strong></p>
+<p>Explique com suas palavras:</p>
+<ol type="a">
+<li>O que é <strong>interpretação de imagens</strong><br>
+</li>
+<li>Como ela se diferencia da segmentação e da descrição<br>
+</li>
+<li>Qual seu papel em sistemas de visão computacional</li>
+</ol>
+<hr>
+<p><strong>Exercício 2 — Pipeline de visão</strong></p>
+<p>Explique as etapas de um sistema típico de visão computacional:</p>
+<ol type="a">
+<li>Aquisição<br>
+</li>
+<li>Pré-processamento<br>
+</li>
+<li>Segmentação<br>
+</li>
+<li>Representação e descrição<br>
+</li>
+<li>Interpretação</li>
+</ol>
+<p>Qual o papel de cada etapa?</p>
+<hr>
+<p><strong>Exercício 3 — Classificação</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é um problema de <strong>classificação</strong><br>
+</li>
+<li>Diferença entre classificação supervisionada e não supervisionada<br>
+</li>
+<li>Exemplos de aplicações</li>
+</ol>
+<hr>
+<p><strong>Exercício 4 — Características (features)</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que são <strong>características (features)</strong><br>
+</li>
+<li>Por que são importantes para a interpretação<br>
+</li>
+<li>Exemplos de características utilizadas em imagens</li>
+</ol>
+<hr>
+<p><strong>Exercício 5 — Treinamento e teste</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é um conjunto de treinamento<br>
+</li>
+<li>O que é um conjunto de teste<br>
+</li>
+<li>Por que é importante separar esses conjuntos</li>
+</ol>
+<hr>
+<p><strong>Exercício 6 — Classificadores</strong></p>
+<p>Explique o funcionamento básico de:</p>
+<ol type="a">
+<li>K-vizinhos mais próximos (KNN)<br>
+</li>
+<li>Árvores de decisão<br>
+</li>
+<li>Redes neurais</li>
+</ol>
+<hr>
+<p><strong>Exercício 7 — Métricas de avaliação</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>Acurácia<br>
+</li>
+<li>Precisão<br>
+</li>
+<li>Revocação (recall)<br>
+</li>
+<li>F1-score</li>
+</ol>
+<p>Quando cada métrica é mais importante?</p>
+<hr>
+<p><strong>Exercício 8 — Matriz de confusão</strong></p>
+<p>Explique:</p>
+<ol type="a">
+<li>O que é uma matriz de confusão<br>
+</li>
+<li>O significado de:</li>
+</ol>
+<ul>
+<li>Verdadeiro positivo<br>
+</li>
+<li>Falso positivo<br>
+</li>
+<li>Verdadeiro negativo<br>
+</li>
+<li>Falso negativo</li>
+</ul>
+<hr>
+<p><strong>Exercício 9 — Implementação prática (classificação simples)</strong></p>
+<p>Implemente um programa que:</p>
+<ol type="a">
+<li>Utilize características simples (ex: área, perímetro)<br>
+</li>
+<li>Classifique objetos em duas classes<br>
+</li>
+<li>Utilize um classificador simples (ex: KNN)</li>
+</ol>
+<hr>
+<p><strong>Exercício 10 — Implementação prática (avaliação)</strong></p>
+<p>Implemente:</p>
+<ol type="a">
+<li>Cálculo de acurácia<br>
+</li>
+<li>Construção da matriz de confusão<br>
+</li>
+<li>Avaliação do desempenho do classificador</li>
+</ol>
+<hr>
+<p><strong>Exercício 11 — Comparação de métodos</strong></p>
+<p>Compare diferentes classificadores quanto a:</p>
+<ul>
+<li>desempenho<br>
+</li>
+<li>complexidade<br>
+</li>
+<li>necessidade de dados</li>
+</ul>
+<hr>
+<p><strong>Exercício 12 — Desafios</strong></p>
+<p>Explique os principais desafios da interpretação de imagens:</p>
+<ol type="a">
+<li>Variação de iluminação<br>
+</li>
+<li>Ruído<br>
+</li>
+<li>Oclusões<br>
+</li>
+<li>Variabilidade dos objetos</li>
+</ol>
+<hr>
+<p><strong>Questão reflexiva</strong></p>
+<p>Explique a importância da interpretação de imagens em aplicações como:</p>
+<ul>
+<li>Diagnóstico médico assistido por computador<br>
+</li>
+<li>Veículos autônomos<br>
+</li>
+<li>Reconhecimento facial<br>
+</li>
+<li>Sistemas de vigilância</li>
+</ul>
+<p>Discuta os impactos sociais e éticos dessas aplicações.</p>
+</div>
+</div>
 
 
 </section>
