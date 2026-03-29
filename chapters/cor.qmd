@@ -463,3 +463,184 @@ O programa deve ser executado via linha de comando:
 ./equaliza_hsv imagem.ppm
 ```
 :::
+
+::: {.callout-note title="Atividade Prática: Esteganografia em Imagens"}
+
+**Objetivo**
+
+O objetivo desta atividade é explorar conceitos de **esteganografia**, utilizando técnicas de **manipulação de bits em imagens digitais** para ocultar e recuperar informações sem alterar perceptivelmente a imagem original.
+
+---
+
+**Problema**
+
+O termo **esteganografia**[^estegano] deriva da junção das palavras gregas *estegano*, que significa “esconder ou mascarar”, e *grafia*, que significa “escrita”. Portanto, esteganografia pode ser compreendida como a arte de esconder informações, tornando-as ocultas, assim como a criptografia. O objetivo desta técnica é que esses dados não sejam percebidos por terceiros; ou seja, a presença de mensagens escondidas dentro de arquivos é simplesmente desconhecida. Somente o receptor da mensagem tem conhecimento de sua existência, assim como da maneira como extraí-la.
+
+[^estegano]: (https://www.gta.ufrj.br/grad/09_1/versao-final/stegano/introducao.html)
+
+Apesar de parecer, a esteganografia e a criptografia são duas áreas com objetivos bastante diferentes. Enquanto a criptografia tem o propósito de impedir que as pessoas saibam o conteúdo de uma mensagem, a esteganografia busca evitar que as pessoas saibam que a mensagem escondida existe. Ou seja, na criptografia, os receptores sabem da existência das mensagens, porém não conseguem, a princípio, lê-las; já a esteganografia tenta fazer com que os receptores não percebam que há uma mensagem naquele meio (imagem, texto, etc.).
+
+Existem várias formas de esconder mensagens ou arquivos em imagens. Uma das técnicas possíveis é modificar alguns bits (menos relevantes) dos pixels da imagem com as informações que se deseja ocultar. Por exemplo, a modificação do bit menos significativo de uma banda (red) de um pixel de uma imagem colorida não é perceptível ao olho humano. A esteganoanálise dessa modificação, no entanto, pode ser realizada a partir da comparação entre o arquivo original e o arquivo modificado. O ruído, calculado como a diferença entre esses dois arquivos, corresponde à mensagem codificada.
+
+---
+
+**Descrição**
+
+1. Um arquivo está escondido na imagem `.PPM`. O arquivo escondido está codificado nos pixels da imagem da seguinte forma:
+
+   - o binário dos códigos ASCII do nome original do arquivo (finalizado pelo caractere zero)
+   - o binário do tamanho do arquivo (em quatro bytes)
+   - e os bytes do arquivo
+
+2. Os bits (zero ou um) das representações binárias estão armazenados modificando as bandas R, G e B dos pixels em sequência.
+
+Por exemplo, considerando a imagem colorida:
+
+![](/imgs/cap5/rgb1.png){width="70%" fig-align="center"}
+
+Seja `'A'`, a primeira letra do nome do arquivo (código ASCII binário `01000001`). Na codificação, a letra `'A'` modifica as seguintes bandas dos pixels:
+
+![](/imgs/cap5/rgb2.png){width="70%" fig-align="center"}
+
+Onde:
+
+- $R_1 = r_1 \,\& \,0xFE$ codifica o bit **0**
+- $G_2 = g_2 \,\| \,0x01$ codifica o bit **1**
+- $B_3 = b_3 \,\& \,0xFE$ codifica o bit **0**
+- $R_4 = r_4 \,\& \,0xFE$ codifica o bit **0**
+- $G_5 = g_5 \,\& \,0xFE$ codifica o bit **0**
+- $B_6 = b_6 \,\& \,0xFE$ codifica o bit **0**
+- $R_7 = r_7 \,\& \,0xFE$ codifica o bit **0**
+- $G_8 = g_8 \,\| \,0x01$ codifica o bit **1**
+
+3. A operação $R_1 = r_1 \,\& \,0xFE$ (AND bit-a-bit) força o último bit para **0**.
+
+4. A operação $G_2 = g_2 \,\| \,0x01$ (OR bit-a-bit) força o último bit para **1**.
+
+5. Após o nome do arquivo, os quatro bytes seguintes representam o tamanho do arquivo.
+
+---
+
+**Exemplo**
+
+Arquivo original:
+
+```text
+P3
+#Created with GIMP
+10 10
+255
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 140 26 26 197 40 40 197 40 40 140 
+26 26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 197 40 40 209 43 43 209 43 43 197 40 40 40 
+140 26 59 197 40 59 197 40 40 140 26 0 0 0 
+0 0 0 197 40 40 209 43 43 166 53 144 85 61 197
+61 197 85 63 209 43 63 209 43 59 197 40 0 0 0 
+0 0 0 140 26 26 197 40 40 85 61 197 43 63 209 61
+198 90 63 209 43 63 209 43 59 197 40 0 0 0 
+0 0 0 0 0 0 0 0 0 40 59 197 43 63 209 53 147 166
+61 197 85 59 197 40 40 140 26 0 0 0 
+0 0 0 0 0 0 0 0 0 26 40 140 40 59 197 40 
+59 197 26 40 140 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+```
+
+Arquivo modificado:
+
+```text
+P3
+# CREATOR: Image Processing using C-Ansi - ByDu
+#
+10 10
+255
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 1 0 0 0 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 1 1 0 0 0 1 0 
+0 0 0 141 26 26 197 40 40 197 40 40 140 
+26 26 0 1 0 0 0 1 1 0 0 0 1 0 0 0 0 
+0 0 0 197 40 40 209 43 42 209 43 43 197 41 40 40 
+140 27 58 197 40 59 197 40 40 140 26 0 0 0 
+0 0 0 197 40 40 208 43 43 166 52 144 85 61 196 
+60 197 85 63 208 43 63 209 42 58 197 40 0 0 0 
+0 0 0 140 26 26 197 40 40 85 61 196 42 63 209 61 
+198 90 63 209 42 62 209 43 59 196 40 0 0 0 
+0 0 0 0 0 0 0 0 0 40 59 197 43 62 209 53 147 166 
+60 197 85 59 196 40 40 140 26 0 0 0 
+0 0 0 0 0 0 0 0 0 26 40 140 40 59 196 40 
+59 197 26 40 140 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+```
+
+Arquivo ocultado: `A.txt`
+
+Conteúdo:
+
+```text
+42
+```
+
+Codificação binária:
+
+```text
+A(41) 01000001 .(2E) 00101110 
+t(74) 01110100 x(78) 01111000 t(74) 01110100 (0) 00000000
+(0) 00000000 (0) 00000000 (0) 00000000 (2) 00000010
+4(34) 00110100 2(32) 00110010
+```
+
+---
+
+6. Para que um arquivo possa ser escondido na imagem:
+
+* TN = tamanho do nome (+1 para caractere nulo)
+* TA = 4 bytes (tamanho do arquivo)
+* NB = número de bytes do arquivo
+* nlinhas = número de linhas da imagem
+* ncolunas = número de colunas da imagem
+
+A condição é:
+
+$$
+8 \times (TN + TA + NB) \leq nlinhas \times ncolunas
+$$
+
+---
+
+7. No exemplo:
+
+* TN = 6
+* TA = 4
+* NB = 2
+
+Total: `12 × 8 = 96 pixels` usados (em uma imagem 10×10 = 100 pixels)
+
+---
+
+8. Considerando esse esquema, sua tarefa é desenvolver o **decodificador**.
+
+O programa deve:
+
+* receber o nome da imagem
+* extrair o arquivo oculto
+* gerar o arquivo em disco
+
+**Formato da execução**
+
+O programa deve suportar duas operações:
+
+```bash
+./estego -e <entrada.pgm> <saida.pgm> "<mensagem>"
+./estego -d <imagem.pgm>
+```
+:::

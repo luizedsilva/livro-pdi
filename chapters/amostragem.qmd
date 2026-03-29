@@ -568,3 +568,91 @@ Para o exemplo fornecido:
 * 80 × 80 → 6400 colunas
 
 :::
+
+
+::: {.callout-note title="Atividade Prática: Arte ASCII"}
+
+**Objetivo**
+
+O objetivo desta atividade é explorar conceitos iniciais de **processamento de imagens**, incluindo **vizinhança de pixels**, **amostragem** e **quantização**.
+
+---
+
+**Problema**
+
+A arte ASCII é uma técnica de representação de imagens utilizando caracteres de texto. Surgiu nos primórdios da computação, quando os sistemas possuíam baixa resolução e não suportavam gráficos.
+
+Nesta atividade, você deverá desenvolver um programa capaz de **converter uma imagem em tons de cinza (PGM) em uma representação ASCII**, utilizando caracteres para simular diferentes níveis de intensidade.
+
+---
+
+**Descrição**
+
+1. Desenvolva um programa que:
+
+   a) Leia uma imagem em tons de cinza no formato `.pgm`  
+
+   b) Receba como entrada:
+   - número de colunas (amostragem)  
+   - número de linhas (amostragem)  
+   - string de caracteres (quantização)  
+
+2. O programa deverá:
+
+   a) Realizar a **redução da resolução da imagem (amostragem)**  
+
+   b) Mapear os níveis de cinza para caracteres ASCII (**quantização**)  
+
+   c) Gerar uma representação textual da imagem  
+
+3. Por fim, o programa deve:
+
+   a) Salvar o resultado em um arquivo texto  
+
+   b) Preservar a estrutura visual da imagem original  
+
+---
+
+**Formato da execução**
+
+O programa deve ser executado via linha de comando:
+
+```bash
+./ascii <nome-arquivo-imagem> <ncolunas> <nlinhas> <string>
+````
+
+---
+
+**Exemplo**
+
+Para a imagem:
+
+![Imagem de entrada](/imgs/cap2/cao.png){width="60%" fig-align="center"}
+
+O arquivo texto gerado deve ter o seguinte conteúdo:
+
+![Imagem de entrada](/imgs/cap2/cao-ascii.png){width="60%" fig-align="center"}
+
+---
+
+**Saída esperada**
+
+O programa deverá gerar um arquivo:
+
+```text
+result.txt
+```
+
+contendo a imagem convertida para ASCII.
+
+---
+
+**Observações**
+
+* Caracteres mais densos (como `@`, `#`) representam regiões mais escuras.
+* Caracteres mais leves (como `.`, espaço) representam regiões claras.
+* A escolha do conjunto de caracteres influencia diretamente a qualidade da imagem final.
+
+:::
+
+

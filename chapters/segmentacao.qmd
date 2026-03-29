@@ -564,7 +564,7 @@ O objetivo desta atividade é explorar técnicas de **segmentação de imagens c
 
 A segmentação de imagens consiste em dividir uma imagem em regiões de interesse, como separar o objeto principal do fundo.
 
-Nesta atividade, você deverá utilizar o algoritmo **Watershed (Linha Divisora de Águas)** para segmentar uma imagem colorida, isolando o objeto central e aplicando um efeito de **borramento (desfoque)** no restante da imagem (fundo), confomre ilustrado na @fig-borrar.
+Nesta atividade, você deverá utilizar o algoritmo **Watershed (Linha Divisora de Águas)** para segmentar uma imagem colorida, isolando o objeto central e aplicando um efeito de **borramento (desfoque)** no restante da imagem (fundo), conforme ilustrado na @fig-borrar.
 
 ![Imagem exemplo](/imgs/cap8/borrarfundo.png){width="80%" fig-align="center" #fig-borrar}
 

@@ -920,6 +920,30 @@ lzw-b64
 ```
 ---
 
+**Exemplo**
+
+ Por exemplo, a imagem .PGM com o seguinte conteúdo:
+
+```text
+P2
+# CREATOR: Image Processing using C-Ansi - ByDu
+4 4
+255
+39 39 126 126 39 39 126 126 39 39 126 126 39 39 126 126
+```
+
+Está codificada nesse formato como:
+
+```text
+lzw-b64
+4 4
+AnAnB+B+EAECEEEDEBB+
+```
+
+Observe que os dois primeiros caracteres em Base64 no arquivo compactado (A = 000000
+e n = 100111), como um único código de 12 bits corresponde a 000000100111, que é igual
+ao valor 39. Outro exemplo, EA = 000100000000 é igual ao código 256.
+
 **Para teste**
 
 Desenvolver o compactador

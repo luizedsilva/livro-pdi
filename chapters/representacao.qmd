@@ -668,6 +668,44 @@ O programa deve ser executado via linha de comando:
 
 ---
 
+**Exemplo**
+
+Para a imagem de contorno:
+```text
+7 7
+2 1
+13
+F700124648
+```
+
+Os dígitos decodificados são:
+```text
+   //-------- dígitos hexa
+F... 7... 0... 0... 1... 2... 4... 6... 4... 8...     
+   //-------- em binário
+1111 0111 0000 0000 0001 0010 0100 0110 0100 1000     
+   //-------- agrupamento (3 bits)
+111 101 110 000 000 000 010 010 010 001 100 100 100 0 
+   //------- chain code
+7.. 5.. 6.. 0.. 0.. 0.. 2.. 2.. 2.. 1.. 4.. 4.. 4..   
+```
+
+A imagem reconstruída é:
+```text
+P1
+#contour decoding image
+7 7
+0 0 0 0 0 0 0 
+0 0 1 1 1 1 0 
+0 1 0 0 1 0 0 
+0 0 1 0 1 0 0 
+0 1 0 0 1 0 0 
+0 1 1 1 1 0 0 
+0 0 0 0 0 0 0
+```
+
+---
+
 **Observações**
 
 * O programa deve reconstruir corretamente o contorno para qualquer entrada válida
