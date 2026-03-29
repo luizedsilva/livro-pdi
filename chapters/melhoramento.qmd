@@ -126,7 +126,11 @@ Em sequência um simulador desse algoritmo:
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap3/p5js-distance.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap3/p5js-distance.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -243,7 +247,12 @@ Em sequência um simulador desse algoritmo:
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap3/p5js-rotula.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap3/p5js-rotula.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -298,7 +307,11 @@ Essas transformações mapeiam um nível de cinza de entrada $r$ para um nível 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap3/p5js-transformacao.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap3/p5js-transformacao.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -393,8 +406,11 @@ O parâmetro ($\gamma$) controla a forma da curva de transformação. Valores de
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
-
-![](/imgs/cap3/p5js-potencia.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap3/p5js-potencia.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -434,7 +450,11 @@ O exemplo interativo seguinte demonstra a transformação linear por partes. Mov
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap3/p5js-linear.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap3/p5js-linear.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -544,7 +564,11 @@ O exemplo interativo a seguir apresenta a implementação do algoritmo de **equa
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap3/p5js-histograma.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap3/p5js-histograma.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -578,7 +602,11 @@ O exemplo interativo seguinte ilustra o processo de convolução para uma imagem
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap3/p5js-convolucao.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap3/p5js-convolucao.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -672,7 +700,11 @@ No exemplo interativo em sequência, esses diversos filtros podem ser testados:
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap3/p5js-filtro.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap3/p5js-filtro.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -751,7 +783,11 @@ No exemplo interativo seguinte está um programa que permite carregar uma imagem
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap3/p5js-mediana.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap3/p5js-mediana.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:

@@ -23,8 +23,8 @@ book:
     - chapters/amostragem.qmd
     - chapters/melhoramento.qmd
     - chapters/fourier.qmd
-    - chapters/compressao.qmd
     - chapters/cor.qmd
+    - chapters/compressao.qmd
     - chapters/morfologia.qmd
     - chapters/segmentacao.qmd
     - chapters/representacao.qmd

@@ -128,7 +128,11 @@ O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visu
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap2/p5js-zoom.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap2/p5js-zoom.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -165,7 +169,11 @@ O exemplo interativo seguinte permite uma visualização de uma imagem como supe
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
 
-![](/imgs/cap2/p5js-surface.png){width="60%" fig-align="center"}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap2/p5js-surface.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
 
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
@@ -411,18 +419,16 @@ A amostragem e a quantização constituem a base da representação digital de i
 A compreensão desses conceitos é essencial para o estudo de técnicas mais avançadas de processamento de imagens, como filtragem, segmentação, compressão e reconhecimento de padrões, abordadas nos capítulos seguintes.
 
 
-## 📝 Exercícios
+::: {.callout-note title="Exercícios"}
 
-### 🔹 Exercício 1 — Conceitual{.unnumbered}
+### Exercício 1 — Conceitual{.unnumbered}
 Explique com suas palavras:
 
 a) O que é **amostragem** em imagens digitais  
 b) O que é **quantização**  
 c) Qual o impacto de cada um na qualidade da imagem  
 
----
-
-### 🔹 Exercício 2 — Análise visual{.unnumbered}
+### Exercício 2 — Análise visual{.unnumbered}
 Considere uma imagem em tons de cinza:
 
 a) O que acontece ao reduzir pela metade:
@@ -431,13 +437,8 @@ a) O que acontece ao reduzir pela metade:
 
 b) Qual das duas alterações tende a causar maior perda perceptual? Justifique.
 
----
-
-### 🔹 Exercício 3 — Cálculo de resolução{.unnumbered}
-Uma imagem possui:
-
-- 512 × 512 pixels  
-- 256 níveis de cinza  
+### Exercício 3 — Cálculo de resolução{.unnumbered}
+Uma imagem possui: 512 × 512 pixels e 256 níveis de cinza  
 
 Responda:
 
@@ -445,9 +446,7 @@ a) Quantos pixels possui a imagem?
 b) Quantos bits são necessários por pixel?  
 c) Qual o tamanho da imagem em bytes?
 
----
-
-### 🔹 Exercício 4 — Quantização prática{.unnumbered}
+### Exercício 4 — Quantização prática{.unnumbered}
 Implemente um programa que:
 
 a) Leia uma imagem em tons de cinza  
@@ -459,11 +458,9 @@ b) Reduza o número de níveis de cinza para:
 
 c) Mostre ou salve os resultados  
 
-👉 Compare visualmente os resultados.
+d) Compare visualmente os resultados.
 
----
-
-### 🔹 Exercício 5 — Amostragem prática{.unnumbered}
+### Exercício 5 — Amostragem prática{.unnumbered}
 Implemente um programa que reduza a resolução de uma imagem:
 
 - 1/2 da largura e altura  
@@ -471,33 +468,26 @@ Implemente um programa que reduza a resolução de uma imagem:
 
 Compare os resultados com a imagem original.
 
----
-
-### 🔹 Exercício 6 — Comparação{.unnumbered}
+### Exercício 6 — Comparação{.unnumbered}
 Compare os efeitos de:
 
 - Reduzir apenas a amostragem  
 - Reduzir apenas a quantização  
 - Reduzir ambos  
 
-👉 Qual combinação produz maior degradação? Explique.
+Qual combinação produz maior degradação? Explique.
 
----
-
-### 📚 Questão reflexiva{.unnumbered}
+### Questão reflexiva{.unnumbered}
 
 Explique como os conceitos de amostragem e quantização influenciam:
 
 - Compressão de imagens  
 - Qualidade visual  
 - Uso em aplicações reais (ex: redes sociais, medicina, satélites)
+:::
 
 
----
-
-## Atividade Prática - "Fotomosaico de fotos"
-
----
+::: {.callout-note title="Atividade Prática: Fotomosaico"}
 
 ### Objetivo{.unnumbered}
 
@@ -559,3 +549,4 @@ Para o exemplo fornecido:
 * 60 × 60 → 3600 linhas
 * 80 × 80 → 6400 colunas
 
+:::
