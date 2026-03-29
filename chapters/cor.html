@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Imagens Coloridas – Processamento Digital de Imagens</title>
+<title>5&nbsp; Imagens Coloridas – Processamento Digital de Imagens</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/morfologia.html" rel="next">
-<link href="../chapters/compressao.html" rel="prev">
+<link href="../chapters/compressao.html" rel="next">
+<link href="../chapters/fourier.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +115,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/cor.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/cor.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -172,14 +172,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/compressao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></span></a>
+  <a href="../chapters/cor.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/cor.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></span></a>
+  <a href="../chapters/compressao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -234,22 +234,22 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#percepção-da-cor" id="toc-percepção-da-cor" class="nav-link active" data-scroll-target="#percepção-da-cor"><span class="header-section-number">6.1</span> Percepção da Cor</a></li>
-  <li><a href="#conceitos-básicos-de-cor" id="toc-conceitos-básicos-de-cor" class="nav-link" data-scroll-target="#conceitos-básicos-de-cor"><span class="header-section-number">6.2</span> Conceitos Básicos de Cor</a></li>
-  <li><a href="#modelo-de-cor-rgb" id="toc-modelo-de-cor-rgb" class="nav-link" data-scroll-target="#modelo-de-cor-rgb"><span class="header-section-number">6.3</span> Modelo de Cor RGB</a></li>
-  <li><a href="#modelo-de-cor-cmy-e-cmyk" id="toc-modelo-de-cor-cmy-e-cmyk" class="nav-link" data-scroll-target="#modelo-de-cor-cmy-e-cmyk"><span class="header-section-number">6.4</span> Modelo de Cor CMY e CMYK</a></li>
-  <li><a href="#modelo-de-cor-hsv" id="toc-modelo-de-cor-hsv" class="nav-link" data-scroll-target="#modelo-de-cor-hsv"><span class="header-section-number">6.5</span> Modelo de Cor HSV</a>
+  <li><a href="#percepção-da-cor" id="toc-percepção-da-cor" class="nav-link active" data-scroll-target="#percepção-da-cor"><span class="header-section-number">5.1</span> Percepção da Cor</a></li>
+  <li><a href="#conceitos-básicos-de-cor" id="toc-conceitos-básicos-de-cor" class="nav-link" data-scroll-target="#conceitos-básicos-de-cor"><span class="header-section-number">5.2</span> Conceitos Básicos de Cor</a></li>
+  <li><a href="#modelo-de-cor-rgb" id="toc-modelo-de-cor-rgb" class="nav-link" data-scroll-target="#modelo-de-cor-rgb"><span class="header-section-number">5.3</span> Modelo de Cor RGB</a></li>
+  <li><a href="#modelo-de-cor-cmy-e-cmyk" id="toc-modelo-de-cor-cmy-e-cmyk" class="nav-link" data-scroll-target="#modelo-de-cor-cmy-e-cmyk"><span class="header-section-number">5.4</span> Modelo de Cor CMY e CMYK</a></li>
+  <li><a href="#modelo-de-cor-hsv" id="toc-modelo-de-cor-hsv" class="nav-link" data-scroll-target="#modelo-de-cor-hsv"><span class="header-section-number">5.5</span> Modelo de Cor HSV</a>
   <ul class="collapse">
   <li><a href="#interpretação-geométrica" id="toc-interpretação-geométrica" class="nav-link" data-scroll-target="#interpretação-geométrica">Interpretação geométrica</a></li>
   <li><a href="#conversão-de-rgb-para-hsv" id="toc-conversão-de-rgb-para-hsv" class="nav-link" data-scroll-target="#conversão-de-rgb-para-hsv">Conversão de RGB para HSV</a></li>
   </ul></li>
-  <li><a href="#modelo-de-cor-hsi" id="toc-modelo-de-cor-hsi" class="nav-link" data-scroll-target="#modelo-de-cor-hsi"><span class="header-section-number">6.6</span> Modelo de Cor HSI</a>
+  <li><a href="#modelo-de-cor-hsi" id="toc-modelo-de-cor-hsi" class="nav-link" data-scroll-target="#modelo-de-cor-hsi"><span class="header-section-number">5.6</span> Modelo de Cor HSI</a>
   <ul class="collapse">
   <li><a href="#conversão-de-rgb-para-hsi" id="toc-conversão-de-rgb-para-hsi" class="nav-link" data-scroll-target="#conversão-de-rgb-para-hsi">Conversão de RGB para HSI</a></li>
   </ul></li>
-  <li><a href="#representação-de-imagens-coloridas" id="toc-representação-de-imagens-coloridas" class="nav-link" data-scroll-target="#representação-de-imagens-coloridas"><span class="header-section-number">6.7</span> Representação de Imagens Coloridas</a></li>
-  <li><a href="#aplicações-de-imagens-coloridas" id="toc-aplicações-de-imagens-coloridas" class="nav-link" data-scroll-target="#aplicações-de-imagens-coloridas"><span class="header-section-number">6.8</span> Aplicações de Imagens Coloridas</a></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">6.9</span> Considerações Finais</a></li>
+  <li><a href="#representação-de-imagens-coloridas" id="toc-representação-de-imagens-coloridas" class="nav-link" data-scroll-target="#representação-de-imagens-coloridas"><span class="header-section-number">5.7</span> Representação de Imagens Coloridas</a></li>
+  <li><a href="#aplicações-de-imagens-coloridas" id="toc-aplicações-de-imagens-coloridas" class="nav-link" data-scroll-target="#aplicações-de-imagens-coloridas"><span class="header-section-number">5.8</span> Aplicações de Imagens Coloridas</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">5.9</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -258,7 +258,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></h1>
 </div>
 
 
@@ -282,8 +282,8 @@ window.Quarto = {
 </div>
 <p>A maioria das informações visuais percebidas pelo ser humano envolve cor. Em Processamento Digital de Imagens, o uso da cor amplia significativamente a capacidade de análise, interpretação e representação de cenas, tornando sistemas computacionais mais próximos da percepção humana.</p>
 <p>Este capítulo apresenta os fundamentos das <strong>imagens coloridas</strong>, abordando os princípios da percepção da cor, os principais modelos de cor utilizados em sistemas computacionais e as formas de representação e manipulação de imagens coloridas.</p>
-<section id="percepção-da-cor" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="percepção-da-cor"><span class="header-section-number">6.1</span> Percepção da Cor</h2>
+<section id="percepção-da-cor" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="percepção-da-cor"><span class="header-section-number">5.1</span> Percepção da Cor</h2>
 <p>A percepção de cores é resultado de um processo fisiológico e psicológico realizado pelo sistema visual humano. A luz refletida pelos objetos é captada pelos olhos e convertida em sinais elétricos pelos fotorreceptores presentes na retina. Esses sinais são então transmitidos ao cérebro, que os interpreta e produz a sensação de cor. Entretanto, o mecanismo completo pelo qual o cérebro processa e interpreta essas informações ainda não é totalmente compreendido. Por esse motivo, a percepção de cor é frequentemente descrita como um fenômeno <strong>fisiopsicológico</strong>, pois envolve tanto mecanismos físicos de detecção da luz quanto processos cognitivos de interpretação.</p>
 <p>Um passo fundamental para a compreensão da natureza da luz e das cores foi dado em 1666 por Isaac Newton. Em seus experimentos, Newton demonstrou que a luz branca não é uma entidade simples, mas sim uma combinação de diferentes componentes de luz. Ao fazer um feixe de luz branca atravessar um prisma de vidro, observou-se que a luz emergente se separa em várias cores distintas. Esse fenômeno ocorre porque cada componente da luz possui comprimentos de onda diferentes, que são desviados de maneira distinta ao atravessar o prisma.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -296,16 +296,16 @@ window.Quarto = {
 <p>Para fins didáticos, esse espectro costuma ser dividido em seis regiões principais: violeta, azul, verde, amarelo, laranja e vermelho. No entanto, essas regiões não apresentam limites abruptos. Na realidade, as cores variam de forma contínua ao longo do espectro, de modo que uma tonalidade se transforma gradualmente na seguinte. Assim, entre duas cores adjacentes existem inúmeras tonalidades intermediárias que não podem ser classificadas de maneira absoluta como pertencentes a apenas uma região específica.</p>
 <p>Fisicamente, cada cor do espectro está associada a um intervalo de comprimentos de onda da luz visível. De maneira aproximada, o violeta corresponde à faixa entre 380 e 450 nm, o azul entre 450 e 495 nm, o verde entre 495 e 570 nm, o amarelo entre 570 e 590 nm, o laranja entre 590 e 620 nm e o vermelho entre 620 e 750 nm. Essa relação entre comprimento de onda e cor percebida é fundamental em diversas áreas, como fotografia, computação gráfica e processamento de imagens, pois permite modelar matematicamente a formação e a reprodução das cores em diferentes dispositivos.</p>
 </section>
-<section id="conceitos-básicos-de-cor" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="conceitos-básicos-de-cor"><span class="header-section-number">6.2</span> Conceitos Básicos de Cor</h2>
+<section id="conceitos-básicos-de-cor" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="conceitos-básicos-de-cor"><span class="header-section-number">5.2</span> Conceitos Básicos de Cor</h2>
 <p>A descrição e o estudo das cores podem ser realizados a partir de <strong>atributos perceptuais</strong>, isto é, características que correspondem à forma como o sistema visual humano percebe as cores. Esses atributos permitem representar e diferenciar cores de maneira mais intuitiva, aproximando a descrição matemática da experiência visual humana. De modo geral, uma cor pode ser caracterizada por três propriedades fundamentais: <strong>matiz</strong>, <strong>saturação</strong> e <strong>brilho</strong>.</p>
 <p>A <strong>matiz</strong> (<em>hue</em>) corresponde à tonalidade dominante da cor, sendo a característica que permite distinguir uma cor de outra no espectro visível. Em termos práticos, a matiz identifica se uma cor é percebida como vermelha, azul, verde, amarela, entre outras. Esse atributo está relacionado principalmente ao <strong>comprimento de onda predominante da luz</strong> que atinge o olho humano.</p>
 <p>A <strong>saturação</strong> indica o grau de pureza ou intensidade da cor. Cores altamente saturadas apresentam tonalidades vivas e intensas, enquanto cores com baixa saturação tendem a parecer mais esmaecidas ou próximas de tons de cinza. Em outras palavras, a saturação expressa o quanto uma cor está misturada com luz branca ou com outras cores, afetando a vivacidade da tonalidade percebida.</p>
 <p>O <strong>brilho</strong>, também denominado <strong>intensidade</strong> ou <strong>luminosidade</strong>, representa a quantidade de luz associada à cor. Esse atributo está relacionado à percepção de quão clara ou escura uma cor é. Cores com maior brilho são percebidas como mais claras, enquanto cores com menor brilho aparecem mais escuras.</p>
 <p>Esses três atributos perceptuais são amplamente utilizados na definição de <strong>modelos de cor</strong>, que são representações matemáticas destinadas a descrever e manipular cores em sistemas computacionais. Modelos como HSV (<em>Hue, Saturation, Value</em>) e HSL (<em>Hue, Saturation, Lightness</em>) organizam as cores justamente com base nesses parâmetros perceptuais, facilitando tarefas como edição de imagens, segmentação de cores e desenvolvimento de algoritmos de <strong>processamento de imagens digitais</strong>.</p>
 </section>
-<section id="modelo-de-cor-rgb" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="modelo-de-cor-rgb"><span class="header-section-number">6.3</span> Modelo de Cor RGB</h2>
+<section id="modelo-de-cor-rgb" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="modelo-de-cor-rgb"><span class="header-section-number">5.3</span> Modelo de Cor RGB</h2>
 <p>O modelo RGB representa as cores a partir da combinação de três componentes espectrais primárias: vermelho (<em>red</em>), verde (<em>green</em>) e azul (<em>blue</em>). Cada cor é definida por um triplo de valores que indicam a intensidade de cada uma dessas componentes. Esse modelo pode ser interpretado geometricamente como um sistema de coordenadas cartesianas tridimensional, no qual cada eixo corresponde a uma das cores primárias.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -318,8 +318,8 @@ window.Quarto = {
 <p>As demais cores são obtidas pela combinação dessas componentes. Por exemplo, o ponto (0,1,1), localizado no plano formado pelos eixos verde e azul, representa a cor ciano (<em>cyan</em>), que resulta da mistura dessas duas cores primárias. De forma análoga, o ponto (1,0,1) corresponde ao magenta (<em>magenta</em>), e o ponto (1,1,0) ao amarelo (<em>yellow</em>).</p>
 <p>Assim, o cubo RGB fornece uma representação intuitiva e geométrica do espaço de cores, permitindo visualizar como diferentes combinações das componentes primárias geram todas as demais cores perceptíveis nesse modelo.</p>
 </section>
-<section id="modelo-de-cor-cmy-e-cmyk" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="modelo-de-cor-cmy-e-cmyk"><span class="header-section-number">6.4</span> Modelo de Cor CMY e CMYK</h2>
+<section id="modelo-de-cor-cmy-e-cmyk" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="modelo-de-cor-cmy-e-cmyk"><span class="header-section-number">5.4</span> Modelo de Cor CMY e CMYK</h2>
 <p>O modelo CMY é um modelo de cores baseado nas componentes ciano (<em>cyan</em>), magenta (<em>magenta</em>) e amarelo (<em>yellow</em>), sendo amplamente utilizado em processos de impressão. Diferentemente do modelo RGB, que é aditivo (baseado na emissão de luz), o modelo CMY é subtrativo, pois descreve como as cores são formadas pela absorção de luz refletida por uma superfície.</p>
 <p>Nesse modelo, parte-se da cor branca, que representa a reflexão total da luz (equivalente ao papel em branco). À medida que as tintas são aplicadas, certas componentes da luz são absorvidas (subtraídas), modificando a cor percebida. Cada uma das cores primárias do modelo CMY atua removendo uma componente do modelo RGB: o ciano absorve o vermelho, o magenta absorve o verde e o amarelo absorve o azul.</p>
 <p>As cores no modelo CMY também podem ser representadas em um sistema de coordenadas tridimensional, semelhante ao cubo RGB. O ponto (0,0,0) corresponde ao branco (ausência de tinta), enquanto o ponto (1,1,1) representa a combinação máxima das três tintas, que idealmente resultaria em preto. No entanto, devido a imperfeições dos pigmentos, essa combinação geralmente produz um tom escuro acinzentado, motivo pelo qual, na prática, utiliza-se o modelo estendido CMYK, com a adição da tinta preta (<em>black</em>).</p>
@@ -330,8 +330,8 @@ C = 1 - R, \quad M = 1 - G, \quad Y = 1 - B
 <p>As combinações entre as componentes CMY geram outras cores. Por exemplo, a mistura de ciano e magenta produz azul, a mistura de ciano e amarelo resulta em verde, e a combinação de magenta e amarelo gera vermelho. Essas relações evidenciam que o modelo CMY é, na prática, o complementar do modelo RGB.</p>
 <p>O canal adicional K no modelo CMYK é utilizado para melhorar o contraste e reduzir o consumo de tinta.</p>
 </section>
-<section id="modelo-de-cor-hsv" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="modelo-de-cor-hsv"><span class="header-section-number">6.5</span> Modelo de Cor HSV</h2>
+<section id="modelo-de-cor-hsv" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="modelo-de-cor-hsv"><span class="header-section-number">5.5</span> Modelo de Cor HSV</h2>
 <p>O modelo HSV (<em>Hue, Saturation, Value</em>) é uma representação de cores que busca se aproximar da forma como os seres humanos percebem e descrevem as cores. Assim como o modelo HSI, ele separa a informação cromática da informação de brilho, facilitando tarefas de análise e processamento de imagens.</p>
 <p>No modelo HSV, as cores são representadas em uma geometria conhecida como <strong>hexcone</strong> (ou cone hexagonal). Nessa representação, o eixo vertical corresponde ao <strong>valor (V)</strong>, que indica o brilho da cor. O valor varia de 0 (preto) até 1 (máximo brilho). Diferentemente do modelo HSI, o topo do modelo HSV não corresponde ao branco puro necessariamente, mas à cor mais intensa possível para uma determinada matiz.</p>
 <p>A <strong>matiz (H – hue)</strong> representa o tipo da cor e é dada por um ângulo ao redor do eixo vertical. Esse ângulo varia de 0° a 360°, sendo que diferentes intervalos correspondem a cores perceptuais distintas: 0° representa o vermelho, 120° o verde e 240° o azul. As demais cores são obtidas por valores intermediários desse ângulo.</p>
@@ -380,8 +380,8 @@ V = MAX
 </iframe>
 </section>
 </section>
-<section id="modelo-de-cor-hsi" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="modelo-de-cor-hsi"><span class="header-section-number">6.6</span> Modelo de Cor HSI</h2>
+<section id="modelo-de-cor-hsi" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="modelo-de-cor-hsi"><span class="header-section-number">5.6</span> Modelo de Cor HSI</h2>
 <p>O modelo HSI (<em>Hue, Saturation, Intensity</em>) descreve as cores de uma forma mais próxima da percepção humana, separando a informação de cor (matiz e saturação) da informação de brilho (intensidade). Essa separação é especialmente útil em processamento de imagens, pois permite manipular iluminação e cor de forma independente.</p>
 <p>No modelo HSI, a <strong>intensidade (I)</strong> representa o brilho da cor e é definida ao longo de um eixo vertical que vai do preto (0,0,0) ao branco (1,1,1). Esse eixo corresponde à linha onde as três componentes RGB possuem o mesmo valor, ou seja, tons de cinza. Quanto maior o valor de intensidade, mais clara é a cor.</p>
 <p>A <strong>saturação (S)</strong> indica o grau de pureza da cor. Geometricamente, ela corresponde à distância entre a cor e o eixo de intensidade. Cores localizadas exatamente sobre esse eixo possuem saturação zero (tons de cinza), enquanto cores mais afastadas do eixo são mais saturadas, ou seja, mais “vivas”.</p>
@@ -416,13 +416,13 @@ I = \frac{1}{3}(R + G + B)
 </iframe>
 </section>
 </section>
-<section id="representação-de-imagens-coloridas" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="representação-de-imagens-coloridas"><span class="header-section-number">6.7</span> Representação de Imagens Coloridas</h2>
+<section id="representação-de-imagens-coloridas" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="representação-de-imagens-coloridas"><span class="header-section-number">5.7</span> Representação de Imagens Coloridas</h2>
 <p>Imagens coloridas podem ser representadas de diferentes formas, dependendo do modelo de cor adotado. Em geral, uma imagem colorida pode ser vista como um conjunto de imagens monocromáticas correlacionadas.</p>
 <p>Essa representação permite que técnicas clássicas de processamento em tons de cinza sejam aplicadas individualmente aos canais de cor ou a componentes específicas do modelo adotado.</p>
 </section>
-<section id="aplicações-de-imagens-coloridas" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="aplicações-de-imagens-coloridas"><span class="header-section-number">6.8</span> Aplicações de Imagens Coloridas</h2>
+<section id="aplicações-de-imagens-coloridas" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="aplicações-de-imagens-coloridas"><span class="header-section-number">5.8</span> Aplicações de Imagens Coloridas</h2>
 <p>O uso de imagens coloridas é essencial em diversas aplicações, tais como:</p>
 <ul>
 <li>segmentação baseada em cor;</li>
@@ -433,8 +433,8 @@ I = \frac{1}{3}(R + G + B)
 </ul>
 <p>A escolha adequada do modelo de cor é determinante para o sucesso dessas aplicações.</p>
 </section>
-<section id="considerações-finais" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">6.9</span> Considerações Finais</h2>
+<section id="considerações-finais" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">5.9</span> Considerações Finais</h2>
 <p>As imagens coloridas desempenham um papel central no Processamento Digital de Imagens moderno. A compreensão dos modelos de cor e de suas características é fundamental para o desenvolvimento de sistemas eficientes e robustos.</p>
 <p>O domínio desses conceitos permite selecionar representações adequadas e explorar de forma eficaz as informações cromáticas presentes nas imagens, ampliando as possibilidades de análise e interpretação.</p>
 
@@ -844,13 +844,13 @@ I = \frac{1}{3}(R + G + B)
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/compressao.html" class="pagination-link" aria-label="Compressão de Imagens">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></span>
+      <a href="../chapters/fourier.html" class="pagination-link" aria-label="Transformada de Fourier">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformada de Fourier</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/morfologia.html" class="pagination-link" aria-label="Morfologia Matemática">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/compressao.html" class="pagination-link" aria-label="Compressão de Imagens">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

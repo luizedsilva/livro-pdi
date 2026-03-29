@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Compressão de Imagens – Processamento Digital de Imagens</title>
+<title>6&nbsp; Compressão de Imagens – Processamento Digital de Imagens</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/cor.html" rel="next">
-<link href="../chapters/fourier.html" rel="prev">
+<link href="../chapters/morfologia.html" rel="next">
+<link href="../chapters/cor.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -150,7 +150,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/compressao.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/compressao.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -207,14 +207,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/compressao.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></span></a>
+  <a href="../chapters/cor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/cor.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></span></a>
+  <a href="../chapters/compressao.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -269,32 +269,32 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#conceitos-básicos-de-compressão" id="toc-conceitos-básicos-de-compressão" class="nav-link active" data-scroll-target="#conceitos-básicos-de-compressão"><span class="header-section-number">5.1</span> Conceitos Básicos de Compressão</a>
+  <li><a href="#conceitos-básicos-de-compressão" id="toc-conceitos-básicos-de-compressão" class="nav-link active" data-scroll-target="#conceitos-básicos-de-compressão"><span class="header-section-number">6.1</span> Conceitos Básicos de Compressão</a>
   <ul class="collapse">
   <li><a href="#redundância-de-dados" id="toc-redundância-de-dados" class="nav-link" data-scroll-target="#redundância-de-dados">Redundância de Dados</a></li>
   <li><a href="#interpretação" id="toc-interpretação" class="nav-link" data-scroll-target="#interpretação">Interpretação</a></li>
   </ul></li>
-  <li><a href="#tipos-de-redundância-em-imagens" id="toc-tipos-de-redundância-em-imagens" class="nav-link" data-scroll-target="#tipos-de-redundância-em-imagens"><span class="header-section-number">5.2</span> Tipos de Redundância em Imagens</a>
+  <li><a href="#tipos-de-redundância-em-imagens" id="toc-tipos-de-redundância-em-imagens" class="nav-link" data-scroll-target="#tipos-de-redundância-em-imagens"><span class="header-section-number">6.2</span> Tipos de Redundância em Imagens</a>
   <ul class="collapse">
   <li><a href="#redundância-espacial" id="toc-redundância-espacial" class="nav-link" data-scroll-target="#redundância-espacial">Redundância Espacial</a></li>
   <li><a href="#redundância-estatística" id="toc-redundância-estatística" class="nav-link" data-scroll-target="#redundância-estatística">Redundância Estatística</a></li>
   <li><a href="#redundância-psicovisual" id="toc-redundância-psicovisual" class="nav-link" data-scroll-target="#redundância-psicovisual">Redundância Psicovisual</a></li>
   </ul></li>
-  <li><a href="#compressão-com-e-sem-perda" id="toc-compressão-com-e-sem-perda" class="nav-link" data-scroll-target="#compressão-com-e-sem-perda"><span class="header-section-number">5.3</span> Compressão com e sem Perda</a>
+  <li><a href="#compressão-com-e-sem-perda" id="toc-compressão-com-e-sem-perda" class="nav-link" data-scroll-target="#compressão-com-e-sem-perda"><span class="header-section-number">6.3</span> Compressão com e sem Perda</a>
   <ul class="collapse">
   <li><a href="#critério-de-fidelidade" id="toc-critério-de-fidelidade" class="nav-link" data-scroll-target="#critério-de-fidelidade">Critério de Fidelidade</a></li>
   </ul></li>
-  <li><a href="#transformações-utilizadas-na-compressão" id="toc-transformações-utilizadas-na-compressão" class="nav-link" data-scroll-target="#transformações-utilizadas-na-compressão"><span class="header-section-number">5.4</span> Transformações Utilizadas na Compressão</a>
+  <li><a href="#transformações-utilizadas-na-compressão" id="toc-transformações-utilizadas-na-compressão" class="nav-link" data-scroll-target="#transformações-utilizadas-na-compressão"><span class="header-section-number">6.4</span> Transformações Utilizadas na Compressão</a>
   <ul class="collapse">
   <li><a href="#codificação-huffman" id="toc-codificação-huffman" class="nav-link" data-scroll-target="#codificação-huffman">Codificação Huffman</a></li>
   <li><a href="#codificação-lzw" id="toc-codificação-lzw" class="nav-link" data-scroll-target="#codificação-lzw">Codificação LZW</a></li>
   </ul></li>
-  <li><a href="#padrões-de-compressão-de-imagens" id="toc-padrões-de-compressão-de-imagens" class="nav-link" data-scroll-target="#padrões-de-compressão-de-imagens"><span class="header-section-number">5.5</span> Padrões de Compressão de Imagens</a>
+  <li><a href="#padrões-de-compressão-de-imagens" id="toc-padrões-de-compressão-de-imagens" class="nav-link" data-scroll-target="#padrões-de-compressão-de-imagens"><span class="header-section-number">6.5</span> Padrões de Compressão de Imagens</a>
   <ul class="collapse">
   <li><a href="#formato-jpeg" id="toc-formato-jpeg" class="nav-link" data-scroll-target="#formato-jpeg">Formato JPEG</a></li>
   <li><a href="#formato-base-64" id="toc-formato-base-64" class="nav-link" data-scroll-target="#formato-base-64">Formato Base-64</a></li>
   </ul></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">5.6</span> Considerações Finais</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">6.6</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -303,7 +303,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Compressão de Imagens</span></h1>
 </div>
 
 
@@ -348,8 +348,8 @@ window.Quarto = {
 <p>A <strong>compressão de imagens e vídeos</strong> surge justamente para reduzir essa enorme quantidade de dados. Os algoritmos de compressão exploram diferentes tipos de <strong>redundância presentes nas imagens</strong>, como redundância espacial, temporal e estatística, permitindo representar a mesma informação visual com muito menos bits.</p>
 <p>Graças a técnicas de compressão, formatos como <strong>JPEG, MPEG e H.264</strong> conseguem reduzir drasticamente o tamanho dos arquivos, tornando possível armazenar, transmitir e processar imagens e vídeos de forma eficiente em sistemas computacionais.</p>
 <p>A compressão tem como objetivo principal reduzir a quantidade de dados necessária para representar uma imagem, preservando, tanto quanto possível, sua qualidade visual e informacional. Este capítulo apresenta os conceitos fundamentais da compressão de imagens, seus principais métodos e aplicações.</p>
-<section id="conceitos-básicos-de-compressão" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="conceitos-básicos-de-compressão"><span class="header-section-number">5.1</span> Conceitos Básicos de Compressão</h2>
+<section id="conceitos-básicos-de-compressão" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="conceitos-básicos-de-compressão"><span class="header-section-number">6.1</span> Conceitos Básicos de Compressão</h2>
 <p>O <strong>modelo genérico de compressão de imagens</strong> consiste em um processo utilizado para <strong>reduzir o tamanho físico dos dados de uma imagem</strong>, com o objetivo de <strong>otimizar sua transmissão e armazenamento</strong>. Imagens digitais geralmente ocupam uma quantidade significativa de memória, principalmente quando possuem alta resolução ou profundidade de bits. Dessa forma, técnicas de compressão tornam-se essenciais em diversas aplicações, como transmissão de imagens pela internet, armazenamento em dispositivos digitais e sistemas multimídia.</p>
 <div id="fig-codifica" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -357,11 +357,11 @@ window.Quarto = {
 <img src="../imgs/cap5/codifica.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-codifica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.1: Modelo genérico de compressão de imagens
+Figura&nbsp;6.1: Modelo genérico de compressão de imagens
 </figcaption>
 </figure>
 </div>
-<p>O processo de compressão normalmente envolve <strong>duas fases principais: a codificação e a decodificação</strong> (conforme ilustrada na <a href="#fig-codifica" class="quarto-xref">Figura&nbsp;<span>5.1</span></a>). Na fase de <strong>codificação</strong>, a imagem original é analisada e transformada em uma representação mais compacta, reduzindo a quantidade de bits necessária para armazenar ou transmitir os dados. Esse processo pode envolver diferentes estratégias, como remoção de redundâncias, transformação dos dados ou eliminação de informações consideradas menos relevantes para a percepção visual humana. Já na fase de <strong>decodificação</strong>, os dados comprimidos são processados para reconstruir a imagem, produzindo uma versão que pode ser idêntica à original ou apresentar pequenas diferenças, dependendo do método de compressão utilizado.</p>
+<p>O processo de compressão normalmente envolve <strong>duas fases principais: a codificação e a decodificação</strong> (conforme ilustrada na <a href="#fig-codifica" class="quarto-xref">Figura&nbsp;<span>6.1</span></a>). Na fase de <strong>codificação</strong>, a imagem original é analisada e transformada em uma representação mais compacta, reduzindo a quantidade de bits necessária para armazenar ou transmitir os dados. Esse processo pode envolver diferentes estratégias, como remoção de redundâncias, transformação dos dados ou eliminação de informações consideradas menos relevantes para a percepção visual humana. Já na fase de <strong>decodificação</strong>, os dados comprimidos são processados para reconstruir a imagem, produzindo uma versão que pode ser idêntica à original ou apresentar pequenas diferenças, dependendo do método de compressão utilizado.</p>
 <p>A ideia fundamental por trás da compressão é <strong>explorar padrões e redundâncias presentes na imagem</strong>. Em muitas imagens, determinados valores ou padrões de pixels aparecem com maior frequência que outros. Assim, é possível representar esses elementos mais frequentes utilizando <strong>uma quantidade menor de bits</strong>, enquanto elementos menos frequentes podem ser representados com códigos maiores. Esse princípio está presente em diversos métodos de compressão, como os esquemas de codificação estatística, nos quais símbolos mais frequentes recebem códigos mais curtos.</p>
 <p>De maneira geral, os métodos de compressão podem ser classificados em <strong>compressão sem perdas (lossless)</strong> e <strong>compressão com perdas (lossy)</strong>. Na compressão sem perdas, a imagem reconstruída após a decodificação é <strong>exatamente igual à imagem original</strong>, preservando todas as informações. Já na compressão com perdas, algumas informações são descartadas durante o processo de codificação, permitindo alcançar taxas de compressão maiores, porém introduzindo pequenas distorções na imagem reconstruída. A escolha do método depende da aplicação e do nível de fidelidade desejado.</p>
 <section id="redundância-de-dados" class="level3">
@@ -401,8 +401,8 @@ RD = 1 - \frac{1}{4} = 0.75
 <p>Em imagens digitais, a redundância pode aparecer de diferentes formas, como <strong>redundância espacial</strong>, <strong>redundância espectral</strong> e <strong>redundância temporal</strong> (no caso de vídeos). Os algoritmos de compressão exploram essas redundâncias para representar a informação visual de forma muito mais eficiente.</p>
 </section>
 </section>
-<section id="tipos-de-redundância-em-imagens" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="tipos-de-redundância-em-imagens"><span class="header-section-number">5.2</span> Tipos de Redundância em Imagens</h2>
+<section id="tipos-de-redundância-em-imagens" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="tipos-de-redundância-em-imagens"><span class="header-section-number">6.2</span> Tipos de Redundância em Imagens</h2>
 <p>A eficiência da compressão está diretamente relacionada à identificação e eliminação de redundâncias. Em imagens digitais, destacam-se três tipos principais:</p>
 <section id="redundância-espacial" class="level3">
 <h3 class="anchored" data-anchor-id="redundância-espacial">Redundância Espacial</h3>
@@ -572,18 +572,18 @@ RD = 1 - \frac{1}{CR} \approx 0.099
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-red-psico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.2: Redundância psicovisual: a mesma imagem representada com <strong>256</strong>, <strong>16</strong> e <strong>4 tons de cinza</strong>.
+Figura&nbsp;6.2: Redundância psicovisual: a mesma imagem representada com <strong>256</strong>, <strong>16</strong> e <strong>4 tons de cinza</strong>.
 </figcaption>
 </figure>
 </div>
 <p>O sistema visual humano não é igualmente sensível a todas as variações de intensidade presentes em uma imagem. Pequenas diferenças entre níveis de cinza muitas vezes não são percebidas pelo observador.</p>
 <p>Essa característica é chamada de <strong>redundância psicovisual</strong> e pode ser explorada em algoritmos de compressão de imagens. A ideia consiste em remover ou reduzir informações que possuem pouca relevância para a percepção humana, diminuindo a quantidade de dados necessária para representar a imagem.</p>
-<p>A <a href="#fig-red-psico" class="quarto-xref">Figura&nbsp;<span>5.2</span></a> mostra a mesma imagem codificada com diferentes números de níveis de cinza: 256, 16 e 4 níveis. Observa-se que, mesmo com uma redução significativa no número de níveis disponíveis, a estrutura global da imagem ainda permanece reconhecível. Isso demonstra que parte da informação original pode ser descartada sem comprometer de forma significativa a percepção visual.</p>
+<p>A <a href="#fig-red-psico" class="quarto-xref">Figura&nbsp;<span>6.2</span></a> mostra a mesma imagem codificada com diferentes números de níveis de cinza: 256, 16 e 4 níveis. Observa-se que, mesmo com uma redução significativa no número de níveis disponíveis, a estrutura global da imagem ainda permanece reconhecível. Isso demonstra que parte da informação original pode ser descartada sem comprometer de forma significativa a percepção visual.</p>
 <p>Essa propriedade é amplamente explorada em métodos de compressão com perda (<em>lossy compression</em>), como os utilizados em formatos de imagem e vídeo amplamente difundidos.</p>
 </section>
 </section>
-<section id="compressão-com-e-sem-perda" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="compressão-com-e-sem-perda"><span class="header-section-number">5.3</span> Compressão com e sem Perda</h2>
+<section id="compressão-com-e-sem-perda" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="compressão-com-e-sem-perda"><span class="header-section-number">6.3</span> Compressão com e sem Perda</h2>
 <p>Na <strong>compressão sem perda</strong>, a imagem reconstruída após a descompressão é idêntica à imagem original. Esse tipo de compressão é essencial em aplicações onde a fidelidade absoluta dos dados é crítica, como imagens médicas, científicas e técnicas.</p>
 <p>Métodos comuns de compressão sem perda incluem codificação por comprimento de execução, codificação preditiva e codificação entropia, como os algoritmos de Huffman e aritmético.</p>
 <p>A <strong>compressão com perda</strong> permite pequenas distorções na imagem reconstruída em troca de taxas de compressão significativamente maiores. Esse tipo de compressão é amplamente utilizado em aplicações multimídia, onde a percepção visual é mais importante do que a exatidão pixel a pixel.</p>
@@ -646,8 +646,8 @@ MSE =
 <p>Apesar da utilidade dessas métricas matemáticas, elas nem sempre refletem perfeitamente a qualidade percebida pelo observador. Em muitos casos, <strong>a avaliação visual humana continua sendo o critério mais importante</strong>, pois o sistema visual humano possui sensibilidades diferentes para contraste, textura e detalhes da imagem.</p>
 </section>
 </section>
-<section id="transformações-utilizadas-na-compressão" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="transformações-utilizadas-na-compressão"><span class="header-section-number">5.4</span> Transformações Utilizadas na Compressão</h2>
+<section id="transformações-utilizadas-na-compressão" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="transformações-utilizadas-na-compressão"><span class="header-section-number">6.4</span> Transformações Utilizadas na Compressão</h2>
 <p>Diversos métodos de compressão utilizam transformações matemáticas para concentrar a energia da imagem em um pequeno conjunto de coeficientes. Entre as mais utilizadas destacam-se:</p>
 <ul>
 <li>Transformada Discreta do Cosseno (DCT);</li>
@@ -661,23 +661,23 @@ MSE =
 <p>Algoritmos clássicos incluem a codificação de Huffman, que utiliza árvores binárias para atribuir códigos mais curtos a símbolos mais frequentes, e a codificação aritmética, que alcança taxas de compressão próximas ao limite teórico da entropia.</p>
 <p>O <strong>algoritmo de Huffman</strong> é um método de compressão de dados amplamente utilizado baseado em <strong>codificação estatística sem perdas</strong>. Ele foi proposto por David A. Huffman em 1952 e tem como objetivo reduzir o número médio de bits necessários para representar um conjunto de símbolos. Esse algoritmo explora a frequência de ocorrência dos símbolos, atribuindo códigos menores aos símbolos mais frequentes e códigos maiores aos símbolos menos frequentes, resultando em uma representação mais eficiente dos dados.</p>
 <p>A ideia central da codificação de Huffman é construir um <strong>código de comprimento variável</strong>, no qual cada símbolo é representado por uma sequência de bits cujo tamanho depende de sua probabilidade de ocorrência. Diferentemente dos códigos de comprimento fixo, em que todos os símbolos são representados pelo mesmo número de bits, a codificação de Huffman permite que símbolos mais comuns utilizem menos bits, reduzindo o tamanho total da informação codificada.</p>
-<p>O processo de construção do código de Huffman inicia-se com a <strong>determinação da frequência de ocorrência de cada símbolo</strong> presente nos dados (conforme ilustrado na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>5.3</span></a>). Em seguida, esses símbolos são organizados em uma estrutura conhecida como <strong>árvore binária de Huffman</strong>. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores (iterações i = 1, 2, 3 e 4 na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>5.3</span></a>). Esse processo continua até que todos os nós estejam conectados em uma única árvore.</p>
+<p>O processo de construção do código de Huffman inicia-se com a <strong>determinação da frequência de ocorrência de cada símbolo</strong> presente nos dados (conforme ilustrado na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>6.3</span></a>). Em seguida, esses símbolos são organizados em uma estrutura conhecida como <strong>árvore binária de Huffman</strong>. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores (iterações i = 1, 2, 3 e 4 na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>6.3</span></a>). Esse processo continua até que todos os nós estejam conectados em uma única árvore.</p>
 <div id="fig-huffman" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-huffman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap5/huffman.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-huffman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.3: Iterações para construção de uma árvore de Huffman
+Figura&nbsp;6.3: Iterações para construção de uma árvore de Huffman
 </figcaption>
 </figure>
 </div>
 <p>Após a construção da árvore, os códigos binários são obtidos percorrendo-se os caminhos da raiz até cada folha da árvore. Normalmente, atribui-se o valor <strong>0 para um ramo à esquerda</strong> e <strong>1 para um ramo à direita</strong>. Assim, cada símbolo recebe um código binário correspondente ao caminho percorrido até ele. Uma característica importante desses códigos é que eles são <strong>códigos prefixos</strong>, ou seja, nenhum código é prefixo de outro. Isso garante que a sequência de bits possa ser decodificada de forma inequívoca.</p>
-<p>O código na <a href="#lst-huffman" class="quarto-xref">Listagem&nbsp;<span>5.1</span></a>, apresenta de forma simplificada os passos do algoritmo de Huffman, onde <span class="math inline">\(n\)</span> é o número de folhas, portanto o número de nós internos será <span class="math inline">\(n-1\)</span>. A cada iteração é preenchido um novo nó interno da árvore, onde os filhos <span class="math inline">\(p1\)</span> (menor frequência) e <span class="math inline">\(p2\)</span> (segunda menor frequência) são colocados à esquerda e direita do novo nó pai <span class="math inline">\(p\)</span> e são removidos da fila de prioridadas (ou lista, onde os nós são ordenados pela frequência). O novo nó <span class="math inline">\(p\)</span> armazena a soma das frequências de <span class="math inline">\(p1\)</span> e <span class="math inline">\(p2\)</span> e é inserido na fila de prioridades. Para facilitar o percurso da folha para raiz, cada filho é ligado ao pai ( <span class="math inline">\(node[p1].father = p\)</span>).</p>
+<p>O código na <a href="#lst-huffman" class="quarto-xref">Listagem&nbsp;<span>6.1</span></a>, apresenta de forma simplificada os passos do algoritmo de Huffman, onde <span class="math inline">\(n\)</span> é o número de folhas, portanto o número de nós internos será <span class="math inline">\(n-1\)</span>. A cada iteração é preenchido um novo nó interno da árvore, onde os filhos <span class="math inline">\(p1\)</span> (menor frequência) e <span class="math inline">\(p2\)</span> (segunda menor frequência) são colocados à esquerda e direita do novo nó pai <span class="math inline">\(p\)</span> e são removidos da fila de prioridadas (ou lista, onde os nós são ordenados pela frequência). O novo nó <span class="math inline">\(p\)</span> armazena a soma das frequências de <span class="math inline">\(p1\)</span> e <span class="math inline">\(p2\)</span> e é inserido na fila de prioridades. Para facilitar o percurso da folha para raiz, cada filho é ligado ao pai ( <span class="math inline">\(node[p1].father = p\)</span>).</p>
 <div id="lst-huffman" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-huffman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listagem&nbsp;5.1
+Listagem&nbsp;6.1
 </figcaption>
 <div aria-describedby="lst-huffman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">-</span><span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> </span>
@@ -706,12 +706,12 @@ Listagem&nbsp;5.1
 <h3 class="anchored" data-anchor-id="codificação-lzw">Codificação LZW</h3>
 <p>A <strong>codificação de Lempel–Ziv–Welch (LZW)</strong> é uma técnica de compressão de dados <strong>sem perda</strong> amplamente utilizada em arquivos e formatos de imagem, como GIF e TIFF. O método foi proposto por <strong>Terry Welch</strong> em 1984 como uma melhoria das técnicas de compressão desenvolvidas anteriormente por <strong>Abraham Lempel</strong> e <strong>Jacob Ziv</strong>. A ideia central da LZW é substituir sequências de símbolos por <strong>códigos numéricos de tamanho fixo</strong>, reduzindo a quantidade de dados necessária para representar a informação original.</p>
 <p>Diferentemente de outros métodos de compressão estatísticos, como a codificação de Huffman, a técnica LZW <strong>não requer conhecimento prévio das probabilidades de ocorrência dos símbolos da fonte</strong>. Em vez disso, ela constrói dinamicamente um <strong>dicionário de sequências de símbolos</strong> durante o processo de compressão. Inicialmente, esse dicionário contém apenas os símbolos básicos do alfabeto da fonte (por exemplo, os valores possíveis de pixels ou caracteres). À medida que a sequência de entrada é analisada, novas combinações de símbolos são identificadas e adicionadas ao dicionário, cada uma associada a uma palavra-código.</p>
-<p>O processo de compressão ocorre conforme <a href="#lst-lzwencode" class="quarto-xref">Listagem&nbsp;<span>5.2</span></a>. O algoritmo percorre a sequência de entrada procurando a <strong>maior sequência de símbolos que já esteja presente no dicionário</strong>. Quando essa sequência é encontrada, o algoritmo emite o código correspondente e acrescenta ao dicionário uma nova entrada formada pela sequência reconhecida seguida do próximo símbolo da entrada. Dessa forma, o dicionário cresce progressivamente, passando a representar padrões mais longos e frequentes presentes nos dados.</p>
-<p>Uma característica importante da LZW é que <strong>tanto o codificador quanto o decodificador constroem o mesmo dicionário de forma incremental</strong>, seguindo exatamente as mesmas regras. Por esse motivo, <strong>não é necessário transmitir o dicionário junto com os dados comprimidos</strong>, o que contribui para a eficiência do método. Durante a descompressão (<a href="#lst-lzwdecode" class="quarto-xref">Listagem&nbsp;<span>5.3</span></a>), os códigos recebidos são utilizados para reconstruir as sequências originais, enquanto o dicionário é atualizado da mesma forma que ocorreu na compressão.</p>
+<p>O processo de compressão ocorre conforme <a href="#lst-lzwencode" class="quarto-xref">Listagem&nbsp;<span>6.2</span></a>. O algoritmo percorre a sequência de entrada procurando a <strong>maior sequência de símbolos que já esteja presente no dicionário</strong>. Quando essa sequência é encontrada, o algoritmo emite o código correspondente e acrescenta ao dicionário uma nova entrada formada pela sequência reconhecida seguida do próximo símbolo da entrada. Dessa forma, o dicionário cresce progressivamente, passando a representar padrões mais longos e frequentes presentes nos dados.</p>
+<p>Uma característica importante da LZW é que <strong>tanto o codificador quanto o decodificador constroem o mesmo dicionário de forma incremental</strong>, seguindo exatamente as mesmas regras. Por esse motivo, <strong>não é necessário transmitir o dicionário junto com os dados comprimidos</strong>, o que contribui para a eficiência do método. Durante a descompressão (<a href="#lst-lzwdecode" class="quarto-xref">Listagem&nbsp;<span>6.3</span></a>), os códigos recebidos são utilizados para reconstruir as sequências originais, enquanto o dicionário é atualizado da mesma forma que ocorreu na compressão.</p>
 <div id="lst-lzwencode" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-lzwencode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listagem&nbsp;5.2
+Listagem&nbsp;6.2
 </figcaption>
 <div aria-describedby="lst-lzwencode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>LZW_Encode<span class="op">(</span>T<span class="op">)</span> <span class="op">{</span></span>
@@ -744,7 +744,7 @@ Listagem&nbsp;5.2
 <div id="lst-lzwdecode" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-lzwdecode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listagem&nbsp;5.3
+Listagem&nbsp;6.3
 </figcaption>
 <div aria-describedby="lst-lzwdecode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>LZW_Decode<span class="op">(</span>C<span class="op">)</span> <span class="op">{</span></span>
@@ -780,8 +780,8 @@ Listagem&nbsp;5.3
 </iframe>
 </section>
 </section>
-<section id="padrões-de-compressão-de-imagens" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="padrões-de-compressão-de-imagens"><span class="header-section-number">5.5</span> Padrões de Compressão de Imagens</h2>
+<section id="padrões-de-compressão-de-imagens" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="padrões-de-compressão-de-imagens"><span class="header-section-number">6.5</span> Padrões de Compressão de Imagens</h2>
 <p>Ao longo das últimas décadas, diversos padrões de compressão de imagens digitais foram desenvolvidos com o objetivo de melhorar a eficiência de armazenamento e transmissão de dados visuais, ao mesmo tempo em que garantem interoperabilidade entre diferentes dispositivos e sistemas. A padronização desses métodos é fundamental para que imagens possam ser produzidas, armazenadas e visualizadas em diferentes plataformas sem perda de compatibilidade. Esses padrões buscam equilibrar fatores como taxa de compressão, qualidade visual da imagem reconstruída e complexidade computacional dos algoritmos envolvidos no processo de codificação e decodificação.</p>
 <p>Entre os padrões mais conhecidos destaca-se o JPEG (Joint Photographic Experts Group), amplamente utilizado para compressão de fotografias e imagens com grande variação de tons e cores. O método JPEG baseia-se na Transformada Discreta do Cosseno (DCT) aplicada a blocos da imagem e emprega técnicas de quantização e codificação entropia para reduzir a quantidade de dados necessária para representar a imagem. Embora o processo de compressão seja geralmente com perda de informação, ele permite alcançar altas taxas de compressão com degradação visual relativamente pequena, o que explica sua ampla utilização em câmeras digitais, páginas da web e sistemas de armazenamento de imagens.</p>
 <p>Outro padrão bastante difundido é o PNG (Portable Network Graphics), que utiliza compressão sem perda de informação. Diferentemente do JPEG, o PNG preserva exatamente os valores originais dos pixels, sendo especialmente adequado para imagens que contêm texto, gráficos, diagramas ou áreas de cores uniformes. A compressão no formato PNG baseia-se em técnicas de predição e codificação entropia, permitindo reduzir o tamanho do arquivo sem comprometer a fidelidade da imagem original.</p>
@@ -789,14 +789,14 @@ Listagem&nbsp;5.3
 <p>Cada um desses padrões apresenta características específicas que os tornam mais adequados para determinados tipos de aplicação. Enquanto alguns priorizam altas taxas de compressão com pequenas perdas perceptuais, outros enfatizam a preservação exata da informação original. Assim, a escolha do formato de compressão depende do equilíbrio desejado entre qualidade visual, eficiência de armazenamento e complexidade computacional do processo de codificação e decodificação.</p>
 <section id="formato-jpeg" class="level3">
 <h3 class="anchored" data-anchor-id="formato-jpeg">Formato JPEG</h3>
-<p>As etapas da codificação JPEG estão representadas na <a href="#fig-etapas" class="quarto-xref">Figura&nbsp;<span>5.4</span></a>.</p>
+<p>As etapas da codificação JPEG estão representadas na <a href="#fig-etapas" class="quarto-xref">Figura&nbsp;<span>6.4</span></a>.</p>
 <div id="fig-etapas" class="quarto-float quarto-figure quarto-figure-center anchored" data-align="center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-etapas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap5/etapas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" data-align="center">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-etapas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5.4: Etapas da codificação JPEG
+Figura&nbsp;6.4: Etapas da codificação JPEG
 </figcaption>
 </figure>
 </div>
@@ -953,8 +953,8 @@ Q(i,j)=1+\left[(i+j)\cdot \text{fator}\right],\quad i,j=0,1,\ldots,N-1
 </section>
 </section>
 </section>
-<section id="considerações-finais" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">5.6</span> Considerações Finais</h2>
+<section id="considerações-finais" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">6.6</span> Considerações Finais</h2>
 <p>A compressão de imagens é uma área central do Processamento Digital de Imagens, possibilitando o armazenamento e a transmissão eficientes de grandes volumes de dados visuais. A escolha do método de compressão adequado depende da aplicação, do nível de fidelidade requerido e das restrições computacionais.</p>
 <p>Os conceitos apresentados neste capítulo fornecem a base necessária para o estudo de técnicas modernas de compressão e codificação multimídia, bem como para a compreensão dos principais padrões utilizados na prática.</p>
 
@@ -1364,13 +1364,13 @@ Q(i,j)=1+\left[(i+j)\cdot \text{fator}\right],\quad i,j=0,1,\ldots,N-1
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/fourier.html" class="pagination-link" aria-label="Transformada de Fourier">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformada de Fourier</span></span>
+      <a href="../chapters/cor.html" class="pagination-link" aria-label="Imagens Coloridas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/cor.html" class="pagination-link" aria-label="Imagens Coloridas">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Imagens Coloridas</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/morfologia.html" class="pagination-link" aria-label="Morfologia Matemática">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Morfologia Matemática</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
