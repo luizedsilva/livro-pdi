@@ -744,6 +744,223 @@ Figura&nbsp;9.4: Matriz de diferença
 <p>Discuta como a escolha dos descritores influencia os resultados.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled" title="Atividade Prática: Decodificação de Código de Cadeia">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Atividade Prática: Decodificação de Código de Cadeia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Objetivo</strong></p>
+<p>O objetivo desta atividade é explorar técnicas de <strong>representação de contornos</strong>, implementando a decodificação do <strong>código de cadeia oito-direcional</strong> e reconstruindo a forma de um objeto em uma imagem binária.</p>
+<hr>
+<p><strong>Problema</strong></p>
+<p>Contornos de objetos podem ser representados de forma compacta por meio do <strong>código de cadeia</strong>, que descreve a sequência de direções entre pixels consecutivos.</p>
+<p>Nesta atividade, você deverá desenvolver um programa capaz de:</p>
+<ul>
+<li>decodificar um contorno a partir de uma sequência codificada;</li>
+<li>reconstruir os pontos do contorno;</li>
+<li>gerar uma imagem binária com o contorno desenhado.</li>
+</ul>
+<hr>
+<p><strong>Descrição</strong></p>
+<ol type="1">
+<li>Desenvolva um programa que leia um arquivo texto com o seguinte formato:</li>
+</ol>
+<pre class="text"><code>&lt;nl&gt; &lt;nc&gt;
+&lt;linha_inicial&gt; &lt;coluna_inicial&gt;
+&lt;n_pontos&gt;
+&lt;cadeia_hexadecimal&gt;</code></pre>
+<p>Onde:</p>
+<ul>
+<li><strong>nl, nc</strong> → dimensões da imagem</li>
+<li><strong>linha_inicial, coluna_inicial</strong> → ponto inicial do contorno</li>
+<li><strong>n_pontos</strong> → número de pontos adicionais do contorno</li>
+<li><strong>cadeia_hexadecimal</strong> → sequência codificada da cadeia</li>
+</ul>
+<hr>
+<ol start="2" type="1">
+<li><p>O programa deverá:</p>
+<ol type="a">
+<li><p>Converter os valores hexadecimais em binário</p></li>
+<li><p>Agrupar os bits em blocos de <strong>3 bits</strong>, correspondentes às direções (0 a 7)</p></li>
+</ol></li>
+</ol>
+<hr>
+<ol start="3" type="1">
+<li>Utilize a convenção de direções:</li>
+</ol>
+<pre class="text"><code>// Código 8-direcional
+// 3 2 1
+// 4 x 0
+// 5 6 7</code></pre>
+<p>E os deslocamentos:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>point N<span class="op">[</span><span class="dv">8</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">},</span> <span class="op">{-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">},</span> <span class="op">{-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">0</span><span class="op">},</span> <span class="op">{-</span><span class="dv">1</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">},</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">},</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">},</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">0</span><span class="op">},</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">}</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<ol start="4" type="1">
+<li><p>A partir do ponto inicial:</p>
+<ol type="a">
+<li><p>Percorra a sequência de direções</p></li>
+<li><p>Calcule cada novo ponto do contorno</p></li>
+<li><p>Armazene todos os pontos obtidos</p></li>
+</ol></li>
+</ol>
+<hr>
+<ol start="5" type="1">
+<li>Gere uma imagem no formato <strong>PBM (P1)</strong>:</li>
+</ol>
+<ul>
+<li>dimensão: nl × nc</li>
+<li>valor <strong>1</strong> nos pixels do contorno</li>
+<li>valor <strong>0</strong> nos demais pixels</li>
+</ul>
+<hr>
+<p><strong>Entrada</strong></p>
+<ul>
+<li>Arquivo texto contendo a codificação do contorno</li>
+</ul>
+<hr>
+<p><strong>Saída</strong></p>
+<p>O programa deve gerar:</p>
+<ul>
+<li>Imagem PBM contendo o contorno reconstruído</li>
+</ul>
+<hr>
+<p><strong>Execução</strong></p>
+<p>O programa deve ser executado via linha de comando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./contorno</span> entrada.txt</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<p><strong>Dicas</strong></p>
+<ul>
+<li>Cada dígito hexadecimal representa 4 bits</li>
+<li>Agrupe corretamente os bits em trincas</li>
+<li>Ignore bits excedentes</li>
+<li>Verifique limites da imagem ao calcular os pontos</li>
+</ul>
+<hr>
+<p><strong>Observações</strong></p>
+<ul>
+<li>O programa deve reconstruir corretamente o contorno para qualquer entrada válida</li>
+<li>A organização do código será considerada na avaliação</li>
+<li>Testes com diferentes exemplos são recomendados</li>
+</ul>
+<hr>
+<p><strong>Questão adicional (desafio)</strong></p>
+<p>Explique:</p>
+<ul>
+<li>Como o código de cadeia representa a forma de um objeto</li>
+<li>Quais são suas limitações</li>
+<li>Como torná-lo invariante à rotação e translação</li>
+</ul>
+</div>
+</div>
+<p>** Sugestão de código **</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#define DEBUG</span><span class="op">(</span><span class="pp">x</span><span class="op">)</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="dt">int</span> <span class="op">*</span>image<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> i<span class="op">,</span> j<span class="op">;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> point<span class="op">;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>image img_alloc<span class="op">(</span><span class="dt">int</span> nl<span class="op">,</span> <span class="dt">int</span> nc<span class="op">)</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">(</span>image<span class="op">)</span>malloc<span class="op">(</span>nl <span class="op">*</span> nc <span class="op">*</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">));</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> write_pbm<span class="op">(</span>image img<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>nome<span class="op">,</span> <span class="dt">int</span> nl<span class="op">,</span> <span class="dt">int</span> nc<span class="op">)</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> i<span class="op">,</span> conta<span class="op">;</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">FILE</span> <span class="op">*</span>arq<span class="op">;</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>img<span class="op">)</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"Erro: imagem vazia</span><span class="sc">\n\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        exit<span class="op">(</span><span class="dv">100</span><span class="op">);</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">((</span>arq <span class="op">=</span> fopen<span class="op">(</span>nome<span class="op">,</span> <span class="st">"wt"</span><span class="op">))</span> <span class="op">==</span> NULL<span class="op">)</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"Erro: CRIACAO do arquivo &lt;</span><span class="sc">%s</span><span class="st">&gt;</span><span class="sc">\n\n</span><span class="st">"</span><span class="op">,</span> nome<span class="op">);</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        exit<span class="op">(</span><span class="dv">200</span><span class="op">);</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    fputs<span class="op">(</span><span class="st">"P1</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> arq<span class="op">);</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    fputs<span class="op">(</span><span class="st">"#contour decoding image</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> arq<span class="op">);</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    fprintf<span class="op">(</span>arq<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st">  </span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> nc<span class="op">,</span> nl<span class="op">);</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    conta <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nl <span class="op">*</span> nc<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>        fprintf<span class="op">(</span>arq<span class="op">,</span> <span class="st">"</span><span class="sc">%d</span><span class="st"> "</span><span class="op">,</span> img<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>        conta<span class="op">++;</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>conta <span class="op">&gt;</span> <span class="dv">100</span><span class="op">)</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>            fprintf<span class="op">(</span>arq<span class="op">,</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>            conta <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>    fclose<span class="op">(</span>arq<span class="op">);</span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>image read_contour<span class="op">(</span><span class="dt">char</span> <span class="op">*</span>nome<span class="op">,</span> <span class="dt">int</span> <span class="op">*</span>nl<span class="op">,</span> <span class="dt">int</span> <span class="op">*</span>nc<span class="op">)</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>    image img <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>    <span class="dt">FILE</span> <span class="op">*</span>f<span class="op">;</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> fopen<span class="op">(</span>nome<span class="op">,</span> <span class="st">"rt"</span><span class="op">);</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>f <span class="op">==</span> NULL<span class="op">)</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"Erro: LEITURA do arquivo &lt;</span><span class="sc">%s</span><span class="st">&gt;</span><span class="sc">\n\n</span><span class="st">"</span><span class="op">,</span> nome<span class="op">);</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>        exit<span class="op">(</span><span class="dv">100</span><span class="op">);</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Codigo 8-direcional</span></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 3 2 1</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 4 x 0</span></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 5 6 7</span></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>    point N<span class="op">[</span><span class="dv">8</span><span class="op">]</span> <span class="op">=</span> </span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>    <span class="op">{{</span><span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">},</span> <span class="op">{-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">},</span> <span class="op">{-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">0</span><span class="op">},</span> <span class="op">{-</span><span class="dv">1</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">},</span> </span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>     <span class="op">{</span><span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">},</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">},</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">0</span><span class="op">},</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">}};</span></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ----------</span></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>    <span class="co">// TO DO</span></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ----------</span></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>    fclose<span class="op">(</span>f<span class="op">);</span></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> img<span class="op">;</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> nl<span class="op">,</span> nc<span class="op">;</span></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>    image in<span class="op">;</span></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> nome<span class="op">[</span><span class="dv">20</span><span class="op">];</span></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> nomeimg<span class="op">[</span><span class="dv">100</span><span class="op">];</span></span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> nomectn<span class="op">[</span><span class="dv">100</span><span class="op">];</span></span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>argc <span class="op">&lt;</span> <span class="dv">2</span><span class="op">)</span></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"USO: </span><span class="sc">%s</span><span class="st"> &lt;nomearquivo&gt; (sem a extensao)</span><span class="sc">\n\n</span><span class="st">"</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>        strcpy<span class="op">(</span>nome<span class="op">,</span> <span class="st">"teste"</span><span class="op">);</span></span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>        <span class="co">//return 1;</span></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>        strcpy<span class="op">(</span>nome<span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>    sprintf<span class="op">(</span>nomeimg<span class="op">,</span> <span class="st">"</span><span class="sc">%s</span><span class="st">-new.pbm"</span><span class="op">,</span> nome<span class="op">);</span></span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a>    sprintf<span class="op">(</span>nomectn<span class="op">,</span> <span class="st">"</span><span class="sc">%s</span><span class="st">.ctn"</span><span class="op">,</span> nome<span class="op">);</span></span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>    in <span class="op">=</span> read_contour<span class="op">(</span>nomectn<span class="op">,</span> <span class="op">&amp;</span>nl<span class="op">,</span> <span class="op">&amp;</span>nc<span class="op">);</span></span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>    write_pbm<span class="op">(</span>in<span class="op">,</span> nomeimg<span class="op">,</span> nl<span class="op">,</span> nc<span class="op">);</span></span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>    free<span class="op">(</span>in<span class="op">);</span></span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -885,6 +920,85 @@ f \bullet b = (f \oplus b) \ominus b
 <li>Reconhecimento de padrões</li>
 </ul>
 <p>Discuta como a escolha do elemento estruturante influencia os resultados.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Atividade Prática: Reconstrução Geodésica">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Atividade Prática: Reconstrução Geodésica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Objetivo</strong></p>
+<p>O objetivo desta atividade é explorar conceitos de <strong>morfologia matemática</strong>, em particular a operação de <strong>reconstrução geodésica</strong>, utilizada para realizar filtragem e seleção de regiões específicas em imagens binárias.</p>
+<hr>
+<p><strong>Problema</strong></p>
+<p>Dadas duas imagens binárias definidas no mesmo domínio:</p>
+<ul>
+<li>uma imagem <strong>máscara (I)</strong><br>
+</li>
+<li>uma imagem <strong>marcadora (J)</strong>, tal que ( J I )</li>
+</ul>
+<p>A reconstrução geodésica consiste em recuperar apenas os <strong>componentes conexos da imagem máscara que contêm pontos marcados</strong>.</p>
+<p>Nesta atividade, você deverá implementar um programa capaz de reconstruir apenas as regiões de interesse a partir de pontos marcados fornecidos em um arquivo.</p>
+<hr>
+<p><strong>Descrição</strong></p>
+<ol type="1">
+<li><p>Desenvolva um programa que:</p>
+<ol type="a">
+<li><p>Leia uma imagem binária no formato <strong>PBM</strong></p></li>
+<li><p>Leia um arquivo texto contendo coordenadas (linha e coluna) dos pontos marcadores</p></li>
+</ol></li>
+<li><p>A partir desses dados, o programa deverá:</p>
+<ol type="a">
+<li><p>Interpretar os pontos como a imagem marcadora <strong>J</strong></p></li>
+<li><p>Considerar a imagem original como a máscara <strong>I</strong></p></li>
+</ol></li>
+<li><p>Implemente a <strong>reconstrução geodésica</strong>, que pode ser realizada por:</p>
+<ul>
+<li>dilatações geodésicas sucessivas até a idempotência<br>
+<strong>ou</strong><br>
+</li>
+<li>crescimento das regiões a partir das marcas (ex: busca em largura com fila)</li>
+</ul></li>
+<li><p>O resultado deve conter:</p>
+<ul>
+<li>apenas os componentes conexos da imagem que possuem pelo menos um ponto marcado</li>
+</ul></li>
+</ol>
+<hr>
+<p><strong>Exemplo</strong></p>
+<p>Dado um conjunto de coordenadas que marcam posições específicas em uma imagem (por exemplo, caracteres em um texto), o programa deve reconstruir apenas essas regiões, eliminando as demais.</p>
+<pre><code>2
+22 435
+22 468</code></pre>
+<p>Para imagem abaixo, somente as letras <span class="math inline">\(i\)</span> e <span class="math inline">\(a\)</span> devem ser reconstruídas.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/cap7/reconstroi.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Exemplo de reconstrução</figcaption>
+</figure>
+</div>
+<hr>
+<p><strong>Entrada</strong></p>
+<ul>
+<li>Imagem binária no formato PBM<br>
+</li>
+<li>Arquivo texto contendo coordenadas das marcas</li>
+</ul>
+<hr>
+<p><strong>Saída</strong></p>
+<p>O programa deve gerar:</p>
+<ul>
+<li>Imagem reconstruída contendo apenas as regiões marcadas</li>
+</ul>
+<hr>
+<p><strong>Execução</strong></p>
+<p>O programa deve ser executado via linha de comando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./reconstroi</span> imagem.pbm marcas.txt</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 

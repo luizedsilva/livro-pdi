@@ -790,7 +790,7 @@ Listagem&nbsp;6.3
 <section id="formato-jpeg" class="level3">
 <h3 class="anchored" data-anchor-id="formato-jpeg">Formato JPEG</h3>
 <p>As etapas da codificação JPEG estão representadas na <a href="#fig-etapas" class="quarto-xref">Figura&nbsp;<span>6.4</span></a>.</p>
-<div id="fig-etapas" class="quarto-float quarto-figure quarto-figure-center anchored" data-align="center" data-fig-align="center">
+<div id="fig-etapas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-etapas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap6/etapas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" data-align="center">
@@ -1109,6 +1109,63 @@ Q(i,j)=1+\left[(i+j)\cdot \text{fator}\right],\quad i,j=0,1,\ldots,N-1
 <li>Sensoriamento remoto</li>
 </ul>
 <p>Discuta o equilíbrio entre <strong>qualidade</strong> e <strong>tamanho do arquivo</strong>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Atividade Prática: Descompressão de Imagens (LZW + Base64)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Atividade Prática: Descompressão de Imagens (LZW + Base64)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Objetivo</strong></p>
+<p>O objetivo desta atividade é explorar conceitos de <strong>compressão e descompressão de imagens</strong>, implementando um descompactador que utiliza a técnica <strong>LZW (Lempel-Ziv-Welch)</strong> combinada com a codificação <strong>Base64</strong>.</p>
+<hr>
+<p><strong>Problema</strong></p>
+<p>Em sistemas de transmissão e armazenamento, é comum representar dados binários em formato textual. Um exemplo disso é o uso da codificação <strong>Base64</strong>, frequentemente combinada com algoritmos de compressão.</p>
+<p>Nesta atividade, você deverá desenvolver um programa capaz de <strong>compactar e descompactar uma imagem codificada em um formato que combina LZW (12 bits) e Base64</strong>, reconstruindo a imagem original em formato PGM.</p>
+<hr>
+<p><strong>Descrição</strong></p>
+<ol type="1">
+<li><p>Desenvolva um programa que (para descompactar):</p>
+<ol type="a">
+<li><p>Leia um arquivo com extensão <code>.l64</code></p></li>
+<li><p>Verifique o formato do arquivo:</p></li>
+</ol>
+<ul>
+<li>primeira linha: <code>lzw-b64</code> (número mágico)<br>
+</li>
+<li>segunda linha: dimensões da imagem (nl, nc)</li>
+</ul></li>
+<li><p>O programa deverá:</p>
+<ol type="a">
+<li><p>Ler os dados codificados em <strong>Base64</strong></p></li>
+<li><p>Converter os caracteres Base64 em códigos binários de <strong>12 bits</strong></p></li>
+<li><p>Reconstruir a sequência de códigos LZW</p></li>
+</ol></li>
+<li><p>Em seguida, o programa deve:</p>
+<ol type="a">
+<li><p>Aplicar o algoritmo de <strong>descompressão LZW</strong></p></li>
+<li><p>Reconstruir os valores dos pixels da imagem</p></li>
+</ol></li>
+<li><p>Por fim, o programa deverá:</p>
+<ol type="a">
+<li><p>Gerar a imagem no formato <strong>PGM (P2)</strong></p></li>
+<li><p>Utilizar as dimensões informadas no arquivo</p></li>
+</ol></li>
+</ol>
+<hr>
+<p><strong>Formato do arquivo de entrada</strong></p>
+<p>O arquivo <code>.l64</code> possui a seguinte estrutura:</p>
+<pre class="text"><code>lzw-b64
+&lt;nl&gt; &lt;nc&gt;
+&lt;dados codificados em Base64&gt;</code></pre>
+<hr>
+<p><strong>Para teste</strong></p>
+<p>Desenvolver o compactador</p>
 </div>
 </div>
 
