@@ -473,7 +473,7 @@ Imagens com baixo contraste tendem a apresentar histogramas concentrados em uma 
 
 Algoritmo para calcular o histograma de uma imagem está em @lst-histograma.
 
-## Equalização de Histograma
+### Equalização de Histograma
 
 A equalização de histograma (@pizer1987adaptive, @zuiderveld1994contrast) é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.
 

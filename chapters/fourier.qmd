@@ -210,7 +210,72 @@ f(x) = \frac{1}{M}\sum_{\mu=0}^{M-1} F(\mu)\,e^{j2\pi\mu x/M},
 \qquad x = 0,1,2,\ldots,M-1
 $$
 
-A DFT e sua inversa formam um par de transformações mutuamente inversas, assegurando que a representação no domínio da frequência contém toda a informação necessária para a recuperação do sinal original. Esses conceitos constituem a base para algoritmos eficientes, como a **Transformada Rápida de Fourier (FFT)**, amplamente utilizada no processamento digital de sinais e imagens.
+A DFT e sua inversa formam um par de transformações mutuamente inversas, assegurando que a representação no domínio da frequência contém toda a informação necessária para a recuperação do sinal original. Esses conceitos constituem a base para algoritmos eficientes, como a **Transformada Rápida de Fourier (FFT)**, amplamente utilizada no processamento digital de sinais e imagens. O codigo da @lst-dft1 mostra a implementação desses cálculos para uma função discreta que é lida na entrada de dados.
+
+::: {#lst-dft1}
+``` {.c fontsize="\\small"}
+// FFT interativo
+#include <stdio.h>
+#include <stdlib.h>
+#include <complex.h>
+#include <math.h>
+
+#define DEBUG(x) x
+typedef double complex cpx;
+
+void dft(cpx *f, cpx *F, int n, int dir)
+{
+    cpx J = CMPLX(0, 1);
+    float factor = (dir == -1) ? 1 : (float)1 / n;
+    for (int u = 0; u < n; u++)
+    {
+        cpx sum = CMPLX(0, 0);
+        for (int x = 0; x < n; x++)
+        {
+            float theta = 2 * u * x * M_PI;
+            sum += factor * f[x] * cexp((dir * J * theta) / n);
+        }
+        F[u] = sum;
+    }
+}
+
+int main()
+{
+    int n;
+    cpx *f;
+    cpx *F;
+    printf("n? ");
+    scanf("%d", &n);
+    f = malloc(sizeof(cpx) * n);
+    F = malloc(sizeof(cpx) * n);
+    for (int i = 0; i < n; i++)
+    {
+        int value;
+        printf("f[%d]? ", i);
+        scanf("%d", &value);
+        f[i] = CMPLX(value, 0);
+    }
+    dft(f, F, n, -1);
+    puts("Transformada Direta:");
+    puts("--------------------");
+    for (int i = 0; i < n; ++i)
+    {
+        printf("F[%d] = %.1f", i, creal(F[i]));
+        if (fabs(cimag(F[i])) > 0.0001)
+            printf(" %c %.1fj\n", cimag(F[i]) < 0 ? '-' : '+',
+                   fabs(cimag(F[i])));
+        else
+            printf("\n");
+    }
+    puts("");
+    dft(F, f, n, 1);
+    puts("Transformada Inversa");
+    puts("--------------------");
+    for (int i = 0; i < n; ++i)
+        printf("f[%d] = %.1f\n", i, creal(f[i]));
+}
+```
+:::
 
 ## A Transformada de Fourier Bidimensional
 
@@ -759,155 +824,153 @@ Na prática, o uso da **Transformada Rápida de Fourier (FFT)** torna a aplicaç
 A Transformada de Fourier desempenha um papel central no Processamento Digital de Imagens, fornecendo uma base matemática sólida para a análise e manipulação de informações no domínio da frequência. A compreensão de seus fundamentos é essencial para o estudo de técnicas avançadas de filtragem, restauração e análise espectral de imagens.
 
 ::: {.callout-note title="Exercícios"}
-
 **Exercício 1 — Conceitual**
 
 Explique com suas palavras:
 
-a) O que é a **Transformada de Fourier**  
-b) O que significa representar uma imagem no **domínio da frequência**  
-c) Qual a diferença entre domínio espacial e domínio da frequência  
+a)  O que é a **Transformada de Fourier**\
+b)  O que significa representar uma imagem no **domínio da frequência**\
+c)  Qual a diferença entre domínio espacial e domínio da frequência
 
----
+------------------------------------------------------------------------
 
 **Exercício 2 — Interpretação**
 
 Explique:
 
-a) O que representam as **baixas frequências** em uma imagem  
-b) O que representam as **altas frequências**  
-c) Onde essas frequências aparecem no espectro de Fourier  
+a)  O que representam as **baixas frequências** em uma imagem\
+b)  O que representam as **altas frequências**\
+c)  Onde essas frequências aparecem no espectro de Fourier
 
----
+------------------------------------------------------------------------
 
 **Exercício 3 — Visualização do espectro**
 
 Ao calcular a transformada de Fourier de uma imagem:
 
-a) Por que aplicamos o deslocamento (shift) do espectro?  
-b) Por que utilizamos escala logarítmica na visualização?  
-c) O que acontece se visualizarmos o espectro sem essas etapas?
+a)  Por que aplicamos o deslocamento (shift) do espectro?\
+b)  Por que utilizamos escala logarítmica na visualização?\
+c)  O que acontece se visualizarmos o espectro sem essas etapas?
 
----
+------------------------------------------------------------------------
 
 **Exercício 4 — Propriedades**
 
 Explique as seguintes propriedades da Transformada de Fourier:
 
-a) Linearidade  
-b) Translação  
-c) Simetria  
+a)  Linearidade\
+b)  Translação\
+c)  Simetria
 
----
+------------------------------------------------------------------------
 
 **Exercício 5 — Cálculo básico**
 
 Considere um sinal discreto simples:
 
-f(x) = [1, 1, 1, 1]
+f(x) = \[1, 1, 1, 1\]
 
-a) Qual é o comportamento da Transformada de Fourier desse sinal?  
-b) O que isso indica sobre suas frequências?
+a)  Qual é o comportamento da Transformada de Fourier desse sinal?\
+b)  O que isso indica sobre suas frequências?
 
----
+------------------------------------------------------------------------
 
 **Exercício 6 — Filtros no domínio da frequência**
 
 Explique:
 
-a) O que é um **filtro passa-baixa**  
-b) O que é um **filtro passa-alta**  
-c) Como cada um afeta a imagem  
+a)  O que é um **filtro passa-baixa**\
+b)  O que é um **filtro passa-alta**\
+c)  Como cada um afeta a imagem
 
----
+------------------------------------------------------------------------
 
 **Exercício 7 — Análise de filtros**
 
 Descreva o efeito dos seguintes filtros:
 
-a) Passa-baixa ideal  
-b) Passa-alta ideal  
-c) Filtro Gaussiano  
+a)  Passa-baixa ideal\
+b)  Passa-alta ideal\
+c)  Filtro Gaussiano
 
 Comente sobre possíveis artefatos introduzidos.
 
----
+------------------------------------------------------------------------
 
 **Exercício 8 — Relação espaço-frequência**
 
 Explique:
 
-a) Como uma variação rápida na imagem se manifesta no domínio da frequência  
-b) Como uma região uniforme aparece no espectro  
+a)  Como uma variação rápida na imagem se manifesta no domínio da frequência\
+b)  Como uma região uniforme aparece no espectro
 
----
+------------------------------------------------------------------------
 
 **Exercício 9 — Implementação prática (DFT)**
 
 Implemente um programa que:
 
-a) Leia uma imagem em tons de cinza  
-b) Calcule a Transformada Discreta de Fourier (DFT)  
-c) Mostre:
-- o espectro de magnitude  
-- o espectro centralizado  
+a)  Leia uma imagem em tons de cinza\
+b)  Calcule a Transformada Discreta de Fourier (DFT)\
+c)  Mostre:
 
-d) Utilize escala logarítmica para visualização  
+-   o espectro de magnitude\
+-   o espectro centralizado
 
----
+d)  Utilize escala logarítmica para visualização
+
+------------------------------------------------------------------------
 
 **Exercício 10 — Implementação prática (filtros)**
 
 Implemente um programa que:
 
-a) Aplique um filtro passa-baixa no domínio da frequência  
-b) Aplique um filtro passa-alta  
-c) Reconstrua a imagem com a transformada inversa  
+a)  Aplique um filtro passa-baixa no domínio da frequência\
+b)  Aplique um filtro passa-alta\
+c)  Reconstrua a imagem com a transformada inversa
 
 Compare os resultados com a imagem original.
 
----
+------------------------------------------------------------------------
 
 **Exercício 11 — Comparação**
 
 Compare:
 
-- Filtragem no domínio espacial  
-- Filtragem no domínio da frequência  
+-   Filtragem no domínio espacial\
+-   Filtragem no domínio da frequência
 
 Quais são as vantagens e desvantagens de cada abordagem?
 
----
+------------------------------------------------------------------------
 
 **Exercício 12 — Ruído**
 
 Explique como a Transformada de Fourier pode ser utilizada para:
 
-a) Identificar ruídos periódicos  
-b) Remover esses ruídos  
+a)  Identificar ruídos periódicos\
+b)  Remover esses ruídos
 
----
+------------------------------------------------------------------------
 
 **Questão reflexiva**
 
 Explique a importância da Transformada de Fourier em aplicações como:
 
-- Compressão de imagens  
-- Processamento de sinais  
-- Análise de padrões  
-- Sistemas de comunicação  
+-   Compressão de imagens\
+-   Processamento de sinais\
+-   Análise de padrões\
+-   Sistemas de comunicação
 
 Discuta por que essa técnica é fundamental no processamento digital de imagens.
-
 :::
 
 ::: {.callout-note title="Atividade Prática: Remoção de Efeito Moiré com FFT"}
-
 **Objetivo**
 
 O objetivo desta atividade é explorar conceitos da **Transformada Rápida de Fourier (FFT)** aplicados ao processamento de imagens, incluindo análise no domínio da frequência, identificação de ruídos periódicos e filtragem no domínio da frequência.
 
----
+------------------------------------------------------------------------
 
 **Problema**
 
@@ -917,59 +980,59 @@ Esses padrões podem ser difíceis de remover no domínio espacial, mas tornam-s
 
 O problema desta atividade é desenvolver uma ferramenta capaz de remover esse ruído da imagem `cena.pgm`, utilizando técnicas baseadas na Transformada de Fourier.
 
----
+------------------------------------------------------------------------
 
 **Descrição**
 
-1. Nessa atividade você deverá desenvolver um programa que:
+1.  Nessa atividade você deverá desenvolver um programa que:
 
-   a) Leia uma imagem em formato `.pgm`  
+    a)  Leia uma imagem em formato `.pgm`
 
-   b) Calcule a Transformada de Fourier (FFT) da imagem  
+    b)  Calcule a Transformada de Fourier (FFT) da imagem
 
-   c) Gere o espectro de magnitude da transformada  
+    c)  Gere o espectro de magnitude da transformada
 
-   d) Aplique o deslocamento do espectro (centralização das frequências)  
+    d)  Aplique o deslocamento do espectro (centralização das frequências)
 
-2. A partir do espectro obtido, o programa deverá:
+2.  A partir do espectro obtido, o programa deverá:
 
-   a) Identificar visualmente os picos associados ao ruído periódico (moire)  
+    a)  Identificar visualmente os picos associados ao ruído periódico (moire)
 
-   b) Criar uma máscara (filtro) para remover essas frequências  
+    b)  Criar uma máscara (filtro) para remover essas frequências
 
-   c) Aplicar o filtro no domínio da frequência  
+    c)  Aplicar o filtro no domínio da frequência
 
-3. Após a filtragem, o programa deverá:
+3.  Após a filtragem, o programa deverá:
 
-   a) Calcular a transformada inversa  
+    a)  Calcular a transformada inversa
 
-   b) Reconstruir a imagem no domínio espacial  
+    b)  Reconstruir a imagem no domínio espacial
 
-   c) Gerar a imagem final sem o efeito moiré  
+    c)  Gerar a imagem final sem o efeito moiré
 
----
+------------------------------------------------------------------------
 
 **Entrada**
 
-- Imagem em tons de cinza no formato PGM (exemplo: `cena.pgm`)
+-   Imagem em tons de cinza no formato PGM (exemplo: `cena.pgm`)
 
----
+------------------------------------------------------------------------
 
 **Saída**
 
 O programa deve gerar:
 
-- Espectro de Fourier (imagem visualizável)  
-- Máscara de filtragem aplicada  
-- Imagem reconstruída (filtrada)  
+-   Espectro de Fourier (imagem visualizável)\
+-   Máscara de filtragem aplicada\
+-   Imagem reconstruída (filtrada)
 
----
+------------------------------------------------------------------------
 
 **Execução**
 
 O programa deve ser executado via linha de comando:
 
-```bash
+``` bash
 ./fft_moire cena.pgm
 ```
 :::
