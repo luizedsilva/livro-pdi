@@ -695,7 +695,7 @@ Figura&nbsp;3.1: Transformação linear por partes
 </section>
 <section id="equalização-de-histograma" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="equalização-de-histograma"><span class="header-section-number">3.7</span> Equalização de Histograma</h2>
-<p>A equalização de histograma é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.</p>
+<p>A equalização de histograma (<span class="citation" data-cites="pizer1987adaptive">Pizer et al. (<a href="references.html#ref-pizer1987adaptive" role="doc-biblioref">1987</a>)</span>, <span class="citation" data-cites="zuiderveld1994contrast">Zuiderveld (<a href="references.html#ref-zuiderveld1994contrast" role="doc-biblioref">1994</a>)</span>) é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.</p>
 <p>Essa técnica é amplamente utilizada devido à sua simplicidade e eficácia, embora possa produzir resultados indesejados em algumas aplicações, como a amplificação de ruído.</p>
 <p>O processo chamado de <strong>Mapeamento de Intensidade</strong> (<span class="citation" data-cites="gonzalez2010processamento">Gonzalez e Woods (<a href="references.html#ref-gonzalez2010processamento" role="doc-biblioref">2010</a>)</span>) é dado por:</p>
 <p><span class="math display">\[
@@ -1199,7 +1199,8 @@ f(x,y), &amp; \text{com probabilidade } 1 - (p_p + p_s)
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Atividade Prática: Marca d’água Invisível">
+<ul>
+<li><div class="callout callout-style-default callout-note callout-titled" title="Atividade Prática: Marca d’água Invisível">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1248,9 +1249,12 @@ f(x,y), &amp; \text{com probabilidade } 1 - (p_p + p_s)
 <p><span class="math display">\[
 f_w = (1 - \alpha)f + \alpha w
 \]</span></p>
-<p>onde: - <span class="math inline">\(f\)</span>: imagem original<br>
-- <span class="math inline">\(w\)</span>: marca d’água<br>
-- <span class="math inline">\(\alpha\)</span>: fator de visibilidade</p>
+<p>onde:</p>
+<ul>
+<li><p><span class="math inline">\(f\)</span>: imagem original</p></li>
+<li><p><span class="math inline">\(w\)</span>: marca d’água</p></li>
+<li><p><span class="math inline">\(\alpha\)</span>: fator de visibilidade</p></li>
+</ul>
 <p>Para marca d’água invisível, utiliza-se manipulação de bits, deslocando informações da marca para os bits menos significativos da imagem. Pode-se usar, por exemplo a seguinte expressão para sobrepor uma marca d’água invisível <span class="math inline">\(w\)</span> sobre a imagem <span class="math inline">\(f\)</span>:</p>
 <p><span class="math display">\[
 f_w = 4(\frac{f}{4}) + \frac{w}{64}
@@ -1261,12 +1265,19 @@ f_w = 4(\frac{f}{4}) + \frac{w}{64}
 <p>O programa deve ser executado via linha de comando:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./marca</span> <span class="op">&lt;</span>original.pgm<span class="op">&gt;</span> <span class="op">&lt;</span>marcada.pgm<span class="op">&gt;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
+</div></li>
+</ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-gonzalez2010processamento" class="csl-entry" role="listitem">
 Gonzalez, Rafael C., e Richard E. Woods. 2010. <em>Processamento Digital de Imagens</em>. 3º ed. Pearson Prentice Hall.
+</div>
+<div id="ref-pizer1987adaptive" class="csl-entry" role="listitem">
+Pizer, Stephen M., E. Philip Amburn, John D. Austin, et al. 1987. <span>“Adaptive histogram equalization and its variations”</span>. <em>Computer Vision, Graphics, and Image Processing</em> 39 (3): 355–68.
+</div>
+<div id="ref-zuiderveld1994contrast" class="csl-entry" role="listitem">
+Zuiderveld, Karel. 1994. <em>Contrast limited adaptive histogram equalization</em>. 474–85.
 </div>
 </div>
 </section>

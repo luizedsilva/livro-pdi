@@ -727,17 +727,17 @@ I = \frac{1}{3}(R + G + B)
 <p>Onde:</p>
 <ul>
 <li><span class="math inline">\(R_1 = r_1 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
-<li><span class="math inline">\(G_2 = g_2 \,\| \,0x01\)</span> codifica o bit <strong>1</strong></li>
+<li><span class="math inline">\(G_2 = g_2 \,| \,0x01\)</span> codifica o bit <strong>1</strong></li>
 <li><span class="math inline">\(B_3 = b_3 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
 <li><span class="math inline">\(R_4 = r_4 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
 <li><span class="math inline">\(G_5 = g_5 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
 <li><span class="math inline">\(B_6 = b_6 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
 <li><span class="math inline">\(R_7 = r_7 \,\&amp; \,0xFE\)</span> codifica o bit <strong>0</strong></li>
-<li><span class="math inline">\(G_8 = g_8 \,\| \,0x01\)</span> codifica o bit <strong>1</strong></li>
+<li><span class="math inline">\(G_8 = g_8 \,| \,0x01\)</span> codifica o bit <strong>1</strong></li>
 </ul>
 <ol start="3" type="1">
 <li><p>A operação <span class="math inline">\(R_1 = r_1 \,\&amp; \,0xFE\)</span> (AND bit-a-bit) força o último bit para <strong>0</strong>.</p></li>
-<li><p>A operação <span class="math inline">\(G_2 = g_2 \,\| \,0x01\)</span> (OR bit-a-bit) força o último bit para <strong>1</strong>.</p></li>
+<li><p>A operação <span class="math inline">\(G_2 = g_2 \,| \,0x01\)</span> (OR bit-a-bit) força o último bit para <strong>1</strong>.</p></li>
 <li><p>Após o nome do arquivo, os quatro bytes seguintes representam o tamanho do arquivo.</p></li>
 </ol>
 <hr>
@@ -838,8 +838,8 @@ t(74) 01110100 x(78) 01111000 t(74) 01110100 (0) 00000000
 </ul>
 <p><strong>Formato da execução</strong></p>
 <p>O programa deve suportar duas operações:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./estego</span> <span class="at">-e</span> <span class="op">&lt;</span>entrada.pgm<span class="op">&gt;</span> <span class="op">&lt;</span>saida.pgm<span class="op">&gt;</span> <span class="st">"&lt;mensagem&gt;"</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./estego</span> <span class="at">-d</span> <span class="op">&lt;</span>imagem.pgm<span class="op">&gt;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./estego</span> <span class="at">-e</span> <span class="op">&lt;</span>entrada.ppm<span class="op">&gt;</span> <span class="op">&lt;</span>saida.ppm<span class="op">&gt;</span> <span class="op">&lt;</span>arquivo.ext<span class="op">&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./estego</span> <span class="at">-d</span> <span class="op">&lt;</span>imagem.ppm<span class="op">&gt;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 
@@ -848,7 +848,7 @@ t(74) 01110100 x(78) 01111000 t(74) 01110100 (0) 00000000
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>(https://www.gta.ufrj.br/grad/09_1/versao-final/stegano/introducao.html)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>(<a href="https://www.gta.ufrj.br/grad/09_1/versao-final/stegano/introducao.html" class="uri">https://www.gta.ufrj.br/grad/09_1/versao-final/stegano/introducao.html</a>)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
