@@ -306,20 +306,22 @@ window.Quarto = {
   <li><a href="#transformações-de-potência" id="toc-transformações-de-potência" class="nav-link" data-scroll-target="#transformações-de-potência">Transformações de Potência</a></li>
   <li><a href="#transformação-linear-por-partes" id="toc-transformação-linear-por-partes" class="nav-link" data-scroll-target="#transformação-linear-por-partes">Transformação Linear por Partes</a></li>
   </ul></li>
-  <li><a href="#histograma-de-imagens" id="toc-histograma-de-imagens" class="nav-link" data-scroll-target="#histograma-de-imagens"><span class="header-section-number">3.6</span> Histograma de Imagens</a></li>
-  <li><a href="#equalização-de-histograma" id="toc-equalização-de-histograma" class="nav-link" data-scroll-target="#equalização-de-histograma"><span class="header-section-number">3.7</span> Equalização de Histograma</a></li>
-  <li><a href="#filtragem" id="toc-filtragem" class="nav-link" data-scroll-target="#filtragem"><span class="header-section-number">3.8</span> Filtragem</a>
+  <li><a href="#histograma-de-imagens" id="toc-histograma-de-imagens" class="nav-link" data-scroll-target="#histograma-de-imagens"><span class="header-section-number">3.6</span> Histograma de Imagens</a>
+  <ul class="collapse">
+  <li><a href="#equalização-de-histograma" id="toc-equalização-de-histograma" class="nav-link" data-scroll-target="#equalização-de-histograma">Equalização de Histograma</a></li>
+  </ul></li>
+  <li><a href="#filtragem" id="toc-filtragem" class="nav-link" data-scroll-target="#filtragem"><span class="header-section-number">3.7</span> Filtragem</a>
   <ul class="collapse">
   <li><a href="#convolução" id="toc-convolução" class="nav-link" data-scroll-target="#convolução">Convolução</a></li>
   <li><a href="#equação-da-convolução" id="toc-equação-da-convolução" class="nav-link" data-scroll-target="#equação-da-convolução">Equação da Convolução</a></li>
   <li><a href="#operações-lineares-e-não-lineares" id="toc-operações-lineares-e-não-lineares" class="nav-link" data-scroll-target="#operações-lineares-e-não-lineares">Operações lineares e não lineares</a></li>
   <li><a href="#exemplos-de-filtros" id="toc-exemplos-de-filtros" class="nav-link" data-scroll-target="#exemplos-de-filtros">Exemplos de Filtros</a></li>
   </ul></li>
-  <li><a href="#considerações-sobre-ruído" id="toc-considerações-sobre-ruído" class="nav-link" data-scroll-target="#considerações-sobre-ruído"><span class="header-section-number">3.9</span> Considerações sobre Ruído</a>
+  <li><a href="#considerações-sobre-ruído" id="toc-considerações-sobre-ruído" class="nav-link" data-scroll-target="#considerações-sobre-ruído"><span class="header-section-number">3.8</span> Considerações sobre Ruído</a>
   <ul class="collapse">
   <li><a href="#ruído-sal-e-pimenta" id="toc-ruído-sal-e-pimenta" class="nav-link" data-scroll-target="#ruído-sal-e-pimenta">Ruído Sal e Pimenta</a></li>
   </ul></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">3.10</span> Considerações Finais</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">3.9</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -692,9 +694,8 @@ Figura&nbsp;3.1: Transformação linear por partes
 <p>O histograma de uma imagem descreve a distribuição dos níveis de intensidade dos pixels. Ele fornece uma representação estatística que é amplamente utilizada para análise e melhoramento de imagens.</p>
 <p>Imagens com baixo contraste tendem a apresentar histogramas concentrados em uma faixa estreita de valores, enquanto imagens com bom contraste exibem histogramas mais espalhados ao longo da escala de intensidades.</p>
 <p>Algoritmo para calcular o histograma de uma imagem está em <a href="#lst-histograma" class="quarto-xref">Listagem&nbsp;<span>3.5</span></a>.</p>
-</section>
-<section id="equalização-de-histograma" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="equalização-de-histograma"><span class="header-section-number">3.7</span> Equalização de Histograma</h2>
+<section id="equalização-de-histograma" class="level3">
+<h3 class="anchored" data-anchor-id="equalização-de-histograma">Equalização de Histograma</h3>
 <p>A equalização de histograma (<span class="citation" data-cites="pizer1987adaptive">Pizer et al. (<a href="references.html#ref-pizer1987adaptive" role="doc-biblioref">1987</a>)</span>, <span class="citation" data-cites="zuiderveld1994contrast">Zuiderveld (<a href="references.html#ref-zuiderveld1994contrast" role="doc-biblioref">1994</a>)</span>) é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.</p>
 <p>Essa técnica é amplamente utilizada devido à sua simplicidade e eficácia, embora possa produzir resultados indesejados em algumas aplicações, como a amplificação de ruído.</p>
 <p>O processo chamado de <strong>Mapeamento de Intensidade</strong> (<span class="citation" data-cites="gonzalez2010processamento">Gonzalez e Woods (<a href="references.html#ref-gonzalez2010processamento" role="doc-biblioref">2010</a>)</span>) é dado por:</p>
@@ -837,8 +838,9 @@ Listagem&nbsp;3.5
 <iframe src="https://editor.p5js.org/luizedsilva/full/nFphWvonZ" width="100%" height="500" style="border:none; overflow:hiddeln;">
 </iframe>
 </section>
-<section id="filtragem" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="filtragem"><span class="header-section-number">3.8</span> Filtragem</h2>
+</section>
+<section id="filtragem" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="filtragem"><span class="header-section-number">3.7</span> Filtragem</h2>
 <p>A filtragem no Processamento Digital de Imagens é o conjunto de técnicas utilizadas para modificar ou extrair informações de uma imagem por meio da aplicação de operadores matemáticos que atuam sobre a vizinhança de cada pixel. Esses operadores analisam a relação entre um pixel e seus vizinhos, permitindo realçar características relevantes, como bordas e detalhes, ou atenuar informações indesejadas, como ruídos e variações abruptas de intensidade. A filtragem pode ser realizada no domínio espacial ou no domínio da frequência e envolve tanto filtros lineares, baseados em operações de <strong>convolução</strong>, quanto filtros não lineares, que não obedecem às propriedades de linearidade. Dessa forma, a filtragem é uma etapa fundamental no pré-processamento e na análise de imagens, sendo amplamente utilizada em aplicações de visão computacional, reconhecimento de padrões e análise visual automatizada.</p>
 <section id="convolução" class="level3">
 <h3 class="anchored" data-anchor-id="convolução">Convolução</h3>
@@ -922,8 +924,8 @@ H[a_i f_i(x,y) + a_j f_j(x,y)]
 </iframe>
 </section>
 </section>
-<section id="considerações-sobre-ruído" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="considerações-sobre-ruído"><span class="header-section-number">3.9</span> Considerações sobre Ruído</h2>
+<section id="considerações-sobre-ruído" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="considerações-sobre-ruído"><span class="header-section-number">3.8</span> Considerações sobre Ruído</h2>
 <p>O ruído é uma variação indesejada nos valores de intensidade da imagem, geralmente introduzida durante a aquisição ou transmissão. Técnicas de melhoramento devem considerar a presença de ruído, pois operações de realce podem amplificá-lo.</p>
 <p>Assim, o melhoramento de imagens frequentemente envolve um compromisso entre <strong>realce de detalhes</strong> e <strong>supressão de ruído</strong>.</p>
 <section id="ruído-sal-e-pimenta" class="level3">
@@ -980,8 +982,8 @@ f(x,y), &amp; \text{com probabilidade } 1 - (p_p + p_s)
 </section>
 </section>
 </section>
-<section id="considerações-finais" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">3.10</span> Considerações Finais</h2>
+<section id="considerações-finais" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">3.9</span> Considerações Finais</h2>
 <p>O melhoramento de imagens desempenha um papel fundamental no processamento digital, servindo tanto para aprimorar a visualização quanto para preparar imagens para etapas posteriores, como segmentação e reconhecimento.</p>
 <p>As técnicas apresentadas neste capítulo fornecem uma base conceitual para o entendimento do melhoramento no domínio espacial, sendo essenciais para o estudo de métodos mais avançados de processamento e análise de imagens.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercícios">
