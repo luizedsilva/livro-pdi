@@ -998,80 +998,80 @@ Onde **XX** é o número de componentes conexos encontrados.
 4.  Teste o programa com diferentes imagens.
 :::
 
--   ::: {.callout-note title="Atividade Prática: Marca d’água Invisível"}
-    **Objetivo**
+::: {.callout-note title="Atividade Prática: Marca d’água Invisível"}
+    
+**Objetivo**
 
-    O objetivo desta atividade é explorar conceitos de **codificação de imagens**, especialmente técnicas relacionadas à **inserção e extração de marca d’água invisível**, utilizadas em algoritmos de compactação e proteção de dados.
+O objetivo desta atividade é explorar conceitos de **codificação de imagens**, especialmente técnicas relacionadas à **inserção e extração de marca d’água invisível**, utilizadas em algoritmos de compactação e proteção de dados.
 
-    ![Exemplo de marca d'água](/imgs/cap3/marca.png){width="70%" fig-align="center"}
+![Exemplo de marca d'água](/imgs/cap3/marca.png){width="70%" fig-align="center"}
 
-    ------------------------------------------------------------------------
+---
 
-    **Problema**
+**Problema**
 
-    Marcas d’água são utilizadas para: - identificação de direitos autorais; - identificação de usuários; - verificação de autenticidade; - proteção contra cópias.
+Marcas d’água são utilizadas para: - identificação de direitos autorais; - identificação de usuários; - verificação de autenticidade; - proteção contra cópias.
 
-    Diferente da marca d’água visível, a **marca d’água invisível** não pode ser percebida a olho nu, mas pode ser recuperada por meio de processamento da imagem.
+Diferente da marca d’água visível, a **marca d’água invisível** não pode ser percebida a olho nu, mas pode ser recuperada por meio de processamento da imagem.
 
-    Nesta atividade, você deverá desenvolver um programa capaz de **extrair uma marca d’água invisível de uma imagem em formato PGM**.
+Nesta atividade, você deverá desenvolver um programa capaz de **extrair uma marca d’água invisível de uma imagem em formato PGM**.
 
-    ------------------------------------------------------------------------
+---
 
-    **Descrição**
+**Descrição**
 
-    1.  Desenvolva um programa que:
+1.  Desenvolva um programa que:
 
-        a)  Leia uma imagem em formato `.pgm` contendo marca d’água invisível
+    a)  Leia uma imagem em formato `.pgm` contendo marca d’água invisível
 
-        b)  Utilize como base o código de exemplo fornecido (negativo de imagem)
+    b)  Utilize como base o código de exemplo fornecido (negativo de imagem)
 
-    2.  O programa deverá:
+2.  O programa deverá:
 
-        a)  Aplicar o processo de **decodificação da marca d’água**
+    a)  Aplicar o processo de **decodificação da marca d’água**
 
-        b)  Recuperar os bits menos significativos da imagem
+    b)  Recuperar os bits menos significativos da imagem
 
-        c)  Reconstruir a imagem da marca d’água
+    c)  Reconstruir a imagem da marca d’água
 
-    3.  A técnica utilizada considera:
+3.  A técnica utilizada considera:
 
-        a)  Inserção da marca d’água nos **bits menos significativos (LSB)**
+    a)  Inserção da marca d’água nos **bits menos significativos (LSB)**
 
-        b)  Manipulação de níveis de intensidade em imagens de 8 bits
+    b)  Manipulação de níveis de intensidade em imagens de 8 bits
 
-    ------------------------------------------------------------------------
+---
 
-    **Modelo matemático**
+**Modelo matemático**
 
-    A inserção da marca d’água visível pode ser representada por:
+A inserção da marca d’água visível pode ser representada por:
 
-    $$
-    f_w = (1 - \alpha)f + \alpha w
-    $$
+$$
+f_w = (1 - \alpha)f + \alpha w
+$$
 
-    onde:
+onde:
 
-    -   $f$: imagem original
+ - $f$: imagem original
+ - $w$: marca d’água
+ - $\alpha$: fator de visibilidade
 
-    -   $w$: marca d’água
+Para marca d’água invisível, utiliza-se manipulação de bits, deslocando informações da marca para os bits menos significativos da imagem. Pode-se usar, por exemplo a seguinte expressão para sobrepor uma marca d'água invisível $w$ sobre a imagem $f$:
 
-    -   $\alpha$: fator de visibilidade
+$$
+f_w = 4(\frac{f}{4}) + \frac{w}{64}
+$$
 
-    Para marca d’água invisível, utiliza-se manipulação de bits, deslocando informações da marca para os bits menos significativos da imagem. Pode-se usar, por exemplo a seguinte expressão para sobrepor uma marca d'água invisível $w$ sobre a imagem $f$:
+Dividir e multiplicar por 4 tem o efeito de zerar os dois bits menos significativos dos pixels da imagem $f$. Dividir $w$ por 64 tem o efeito de deslocar os dois bits mais significativos dos pixels da imagem de marca d’água $w$ para as duas posições menos significativas (considerando que a imagem tem intensidade quantizada em 8 bits). A soma desses dois valores gera imagem com a marca d’água invisı́vel. Essa marca pode ser extraı́da usando a operação inversa, ou seja, zerando os 6 bits mais significativos da imagem e ajustando os valores restantes ao intervalo completo de intensidade.
 
-    $$
-    f_w = 4(\frac{f}{4}) + \frac{w}{64}
-    $$
+---
 
-    Dividir e multiplicar por 4 tem o efeito de zerar os dois bits menos significativos dos pixels da imagem $f$. Dividir $w$ por 64 tem o efeito de deslocar os dois bits mais significativos dos pixels da imagem de marca d’água $w$ para as duas posições menos significativas (considerando que a imagem tem intensidade quantizada em 8 bits). A soma desses dois valores gera imagem com a marca d’água invisı́vel. Essa marca pode ser extraı́da usando a operação inversa, ou seja, zerando os 6 bits mais significativos da imagem e ajustando os valores restantes ao intervalo completo de intensidade.
+**Formato da execução**
 
-    ------------------------------------------------------------------------
+O programa deve ser executado via linha de comando:
 
-    **Formato da execução**
+``` bash
+./marca <original.pgm> <marcada.pgm>
+```
 
-    O programa deve ser executado via linha de comando:
-
-    ``` bash
-    ./marca <original.pgm> <marcada.pgm>
-    ```
-    :::
+:::
