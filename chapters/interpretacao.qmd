@@ -112,7 +112,7 @@ De forma geral, o casamento de padrões e as medidas de correlação constituem 
 
 ## Redes Neurais e Redes Neurais de Múltiplas Camadas
 
-As **redes neurais artificiais** (ilustrado na @fig-neuronio) constituem uma das principais abordagens para o desenvolvimento de sistemas inteligentes capazes de realizar reconhecimento e interpretação de imagens. Inspiradas no funcionamento do cérebro humano, essas redes são compostas por unidades básicas chamadas neurônios artificiais, organizadas em camadas e interconectadas por pesos ajustáveis.
+As **redes neurais artificiais** (@haykin2009neural, @bishop2006pattern, @goodfellow2016deep, @mitchell1997machine, @rumelhart1986learning, @cybenko1989approximation, @hornik1989multilayer, @hagan1996neural, ilustrado na @fig-neuronio) constituem uma das principais abordagens para o desenvolvimento de sistemas inteligentes capazes de realizar reconhecimento e interpretação de imagens. Inspiradas no funcionamento do cérebro humano, essas redes são compostas por unidades básicas chamadas neurônios artificiais, organizadas em camadas e interconectadas por pesos ajustáveis.
 
 ![Redes neurais artificiais](/imgs/cap10/neuronio.png){#fig-neuronio fig-align="center" width="70%"}
 
@@ -134,7 +134,7 @@ Em síntese, as redes neurais desempenham um papel central na construção de si
 
 ## Redes Neurais Convolucionais (CNN)
 
-As **Redes Neurais Convolucionais** (*Convolutional Neural Networks – CNNs*) representam uma das principais abordagens modernas para o reconhecimento e interpretação de imagens. Essas redes têm sido amplamente utilizadas não apenas em visão computacional, mas também em áreas como processamento de voz e linguagem natural. Sua concepção foi inspirada em estudos do córtex visual humano, nos quais se observou que certos neurônios respondem a estímulos visuais localizados em regiões específicas do campo visual (conforme ilustrado na @fig-cortex).
+As **Redes Neurais Convolucionais** (*Convolutional Neural Networks – CNNs*, @lecun1998gradient, @goodfellow2016deep, @krizhevsky2012imagenet, @simonyan2015very, @he2016deep, @szegedy2015going) representam uma das principais abordagens modernas para o reconhecimento e interpretação de imagens. Essas redes têm sido amplamente utilizadas não apenas em visão computacional, mas também em áreas como processamento de voz e linguagem natural. Sua concepção foi inspirada em estudos do córtex visual humano, nos quais se observou que certos neurônios respondem a estímulos visuais localizados em regiões específicas do campo visual (conforme ilustrado na @fig-cortex).
 
 ![Formação da imagem no cérebro humano](/imgs/cap10/cortex.png){#fig-cortex width="80%" fig-align="center"}
 
@@ -195,6 +195,34 @@ $$
 
 onde $F$ é o tamanho do filtro e $S$ é o *stride*.
 
+O exemplo interativo seguinte demonstra os cálculos e o resultado da camada de Pooling.
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/n71g9My6G" width="100%" height="500" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap10/p5js-pooling.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/n71g9My6G>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/n71g9My6G width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
 #### Camada Fully Connected (FC)
 
 Após as etapas de extração e redução de características, os dados são encaminhados para camadas totalmente conectadas. Essas camadas funcionam de maneira semelhante às redes neurais tradicionais, combinando as características extraídas para realizar a classificação.
@@ -213,12 +241,16 @@ A camada de **dropout** (ilustrada na @fig-dropout) é uma técnica de regulariz
 
 Diversas arquiteturas de CNN foram propostas ao longo dos anos, cada uma trazendo avanços significativos na área de visão computacional. De forma geral, essas arquiteturas consistem no empilhamento de camadas convolucionais, funções de ativação e camadas de pooling, seguidas por camadas totalmente conectadas.
 
+![Arquitetura LeNet-5](/imgs/cap10/lenet5.png){width="90%" fig-align="center" #fig-lenet5}
+
 Entre as arquiteturas mais conhecidas, destacam-se:
 
--   **LeNet-5:** uma das primeiras CNNs, aplicada ao reconhecimento de dígitos;
--   **AlexNet:** responsável por impulsionar o uso de deep learning em visão computacional;
+-   **LeNet-5:** uma das primeiras CNNs, aplicada ao reconhecimento de dígitos (ilustrado na @fig-lenet5);
+-   **AlexNet:** responsável por impulsionar o uso de deep learning em visão computacional (ilustrado na @fig-alexnet);
 -   **GoogleNet (Inception):** introduziu estruturas mais profundas e eficientes;
 -   **ResNet:** utilizou conexões residuais para treinar redes muito profundas com maior estabilidade.
+
+![Arquitetura AlexNet](/imgs/cap10/alexnet.png){width="90%" fig-align="center" #fig-alexnet}
 
 ## Considerações Finais
 

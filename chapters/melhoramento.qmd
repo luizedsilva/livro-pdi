@@ -253,7 +253,6 @@ Em sequência um simulador desse algoritmo:
 \caption{Visualização da aplicação interativa}
 \end{figure}
 
-
 ::: {.callout-tip title="Dica"}
 O código completo e a demonstração interativa estão disponíveis em:
 
@@ -350,8 +349,8 @@ $$
 
 Onde $max = L-1$ é a máxima intensidade de pixel na imagem, ou seja, o maior valor retornado para a função imagem $f(x,y)$.
 
-:::{#lst-logaritmica}
-```{.c}
+::: {#lst-logaritmica}
+``` c
 image logarithm (image img)
 {
     image out = img_clone(img);
@@ -376,8 +375,8 @@ $$
 g(x,y) = c\,\left[f(x,y)\right]^{\gamma}
 $$
 
-:::{#lst-potencia}
-```{.c}
+::: {#lst-potencia}
+``` c
 image power(image img, float gamma)
 {
     image out = img_clone(img);
@@ -406,6 +405,7 @@ O parâmetro ($\gamma$) controla a forma da curva de transformação. Valores de
 
 :::: {.content-visible when-format="pdf"}
 <!-- Conteúdo alternativo (PDF) -->
+
 \begin{figure}[H]
 \centering
 \fbox{\includegraphics[width=0.6\textwidth]{imgs/cap3/p5js-potencia.png}}
@@ -475,7 +475,7 @@ Algoritmo para calcular o histograma de uma imagem está em @lst-histograma.
 
 ## Equalização de Histograma
 
-A equalização de histograma é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.
+A equalização de histograma (@pizer1987adaptive, @zuiderveld1994contrast) é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.
 
 Essa técnica é amplamente utilizada devido à sua simplicidade e eficácia, embora possa produzir resultados indesejados em algumas aplicações, como a amplificação de ruído.
 
@@ -515,8 +515,8 @@ Observa-se que o valor $n_k$ corresponde ao **número de pixels com intensidade*
 
 Esse procedimento (da @lst-histograma) define uma **tabela de consulta (LUT)** que mapeia cada nível de entrada $r_k$ para um novo nível $s_k$, redistribuindo os níveis de cinza de forma mais uniforme e aumentando o contraste global da imagem.
 
-:::{#lst-histograma}
-```{.c}
+::: {#lst-histograma}
+``` c
 image equalization(image in)
 {
     image out = img_clone(in);
@@ -805,288 +805,273 @@ O melhoramento de imagens desempenha um papel fundamental no processamento digit
 As técnicas apresentadas neste capítulo fornecem uma base conceitual para o entendimento do melhoramento no domínio espacial, sendo essenciais para o estudo de métodos mais avançados de processamento e análise de imagens.
 
 ::: {.callout-note title="Exercícios"}
-
 **Exercício 1 — Conceitual**
 
 Explique com suas palavras:
 
-a) O que é **melhoramento de imagens**  
-b) Qual a diferença entre **melhoramento** e **restauração de imagens**  
-c) Por que o melhoramento depende da percepção humana  
+a)  O que é **melhoramento de imagens**\
+b)  Qual a diferença entre **melhoramento** e **restauração de imagens**\
+c)  Por que o melhoramento depende da percepção humana
 
----
+------------------------------------------------------------------------
 
 **Exercício 2 — Contraste**
 
 Considere uma imagem com baixo contraste:
 
-a) O que caracteriza uma imagem de baixo contraste?  
-b) Como o histograma dessa imagem se apresenta?  
-c) Qual transformação pode ser aplicada para melhorar sua visualização?
+a)  O que caracteriza uma imagem de baixo contraste?\
+b)  Como o histograma dessa imagem se apresenta?\
+c)  Qual transformação pode ser aplicada para melhorar sua visualização?
 
----
+------------------------------------------------------------------------
 
 **Exercício 3 — Transformações de intensidade**
 
 Dadas as transformações abaixo:
 
-- Negativo da imagem  
-- Transformação logarítmica  
-- Transformação potência (gamma)  
+-   Negativo da imagem\
+-   Transformação logarítmica\
+-   Transformação potência (gamma)
 
 Explique:
 
-a) O efeito de cada uma sobre a imagem  
-b) Em quais situações cada transformação é mais indicada  
+a)  O efeito de cada uma sobre a imagem\
+b)  Em quais situações cada transformação é mais indicada
 
----
+------------------------------------------------------------------------
 
 **Exercício 4 — Cálculo de negativo**
 
 Considere uma imagem de 8 bits (níveis de 0 a 255).
 
-a) Qual é a fórmula do negativo de uma imagem?  
-b) Calcule o valor do pixel resultante para os níveis:
+a)  Qual é a fórmula do negativo de uma imagem?\
+b)  Calcule o valor do pixel resultante para os níveis:
 
-- 0  
-- 50  
-- 120  
-- 200  
-- 255  
+-   0\
+-   50\
+-   120\
+-   200\
+-   255
 
----
+------------------------------------------------------------------------
 
 **Exercício 5 — Equalização de histograma**
 
 Explique:
 
-a) O que é o histograma de uma imagem  
-b) O objetivo da equalização de histograma  
-c) Como essa técnica melhora o contraste  
+a)  O que é o histograma de uma imagem\
+b)  O objetivo da equalização de histograma\
+c)  Como essa técnica melhora o contraste
 
----
+------------------------------------------------------------------------
 
 **Exercício 6 — Análise de histograma**
 
 Considere os seguintes cenários:
 
-a) Histograma concentrado à esquerda  
-b) Histograma concentrado à direita  
-c) Histograma concentrado no centro  
+a)  Histograma concentrado à esquerda\
+b)  Histograma concentrado à direita\
+c)  Histograma concentrado no centro
 
 Para cada caso, descreva:
 
-- Como a imagem aparenta visualmente  
-- Que tipo de transformação pode ser aplicada  
+-   Como a imagem aparenta visualmente\
+-   Que tipo de transformação pode ser aplicada
 
----
+------------------------------------------------------------------------
 
 **Exercício 7 — Filtros espaciais**
 
 Explique a diferença entre:
 
-a) Filtros lineares e não lineares  
-b) Filtro de média e filtro de mediana  
+a)  Filtros lineares e não lineares\
+b)  Filtro de média e filtro de mediana
 
 Indique em quais situações cada um é mais adequado.
 
----
+------------------------------------------------------------------------
 
 **Exercício 8 — Suavização**
 
 Explique:
 
-a) O objetivo da suavização de imagens  
-b) Como o filtro de média atua  
-c) Qual o efeito colateral comum desse tipo de filtro  
+a)  O objetivo da suavização de imagens\
+b)  Como o filtro de média atua\
+c)  Qual o efeito colateral comum desse tipo de filtro
 
----
+------------------------------------------------------------------------
 
 **Exercício 9 — Realce de bordas**
 
 Explique:
 
-a) O que são bordas em uma imagem  
-b) Como operadores como Sobel ou Laplaciano ajudam a detectá-las  
-c) Em quais aplicações esse tipo de técnica é útil  
+a)  O que são bordas em uma imagem\
+b)  Como operadores como Sobel ou Laplaciano ajudam a detectá-las\
+c)  Em quais aplicações esse tipo de técnica é útil
 
----
+------------------------------------------------------------------------
 
 **Exercício 10 — Implementação prática (contraste)**
 
 Implemente um programa que:
 
-a) Leia uma imagem em tons de cinza  
-b) Aplique:
-- negativo  
-- transformação logarítmica  
-- correção gamma (γ = 0.5 e γ = 2.0)  
+a)  Leia uma imagem em tons de cinza\
+b)  Aplique:
 
-c) Salve as imagens resultantes  
-d) Compare visualmente os resultados  
+-   negativo\
+-   transformação logarítmica\
+-   correção gamma (γ = 0.5 e γ = 2.0)
 
----
+c)  Salve as imagens resultantes\
+d)  Compare visualmente os resultados
+
+------------------------------------------------------------------------
 
 **Exercício 11 — Implementação prática (filtros)**
 
 Implemente um programa que aplique:
 
-a) Filtro de média 3×3  
-b) Filtro de mediana 3×3  
+a)  Filtro de média 3×3\
+b)  Filtro de mediana 3×3
 
 Compare os resultados em imagens com ruído.
 
----
+------------------------------------------------------------------------
 
 **Exercício 12 — Comparação de técnicas**
 
 Compare os efeitos de:
 
-- Suavização  
-- Realce de contraste  
-- Detecção de bordas  
+-   Suavização\
+-   Realce de contraste\
+-   Detecção de bordas
 
 Explique como cada técnica altera a informação da imagem.
 
----
+------------------------------------------------------------------------
 
 **Questão reflexiva**
 
 Explique como técnicas de melhoramento de imagens são utilizadas em:
 
-- Diagnóstico médico  
-- Sistemas de vigilância  
-- Sensoriamento remoto  
-- Fotografia digital  
+-   Diagnóstico médico\
+-   Sistemas de vigilância\
+-   Sensoriamento remoto\
+-   Fotografia digital
 
 Discuta a importância de escolher corretamente a técnica para cada aplicação.
-
 :::
 
-
 ::: {.callout-note title="Atividade Prática: Rotulagem"}
-
 **Objetivo**
 
 O objetivo desta atividade é explorar os conceitos iniciais da disciplina de processamento de imagens, tais como: varredura da imagem, componentes conexos e conectividade 4 e 8.
 
----
+------------------------------------------------------------------------
 
 **Problema**
 
 Considere a imagem abaixo de uma bandeja de feijões:
 
-![Imagem de feijões](/imgs/cap3/beans.png){width=90% fig-align="center"}
+![Imagem de feijões](/imgs/cap3/beans.png){width="90%" fig-align="center"}
 
 Para qualquer imagem de entrada com características semelhantes (fundo branco com diversas formas pretas de diferentes tamanhos), desenvolva um programa para contar o número de componentes conexos. Para isso, considere o algoritmo de rotulação de componentes conexos conforme descrito neste capítulo.
 
----
+------------------------------------------------------------------------
 
 **Descrição**
 
-1. Desenvolva um programa, baseado no código fornecido para cálculo do negativo de uma imagem, que:
-   - carregue uma imagem no formato PGM;
-   - identifique e conte os componentes conexos;
-   - apresente o resultado.
+1.  Desenvolva um programa, baseado no código fornecido para cálculo do negativo de uma imagem, que:
+    -   carregue uma imagem no formato PGM;
+    -   identifique e conte os componentes conexos;
+    -   apresente o resultado.
+2.  O programa deve receber o nome do arquivo pela linha de comando e produzir a seguinte saída:
 
-2. O programa deve receber o nome do arquivo pela linha de comando e produzir a seguinte saída:
-
-```
+```         
 #componentes= XX
 ```
 
 Onde **XX** é o número de componentes conexos encontrados.
 
-3. Opcionalmente, pode ser gerada uma imagem PGM contendo a rotulação dos componentes.
+3.  Opcionalmente, pode ser gerada uma imagem PGM contendo a rotulação dos componentes.
 
-4. Teste o programa com diferentes imagens.
-
+4.  Teste o programa com diferentes imagens.
 :::
 
-::: {.callout-note title="Atividade Prática: Marca d’água Invisível"}
+-   ::: {.callout-note title="Atividade Prática: Marca d’água Invisível"}
+    **Objetivo**
 
-**Objetivo**
+    O objetivo desta atividade é explorar conceitos de **codificação de imagens**, especialmente técnicas relacionadas à **inserção e extração de marca d’água invisível**, utilizadas em algoritmos de compactação e proteção de dados.
 
-O objetivo desta atividade é explorar conceitos de **codificação de imagens**, especialmente técnicas relacionadas à **inserção e extração de marca d’água invisível**, utilizadas em algoritmos de compactação e proteção de dados.
+    ![Exemplo de marca d'água](/imgs/cap3/marca.png){width="70%" fig-align="center"}
 
-![Exemplo de marca d'água](/imgs/cap3/marca.png){width="70%" fig-align="center"}
+    ------------------------------------------------------------------------
 
----
+    **Problema**
 
-**Problema**
+    Marcas d’água são utilizadas para: - identificação de direitos autorais; - identificação de usuários; - verificação de autenticidade; - proteção contra cópias.
 
-Marcas d’água são utilizadas para:
-- identificação de direitos autorais;
-- identificação de usuários;
-- verificação de autenticidade;
-- proteção contra cópias.
+    Diferente da marca d’água visível, a **marca d’água invisível** não pode ser percebida a olho nu, mas pode ser recuperada por meio de processamento da imagem.
 
-Diferente da marca d’água visível, a **marca d’água invisível** não pode ser percebida a olho nu, mas pode ser recuperada por meio de processamento da imagem.
+    Nesta atividade, você deverá desenvolver um programa capaz de **extrair uma marca d’água invisível de uma imagem em formato PGM**.
 
-Nesta atividade, você deverá desenvolver um programa capaz de **extrair uma marca d’água invisível de uma imagem em formato PGM**.
+    ------------------------------------------------------------------------
 
----
+    **Descrição**
 
-**Descrição**
+    1.  Desenvolva um programa que:
 
-1. Desenvolva um programa que:
+        a)  Leia uma imagem em formato `.pgm` contendo marca d’água invisível
 
-   a) Leia uma imagem em formato `.pgm` contendo marca d’água invisível  
+        b)  Utilize como base o código de exemplo fornecido (negativo de imagem)
 
-   b) Utilize como base o código de exemplo fornecido (negativo de imagem)  
+    2.  O programa deverá:
 
-2. O programa deverá:
+        a)  Aplicar o processo de **decodificação da marca d’água**
 
-   a) Aplicar o processo de **decodificação da marca d’água**  
+        b)  Recuperar os bits menos significativos da imagem
 
-   b) Recuperar os bits menos significativos da imagem  
+        c)  Reconstruir a imagem da marca d’água
 
-   c) Reconstruir a imagem da marca d’água  
+    3.  A técnica utilizada considera:
 
-3. A técnica utilizada considera:
+        a)  Inserção da marca d’água nos **bits menos significativos (LSB)**
 
-   a) Inserção da marca d’água nos **bits menos significativos (LSB)**  
+        b)  Manipulação de níveis de intensidade em imagens de 8 bits
 
-   b) Manipulação de níveis de intensidade em imagens de 8 bits  
+    ------------------------------------------------------------------------
 
----
+    **Modelo matemático**
 
-**Modelo matemático**
+    A inserção da marca d’água visível pode ser representada por:
 
-A inserção da marca d’água visível pode ser representada por:
+    $$
+    f_w = (1 - \alpha)f + \alpha w
+    $$
 
-$$
-f_w = (1 - \alpha)f + \alpha w
-$$
+    onde:
 
-onde:
-- $f$: imagem original  
-- $w$: marca d’água  
-- $\alpha$: fator de visibilidade  
+    -   $f$: imagem original
 
-Para marca d’água invisível, utiliza-se manipulação de bits, deslocando informações da marca para os bits menos significativos da imagem. Pode-se usar, por exemplo a seguinte expressão para sobrepor uma marca d'água invisível $w$ sobre a imagem $f$:
+    -   $w$: marca d’água
 
-$$
-f_w = 4(\frac{f}{4}) + \frac{w}{64}
-$$
+    -   $\alpha$: fator de visibilidade
 
-Dividir e multiplicar por 4 tem o efeito de zerar os dois bits menos significativos dos pixels
-da imagem $f$. Dividir $w$ por 64 tem o efeito de deslocar os dois bits mais significativos dos
-pixels da imagem de marca d’água $w$ para as duas posições menos significativas (considerando
-que a imagem tem intensidade quantizada em 8 bits). A soma desses dois valores gera imagem
-com a marca d’água invisı́vel. Essa marca pode ser extraı́da usando a operação inversa, ou seja,
-zerando os 6 bits mais significativos da imagem e ajustando os valores restantes ao intervalo
-completo de intensidade.
+    Para marca d’água invisível, utiliza-se manipulação de bits, deslocando informações da marca para os bits menos significativos da imagem. Pode-se usar, por exemplo a seguinte expressão para sobrepor uma marca d'água invisível $w$ sobre a imagem $f$:
 
----
+    $$
+    f_w = 4(\frac{f}{4}) + \frac{w}{64}
+    $$
 
-**Formato da execução**
+    Dividir e multiplicar por 4 tem o efeito de zerar os dois bits menos significativos dos pixels da imagem $f$. Dividir $w$ por 64 tem o efeito de deslocar os dois bits mais significativos dos pixels da imagem de marca d’água $w$ para as duas posições menos significativas (considerando que a imagem tem intensidade quantizada em 8 bits). A soma desses dois valores gera imagem com a marca d’água invisı́vel. Essa marca pode ser extraı́da usando a operação inversa, ou seja, zerando os 6 bits mais significativos da imagem e ajustando os valores restantes ao intervalo completo de intensidade.
 
-O programa deve ser executado via linha de comando:
+    ------------------------------------------------------------------------
 
-```bash
-./marca <original.pgm> <marcada.pgm>
-```
-:::
+    **Formato da execução**
 
+    O programa deve ser executado via linha de comando:
 
+    ``` bash
+    ./marca <original.pgm> <marcada.pgm>
+    ```
+    :::

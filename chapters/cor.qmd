@@ -476,7 +476,7 @@ O objetivo desta atividade é explorar conceitos de **esteganografia**, utilizan
 
 O termo **esteganografia**[^estegano] deriva da junção das palavras gregas *estegano*, que significa “esconder ou mascarar”, e *grafia*, que significa “escrita”. Portanto, esteganografia pode ser compreendida como a arte de esconder informações, tornando-as ocultas, assim como a criptografia. O objetivo desta técnica é que esses dados não sejam percebidos por terceiros; ou seja, a presença de mensagens escondidas dentro de arquivos é simplesmente desconhecida. Somente o receptor da mensagem tem conhecimento de sua existência, assim como da maneira como extraí-la.
 
-[^estegano]: (https://www.gta.ufrj.br/grad/09_1/versao-final/stegano/introducao.html)
+[^estegano]: (<https://www.gta.ufrj.br/grad/09_1/versao-final/stegano/introducao.html>)
 
 Apesar de parecer, a esteganografia e a criptografia são duas áreas com objetivos bastante diferentes. Enquanto a criptografia tem o propósito de impedir que as pessoas saibam o conteúdo de uma mensagem, a esteganografia busca evitar que as pessoas saibam que a mensagem escondida existe. Ou seja, na criptografia, os receptores sabem da existência das mensagens, porém não conseguem, a princípio, lê-las; já a esteganografia tenta fazer com que os receptores não percebam que há uma mensagem naquele meio (imagem, texto, etc.).
 
@@ -505,17 +505,17 @@ Seja `'A'`, a primeira letra do nome do arquivo (código ASCII binário `0100000
 Onde:
 
 - $R_1 = r_1 \,\& \,0xFE$ codifica o bit **0**
-- $G_2 = g_2 \,\| \,0x01$ codifica o bit **1**
+- $G_2 = g_2 \,| \,0x01$ codifica o bit **1**
 - $B_3 = b_3 \,\& \,0xFE$ codifica o bit **0**
 - $R_4 = r_4 \,\& \,0xFE$ codifica o bit **0**
 - $G_5 = g_5 \,\& \,0xFE$ codifica o bit **0**
 - $B_6 = b_6 \,\& \,0xFE$ codifica o bit **0**
 - $R_7 = r_7 \,\& \,0xFE$ codifica o bit **0**
-- $G_8 = g_8 \,\| \,0x01$ codifica o bit **1**
+- $G_8 = g_8 \,| \,0x01$ codifica o bit **1**
 
 3. A operação $R_1 = r_1 \,\& \,0xFE$ (AND bit-a-bit) força o último bit para **0**.
 
-4. A operação $G_2 = g_2 \,\| \,0x01$ (OR bit-a-bit) força o último bit para **1**.
+4. A operação $G_2 = g_2 \,| \,0x01$ (OR bit-a-bit) força o último bit para **1**.
 
 5. Após o nome do arquivo, os quatro bytes seguintes representam o tamanho do arquivo.
 
@@ -640,7 +640,7 @@ O programa deve:
 O programa deve suportar duas operações:
 
 ```bash
-./estego -e <entrada.pgm> <saida.pgm> "<mensagem>"
-./estego -d <imagem.pgm>
+./estego -e <entrada.ppm> <saida.ppm> <arquivo.ext>
+./estego -d <imagem.ppm>
 ```
 :::

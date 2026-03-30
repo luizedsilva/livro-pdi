@@ -2,7 +2,7 @@
 
 ![](/chapters/imgs/morfologia.png){fig-align="center" width="60%"}
 
-A **Morfologia Matemática** é um ramo não linear do **processamento digital de imagens**, desenvolvido na década de 1960 por **George Matheron** e **Jean Serra**. Essa área surgiu no contexto da análise de estruturas geométricas, tendo como principal objetivo extrair informações relevantes de imagens a partir da manipulação de suas formas.
+A **Morfologia Matemática** (@serra1982image, @serra1988image, @soille2003morphological, @heijmans1994morphological, @matheron1975random, @vincent1993morphological) é um ramo não linear do **processamento digital de imagens**, desenvolvido na década de 1960 por **George Matheron** e **Jean Serra**. Essa área surgiu no contexto da análise de estruturas geométricas, tendo como principal objetivo extrair informações relevantes de imagens a partir da manipulação de suas formas.
 
 Os trabalhos iniciais de Matheron e Serra foram fundamentados na ideia de que a informação contida em uma imagem pode ser analisada por meio de transformações baseadas em forma e estrutura. Nesse contexto, foram definidas duas operações fundamentais que constituem a base da morfologia matemática: a **dilatação** e a **erosão**. Essas operações permitem modificar a geometria dos objetos presentes na imagem, possibilitando tanto a expansão quanto a contração de suas regiões.
 

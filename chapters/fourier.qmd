@@ -4,7 +4,7 @@
 
 A análise de imagens no domínio espacial, embora intuitiva e amplamente utilizada, apresenta limitações quando se deseja compreender a distribuição de padrões periódicos, texturas e estruturas repetitivas. Para superar essas limitações, recorre-se à análise no **domínio da frequência**, na qual a imagem é representada como uma combinação de componentes senoidais de diferentes frequências.
 
-A **Transformada de Fourier** constitui a principal ferramenta matemática para essa mudança de domínio, sendo fundamental em diversas áreas do Processamento Digital de Imagens, como filtragem, compressão, restauração e análise de textura.
+A **Transformada de Fourier** (@bracewell2000fourier, @oppenheim1999discrete, @oppenheim2010signals, @cooley1965algorithm, @fourier1822theorie) constitui a principal ferramenta matemática para essa mudança de domínio, sendo fundamental em diversas áreas do Processamento Digital de Imagens, como filtragem, compressão, restauração e análise de textura.
 
 ## Domínio Espacial e Domínio da Frequência
 
