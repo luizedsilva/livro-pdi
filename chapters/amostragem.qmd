@@ -395,20 +395,29 @@ Um programa para abrir uma imagem em formato PGM, calcular o negativo da imagem,
 
 :::{#lst-exemplo}
 ``` {.c fontsize="\\small"}
+image negative(image in)
+{
+    image out = img_clone(in);
+    for (int i = 0; i < in->nr * in->nc; i++)
+        out->px[i] = in->ml - in->px[i];
+    return out;
+}
+
 int main(int argc, char *argv[])
 {
-    image In;
+    image In, Out;
     if (argc < 2)
     {
-        printf("\nImage Negative\n");
+        printf("\nImage negative\n");
         printf("\n\tUse: %s <image-name>.pgm\n\n", argv[0]);
         exit(1);
     }
     In = img_get(argv[1], GRAY);
-    for (int i = 0; i < In->nr * In->nc; i++)
-        In->px[i] = 255 - In->px[i];
-    img_put(In, "output.pgm", GRAY);
+    Out = negative(In);
+    img_put(Out, "output.pgm", GRAY);
     system("eog output.pgm &");
+    img_free(In);
+    img_free(Out);
 }
 ```
 :::
