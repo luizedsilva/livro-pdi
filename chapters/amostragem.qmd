@@ -227,8 +227,65 @@ Os três formatos admitem duas variações: uma versão **ASCII**, legível por 
 
 Em conjunto, os formatos PBM, PGM e PPM desempenham um papel fundamental no ensino do Processamento Digital de Imagens, pois tornam explícita a relação entre a representação numérica e a aparência visual das imagens. Ao trabalhar com esses formatos, o estudante pode compreender de forma concreta conceitos como pixel, nível de cinza, cor e quantização, estabelecendo uma base sólida para o estudo de técnicas mais avançadas.
 
-### Para ler um arquivo PNM
+A seguir, são apresentados alguns códigos de exemplo que servem como base para a implementação dos diversos algoritmos de processamento de imagens desenvolvidos ao longo deste livro. Embora escritos em uma linguagem específica, os conceitos adotados podem ser facilmente adaptados para outras linguagens, como Python, Rust ou Java, mantendo-se a mesma abordagem geral.
 
+### Uma estrutura de dados para imagem
+
+A imagem (*image*) está representada na estrutura da @lst-estrutura que contém ainda algumas rotinas utilitárias.
+
+:::{#lst-estrutura}
+``` {.c fontsize="\\small"}
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct image
+{
+    int nr,  // number of rows
+        nc,  // number of columns
+        ml,  // max gray level
+        tp;  // type of image (BW, GRAY, COLOR)
+    int *px; // pixels vector (nr * nc)
+} *image;
+
+enum
+{
+    BW = 1,
+    GRAY,
+    COLOR
+};
+
+/*
+ * Image allocation and free routines
+ *   nr = number of rows
+ *   nc = number of columns
+ *   ml = max gray level
+ *   tp = type of image
+ */
+image img_create(int nr, int nc, int ml, int tp)
+{
+    image img = malloc(sizeof (struct image));
+    img->px = malloc(nr * nc * sizeof(int));
+    img->nr = nr;
+    img->nc = nc;
+    img->ml = ml;
+    img->tp = tp;
+    return img;
+}
+
+image img_clone(image In)
+{
+    return img_create(In->nr, In->nc, In->ml, In->tp);
+}
+
+int img_free(image Im)
+{
+    free(Im->px);
+    free(Im);
+}
+```
+:::
+
+### Para ler um arquivo PNM
 
 O código na @lst-readimg está a implementação da função para ler arquivo nos formatos PBM, PGM ou PPM.
 
@@ -250,24 +307,20 @@ image img_get(char *name, int tp) {
     image img;
     FILE *f;
     f = fopen(name, "rt");
-    if (!f) erro("Erro: Abertura da imagem");
-    fgets(line, 200, f); // leitura do cabecaho
+    if (!f) erro("ERROR: file open error");
+    fgets(line, 200, f); 
     if (line[0] != 'P' || line[1] != (tp + '0'))
-        erro("Tipo do arquivo errado!");
-    fgets(line, 200, f); // leitura dos comentario
+        erro("Wrong type image!");
+    fgets(line, 200, f); 
     while (line[0] == '#')
         fgets(line, 200, f);
-    sscanf(line, "%d %d", &nc, &nr); // número de linhas e colunas
+    sscanf(line, "%d %d", &nc, &nr);
     if (tp != BW)
-        fscanf(f, "%d", &ml); // máxima intensidade
+        fscanf(f, "%d", &ml); 
     else
         ml = 1;
-    img = malloc(sizeof(struct image));
-    img->nr = nr;
-    img->nc = nc;
-    img->ml = ml;
-    img->tp = tp;
-    img->px = malloc(nr * nc * sizeof(int));
+    // Image create
+    img = img_create(nr, nc, ml, tp);
     for (int i = 0; i < nr * nc; i++) {
         if (tp != COLOR) {
             int k;
@@ -305,9 +358,9 @@ void img_put(image img, char *name, int tp)
     int count = 0;
     FILE *f = fopen(name, "wt");
     if (!f)
-        erro("Erro: Criação do arquivo de imagem");
+        erro("ERROR: file creation");
     fprintf(f, "P%c\n", tp + '0');
-    fputs("# Imagem gerada por Luiz Eduardo\n", f);
+    fputs("# Created by Luiz Eduardo\n", f);
     fprintf(f, "%d %d\n", img->nc, img->nr);
     if (tp != BW)
         fprintf(f, "%d\n", img->ml);
@@ -336,59 +389,7 @@ void img_put(image img, char *name, int tp)
 ```
 :::
 
-A imagem (*image*) está representada na estrutura da @lst-estrutura que contém ainda algumas rotinas utilitárias.
-
-:::{#lst-estrutura}
-``` {.c fontsize="\\small"}
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct image
-{
-    int nr,  // numero de linhas
-        nc,  // numero de colunas
-        ml,  // maximo nivel de cinza
-        tp;  // tipo (BW, GRAY, COLOR)
-    int *px; // vetor de pixels (nr * nc)
-} *image;
-
-enum
-{
-    BW = 1,
-    GRAY,
-    COLOR
-};
-
-/*
- * Image allocation and free routines
- *   nr = number of rows
- *   nc = number of columns
- *   ml = max gray level
- *   tp = type of image
- */
-image img_create(int nr, int nc, int ml, int tp)
-{
-    image img = malloc(sizeof(image *));
-    img->px = malloc(nr * nc * sizeof(int));
-    img->nr = nr;
-    img->nc = nc;
-    img->ml = ml;
-    img->tp = tp;
-    return img;
-}
-
-image img_clone(image In)
-{
-    return img_create(In->nr, In->nc, In->ml, In->tp);
-}
-
-int img_free(image Im)
-{
-    free(Im->px);
-    free(Im);
-}
-```
-:::
+### O negativo de uma imagem
 
 Um programa para abrir uma imagem em formato PGM, calcular o negativo da imagem, salvar o resultado e chamar um visualizador de imagem para apresentar o resultado está na @lst-exemplo.
 
@@ -399,15 +400,15 @@ int main(int argc, char *argv[])
     image In;
     if (argc < 2)
     {
-        printf("\nNegativo de uma imagem\n");
-        printf("\n\tUso: %s <nome-imagem>.pgm\n\n", argv[0]);
+        printf("\nImage Negative\n");
+        printf("\n\tUse: %s <image-name>.pgm\n\n", argv[0]);
         exit(1);
     }
     In = img_get(argv[1], GRAY);
     for (int i = 0; i < In->nr * In->nc; i++)
         In->px[i] = 255 - In->px[i];
-    img_put(In, "saida.pgm", GRAY);
-    system("eog saida.pgm &");
+    img_put(In, "output.pgm", GRAY);
+    system("eog output.pgm &");
 }
 ```
 :::
