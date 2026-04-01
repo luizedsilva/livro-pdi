@@ -133,7 +133,82 @@ G_y =\;& [I(x-1,y+1) + 2I(x,y+1) + I(x+1,y+1)] \\
 \end{aligned}
 $$
 
-Ou o filtro Lapraciano, que mede a variação da variação da intensidade da imagem, ou seja, corresponde à segunda derivada espacial, indicando quão rapidamente o valor do pixel está mudando em relação aos seus vizinhos. Por essa característica, ele é especialmente eficaz em destacar regiões onde ocorrem mudanças bruscas de intensidade, que correspondem às bordas dos objetos na imagem. Diferentemente do gradiente, que fornece informação direcional (indicando a orientação da borda), o Laplaciano é um operador não direcional, produzindo apenas um valor escalar com sinal, que indica se a região corresponde a um máximo ou mínimo local de intensidade:
+Essas operações estão representadas nas máscaras de convolução para identificação de bordas horizontais e verticais da @fig-sobel.
+
+![Máscaras para convolução para filtragem de Sobel](/imgs/cap8/sobel.png){width="60%" fig-align="center" #fig-sobel}
+
+A aplicação das duas máscaras pode ser simplificada na expressão:
+
+$$
+M(x, y) \approx 
+\left|
+\begin{array}{c}
+(z_6 + 2z_7 + z_8) - (z_0 + 2z_1 + z_2) \\
+(z_2 + 2z_5 + z_8) - (z_0 + 2z_3 + z_6)
+\end{array}
+\right|
+$$
+
+Uma simplificação desses cálculos estão representados no exemplo interativo em sequência. Clique numa linha da imagem para selecioná-la. Dessa linha é construído um perfil horizontal de intensidade, o perfil simplificado (amostrado) e a primeira e segunda derivadas (para evidenciar as bordas), cálculadas conforme a aproximação discreta das fórmulas para $G_x$ ou $G_y$.
+
+::: {.content-visible when-format="html"}
+<!-- Conteúdo interativo (HTML) -->
+
+<iframe src="https://editor.p5js.org/luizedsilva/full/vwJlyplFQ" width="100%" height="700" style="border:none; overflow:hiddeln;">
+
+</iframe>
+:::
+
+:::: {.content-visible when-format="pdf"}
+<!-- Conteúdo alternativo (PDF) -->
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-profile.png}}
+\caption{Visualização da aplicação interativa}
+\end{figure}
+
+::: {.callout-tip title="Dica"}
+O código completo e a demonstração interativa estão disponíveis em:
+
+<https://editor.p5js.org/luizedsilva/full/vwJlyplFQ>
+
+{{< qrcode https://editor.p5js.org/luizedsilva/full/vwJlyplFQ width=100 height=100 pdfheight=3cm >}}
+:::
+::::
+
+Esta operação está sintetizada no código da @lst-sobel.
+
+:::{#lst-sobel}
+``` {.c fontsize="\\small"}
+image sobel(image in)
+{
+    image out = img_clone(in);
+    int nc = in->nc; // number of columns
+    int nl = in->nr; // number of rows
+    int max = in->ml; // max intensity level
+    int *px = in->px;
+    for (int i = 1; i < nl - 1; i++)
+        for (int j = 1; j < nc - 1; j++)
+        {
+            int z0 = px[(i - 1) * nc + (j - 1)];
+            int z1 = px[(i - 1) * nc + (j)];
+            int z2 = px[(i - 1) * nc + (j + 1)];
+            int z3 = px[(i)*nc + (j - 1)];
+            int z5 = px[(i)*nc + (j + 1)];
+            int z6 = px[(i + 1) * nc + (j - 1)];
+            int z7 = px[(i + 1) * nc + (j)];
+            int z8 = px[(i + 1) * nc + (j + 1)];
+            int sum = abs((z6 + 2 * z7 + z8) - (z0 + 2 * z1 + z2)) +
+                      abs((z2 + 2 * z5 + z8) - (z0 + 2 * z3 + z6));
+            out->px[i * nc + j] = sum;
+        }
+    return out;
+}
+```
+:::
+
+O filtro Lapraciano mede a variação da variação da intensidade da imagem, ou seja, corresponde à segunda derivada espacial, indicando quão rapidamente o valor do pixel está mudando em relação aos seus vizinhos. Por essa característica, ele é especialmente eficaz em destacar regiões onde ocorrem mudanças bruscas de intensidade, que correspondem às bordas dos objetos na imagem. Diferentemente do gradiente, que fornece informação direcional (indicando a orientação da borda), o Laplaciano é um operador não direcional, produzindo apenas um valor escalar com sinal, que indica se a região corresponde a um máximo ou mínimo local de intensidade:
 
 $$
 \bigtriangledown^2 I= \frac{\delta^2 I}{\delta x^2} + \frac{\delta^2 I}{\delta y^2}

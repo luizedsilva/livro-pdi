@@ -641,7 +641,7 @@ Para a imagem:
 
 O arquivo texto gerado deve ter o seguinte conteúdo:
 
-![Imagem de entrada](/imgs/cap2/cao-ascii.png){width="60%" fig-align="center"}
+![Imagem de saída](/imgs/cap2/cao-ascii.png){width="60%" fig-align="center"}
 
 ---
 
