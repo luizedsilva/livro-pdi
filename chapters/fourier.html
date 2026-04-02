@@ -262,18 +262,6 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/opencv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Conclusão</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../chapters/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Referências</span></a>
   </div>
@@ -379,9 +367,11 @@ Figura&nbsp;4.1: Mudança de domínio
 <p><span class="math display">\[
 y = \frac{x}{z}
 \]</span></p>
-<p>exige uma operação de divisão, que pode ser inconveniente do ponto de vista analítico ou computacional. Ao aplicar uma <strong>transformação logarítmica</strong>, o problema é levado a um novo domínio, no qual a divisão é convertida em subtração: <span class="math display">\[
+<p>exige uma operação de divisão, que pode ser inconveniente do ponto de vista analítico ou computacional. Ao aplicar uma <strong>transformação logarítmica</strong>, o problema é levado a um novo domínio, no qual a divisão é convertida em subtração:</p>
+<p><span class="math display">\[
 \log(y) = \log(x) - \log(z).
-\]</span> Nesse domínio transformado, a análise torna-se significativamente mais simples, pois a subtração pode ser realizada de forma direta, inclusive com o auxílio de tabelas ou métodos mais eficientes.</p>
+\]</span></p>
+<p>Nesse domínio transformado, a análise torna-se significativamente mais simples, pois a subtração pode ser realizada de forma direta, inclusive com o auxílio de tabelas ou métodos mais eficientes.</p>
 <p>Após a resolução no domínio transformado, aplica-se a <strong>transformada inversa</strong> (anti-logaritmo), retornando o resultado ao domínio original. Assim, obtém-se a solução do problema inicial por meio de um caminho indireto, porém mais eficiente.</p>
 <p>Esse raciocínio fundamenta o uso de transformadas em diversas áreas, em especial no <strong>Processamento Digital de Imagens</strong>. Transformadas como a logarítmica, a de Fourier e a de Laplace permitem converter operações complexas no domínio espacial em operações mais simples em domínios alternativos, justificando o uso da expressão “solução usando um atalho”. A mudança de domínio, portanto, não altera o problema em si, mas revela uma forma mais conveniente de resolvê-lo.</p>
 </section>
@@ -395,9 +385,7 @@ y = \frac{x}{z}
 <section id="a-ideia-fundamental-de-fourier" class="level3">
 <h3 class="anchored" data-anchor-id="a-ideia-fundamental-de-fourier">A ideia fundamental de Fourier</h3>
 <p>A função denominada “Soma das senóides”, apresentada no exemplo interativo em sequência é obtida pela <strong>soma das quatro funções</strong> (Senoide 1, Senoide 2, Senoide 3, Senoide 4). Cada uma dessas funções elementares é uma senoide com frequência e amplitude distintas. Quando combinadas, elas produzem uma forma de onda mais complexa, que já não se parece, à primeira vista, com um seno simples.</p>
-<!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/Dn_cYEuqj" width="100%" height="600" style="border:none; overflow:hiddeln;">
-</iframe>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/Dn_cYEuqj" width="100%" height="600" style="border:none;"></iframe></div>
 <p>O exemplo ilustrativo seguinte, adaptado do código de <strong>Daniel Shiffman</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, demonstra como uma série de Fourier pode ser utilizada para representar uma onda quadrada.</p>
 <p>Nesse exemplo, cada <strong>termo da série</strong> é representado por um <strong>círculo trigonométrico</strong> (<em>epiciclo</em>). O <strong>raio de cada círculo</strong> corresponde à <strong>amplitude</strong> do termo, enquanto a <strong>frequência</strong> é representada pela <strong>velocidade de rotação</strong> do círculo. Os círculos são conectados de forma sequencial, de modo que o <strong>centro de cada círculo</strong> coincide com a <strong>extremidade do raio do círculo anterior</strong>, conforme ilustrado na <a href="#fig-epiciclo" class="quarto-xref">Figura&nbsp;<span>4.2</span></a>.</p>
 <div id="fig-epiciclo" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -411,9 +399,7 @@ Figura&nbsp;4.2: Representação dos termos como Epiciclos
 </figure>
 </div>
 <p>A <strong>soma dos termos da série</strong> é obtida pela <strong>projeção vertical</strong> (eixo <span class="math inline">\(y\)</span>) do vetor resultante, formado pelo encadeamento dos raios de todos os círculos. À medida que mais termos são adicionados, a forma de onda resultante aproxima-se progressivamente de uma <strong>onda quadrada</strong>, evidenciando o princípio fundamental da série de Fourier: a representação de funções periódicas complexas como a soma de senos e cossenos.</p>
-<!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/kk4tjuY7W" width="100%" height="600" style="border:none; overflow:hiddeln;">
-</iframe>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/kk4tjuY7W" width="100%" height="600" style="border:none;"></iframe></div>
 </section>
 </section>
 <section id="transformada-de-fourier-unidmensional" class="level2" data-number="4.3">
@@ -512,66 +498,54 @@ f(x) = \frac{1}{M}\sum_{\mu=0}^{M-1} F(\mu)\,e^{j2\pi\mu x/M},
 Listagem&nbsp;4.1
 </figcaption>
 <div aria-describedby="lst-dft1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-fontsize="\small"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// FFT interativo</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;complex.h&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;math.h&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#define DEBUG</span><span class="op">(</span><span class="pp">x</span><span class="op">)</span><span class="pp"> x</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="dt">double</span> <span class="dt">complex</span> cpx<span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> dft<span class="op">(</span>cpx <span class="op">*</span>f<span class="op">,</span> cpx <span class="op">*</span>F<span class="op">,</span> <span class="dt">int</span> n<span class="op">,</span> <span class="dt">int</span> dir<span class="op">)</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    cpx J <span class="op">=</span> CMPLX<span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> factor <span class="op">=</span> <span class="op">(</span>dir <span class="op">==</span> <span class="op">-</span><span class="dv">1</span><span class="op">)</span> <span class="op">?</span> <span class="dv">1</span> <span class="op">:</span> <span class="op">(</span><span class="dt">float</span><span class="op">)</span><span class="dv">1</span> <span class="op">/</span> n<span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> u <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> u <span class="op">&lt;</span> n<span class="op">;</span> u<span class="op">++)</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        cpx sum <span class="op">=</span> CMPLX<span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> n<span class="op">;</span> x<span class="op">++)</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="dt">float</span> theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> u <span class="op">*</span> x <span class="op">*</span> M_PI<span class="op">;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            sum <span class="op">+=</span> factor <span class="op">*</span> f<span class="op">[</span>x<span class="op">]</span> <span class="op">*</span> cexp<span class="op">((</span>dir <span class="op">*</span> J <span class="op">*</span> theta<span class="op">)</span> <span class="op">/</span> n<span class="op">);</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        F<span class="op">[</span>u<span class="op">]</span> <span class="op">=</span> sum<span class="op">;</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n<span class="op">;</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    cpx <span class="op">*</span>f<span class="op">;</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    cpx <span class="op">*</span>F<span class="op">;</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"n? "</span><span class="op">);</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    scanf<span class="op">(</span><span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>n<span class="op">);</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span>cpx<span class="op">)</span> <span class="op">*</span> n<span class="op">);</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    F <span class="op">=</span> malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span>cpx<span class="op">)</span> <span class="op">*</span> n<span class="op">);</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> value<span class="op">;</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"f[</span><span class="sc">%d</span><span class="st">]? "</span><span class="op">,</span> i<span class="op">);</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        scanf<span class="op">(</span><span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>value<span class="op">);</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        f<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> CMPLX<span class="op">(</span>value<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    dft<span class="op">(</span>f<span class="op">,</span> F<span class="op">,</span> n<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">"Transformada Direta:"</span><span class="op">);</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">"--------------------"</span><span class="op">);</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"F[</span><span class="sc">%d</span><span class="st">] = </span><span class="sc">%.1f</span><span class="st">"</span><span class="op">,</span> i<span class="op">,</span> creal<span class="op">(</span>F<span class="op">[</span>i<span class="op">]));</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>fabs<span class="op">(</span>cimag<span class="op">(</span>F<span class="op">[</span>i<span class="op">]))</span> <span class="op">&gt;</span> <span class="fl">0.0001</span><span class="op">)</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>            printf<span class="op">(</span><span class="st">" </span><span class="sc">%c</span><span class="st"> </span><span class="sc">%.1f</span><span class="st">j</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> cimag<span class="op">(</span>F<span class="op">[</span>i<span class="op">])</span> <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="ch">'-'</span> <span class="op">:</span> <span class="ch">'+'</span><span class="op">,</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>                   fabs<span class="op">(</span>cimag<span class="op">(</span>F<span class="op">[</span>i<span class="op">])));</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>            printf<span class="op">(</span><span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">""</span><span class="op">);</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    dft<span class="op">(</span>F<span class="op">,</span> f<span class="op">,</span> n<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">"Transformada Inversa"</span><span class="op">);</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">"--------------------"</span><span class="op">);</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"f[</span><span class="sc">%d</span><span class="st">] = </span><span class="sc">%.1f\n</span><span class="st">"</span><span class="op">,</span> i<span class="op">,</span> creal<span class="op">(</span>f<span class="op">[</span>i<span class="op">]));</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-fontsize="\small"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;complex.h&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;math.h&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="dt">double</span> <span class="dt">complex</span> cpx<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> dft<span class="op">(</span>cpx <span class="op">*</span>f<span class="op">,</span> cpx <span class="op">*</span>F<span class="op">,</span> <span class="dt">int</span> n<span class="op">,</span> <span class="dt">int</span> dir<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    cpx J <span class="op">=</span> CMPLX<span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> factor <span class="op">=</span> <span class="op">(</span>dir <span class="op">==</span> <span class="op">-</span><span class="dv">1</span><span class="op">)</span> <span class="op">?</span> <span class="dv">1</span> <span class="op">:</span> <span class="op">(</span><span class="dt">float</span><span class="op">)</span><span class="dv">1</span> <span class="op">/</span> n<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> u <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> u <span class="op">&lt;</span> n<span class="op">;</span> u<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        cpx sum <span class="op">=</span> CMPLX<span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> n<span class="op">;</span> x<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">float</span> theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> u <span class="op">*</span> x <span class="op">*</span> M_PI<span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            sum <span class="op">+=</span> factor <span class="op">*</span> f<span class="op">[</span>x<span class="op">]</span> <span class="op">*</span> cexp<span class="op">((</span>dir <span class="op">*</span> J <span class="op">*</span> theta<span class="op">)</span> <span class="op">/</span> n<span class="op">);</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        F<span class="op">[</span>u<span class="op">]</span> <span class="op">=</span> sum<span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n<span class="op">;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    cpx <span class="op">*</span>f<span class="op">,</span> <span class="op">*</span>F<span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"n? "</span><span class="op">);</span>  scanf<span class="op">(</span><span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>n<span class="op">);</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span>cpx<span class="op">)</span> <span class="op">*</span> n<span class="op">);</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    F <span class="op">=</span> malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span>cpx<span class="op">)</span> <span class="op">*</span> n<span class="op">);</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> value<span class="op">;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"f[</span><span class="sc">%d</span><span class="st">]? "</span><span class="op">,</span> i<span class="op">);</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        scanf<span class="op">(</span><span class="st">"</span><span class="sc">%d</span><span class="st">"</span><span class="op">,</span> <span class="op">&amp;</span>value<span class="op">);</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        f<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> CMPLX<span class="op">(</span>value<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    dft<span class="op">(</span>f<span class="op">,</span> F<span class="op">,</span> n<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">"Transformada Direta:"</span><span class="op">);</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"F[</span><span class="sc">%d</span><span class="st">] = </span><span class="sc">%.1f</span><span class="st">"</span><span class="op">,</span> i<span class="op">,</span> creal<span class="op">(</span>F<span class="op">[</span>i<span class="op">]));</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>fabs<span class="op">(</span>cimag<span class="op">(</span>F<span class="op">[</span>i<span class="op">]))</span> <span class="op">&gt;</span> <span class="fl">0.0001</span><span class="op">)</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>            printf<span class="op">(</span><span class="st">" </span><span class="sc">%c</span><span class="st"> </span><span class="sc">%.1f</span><span class="st">j</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> cimag<span class="op">(</span>F<span class="op">[</span>i<span class="op">])</span> <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="ch">'-'</span> <span class="op">:</span> <span class="ch">'+'</span><span class="op">,</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                   fabs<span class="op">(</span>cimag<span class="op">(</span>F<span class="op">[</span>i<span class="op">])));</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>            printf<span class="op">(</span><span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">""</span><span class="op">);</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    dft<span class="op">(</span>F<span class="op">,</span> f<span class="op">,</span> n<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    puts<span class="op">(</span><span class="st">"Transformada Inversa"</span><span class="op">);</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"f[</span><span class="sc">%d</span><span class="st">] = </span><span class="sc">%.1f\n</span><span class="st">"</span><span class="op">,</span> i<span class="op">,</span> creal<span class="op">(</span>f<span class="op">[</span>i<span class="op">]));</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </figure>
 </div>
@@ -825,9 +799,7 @@ M = 2^n
 \end{aligned}
 \]</span></p>
 <p>Essa estrutura é conhecida como <strong>butterfly</strong> (imagem seguinte), pois o diagrama de fluxo assume esse formato gráfico. A aplicação sucessiva dessa decomposição reduz o problema até termos triviais de tamanho 1.</p>
-<!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/gdGhjn6LZ" width="100%" height="600" style="border:none; overflow:hiddeln;">
-</iframe>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/gdGhjn6LZ" width="100%" height="600" style="border:none;"></iframe></div>
 <section id="um-exemplo-1" class="level4">
 <h4 class="anchored" data-anchor-id="um-exemplo-1">Um exemplo</h4>
 <p>A <a href="#fig-amostra" class="quarto-xref">Figura&nbsp;<span>4.4</span></a> a seguir ilustra um conjunto discreto de amostras de um sinal unidimensional no domínio espacial. Esse exemplo simples permite compreender, de forma concreta, como a <strong>Transformada Discreta de Fourier (DFT)</strong> decompõe um sinal em suas componentes de frequência.</p>
@@ -873,9 +845,7 @@ f(0) &amp;= \frac{1}{4}\sum_{u=0}^{3} F(u)e^{j2\pi u(0)} \\
 \end{aligned}
 \]</span></p>
 <p>O exemplo interativo seguinte simula os mesmos cálculos com as entradas reordenadas e os cálculos sendo realizados considerando o <em>esquema butterfly</em>:</p>
-<!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/2pBrQ6PYM" width="100%" height="400" style="border:none; overflow:hiddeln;">
-</iframe>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/2pBrQ6PYM" width="100%" height="400" style="border:none;"></iframe></div>
 <p>Usando o <em>esquema butterfly</em> também é possível reconstruir o sinal original. Basta utilizar os valores dos coeficientes <span class="math inline">\(F(u)\)</span> reordenados como entrada, considerar <span class="math inline">\(j\)</span> ao invés de <span class="math inline">\(-j\)</span> nos coeficientes e multiplicar o resultado do somatório por <span class="math inline">\(\frac{1}{N}\)</span>.</p>
 </section>
 </section>
@@ -888,9 +858,7 @@ f_c(x,y) = f(x,y)\,(-1)^{x+y}
 \]</span></p>
 <p>ou, alternativamente, pela troca dos quadrantes do espectro após a transformação. Essa etapa <strong>não altera o conteúdo espectral</strong>, apenas reorganiza sua visualização.</p>
 <p>O exemplo interativo a seguir apresenta um demonstração do cálculo do espectro de uma imagem (que na entrada é redimensionada para dimensão 256x256). Depois o espectro é calculado e apresentado ao lado da imagem selecionada:</p>
-<!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/RCKGkjFiN" width="100%" height="400" style="border:none; overflow:hiddeln;">
-</iframe>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/RCKGkjFiN" width="100%" height="400" style="border:none;"></iframe></div>
 </section>
 </section>
 <section id="filtragem-no-domínio-da-frequência" class="level2" data-number="4.6">
@@ -948,9 +916,7 @@ H(u,v) =
 \]</span></p>
 <p>onde <span class="math inline">\(D_0\)</span> é a frequência de corte e <span class="math inline">\(n\)</span> é a ordem do filtro. Para valores pequenos de <span class="math inline">\(n\)</span>, a transição é suave. À medida que <span class="math inline">\(n\)</span> aumenta, o comportamento aproxima-se do filtro ideal.</p>
 <p>O exemplo interativo seguinte apresenta uma visualização 3D destes três filtros. Pode-se escolher o raio do Corte e a Ordem (para o caso do filtro Butterworth):</p>
-<!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/kkrvpU7ra" width="100%" height="600" style="border:none; overflow:hiddeln;">
-</iframe>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/kkrvpU7ra" width="100%" height="600" style="border:none;"></iframe></div>
 <p>Filtros passa-alta podem ser obtidos a partir dos passa-baixa por meio da relação:</p>
 <p><span class="math display">\[
 H_{PA}(u,v) = 1 - H_{PB}(u,v).
@@ -964,9 +930,7 @@ g(x,y) =
 \]</span></p>
 <p>Essa abordagem permite suavização, realce de detalhes, redução de ruído e correção de degradações, oferecendo maior controle matemático sobre o comportamento do filtro e eficiência computacional quando implementada via FFT.</p>
 <p>O Exemplo interativo seguinte apresenta uma aplicação do processo de filtragem por Fourier.</p>
-<!-- Conteúdo interativo (HTML) -->
-<iframe src="https://editor.p5js.org/luizedsilva/full/3HBiKuxP2" width="100%" height="600" style="border:none; overflow:hiddeln;">
-</iframe>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/3HBiKuxP2" width="100%" height="600" style="border:none;"></iframe></div>
 </section>
 <section id="vantagens-e-limitações" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="vantagens-e-limitações"><span class="header-section-number">4.7</span> Vantagens e Limitações</h2>
