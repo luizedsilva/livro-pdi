@@ -1,0 +1,66 @@
+prefacio
+luizedu@bydu:$ qrencode -o qrcode-negative.png "https://editor.p5js.org/luizedsilva/full/J9qjHybzR"
+
+capitulo 2
+luizedu@bydu:$ qrencode -o qrcode-zoom.png "https://editor.p5js.org/luizedsilva/full/bDwv1wtRH"
+luizedu@bydu:$ qrencode -o qrcode-surface.png "https://editor.p5js.org/luizedsilva/full/7vlY9trVV"
+
+capitulo 3
+luizedu@bydu:$ qrencode -o qrcode-mediana.png "https://editor.p5js.org/luizedsilva/full/xk5SXodH3"
+luizedu@bydu:$ qrencode -o qrcode-distance.png "https://editor.p5js.org/luizedsilva/full/rp0vlNYIX"
+luizedu@bydu:$ qrencode -o qrcode-rotula.png "https://editor.p5js.org/luizedsilva/full/nAeHKMA9H"
+luizedu@bydu:$ qrencode -o qrcode-transformacao.png "https://editor.p5js.org/luizedsilva/full/N451LEXKV"
+luizedu@bydu:$ qrencode -o qrcode-potencia.png "https://editor.p5js.org/luizedsilva/full/wtDvsM5Ym"
+luizedu@bydu:$ qrencode -o qrcode-linear.png "https://editor.p5js.org/luizedsilva/full/2ZjbPla9T"
+luizedu@bydu:$ qrencode -o qrcode-histograma.png "https://editor.p5js.org/luizedsilva/full/nFphWvonZ"
+luizedu@bydu:$ qrencode -o qrcode-convolucao.png "https://editor.p5js.org/luizedsilva/full/DvTNxm7gO"
+luizedu@bydu:$ qrencode -o qrcode-filtro.png "https://editor.p5js.org/luizedsilva/full/2T58I4gUQ"
+
+capitulo 4
+luizedu@bydu:$ qrencode -o qrcode-soma.png "https://editor.p5js.org/luizedsilva/full/Dn_cYEuqj"
+luizedu@bydu:$ qrencode -o qrcode-epiciclo.png "https://editor.p5js.org/luizedsilva/full/kk4tjuY7W"
+luizedu@bydu:$ qrencode -o qrcode-butterfly8.png "https://editor.p5js.org/luizedsilva/full/gdGhjn6LZ"
+luizedu@bydu:$ qrencode -o qrcode-butterfly4.png "https://editor.p5js.org/luizedsilva/full/2pBrQ6PYM"
+luizedu@bydu:$ qrencode -o qrcode-espectro.png "https://editor.p5js.org/luizedsilva/full/RCKGkjFiN"
+luizedu@bydu:$ qrencode -o qrcode-filtro.png "https://editor.p5js.org/luizedsilva/full/kkrvpU7ra"
+luizedu@bydu:$ qrencode -o qrcode-filtragem.png "https://editor.p5js.org/luizedsilva/full/3HBiKuxP2"
+
+capitulo 5
+luizedu@bydu:$ qrencode -o qrcode-hsvcirculo.png "https://editor.p5js.org/luizedsilva/full/_iighNxoE"
+luizedu@bydu:$ qrencode -o qrcode-cores.png "https://editor.p5js.org/luizedsilva/full/ig_qS3rmq"
+luizedu@bydu:$ qrencode -o qrcode-hsvcone.png "https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0"
+
+capitulo 6
+luizedu@bydu:$ qrencode -o qrcode-huffman.png "https://editor.p5js.org/luizedsilva/full/RbVDL-7-g"
+luizedu@bydu:$ qrencode -o qrcode-lzw.png "https://editor.p5js.org/luizedsilva/full/FQDBrI9D_"
+luizedu@bydu:$ qrencode -o qrcode-jpeg.png "https://editor.p5js.org/luizedsilva/full/crAHlJNHf"
+luizedu@bydu:$ qrencode -o qrcode-base64.png "https://editor.p5js.org/luizedsilva/full/_CeZ1sAt8"
+
+capitulo 7
+luizedu@bydu:$ qrencode -o qrcode-dilatacao.png "https://editor.p5js.org/luizedsilva/full/3OTqYoR4G"
+luizedu@bydu:$ qrencode -o qrcode-erosao.png "https://editor.p5js.org/luizedsilva/full/TrZU1VgSn"
+luizedu@bydu:$ qrencode -o qrcode-morfo.png "https://editor.p5js.org/luizedsilva/full/6VAsB0SBo"
+luizedu@bydu:$ qrencode -o qrcode-simulacao.png "https://editor.p5js.org/luizedsilva/full/cFSmoa_OL"
+luizedu@bydu:$ qrencode -o qrcode-afinamento.png "https://editor.p5js.org/luizedsilva/full/8aSI6XMnX"
+luizedu@bydu:$ qrencode -o qrcode-geodesica.png "https://editor.p5js.org/luizedsilva/full/cEQHgceVN"
+luizedu@bydu:$ qrencode -o qrcode-cinza.png "https://editor.p5js.org/luizedsilva/full/8ekG_1FsO"
+
+capitulo 8
+luizedu@bydu:$ qrencode -o qrcode-watershed3d.png "https://editor.p5js.org/luizedsilva/full/vG7r2Wnd4"
+luizedu@bydu:$ qrencode -o qrcode-watershed.png "https://editor.p5js.org/luizedsilva/full/5fXyn6cyw"
+luizedu@bydu:$ qrencode -o qrcode-kmeans.png "https://editor.p5js.org/luizedsilva/full/7ooZnvesJ"
+luizedu@bydu:$ qrencode -o qrcode-isolado.png "https://editor.p5js.org/luizedsilva/full/BxhAHtDlu"
+luizedu@bydu:$ qrencode -o qrcode-profile.png "https://editor.p5js.org/luizedsilva/full/vwJlyplFQ"
+luizedu@bydu:$ qrencode -o qrcode-simula.png "https://editor.p5js.org/luizedsilva/full/pdFTjSFE0"
+luizedu@bydu:$ qrencode -o qrcode-watershed2d.png "https://editor.p5js.org/luizedsilva/full/mk25edaHn"
+
+capitulo 9
+luizedu@bydu:$ qrencode -o qrcode-cadeia.png "https://editor.p5js.org/luizedsilva/full/hE39MhMXE"
+luizedu@bydu:$ qrencode -o qrcode-poligono.png "https://editor.p5js.org/luizedsilva/full/yCo-BS7dT"
+luizedu@bydu:$ qrencode -o qrcode-assinatura.png "https://editor.p5js.org/luizedsilva/full/KF3cqn6rT"
+luizedu@bydu:$ qrencode -o qrcode-matriz.png "https://editor.p5js.org/luizedsilva/full/0drz5M5vK"
+
+capitulo 10
+luizedu@bydu:$ qrencode -o qrcode-pooling.png "https://editor.p5js.org/luizedsilva/full/n71g9My6G"
+
+

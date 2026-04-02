@@ -126,31 +126,8 @@ A dilatação é frequentemente utilizada para preencher pequenas lacunas, conec
 
 O código interativo em sequência demostra o funcionamento da operação de dilatação. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da dilatação:
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="400" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" height="400" imagem="imgs/cap7/p5js-dilatacao.png" qrcode="imgs/cap7/qrcode-dilatacao.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-dilatacao.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/3OTqYoR4G>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/3OTqYoR4G width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ### Erosão {.unnumbered}
 
@@ -169,31 +146,8 @@ Essa operação é útil para remover pequenas protuberâncias, separar objetos 
 
 O código interativo em sequência demostra o funcionamento da operação de erosão. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da erosão:
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="400" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" height="400" imagem="imgs/cap7/p5js-erosao.png" qrcode="imgs/cap7/qrcode-erosao.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-erosao.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/TrZU1VgSn>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/TrZU1VgSn width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ### Abertura e Fechamento {.unnumbered}
 
@@ -217,31 +171,8 @@ $$
 
 O exemplo interativo seguinte está a implementação da operações de erosão, dilatação, abertura e fechamento para imagens pbm:
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/6VAsB0SBo" width="100%" height="550" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/6VAsB0SBo" height="550" imagem="imgs/cap7/p5js-morfo.png" qrcode="imgs/cap7/qrcode-morfo.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-morfo.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/6VAsB0SBo>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/6VAsB0SBo width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ### Operação Hit or Miss (Tudo ou nada) {.unnumbered}
 
@@ -317,59 +248,13 @@ Na @fig-familia está representada uma família homotópica para afinamento ou e
 
 O exemplo interativo seguinte simula o processo de afinamento para uma imagem considerando a família homotópia da @fig-familia. Os controles na simulação servem para executar o algoritmo de afinamento passo a passo, resetar a simulação, interromper ou continuar de forma automática. Ainda é possível controlar a velocidade da simulação automática. A cada passo é mostrado o elemento da família homotópica que está sendo utilizado para o afinamento na imagem e abaixo dela.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" width="100%" height="300" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" height="300" imagem="imgs/cap7/p5js-simulacao.png" qrcode="imgs/cap7/qrcode-simulacao.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-simulacao.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/cFSmoa_OL>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/cFSmoa_OL width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 No exemplo interativo seguinte está uma implementação do algoritmo rápido de afinamento de @zhang1984thinning para aplicação à silhueta de um homem.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/8aSI6XMnX" width="100%" height="550" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8aSI6XMnX" height="550" imagem="imgs/cap7/p5js-afinamento.png" qrcode="imgs/cap7/qrcode-afinamento.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-afinamento.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/8aSI6XMnX>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/8aSI6XMnX width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ### Operações Geodésicas {.unnumbered}
 
@@ -387,7 +272,9 @@ Esse conceito constitui a base para diversas operações em morfologia matemáti
 
 A partir da métrica geodésica $d_A$, pode-se estender o conceito de distância para medir a separação entre um ponto e um subconjunto de $A$. Seja $x \in A$ e $B \subseteq A$. Define-se a distância geodésica entre o ponto $x$ e o conjunto $B$, denotada por $d_A(x,B)$, como a menor distância geodésica entre $x$ e qualquer ponto $y$ pertencente a $B$. Em outras palavras, considera-se todos os possíveis caminhos, inteiramente contidos em $A$, que ligam $x$ a pontos de $B$, e escolhe-se aquele de menor comprimento.
 
-Formalmente, essa definição pode ser expressa como: $$
+Formalmente, essa definição pode ser expressa como: 
+
+$$
 d_A(x,B) = \inf_{y \in B} d_A(x,y)
 $$
 
@@ -397,9 +284,12 @@ Um dos principais interesses no uso dessa função está na sua capacidade de tr
 
 Todas as operações morfológicas, como dilatação e erosão, podem ser reinterpretadas a partir da métrica geodésica. Nesse contexto, considera-se um conjunto $X$ que define o domínio $ou máscara$ e um subconjunto $Y \subseteq X$, sobre o qual se deseja aplicar a operação. A ideia central é utilizar a distância geodésica em $X$ para definir regiões de influência em torno dos pontos.
 
-Para isso, define-se a bola geodésica de raio $\lambda$ centrada em um ponto $x \in X$, denotada por $B_X(x,\lambda)$, como o conjunto de todos os pontos de $X$ cuja distância geodésica até $x$ é menor ou igual a $\lambda$. Em termos formais: $$
+Para isso, define-se a bola geodésica de raio $\lambda$ centrada em um ponto $x \in X$, denotada por $B_X(x,\lambda)$, como o conjunto de todos os pontos de $X$ cuja distância geodésica até $x$ é menor ou igual a $\lambda$. Em termos formais: 
+$$
 B_X(x,\lambda) = \{ y \in X : d_X(x,y) \leq \lambda \}.
-$$ Essa bola representa, portanto, todos os pontos que podem ser alcançados a partir de $x$ por caminhos contidos em $X$ com comprimento limitado por $\lambda$.
+$$ 
+
+Essa bola representa, portanto, todos os pontos que podem ser alcançados a partir de $x$ por caminhos contidos em $X$ com comprimento limitado por $\lambda$.
 
 Com base nessa definição, a dilatação geodésica de $Y$ em $X$ com raio $\lambda$, denotada por $\delta_X^{\lambda}(Y)$, pode ser descrita como o conjunto de todos os pontos $x \in X$ cuja bola geodésica intercepta $Y$. Em outras palavras, um ponto $x$ pertence à dilatação se for possível alcançar algum ponto de $Y$ a partir de $x$ por um caminho em $X$ de comprimento no máximo $\lambda$. Formalmente:
 
@@ -413,13 +303,17 @@ Essa formulação mostra que a dilatação geodésica pode ser interpretada como
 
 A dilatação geodésica de ordem $n$, definida no espaço $\mathbb{Z}^2$, pode ser obtida por meio da aplicação iterativa de dilatações geodésicas elementares de ordem 1. Ou seja, a dilatação geodésica de ordem maior é construída a partir da repetição sucessiva da operação básica.
 
-A dilatação geodésica unitária é definida por: $$
+A dilatação geodésica unitária é definida por: 
+
+$$
 \delta^{1}_{X}(Y) = (Y \oplus B) \cap X,
 $$
 
 onde $B$ é o elemento estruturante e $X$ atua como máscara, limitando o crescimento do conjunto $Y$.
 
-A partir dessa definição, a dilatação geodésica de ordem $n$ é obtida pela composição iterativa dessa operação, isto é, aplicando-se $n$ vezes a dilatação geodésica unitária sobre o resultado anterior: $$
+A partir dessa definição, a dilatação geodésica de ordem $n$ é obtida pela composição iterativa dessa operação, isto é, aplicando-se $n$ vezes a dilatação geodésica unitária sobre o resultado anterior: 
+
+$$
 \delta^{n}_{X}(Y) = \underbrace{\delta^{1}_{X}\big(\delta^{1}_{X}(\cdots \delta^{1}_{X}(Y)\cdots)\big)}_{\text{n vezes}}.
 $$
 
@@ -429,7 +323,9 @@ Essa formulação evidencia que a dilatação geodésica ocorre de maneira progr
 
 De forma análoga à dilatação geodésica, pode-se definir a erosão geodésica a partir da métrica geodésica. Seja $Y \subseteq X$. O conjunto $\lambda$-erodido de $Y$ em $X$ é formado pelos pontos $x \in X$ cuja bola geodésica de raio $\lambda$, centrada em $x$, está completamente contida em $Y$. Intuitivamente, isso significa que apenas os pontos suficientemente “internos” a $Y$, isto é, afastados de suas bordas segundo a distância geodésica em $X$, permanecem após a erosão.
 
-Formalmente, a erosão geodésica é definida por: $$
+Formalmente, a erosão geodésica é definida por: 
+
+$$
 \varepsilon^{\lambda}_{X}(Y) = \{ x \in X : B_X(x,\lambda) \subseteq Y \}.
 $$
 
@@ -445,7 +341,9 @@ Sejam $I$ e $J$ duas imagens binárias definidas sobre o mesmo domínio discreto
 
 ![Reconstrução geodésica](/imgs/cap7/reconstrucao.png){#fig-reconstrucao fig-align="center" width="80%"}
 
-A reconstrução morfológica de $I$ a partir do marcador $J$, denotada por $\rho_I(J)$, é definida como a união de todos os componentes conexos de $I$ que contêm pelo menos um ponto pertencente a $J$. Em outras palavras, selecionam-se apenas as regiões de $I$ que são “atingidas” pelo marcador $J$, descartando aquelas que não possuem qualquer conexão com ele. Formalmente, essa operação é expressa por: $$
+A reconstrução morfológica de $I$ a partir do marcador $J$, denotada por $\rho_I(J)$, é definida como a união de todos os componentes conexos de $I$ que contêm pelo menos um ponto pertencente a $J$. Em outras palavras, selecionam-se apenas as regiões de $I$ que são “atingidas” pelo marcador $J$, descartando aquelas que não possuem qualquer conexão com ele. Formalmente, essa operação é expressa por: 
+
+$$
 \rho_I(J) = \bigcup_{J \cap I_k \neq \emptyset} I_k.
 $$
 
@@ -455,7 +353,9 @@ Essa operação é amplamente utilizada em processamento de imagens, especialmen
 
 A reconstrução morfológica é, em geral, formulada a partir do conceito de distância geodésica. Nesse contexto, ela pode ser obtida por meio da aplicação iterativa da dilatação geodésica elementar do marcador (J) sob a máscara (I), até que o processo se estabilize, isto é, até atingir a idempotência (quando novas iterações não produzem mais alterações).
 
-Formalmente, a reconstrução é dada por: $$
+Formalmente, a reconstrução é dada por: 
+
+$$
 \rho_I(J) = \bigcup_{n \geq 1} \delta^n_I(J),
 $$
 
@@ -469,31 +369,8 @@ A **reconstrução geodésica** é então realizada por um processo iterativo de
 
 Como resultado, são reconstruídas apenas as letras do texto gerado que satisfazem as propriedades de largura e altura definidas pelo elemento estruturante.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/cEQHgceVN" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cEQHgceVN" height="600" imagem="imgs/cap7/p5js-geodesica.png" qrcode="imgs/cap7/qrcode-geodesica.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-geodesica.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/cEQHgceVN>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/cEQHgceVN width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ## Propriedades das Operações Morfológicas
 
@@ -589,32 +466,8 @@ De maneira geral, essas duas operações podem ser interpretadas como filtros mo
 
 O exemplo interativo seguinte apresenta essas operações:
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/8ekG_1FsO" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8ekG_1FsO" height="600" imagem="imgs/cap7/p5js-cinza.png" qrcode="imgs/cap7/qrcode-cinza.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap7/p5js-cinza.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/8ekG_1FsO>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/8ekG_1FsO width=100 height=100 pdfheight=3cm >}}
-:::
-::::
-
 
 ## Aplicações da Morfologia em Tons de Cinza
 

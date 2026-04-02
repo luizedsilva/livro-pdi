@@ -7,6 +7,9 @@ licence: "CC BY-SA 4.0"
 
 number-depth: 2
 
+filters:
+  - simulacao.lua
+
 book:
   title: "Processamento Digital de Imagens"
   subtitle: "Uma abordagem interativa com P5.js"
@@ -29,8 +32,6 @@ book:
     - chapters/segmentacao.qmd
     - chapters/representacao.qmd
     - chapters/interpretacao.qmd
-    - chapters/opencv.qmd
-    - chapters/summary.qmd
     - chapters/references.qmd
 
 bibliography: references.bib
@@ -53,3 +54,8 @@ format:
       - paperwidth=17cm
       - paperheight=24cm
       - margin=2cm
+  epub:
+    toc: true
+    number-sections: true
+    css: styles.css
+    cover-image: capa.png

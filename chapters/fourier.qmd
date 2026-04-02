@@ -28,9 +28,13 @@ $$
 y = \frac{x}{z}
 $$
 
-exige uma operação de divisão, que pode ser inconveniente do ponto de vista analítico ou computacional. Ao aplicar uma **transformação logarítmica**, o problema é levado a um novo domínio, no qual a divisão é convertida em subtração: $$
+exige uma operação de divisão, que pode ser inconveniente do ponto de vista analítico ou computacional. Ao aplicar uma **transformação logarítmica**, o problema é levado a um novo domínio, no qual a divisão é convertida em subtração: 
+
+$$
 \log(y) = \log(x) - \log(z).
-$$ Nesse domínio transformado, a análise torna-se significativamente mais simples, pois a subtração pode ser realizada de forma direta, inclusive com o auxílio de tabelas ou métodos mais eficientes.
+$$
+
+Nesse domínio transformado, a análise torna-se significativamente mais simples, pois a subtração pode ser realizada de forma direta, inclusive com o auxílio de tabelas ou métodos mais eficientes.
 
 Após a resolução no domínio transformado, aplica-se a **transformada inversa** (anti-logaritmo), retornando o resultado ao domínio original. Assim, obtém-se a solução do problema inicial por meio de um caminho indireto, porém mais eficiente.
 
@@ -50,31 +54,8 @@ Atualmente, a ideia de Fourier é um dos pilares da ciência e da engenharia, se
 
 A função denominada "Soma das senóides", apresentada no exemplo interativo em sequência é obtida pela **soma das quatro funções** (Senoide 1, Senoide 2, Senoide 3, Senoide 4). Cada uma dessas funções elementares é uma senoide com frequência e amplitude distintas. Quando combinadas, elas produzem uma forma de onda mais complexa, que já não se parece, à primeira vista, com um seno simples.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/Dn_cYEuqj" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/Dn_cYEuqj" height="600" imagem="imgs/cap4/p5js-soma.png" qrcode="imgs/cap4/qrcode-soma.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-soma.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/Dn_cYEuqj>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/Dn_cYEuqj width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 O exemplo ilustrativo seguinte, adaptado do código de **Daniel Shiffman**[^fourier-1], demonstra como uma série de Fourier pode ser utilizada para representar uma onda quadrada.
 
@@ -86,31 +67,8 @@ Nesse exemplo, cada **termo da série** é representado por um **círculo trigon
 
 A **soma dos termos da série** é obtida pela **projeção vertical** (eixo $y$) do vetor resultante, formado pelo encadeamento dos raios de todos os círculos. À medida que mais termos são adicionados, a forma de onda resultante aproxima-se progressivamente de uma **onda quadrada**, evidenciando o princípio fundamental da série de Fourier: a representação de funções periódicas complexas como a soma de senos e cossenos.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/kk4tjuY7W" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kk4tjuY7W" height="600" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-epiciclo.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/kk4tjuY7W>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/kk4tjuY7W width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ## Transformada de Fourier Unidmensional
 
@@ -214,24 +172,19 @@ A DFT e sua inversa formam um par de transformações mutuamente inversas, asseg
 
 ::: {#lst-dft1}
 ``` {.c fontsize="\\small"}
-// FFT interativo
 #include <stdio.h>
 #include <stdlib.h>
 #include <complex.h>
 #include <math.h>
 
-#define DEBUG(x) x
 typedef double complex cpx;
 
-void dft(cpx *f, cpx *F, int n, int dir)
-{
+void dft(cpx *f, cpx *F, int n, int dir) {
     cpx J = CMPLX(0, 1);
     float factor = (dir == -1) ? 1 : (float)1 / n;
-    for (int u = 0; u < n; u++)
-    {
+    for (int u = 0; u < n; u++) {
         cpx sum = CMPLX(0, 0);
-        for (int x = 0; x < n; x++)
-        {
+        for (int x = 0; x < n; x++) {
             float theta = 2 * u * x * M_PI;
             sum += factor * f[x] * cexp((dir * J * theta) / n);
         }
@@ -239,17 +192,13 @@ void dft(cpx *f, cpx *F, int n, int dir)
     }
 }
 
-int main()
-{
+int main() {
     int n;
-    cpx *f;
-    cpx *F;
-    printf("n? ");
-    scanf("%d", &n);
+    cpx *f, *F;
+    printf("n? ");  scanf("%d", &n);
     f = malloc(sizeof(cpx) * n);
     F = malloc(sizeof(cpx) * n);
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         int value;
         printf("f[%d]? ", i);
         scanf("%d", &value);
@@ -257,9 +206,7 @@ int main()
     }
     dft(f, F, n, -1);
     puts("Transformada Direta:");
-    puts("--------------------");
-    for (int i = 0; i < n; ++i)
-    {
+    for (int i = 0; i < n; ++i) {
         printf("F[%d] = %.1f", i, creal(F[i]));
         if (fabs(cimag(F[i])) > 0.0001)
             printf(" %c %.1fj\n", cimag(F[i]) < 0 ? '-' : '+',
@@ -270,7 +217,6 @@ int main()
     puts("");
     dft(F, f, n, 1);
     puts("Transformada Inversa");
-    puts("--------------------");
     for (int i = 0; i < n; ++i)
         printf("f[%d] = %.1f\n", i, creal(f[i]));
 }
@@ -528,31 +474,8 @@ $$
 
 Essa estrutura é conhecida como **butterfly** (imagem seguinte), pois o diagrama de fluxo assume esse formato gráfico. A aplicação sucessiva dessa decomposição reduz o problema até termos triviais de tamanho 1.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/gdGhjn6LZ" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/gdGhjn6LZ" height="600" imagem="imgs/cap4/p5js-butterfly8.png" qrcode="imgs/cap4/qrcode-butterfly8.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-butterfly8.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/gdGhjn6LZ>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/gdGhjn6LZ width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 #### Um exemplo
 
@@ -602,31 +525,8 @@ $$
 
 O exemplo interativo seguinte simula os mesmos cálculos com as entradas reordenadas e os cálculos sendo realizados considerando o *esquema butterfly*:
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/2pBrQ6PYM" width="100%" height="400" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2pBrQ6PYM" height="400" imagem="imgs/cap4/p5js-butterfly4.png" qrcode="imgs/cap4/qrcode-butterfly4.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-butterfly4.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/2pBrQ6PYM>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/2pBrQ6PYM width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 Usando o *esquema butterfly* também é possível reconstruir o sinal original. Basta utilizar os valores dos coeficientes $F(u)$ reordenados como entrada, considerar $j$ ao invés de $-j$ nos coeficientes e multiplicar o resultado do somatório por $\frac{1}{N}$.
 
@@ -644,31 +544,8 @@ ou, alternativamente, pela troca dos quadrantes do espectro após a transformaç
 
 O exemplo interativo a seguir apresenta um demonstração do cálculo do espectro de uma imagem (que na entrada é redimensionada para dimensão 256x256). Depois o espectro é calculado e apresentado ao lado da imagem selecionada:
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/RCKGkjFiN" width="100%" height="400" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/RCKGkjFiN" height="400" imagem="imgs/cap4/p5js-espectro.png" qrcode="imgs/cap4/qrcode-espectro.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-espectro.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/RCKGkjFiN>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/RCKGkjFiN width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ## Filtragem no Domínio da Frequência
 
@@ -741,31 +618,8 @@ onde $D_0$ é a frequência de corte e $n$ é a ordem do filtro. Para valores pe
 
 O exemplo interativo seguinte apresenta uma visualização 3D destes três filtros. Pode-se escolher o raio do Corte e a Ordem (para o caso do filtro Butterworth):
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/kkrvpU7ra" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kkrvpU7ra" height="600" imagem="imgs/cap4/p5js-filtro.png" qrcode="imgs/cap4/qrcode-filtro.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-filtro.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/kkrvpU7ra>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/kkrvpU7ra width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 Filtros passa-alta podem ser obtidos a partir dos passa-baixa por meio da relação:
 
@@ -787,31 +641,8 @@ Essa abordagem permite suavização, realce de detalhes, redução de ruído e c
 
 O Exemplo interativo seguinte apresenta uma aplicação do processo de filtragem por Fourier.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/3HBiKuxP2" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3HBiKuxP2" height="600" imagem="imgs/cap4/p5js-filtragem.png" qrcode="imgs/cap4/qrcode-filtragem.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap4/p5js-filtragem.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/3HBiKuxP2>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/3HBiKuxP2 width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ## Vantagens e Limitações
 

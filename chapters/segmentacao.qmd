@@ -61,31 +61,8 @@ $$
 
 O código interativo seguinte exemplifica essa abordagem. No exemplo, pode-se escolher o nível de ruído sal e pimenta na imagem e o limiar. É possível verificar que o ruído (ponto isolado) se mistura com algumas bordas da imagem.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/BxhAHtDlu" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/BxhAHtDlu" height="600" imagem="imgs/cap8/p5js-isolado.png" qrcode="imgs/cap8/qrcode-isolado.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-isolado.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/BxhAHtDlu>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/BxhAHtDlu width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 Essa é uma abordagem mais básicas de limiarização global, na qual um único valor de limiar $T$ é utilizado para toda a imagem. Esse método é eficaz quando há boa separação entre os níveis de intensidade do objeto e do fundo, como em imagens com histogramas bimodais. No entanto, em situações onde a iluminação não é uniforme, essa abordagem pode apresentar resultados insatisfatórios.
 
@@ -151,31 +128,8 @@ $$
 
 Uma simplificação desses cálculos estão representados no exemplo interativo em sequência. Clique numa linha da imagem para selecioná-la. Dessa linha é construído um perfil horizontal de intensidade, o perfil simplificado (amostrado) e a primeira e segunda derivadas (para evidenciar as bordas), cálculadas conforme a aproximação discreta das fórmulas para $G_x$ ou $G_y$.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/vwJlyplFQ" width="100%" height="700" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/vwJlyplFQ" height="600" imagem="imgs/cap8/p5js-profile.png" qrcode="imgs/cap8/qrcode-profile.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-profile.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/vwJlyplFQ>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/vwJlyplFQ width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 Esta operação está sintetizada no código da @lst-sobel.
 
@@ -275,113 +229,23 @@ Ao final do algoritmo, a imagem estará segmentada em regiões associadas aos ma
 
 O exemplo interativo seguinte apresenta uma simulação desse algoritmo de watershed por marcadores para uma imagem unidimensional. Inicialmente, estão marcados os pontos $a = 1$, $f = 2$ e $h = 3$. A cada passo os pontos vizinhos das regiões marcadas são colocados nas filas apropriadas. O pontos de watershed são marcados com cor amarela (valor = 4).
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/pdFTjSFE0" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/pdFTjSFE0" height="600" imagem="imgs/cap8/p5js-simula.png" qrcode="imgs/cap8/qrcode-simula.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-simula.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/pdFTjSFE0>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/pdFTjSFE0 width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 Os exemplos seguintes demonstram o mesmo algoritmo para imagens. O primeiro exemplo mostra a execução do algoritmo de forma bidimensional. E o segundo mostra a mesma imagem como um relevo tridimensional. Existe uma marca para cada região da imagem. E o crescimento da regiões (inundação do relevo) é realizado até que são encontradas as linhas divisoras de água (watershed).
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/mk25edaHn" width="100%" height="650" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/mk25edaHn" height="650" imagem="imgs/cap8/p5js-watershed2d.png" qrcode="imgs/cap8/qrcode-watershed2d.png"}
 :::
 
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
+A mesma simulação para um representação da mesma imagem como superfície em sequência:
 
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-watershed2d.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/mk25edaHn>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/mk25edaHn width=100 height=100 pdfheight=3cm >}}
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/vG7r2Wnd4" height="600" imagem="imgs/cap8/p5js-watershed3d.png" qrcode="imgs/cap8/qrcode-watershed3d.png"}
 :::
-::::
-
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/vG7r2Wnd4" width="100%" height="650" style="border:none; overflow:hiddeln;">
-
-</iframe>
-:::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-watershed3d.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/vG7r2Wnd4>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/vG7r2Wnd4 width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 O exemplo interativo seguinte está a implementação para segmentação de imagens reais. Pode-se carregar uma imagem. Para execução do algoritmo basta clicar dentro de alguma região. O clique define um marcador. O outro marcador é a borda da imagem. O algoritmo é então aplicado sobre a imagem de gradiente morfológico (dilatação menos erosão) que evidencia as bordas. Uma linha vermelha seja adicionada a imagem, como resultado da operação de watershed para identificação da borda que contorna o ponto marcado.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/5fXyn6cyw" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/5fXyn6cyw" height="600" imagem="imgs/cap8/p5js-watershed.png" qrcode="imgs/cap8/qrcode-watershed.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-watershed.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/5fXyn6cyw>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/5fXyn6cyw width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ### Segmentação Baseada em Clustering{.unnumbered}
 
@@ -397,31 +261,8 @@ onde $C_k$ representa o conjunto de pontos do cluster $k$ e $\mu_k$ seu centroid
 
 O código exemplo seguinte implementa essa técnica para imagens:
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/7ooZnvesJ" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/7ooZnvesJ" height="600" imagem="imgs/cap8/p5js-kmeans.png" qrcode="imgs/cap8/qrcode-kmeans.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap8/p5js-kmeans.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/7ooZnvesJ>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/7ooZnvesJ width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 Outro método relevante é o Mean Shift, que não exige a definição prévia do número de grupos. Esse algoritmo baseia-se na estimativa de densidade de probabilidade no espaço de características, deslocando iterativamente cada ponto em direção às regiões de maior densidade. Como resultado, os pontos convergem para modos da distribuição, formando clusters de maneira automática.
 

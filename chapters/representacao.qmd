@@ -132,31 +132,8 @@ retornar C;
 
 O exemplo interativo seguinte apresenta uma simulação desse algoritmo. A cada passo são apresentados os pixels do contorno que são visitados, o valor de k (direção) e o código de cadeia.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/hE39MhMXE" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/hE39MhMXE" height="600" imagem="imgs/cap9/p5js-cadeia.png" qrcode="imgs/cap9/qrcode-cadeia.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap9/p5js-cadeia.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/hE39MhMXE>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/hE39MhMXE width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ## Aproximação Poligonal
 
@@ -188,31 +165,8 @@ Esse algoritmo permite um controle direto do erro máximo permitido.
 
 O exemplo interativo seguinte ilustra esse procedimento.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/yCo-BS7dT" width="100%" height="500" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/yCo-BS7dT" height="600" imagem="imgs/cap9/p5js-poligono.png" qrcode="imgs/cap9/qrcode-poligono.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap9/p5js-poligono.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/yCo-BS7dT>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/yCo-BS7dT width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ### Critérios de Qualidade
 
@@ -258,31 +212,8 @@ Em síntese, a assinatura da forma constitui uma ferramenta eficiente e intuitiv
 
 O exemplo interativo seguinte ilustra esta estratégia. A partir do contorno da imagem evidenciado pelo filtro de sobel e uma limiarização (que pode ser ajustada), é gerado o gráfico de assinatura do contorno.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/KF3cqn6rT" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/KF3cqn6rT" height="600" imagem="imgs/cap9/p5js-assinatura.png" qrcode="imgs/cap9/qrcode-assinatura.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap9/p5js-assinatura.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/KF3cqn6rT>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/KF3cqn6rT width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ## Esqueletização
 
@@ -371,32 +302,8 @@ Na segunda análise, calcula-se a diferença absoluta entre os níveis dos pixel
 
 A apresentação simultânea da imagem original, da imagem quantizada e das matrizes calculadas permite estabelecer uma relação direta entre a estrutura visual da imagem e os valores obtidos nas representações estatísticas. Dessa forma, o exemplo interativo não apenas demonstra o funcionamento dos algoritmos, mas também contribui para a compreensão conceitual de como descritores de textura são construídos a partir de relações espaciais locais.
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/0drz5M5vK" width="100%" height="500" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/0drz5M5vK" height="600" imagem="imgs/cap9/p5js-matriz.png" qrcode="imgs/cap9/qrcode-matriz.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap9/p5js-matriz.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/0drz5M5vK>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/0drz5M5vK width=100 height=100 pdfheight=3cm >}}
-:::
-::::
-
 
 ## Considerações Finais
 

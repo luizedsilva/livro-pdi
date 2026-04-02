@@ -76,31 +76,8 @@ A **saturação (S)** indica o quão “pura” ou “intensa” é a cor. No mo
 
 No exemplo interativo em sequência está um cone que representa as matiz, saturação e o valor no modelo de cores HSV. Arraste o cone com o mouse para uma visualização tridimensional do cone:
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0" width="100%" height="550" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0" height="550" imagem="imgs/cap5/p5js-hsvcone.png" qrcode="imgs/cap5/qrcode-hsvcone.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap5/p5js-hsvcone.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0 width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ### Interpretação geométrica
 
@@ -141,31 +118,8 @@ $$
 
 No exemplo interativo em sequência está uma representação usando o círculo de cores e o triângulo que liga branco, o preto e todas as matizes da cor escolhida no modelo HSI. Clique no círculo de cores para selecionar a matiz. No triângulo correspondente estão representados o vértice da matiz selecionada, o vértice da cor branca e o vértice cor preta. O triângulo é pintado com as variações de saturação e intensidade da matiz selecionada:
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/_iighNxoE" width="100%" height="550" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/_iighNxoE" height="550" imagem="imgs/cap5/p5js-hsvcirculo.png" qrcode="imgs/cap5/qrcode-hsvcirculo.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap5/p5js-hsvcirculo.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/_iighNxoE>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/_iighNxoE width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ## Modelo de Cor HSI
 
@@ -191,43 +145,23 @@ H = \left\{  \begin{array}{ll}
 \right. 
 $$
 
-onde: $$ 
+onde: 
+$$ 
 \theta = \cos^{-1}\left\{\frac{\frac{1}{2}[(R-G) + (R-B)]}{\sqrt{(R-G)^2 + (R-B)(G-B)}}\right\}
 $$
 
 $$ 
 S = 1 - \frac{3}{(R + G + B)}[\min (R,G,B)] 
-$$ $$ 
+$$ 
+
+$$ 
 I = \frac{1}{3}(R + G + B) 
 $$
 
 No exemplo interativo em sequência estão implementados todas as conversões RGB para HSI e para HSV:
 
-::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-<iframe src="https://editor.p5js.org/luizedsilva/full/ig_qS3rmq" width="100%" height="550" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/ig_qS3rmq" height="550" imagem="imgs/cap5/p5js-cores.png" qrcode="imgs/cap5/qrcode-cores.png"}
 :::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap5/p5js-cores.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/ig_qS3rmq>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/ig_qS3rmq width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ## Representação de Imagens Coloridas
 

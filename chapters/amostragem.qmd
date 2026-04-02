@@ -115,33 +115,8 @@ Uma imagem digital pode ser representada como uma **matriz numérica**, em que c
 
 O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, movimente o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom), dos pixels correspondentes na região selecionada.
 
-:::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-::: {style="display:flex; justify-content:center;"}
-<iframe src="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" width="100%" height="500" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" height="600" imagem="imgs/cap2/p5js-zoom.png" qrcode="imgs/cap2/qrcode-zoom.png"}
 :::
-::::
-
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap2/p5js-zoom.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/bDwv1wtRH>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/bDwv1wtRH width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 Para imagens coloridas, a representação pode envolver:
 
@@ -156,33 +131,9 @@ Além da representação matricial, a imagem também pode ser interpretada como 
 
 O exemplo interativo seguinte permite uma visualização de uma imagem como superfície. Use o mouse para movimentar a imagem representada como superfície.
 
-:::: {.content-visible when-format="html"}
-<!-- Conteúdo interativo (HTML) -->
-
-::: {style="display:flex; justify-content:center;"}
-<iframe src="https://editor.p5js.org/luizedsilva/full/7vlY9trVV" width="100%" height="600" style="border:none; overflow:hiddeln;">
-
-</iframe>
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/7vlY9trVV" height="600" imagem="imgs/cap2/p5js-surface.png" qrcode="imgs/cap2/qrcode-surface.png"}
 :::
-::::
 
-:::: {.content-visible when-format="pdf"}
-<!-- Conteúdo alternativo (PDF) -->
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=0.6\textwidth]{imgs/cap2/p5js-surface.png}}
-\caption{Visualização da aplicação interativa}
-\end{figure}
-
-::: {.callout-tip title="Dica"}
-O código completo e a demonstração interativa estão disponíveis em:
-
-<https://editor.p5js.org/luizedsilva/full/7vlY9trVV>
-
-{{< qrcode https://editor.p5js.org/luizedsilva/full/7vlY9trVV width=100 height=100 pdfheight=3cm >}}
-:::
-::::
 
 ## Os formatos PBM, PGM e PPM de imagens
 
