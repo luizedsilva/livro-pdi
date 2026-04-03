@@ -378,6 +378,8 @@ g(x,y) =
 |\nabla I(x,y)| \approx |G_x| + |G_y|
 \]</span></p>
 <p>Por exemplo, o filtro de Sobel define aproximações discretas para as derivadas parciais <span class="math inline">\(G_x\)</span> e <span class="math inline">\(G_y\)</span> por meio de convoluções com máscaras específicas, que combinam diferenciação e suavização.</p>
+<p>Uma simplificação desses cálculos estão representados no exemplo interativo em sequência. Clique numa linha da imagem para selecioná-la. Dessa linha é construído um perfil horizontal de intensidade, o perfil simplificado (amostrado) e a primeira e segunda derivadas (para evidenciar as bordas), cálculadas conforme a aproximação discreta das fórmulas para <span class="math inline">\(G_x\)</span> ou <span class="math inline">\(G_y\)</span>.</p>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/vwJlyplFQ" width="100%" height="650" style="border:none;"></iframe></div>
 <p>Assim, <span class="math inline">\(G_x\)</span> pode ser escrito como:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -399,7 +401,7 @@ G_y =\;&amp; [I(x-1,y+1) + 2I(x,y+1) + I(x+1,y+1)] \\
 <img src="../imgs/cap8/sobel.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sobel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;8.1: Máscaras para convolução para filtragem de Sobel
+Figura&nbsp;8.1: Máscaras da convolução para filtragem de Sobel
 </figcaption>
 </figure>
 </div>
@@ -413,8 +415,6 @@ M(x, y) \approx
 \end{array}
 \right|
 \]</span></p>
-<p>Uma simplificação desses cálculos estão representados no exemplo interativo em sequência. Clique numa linha da imagem para selecioná-la. Dessa linha é construído um perfil horizontal de intensidade, o perfil simplificado (amostrado) e a primeira e segunda derivadas (para evidenciar as bordas), cálculadas conforme a aproximação discreta das fórmulas para <span class="math inline">\(G_x\)</span> ou <span class="math inline">\(G_y\)</span>.</p>
-<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/vwJlyplFQ" width="100%" height="600" style="border:none;"></iframe></div>
 <p>Esta operação está sintetizada no código da <a href="#lst-sobel" class="quarto-xref">Listagem&nbsp;<span>8.1</span></a>.</p>
 <div id="lst-sobel" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">

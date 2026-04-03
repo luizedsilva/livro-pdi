@@ -346,7 +346,7 @@ Figura&nbsp;2.1: Elementos de um sistema de processamento de imagens
 <img src="../imgs/cap2/olho.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-olho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2.2: Olho humano
+Figura&nbsp;2.2: Olho humano (imagem gerada pelo autor via Chat-gpt)
 </figcaption>
 </figure>
 </div>
@@ -362,7 +362,7 @@ Figura&nbsp;2.2: Olho humano
 <img src="../imgs/cap2/conesbastonetes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2.3: Bastonetes e Cones
+Figura&nbsp;2.3: Bastonetes e Cones (imagem gerada pelo autor via Chat-gpt)
 </figcaption>
 </figure>
 </div>
@@ -371,43 +371,48 @@ Figura&nbsp;2.3: Bastonetes e Cones
 <section id="ilusões-de-ótica-e-percepção" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="ilusões-de-ótica-e-percepção"><span class="header-section-number">2.2</span> Ilusões de Ótica e Percepção</h2>
 <p>O estudo das ilusões de ótica revela limitações e particularidades do sistema visual humano. Em situações onde o cérebro não consegue interpretar corretamente os estímulos visuais, ele tende a completar a informação com base em experiências prévias e padrões memorizados.</p>
-<p>Fenômenos como o efeito Mach (<a href="#fig-mach" class="quarto-xref">Figura&nbsp;<span>2.4</span></a>), a percepção de contraste e distorções associadas a linhas e formas (<a href="#fig-linhas" class="quarto-xref">Figura&nbsp;<span>2.5</span></a>) demonstram que a intensidade percebida nem sempre corresponde à intensidade física real. Esses efeitos são relevantes em PDI, pois técnicas de realce e segmentação exploram princípios semelhantes aos do sistema visual humano.</p>
+<p>Fenômenos como o efeito Mach (<a href="#fig-mach" class="quarto-xref">Figura&nbsp;<span>2.4</span></a>), a percepção de contraste e distorções associadas a linhas e formas (aplicativo interativo seguinte) demonstram que a intensidade percebida nem sempre corresponde à intensidade física real. Esses efeitos são relevantes em PDI, pois técnicas de realce e segmentação exploram princípios semelhantes aos do sistema visual humano.</p>
 <div id="fig-mach" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mach-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap2/mach.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mach-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2.4: Efeito mach
+Figura&nbsp;2.4: Efeito mach (imagem gerada pelo autor usando p5js)
 </figcaption>
 </figure>
 </div>
-<div id="fig-linhas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-linhas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap2/linhas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linhas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2.5: Efeito de linhas
-</figcaption>
-</figure>
-</div>
+<p>A imagem da <a href="#fig-mach" class="quarto-xref">Figura&nbsp;<span>2.4</span></a> ilustra o efeito das <strong>bandas de Mach</strong>, no qual a transição real de intensidade entre regiões (em forma de degraus) é percebida de maneira exagerada pelo sistema visual. Embora a variação de intensidade seja uniforme em cada faixa, o cérebro acentua artificialmente as bordas, fazendo com que apareçam regiões mais claras logo após uma transição para tons mais claros e regiões mais escuras logo antes dela. Esse fenômeno ocorre devido a mecanismos de <strong>inibição lateral</strong> na retina, em que neurônios vizinhos inibem parcialmente a resposta uns dos outros, aumentando o contraste nas bordas. Como resultado, percebemos variações de brilho que não existem fisicamente, evidenciando que a visão humana enfatiza mudanças locais para facilitar a detecção de contornos.</p>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/vQMLfyMoo" width="100%" height="600" style="border:none;"></iframe></div>
+<p>Neste exemplo interativo, a figura do canto superior esquerdo ilustra a ilusão de Kanizsa, na qual percebemos um quadrado branco mesmo sem contornos explícitos. Esse efeito ocorre porque o sistema visual tende a completar formas incompletas, seguindo o princípio de fechamento da Gestalt. Assim, o cérebro cria contornos ilusórios para formar uma estrutura coerente.</p>
+<p>No canto superior direito, as linhas radiais produzem uma sensação de variação de intensidade ou “vibração” ao redor do centro. Esse fenômeno está relacionado ao contraste de luminância e à forma como o sistema visual enfatiza diferenças locais, podendo gerar efeitos semelhantes às bandas de Mach, que realçam bordas e transições.</p>
+<p>A figura do canto inferior esquerdo representa a ilusão de <strong>Müller-Lyer</strong>, em que duas linhas de mesmo comprimento parecem diferentes devido à orientação das setas em suas extremidades. Esse efeito é influenciado pelo contexto visual e pela interpretação de profundidade, fazendo com que o cérebro distorça a percepção do tamanho real.</p>
+<p>Por fim, a <strong>ilusão de Zöllner</strong> ocorre quando linhas paralelas parecem inclinadas ou não paralelas devido à presença de pequenos traços diagonais que as cruzam. Esses traços interferem na forma como o sistema visual processa orientações, gerando um viés perceptual nos ângulos das linhas principais. Esse efeito está relacionado à atuação de neurônios sensíveis à orientação no córtex visual, que interpretam o conjunto da cena de maneira contextual. Assim, a percepção de paralelismo não depende apenas das linhas em si, mas também dos elementos ao seu redor, evidenciando que o sistema visual realiza uma interpretação ativa e influenciada pelo contexto.</p>
 </section>
 <section id="imagens-digitais-e-sensores" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="imagens-digitais-e-sensores"><span class="header-section-number">2.3</span> Imagens Digitais e Sensores</h2>
 <section id="espectro-visível" class="level3">
 <h3 class="anchored" data-anchor-id="espectro-visível">Espectro Visível</h3>
-<p>O espectro visível (<a href="#fig-espectro" class="quarto-xref">Figura&nbsp;<span>2.6</span></a>) corresponde a uma pequena faixa do espectro eletromagnético, compreendida aproximadamente entre os comprimentos de onda do violeta ao vermelho. Embora estreita, essa faixa é suficiente para representar uma grande variedade de informações visuais utilizadas em aplicações cotidianas.</p>
+<p>O espectro visível (<a href="#fig-espectro" class="quarto-xref">Figura&nbsp;<span>2.5</span></a>) corresponde a uma pequena faixa do espectro eletromagnético, compreendida aproximadamente entre os comprimentos de onda do violeta ao vermelho. Embora estreita, essa faixa é suficiente para representar uma grande variedade de informações visuais utilizadas em aplicações cotidianas.</p>
 <div id="fig-espectro" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-espectro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap2/espectro.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-espectro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2.6: Espectro visível da luz
+Figura&nbsp;2.5: Espectro visível da luz
 </figcaption>
 </figure>
 </div>
+<p>O espectro eletromagnético (da <a href="#fig-espectro" class="quarto-xref">Figura&nbsp;<span>2.5</span></a>) abrange uma ampla faixa de radiações, organizadas de acordo com seu comprimento de onda ou frequência. Cada região do espectro interage de maneira diferente com a matéria, o que resulta em distintos tipos de imagens e aplicações. No centro desse espectro está a luz visível, mas técnicas modernas de imageamento exploram desde os raios gama até as ondas de rádio.</p>
+<p>Na faixa dos raios gama, com altíssimas frequências e comprimentos de onda extremamente curtos, as imagens são utilizadas principalmente em medicina nuclear e astrofísica. Exames como a tomografia por emissão de pósitrons (PET) permitem observar processos metabólicos no corpo humano, revelando informações funcionais que não são visíveis em imagens convencionais.</p>
+<p>Os raios X são amplamente utilizados na medicina para obtenção de radiografias. Devido à sua capacidade de atravessar tecidos moles e serem absorvidos por estruturas mais densas, como ossos, geram imagens que destacam diferenças de densidade interna. Também são empregados em inspeção industrial e segurança, como na análise de bagagens.</p>
+<p>Na região do ultravioleta (UV), as imagens são úteis para revelar detalhes que não aparecem na luz visível, como fluorescência de certos materiais. Aplicações incluem análise forense, autenticação de documentos e estudos biológicos, já que algumas substâncias emitem luz visível quando excitadas por UV.</p>
+<p>A faixa da luz visível é aquela percebida pelo olho humano, aproximadamente entre 400 e 700 nm. As imagens nessa região são as mais comuns, capturadas por câmeras digitais e utilizadas em fotografia, vídeo e sistemas de visão computacional. Elas representam cores e intensidades de forma diretamente interpretável pelo observador.</p>
+<p>No infravermelho (IV), as imagens capturam a radiação térmica emitida pelos objetos. Câmeras térmicas permitem visualizar diferenças de temperatura, sendo amplamente usadas em vigilância, inspeção predial, medicina e monitoramento ambiental. Mesmo na ausência de luz visível, é possível formar imagens baseadas no calor.</p>
+<p>As micro-ondas são utilizadas em sistemas de radar e sensoriamento remoto. Imagens obtidas por radar podem atravessar nuvens e operar em condições climáticas adversas, sendo essenciais em meteorologia, mapeamento da superfície terrestre e monitoramento agrícola.</p>
+<p>Por fim, as ondas de rádio são empregadas em radioastronomia e em técnicas como a ressonância magnética (MRI), que utiliza princípios relacionados a radiofrequência para gerar imagens detalhadas do interior do corpo humano, especialmente de tecidos moles.</p>
+<p>Em conjunto, essas diferentes faixas do espectro mostram que uma “imagem” não depende apenas da luz visível, mas sim da forma como diferentes tipos de radiação interagem com os objetos. Isso amplia enormemente as possibilidades de análise e interpretação em áreas como medicina, ciência, engenharia e processamento de imagens.</p>
 </section>
 <section id="sensores-de-imagem" class="level3">
 <h3 class="anchored" data-anchor-id="sensores-de-imagem">Sensores de Imagem</h3>
@@ -442,14 +447,14 @@ Figura&nbsp;2.6: Espectro visível da luz
 <section id="conceito-de-amostragem" class="level3">
 <h3 class="anchored" data-anchor-id="conceito-de-amostragem">Conceito de Amostragem</h3>
 <p>A amostragem corresponde à discretização espacial da imagem. Uma cena contínua é convertida em um conjunto finito de pontos, organizados em uma grade regular. Cada ponto da grade representa um <strong>pixel</strong> da imagem digital.</p>
-<p>Matematicamente, considera‑se uma função contínua de intensidade <span class="math inline">\(f(x,y)\)</span>, que, após a amostragem, passa a ser definida apenas em posições discretas de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. A <a href="#fig-amostragem-quantizacao" class="quarto-xref">Figura&nbsp;<span>2.7</span></a>, apresenta um exemplo do processo de amostragem e quantização para um sinal unidimensional em vermelho.</p>
+<p>Matematicamente, considera‑se uma função contínua de intensidade <span class="math inline">\(f(x,y)\)</span>, que, após a amostragem, passa a ser definida apenas em posições discretas de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. A <a href="#fig-amostragem-quantizacao" class="quarto-xref">Figura&nbsp;<span>2.6</span></a>, apresenta um exemplo do processo de amostragem e quantização para um sinal unidimensional em vermelho.</p>
 <div id="fig-amostragem-quantizacao" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-amostragem-quantizacao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap2/amostragem.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-amostragem-quantizacao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2.7: Ilustração dos processos de amostragem e quantização de um sinal contínuo.
+Figura&nbsp;2.6: Ilustração dos processos de amostragem e quantização de um sinal contínuo.
 </figcaption>
 </figure>
 </div>
@@ -484,14 +489,14 @@ L = 2^k
 </section>
 <section id="representação-da-imagem-digital" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="representação-da-imagem-digital"><span class="header-section-number">2.6</span> Representação da Imagem Digital</h2>
-<p>Uma imagem digital pode ser representada como uma <strong>matriz numérica</strong>, em que cada elemento corresponde ao valor de intensidade de um pixel. A <a href="#fig-binaria" class="quarto-xref">Figura&nbsp;<span>2.8</span></a>, ilustra os valores dos pixels (1 ou 0) numa imagem binária. Para imagens em tons de cinza, essa matriz contém valores escalares, conforme ilustrado na <a href="#fig-cinza" class="quarto-xref">Figura&nbsp;<span>2.9</span></a>.</p>
+<p>Uma imagem digital pode ser representada como uma <strong>matriz numérica</strong>, em que cada elemento corresponde ao valor de intensidade de um pixel. A <a href="#fig-binaria" class="quarto-xref">Figura&nbsp;<span>2.7</span></a>, ilustra os valores dos pixels (1 ou 0) numa imagem binária. Para imagens em tons de cinza, essa matriz contém valores escalares, conforme ilustrado na <a href="#fig-cinza" class="quarto-xref">Figura&nbsp;<span>2.8</span></a>.</p>
 <div id="fig-binaria" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-binaria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap2/binaria.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binaria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2.8: Ilustração dos pixels numa Imagem Binária
+Figura&nbsp;2.7: Ilustração dos pixels numa Imagem Binária
 </figcaption>
 </figure>
 </div>
@@ -501,16 +506,16 @@ Figura&nbsp;2.8: Ilustração dos pixels numa Imagem Binária
 <img src="../imgs/cap2/cinza.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cinza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2.9: Ilustração dos pixels numa Imagem em Tons de Cinza
+Figura&nbsp;2.8: Ilustração dos pixels numa Imagem em Tons de Cinza
 </figcaption>
 </figure>
 </div>
-<p>O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, movimente o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom), dos pixels correspondentes na região selecionada.</p>
-<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" width="100%" height="600" style="border:none;"></iframe></div>
+<p>O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, clique com o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom), dos pixels correspondentes na região selecionada.</p>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" width="100%" height="550" style="border:none;"></iframe></div>
 <p>Para imagens coloridas, a representação pode envolver:</p>
 <ul>
 <li>tabelas de cores;</li>
-<li>camadas de cores, como os canais vermelho, verde e azul (RGB). (<a href="#fig-colorida" class="quarto-xref">Figura&nbsp;<span>2.10</span></a>)</li>
+<li>camadas de cores, como os canais vermelho, verde e azul (RGB). (<a href="#fig-colorida" class="quarto-xref">Figura&nbsp;<span>2.9</span></a>)</li>
 </ul>
 <div id="fig-colorida" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -518,18 +523,18 @@ Figura&nbsp;2.9: Ilustração dos pixels numa Imagem em Tons de Cinza
 <img src="../imgs/cap2/colorida.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorida-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2.10: Ilustração dos pixels numa Imagem Colorida
+Figura&nbsp;2.9: Ilustração dos pixels numa Imagem Colorida
 </figcaption>
 </figure>
 </div>
-<p>Além da representação matricial, a imagem também pode ser interpretada como uma superfície tridimensional, na qual as coordenadas espaciais definem a posição do pixel e a intensidade define a altura da superfície (<a href="#fig-superficie" class="quarto-xref">Figura&nbsp;<span>2.11</span></a>).</p>
+<p>Além da representação matricial, a imagem também pode ser interpretada como uma superfície tridimensional, na qual as coordenadas espaciais definem a posição do pixel e a intensidade define a altura da superfície (<a href="#fig-superficie" class="quarto-xref">Figura&nbsp;<span>2.10</span></a>).</p>
 <div id="fig-superficie" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-superficie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap2/superficie.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-superficie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2.11: Ilustração da imagem com superfície
+Figura&nbsp;2.10: Ilustração da imagem com superfície
 </figcaption>
 </figure>
 </div>
