@@ -20,7 +20,7 @@ Essa estrutura é inspirada, em muitos aspectos, no próprio sistema visual huma
 
 O olho humano funciona como um sofisticado sistema óptico (@fig-olho). A luz proveniente dos objetos atravessa a córnea e o cristalino, sendo focalizada sobre a retina. Na retina encontram‑se os fotorreceptores, responsáveis por converter a energia luminosa em sinais elétricos que são transmitidos ao cérebro pelo nervo óptico.
 
-![Olho humano](/imgs/cap2/olho.png){#fig-olho fig-align="center" width="80%"}
+![Olho humano (imagem gerada pelo autor via Chat-gpt)](/imgs/cap2/olho.png){#fig-olho fig-align="center" width="80%"}
 
 A imagem formada na retina é invertida, e o cérebro realiza a interpretação e a reconstrução da cena observada. Esse processo evidencia que a percepção visual não é apenas um fenômeno físico, mas também cognitivo.
 
@@ -30,17 +30,29 @@ A retina possui duas classes principais de fotorreceptores: **bastonetes** e **c
 
 A região da **fóvea**, uma pequena depressão circular localizada no centro da retina, concentra uma grande densidade de cones, sendo responsável pela alta acuidade visual. Essa característica inspira o projeto de sensores de imagem, como os dispositivos CCD e CMOS, que utilizam matrizes de elementos sensíveis à luz para capturar imagens digitais.
 
-![Bastonetes e Cones](/imgs/cap2/conesbastonetes.png){#fig-cones fig-align="center" width="80%"}
+![Bastonetes e Cones (imagem gerada pelo autor via Chat-gpt)](/imgs/cap2/conesbastonetes.png){#fig-cones fig-align="center" width="80%"}
 
 ## Ilusões de Ótica e Percepção
 
 O estudo das ilusões de ótica revela limitações e particularidades do sistema visual humano. Em situações onde o cérebro não consegue interpretar corretamente os estímulos visuais, ele tende a completar a informação com base em experiências prévias e padrões memorizados.
 
-Fenômenos como o efeito Mach (@fig-mach), a percepção de contraste e distorções associadas a linhas e formas (@fig-linhas) demonstram que a intensidade percebida nem sempre corresponde à intensidade física real. Esses efeitos são relevantes em PDI, pois técnicas de realce e segmentação exploram princípios semelhantes aos do sistema visual humano.
+Fenômenos como o efeito Mach (@fig-mach), a percepção de contraste e distorções associadas a linhas e formas (aplicativo interativo seguinte) demonstram que a intensidade percebida nem sempre corresponde à intensidade física real. Esses efeitos são relevantes em PDI, pois técnicas de realce e segmentação exploram princípios semelhantes aos do sistema visual humano.
 
-![Efeito mach](/imgs/cap2/mach.png){#fig-mach fig-align="center" width="60%"}
+![Efeito mach (imagem gerada pelo autor usando p5js)](/imgs/cap2/mach.png){#fig-mach fig-align="center" width="60%"}
 
-![Efeito de linhas](/imgs/cap2/linhas.png){#fig-linhas fig-align="center" width="50%"}
+A imagem da @fig-mach ilustra o efeito das **bandas de Mach**, no qual a transição real de intensidade entre regiões (em forma de degraus) é percebida de maneira exagerada pelo sistema visual. Embora a variação de intensidade seja uniforme em cada faixa, o cérebro acentua artificialmente as bordas, fazendo com que apareçam regiões mais claras logo após uma transição para tons mais claros e regiões mais escuras logo antes dela. Esse fenômeno ocorre devido a mecanismos de **inibição lateral** na retina, em que neurônios vizinhos inibem parcialmente a resposta uns dos outros, aumentando o contraste nas bordas. Como resultado, percebemos variações de brilho que não existem fisicamente, evidenciando que a visão humana enfatiza mudanças locais para facilitar a detecção de contornos.
+
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/vQMLfyMoo" height="600" imagem="imgs/cap2/p5js-lines.png" qrcode="imgs/cap2/qrcode-lines.png"}
+:::
+
+Neste exemplo interativo, a figura do canto superior esquerdo ilustra a ilusão de Kanizsa, na qual percebemos um quadrado branco mesmo sem contornos explícitos. Esse efeito ocorre porque o sistema visual tende a completar formas incompletas, seguindo o princípio de fechamento da Gestalt. Assim, o cérebro cria contornos ilusórios para formar uma estrutura coerente.
+
+No canto superior direito, as linhas radiais produzem uma sensação de variação de intensidade ou “vibração” ao redor do centro. Esse fenômeno está relacionado ao contraste de luminância e à forma como o sistema visual enfatiza diferenças locais, podendo gerar efeitos semelhantes às bandas de Mach, que realçam bordas e transições.
+
+A figura do canto inferior esquerdo representa a ilusão de **Müller-Lyer**, em que duas linhas de mesmo comprimento parecem diferentes devido à orientação das setas em suas extremidades. Esse efeito é influenciado pelo contexto visual e pela interpretação de profundidade, fazendo com que o cérebro distorça a percepção do tamanho real.
+
+Por fim, a **ilusão de Zöllner** ocorre quando linhas paralelas parecem inclinadas ou não paralelas devido à presença de pequenos traços diagonais que as cruzam. Esses traços interferem na forma como o sistema visual processa orientações, gerando um viés perceptual nos ângulos das linhas principais. Esse efeito está relacionado à atuação de neurônios sensíveis à orientação no córtex visual, que interpretam o conjunto da cena de maneira contextual. Assim, a percepção de paralelismo não depende apenas das linhas em si, mas também dos elementos ao seu redor, evidenciando que o sistema visual realiza uma interpretação ativa e influenciada pelo contexto.
+
 
 ## Imagens Digitais e Sensores
 
@@ -49,6 +61,24 @@ Fenômenos como o efeito Mach (@fig-mach), a percepção de contraste e distorç
 O espectro visível (@fig-espectro) corresponde a uma pequena faixa do espectro eletromagnético, compreendida aproximadamente entre os comprimentos de onda do violeta ao vermelho. Embora estreita, essa faixa é suficiente para representar uma grande variedade de informações visuais utilizadas em aplicações cotidianas.
 
 ![Espectro visível da luz](/imgs/cap2/espectro.png){#fig-espectro}
+
+O espectro eletromagnético (da @fig-espectro) abrange uma ampla faixa de radiações, organizadas de acordo com seu comprimento de onda ou frequência. Cada região do espectro interage de maneira diferente com a matéria, o que resulta em distintos tipos de imagens e aplicações. No centro desse espectro está a luz visível, mas técnicas modernas de imageamento exploram desde os raios gama até as ondas de rádio.
+
+Na faixa dos raios gama, com altíssimas frequências e comprimentos de onda extremamente curtos, as imagens são utilizadas principalmente em medicina nuclear e astrofísica. Exames como a tomografia por emissão de pósitrons (PET) permitem observar processos metabólicos no corpo humano, revelando informações funcionais que não são visíveis em imagens convencionais.
+
+Os raios X são amplamente utilizados na medicina para obtenção de radiografias. Devido à sua capacidade de atravessar tecidos moles e serem absorvidos por estruturas mais densas, como ossos, geram imagens que destacam diferenças de densidade interna. Também são empregados em inspeção industrial e segurança, como na análise de bagagens.
+
+Na região do ultravioleta (UV), as imagens são úteis para revelar detalhes que não aparecem na luz visível, como fluorescência de certos materiais. Aplicações incluem análise forense, autenticação de documentos e estudos biológicos, já que algumas substâncias emitem luz visível quando excitadas por UV.
+
+A faixa da luz visível é aquela percebida pelo olho humano, aproximadamente entre 400 e 700 nm. As imagens nessa região são as mais comuns, capturadas por câmeras digitais e utilizadas em fotografia, vídeo e sistemas de visão computacional. Elas representam cores e intensidades de forma diretamente interpretável pelo observador.
+
+No infravermelho (IV), as imagens capturam a radiação térmica emitida pelos objetos. Câmeras térmicas permitem visualizar diferenças de temperatura, sendo amplamente usadas em vigilância, inspeção predial, medicina e monitoramento ambiental. Mesmo na ausência de luz visível, é possível formar imagens baseadas no calor.
+
+As micro-ondas são utilizadas em sistemas de radar e sensoriamento remoto. Imagens obtidas por radar podem atravessar nuvens e operar em condições climáticas adversas, sendo essenciais em meteorologia, mapeamento da superfície terrestre e monitoramento agrícola.
+
+Por fim, as ondas de rádio são empregadas em radioastronomia e em técnicas como a ressonância magnética (MRI), que utiliza princípios relacionados a radiofrequência para gerar imagens detalhadas do interior do corpo humano, especialmente de tecidos moles.
+
+Em conjunto, essas diferentes faixas do espectro mostram que uma “imagem” não depende apenas da luz visível, mas sim da forma como diferentes tipos de radiação interagem com os objetos. Isso amplia enormemente as possibilidades de análise e interpretação em áreas como medicina, ciência, engenharia e processamento de imagens.
 
 ### Sensores de Imagem
 
@@ -113,9 +143,9 @@ Uma imagem digital pode ser representada como uma **matriz numérica**, em que c
 
 ![Ilustração dos pixels numa Imagem em Tons de Cinza](/imgs/cap2/cinza.png){#fig-cinza fig-align="center" width="80%"}
 
-O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, movimente o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom), dos pixels correspondentes na região selecionada.
+O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, clique com o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom), dos pixels correspondentes na região selecionada.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" height="600" imagem="imgs/cap2/p5js-zoom.png" qrcode="imgs/cap2/qrcode-zoom.png"}
+::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" height="550" imagem="imgs/cap2/p5js-zoom.png" qrcode="imgs/cap2/qrcode-zoom.png"}
 :::
 
 Para imagens coloridas, a representação pode envolver:

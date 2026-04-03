@@ -2,6 +2,7 @@ prefacio
 luizedu@bydu:$ qrencode -o qrcode-negative.png "https://editor.p5js.org/luizedsilva/full/J9qjHybzR"
 
 capitulo 2
+luizedu@bydu:$ qrencode -o qrcode-lines.png "https://editor.p5js.org/luizedsilva/full/vQMLfyMoo
 luizedu@bydu:$ qrencode -o qrcode-zoom.png "https://editor.p5js.org/luizedsilva/full/bDwv1wtRH"
 luizedu@bydu:$ qrencode -o qrcode-surface.png "https://editor.p5js.org/luizedsilva/full/7vlY9trVV"
 

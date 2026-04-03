@@ -4,9 +4,9 @@
 
 local document_meta = {}
 
-local function warn(msg)
-  io.stderr:write("[simulacao.lua] " .. msg .. "\n")
-end
+-- local function warn(msg)
+--   io.stderr:write("[simulacao.lua] " .. msg .. "\n")
+-- end
 
 local function file_exists(path)
   if path == nil or path == "" then return false end
@@ -54,15 +54,15 @@ local function process_div(el)
   local imagem = get_attr_or_meta("imagem")
   local qrcode = get_attr_or_meta("qrcode")
 
-  -- Validação
-  if url == "" then 
-    warn("URL não definida para simulação.") 
-  end
+--   -- Validação
+--   if url == "" then 
+--     warn("URL não definida para simulação.") 
+--   end
   
-  if imagem ~= "" and not file_exists(imagem) then
-    warn("Imagem não encontrada: " .. imagem)
-    imagem = ""
-  end
+--   if imagem ~= "" and not file_exists(imagem) then
+--     warn("Imagem não encontrada: " .. imagem)
+--     imagem = ""
+--   end
 
   -- Renderização HTML
   if FORMAT:match("html") then
@@ -82,7 +82,7 @@ local function process_div(el)
     local latex = ""
     if imagem ~= "" then
       -- Adicionado [H] para forçar a posição e evitar que as imagens flutuem e se misturem
-      latex = latex .. "\\begin{figure}[H]\n\\centering\n\\fbox{\\includegraphics[width=0.8\\textwidth]{" .. imagem .. "}}\n"
+      latex = latex .. "\\begin{figure}[H]\n\\centering\n\\fbox{\\includegraphics[width=0.6\\textwidth]{" .. imagem .. "}}\n"
       latex = latex .. "\\caption{Visualização da aplicação interativa}\n\\end{figure}\n"
     end
     if url ~= "" then
@@ -105,7 +105,7 @@ local function process_div(el)
     if url ~= "" then
       table.insert(blocks, pandoc.Para({pandoc.Str("Acesse: "), pandoc.Link(pandoc.Str(url), url)}))
       if qrcode ~= "" and file_exists(qrcode) then
-        table.insert(blocks, pandoc.Para({pandoc.Image({pandoc.Str("QR")}, qrcode, "", {width="150px"})}))
+        table.insert(blocks, pandoc.Para({pandoc.Image({pandoc.Str("QR")}, qrcode, "", {width="100px"})}))
       end
     end
     return blocks

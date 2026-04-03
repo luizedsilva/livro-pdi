@@ -34,15 +34,27 @@ Esses processos podem ser organizados em três níveis:
 
 Os primeiros registros associados ao processamento de imagens remontam ao início do século XX. Em 1921, imagens foram transmitidas entre Londres e Nova York por meio de cabos submarinos, reduzindo drasticamente o tempo de envio de fotografias. Posteriormente, técnicas como o uso de **fitas perfuradas** permitiram melhorias manuais nas imagens recebidas.
 
-![Primeira imagem transmitida](/imgs/cap1/origem1.png){fig-align="center" width="40%"}
-
 Na década de 1960, o avanço do PDI esteve fortemente ligado à **corrida espacial**, com o uso de computadores para melhorar imagens capturadas por sondas espaciais, como as primeiras imagens digitais da Lua. Já na década de 1970, a área ganhou grande impulso na **medicina**, com o surgimento da tomografia computadorizada, que possibilitou a reconstrução de imagens internas do corpo humano a partir de dados capturados por sensores.
 
-![Imagem obtida com fita perfurada](/imgs/cap1/origem2.png){fig-align="center" width="30%"}
+![Primeira fotografia transmitida via telégrafo (belinógrafo) por Arthur Korn, cerca 1902. Fonte: Domínio Público / Acervo Histórico](/imgs/cap1/origem1.png){fig-align="center" width="40%" #fig-origem1}
 
-![Transmitida com 16 tons de cinza](/imgs/cap1/origem3.png){fig-align="center" width="50%"}
+A imagem da @fig-origem1, por exemplo, representa o nascimento do envio remoto de informação visual. Ao ser transmitida por telégrafo nos experimentos de Arthur Korn (1902-1907), ela se tornou o primeiro exemplo prático de como uma imagem analógica poderia ser decomposta e reconstruída através de sinais elétricos. Documentalmente, esta foto é o ponto de partida para o estudo da fidelidade na transmissão de dados, tema central na evolução do processamento digital.
 
-![Transmitida com 16 tons de cinza](/imgs/cap1/origem4.png){fig-align="center" width="50%"}
+![Retrato de Lord Kelvin (1922), a primeira fotografia digitalizada e transmitida via cabo transatlântico utilizando fita perfurada (Sistema Bartlane). Fonte: Domínio Público / Acervo Histórico](/imgs/cap1/origem2.png){fig-align="center" width="30%" #fig-origem2}
+
+A @fig-origem2 é o retrato de Lord Kelvin (William Thomson), e ela representa um salto tecnológico fundamental: o uso do código Morse de 5 unidades e fita perfurada para transmitir imagens pelo cabo transatlântico em 1922 (sistema Bartlane).
+
+Diferente da primeira (de Arthur Korn), que era analógica e baseada em células de selênio, esta marca o início da digitalização de imagens. A foto foi decomposta em 5 tons de cinza, cada um representado por uma combinação de furos na fita.
+
+![Marechal Foch e General Pershing (cerca 1929). Exemplo de fotografia transmitida via cabo utilizando o sistema Bartlane com 16 tons de cinza. Fonte: Domínio Público / Acervo Histórico.](/imgs/cap1/origem3.png){fig-align="center" width="50%" #fig-origem3}
+
+A imagem da @fig-origem2 mostra o Marechal Foch e o General Pershing e representa um marco evolutivo crucial no Sistema Bartlane (por volta de 1929). Enquanto a foto anterior de Lord Kelvin usava apenas 5 níveis de cinza, esta transmissão elevou a fidelidade para 15 ou 16 tons de cinza, aproximando-se muito mais de uma fotografia convencional.
+
+![Superfície lunar capturada pela sonda Ranger 7 em 1964. Primeira missão dos EUA a transmitir com sucesso imagens da Lua em alta proximidade. Fonte: NASA / Jet Propulsion Laboratory (JPL)](/imgs/cap1/origem4.png){fig-align="center" width="50%" #fig-origem4}
+
+A imagem (@fig-origem4) é um marco histórico monumental: ela faz parte das primeiras fotos da Lua transmitidas pela sonda Ranger 7, da NASA, em 31 de julho de 1964.
+
+Diferente das transmissões anteriores (Korn e Bartlane), que eram experimentos de comunicação terrestre, esta representa o nascimento do Processamento Digital de Imagens moderno. As fotos foram capturadas por câmeras de vídeo de varredura (vidicon) e transmitidas via rádio como sinais analógicos, que a NASA então converteu em dados digitais para "limpar" e realçar as crateras.
 
 ## Imagens e o Espectro Eletromagnético
 

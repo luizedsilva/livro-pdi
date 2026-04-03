@@ -200,7 +200,7 @@ Além da escolha do parâmetro $\varepsilon$, é importante considerar a influê
 
 A **assinatura da forma** é uma técnica de representação amplamente utilizada no processamento digital de imagens para descrever contornos de objetos de maneira compacta e informativa. Em vez de armazenar todos os pontos do contorno — o que pode ser redundante e custoso — a assinatura transforma a forma em uma função unidimensional, geralmente definida em termos de um parâmetro angular. Essa abordagem reduz a complexidade da representação, ao mesmo tempo em que preserva características essenciais da geometria do objeto.
 
-Uma das formas mais comuns de definir a assinatura consiste em considerar a distância entre um ponto de referência interno — tipicamente o centroide — e os pontos do contorno, em função do ângulo $ \theta $. Assim, obtém-se uma função $ r(\theta) $, que indica o raio da forma em cada direção. Essa representação permite capturar variações na forma de maneira contínua: regiões mais distantes do centro resultam em valores maiores de $ r(\theta) $, enquanto regiões mais próximas produzem valores menores. Dessa forma, o comportamento da função reflete diretamente a estrutura geométrica do objeto.
+Uma das formas mais comuns de definir a assinatura consiste em considerar a distância entre um ponto de referência interno — tipicamente o centroide — e os pontos do contorno, em função do ângulo $\theta$. Assim, obtém-se uma função $r(\theta)$, que indica o raio da forma em cada direção. Essa representação permite capturar variações na forma de maneira contínua: regiões mais distantes do centro resultam em valores maiores de $r(\theta)$, enquanto regiões mais próximas produzem valores menores. Dessa forma, o comportamento da função reflete diretamente a estrutura geométrica do objeto.
 
 A assinatura da forma possui propriedades importantes que a tornam especialmente útil em aplicações de análise e reconhecimento. Por exemplo, a periodicidade da função está relacionada à simetria da forma, enquanto picos e vales indicam a presença de vértices, concavidades ou convexidades. Além disso, a assinatura pode ser normalizada para obter invariância a transformações como translação, escala e rotação, o que é fundamental em sistemas de reconhecimento de padrões, onde diferentes instâncias de um mesmo objeto podem aparecer em posições e tamanhos variados.
 
@@ -631,7 +631,7 @@ Explique:
 
 :::
 
-** Sugestão de código **
+**Sugestão de código**
 
 ```{.c}
 #include <stdio.h>

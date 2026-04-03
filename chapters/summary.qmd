@@ -13,3 +13,21 @@ Com o avanço recente do aprendizado de máquina e das redes neurais profundas, 
 Por fim, espera-se que este livro tenha fornecido ao leitor não apenas o conhecimento técnico necessário, mas também uma visão crítica sobre o uso e as limitações das técnicas de processamento de imagens. O domínio desses conceitos é indispensável para profissionais e pesquisadores que atuam em áreas como ciência de dados, engenharia, saúde, robótica e sensoriamento remoto.
 
 O Processamento de Imagens continua em constante evolução, impulsionado por novas demandas e avanços tecnológicos. Assim, o aprendizado nessa área deve ser contínuo, combinando fundamentos teóricos sólidos com experimentação prática e atualização constante.
+
+## Créditos das Imagens
+
+- Avenida Portugal — Foto: Donatas Dabravolskas / Wikimedia Commons  
+- Cão 1 — Foto: Markus Trienke / Wikimedia Commons  
+- Cão 2 — Foto: LiCheng Shih / Wikimedia Commons  
+- Cão 3 — Foto: Dhadaveswapnali / Wikimedia Commons  
+- Cão 4 — Foto: Pleple2000 / Wikimedia Commons  
+- Cão 5 — Foto: Rennett Stowe / Wikimedia Commons  
+- Cão 6 — Foto: AWeith / Wikimedia Commons  
+- Cão 7 — Foto: Iouri Goussev / Wikimedia Commons  
+- Cão 8 — Foto: Pittigrilli / Wikimedia Commons  
+- Mariposa — Foto: LiCheng Shih / Wikimedia Commons  
+- Mona Lisa — Domínio público  
+- Flor 1 — Foto: Quartl / Wikimedia Commons  
+- Flor 2 — Foto: Lystopad / Wikimedia Commons  
+- Food 1 — Foto: Dina Said / Wikimedia Commons  
+- Lua - Foto: Reprodução / NASA
