@@ -243,6 +243,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Créditos das Imagens</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Referências</span></a>
   </div>
@@ -529,44 +535,39 @@ RD = 1 - \frac{1}{CR} \approx 0.099
 <section id="redundância-psicovisual" class="level3">
 <h3 class="anchored" data-anchor-id="redundância-psicovisual">Redundância Psicovisual</h3>
 <p>A redundância psicovisual explora limitações do sistema visual humano. Certas informações podem ser descartadas ou representadas de forma aproximada sem causar impacto perceptível significativo na qualidade da imagem.</p>
-<div id="fig-red-psico" class="quarto-layout-panel">
+<div id="fig-psico1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-red-psico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap6/stanford.png" class="img-fluid figure-img"></p>
-<figcaption>256 tons de cinza</figcaption>
+<div aria-describedby="fig-psico1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap6/avenida.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-psico1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.2: 256 tons de cinza
+</figcaption>
 </figure>
 </div>
+<div id="fig-psico2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-psico2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap6/avenida16.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap6/stanford16.png" class="img-fluid figure-img"></p>
-<figcaption>16 tons de cinza</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-psico2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.3: 16 tons de cinza
+</figcaption>
 </figure>
 </div>
+<div id="fig-psico3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-psico3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap6/avenida4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap6/stanford4.png" class="img-fluid figure-img"></p>
-<figcaption>4 tons de cinza</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-red-psico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6.2: Redundância psicovisual: a mesma imagem representada com <strong>256</strong>, <strong>16</strong> e <strong>4 tons de cinza</strong>.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-psico3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.4: 4 tons de cinza
 </figcaption>
 </figure>
 </div>
 <p>O sistema visual humano não é igualmente sensível a todas as variações de intensidade presentes em uma imagem. Pequenas diferenças entre níveis de cinza muitas vezes não são percebidas pelo observador.</p>
 <p>Essa característica é chamada de <strong>redundância psicovisual</strong> e pode ser explorada em algoritmos de compressão de imagens. A ideia consiste em remover ou reduzir informações que possuem pouca relevância para a percepção humana, diminuindo a quantidade de dados necessária para representar a imagem.</p>
-<p>A <a href="#fig-red-psico" class="quarto-xref">Figura&nbsp;<span>6.2</span></a> mostra a mesma imagem codificada com diferentes números de níveis de cinza: 256, 16 e 4 níveis. Observa-se que, mesmo com uma redução significativa no número de níveis disponíveis, a estrutura global da imagem ainda permanece reconhecível. Isso demonstra que parte da informação original pode ser descartada sem comprometer de forma significativa a percepção visual.</p>
+<p>A <a href="#fig-psico1" class="quarto-xref">Figura&nbsp;<span>6.2</span></a>, <a href="#fig-psico2" class="quarto-xref">Figura&nbsp;<span>6.3</span></a> e <a href="#fig-psico3" class="quarto-xref">Figura&nbsp;<span>6.4</span></a> mostram a mesma imagem codificada com diferentes números de níveis de cinza: 256, 16 e 4 níveis, respectivamente. Observa-se que, mesmo com uma redução significativa no número de níveis disponíveis, a estrutura global da imagem ainda permanece reconhecível. Isso demonstra que parte da informação original pode ser descartada sem comprometer de forma significativa a percepção visual.</p>
 <p>Essa propriedade é amplamente explorada em métodos de compressão com perda (<em>lossy compression</em>), como os utilizados em formatos de imagem e vídeo amplamente difundidos.</p>
 </section>
 </section>
@@ -649,14 +650,14 @@ MSE =
 <p>Algoritmos clássicos incluem a codificação de Huffman, que utiliza árvores binárias para atribuir códigos mais curtos a símbolos mais frequentes, e a codificação aritmética, que alcança taxas de compressão próximas ao limite teórico da entropia.</p>
 <p>O <strong>algoritmo de Huffman</strong> é um método de compressão de dados amplamente utilizado baseado em <strong>codificação estatística sem perdas</strong>. Ele foi proposto por David A. Huffman em 1952 e tem como objetivo reduzir o número médio de bits necessários para representar um conjunto de símbolos. Esse algoritmo explora a frequência de ocorrência dos símbolos, atribuindo códigos menores aos símbolos mais frequentes e códigos maiores aos símbolos menos frequentes, resultando em uma representação mais eficiente dos dados.</p>
 <p>A ideia central da codificação de Huffman é construir um <strong>código de comprimento variável</strong>, no qual cada símbolo é representado por uma sequência de bits cujo tamanho depende de sua probabilidade de ocorrência. Diferentemente dos códigos de comprimento fixo, em que todos os símbolos são representados pelo mesmo número de bits, a codificação de Huffman permite que símbolos mais comuns utilizem menos bits, reduzindo o tamanho total da informação codificada.</p>
-<p>O processo de construção do código de Huffman inicia-se com a <strong>determinação da frequência de ocorrência de cada símbolo</strong> presente nos dados (conforme ilustrado na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>6.3</span></a>). Em seguida, esses símbolos são organizados em uma estrutura conhecida como <strong>árvore binária de Huffman</strong>. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores (iterações i = 1, 2, 3 e 4 na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>6.3</span></a>). Esse processo continua até que todos os nós estejam conectados em uma única árvore.</p>
+<p>O processo de construção do código de Huffman inicia-se com a <strong>determinação da frequência de ocorrência de cada símbolo</strong> presente nos dados (conforme ilustrado na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>6.5</span></a>). Em seguida, esses símbolos são organizados em uma estrutura conhecida como <strong>árvore binária de Huffman</strong>. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores (iterações i = 1, 2, 3 e 4 na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>6.5</span></a>). Esse processo continua até que todos os nós estejam conectados em uma única árvore.</p>
 <div id="fig-huffman" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-huffman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap6/huffman.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-huffman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6.3: Iterações para construção de uma árvore de Huffman
+Figura&nbsp;6.5: Iterações para construção de uma árvore de Huffman
 </figcaption>
 </figure>
 </div>
@@ -773,14 +774,14 @@ Listagem&nbsp;6.3
 <p>Cada um desses padrões apresenta características específicas que os tornam mais adequados para determinados tipos de aplicação. Enquanto alguns priorizam altas taxas de compressão com pequenas perdas perceptuais, outros enfatizam a preservação exata da informação original. Assim, a escolha do formato de compressão depende do equilíbrio desejado entre qualidade visual, eficiência de armazenamento e complexidade computacional do processo de codificação e decodificação.</p>
 <section id="formato-jpeg" class="level3">
 <h3 class="anchored" data-anchor-id="formato-jpeg">Formato JPEG</h3>
-<p>As etapas da codificação JPEG estão representadas na <a href="#fig-etapas" class="quarto-xref">Figura&nbsp;<span>6.4</span></a>.</p>
+<p>As etapas da codificação JPEG estão representadas na <a href="#fig-etapas" class="quarto-xref">Figura&nbsp;<span>6.6</span></a>.</p>
 <div id="fig-etapas" class="quarto-float quarto-figure quarto-figure-center anchored" data-align="center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-etapas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap6/etapas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" data-align="center">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-etapas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6.4: Etapas da codificação JPEG
+Figura&nbsp;6.6: Etapas da codificação JPEG
 </figcaption>
 </figure>
 </div>
