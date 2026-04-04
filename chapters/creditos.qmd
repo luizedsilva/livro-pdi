@@ -1,0 +1,41 @@
+# Créditos das Imagens
+
+As imagens utilizadas ao longo deste livro foram selecionadas de forma a garantir acessibilidade, clareza didática e respeito aos direitos autorais. Parte delas foi obtida no repositório Wikimedia Commons (@fig-avenida, @fig-cao1, @fig-cao2, @fig-cao3, @fig-cao4, @fig-cao5, @fig-cao6, @fig-cao7, @fig-cao8, @fig-mariposa, @fig-flor1, @fig-flor2, @fig-food1), que disponibiliza conteúdos sob licenças livres, permitindo seu uso e adaptação com a devida atribuição. Complementarmente, algumas imagens foram geradas com o auxílio de ferramentas de inteligência artificial, como ChatGPT (@fig-flor2, @fig-silhueta, @fig-cones e @fig-olho) e Gemini (@fig-moire5), com o objetivo de ilustrar conceitos específicos de maneira personalizada. Sempre que aplicável (@fig-monalisa), buscou-se indicar a origem e a licença das imagens, assegurando transparência e conformidade com as boas práticas de uso de conteúdo visual.
+
+![Avenida Portugal - Foto: Donatas Dabravolskas / Wikimedia Commons](/imgs-CC/avenidaportugal.jpg){#fig-avenida width="60%" fig-align="center"} 
+
+![Cao1 - Foto: Markus Trienke / Wikimedia Commons](/imgs-CC/cao1.jpg){#fig-cao1 width="60%" fig-align="center"} 
+
+![Cao2 - Foto: LiCheng Shih / Wikimedia Commons](/imgs-CC/cao2.jpg){#fig-cao2 width="60%" fig-align="center"} 
+
+![Cao3 - Foto: Dhadaveswapnali / Wikimedia Commons](/imgs-CC/cao3.jpg){#fig-cao3 width="60%" fig-align="center"} 
+
+![Cao4 - Foto: Pleple2000 / Wikimedia Commons](/imgs-CC/cao4.jpg){#fig-cao4 width="60%" fig-align="center"} 
+
+![Cao5 - Foto: Rennett Stowe / Wikimedia Commons](/imgs-CC/cao5.jpg){#fig-cao5 width="60%" fig-align="center"} 
+
+![Cao6 - Foto: AWeith / Wikimedia Commons](/imgs-CC/cao6.jpg){#fig-cao6 width="60%" fig-align="center"} 
+
+![Cao7 - Foto: Iouri Goussev / Wikimedia Commons](/imgs-CC/cao7.jpg){#fig-cao7 width="60%" fig-align="center"} 
+
+![Cao8 - Foto: Pittigrilli / Wikimedia Commons](/imgs-CC/cao8.jpg){#fig-cao8 width="60%" fig-align="center"} 
+
+![Mariposa - Foto: LiCheng Shih / Wikimedia Commons](/imgs-CC/mariposa.jpg){#fig-mariposa width="60%" fig-align="center"} 
+
+![Monalisa - Foto: Domínio Público](/imgs-CC/monalisa.jpg){#fig-monalisa width="60%" fig-align="center"} 
+
+![Flor1 - Foto: Quartl / Wikimedia Commons](/imgs-CC/flor1.jpg){#fig-flor1 width="60%" fig-align="center"} 
+
+![Flor2 - Foto: Lystopad / Wikimedia Commons](/imgs-CC/flor2.jpg){#fig-flor2 width="60%" fig-align="center"} 
+
+![Food1 - Foto: Dina Said / Wikimedia Commons](/imgs-CC/food1.jpg){#fig-food1 width="60%" fig-align="center"} 
+
+![Food2 - Foto: Gerada por IA (Gemini)](/imgs-CC/food2.jpg){#fig-food2 width="60%" fig-align="center"} 
+
+![Moire5 - Foto: Gerada por IA (chatgpt)](/imgs-CC/moire5.png){#fig-moire5 width="60%" fig-align="center"}
+
+![Silhueta - Foto: Gerada por IA (chatgpt)](/imgs-CC/silhueta.png){#fig-silhueta width="60%" fig-align="center"}
+
+![ConesBastonetes - Foto: Gerada por IA (chatgpt)](/imgs-CC/conesbastonetes.png){#fig-cones width="60%" fig-align="center"}
+
+![Olho - Foto: Gerada por IA (chatgpt)](/imgs-CC/olho.png){#fig-olho width="60%" fig-align="center"}

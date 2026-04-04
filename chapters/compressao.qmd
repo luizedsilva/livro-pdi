@@ -189,21 +189,17 @@ Esse princípio é a base de diversos métodos de compressão, como a **codifica
 
 A redundância psicovisual explora limitações do sistema visual humano. Certas informações podem ser descartadas ou representadas de forma aproximada sem causar impacto perceptível significativo na qualidade da imagem.
 
-::: {#fig-red-psico layout-ncol="3"}
-![256 tons de cinza](/imgs/cap6/stanford.png)
+![256 tons de cinza](/imgs/cap6/avenida.png){width="60%" fig-align="center" #fig-psico1}
 
-![16 tons de cinza](/imgs/cap6/stanford16.png)
+![16 tons de cinza](/imgs/cap6/avenida16.png){width="60%" fig-align="center" #fig-psico2}
 
-![4 tons de cinza](/imgs/cap6/stanford4.png)
-
-Redundância psicovisual: a mesma imagem representada com **256**, **16** e **4 tons de cinza**.
-:::
+![4 tons de cinza](/imgs/cap6/avenida4.png){width="60%" fig-align="center" #fig-psico3}
 
 O sistema visual humano não é igualmente sensível a todas as variações de intensidade presentes em uma imagem. Pequenas diferenças entre níveis de cinza muitas vezes não são percebidas pelo observador.
 
 Essa característica é chamada de **redundância psicovisual** e pode ser explorada em algoritmos de compressão de imagens. A ideia consiste em remover ou reduzir informações que possuem pouca relevância para a percepção humana, diminuindo a quantidade de dados necessária para representar a imagem.
 
-A @fig-red-psico mostra a mesma imagem codificada com diferentes números de níveis de cinza: 256, 16 e 4 níveis. Observa-se que, mesmo com uma redução significativa no número de níveis disponíveis, a estrutura global da imagem ainda permanece reconhecível. Isso demonstra que parte da informação original pode ser descartada sem comprometer de forma significativa a percepção visual.
+A @fig-psico1, @fig-psico2 e @fig-psico3 mostram a mesma imagem codificada com diferentes números de níveis de cinza: 256, 16 e 4 níveis, respectivamente. Observa-se que, mesmo com uma redução significativa no número de níveis disponíveis, a estrutura global da imagem ainda permanece reconhecível. Isso demonstra que parte da informação original pode ser descartada sem comprometer de forma significativa a percepção visual.
 
 Essa propriedade é amplamente explorada em métodos de compressão com perda (*lossy compression*), como os utilizados em formatos de imagem e vídeo amplamente difundidos.
 

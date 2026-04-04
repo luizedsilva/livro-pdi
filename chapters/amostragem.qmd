@@ -522,7 +522,7 @@ O problema de processamento de imagens proposto para essa atividade será constr
 
 ```text
 32 60 80
-10
+8
 cao3.pgm
 cao2.pgm
 cao1.pgm
@@ -531,8 +531,6 @@ cao5.pgm
 cao6.pgm
 cao7.pgm
 cao8.pgm
-cao9.pgm
-cao10.pgm
 ````
 
 2. O arquivo `config.txt` deve estar organizado da seguinte forma:
@@ -620,7 +618,7 @@ Para a imagem:
 
 ![Imagem de entrada](/imgs/cap2/cao.png){width="60%" fig-align="center"}
 
-O arquivo texto gerado deve ter o seguinte conteúdo:
+O arquivo texto gerado (considerando o tamanho 100x30 e o string ""@$#%o!=+;:-,. ") deve ter o seguinte conteúdo:
 
 ![Imagem de saída](/imgs/cap2/cao-ascii.png){width="60%" fig-align="center"}
 

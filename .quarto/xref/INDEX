@@ -46,5 +46,8 @@
   },
   "chapters/morfologia.qmd": {
     "morfologia.html": "8140cff3"
+  },
+  "chapters/creditos.qmd": {
+    "creditos.html": "5f7bf9fe"
   }
 }
