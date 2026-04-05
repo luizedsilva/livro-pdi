@@ -48,7 +48,7 @@ Diferente da primeira (de Arthur Korn), que era analógica e baseada em células
 
 ![Marechal Foch e General Pershing (cerca 1929). Exemplo de fotografia transmitida via cabo utilizando o sistema Bartlane com 16 tons de cinza. Fonte: Domínio Público / Acervo Histórico.](/imgs/cap1/origem3.png){fig-align="center" width="50%" #fig-origem3}
 
-A imagem da @fig-origem2 mostra o Marechal Foch e o General Pershing e representa um marco evolutivo crucial no Sistema Bartlane (por volta de 1929). Enquanto a foto anterior de Lord Kelvin usava apenas 5 níveis de cinza, esta transmissão elevou a fidelidade para 15 ou 16 tons de cinza, aproximando-se muito mais de uma fotografia convencional.
+A imagem da @fig-origem3 mostra o Marechal Foch e o General Pershing e representa um marco evolutivo crucial no Sistema Bartlane (por volta de 1929). Enquanto a foto anterior de Lord Kelvin usava apenas 5 níveis de cinza, esta transmissão elevou a fidelidade para 15 ou 16 tons de cinza, aproximando-se muito mais de uma fotografia convencional.
 
 ![Superfície lunar capturada pela sonda Ranger 7 em 1964. Primeira missão dos EUA a transmitir com sucesso imagens da Lua em alta proximidade. Fonte: NASA / Jet Propulsion Laboratory (JPL)](/imgs/cap1/origem4.png){fig-align="center" width="50%" #fig-origem4}
 

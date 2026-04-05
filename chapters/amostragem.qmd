@@ -618,7 +618,7 @@ Para a imagem:
 
 ![Imagem de entrada](/imgs/cap2/cao.png){width="60%" fig-align="center"}
 
-O arquivo texto gerado (considerando o tamanho 100x30 e o string ""@$#%o!=+;:-,. ") deve ter o seguinte conteúdo:
+O arquivo texto gerado (considerando o tamanho 100x30 e o string "@$#%o!=+;:-,. ") deve ter o seguinte conteúdo:
 
 ![Imagem de saída](/imgs/cap2/cao-ascii.png){width="60%" fig-align="center"}
 
