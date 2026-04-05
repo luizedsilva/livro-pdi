@@ -154,7 +154,12 @@ A **fronteira** de uma região — também chamada de **borda** ou **contorno** 
 
 Ao definir regiões e fronteiras, é importante evitar o chamado **paradoxo da conectividade**, que ocorre quando diferentes critérios de vizinhança produzem ambiguidades na definição de conectividade entre pixels. Para evitar esse problema, utiliza-se uma regra complementar: se a **vizinhança de 8 pixels (**$N_8$) for utilizada para definir a borda, então a **vizinhança de 4 pixels (**$N_4$) deve ser utilizada para definir a região. De forma equivalente, se a borda for definida utilizando $N_4$, a região deve ser definida utilizando $N_8$.
 
-![Ilustração do paradoxo da conectividade](/imgs/cap3/paradoxo.png){fig-align="center" width="60%"}
+![Ilustração do paradoxo da conectividade](/imgs/cap3/paradoxo.png){fig-align="center" width="60%" #fig-paradoxo}
+
+No **caso (a)** da @fig-paradoxo, considera-se a **região como 8-conectada** e a **borda como 4-conectada**. Isso significa que, dentro da região, os pixels podem se conectar tanto pelas direções ortogonais (cima, baixo, esquerda, direita) quanto pelas diagonais. Já a borda, por ser 4-conectada, só considera conexões ortogonais. Essa escolha evita ambiguidades: os pixels internos (em preto) formam uma região contínua via conexões diagonais, enquanto os pixels externos (em vermelho) não “invadem” a região pela diagonal. Se ambas (borda e região) fossem 4-conectadas, alguns pixels marcados que aparecem separados visualmente poderiam ser interpretados erronemante como pertencentes a duas regiões distintas, gerando inconsistências na definição de interior e exterior.
+
+No **caso (b)** da @fig-paradoxo, ocorre o inverso: a **borda é 8-conectada** e a **região é 4-conectada**. Aqui, a borda pode se conectar também pelas diagonais, formando um contorno mais “fechado”. Já a região interna é mais restrita, conectando-se apenas nas direções ortogonais. Essa combinação também evita o paradoxo: se tanto a borda quanto a região fossem 8-conectadas, surgiria ambiguidade, pois pixels internos e externos poderiam se conectar diagonalmente através da borda, quebrando a separação entre dentro e fora. Assim, ao usar conectividades diferentes para borda e região, garante-se uma definição consistente de conectividade e separação espacial.
+
 
 Na @lst-rotula está algoritmo utilizado para atribuir um rótulo diferente para cada uma das regiões gráficas encontradas numa imagem binária (onde a forma é identificada por pixel igual a um). O resultado final é uma imagem em tons de cinza, com o número máximo de tons de cinza igual ao número de regiões encontradas na imagem.
 

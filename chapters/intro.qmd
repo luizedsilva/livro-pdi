@@ -83,7 +83,28 @@ De forma geral, um sistema de PDI envolve etapas fundamentais como:
 
 Essas etapas são suportadas por componentes como sensores de imagem, hardware especializado, software de processamento, sistemas de armazenamento e dispositivos de visualização.
 
-![Passos Fundamentais do Processamento de Imagens](/imgs/cap1/passos.png){fig-align="center" width="80%"}
+![Passos Fundamentais do Processamento de Imagens](/imgs/cap1/passos.png){fig-align="center" width="80%" #fig-passos}
+
+O **processamento digital de imagens** pode ser entendido como uma sequência de etapas interligadas, nas quais uma **imagem de entrada** é transformada progressivamente até gerar **outra imagem** ou **informações (atributos)** relevantes, conforme ilustrado na @fig-passos. No início do fluxo está a **aquisição de imagens**, cuja entrada é um fenômeno do mundo real (o “problema”) e cuja saída é uma **imagem digital**. Essa etapa envolve sensores (como câmeras ou scanners) e processos de digitalização, convertendo sinais físicos em dados numéricos que podem ser manipulados computacionalmente.
+
+Em seguida, a imagem adquirida pode passar pela **filtragem e melhoramento de imagens**, cuja entrada e saída são ambas **imagens**. O objetivo aqui é tornar a imagem mais adequada para análise ou visualização, reduzindo ruídos, ajustando contraste, destacando bordas ou corrigindo imperfeições. Essa etapa não altera o conteúdo semântico da imagem, mas melhora sua qualidade para as etapas seguintes.
+
+A **restauração de imagens** também recebe uma **imagem como entrada** e produz uma **imagem como saída**, porém com uma abordagem mais fundamentada em modelos matemáticos. Diferentemente do melhoramento (que é mais heurístico), a restauração busca recuperar a imagem original a partir de uma versão degradada, considerando modelos de ruído, desfoque ou distorções introduzidas durante a aquisição.
+
+A etapa de **imagens coloridas** trata da representação e manipulação de imagens em diferentes espaços de cor. Aqui, tanto a entrada quanto a saída são **imagens**, mas com transformações que podem alterar a forma como a informação de cor é representada (por exemplo, RGB, HSV, etc.), facilitando tarefas específicas como segmentação ou realce de características.
+
+Na **compressão de imagens**, a entrada é uma **imagem**, e a saída também é uma **imagem**, porém codificada de forma mais eficiente, reduzindo o espaço de armazenamento ou o custo de transmissão. Essa etapa pode ser sem perdas (mantendo a qualidade original) ou com perdas (aceitando alguma degradação em troca de maior compressão).
+
+A **segmentação de imagens** representa um ponto de transição importante: sua entrada é uma **imagem**, mas sua saída são **atributos** (ou estruturas derivadas), como regiões, objetos ou máscaras que identificam partes relevantes da imagem. O objetivo é particionar a imagem em componentes significativos, facilitando análises posteriores.
+
+Na **representação e descrição**, a entrada são esses **atributos ou regiões segmentadas**, e a saída continua sendo **atributos**, agora organizados de forma estruturada (como vetores de características, contornos, descritores de forma ou textura). Essa etapa traduz a informação visual em dados quantitativos que podem ser utilizados por algoritmos.
+
+A **interpretação de imagens** utiliza como entrada esses **atributos** e produz como saída **atributos de alto nível**, como rótulos, classes ou decisões (por exemplo, identificar objetos ou reconhecer padrões). Trata-se de uma etapa mais próxima da inteligência artificial, onde o sistema atribui significado à imagem.
+
+Por fim, a **morfologia matemática** pode atuar tanto sobre **imagens** quanto sobre **atributos**, produzindo como saída **imagens ou atributos**. Essa etapa utiliza operações baseadas em conjuntos (como dilatação, erosão, abertura e fechamento) para analisar e modificar estruturas geométricas, sendo amplamente usada em pré-processamento, segmentação e refinamento de resultados.
+
+Todas essas etapas são integradas por uma base de **conhecimento**, que orienta as escolhas de métodos, parâmetros e estratégias ao longo do processamento. Esse conhecimento pode incluir modelos matemáticos, regras heurísticas ou aprendizado a partir de dados, permitindo adaptar o sistema a diferentes problemas e aplicações.
+
 
 ## Organização do Livro
 
