@@ -372,12 +372,26 @@ Figura&nbsp;1.4: Superfície lunar capturada pela sonda Ranger 7 em 1964. Primei
 <li><strong>Reconhecimento e interpretação</strong>, apoiados por uma base de conhecimento.</li>
 </ol>
 <p>Essas etapas são suportadas por componentes como sensores de imagem, hardware especializado, software de processamento, sistemas de armazenamento e dispositivos de visualização.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../imgs/cap1/passos.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Passos Fundamentais do Processamento de Imagens</figcaption>
+<div id="fig-passos" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-passos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap1/passos.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-passos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.5: Passos Fundamentais do Processamento de Imagens
+</figcaption>
 </figure>
 </div>
+<p>O <strong>processamento digital de imagens</strong> pode ser entendido como uma sequência de etapas interligadas, nas quais uma <strong>imagem de entrada</strong> é transformada progressivamente até gerar <strong>outra imagem</strong> ou <strong>informações (atributos)</strong> relevantes, conforme ilustrado na <a href="#fig-passos" class="quarto-xref">Figura&nbsp;<span>1.5</span></a>. No início do fluxo está a <strong>aquisição de imagens</strong>, cuja entrada é um fenômeno do mundo real (o “problema”) e cuja saída é uma <strong>imagem digital</strong>. Essa etapa envolve sensores (como câmeras ou scanners) e processos de digitalização, convertendo sinais físicos em dados numéricos que podem ser manipulados computacionalmente.</p>
+<p>Em seguida, a imagem adquirida pode passar pela <strong>filtragem e melhoramento de imagens</strong>, cuja entrada e saída são ambas <strong>imagens</strong>. O objetivo aqui é tornar a imagem mais adequada para análise ou visualização, reduzindo ruídos, ajustando contraste, destacando bordas ou corrigindo imperfeições. Essa etapa não altera o conteúdo semântico da imagem, mas melhora sua qualidade para as etapas seguintes.</p>
+<p>A <strong>restauração de imagens</strong> também recebe uma <strong>imagem como entrada</strong> e produz uma <strong>imagem como saída</strong>, porém com uma abordagem mais fundamentada em modelos matemáticos. Diferentemente do melhoramento (que é mais heurístico), a restauração busca recuperar a imagem original a partir de uma versão degradada, considerando modelos de ruído, desfoque ou distorções introduzidas durante a aquisição.</p>
+<p>A etapa de <strong>imagens coloridas</strong> trata da representação e manipulação de imagens em diferentes espaços de cor. Aqui, tanto a entrada quanto a saída são <strong>imagens</strong>, mas com transformações que podem alterar a forma como a informação de cor é representada (por exemplo, RGB, HSV, etc.), facilitando tarefas específicas como segmentação ou realce de características.</p>
+<p>Na <strong>compressão de imagens</strong>, a entrada é uma <strong>imagem</strong>, e a saída também é uma <strong>imagem</strong>, porém codificada de forma mais eficiente, reduzindo o espaço de armazenamento ou o custo de transmissão. Essa etapa pode ser sem perdas (mantendo a qualidade original) ou com perdas (aceitando alguma degradação em troca de maior compressão).</p>
+<p>A <strong>segmentação de imagens</strong> representa um ponto de transição importante: sua entrada é uma <strong>imagem</strong>, mas sua saída são <strong>atributos</strong> (ou estruturas derivadas), como regiões, objetos ou máscaras que identificam partes relevantes da imagem. O objetivo é particionar a imagem em componentes significativos, facilitando análises posteriores.</p>
+<p>Na <strong>representação e descrição</strong>, a entrada são esses <strong>atributos ou regiões segmentadas</strong>, e a saída continua sendo <strong>atributos</strong>, agora organizados de forma estruturada (como vetores de características, contornos, descritores de forma ou textura). Essa etapa traduz a informação visual em dados quantitativos que podem ser utilizados por algoritmos.</p>
+<p>A <strong>interpretação de imagens</strong> utiliza como entrada esses <strong>atributos</strong> e produz como saída <strong>atributos de alto nível</strong>, como rótulos, classes ou decisões (por exemplo, identificar objetos ou reconhecer padrões). Trata-se de uma etapa mais próxima da inteligência artificial, onde o sistema atribui significado à imagem.</p>
+<p>Por fim, a <strong>morfologia matemática</strong> pode atuar tanto sobre <strong>imagens</strong> quanto sobre <strong>atributos</strong>, produzindo como saída <strong>imagens ou atributos</strong>. Essa etapa utiliza operações baseadas em conjuntos (como dilatação, erosão, abertura e fechamento) para analisar e modificar estruturas geométricas, sendo amplamente usada em pré-processamento, segmentação e refinamento de resultados.</p>
+<p>Todas essas etapas são integradas por uma base de <strong>conhecimento</strong>, que orienta as escolhas de métodos, parâmetros e estratégias ao longo do processamento. Esse conhecimento pode incluir modelos matemáticos, regras heurísticas ou aprendizado a partir de dados, permitindo adaptar o sistema a diferentes problemas e aplicações.</p>
 </section>
 <section id="organização-do-livro" class="level2" data-number="1.7">
 <h2 data-number="1.7" class="anchored" data-anchor-id="organização-do-livro"><span class="header-section-number">1.7</span> Organização do Livro</h2>

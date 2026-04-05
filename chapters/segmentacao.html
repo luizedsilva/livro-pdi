@@ -384,8 +384,6 @@ g(x,y) =
 |\nabla I(x,y)| \approx |G_x| + |G_y|
 \]</span></p>
 <p>Por exemplo, o filtro de Sobel define aproximações discretas para as derivadas parciais <span class="math inline">\(G_x\)</span> e <span class="math inline">\(G_y\)</span> por meio de convoluções com máscaras específicas, que combinam diferenciação e suavização.</p>
-<p>Uma simplificação desses cálculos estão representados no exemplo interativo em sequência. Clique numa linha da imagem para selecioná-la. Dessa linha é construído um perfil horizontal de intensidade, o perfil simplificado (amostrado) e a primeira e segunda derivadas (para evidenciar as bordas), cálculadas conforme a aproximação discreta das fórmulas para <span class="math inline">\(G_x\)</span> ou <span class="math inline">\(G_y\)</span>.</p>
-<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/vwJlyplFQ" width="100%" height="650" style="border:none;"></iframe></div>
 <p>Assim, <span class="math inline">\(G_x\)</span> pode ser escrito como:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -400,6 +398,8 @@ G_y =\;&amp; [I(x-1,y+1) + 2I(x,y+1) + I(x+1,y+1)] \\
       &amp;- [I(x-1,y-1) + 2I(x,y-1) + I(x+1,y-1)]
 \end{aligned}
 \]</span></p>
+<p>Uma versão simplificada desses cálculos é apresentada no exemplo interativo a seguir. Ao clicar em uma linha da imagem, ela é selecionada e utilizada para construir o perfil horizontal de intensidade correspondente. A partir desse perfil, são gerados o perfil simplificado (amostrado) e as estimativas da primeira e da segunda derivadas, que evidenciam as bordas. Essas derivadas são calculadas por meio de aproximações discretas de uma função unidimensional, com base nas formulações de <span class="math inline">\(G_x\)</span> ou <span class="math inline">\(G_y\)</span>.</p>
+<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/vwJlyplFQ" width="100%" height="650" style="border:none;"></iframe></div>
 <p>Essas operações estão representadas nas máscaras de convolução para identificação de bordas horizontais e verticais da <a href="#fig-sobel" class="quarto-xref">Figura&nbsp;<span>8.1</span></a>.</p>
 <div id="fig-sobel" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
