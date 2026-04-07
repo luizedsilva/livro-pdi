@@ -1,6 +1,6 @@
 # Créditos das Imagens
 
-As imagens utilizadas ao longo deste livro foram selecionadas de forma a garantir acessibilidade, clareza didática e respeito aos direitos autorais. Parte delas foi obtida no repositório Wikimedia Commons (@fig-avenida, @fig-cao1, @fig-cao2, @fig-cao3, @fig-cao4, @fig-cao5, @fig-cao6, @fig-cao7, @fig-cao8, @fig-mariposa, @fig-flor1, @fig-flor2, @fig-food1), que disponibiliza conteúdos sob licenças livres, permitindo seu uso e adaptação com a devida atribuição. Complementarmente, algumas imagens foram geradas com o auxílio de ferramentas de inteligência artificial, como ChatGPT (@fig-flor2, @fig-silhueta, @fig-cones e @fig-olho) e Gemini (@fig-moire5), com o objetivo de ilustrar conceitos específicos de maneira personalizada. Sempre que aplicável (@fig-monalisa), buscou-se indicar a origem e a licença das imagens, assegurando transparência e conformidade com as boas práticas de uso de conteúdo visual.
+As imagens utilizadas ao longo deste livro foram selecionadas de forma a garantir acessibilidade, clareza didática e respeito aos direitos autorais. Parte delas foi obtida no repositório Wikimedia Commons (@fig-avenida, @fig-cao1, @fig-cao2, @fig-cao3, @fig-cao4, @fig-cao5, @fig-cao6, @fig-cao7, @fig-cao8, @fig-mariposa, @fig-flor1, @fig-flor2, @fig-food1), que disponibiliza conteúdos sob licenças livres, permitindo seu uso e adaptação com a devida atribuição. Complementarmente, algumas imagens foram geradas com o auxílio de ferramentas de inteligência artificial, como ChatGPT (@fig-flor2, @fig-silhueta, @fig-cones e @fig-olho, @fig-amostra, @fig-captura, @fig-compressao, @fig-cores, @fig-fourier, @fig-interpretacao, @fig-melhoramento, @fig-morfologia, @fig-python, @fig-representa, @fig-segmenta) e Gemini (@fig-moire5), com o objetivo de ilustrar conceitos específicos de maneira personalizada. Sempre que aplicável (@fig-monalisa), buscou-se indicar a origem e a licença das imagens, assegurando transparência e conformidade com as boas práticas de uso de conteúdo visual.
 
 ![Avenida Portugal - Foto: Donatas Dabravolskas / Wikimedia Commons](/imgs-CC/avenidaportugal.jpg){#fig-avenida width="60%" fig-align="center"} 
 
@@ -39,3 +39,26 @@ As imagens utilizadas ao longo deste livro foram selecionadas de forma a garanti
 ![ConesBastonetes - Foto: Gerada por IA (chatgpt)](/imgs-CC/conesbastonetes.png){#fig-cones width="60%" fig-align="center"}
 
 ![Olho - Foto: Gerada por IA (chatgpt)](/imgs-CC/olho.png){#fig-olho width="60%" fig-align="center"}
+
+![Amostra - Foto: Gerada por IA (chatgpt)](/chapters/imgs/amostra.png){#fig-amostra width="60%" fig-align="center"}
+
+![Captura - Foto: Gerada por IA (chatgpt)](/chapters/imgs/captura.png){#fig-captura width="60%" fig-align="center"}
+
+![Compressao - Foto: Gerada por IA (chatgpt)](/chapters/imgs/compressao.png){#fig-compressao width="60%" fig-align="center"}
+
+![Cores - Foto: Gerada por IA (chatgpt)](/chapters/imgs/cores.png){#fig-cores width="60%" fig-align="center"}
+
+![Fourier - Foto: Gerada por IA (chatgpt)](/chapters/imgs/fourier.png){#fig-fourier width="60%" fig-align="center"}
+
+![Interpretacao - Foto: Gerada por IA (chatgpt)](/chapters/imgs/interpretacao.png){#fig-interpretacao width="60%" fig-align="center"}
+
+![Melhoramento - Foto: Gerada por IA (chatgpt)](/chapters/imgs/melhoramento.png){#fig-melhoramento width="60%" fig-align="center"}
+
+![Morfologia - Foto: Gerada por IA (chatgpt)](/chapters/imgs/morfologia.png){#fig-morfologia width="60%" fig-align="center"}
+
+![Python - Foto: Gerada por IA (chatgpt)](/chapters/imgs/python.png){#fig-python width="60%" fig-align="center"}
+
+![Representa - Foto: Gerada por IA (chatgpt)](/chapters/imgs/representa.png){#fig-representa width="60%" fig-align="center"}
+
+![Segmenta - Foto: Gerada por IA (chatgpt)](/chapters/imgs/segmenta.png){#fig-segmenta width="60%" fig-align="center"}
+
