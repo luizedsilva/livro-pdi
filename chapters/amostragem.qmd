@@ -541,7 +541,7 @@ cao8.pgm
    * Número **NL** de linhas
    * Número **NC** de colunas
 
-   b) A segunda linha contém o número **N** de imagens que serão utilizadas na montagem (no exemplo, N = 10).
+   b) A segunda linha contém o número **N** de imagens que serão utilizadas na montagem (no exemplo, N = 8).
 
    c) Da terceira linha em diante, o arquivo contém os nomes das imagens.
    A primeira imagem da lista é utilizada como imagem base. As demais imagens serão iconizadas e ajustadas (clareadas ou escurecidas) para serem utilizadas como “pixels” na composição.
