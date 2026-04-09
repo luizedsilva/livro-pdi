@@ -42,17 +42,17 @@ A imagem da @fig-origem1, por exemplo, representa o nascimento do envio remoto d
 
 ![Retrato de Lord Kelvin (1922), a primeira fotografia digitalizada e transmitida via cabo transatlântico utilizando fita perfurada (Sistema Bartlane). Fonte: Domínio Público / Acervo Histórico](/imgs/cap1/origem2.png){fig-align="center" width="30%" #fig-origem2}
 
-A @fig-origem2 é o retrato de Lord Kelvin (William Thomson), e ela representa um salto tecnológico fundamental: o uso do código Morse de 5 unidades e fita perfurada para transmitir imagens pelo cabo transatlântico em 1922 (sistema Bartlane).
+Já a imagem da @fig-origem2 é o retrato de Lord Kelvin (William Thomson), que representa um salto tecnológico fundamental na decodificação e transmissão de imagens: o uso do código Morse de 5 unidades e fita perfurada para transmitir imagens pelo cabo transatlântico em 1922 (sistema Bartlane).
 
 Diferente da primeira (de Arthur Korn), que era analógica e baseada em células de selênio, esta marca o início da digitalização de imagens. A foto foi decomposta em 5 tons de cinza, cada um representado por uma combinação de furos na fita.
 
 ![Marechal Foch e General Pershing (cerca 1929). Exemplo de fotografia transmitida via cabo utilizando o sistema Bartlane com 16 tons de cinza. Fonte: Domínio Público / Acervo Histórico.](/imgs/cap1/origem3.png){fig-align="center" width="50%" #fig-origem3}
 
-A imagem da @fig-origem3 mostra o Marechal Foch e o General Pershing e representa um marco evolutivo crucial no Sistema Bartlane (por volta de 1929). Enquanto a foto anterior de Lord Kelvin usava apenas 5 níveis de cinza, esta transmissão elevou a fidelidade para 15 ou 16 tons de cinza, aproximando-se muito mais de uma fotografia convencional.
+A imagem da @fig-origem3 (Marechal Foch e o General Pershing) representa um marco evolutivo crucial no Sistema Bartlane, por volta de 1929. Enquanto a foto anterior de Lord Kelvin usava apenas 5 níveis de cinza, esta transmissão elevou a fidelidade para 15 ou 16 tons de cinza, aproximando-se muito mais de uma fotografia convencional.
 
 ![Superfície lunar capturada pela sonda Ranger 7 em 1964. Primeira missão dos EUA a transmitir com sucesso imagens da Lua em alta proximidade. Fonte: NASA / Jet Propulsion Laboratory (JPL)](/imgs/cap1/origem4.png){fig-align="center" width="50%" #fig-origem4}
 
-A imagem (@fig-origem4) é um marco histórico monumental: ela faz parte das primeiras fotos da Lua transmitidas pela sonda Ranger 7, da NASA, em 31 de julho de 1964.
+A imagem da @fig-origem4 é, por fim, um marco histórico monumental: ela faz parte das primeiras fotos da Lua transmitidas pela sonda Ranger 7, da NASA, em 31 de julho de 1964.
 
 Diferente das transmissões anteriores (Korn e Bartlane), que eram experimentos de comunicação terrestre, esta representa o nascimento do Processamento Digital de Imagens moderno. As fotos foram capturadas por câmeras de vídeo de varredura (vidicon) e transmitidas via rádio como sinais analógicos, que a NASA então converteu em dados digitais para "limpar" e realçar as crateras.
 
@@ -65,11 +65,11 @@ As imagens utilizadas em PDI não se limitam à luz visível. Elas podem ser obt
 -   visível (fotografia, vigilância, inspeção),
 -   infravermelho (sensoriamento térmico e satélites),
 -   micro-ondas e ondas de rádio (radar, ressonância magnética),
--   além de imagens sísmicas e microscopia eletrônica.
+-   imagens sísmicas e microscopia eletrônica.
 
 Essa diversidade amplia significativamente o campo de aplicações do processamento digital de imagens.
 
-![Espectro Eletromagnético](/imgs/cap1/espectro.png){fig-align="center" width="80%"}
+![Espectro Eletromagnético.](/imgs/cap1/espectro.png){fig-align="center" width="80%"}
 
 ## Passos Fundamentais do Processamento Digital de Imagens
 
@@ -83,7 +83,7 @@ De forma geral, um sistema de PDI envolve etapas fundamentais como:
 
 Essas etapas são suportadas por componentes como sensores de imagem, hardware especializado, software de processamento, sistemas de armazenamento e dispositivos de visualização.
 
-![Passos Fundamentais do Processamento de Imagens](/imgs/cap1/passos.png){fig-align="center" width="80%" #fig-passos}
+![Passos fundamentais do Processamento Digital de Imagens.](/imgs/cap1/passos.png){fig-align="center" width="80%" #fig-passos}
 
 O **processamento digital de imagens** pode ser entendido como uma sequência de etapas interligadas, nas quais uma **imagem de entrada** é transformada progressivamente até gerar **outra imagem** ou **informações (atributos)** relevantes, conforme ilustrado na @fig-passos. No início do fluxo está a **aquisição de imagens**, cuja entrada é um fenômeno do mundo real (o “problema”) e cuja saída é uma **imagem digital**. Essa etapa envolve sensores (como câmeras ou scanners) e processos de digitalização, convertendo sinais físicos em dados numéricos que podem ser manipulados computacionalmente.
 
@@ -108,6 +108,6 @@ Todas essas etapas são integradas por uma base de **conhecimento**, que orienta
 
 ## Organização do Livro
 
-Este livro abordará os conceitos fundamentais do processamento digital de imagens, estabelecendo as bases matemáticas, computacionais e conceituais necessárias para disciplinas mais avançadas, como visão computacional e aprendizado de máquina aplicado a imagens. Ao final, espera-se que o aluno seja capaz de compreender, implementar e analisar algoritmos básicos de PDI, reconhecendo suas aplicações práticas em diferentes áreas do conhecimento.
+Este livro abordará os conceitos fundamentais do Processamento Digital de Imagens, estabelecendo as bases matemáticas, computacionais e conceituais necessárias para disciplinas mais avançadas, como visão computacional e aprendizado de máquina aplicado a imagens. Ao final, espera-se que o aluno seja capaz de compreender, implementar e analisar algoritmos básicos de PDI, reconhecendo suas aplicações práticas em diferentes áreas do conhecimento.
 
 ------------------------------------------------------------------------

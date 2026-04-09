@@ -10,17 +10,17 @@ Neste capítulo são apresentados os fundamentos conceituais dessas etapas, rela
 
 ### Sistema de Processamento de Imagens
 
-Um sistema de processamento de imagens pode ser descrito como um conjunto de etapas que envolvem **aquisição**, **processamento**, **armazenamento** e **saída** de imagens, conforme ilustrado em @fig-sistema. A aquisição é realizada por dispositivos como câmeras de vídeo e scanners, enquanto o processamento ocorre em um computador. A saída pode ser exibida em monitores, impressoras ou outros dispositivos gráficos, e o armazenamento é feito em mídias digitais.
+Um sistema de processamento de imagens pode ser descrito como um conjunto de etapas que envolvem **aquisição**, **processamento**, **armazenamento** e **saída** de imagens, conforme ilustrado na @fig-sistema. A aquisição é realizada por dispositivos como câmeras de vídeo e scanners, enquanto o processamento ocorre em um computador. A saída pode ser exibida em monitores, impressoras ou outros dispositivos gráficos, e o armazenamento é feito em mídias digitais.
 
 Essa estrutura é inspirada, em muitos aspectos, no próprio sistema visual humano, que serve como referência para o desenvolvimento de modelos computacionais de visão.
 
-![Elementos de um sistema de processamento de imagens](/imgs/cap2/sistema.png){#fig-sistema fig-align="center" width="60%"}
+![Elementos de um sistema de processamento de imagens.](/imgs/cap2/sistema.png){#fig-sistema fig-align="center" width="60%"}
 
 ### O Olho Humano e a Formação da Imagem
 
-O olho humano funciona como um sofisticado sistema óptico (@fig-olho). A luz proveniente dos objetos atravessa a córnea e o cristalino, sendo focalizada sobre a retina. Na retina encontram‑se os fotorreceptores, responsáveis por converter a energia luminosa em sinais elétricos que são transmitidos ao cérebro pelo nervo óptico.
+O olho humano funciona como um sofisticado sistema óptico (@fig-olho). A luz proveniente dos objetos atravessa a córnea e o cristalino, sendo focalizada sobre a retina. Na retina encontram‑se os fotorreceptores, responsáveis por converter a energia luminosa em sinais elétricos que são transmitidos ao cérebro pelo nervo óptico (ajustar a imagem com o nome nervo óptico, em vez de ótico).
 
-![Olho humano (imagem gerada pelo autor via Chat-gpt)](/imgs/cap2/olho.png){#fig-olho fig-align="center" width="80%"}
+![Olho humano. (imagem gerada pelo autor via Chat-gpt)](/imgs/cap2/olho.png){#fig-olho fig-align="center" width="80%"}
 
 A imagem formada na retina é invertida, e o cérebro realiza a interpretação e a reconstrução da cena observada. Esse processo evidencia que a percepção visual não é apenas um fenômeno físico, mas também cognitivo.
 
@@ -30,7 +30,7 @@ A retina possui duas classes principais de fotorreceptores: **bastonetes** e **c
 
 A região da **fóvea**, uma pequena depressão circular localizada no centro da retina, concentra uma grande densidade de cones, sendo responsável pela alta acuidade visual. Essa característica inspira o projeto de sensores de imagem, como os dispositivos CCD e CMOS, que utilizam matrizes de elementos sensíveis à luz para capturar imagens digitais.
 
-![Bastonetes e Cones (imagem gerada pelo autor via Chat-gpt)](/imgs/cap2/conesbastonetes.png){#fig-cones fig-align="center" width="80%"}
+![Bastonetes e Cones. (imagem gerada pelo autor via Chat-gpt)](/imgs/cap2/conesbastonetes.png){#fig-cones fig-align="center" width="80%"}
 
 ## Ilusões de Ótica e Percepção
 
@@ -38,7 +38,7 @@ O estudo das ilusões de ótica revela limitações e particularidades do sistem
 
 Fenômenos como o efeito Mach (@fig-mach), a percepção de contraste e distorções associadas a linhas e formas (aplicativo interativo seguinte) demonstram que a intensidade percebida nem sempre corresponde à intensidade física real. Esses efeitos são relevantes em PDI, pois técnicas de realce e segmentação exploram princípios semelhantes aos do sistema visual humano.
 
-![Efeito mach (imagem gerada pelo autor usando p5js)](/imgs/cap2/mach.png){#fig-mach fig-align="center" width="60%"}
+![Efeito Mach. (imagem gerada pelo autor usando p5.js)](/imgs/cap2/mach.png){#fig-mach fig-align="center" width="60%"}
 
 A imagem da @fig-mach ilustra o efeito das **bandas de Mach**, no qual a transição real de intensidade entre regiões (em forma de degraus) é percebida de maneira exagerada pelo sistema visual. Embora a variação de intensidade seja uniforme em cada faixa, o cérebro acentua artificialmente as bordas, fazendo com que apareçam regiões mais claras logo após uma transição para tons mais claros e regiões mais escuras logo antes dela. Esse fenômeno ocorre devido a mecanismos de **inibição lateral** na retina, em que neurônios vizinhos inibem parcialmente a resposta uns dos outros, aumentando o contraste nas bordas. Como resultado, percebemos variações de brilho que não existem fisicamente, evidenciando que a visão humana enfatiza mudanças locais para facilitar a detecção de contornos.
 
@@ -58,11 +58,11 @@ Por fim, a **ilusão de Zöllner** ocorre quando linhas paralelas parecem inclin
 
 ### Espectro Visível
 
-O espectro visível (@fig-espectro) corresponde a uma pequena faixa do espectro eletromagnético, compreendida aproximadamente entre os comprimentos de onda do violeta ao vermelho. Embora estreita, essa faixa é suficiente para representar uma grande variedade de informações visuais utilizadas em aplicações cotidianas.
+O espectro visível corresponde a uma pequena faixa do espectro eletromagnético da luz (@fig-espectro), compreendida aproximadamente entre os comprimentos de onda do violeta ao vermelho. Embora estreita, essa faixa é suficiente para representar uma grande variedade de informações visuais utilizadas em aplicações cotidianas.
 
-![Espectro visível da luz](/imgs/cap2/espectro.png){#fig-espectro}
+![Espectro visível do espectro eletromagnético da luz.](/imgs/cap2/espectro.png){#fig-espectro}
 
-O espectro eletromagnético (da @fig-espectro) abrange uma ampla faixa de radiações, organizadas de acordo com seu comprimento de onda ou frequência. Cada região do espectro interage de maneira diferente com a matéria, o que resulta em distintos tipos de imagens e aplicações. No centro desse espectro está a luz visível, mas técnicas modernas de imageamento exploram desde os raios gama até as ondas de rádio.
+O espectro eletromagnético da luz abrange uma ampla faixa de radiações, organizadas de acordo com seu comprimento de onda ou frequência. Cada região do espectro interage de maneira diferente com a matéria, o que resulta em distintos tipos de imagens e aplicações. No centro desse espectro está a luz visível, mas técnicas modernas de imageamento exploram desde os raios gama até as ondas de rádio.
 
 Na faixa dos raios gama, com altíssimas frequências e comprimentos de onda extremamente curtos, as imagens são utilizadas principalmente em medicina nuclear e astrofísica. Exames como a tomografia por emissão de pósitrons (PET) permitem observar processos metabólicos no corpo humano, revelando informações funcionais que não são visíveis em imagens convencionais.
 
@@ -84,16 +84,16 @@ Em conjunto, essas diferentes faixas do espectro mostram que uma “imagem” n�
 
 A aquisição de imagens digitais é realizada por sensores que convertem energia luminosa em sinais elétricos. Um sensor simples consiste em um material sensível à luz que gera uma tensão proporcional à intensidade luminosa incidente.
 
-![Sensores para aquisição de imagens](/imgs/cap2/sensor1.png){fig-align="center" width="50%"}
+![Sensores para aquisição de imagens.](/imgs/cap2/sensor1.png){fig-align="center" width="50%"}
 
 Os sensores podem ser classificados em:
 
 -   **Sensores lineares**, que capturam imagens linha a linha;
 -   **Sensores matriciais**, que utilizam uma matriz bidimensional de elementos sensíveis à luz, sendo os mais comuns em câmeras digitais modernas.
 
-![Sensor Linear](/imgs/cap2/sensorlinear.png){fig-align="center" width="80%"}
+![Sensor Linear.](/imgs/cap2/sensorlinear.png){fig-align="center" width="80%"}
 
-![Sensor Matricial](/imgs/cap2/sensormatricial.png){fig-align="center" width="60%"}
+![Sensor Matricial.](/imgs/cap2/sensormatricial.png){fig-align="center" width="60%"}
 
 ## Amostragem
 
@@ -101,7 +101,7 @@ Os sensores podem ser classificados em:
 
 A amostragem corresponde à discretização espacial da imagem. Uma cena contínua é convertida em um conjunto finito de pontos, organizados em uma grade regular. Cada ponto da grade representa um **pixel** da imagem digital.
 
-Matematicamente, considera‑se uma função contínua de intensidade $f(x,y)$, que, após a amostragem, passa a ser definida apenas em posições discretas de $x$ e $y$. A @fig-amostragem-quantizacao, apresenta um exemplo do processo de amostragem e quantização para um sinal unidimensional em vermelho.
+Matematicamente, considera‑se uma função contínua de intensidade $f(x,y)$, que, após a amostragem, passa a ser definida apenas em posições discretas de $x$ e $y$. A @fig-amostragem-quantizacao apresenta um exemplo do processo de amostragem e quantização para um sinal unidimensional em vermelho.
 
 ![Ilustração dos processos de amostragem e quantização de um sinal contínuo.](/imgs/cap2/amostragem.png){#fig-amostragem-quantizacao fig-align="center" width="80%"}
 
@@ -117,13 +117,13 @@ Imagens com o mesmo tamanho físico podem apresentar resoluções diferentes, re
 
 A quantização refere‑se à discretização dos valores de intensidade da imagem. Enquanto a amostragem define *onde* a imagem é medida, a quantização define *quais valores* essas medições podem assumir.
 
-Sejam (L) os níveis possíveis de intensidade, normalmente escolhidos como uma potência de dois:
+Sejam $L$ os níveis possíveis de intensidade, normalmente escolhidos como uma potência de dois:
 
 $$
 L = 2^k
 $$
 
-onde (k) é o número de bits utilizados para representar cada pixel.
+onde $k$ é o número de bits utilizados para representar cada pixel.
 
 ### Profundidade de Bits
 
@@ -137,13 +137,13 @@ Reduções na quantização podem introduzir efeitos visuais indesejados, como p
 
 ## Representação da Imagem Digital
 
-Uma imagem digital pode ser representada como uma **matriz numérica**, em que cada elemento corresponde ao valor de intensidade de um pixel. A @fig-binaria, ilustra os valores dos pixels (1 ou 0) numa imagem binária. Para imagens em tons de cinza, essa matriz contém valores escalares, conforme ilustrado na @fig-cinza.
+Uma imagem digital pode ser representada como uma **matriz numérica**, em que cada elemento corresponde ao valor de intensidade de um pixel. A @fig-binaria ilustra os valores dos pixels (1 ou 0) numa imagem binária. Para imagens em tons de cinza, essa matriz contém valores escalares, conforme ilustrado na @fig-cinza.
 
-![Ilustração dos pixels numa Imagem Binária](/imgs/cap2/binaria.png){#fig-binaria fig-align="center" width="80%"}
+![Ilustração dos pixels numa Imagem Binária.](/imgs/cap2/binaria.png){#fig-binaria fig-align="center" width="80%"}
 
-![Ilustração dos pixels numa Imagem em Tons de Cinza](/imgs/cap2/cinza.png){#fig-cinza fig-align="center" width="80%"}
+![Ilustração dos pixels numa Imagem em Tons de Cinza.](/imgs/cap2/cinza.png){#fig-cinza fig-align="center" width="80%"}
 
-O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, clique com o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom), dos pixels correspondentes na região selecionada.
+O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, clique com o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom) dos pixels correspondentes na região selecionada.
 
 ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" height="550" imagem="imgs/cap2/p5js-zoom.png" qrcode="imgs/cap2/qrcode-zoom.png"}
 :::
@@ -153,13 +153,13 @@ Para imagens coloridas, a representação pode envolver:
 -   tabelas de cores;
 -   camadas de cores, como os canais vermelho, verde e azul (RGB). (@fig-colorida)
 
-![Ilustração dos pixels numa Imagem Colorida](/imgs/cap2/colorida.png){#fig-colorida fig-align="center" width="80%"}
+![Ilustração dos pixels numa Imagem Colorida.](/imgs/cap2/colorida.png){#fig-colorida fig-align="center" width="80%"}
 
 Além da representação matricial, a imagem também pode ser interpretada como uma superfície tridimensional, na qual as coordenadas espaciais definem a posição do pixel e a intensidade define a altura da superfície (@fig-superficie).
 
-![Ilustração da imagem com superfície](/imgs/cap2/superficie.png){#fig-superficie fig-align="center" width="80%"}
+![Ilustração da imagem com superfície.](/imgs/cap2/superficie.png){#fig-superficie fig-align="center" width="80%"}
 
-O exemplo interativo seguinte permite uma visualização de uma imagem como superfície. Use o mouse para movimentar a imagem representada como superfície.
+O exemplo interativo seguinte permite a visualização de uma imagem como superfície. Use o mouse para movimentar a imagem representada como superfície.
 
 ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/7vlY9trVV" height="600" imagem="imgs/cap2/p5js-surface.png" qrcode="imgs/cap2/qrcode-surface.png"}
 :::
@@ -167,7 +167,7 @@ O exemplo interativo seguinte permite uma visualização de uma imagem como supe
 
 ## Os formatos PBM, PGM e PPM de imagens
 
-Os formatos **PBM, PGM e PPM** pertencem à família **Netpbm** e são amplamente utilizados no ensino e na pesquisa em **Processamento Digital de Imagens**, principalmente por sua simplicidade e transparência na representação dos dados. Esses formatos descrevem explicitamente os valores dos pixels, sem empregar técnicas sofisticadas de compressão, o que facilita a compreensão de como uma imagem digital é armazenada e manipulada. Cada formato é voltado para um tipo específico de imagem: binária, em escala de cinza ou colorida.
+Os formatos **PBM, PGM** e **PPM** pertencem à família **Netpbm** e são amplamente utilizados no ensino e na pesquisa em **Processamento Digital de Imagens**, principalmente por sua simplicidade e transparência na representação dos dados. Esses formatos descrevem explicitamente os valores dos pixels, sem empregar técnicas sofisticadas de compressão, o que facilita a compreensão de como uma imagem digital é armazenada e manipulada. Cada formato é voltado para um tipo específico de imagem: binária, em escala de cinza ou colorida.
 
 O formato **PBM (Portable Bitmap)** é utilizado para representar **imagens binárias**, nas quais cada pixel assume apenas dois valores possíveis. Tipicamente, o valor `0` representa a cor branca e o valor `1` representa a cor preta. Por esse motivo, o PBM é especialmente adequado para máscaras, imagens segmentadas e resultados de processos de limiarização. Por trabalhar com apenas um bit por pixel, esse formato é conceitualmente simples e frequentemente empregado em exemplos introdutórios de binarização e análise lógica de imagens.
 
