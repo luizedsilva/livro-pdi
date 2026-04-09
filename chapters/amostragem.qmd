@@ -18,7 +18,7 @@ Essa estrutura é inspirada, em muitos aspectos, no próprio sistema visual huma
 
 ### O Olho Humano e a Formação da Imagem
 
-O olho humano funciona como um sofisticado sistema óptico (@fig-olho). A luz proveniente dos objetos atravessa a córnea e o cristalino, sendo focalizada sobre a retina. Na retina encontram‑se os fotorreceptores, responsáveis por converter a energia luminosa em sinais elétricos que são transmitidos ao cérebro pelo nervo óptico (ajustar a imagem com o nome nervo óptico, em vez de ótico).
+O olho humano funciona como um sofisticado sistema óptico (@fig-olho). A luz proveniente dos objetos atravessa a córnea e o cristalino, sendo focalizada sobre a retina. Na retina encontram‑se os fotorreceptores, responsáveis por converter a energia luminosa em sinais elétricos que são transmitidos ao cérebro pelo nervo óptico.
 
 ![Olho humano. (imagem gerada pelo autor via Chat-gpt)](/imgs/cap2/olho.png){#fig-olho fig-align="center" width="80%"}
 
