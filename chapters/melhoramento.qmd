@@ -12,30 +12,30 @@ Em uma imagem digital, cada pixel pode ser identificado por suas coordenadas no 
 
 ### Vizinhança dos Pixels
 
-A **vizinhança de 4 pixels**, também chamada de vizinhança ortogonal, considera apenas os pixels que estão imediatamente acima, abaixo, à esquerda e à direita do pixel (p). Esses pixels compartilham um lado com (p). Formalmente, o conjunto desses vizinhos é definido por\
+A **vizinhança de 4 pixels**, também chamada de vizinhança ortogonal, considera apenas os pixels que estão imediatamente acima, abaixo, à esquerda e à direita do pixel $p$. Esses pixels compartilham um lado com $p$. Formalmente, o conjunto desses vizinhos é definido por:\
 $$
 N_4(p) = \{(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)\}.\
 $$
 
-Além desses, também podemos considerar os **vizinhos diagonais** de (p). Esses pixels estão posicionados nas quatro diagonais ao redor do pixel central, compartilhando apenas um vértice com ele. O conjunto dos vizinhos diagonais é dado por\
+Além desses, também podemos considerar os **vizinhos diagonais** de $p$. Esses pixels estão posicionados nas quatro diagonais ao redor do pixel central, compartilhando apenas um vértice com ele. O conjunto dos vizinhos diagonais é dado por:\
 $$
 N_D(p) = \{(i + 1, j + 1), (i - 1, j - 1), (i - 1, j + 1), (i + 1, j - 1)\}.\
 $$
 
-Quando consideramos simultaneamente os vizinhos ortogonais e os vizinhos diagonais, obtemos a **vizinhança de 8 pixels**. Essa vizinhança inclui todos os pixels imediatamente adjacentes ao redor de (p), formando um bloco $3 \times 3$ com $p$ no centro. O conjunto de vizinhos é definido pela união das duas vizinhanças anteriores:\
+Quando consideramos simultaneamente os vizinhos ortogonais e os vizinhos diagonais, obtemos a **vizinhança de 8 pixels**. Essa vizinhança inclui todos os pixels imediatamente adjacentes ao redor de $p$, formando um bloco $3 \times 3$ com $p$ no centro. O conjunto de vizinhos é definido pela união das duas vizinhanças anteriores:\
 $$
 N_8(p) = N_4(p) \cup N_D(p).\
 $$
 
 Essas diferentes definições de vizinhança são importantes porque determinam como os pixels são considerados conectados em uma imagem. Dependendo da aplicação, pode-se utilizar a vizinhança de 4 ou de 8 pixels para definir conectividade, propagação de regiões ou cálculo de operadores locais.
 
-![Ilustração das relações de vizinhança dos pixels](/imgs/cap3/vizinhanca.png){fig-align="center" width="70%"}
+![Ilustração das relações de vizinhança dos pixels.](/imgs/cap3/vizinhanca.png){fig-align="center" width="70%"}
 
 ### Medidas de Distância dos pixels
 
 Em uma imagem digital, também é comum definir **medidas de distância entre pixels**. Essas medidas são importantes em diversas aplicações de processamento de imagens, como segmentação, crescimento de regiões, transformadas de distância e análise de conectividade. Considere dois pixels $p$ e $q$, localizados nas coordenadas $p = (i_1, j_1)$ e $q = (i_2, j_2)$.
 
-A **distância euclidiana** corresponde à distância geométrica tradicional entre dois pontos no plano cartesiano. Ela representa o comprimento do segmento de reta que liga os pixels $p$ e $q$. Essa medida é definida por
+A **distância euclidiana** corresponde à distância geométrica tradicional entre dois pontos no plano cartesiano. Ela representa o comprimento do segmento de reta que liga os pixels $p$ e $q$. Essa medida é definida por:
 
 $$
 d_e = \sqrt{(i_1 - i_2)^2 + (j_1 - j_2)^2}
@@ -43,7 +43,7 @@ $$
 
 Essa é a distância mais natural do ponto de vista geométrico, porém pode ser computacionalmente mais custosa, pois envolve o cálculo de raiz quadrada.
 
-Outra medida bastante utilizada em processamento de imagens é a **distância city-block** (ou **distância Manhattan**). Nesse caso, a distância é calculada considerando apenas deslocamentos horizontais e verticais, como se o movimento ocorresse em uma grade de ruas ortogonais de uma cidade. A distância é dada por
+Outra medida bastante utilizada em processamento de imagens é a **distância city-block** (ou **distância Manhattan**). Nesse caso, a distância é calculada considerando apenas deslocamentos horizontais e verticais, como se o movimento ocorresse em uma grade de ruas ortogonais de uma cidade. A distância é dada por:
 
 $$
 d_c = |i_1 - i_2| + |j_1 - j_2|
@@ -51,23 +51,33 @@ $$
 
 Essa medida está diretamente associada à **vizinhança de 4 pixels**, pois o deslocamento entre os pontos ocorre apenas pelas direções horizontal e vertical.
 
-Uma terceira medida é a **distância xadrez** (ou **distância de Chebyshev**). Nessa definição, a distância entre dois pixels corresponde ao maior deslocamento necessário entre as coordenadas horizontal e vertical. Essa medida é definida por
+Uma terceira medida é a **distância xadrez** (ou **distância de Chebyshev**). Nessa definição, a distância entre dois pixels corresponde ao maior deslocamento necessário entre as coordenadas horizontal e vertical. Essa medida é definida por:
 
 $$
 d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
 $$
 
-O nome distância xadrez vem do fato de que ela corresponde ao número mínimo de movimentos necessários para um **rei** se deslocar entre duas casas em um tabuleiro de xadrez. Essa métrica está associada à **vizinhança de 8 pixels**, pois permite movimentos tanto nas direções ortogonais quanto diagonais.
+O nome 'distância xadrez' vem do fato de que ela corresponde ao número mínimo de movimentos necessários para um **rei** se deslocar entre duas casas em um tabuleiro de xadrez. Essa métrica está associada à **vizinhança de 8 pixels**, pois permite movimentos tanto nas direções ortogonais quanto diagonais.
 
 Essas três medidas de distância são amplamente utilizadas em algoritmos de processamento de imagens, e a escolha de qual utilizar depende do tipo de conectividade e da modelagem geométrica desejada para o problema.
 
-![Medidas de distância em imagens digitais](/imgs/cap3/distancia.png){fig-align="center" width="80%"}
+![Medidas de distância em imagens digitais.](/imgs/cap3/distancia.png){fig-align="center" width="80%"}
 
 ### Algoritmo: Transformada de Distância em Imagem Binária
 
 Considere uma **imagem binária** na qual as regiões de pixels com valor **1** representam objetos, e deseja-se calcular a **distância de cada pixel do objeto até o fundo (pixels 0)**.
 
 O algoritmo (@lst-distancia) possui **duas fases** e o resultado será uma **imagem em tons de cinza**, onde o valor de cada pixel indica sua distância ao fundo.
+
+A utilização de duas fases no algoritmo é essencial para garantir que a informação de distância se propague corretamente em toda a imagem.
+
+Na primeira fase (varredura direta), cada pixel é atualizado considerando apenas seus vizinhos acima e à esquerda. Dessa forma, as distâncias são propagadas progressivamente a partir do canto superior esquerdo da imagem.
+
+Entretanto, essa etapa não é suficiente para capturar corretamente distâncias que dependem de caminhos provenientes de outras direções.
+
+Por isso, na segunda fase (varredura inversa), a imagem é percorrida no sentido oposto, permitindo que cada pixel considere também os vizinhos à direita e abaixo. Essa etapa corrige e refina os valores previamente calculados, garantindo que a distância mínima ao fundo seja corretamente determinada.
+
+Assim, as duas varreduras em conjunto permitem que a informação de distância se propague em todas as direções da imagem, produzindo um resultado consistente.
 
 ::: {#lst-distancia}
 ``` c
@@ -118,6 +128,9 @@ Em sequência um simulador desse algoritmo:
 ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/rp0vlNYIX" height="500" imagem="imgs/cap3/p5js-distance.png" qrcode="imgs/cap3/qrcode-distance.png"}
 :::
 
+Esse processo pode ser interpretado como um esquema de relaxamento iterativo, no qual cada pixel atualiza seu valor com base em seus vizinhos, de forma semelhante a algoritmos clássicos de propagação de custo em grafos.
+
+
 ### Adjacência e Conectividade dos Pixels
 
 Em processamento de imagens, o conceito de **adjacência** é usado para determinar quando dois pixels podem ser considerados vizinhos pertencentes a uma mesma região. Para isso, define-se inicialmente um conjunto $V$ de valores de intensidade que serão utilizados para estabelecer essa relação. Esse conjunto depende do tipo de imagem analisada. Por exemplo, em uma imagem binária pode-se considerar $V = \{1\}$, representando os pixels do objeto. Em imagens em tons de cinza, $V$ pode ser um subconjunto dos níveis de cinza, e em imagens coloridas pode corresponder a uma determinada cor ou faixa de cores.
@@ -150,11 +163,11 @@ Os pixels que **não pertencem a nenhuma região de interesse** são denominados
 
 A **fronteira** de uma região — também chamada de **borda** ou **contorno** — é formada pelos pixels que delimitam a separação entre a região e o fundo. Essa fronteira pode ser definida de duas maneiras. A **borda interna** é o conjunto de pixels da própria região que possuem pelo menos um vizinho pertencente ao fundo da imagem. Já a **borda externa** é composta pelos pixels do fundo que possuem pelo menos um vizinho pertencente à região.
 
-![Ilustração de uma região, borda interna e borda externa](/imgs/cap3/regiao-borda.png){fig-align="center" width="80%"}
+![Ilustração de uma região, borda interna e borda externa.](/imgs/cap3/regiao-borda.png){fig-align="center" width="80%"}
 
 Ao definir regiões e fronteiras, é importante evitar o chamado **paradoxo da conectividade**, que ocorre quando diferentes critérios de vizinhança produzem ambiguidades na definição de conectividade entre pixels. Para evitar esse problema, utiliza-se uma regra complementar: se a **vizinhança de 8 pixels (**$N_8$) for utilizada para definir a borda, então a **vizinhança de 4 pixels (**$N_4$) deve ser utilizada para definir a região. De forma equivalente, se a borda for definida utilizando $N_4$, a região deve ser definida utilizando $N_8$.
 
-![Ilustração do paradoxo da conectividade](/imgs/cap3/paradoxo.png){fig-align="center" width="60%" #fig-paradoxo}
+![Ilustração do paradoxo da conectividade.](/imgs/cap3/paradoxo.png){fig-align="center" width="60%" #fig-paradoxo}
 
 No **caso (a)** da @fig-paradoxo, considera-se a **região como 8-conectada** e a **borda como 4-conectada**. Isso significa que, dentro da região, os pixels podem se conectar tanto pelas direções ortogonais (cima, baixo, esquerda, direita) quanto pelas diagonais. Já a borda, por ser 4-conectada, só considera conexões ortogonais. Essa escolha evita ambiguidades: os pixels internos (em preto) formam uma região contínua via conexões diagonais, enquanto os pixels externos (em vermelho) não “invadem” a região pela diagonal. Se ambas (borda e região) fossem 4-conectadas, alguns pixels marcados que aparecem separados visualmente poderiam ser interpretados erronemante como pertencentes a duas regiões distintas, gerando inconsistências na definição de interior e exterior.
 
@@ -269,7 +282,7 @@ Os parâmetros $a$ e $b$ controlam, respectivamente, o contraste e o brilho da i
 
 ### Transformações Logarítmicas
 
-Transformações logarítmicas (da @lst-logaritmica) são utilizadas para expandir valores de baixa intensidade e comprimir valores elevados, sendo especialmente úteis em imagens que apresentam grande variação dinâmica.
+Transformações logarítmicas (da @lst-logaritmica) são utilizadas para expandir valores de baixa intensidade e comprimir valores elevados. Elas são especialmente úteis em imagens que apresentam grande faixa dinâmica, isto é, imagens nas quais há uma grande diferença entre os menores e maiores valores de intensidade.
 
 Uma forma típica é dada por:
 
@@ -283,7 +296,7 @@ $$
 c = \frac{max}{\log(1 + max)}
 $$
 
-Onde $max = L-1$ é a máxima intensidade de pixel na imagem, ou seja, o maior valor retornado para a função imagem $f(x,y)$.
+onde $max = L-1$ é a máxima intensidade de pixel na imagem, ou seja, o maior valor retornado para a função imagem $f(x,y)$.
 
 ::: {#lst-logaritmica}
 ``` c
@@ -338,19 +351,19 @@ O parâmetro ($\gamma$) controla a forma da curva de transformação. Valores de
 
 Uma abordagem bastante flexível para a transformação pontual dos níveis de intensidade de uma imagem é o uso de funções lineares por partes. Nesse tipo de transformação, o mapeamento entre os níveis de cinza de entrada e saída é definido por diferentes segmentos lineares ao longo da faixa dinâmica da imagem. Isso permite ajustar de forma independente diferentes regiões de intensidade, possibilitando, por exemplo, realçar detalhes em áreas escuras ou comprimir variações em regiões muito claras. A principal vantagem dessa técnica é sua flexibilidade, enquanto a principal desvantagem é a necessidade de definir um maior número de parâmetros.
 
-A função de transformação pode ser definida por quatro pontos: $A = (0,0)$, $B = (x_1,y_1)$, $C = (x_2,y_2)$ e $D = (L−1,L−1)$, onde L representa o número de níveis de cinza. Esses pontos dividem a função em três trechos: $A–B$, $B–C$ e $C–D$. Cada um desses trechos é descrito por uma função linear distinta, permitindo controlar de forma localizada o comportamento da transformação.
+A função de transformação pode ser definida por quatro pontos: $A = (0,0)$, $B = (x_1,y_1)$, $C = (x_2,y_2)$ e $D = (L−1,L−1)$, onde $L$ representa o número de níveis de cinza. Esses pontos dividem a função em três trechos: $A–B$, $B–C$ e $C–D$. Cada um desses trechos é descrito por uma função linear distinta, permitindo controlar de forma localizada o comportamento da transformação.
 
 De maneira geral, a reta que liga dois pontos $(x_1,y_1)$ e $(x_2,y_2)$ pode ser descrita pela equação $y = a \times x + b$, em que o coeficiente angular $a$ é dado por $(y_2 − y_1)/(x_2 − x_1)$, e o termo independente $b$ é calculado como $b = y_2 − a·x_2$. Assim, para cada trecho da função ($A–B$, $B–C$ e $C–D$), é possível determinar uma equação linear específica que define o mapeamento dos níveis de intensidade naquele intervalo.
 
 Como exemplo, considere uma imagem com 8 níveis de cinza, variando de 0 a 7 e que os pontos intermediários são $B = (2,5)$ e $C = (4,6)$. A partir desses valores, obtêm-se três segmentos com comportamentos distintos: um crescimento acentuado entre $A$ e $B$, que amplia os níveis mais baixos; um crescimento mais suave entre $B$ e $C$; e uma região de compressão entre $C$ e $D$, que reduz a variação dos níveis mais altos. Calculando as equações correspondentes e arredondando os valores, obtém-se o vetor de transformação $T = [0, 3, 5, 6, 6, 6, 7, 7]$, conforme ilustrado na @fig-partes.
 
-![Transformação linear por partes](/imgs/cap3/partes.png){#fig-partes fig-align="center" width="80%"}
+![Transformação linear por partes.](/imgs/cap3/partes.png){#fig-partes fig-align="center" width="80%"}
 
 Essa transformação evidencia um comportamento importante: há um aumento de contraste nas regiões escuras da imagem, uma transição moderada nos níveis intermediários e uma compressão nas regiões claras. Esse tipo de controle é particularmente útil em aplicações de processamento de imagens, pois permite enfatizar características relevantes em diferentes faixas de intensidade.
 
 Na prática, a implementação dessa transformação é geralmente feita por meio de uma tabela de consulta (Look-Up Table — LUT), na qual cada nível de intensidade de entrada é substituído diretamente pelo valor correspondente de saída. Isso torna o processo eficiente e adequado para aplicações em tempo real.
 
-O exemplo interativo seguinte demonstra a transformação linear por partes. Mova os pontos B (vermelho) e C(verde) para ajustar o contraste da imagem.
+O exemplo interativo seguinte demonstra a transformação linear por partes. Mova os pontos B (vermelho) e C (verde) para ajustar o contraste da imagem.
 
 ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2ZjbPla9T" height="400" imagem="imgs/cap3/p5js-linear.png" qrcode="imgs/cap3/qrcode-linear.png"}
 :::
@@ -361,7 +374,7 @@ O histograma de uma imagem descreve a distribuição dos níveis de intensidade 
 
 Imagens com baixo contraste tendem a apresentar histogramas concentrados em uma faixa estreita de valores, enquanto imagens com bom contraste exibem histogramas mais espalhados ao longo da escala de intensidades.
 
-Algoritmo para calcular o histograma de uma imagem está em @lst-histograma.
+Algoritmo para calcular o histograma de uma imagem está incluído em @lst-histograma.
 
 ### Equalização de Histograma
 
@@ -521,7 +534,7 @@ Essas relações expressam as propriedades de **aditividade** e **homogeneidade*
 
 Os filtros passa-baixa, cuja a soma dos coeficientes do kernel é um (ou próxima de um) tem o efeito de atenuar as altas frequências e preservar as baixas frequências. Na prática significa suavização da imagem.
 
-![Filtros](/imgs/cap3/filtros.png){fig-align="center" width="50%"}
+![Filtros.](/imgs/cap3/filtros.png){fig-align="center" width="50%"}
 
 Um filtro passa-alta realça bordas e detalhes, atenuando as baixas frequências (regiões suaves). Em PDI, isso é feito com kernels cuja soma dos coeficientes é zero (ou próxima de zero).
 
