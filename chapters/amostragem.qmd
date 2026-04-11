@@ -42,8 +42,12 @@ Fenômenos como o efeito Mach (@fig-mach), a percepção de contraste e distorç
 
 A imagem da @fig-mach ilustra o efeito das **bandas de Mach**, no qual a transição real de intensidade entre regiões (em forma de degraus) é percebida de maneira exagerada pelo sistema visual. Embora a variação de intensidade seja uniforme em cada faixa, o cérebro acentua artificialmente as bordas, fazendo com que apareçam regiões mais claras logo após uma transição para tons mais claros e regiões mais escuras logo antes dela. Esse fenômeno ocorre devido a mecanismos de **inibição lateral** na retina, em que neurônios vizinhos inibem parcialmente a resposta uns dos outros, aumentando o contraste nas bordas. Como resultado, percebemos variações de brilho que não existem fisicamente, evidenciando que a visão humana enfatiza mudanças locais para facilitar a detecção de contornos.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/vQMLfyMoo" height="600" imagem="imgs/cap2/p5js-lines.png" qrcode="imgs/cap2/qrcode-lines.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/vQMLfyMoo" height="600" imagem="imgs/cap2/p5js-lines.png" qrcode="imgs/cap2/qrcode-lines.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/lines/" height="600" imagem="imgs/cap2/p5js-lines.png" qrcode="imgs/cap2/qrcode-lines.png"}
 :::
+
 
 Neste exemplo interativo, a figura do canto superior esquerdo ilustra a ilusão de Kanizsa, na qual percebemos um quadrado branco mesmo sem contornos explícitos. Esse efeito ocorre porque o sistema visual tende a completar formas incompletas, seguindo o princípio de fechamento da Gestalt. Assim, o cérebro cria contornos ilusórios para formar uma estrutura coerente.
 
@@ -145,8 +149,12 @@ Uma imagem digital pode ser representada como uma **matriz numérica**, em que c
 
 O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visualizar a representação matricial para imagens em tons de cinza. Para interação, clique com o mouse sobre a imagem à esquerda para selecionar uma região. Na imagem à direita será apresentada uma amostra ampliada (zoom) dos pixels correspondentes na região selecionada.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" height="550" imagem="imgs/cap2/p5js-zoom.png" qrcode="imgs/cap2/qrcode-zoom.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" height="550" imagem="imgs/cap2/p5js-zoom.png" qrcode="imgs/cap2/qrcode-zoom.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/pixelzoom/" height="550" imagem="imgs/cap2/p5js-zoom.png" qrcode="imgs/cap2/qrcode-zoom.png"}
 :::
+
 
 Para imagens coloridas, a representação pode envolver:
 
@@ -161,9 +169,11 @@ Além da representação matricial, a imagem também pode ser interpretada como 
 
 O exemplo interativo seguinte permite a visualização de uma imagem como superfície. Use o mouse para movimentar a imagem representada como superfície.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/7vlY9trVV" height="600" imagem="imgs/cap2/p5js-surface.png" qrcode="imgs/cap2/qrcode-surface.png"}
-:::
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/7vlY9trVV" height="600" imagem="imgs/cap2/p5js-surface.png" qrcode="imgs/cap2/qrcode-surface.png"}
+::: -->
 
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/surface/" height="600" imagem="imgs/cap2/p5js-surface.png" qrcode="imgs/cap2/qrcode-surface.png"}
+:::
 
 ## Os formatos PBM, PGM e PPM de imagens
 
