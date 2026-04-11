@@ -19,6 +19,9 @@ Exemplo de código embutido usando p5js:
 ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/J9qjHybzR" height="400" imagem="p5js-negative.png" qrcode="qrcode-negative.png"}
 :::
 
+::: {.simulacao url="http://luizedsilva.github.io/livro-pdi/p5js/negative/" height="400" imagem="p5js-negative.png" qrcode="qrcode-negative.png"}
+:::
+
 Para aprender mais sobre **p5.js** visite: <https://editor.p5js.org/about>.
 
 Para a apresentação e visualização de algumas equações e conceitos matemáticos, foi utilizado o software **GeoGebra**. Essa ferramenta permite explorar de forma interativa gráficos, funções e relações matemáticas, facilitando a compreensão de conceitos importantes apresentados ao longo do texto. O uso de recursos interativos contribui para tornar a visualização das equações mais clara e intuitiva para o leitor. Para saber mais sobre essa ferramenta e acessar seus recursos, visite o site oficial do GeoGebra: <https://www.geogebra.org>.

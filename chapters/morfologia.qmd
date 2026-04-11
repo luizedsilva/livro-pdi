@@ -282,7 +282,7 @@ ou seja, $d_A(x,B)$ é o ínfimo das distâncias geodésicas entre $x$ e cada el
 
 Um dos principais interesses no uso dessa função está na sua capacidade de tratar adequadamente problemas de conectividade. Como a distância é calculada apenas ao longo de caminhos contidos em $A$, ela reflete diretamente a estrutura topológica do conjunto. Dessa forma, é possível distinguir naturalmente regiões conectadas de regiões desconexas, o que é fundamental em diversas aplicações de processamento de imagens, como segmentação, reconstrução morfológica e análise de componentes conectados.
 
-Todas as operações morfológicas, como dilatação e erosão, podem ser reinterpretadas a partir da métrica geodésica. Nesse contexto, considera-se um conjunto $X$ que define o domínio $ou máscara$ e um subconjunto $Y \subseteq X$, sobre o qual se deseja aplicar a operação. A ideia central é utilizar a distância geodésica em $X$ para definir regiões de influência em torno dos pontos.
+Todas as operações morfológicas, como dilatação e erosão, podem ser reinterpretadas a partir da métrica geodésica. Nesse contexto, considera-se um conjunto $X$ que define o domínio ou máscara e um subconjunto $Y \subseteq X$, sobre o qual se deseja aplicar a operação. A ideia central é utilizar a distância geodésica em $X$ para definir regiões de influência em torno dos pontos.
 
 Para isso, define-se a bola geodésica de raio $\lambda$ centrada em um ponto $x \in X$, denotada por $B_X(x,\lambda)$, como o conjunto de todos os pontos de $X$ cuja distância geodésica até $x$ é menor ou igual a $\lambda$. Em termos formais: 
 $$
@@ -351,7 +351,7 @@ Do ponto de vista intuitivo, a reconstrução pode ser entendida como um process
 
 Essa operação é amplamente utilizada em processamento de imagens, especialmente em tarefas de segmentação, remoção de objetos indesejados e filtragem baseada em conectividade. Por exemplo, é possível eliminar pequenos ruídos preservando apenas regiões relevantes previamente marcadas, ou ainda reconstruir partes de objetos a partir de sementes iniciais, sempre respeitando a estrutura definida pela máscara $I$.
 
-A reconstrução morfológica é, em geral, formulada a partir do conceito de distância geodésica. Nesse contexto, ela pode ser obtida por meio da aplicação iterativa da dilatação geodésica elementar do marcador (J) sob a máscara (I), até que o processo se estabilize, isto é, até atingir a idempotência (quando novas iterações não produzem mais alterações).
+A reconstrução morfológica é, em geral, formulada a partir do conceito de distância geodésica. Nesse contexto, ela pode ser obtida por meio da aplicação iterativa da dilatação geodésica elementar do marcador $J$ sob a máscara $I$, até que o processo se estabilize, isto é, até atingir a idempotência (quando novas iterações não produzem mais alterações).
 
 Formalmente, a reconstrução é dada por: 
 
@@ -359,7 +359,7 @@ $$
 \rho_I(J) = \bigcup_{n \geq 1} \delta^n_I(J),
 $$
 
-o que indica que o resultado corresponde à união das sucessivas dilatações geodésicas de (J) em (I), realizadas até que não haja mais crescimento do conjunto.
+o que indica que o resultado corresponde à união das sucessivas dilatações geodésicas de $J$ em $I$, realizadas até que não haja mais crescimento do conjunto.
 
 O exemplo seguinte ilustra, de forma visual e interativa, a aplicação de **operações geodésicas** em imagens binárias. Inicialmente, é gerada uma imagem contendo caracteres aleatórios, que em seguida é convertida para uma representação binária, na qual os objetos (letras) são definidos por pixels brancos e o fundo por pixels pretos.
 
@@ -384,7 +384,7 @@ Essas propriedades fornecem uma base teórica sólida para o uso da morfologia m
 
 ## Aplicações da Morfologia Binária
 
-A morfologia matemática binária é amplamente utilizada em diversas aplicações no processamento digital de imagens, desempenhando um papel fundamental em diferentes etapas de análise e interpretação. Entre suas principais aplicações destacam-se a remoção de ruído impulsivo, o preenchimento de regiões, a extração de contornos e a análise de conectividade entre componentes da imagem. Além disso, a morfologia é frequentemente empregada como etapa de pré-processamento em tarefas mais complexas, como segmentação e reconhecimento de padrões, contribuindo para a melhoria da qualidade dos resultados. Sua simplicidade conceitual, aliada à sua eficiência computacional, torna a morfologia matemática uma ferramenta essencial no processamento de imagens digitais. \## Morfologia Matemática em Tons de Cinza
+A morfologia matemática binária é amplamente utilizada em diversas aplicações no processamento digital de imagens, desempenhando um papel fundamental em diferentes etapas de análise e interpretação. Entre suas principais aplicações destacam-se a remoção de ruído impulsivo, o preenchimento de regiões, a extração de contornos e a análise de conectividade entre componentes da imagem. Além disso, a morfologia é frequentemente empregada como etapa de pré-processamento em tarefas mais complexas, como segmentação e reconhecimento de padrões, contribuindo para a melhoria da qualidade dos resultados. Sua simplicidade conceitual, aliada à sua eficiência computacional, torna a morfologia matemática uma ferramenta essencial no processamento de imagens digitais. 
 
 ## Morfologia em tons de cinza (numérica)
 
@@ -396,7 +396,7 @@ Para viabilizar essa generalização, as operações de conjunto são substituí
 
 Essa interpretação permite entender a dilatação como uma operação que tende a **expandir regiões claras** (aumentando os valores de intensidade), enquanto a erosão tende a **expandir regiões escuras** (reduzindo os valores). Como consequência, as operações compostas, como abertura e fechamento, mantêm suas propriedades fundamentais: a abertura suaviza contornos e remove detalhes brilhantes pequenos, enquanto o fechamento preenche pequenas regiões escuras e conecta estruturas próximas.
 
-Portanto, a morfologia numérica preserva a essência das operações morfológicas binárias, mas adapta sua formulação para lidar com a riqueza de informações presente em imagens em tons de cinza. Essa extensão amplia significativamente o campo de aplicação da morfologia matemática, tornando-a uma ferramenta poderosa para filtragem, realce e análise de imagens reais.
+Portanto, a morfologia numérica preserva a essência das operações morfológicas binárias, mas adapta sua formulação para lidar com a riqueza de informações presente em imagens em tons de cinza. Essa extensão amplia o campo de aplicação da morfologia matemática, tornando-a uma ferramenta poderosa para filtragem, realce e análise de imagens reais.
 
 
 ## Fundamentos da Morfologia em Tons de Cinza
@@ -487,7 +487,7 @@ Ao longo deste capítulo, foram apresentados os principais fundamentos da **morf
 
 No caso das imagens binárias, as operações morfológicas mostraram-se ferramentas intuitivas e eficazes para manipulação de formas, permitindo expandir, reduzir, conectar ou separar regiões. A partir dessas operações elementares, foram introduzidas transformações mais elaboradas, como **abertura** e **fechamento**, que possibilitam a remoção seletiva de ruídos e a preservação de características estruturais importantes. Essas operações evidenciam o papel fundamental do elemento estruturante, cuja forma e tamanho determinam diretamente o tipo de processamento realizado.
 
-A extensão desses conceitos para imagens em níveis de cinza amplia significativamente o poder da morfologia matemática. Nesse contexto, as operações passam a atuar sobre valores de intensidade, sendo interpretadas como filtros não lineares baseados em máximos e mínimos locais. Isso permite não apenas a manipulação da geometria dos objetos, mas também o controle de variações de brilho e contraste, tornando a morfologia uma ferramenta versátil para o processamento de imagens reais.
+A extensão desses conceitos para imagens em níveis de cinza amplia o poder da morfologia matemática. Nesse contexto, as operações passam a atuar sobre valores de intensidade, sendo interpretadas como filtros não lineares baseados em máximos e mínimos locais. Isso permite não apenas a manipulação da geometria dos objetos, mas também o controle de variações de brilho e contraste, tornando a morfologia uma ferramenta versátil para o processamento de imagens reais.
 
 Além das operações clássicas, foram discutidas transformações derivadas, como **gradiente morfológico**, **top-hat** e **bottom-hat**, que permitem destacar bordas, realçar detalhes finos e compensar variações de iluminação. Essas operações demonstram como a combinação de operadores básicos pode gerar técnicas mais sofisticadas, capazes de evidenciar informações específicas da imagem de maneira eficiente.
 
@@ -649,7 +649,7 @@ O objetivo desta atividade é explorar conceitos de **morfologia matemática**, 
 Dadas duas imagens binárias definidas no mesmo domínio:
 
 - uma imagem **máscara (I)**  
-- uma imagem **marcadora (J)**, tal que \( J \subseteq I \)
+- uma imagem **marcadora (J)**, tal que $J \subseteq I$
 
 A reconstrução geodésica consiste em recuperar apenas os **componentes conexos da imagem máscara que contêm pontos marcados**.
 
