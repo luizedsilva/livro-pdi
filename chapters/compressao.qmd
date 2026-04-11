@@ -335,7 +335,10 @@ A codificação de Huffman é amplamente utilizada em diversos padrões e sistem
 
 A simulação em sequência apresenta a árvore construída a partir das frequências. No exemplo, as frequências 5, 9, 12, 13, 16 e 45, separados por espaço, são as frequências dos pixels (símbolos) 1, 2, 3, 4, 5 e 6, respectivamente.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/RbVDL-7-g" height="600" imagem="imgs/cap6/p5js-huffman.png" qrcode="imgs/cap6/qrcode-huffman.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/RbVDL-7-g" height="600" imagem="imgs/cap6/p5js-huffman.png" qrcode="imgs/cap6/qrcode-huffman.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/huffman/" height="600" imagem="imgs/cap6/p5js-huffman.png" qrcode="imgs/cap6/qrcode-huffman.png"}
 :::
 
 ### Codificação LZW
@@ -410,7 +413,10 @@ Além disso, o algoritmo apresenta **implementação relativamente simples e exe
 
 Em resumo, a codificação LZW destaca-se por combinar **simplicidade, eficiência e independência de conhecimento estatístico prévio**, utilizando um dicionário adaptativo para representar padrões repetidos nos dados e reduzir o volume de informação necessário para armazená-los ou transmiti-los.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/FQDBrI9D_" height="600" imagem="imgs/cap6/p5js-lzw.png" qrcode="imgs/cap6/qrcode-lzw.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/FQDBrI9D_" height="600" imagem="imgs/cap6/p5js-lzw.png" qrcode="imgs/cap6/qrcode-lzw.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/lzw/" height="600" imagem="imgs/cap6/p5js-lzw.png" qrcode="imgs/cap6/qrcode-lzw.png"}
 :::
 
 ## Padrões de Compressão de Imagens
@@ -573,7 +579,10 @@ Dessa forma, a codificação de Huffman constitui a etapa final do processo de c
 
 O exemplo interativo seguinte demonstra as etapas de codificação para um bloco $8 \times 8$. Com o botão "Passo", os valores do bloco $8 \times 8$ são modificados para apresentar o resultado da etapa realizada (deslocamento, DCT, Quantização, zig-zag, RLE e Huffman). As etapas zig-zag, RLE e Huffman são apresentadas concomitantemente. A cada passo, são apresentados a contagem de zeros antes de cada coeficiente DCT e para cada par (run, coeficiente), são mostrados à direita do bloco a diferença $DC_i - DC_{i-1}$ (considerasse $DC_{i-1}=-17$ nesta simulação) para codificação do coeficiente DC e para todos os coeficientes são mostrados a categoria, o prefixo e a mantissa consultadas nas tabelas DC e AC (padrão de luminância) de Huffman:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/crAHlJNHf" height="600" imagem="imgs/cap6/p5js-jpeg.png" qrcode="imgs/cap6/qrcode-jpeg.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/crAHlJNHf" height="600" imagem="imgs/cap6/p5js-jpeg.png" qrcode="imgs/cap6/qrcode-jpeg.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/jpeg/" height="600" imagem="imgs/cap6/p5js-jpeg.png" qrcode="imgs/cap6/qrcode-jpeg.png"}
 :::
 
 ### Formato Base-64
@@ -608,7 +617,10 @@ A codificação Base-64 é amplamente utilizada em diversas aplicações computa
 
 O código interativo seguinte demonstra esse processo de codificação:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/_CeZ1sAt8" height="600" imagem="imgs/cap6/p5js-base64.png" qrcode="imgs/cap6/qrcode-base64.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/_CeZ1sAt8" height="600" imagem="imgs/cap6/p5js-base64.png" qrcode="imgs/cap6/qrcode-base64.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/base64/" height="600" imagem="imgs/cap6/p5js-base64.png" qrcode="imgs/cap6/qrcode-base64.png"}
 :::
 
 ## Considerações Finais

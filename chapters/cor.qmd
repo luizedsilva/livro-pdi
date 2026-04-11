@@ -76,7 +76,10 @@ A **saturação (S)** indica o quão “pura” ou “intensa” é a cor. No mo
 
 No exemplo interativo em sequência está um cone que representa as matiz, saturação e o valor no modelo de cores HSV. Arraste o cone com o mouse para uma visualização tridimensional do cone:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0" height="550" imagem="imgs/cap5/p5js-hsvcone.png" qrcode="imgs/cap5/qrcode-hsvcone.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0" height="550" imagem="imgs/cap5/p5js-hsvcone.png" qrcode="imgs/cap5/qrcode-hsvcone.png"}
+::: -->
+
+::: {.simulacao url=""https://luizedsilva.github.io/livro-pdi/p5js/hsvcone/" height="550" imagem="imgs/cap5/p5js-hsvcone.png" qrcode="imgs/cap5/qrcode-hsvcone.png"}
 :::
 
 ### Interpretação geométrica
@@ -118,7 +121,10 @@ $$
 
 No exemplo interativo em sequência está uma representação usando o círculo de cores e o triângulo que liga branco, o preto e todas as matizes da cor escolhida no modelo HSI. Clique no círculo de cores para selecionar a matiz. No triângulo correspondente estão representados o vértice da matiz selecionada, o vértice da cor branca e o vértice cor preta. O triângulo é pintado com as variações de saturação e intensidade da matiz selecionada:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/_iighNxoE" height="550" imagem="imgs/cap5/p5js-hsvcirculo.png" qrcode="imgs/cap5/qrcode-hsvcirculo.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/_iighNxoE" height="550" imagem="imgs/cap5/p5js-hsvcirculo.png" qrcode="imgs/cap5/qrcode-hsvcirculo.png"}
+::: -->
+
+::: {.simulacao url=""https://luizedsilva.github.io/livro-pdi/p5js/hsvcirculo/" height="550" imagem="imgs/cap5/p5js-hsvcirculo.png" qrcode="imgs/cap5/qrcode-hsvcirculo.png"}
 :::
 
 ## Modelo de Cor HSI
@@ -160,7 +166,10 @@ $$
 
 No exemplo interativo em sequência estão implementados todas as conversões RGB para HSI e para HSV:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/ig_qS3rmq" height="550" imagem="imgs/cap5/p5js-cores.png" qrcode="imgs/cap5/qrcode-cores.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/ig_qS3rmq" height="550" imagem="imgs/cap5/p5js-cores.png" qrcode="imgs/cap5/qrcode-cores.png"}
+::: -->
+
+::: {.simulacao url=""https://luizedsilva.github.io/livro-pdi/p5js/cores/" height="550" imagem="imgs/cap5/p5js-cores.png" qrcode="imgs/cap5/qrcode-cores.png"}
 :::
 
 ## Representação de Imagens Coloridas
