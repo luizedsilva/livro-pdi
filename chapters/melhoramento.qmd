@@ -115,7 +115,10 @@ Ao final do processo o **maior valor atribuído a** $maxDist$ corresponde ao **m
 
 Em sequência um simulador desse algoritmo:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/rp0vlNYIX" height="500" imagem="imgs/cap3/p5js-distance.png" qrcode="imgs/cap3/qrcode-distance.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/rp0vlNYIX" height="500" imagem="imgs/cap3/p5js-distance.png" qrcode="imgs/cap3/qrcode-distance.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/distance/" height="500" imagem="imgs/cap3/p5js-distance.png" qrcode="imgs/cap3/qrcode-distance.png"}
 :::
 
 ### Adjacência e Conectividade dos Pixels
@@ -218,7 +221,10 @@ return L;
 
 Em sequência um simulador desse algoritmo:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/nAeHKMA9H" height="500" imagem="imgs/cap3/p5js-rotula.png" qrcode="imgs/cap3/qrcode-rotula.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/nAeHKMA9H" height="500" imagem="imgs/cap3/p5js-rotula.png" qrcode="imgs/cap3/qrcode-rotula.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/rotula/" height="500" imagem="imgs/cap3/p5js-rotula.png" qrcode="imgs/cap3/qrcode-rotula.png"}
 :::
 
 ## Conceito de Melhoramento de Imagens
@@ -254,7 +260,10 @@ As transformações de intensidade são operações pontuais, nas quais o valor 
 
 Essas transformações mapeiam um nível de cinza de entrada $r$ para um nível de saída $s$, conforme representado no gráfico gerado no exemplo seguinte (onde $L$ representa a quantidade de níveis de cinza):
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/N451LEXKV" height="500" imagem="imgs/cap3/p5js-transformacao.png" qrcode="imgs/cap3/qrcode-transformacao.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/N451LEXKV" height="500" imagem="imgs/cap3/p5js-transformacao.png" qrcode="imgs/cap3/qrcode-transformacao.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/transform/" height="500" imagem="imgs/cap3/p5js-transformacao.png" qrcode="imgs/cap3/qrcode-transformacao.png"}
 :::
 
 ### Transformação Linear
@@ -331,7 +340,10 @@ image power(image img, float gamma)
 
 O parâmetro ($\gamma$) controla a forma da curva de transformação. Valores de ($\gamma < 1$) tem o efeito de clarear a imagem, enquanto valores de ($\gamma > 1$) escurecem a imagem. O exemplo interativo abaixo ilustra essa transformação:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/wtDvsM5Ym" height="500" imagem="imgs/cap3/p5js-potencia.png" qrcode="imgs/cap3/qrcode-potencia.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/wtDvsM5Ym" height="500" imagem="imgs/cap3/p5js-potencia.png" qrcode="imgs/cap3/qrcode-potencia.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/potencia/" height="500" imagem="imgs/cap3/p5js-potencia.png" qrcode="imgs/cap3/qrcode-potencia.png"}
 :::
 
 ### Transformação Linear por Partes
@@ -352,7 +364,10 @@ Na prática, a implementação dessa transformação é geralmente feita por mei
 
 O exemplo interativo seguinte demonstra a transformação linear por partes. Mova os pontos B (vermelho) e C(verde) para ajustar o contraste da imagem.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2ZjbPla9T" height="400" imagem="imgs/cap3/p5js-linear.png" qrcode="imgs/cap3/qrcode-linear.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2ZjbPla9T" height="400" imagem="imgs/cap3/p5js-linear.png" qrcode="imgs/cap3/qrcode-linear.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/linear/" height="400" imagem="imgs/cap3/p5js-linear.png" qrcode="imgs/cap3/qrcode-linear.png"}
 :::
 
 ## Histograma de Imagens
@@ -443,7 +458,10 @@ image equalization(image in)
 
 O exemplo interativo a seguir apresenta a implementação do algoritmo de **equalização de histograma**. No exemplo, pode-se carregar qualquer imagem, mas somente as intensidades (tons de cinza), são utilizadas. Para imagem carregada será apresentada a imagem original, o seu histograma correspondente, a imagem equalizada e o histograma equalizado.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/nFphWvonZ" height="500" imagem="imgs/cap3/p5js-histograma.png" qrcode="imgs/cap3/qrcode-histograma.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/nFphWvonZ" height="500" imagem="imgs/cap3/p5js-histograma.png" qrcode="imgs/cap3/qrcode-histograma.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/histograma/" height="500" imagem="imgs/cap3/p5js-histograma.png" qrcode="imgs/cap3/qrcode-histograma.png"}
 :::
 
 ## Filtragem
@@ -458,7 +476,10 @@ A convolução pode ser interpretada como o deslizamento de uma máscara (ou *ke
 
 O exemplo interativo seguinte ilustra o processo de convolução para uma imagem 16x16 em tons de cinza. No exemplo é possível iniciar a simulação (clicando no botão "continuar"), pausar o processo (clicando no botão "pausar"), ou acelerar/desacelerar a simulação, clicando com o mouse sobre a imagem.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/DvTNxm7gO" height="380" imagem="imgs/cap3/p5js-convolucao.png" qrcode="imgs/cap3/qrcode-convolucao.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/DvTNxm7gO" height="380" imagem="imgs/cap3/p5js-convolucao.png" qrcode="imgs/cap3/qrcode-convolucao.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/convolucao/" height="380" imagem="imgs/cap3/p5js-convolucao.png" qrcode="imgs/cap3/qrcode-convolucao.png"}
 :::
 
 ### Equação da Convolução
@@ -533,7 +554,10 @@ Um filtro passa-alta realça bordas e detalhes, atenuando as baixas frequências
 
 No exemplo interativo em sequência, esses diversos filtros podem ser testados:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2T58I4gUQ" height="550" imagem="imgs/cap3/p5js-filtro.png" qrcode="imgs/cap3/qrcode-filtro.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2T58I4gUQ" height="550" imagem="imgs/cap3/p5js-filtro.png" qrcode="imgs/cap3/qrcode-filtro.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/filtro/" height="550" imagem="imgs/cap3/p5js-filtro.png" qrcode="imgs/cap3/qrcode-filtro.png"}
 :::
 
 ## Considerações sobre Ruído
@@ -593,7 +617,10 @@ O filtro da mediana substitui o valor do pixel pelo valor mediano de sua vizinha
 
 No exemplo interativo seguinte está um programa que permite carregar uma imagem (que é convertida em tons de cinza), gerar ruído sal e pimenta de acordo com probabilidades definidas e em seguida aplicar o filtro da mediana para remoção do ruído, para demonstração destes conceitos.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/xk5SXodH3" height="450" imagem="imgs/cap3/p5js-mediana.png" qrcode="imgs/cap3/qrcode-mediana.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/xk5SXodH3" height="450" imagem="imgs/cap3/p5js-mediana.png" qrcode="imgs/cap3/qrcode-mediana.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/mediana/" height="450" imagem="imgs/cap3/p5js-mediana.png" qrcode="imgs/cap3/qrcode-mediana.png"}
 :::
 
 ## Considerações Finais
