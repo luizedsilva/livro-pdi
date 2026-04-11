@@ -54,7 +54,10 @@ Atualmente, a ideia de Fourier é um dos pilares da ciência e da engenharia, se
 
 A função denominada "Soma das senóides", apresentada no exemplo interativo em sequência é obtida pela **soma das quatro funções** (Senoide 1, Senoide 2, Senoide 3, Senoide 4). Cada uma dessas funções elementares é uma senoide com frequência e amplitude distintas. Quando combinadas, elas produzem uma forma de onda mais complexa, que já não se parece, à primeira vista, com um seno simples.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/Dn_cYEuqj" height="600" imagem="imgs/cap4/p5js-soma.png" qrcode="imgs/cap4/qrcode-soma.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/Dn_cYEuqj" height="600" imagem="imgs/cap4/p5js-soma.png" qrcode="imgs/cap4/qrcode-soma.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/soma/" height="600" imagem="imgs/cap4/p5js-soma.png" qrcode="imgs/cap4/qrcode-soma.png"}
 :::
 
 O exemplo ilustrativo seguinte, adaptado do código de **Daniel Shiffman**[^fourier-1], demonstra como uma série de Fourier pode ser utilizada para representar uma onda quadrada.
@@ -67,7 +70,10 @@ Nesse exemplo, cada **termo da série** é representado por um **círculo trigon
 
 A **soma dos termos da série** é obtida pela **projeção vertical** (eixo $y$) do vetor resultante, formado pelo encadeamento dos raios de todos os círculos. À medida que mais termos são adicionados, a forma de onda resultante aproxima-se progressivamente de uma **onda quadrada**, evidenciando o princípio fundamental da série de Fourier: a representação de funções periódicas complexas como a soma de senos e cossenos.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kk4tjuY7W" height="600" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kk4tjuY7W" height="600" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/epiciclo/" height="600" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
 :::
 
 ## Transformada de Fourier Unidmensional
@@ -474,7 +480,10 @@ $$
 
 Essa estrutura é conhecida como **butterfly** (imagem seguinte), pois o diagrama de fluxo assume esse formato gráfico. A aplicação sucessiva dessa decomposição reduz o problema até termos triviais de tamanho 1.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/gdGhjn6LZ" height="600" imagem="imgs/cap4/p5js-butterfly8.png" qrcode="imgs/cap4/qrcode-butterfly8.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/gdGhjn6LZ" height="600" imagem="imgs/cap4/p5js-butterfly8.png" qrcode="imgs/cap4/qrcode-butterfly8.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/butterfly8/" height="600" imagem="imgs/cap4/p5js-butterfly8.png" qrcode="imgs/cap4/qrcode-butterfly8.png"}
 :::
 
 #### Um exemplo
@@ -525,7 +534,10 @@ $$
 
 O exemplo interativo seguinte simula os mesmos cálculos com as entradas reordenadas e os cálculos sendo realizados considerando o *esquema butterfly*:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2pBrQ6PYM" height="400" imagem="imgs/cap4/p5js-butterfly4.png" qrcode="imgs/cap4/qrcode-butterfly4.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2pBrQ6PYM" height="400" imagem="imgs/cap4/p5js-butterfly4.png" qrcode="imgs/cap4/qrcode-butterfly4.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/butterfly4/" height="400" imagem="imgs/cap4/p5js-butterfly4.png" qrcode="imgs/cap4/qrcode-butterfly4.png"}
 :::
 
 Usando o *esquema butterfly* também é possível reconstruir o sinal original. Basta utilizar os valores dos coeficientes $F(u)$ reordenados como entrada, considerar $j$ ao invés de $-j$ nos coeficientes e multiplicar o resultado do somatório por $\frac{1}{N}$.
@@ -544,7 +556,10 @@ ou, alternativamente, pela troca dos quadrantes do espectro após a transformaç
 
 O exemplo interativo a seguir apresenta um demonstração do cálculo do espectro de uma imagem (que na entrada é redimensionada para dimensão 256x256). Depois o espectro é calculado e apresentado ao lado da imagem selecionada:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/RCKGkjFiN" height="400" imagem="imgs/cap4/p5js-espectro.png" qrcode="imgs/cap4/qrcode-espectro.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/RCKGkjFiN" height="400" imagem="imgs/cap4/p5js-espectro.png" qrcode="imgs/cap4/qrcode-espectro.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/espectro/" height="400" imagem="imgs/cap4/p5js-espectro.png" qrcode="imgs/cap4/qrcode-espectro.png"}
 :::
 
 ## Filtragem no Domínio da Frequência
@@ -618,7 +633,10 @@ onde $D_0$ é a frequência de corte e $n$ é a ordem do filtro. Para valores pe
 
 O exemplo interativo seguinte apresenta uma visualização 3D destes três filtros. Pode-se escolher o raio do Corte e a Ordem (para o caso do filtro Butterworth):
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kkrvpU7ra" height="650" imagem="imgs/cap4/p5js-filtro.png" qrcode="imgs/cap4/qrcode-filtro.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kkrvpU7ra" height="650" imagem="imgs/cap4/p5js-filtro.png" qrcode="imgs/cap4/qrcode-filtro.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/fourierfilters/" height="650" imagem="imgs/cap4/p5js-filtro.png" qrcode="imgs/cap4/qrcode-filtro.png"}
 :::
 
 Filtros passa-alta podem ser obtidos a partir dos passa-baixa por meio da relação:
@@ -641,7 +659,10 @@ Essa abordagem permite suavização, realce de detalhes, redução de ruído e c
 
 O Exemplo interativo seguinte apresenta uma aplicação do processo de filtragem por Fourier.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3HBiKuxP2" height="600" imagem="imgs/cap4/p5js-filtragem.png" qrcode="imgs/cap4/qrcode-filtragem.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3HBiKuxP2" height="600" imagem="imgs/cap4/p5js-filtragem.png" qrcode="imgs/cap4/qrcode-filtragem.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/filtragem/" height="600" imagem="imgs/cap4/p5js-filtragem.png" qrcode="imgs/cap4/qrcode-filtragem.png"}
 :::
 
 ## Vantagens e Limitações
