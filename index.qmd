@@ -16,8 +16,8 @@ Por sua facilidade de uso e execução direta no navegador, a p5.js é amplament
 
 Exemplo de código embutido usando p5js:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/J9qjHybzR" height="400" imagem="p5js-negative.png" qrcode="qrcode-negative.png"}
-:::
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/J9qjHybzR" height="400" imagem="p5js-negative.png" qrcode="qrcode-negative.png"}
+::: -->
 
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/negative/" height="400" imagem="p5js-negative.png" qrcode="qrcode-negative.png"}
 :::

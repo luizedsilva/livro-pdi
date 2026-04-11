@@ -10,6 +10,9 @@ number-depth: 2
 filters:
   - simulacao.lua
 
+resources: 
+  - p5js
+
 book:
   title: "Processamento Digital de Imagens"
   subtitle: "Uma abordagem interativa com P5.js"
