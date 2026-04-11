@@ -1,198 +1,169 @@
-// -----------------------------------------------------------
-// Simulação: Rotulagem de Componentes Conectados
-// vizinhos r (acima) e t (esquerda)
-// -----------------------------------------------------------
+//--------------------------------------------------------------------
+// Intensity Transformation Graphic
+//
+// Código original: Luiz Eduardo da Silva
+//
+// Adaptação e modificações: Luiz Eduardo da Silva
+// - Ajustes para uso didático
+// - Integração ao livro de Processamento de Imagens
+//--------------------------------------------------------------------
 
-let grid = [
-  [0,1,1,0,0,1,1],
-  [0,1,1,0,1,1,0],
-  [0,0,1,0,0,0,0],
-  [1,1,0,0,1,1,1],
-  [1,1,0,0,0,1,0]
-];
+// =============================
+// Parâmetros globais
+// =============================
+const L = 255;          // níveis de intensidade
+const margin = 50;
+const sizePlot = 350;   // área útil do gráfico
+const steps = 300;      // amostragem das curvas
 
-let labels;
-let equivalences;
-let nextLabel;
+// parâmetros das transformações
+const gammaRoot = 0.5;
+const gammaPower = 2.0;
 
-let cellSize = 60;
-
-let i, j;
-
-let stepButton, resetButton;
-
+// =============================
 function setup() {
-
-  createCanvas(700, grid.length * cellSize);
-
-  stepButton = createButton("Passo");
-  stepButton.position(10, height + 10);
-  stepButton.mousePressed(stepAlgorithm);
-
-  resetButton = createButton("Reset");
-  resetButton.position(70, height + 10);
-  resetButton.mousePressed(resetSimulation);
-
-  resetSimulation();
+  createCanvas(450, 450);
+  textFont("serif");
+  noLoop();
 }
 
-function resetSimulation(){
+// =============================
+function draw() {
+  background(255);
+  stroke(0);
+  noFill();
 
-  labels = [];
-  equivalences = {};
-  nextLabel = 1;
+  drawAxes();
+  drawTicks();
 
-  i = 0;
-  j = 0;
+  // Curvas
+  drawCurve(identity);
+  drawCurve(negative);
+  drawCurve(logTransform);
+  drawCurve(inverseLogTransform);
+  drawCurve(r => powerTransform(r, gammaRoot));
+  drawCurve(r => powerTransform(r, gammaPower));
 
-  for(let y=0;y<grid.length;y++){
-    labels[y] = [];
-    for(let x=0;x<grid[0].length;x++){
-      labels[y][x] = 0;
-    }
-  }
-
+  drawLabels();
 }
 
-function draw(){
-
-  background(240);
-
-  drawGrid();
-  drawEquivalenceTable();
-
+// =============================
+// Mapeamento r,s -> tela
+// =============================
+function xMap(r) {
+  return margin + (r / L) * sizePlot;
 }
 
-function stepAlgorithm(){
-
-  if(i >= grid.length) return;
-
-  let p = grid[i][j];
-
-  if(p == 1){
-
-    let r = (i>0) ? labels[i-1][j] : 0;
-    let t = (j>0) ? labels[i][j-1] : 0;
-
-    if(r==0 && t==0){
-
-      labels[i][j] = nextLabel;
-      nextLabel++;
-
-    } else if(r!=0 && t==0){
-
-      labels[i][j] = r;
-
-    } else if(r==0 && t!=0){
-
-      labels[i][j] = t;
-
-    } else {
-
-      labels[i][j] = min(r,t);
-
-      if(r!=t){
-        equivalences[max(r,t)] = min(r,t);
-      }
-
-    }
-  }
-
-  j++;
-
-  if(j >= grid[0].length){
-    j = 0;
-    i++;
-  }
-
+function yMap(s) {
+  return margin + sizePlot - (s / L) * sizePlot;
 }
 
-function drawGrid(){
-
-  textAlign(CENTER,CENTER);
-  textSize(18);
-
-  for(let y=0;y<grid.length;y++){
-    for(let x=0;x<grid[0].length;x++){
-
-      let px = x*cellSize;
-      let py = y*cellSize;
-
-      if(grid[y][x]==0) fill(255);
-      else{
-        let l = labels[y][x];
-        if(l==0) fill(200);
-        else fill(colorFromLabel(l));
-      }
-
-      stroke(0);
-      rect(px,py,cellSize,cellSize);
-
-      if(labels[y][x]!=0){
-        fill(0);
-        text(labels[y][x],px+cellSize/2,py+cellSize/2);
-      }
-
-    }
-  }
-
-  if(i < grid.length){
-
-    let px = j*cellSize;
-    let py = i*cellSize;
-
-    // p
-    strokeWeight(4);
-    stroke(255,0,0);
-    noFill();
-    rect(px,py,cellSize,cellSize);
-
-    // r
-    if(i>0){
-      stroke(0,0,255);
-      rect(px,(i-1)*cellSize,cellSize,cellSize);
-    }
-
-    // t
-    if(j>0){
-      stroke(0,150,0);
-      rect((j-1)*cellSize,py,cellSize,cellSize);
-    }
-
-    strokeWeight(1);
-
-    fill(0);
-    text("p",px+10,py+10);
-
-    if(i>0) text("r",px+10,(i-1)*cellSize+10);
-    if(j>0) text("t",(j-1)*cellSize+10,py+10);
-
-  }
-
+// =============================
+// Transformações
+// =============================
+function identity(r) {
+  return r;
 }
 
-function drawEquivalenceTable(){
+function negative(r) {
+  return L - 1 - r;
+}
 
-  let startX = grid[0].length * cellSize + 20;
+function logTransform(r) {
+  const c = (L - 1) / Math.log(1 + L);
+  return c * Math.log(1 + r);
+}
 
+function inverseLogTransform(r) {
+  const c = Math.log(1 + L) / (L - 1);
+  return Math.exp(c * r) - 1;
+}
+
+function powerTransform(r, gamma) {
+  return (L - 1) * Math.pow(r / (L - 1), gamma);
+}
+
+// =============================
+// Desenho genérico de curvas
+// =============================
+function drawCurve(f) {
+  beginShape();
+  for (let i = 0; i <= steps; i++) {
+    const r = (L * i) / steps;
+    const s = f(r);
+    vertex(xMap(r), yMap(s));
+  }
+  endShape();
+}
+
+// =============================
+// Eixos e moldura
+// =============================
+function drawAxes() {
+  rect(margin, margin, sizePlot, sizePlot);
+
+  // eixos
+  line(margin, margin + sizePlot, margin + sizePlot, margin + sizePlot);
+  line(margin, margin + sizePlot, margin, margin);
+}
+
+// =============================
+// Marcas L/4 etc.
+// =============================
+function drawTicks() {
+  push();               // salva estado gráfico
+  stroke(0);
+  strokeWeight(1);
   fill(0);
-  textAlign(LEFT,TOP);
-  textSize(16);
+  textSize(12);
 
-  text("Equivalências:", startX,20);
+  const ticks = [0, L / 4, L / 2, (3 * L) / 4, L - 1];
+  const labels = ["0", "L/4", "L/2", "3L/4", "L−1"];
 
-  let y = 50;
-
-  for(let key in equivalences){
-    text(key + " → " + equivalences[key], startX, y);
-    y += 20;
+  // eixo Y
+  for (let i = 0; i < ticks.length; i++) {
+    const y = yMap(ticks[i]);
+    line(margin - 5, y, margin, y);
+    text(labels[i], margin - 35, y + 6);
   }
 
+  // eixo X
+  for (let i = 0; i < ticks.length; i++) {
+    const x = xMap(ticks[i]);
+    line(x, margin + sizePlot, x, margin + sizePlot + 5);
+    text(labels[i], x - 15, margin + sizePlot + 20);
+  }
+
+  pop();                // restaura estado gráfico
 }
 
-function colorFromLabel(l){
+// =============================
+// Rótulos
+// =============================
+function drawLabels() {
+  textSize(12);
 
-  let hue = (l*60)%255;
-  return color(hue,150,200);
+  // IMPORTANTE: texto usa fill()
+  fill(0);
+  noStroke();
 
+  // curvas
+  text("Identidade", xMap(40), yMap(40));
+  text("Negativo", xMap(30), yMap(220));
+  text("Log", xMap(20), yMap(140));
+  text("Raiz n-ésima", xMap(115), yMap(170));
+  text("Potência n-ésima", xMap(165), yMap(110));
+  text("Log inverso", xMap(140), yMap(20));
+
+  // eixo x
+  text("Nível de intensidade de entrada, r",
+       margin + 80, height - 15);
+
+  // eixo y
+  push();
+  textSize(12);
+  translate(10, 300);
+  rotate(-HALF_PI);
+  text("Nível de intensidade de saída, s", 0, 0);
+  pop();
 }
