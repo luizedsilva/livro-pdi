@@ -468,7 +468,9 @@ Figura&nbsp;7.3: Dilatação como união
 </div>
 <p>A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos. O processo de dilatação é realizado como uma convolução do elemento estruturante.</p>
 <p>O código interativo em sequência demostra o funcionamento da operação de dilatação. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da dilatação:</p>
-<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" width="100%" height="400" style="border:none;"></iframe></div>
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" height="400" imagem="imgs/cap7/p5js-dilatacao.png" qrcode="imgs/cap7/qrcode-dilatacao.png"}
+::: -->
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/dilatacao/" width="100%" height="400" style="border:none;"></iframe></div>
 </section>
 <section id="erosão" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="erosão">Erosão</h3>
@@ -490,7 +492,9 @@ Figura&nbsp;7.4: Erosão como interseção
 </div>
 <p>Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.</p>
 <p>O código interativo em sequência demostra o funcionamento da operação de erosão. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da erosão:</p>
-<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" width="100%" height="400" style="border:none;"></iframe></div>
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" height="400" imagem="imgs/cap7/p5js-erosao.png" qrcode="imgs/cap7/qrcode-erosao.png"}
+::: -->
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/erosao/" width="100%" height="400" style="border:none;"></iframe></div>
 </section>
 <section id="abertura-e-fechamento" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="abertura-e-fechamento">Abertura e Fechamento</h3>
@@ -506,7 +510,9 @@ Figura&nbsp;7.4: Erosão como interseção
 \varphi_B(I) = I \bullet B = \varepsilon_B (\delta_B(I))
 \]</span></p>
 <p>O exemplo interativo seguinte está a implementação da operações de erosão, dilatação, abertura e fechamento para imagens pbm:</p>
-<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/6VAsB0SBo" width="100%" height="550" style="border:none;"></iframe></div>
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/6VAsB0SBo" height="550" imagem="imgs/cap7/p5js-morfo.png" qrcode="imgs/cap7/qrcode-morfo.png"}
+::: -->
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/morfo/" width="100%" height="550" style="border:none;"></iframe></div>
 </section>
 <section id="operação-hit-or-miss-tudo-ou-nada" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="operação-hit-or-miss-tudo-ou-nada">Operação Hit or Miss (Tudo ou nada)</h3>
@@ -566,9 +572,13 @@ Figura&nbsp;7.5: Família homotópica
 </figure>
 </div>
 <p>O exemplo interativo seguinte simula o processo de afinamento para uma imagem considerando a família homotópia da <a href="#fig-familia" class="quarto-xref">Figura&nbsp;<span>7.5</span></a>. Os controles na simulação servem para executar o algoritmo de afinamento passo a passo, resetar a simulação, interromper ou continuar de forma automática. Ainda é possível controlar a velocidade da simulação automática. A cada passo é mostrado o elemento da família homotópica que está sendo utilizado para o afinamento na imagem e abaixo dela.</p>
-<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" width="100%" height="300" style="border:none;"></iframe></div>
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" height="300" imagem="imgs/cap7/p5js-simulacao.png" qrcode="imgs/cap7/qrcode-simulacao.png"}
+::: -->
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/simulacao/" width="100%" height="300" style="border:none;"></iframe></div>
 <p>No exemplo interativo seguinte está uma implementação do algoritmo rápido de afinamento de <span class="citation" data-cites="zhang1984thinning">Zhang e Suen (<a href="references.html#ref-zhang1984thinning" role="doc-biblioref">1984</a>)</span> para aplicação à silhueta de um homem.</p>
-<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/8aSI6XMnX" width="100%" height="550" style="border:none;"></iframe></div>
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8aSI6XMnX" height="550" imagem="imgs/cap7/p5js-afinamento.png" qrcode="imgs/cap7/qrcode-afinamento.png"}
+::: -->
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/afinamento/" width="100%" height="550" style="border:none;"></iframe></div>
 </section>
 <section id="operações-geodésicas" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="operações-geodésicas">Operações Geodésicas</h3>
@@ -659,7 +669,9 @@ Figura&nbsp;7.7: Reconstrução geodésica
 <p>Na etapa seguinte, aplica-se a <strong>erosão binária</strong> com um elemento estruturante retangular de tamanho ajustável. Essa operação tem o efeito de manter os componentes que contém as propriedades de altura e largura do elemento estruturante selecionado. O resultado da erosão é utilizado como <strong>imagem marcadora</strong>, enquanto a imagem binária original atua como <strong>máscara</strong>.</p>
 <p>A <strong>reconstrução geodésica</strong> é então realizada por um processo iterativo de crescimento da imagem marcadora, limitado pela máscara. A cada passo, os pixels se expandem apenas para regiões permitidas, preservando a conectividade original. O processo termina quando não há mais alterações.</p>
 <p>Como resultado, são reconstruídas apenas as letras do texto gerado que satisfazem as propriedades de largura e altura definidas pelo elemento estruturante.</p>
-<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/cEQHgceVN" width="100%" height="600" style="border:none;"></iframe></div>
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cEQHgceVN" height="600" imagem="imgs/cap7/p5js-geodesica.png" qrcode="imgs/cap7/qrcode-geodesica.png"}
+::: -->
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/geodesica/" width="100%" height="600" style="border:none;"></iframe></div>
 </section>
 </section>
 <section id="propriedades-das-operações-morfológicas" class="level2" data-number="7.5">
@@ -736,7 +748,9 @@ f \bullet b = (f \oplus b) \ominus b
 <p>Por outro lado, a operação <strong>bottom-hat</strong>, ou <em>black top-hat</em>, é definida como a diferença entre o fechamento da imagem e a imagem original, ou seja, ( (f) = (f b) - f ). O fechamento tem como efeito principal eliminar pequenas regiões escuras, preenchendo cavidades e suavizando descontinuidades negativas. Assim, ao subtrair a imagem original do resultado do fechamento, obtêm-se exatamente essas regiões escuras removidas. Consequentemente, o bottom-hat é utilizado para destacar pequenos objetos escuros ou detalhes negativos presentes na imagem, especialmente quando situados sobre fundos mais claros.</p>
 <p>De maneira geral, essas duas operações podem ser interpretadas como filtros morfológicos que isolam componentes locais da imagem. Enquanto o top-hat evidencia estruturas claras que foram eliminadas pela abertura, o bottom-hat destaca estruturas escuras removidas pelo fechamento. Em ambos os casos, essas operações atuam como ferramentas eficazes para realçar detalhes finos e compensar variações de fundo, sendo particularmente úteis em aplicações como inspeção visual, análise biomédica e processamento de documentos.</p>
 <p>O exemplo interativo seguinte apresenta essas operações:</p>
-<div class="simulacao-container"><iframe src="https://editor.p5js.org/luizedsilva/full/8ekG_1FsO" width="100%" height="600" style="border:none;"></iframe></div>
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8ekG_1FsO" height="600" imagem="imgs/cap7/p5js-cinza.png" qrcode="imgs/cap7/qrcode-cinza.png"}
+::: -->
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/cinza/" width="100%" height="600" style="border:none;"></iframe></div>
 </section>
 </section>
 <section id="aplicações-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.9">
