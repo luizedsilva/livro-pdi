@@ -107,22 +107,17 @@ let AC_TABLE = [
 ];
 
 function setup() {
-  createCanvas(600, 500);
+  createCanvas(600, 430);
   textFont("monospace");
 
   compute();
 
-  createButton("Passo")
-    .position(10, 400)
-    .mousePressed(nextStep);
+  createButton("Passo").position(10, 400).mousePressed(nextStep);
 
-  createButton("Reset")
-    .position(70, 400)
-    .mousePressed(resetSimulation);
+  createButton("Reset").position(70, 400).mousePressed(resetSimulation);
 }
 
 function resetSimulation() {
-
   stage = 0;
   zigIndex = 0;
 
@@ -142,7 +137,7 @@ function resetSimulation() {
 }
 
 function draw() {
-  background(250);
+  background(220);
   drawPipeline();
   drawMatrixStage();
   drawRLE();
