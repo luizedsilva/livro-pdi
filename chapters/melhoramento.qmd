@@ -263,7 +263,7 @@ Essas transformações mapeiam um nível de cinza de entrada $r$ para um nível 
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/N451LEXKV" height="500" imagem="imgs/cap3/p5js-transformacao.png" qrcode="imgs/cap3/qrcode-transformacao.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/transform/" height="500" imagem="imgs/cap3/p5js-transformacao.png" qrcode="imgs/cap3/qrcode-transformacao.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/transform/" height="500" imagem="imgs/cap3/p5js-transformacao.png" qrcode="imgs/cap3/qrcode-transform.png"}
 :::
 
 ### Transformação Linear

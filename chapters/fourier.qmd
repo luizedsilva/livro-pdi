@@ -636,7 +636,7 @@ O exemplo interativo seguinte apresenta uma visualização 3D destes três filtr
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kkrvpU7ra" height="650" imagem="imgs/cap4/p5js-filtro.png" qrcode="imgs/cap4/qrcode-filtro.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/fourierfilters/" height="650" imagem="imgs/cap4/p5js-filtro.png" qrcode="imgs/cap4/qrcode-filtro.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/fourierfilters/" height="650" imagem="imgs/cap4/p5js-filtro.png" qrcode="imgs/cap4/qrcode-fourierfilters.png"}
 :::
 
 Filtros passa-alta podem ser obtidos a partir dos passa-baixa por meio da relação:
