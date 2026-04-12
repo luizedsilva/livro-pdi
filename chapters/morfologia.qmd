@@ -487,7 +487,7 @@ O exemplo interativo seguinte apresenta essas operações:
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8ekG_1FsO" height="600" imagem="imgs/cap7/p5js-cinza.png" qrcode="imgs/cap7/qrcode-cinza.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/cinza/" height="600" imagem="imgs/cap7/p5js-cinza.png" qrcode="imgs/cap7/qrcode-cinza.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/cinza/" height="330" imagem="imgs/cap7/p5js-cinza.png" qrcode="imgs/cap7/qrcode-cinza.png"}
 :::
 
 ## Aplicações da Morfologia em Tons de Cinza

@@ -64,7 +64,7 @@ O código interativo seguinte exemplifica essa abordagem. No exemplo, pode-se es
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/BxhAHtDlu" height="600" imagem="imgs/cap8/p5js-isolado.png" qrcode="imgs/cap8/qrcode-isolado.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/isolado/" height="600" imagem="imgs/cap8/p5js-isolado.png" qrcode="imgs/cap8/qrcode-isolado.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/isolado/" height="680" imagem="imgs/cap8/p5js-isolado.png" qrcode="imgs/cap8/qrcode-isolado.png"}
 :::
 
 Essa é uma abordagem mais básicas de limiarização global, na qual um único valor de limiar $T$ é utilizado para toda a imagem. Esse método é eficaz quando há boa separação entre os níveis de intensidade do objeto e do fundo, como em imagens com histogramas bimodais. No entanto, em situações onde a iluminação não é uniforme, essa abordagem pode apresentar resultados insatisfatórios.
@@ -119,7 +119,7 @@ Uma versão simplificada desses cálculos é apresentada no exemplo interativo a
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/vwJlyplFQ" height="650" imagem="imgs/cap8/p5js-profile.png" qrcode="imgs/cap8/qrcode-profile.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/profile/" height="650" imagem="imgs/cap8/p5js-profile.png" qrcode="imgs/cap8/qrcode-profile.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/profile/" height="600" imagem="imgs/cap8/p5js-profile.png" qrcode="imgs/cap8/qrcode-profile.png"}
 :::
 
 Essas operações estão representadas nas máscaras de convolução para identificação de bordas horizontais e verticais da @fig-sobel.
@@ -239,7 +239,7 @@ O exemplo interativo seguinte apresenta uma simulação desse algoritmo de water
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/pdFTjSFE0" height="600" imagem="imgs/cap8/p5js-simula.png" qrcode="imgs/cap8/qrcode-simula.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/simula/" height="600" imagem="imgs/cap8/p5js-simula.png" qrcode="imgs/cap8/qrcode-simula.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/simula/" height="550" imagem="imgs/cap8/p5js-simula.png" qrcode="imgs/cap8/qrcode-simula.png"}
 :::
 
 Os exemplos seguintes demonstram o mesmo algoritmo para imagens. O primeiro exemplo mostra a execução do algoritmo de forma bidimensional. E o segundo mostra a mesma imagem como um relevo tridimensional. Existe uma marca para cada região da imagem. E o crescimento da regiões (inundação do relevo) é realizado até que são encontradas as linhas divisoras de água (watershed).
@@ -247,7 +247,7 @@ Os exemplos seguintes demonstram o mesmo algoritmo para imagens. O primeiro exem
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/mk25edaHn" height="650" imagem="imgs/cap8/p5js-watershed2d.png" qrcode="imgs/cap8/qrcode-watershed2d.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/watershed2d/" height="650" imagem="imgs/cap8/p5js-watershed2d.png" qrcode="imgs/cap8/qrcode-watershed2d.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/watershed2d/" height="580" imagem="imgs/cap8/p5js-watershed2d.png" qrcode="imgs/cap8/qrcode-watershed2d.png"}
 :::
 
 A mesma simulação para um representação da mesma imagem como superfície em sequência:
@@ -255,7 +255,7 @@ A mesma simulação para um representação da mesma imagem como superfície em 
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/vG7r2Wnd4" height="600" imagem="imgs/cap8/p5js-watershed3d.png" qrcode="imgs/cap8/qrcode-watershed3d.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/watershed3d/" height="600" imagem="imgs/cap8/p5js-watershed3d.png" qrcode="imgs/cap8/qrcode-watershed3d.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/watershed3d/" height="550" imagem="imgs/cap8/p5js-watershed3d.png" qrcode="imgs/cap8/qrcode-watershed3d.png"}
 :::
 
 O exemplo interativo seguinte está a implementação para segmentação de imagens reais. Pode-se carregar uma imagem. Para execução do algoritmo basta clicar dentro de alguma região. O clique define um marcador. O outro marcador é a borda da imagem. O algoritmo é então aplicado sobre a imagem de gradiente morfológico (dilatação menos erosão) que evidencia as bordas. Uma linha vermelha seja adicionada a imagem, como resultado da operação de watershed para identificação da borda que contorna o ponto marcado.
@@ -263,7 +263,7 @@ O exemplo interativo seguinte está a implementação para segmentação de imag
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/5fXyn6cyw" height="600" imagem="imgs/cap8/p5js-watershed.png" qrcode="imgs/cap8/qrcode-watershed.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/watershed/" height="600" imagem="imgs/cap8/p5js-watershed.png" qrcode="imgs/cap8/qrcode-watershed.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/watershed/" height="500" imagem="imgs/cap8/p5js-watershed.png" qrcode="imgs/cap8/qrcode-watershed.png"}
 :::
 
 ### Segmentação Baseada em Clustering{.unnumbered}
@@ -283,7 +283,7 @@ O código exemplo seguinte implementa essa técnica para imagens:
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/7ooZnvesJ" height="600" imagem="imgs/cap8/p5js-kmeans.png" qrcode="imgs/cap8/qrcode-kmeans.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/kmeans/" height="600" imagem="imgs/cap8/p5js-kmeans.png" qrcode="imgs/cap8/qrcode-kmeans.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/kmeans/" height="400" imagem="imgs/cap8/p5js-kmeans.png" qrcode="imgs/cap8/qrcode-kmeans.png"}
 :::
 
 Outro método relevante é o Mean Shift, que não exige a definição prévia do número de grupos. Esse algoritmo baseia-se na estimativa de densidade de probabilidade no espaço de características, deslocando iterativamente cada ponto em direção às regiões de maior densidade. Como resultado, os pontos convergem para modos da distribuição, formando clusters de maneira automática.

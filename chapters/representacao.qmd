@@ -135,7 +135,7 @@ O exemplo interativo seguinte apresenta uma simulação desse algoritmo. A cada 
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/hE39MhMXE" height="600" imagem="imgs/cap9/p5js-cadeia.png" qrcode="imgs/cap9/qrcode-cadeia.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/cadeia/" height="600" imagem="imgs/cap9/p5js-cadeia.png" qrcode="imgs/cap9/qrcode-cadeia.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/cadeia/" height="530" imagem="imgs/cap9/p5js-cadeia.png" qrcode="imgs/cap9/qrcode-cadeia.png"}
 :::
 
 
@@ -172,7 +172,7 @@ O exemplo interativo seguinte ilustra esse procedimento.
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/yCo-BS7dT" height="600" imagem="imgs/cap9/p5js-poligono.png" qrcode="imgs/cap9/qrcode-poligono.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/poligono/" height="600" imagem="imgs/cap9/p5js-poligono.png" qrcode="imgs/cap9/qrcode-poligono.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/poligono/" height="450" imagem="imgs/cap9/p5js-poligono.png" qrcode="imgs/cap9/qrcode-poligono.png"}
 :::
 
 ### Critérios de Qualidade
@@ -222,7 +222,7 @@ O exemplo interativo seguinte ilustra esta estratégia. A partir do contorno da 
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/KF3cqn6rT" height="600" imagem="imgs/cap9/p5js-assinatura.png" qrcode="imgs/cap9/qrcode-assinatura.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/assinatura/" height="600" imagem="imgs/cap9/p5js-assinatura.png" qrcode="imgs/cap9/qrcode-assinatura.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/assinatura/" height="500" imagem="imgs/cap9/p5js-assinatura.png" qrcode="imgs/cap9/qrcode-assinatura.png"}
 :::
 
 ## Esqueletização
@@ -315,7 +315,7 @@ A apresentação simultânea da imagem original, da imagem quantizada e das matr
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/0drz5M5vK" height="600" imagem="imgs/cap9/p5js-matriz.png" qrcode="imgs/cap9/qrcode-matriz.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/matriz/" height="600" imagem="imgs/cap9/p5js-matriz.png" qrcode="imgs/cap9/qrcode-matriz.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/matriz/" height="280" imagem="imgs/cap9/p5js-matriz.png" qrcode="imgs/cap9/qrcode-matriz.png"}
 :::
 
 ## Considerações Finais
