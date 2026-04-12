@@ -2,27 +2,15 @@ let img;
 let gray = [];
 let label = [];
 
-let myFont;
-
-let Q = [];
-let qIndex = [];
-
 let currentLevel = 0;
 let maxLevel = 255;
 
-let angleX = Math.PI + Math.PI / 9;
-let angleY = 2 * Math.PI;
-
-const regionColor = [
-  [],
-  [153, 233, 242], // azul
-  [252, 194, 215], // rosa
-  [255, 236, 153], // amarelo
-  [178, 242, 187], // verde
-  [208, 191, 255], // roxo
-];
-
 let nextLabel = 1;
+
+// 🔥 BUCKET QUEUE OTIMIZADA
+let Qx = [];
+let Qy = [];
+let qStart = [];
 
 let watershedPoints = [];
 
@@ -35,6 +23,17 @@ const NONE = 0;
 const QUEUE = -2;
 const WSHED = -1;
 
+let lastUpdate = 0;
+
+const regionColor = [
+  [],
+  [153, 233, 242],
+  [252, 194, 215],
+  [255, 236, 153],
+  [178, 242, 187],
+  [208, 191, 255],
+];
+
 const seeds = [
   { x: 240, y: 170 },
   { x: 390, y: 70 },
@@ -43,92 +42,72 @@ const seeds = [
   { x: 490, y: 320 },
 ];
 
+let angleX = Math.PI + Math.PI / 9;
+let angleY = 2 * Math.PI;
+
 // ============================
 function preload() {
   img = loadImage("relevo.png");
-  myFont = loadFont("Roboto-Regular.ttf");
 }
 
 // ============================
 function setup() {
   createCanvas(500, 500, WEBGL);
+  noStroke();
+
+  // posição da câmera (ajuste fino aqui)
+  camera(0, 200, 800, 0, 0, 0, 0, 1, 0);
+  scale(0.6);
+
   let controls = select("#ui");
-  controls.style("display", "flex");
-  controls.style("flex-direction", "row");
-  controls.style("gap", "8px");
-
-  hud = createGraphics(width, height); // 🔥 camada 2D
-
-  textFont(myFont);
-  textSize(14);
 
   speedSlider = createSlider(100, 20000, 5000, 100);
-  // speedSlider.position(10, 10);
   speedSlider.parent(controls);
 
   btnPlay = createButton("▶ Play");
-  // btnPlay.position(10, 40);
   btnPlay.mousePressed(togglePlay);
   btnPlay.parent(controls);
 
   btnStep = createButton("⏭ Step");
-  // btnStep.position(100, 40);
   btnStep.mousePressed(stepOnce);
   btnStep.parent(controls);
 
   btnReset = createButton("🔄 Reset");
-  // btnReset.position(170, 40);
   btnReset.mousePressed(resetSimulation);
   btnReset.parent(controls);
 
   initAll();
-
-  noLoop();
 }
 
 // ============================
 function draw() {
   background(0);
-  orbitControl(-0.05, 0.05, 0);
 
+  orbitControl(1, 1, 0.2);
   if (running) {
-    for (let k = 0; k < speedSlider.value(); k++) step();
-  }
+    let maxSteps = int(map(speedSlider.value(), 100, 20000, 100, 5000));
 
+    let count = 0;
+
+    while (count < maxSteps) {
+      if (!step()) break;
+      count++;
+    }
+  }
   rotateX(angleX);
   rotateY(angleY);
   scale(0.6);
 
   drawTerrain();
   drawWater();
-  drawWatershed3D();
-
-  drawHUD();
-}
-
-function mousePressed() {
-  lastMouseX = mouseX;
-  lastMouseY = mouseY;
-}
-
-function mouseDragged() {
-  let dx = mouseX - lastMouseX;
-  let dy = mouseY - lastMouseY;
-
-  angleY += dx * 0.01;
-  angleX += dy * 0.01;
-
-  lastMouseX = mouseX;
-  lastMouseY = mouseY;
-
-  redraw();
+  drawWatershed();
 }
 
 // ============================
-// 🌄 RELEVO COLORIDO
+// 🌄 TERRENO ORIGINAL
 // ============================
 function drawTerrain() {
-  let stepSize = 6;
+  let stepSize = mouseIsPressed ? 10 : 6;
 
   for (let y = 0; y < img.height; y += stepSize) {
     for (let x = 0; x < img.width; x += stepSize) {
@@ -138,28 +117,20 @@ function drawTerrain() {
       let r, g, b;
 
       if (l > 0) {
-        // 🎨 cor da região
         let c = regionColor[l];
-
-        // 🌄 fator de iluminação (altura)
         let f = map(z, 0, 255, 0.3, 1);
 
         r = c[0] * f;
         g = c[1] * f;
         b = c[2] * f;
       } else {
-        // neutro para não rotulado
-        let v = z;
-        r = v;
-        g = v;
-        b = v;
+        r = g = b = z;
       }
 
       fill(r, g, b);
 
       push();
       translate(x - img.width / 2, y - img.height / 2, -z / 2);
-
       box(stepSize, stepSize, z);
       pop();
     }
@@ -167,65 +138,37 @@ function drawTerrain() {
 }
 
 // ============================
-// 🌊 ÁGUA TRANSPARENTE
-// ============================
 function drawWater() {
   push();
-
-  noStroke();
-  fill(0, 100, 255, 80); // 🔥 transparência
-
-  let waterZ = -currentLevel;
-
-  translate(0, 0, waterZ);
+  fill(0, 100, 255, 80);
+  translate(0, 0, -currentLevel);
   plane(img.width, img.height);
-
   pop();
 }
 
 // ============================
-// 🔴 WATERSHED TRANSPARENTE
+// 🔴 WATERSHED VISÍVEL
 // ============================
-function drawWatershed3D() {
-  noStroke();
-  fill(255, 0, 0, 120);
-
-  let stepSize = 6;
+function drawWatershed() {
+  stroke(255, 0, 0);
+  strokeWeight(2);
 
   for (let p of watershedPoints) {
-    let x = p.x;
-    let y = p.y;
+    let terrainZ = gray[p.y][p.x];
 
-    let terrainZ = gray[y][x];
-
+    // 🔥 só aparece quando a água alcança
     if (currentLevel < terrainZ) continue;
 
-    let h = currentLevel - terrainZ;
-    if (h <= 0) continue;
+    let x = p.x - img.width / 2;
+    let y = p.y - img.height / 2;
 
-    push();
+    let z = -currentLevel; // 🔥 nível da água
 
-    translate(x - img.width / 2, y - img.height / 2, -(terrainZ + h / 2));
-
-    box(stepSize * 0.6, stepSize * 0.6, h);
-
-    pop();
+    // pequena altura para dar volume visual
+    line(x, y, z, x, y, z - 6);
   }
-}
 
-// ============================
-// HUD
-// ============================
-function drawHUD() {
-  hud.clear(); // limpa
-
-  hud.fill(0, 150);
-  hud.noStroke();
-  hud.rect(10, 10, 180, 40);
-
-  hud.fill(255);
-  hud.textSize(16);
-  hud.text("Nível = " + currentLevel, 20, 35);
+  noStroke();
 }
 
 // ============================
@@ -233,49 +176,35 @@ function drawHUD() {
 // ============================
 function togglePlay() {
   running = !running;
-
-  if (running) {
-    loop(); // 🔥 volta a rodar continuamente
-  } else {
-    noLoop(); // 🔥 para completamente
-  }
-
   btnPlay.html(running ? "⏸ Pause" : "▶ Play");
 }
 
 function stepOnce() {
-  let stepsPerClick = 2000; // 🔥 ajuste aqui
-
-  for (let i = 0; i < stepsPerClick; i++) {
-    step();
-  }
-  redraw();
+  for (let i = 0; i < 300; i++) step();
 }
 
 function resetSimulation() {
   running = false;
-  noLoop();
-
   btnPlay.html("▶ Play");
   initAll();
-
-  redraw();
 }
 
 // ============================
-// INICIALIZAÇÃO
+// INIT
 // ============================
 function initAll() {
   currentLevel = 0;
   nextLabel = 1;
   watershedPoints = [];
 
-  img.loadPixels();
-
+  // 🔥 inicializa buckets
   for (let i = 0; i <= 255; i++) {
-    Q[i] = [];
-    qIndex[i] = 0;
+    Qx[i] = [];
+    Qy[i] = [];
+    qStart[i] = 0;
   }
+
+  img.loadPixels();
 
   for (let y = 0; y < img.height; y++) {
     gray[y] = [];
@@ -290,27 +219,16 @@ function initAll() {
     }
   }
 
-  // regionColor = {};
-
   initSeeds();
   initQueue();
 }
 
-// ============================
-// MARCADORES
 // ============================
 function initSeeds() {
   for (let s of seeds) {
     if (s.x < 0 || s.x >= img.width || s.y < 0 || s.y >= img.height) continue;
 
     label[s.y][s.x] = nextLabel;
-
-    // regionColor[nextLabel] = [
-    //   random(50, 255),
-    //   random(50, 255),
-    //   random(50, 255),
-    // ];
-
     nextLabel++;
   }
 }
@@ -328,12 +246,15 @@ function initQueue() {
           [0, 1],
           [0, -1],
         ]) {
-          let nx = x + dx,
-            ny = y + dy;
+          let nx = x + dx;
+          let ny = y + dy;
 
           if (label[ny][nx] > 0) {
             label[y][x] = QUEUE;
-            Q[gray[y][x]].push({ x, y });
+
+            let level = gray[y][x];
+            Qx[level].push(x);
+            Qy[level].push(y);
             break;
           }
         }
@@ -343,25 +264,24 @@ function initQueue() {
 }
 
 // ============================
-// PASSO DO ALGORITMO
+// STEP OTIMIZADO (CORRETO)
 // ============================
 function step() {
   while (
     currentLevel <= maxLevel &&
-    qIndex[currentLevel] >= Q[currentLevel].length
+    qStart[currentLevel] >= Qx[currentLevel].length
   ) {
     currentLevel++;
   }
 
   if (currentLevel > maxLevel) {
     running = false;
-    btnPlay.html("▶ Play");
-    return;
+    return false;
   }
 
-  let pixel = Q[currentLevel][qIndex[currentLevel]++];
-  let x = pixel.x;
-  let y = pixel.y;
+  let x = Qx[currentLevel][qStart[currentLevel]];
+  let y = Qy[currentLevel][qStart[currentLevel]];
+  qStart[currentLevel]++;
 
   let foundLabel = NONE;
   let conflict = false;
@@ -372,23 +292,27 @@ function step() {
     [0, 1],
     [0, -1],
   ]) {
-    let nx = x + dx,
-      ny = y + dy;
+    let nx = x + dx;
+    let ny = y + dy;
 
-    if (nx >= 0 && nx < img.width && ny >= 0 && ny < img.height) {
-      let l = label[ny][nx];
+    if (nx < 0 || ny < 0 || nx >= img.width || ny >= img.height) continue;
 
-      if (l > 0) {
-        if (foundLabel === NONE) foundLabel = l;
-        else if (foundLabel !== l) conflict = true;
-      }
+    let l = label[ny][nx];
+
+    if (l > 0) {
+      if (foundLabel === NONE) foundLabel = l;
+      else if (foundLabel !== l) conflict = true;
     }
   }
 
   if (conflict) {
     label[y][x] = WSHED;
-    watershedPoints.push({ x, y });
-    return;
+
+    if (watershedPoints.length < 50000) {
+      watershedPoints.push({ x, y });
+    }
+
+    return true;
   }
 
   if (foundLabel > 0) {
@@ -400,19 +324,23 @@ function step() {
       [0, 1],
       [0, -1],
     ]) {
-      let nx = x + dx,
-        ny = y + dy;
+      let nx = x + dx;
+      let ny = y + dy;
 
-      if (nx >= 0 && nx < img.width && ny >= 0 && ny < img.height) {
-        if (label[ny][nx] === NONE) {
-          label[ny][nx] = QUEUE;
+      if (nx < 0 || ny < 0 || nx >= img.width || ny >= img.height) continue;
 
-          let p = gray[ny][nx];
-          let prior = max(p, currentLevel);
+      if (label[ny][nx] === NONE) {
+        label[ny][nx] = QUEUE;
 
-          Q[prior].push({ x: nx, y: ny });
-        }
+        let p = gray[ny][nx];
+        let prior = max(p, currentLevel);
+
+        Qx[prior].push(nx);
+        Qy[prior].push(ny);
       }
     }
   }
+
+  return true;
 }
+
