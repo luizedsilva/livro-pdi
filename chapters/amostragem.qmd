@@ -45,7 +45,7 @@ A imagem da @fig-mach ilustra o efeito das **bandas de Mach**, no qual a transi�
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/vQMLfyMoo" height="600" imagem="imgs/cap2/p5js-lines.png" qrcode="imgs/cap2/qrcode-lines.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/lines/" height="600" imagem="imgs/cap2/p5js-lines.png" qrcode="imgs/cap2/qrcode-lines.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/lines/" height="550" imagem="imgs/cap2/p5js-lines.png" qrcode="imgs/cap2/qrcode-lines.png"}
 :::
 
 
@@ -152,7 +152,7 @@ O exemplo interativo seguinte, apresenta uma ferramenta de zoom para melhor visu
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/bDwv1wtRH" height="550" imagem="imgs/cap2/p5js-zoom.png" qrcode="imgs/cap2/qrcode-zoom.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/pixelzoom/" height="550" imagem="imgs/cap2/p5js-zoom.png" qrcode="imgs/cap2/qrcode-zoom.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/pixelzoom/" height="420" imagem="imgs/cap2/p5js-zoom.png" qrcode="imgs/cap2/qrcode-zoom.png"}
 :::
 
 
@@ -172,7 +172,7 @@ O exemplo interativo seguinte permite a visualização de uma imagem como superf
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/7vlY9trVV" height="600" imagem="imgs/cap2/p5js-surface.png" qrcode="imgs/cap2/qrcode-surface.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/surface/" height="600" imagem="imgs/cap2/p5js-surface.png" qrcode="imgs/cap2/qrcode-surface.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/surface/" height="500" imagem="imgs/cap2/p5js-surface.png" qrcode="imgs/cap2/qrcode-surface.png"}
 :::
 
 ## Os formatos PBM, PGM e PPM de imagens

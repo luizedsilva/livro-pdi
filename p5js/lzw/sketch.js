@@ -15,7 +15,7 @@ let lastAdded = "";
 let stepBtn, runBtn, resetBtn;
 
 function setup() {
-  createCanvas(1000, 600);
+  createCanvas(650, 550);
   textFont("monospace");
 
   stepBtn = createButton("Passo");
@@ -24,7 +24,7 @@ function setup() {
 
   runBtn = createButton("Executar");
   runBtn.position(80, 520);
-  runBtn.mousePressed(() => running = true);
+  runBtn.mousePressed(() => (running = true));
 
   resetBtn = createButton("Reset");
   resetBtn.position(170, 520);
@@ -68,9 +68,7 @@ function resetSim() {
 }
 
 function stepLZW() {
-
   if (pos >= input.length) {
-
     if (w !== "") {
       output.push(dict[w]);
       stepText = "Fim da entrada. Emite código de '" + w + "'";
@@ -85,21 +83,21 @@ function stepLZW() {
   let wk = w + k;
 
   if (dict[wk] !== undefined) {
-
     stepText = "Sequência '" + wk + "' já existe no dicionário.";
     w = wk;
-
   } else {
-
     output.push(dict[w]);
     dict[wk] = dictSize++;
 
     lastAdded = wk;
 
     stepText =
-      "Emite código de '" + w +
-      "' = " + dict[w] +
-      "  | adiciona '" + wk +
+      "Emite código de '" +
+      w +
+      "' = " +
+      dict[w] +
+      "  | adiciona '" +
+      wk +
       "' ao dicionário.";
 
     w = k;
@@ -109,7 +107,6 @@ function stepLZW() {
 }
 
 function drawInput() {
-
   textSize(14);
   fill(0);
   text("Entrada:", 20, 50);
@@ -117,10 +114,9 @@ function drawInput() {
   let x = 120;
 
   for (let i = 0; i < input.length; i++) {
-
     if (i == pos) {
-      fill(255,200,200);
-      rect(x-5,30,25,30);
+      fill(255, 200, 200);
+      rect(x - 5, 30, 25, 30);
     }
 
     fill(0);
@@ -131,7 +127,6 @@ function drawInput() {
 }
 
 function drawState() {
-
   textSize(12);
   fill(0);
 
@@ -144,7 +139,6 @@ function drawState() {
 }
 
 function drawOutput() {
-
   textSize(12);
   fill(0);
 
@@ -155,7 +149,6 @@ function drawOutput() {
 }
 
 function drawDictionary() {
-
   textSize(14);
   fill(0);
   text("Dicionário (novas entradas)", 400, 50);
@@ -165,11 +158,9 @@ function drawDictionary() {
   let count = 0;
 
   for (let key in dict) {
-
     if (dict[key] >= 256) {
-
       if (key === lastAdded) {
-        fill(0,150,0);
+        fill(0, 150, 0);
       } else {
         fill(0);
       }
@@ -185,8 +176,7 @@ function drawDictionary() {
 }
 
 function drawExplanation() {
-
-  fill(30,80,200);
+  fill(30, 80, 200);
   textSize(14);
 
   text("Explicação:", 20, 350);

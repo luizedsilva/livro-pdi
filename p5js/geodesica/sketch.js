@@ -1,5 +1,5 @@
 let canvasW = 600;
-let canvasH = 600;
+let canvasH = 550;
 
 let textLayer;
 let binaryImg;

@@ -57,7 +57,7 @@ A função denominada "Soma das senóides", apresentada no exemplo interativo em
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/Dn_cYEuqj" height="600" imagem="imgs/cap4/p5js-soma.png" qrcode="imgs/cap4/qrcode-soma.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/soma/" height="600" imagem="imgs/cap4/p5js-soma.png" qrcode="imgs/cap4/qrcode-soma.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/soma/" height="540" imagem="imgs/cap4/p5js-soma.png" qrcode="imgs/cap4/qrcode-soma.png"}
 :::
 
 O exemplo ilustrativo seguinte, adaptado do código de **Daniel Shiffman**[^fourier-1], demonstra como uma série de Fourier pode ser utilizada para representar uma onda quadrada.
@@ -73,7 +73,7 @@ A **soma dos termos da série** é obtida pela **projeção vertical** (eixo $y$
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kk4tjuY7W" height="600" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/epiciclo/" height="600" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/epiciclo/" height="590" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
 :::
 
 ## Transformada de Fourier Unidmensional
@@ -483,7 +483,7 @@ Essa estrutura é conhecida como **butterfly** (imagem seguinte), pois o diagram
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/gdGhjn6LZ" height="600" imagem="imgs/cap4/p5js-butterfly8.png" qrcode="imgs/cap4/qrcode-butterfly8.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/butterfly8/" height="600" imagem="imgs/cap4/p5js-butterfly8.png" qrcode="imgs/cap4/qrcode-butterfly8.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/butterfly8/" height="520" imagem="imgs/cap4/p5js-butterfly8.png" qrcode="imgs/cap4/qrcode-butterfly8.png"}
 :::
 
 #### Um exemplo
@@ -537,7 +537,7 @@ O exemplo interativo seguinte simula os mesmos cálculos com as entradas reorden
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2pBrQ6PYM" height="400" imagem="imgs/cap4/p5js-butterfly4.png" qrcode="imgs/cap4/qrcode-butterfly4.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/butterfly4/" height="400" imagem="imgs/cap4/p5js-butterfly4.png" qrcode="imgs/cap4/qrcode-butterfly4.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/butterfly4/" height="380" imagem="imgs/cap4/p5js-butterfly4.png" qrcode="imgs/cap4/qrcode-butterfly4.png"}
 :::
 
 Usando o *esquema butterfly* também é possível reconstruir o sinal original. Basta utilizar os valores dos coeficientes $F(u)$ reordenados como entrada, considerar $j$ ao invés de $-j$ nos coeficientes e multiplicar o resultado do somatório por $\frac{1}{N}$.
@@ -559,7 +559,7 @@ O exemplo interativo a seguir apresenta um demonstração do cálculo do espectr
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/RCKGkjFiN" height="400" imagem="imgs/cap4/p5js-espectro.png" qrcode="imgs/cap4/qrcode-espectro.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/espectro/" height="400" imagem="imgs/cap4/p5js-espectro.png" qrcode="imgs/cap4/qrcode-espectro.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/espectro/" height="300" imagem="imgs/cap4/p5js-espectro.png" qrcode="imgs/cap4/qrcode-espectro.png"}
 :::
 
 ## Filtragem no Domínio da Frequência
@@ -636,7 +636,7 @@ O exemplo interativo seguinte apresenta uma visualização 3D destes três filtr
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kkrvpU7ra" height="650" imagem="imgs/cap4/p5js-filtro.png" qrcode="imgs/cap4/qrcode-filtro.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/fourierfilters/" height="650" imagem="imgs/cap4/p5js-filtro.png" qrcode="imgs/cap4/qrcode-fourierfilters.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/fourierfilters/" height="620" imagem="imgs/cap4/p5js-filtro.png" qrcode="imgs/cap4/qrcode-fourierfilters.png"}
 :::
 
 Filtros passa-alta podem ser obtidos a partir dos passa-baixa por meio da relação:
@@ -662,7 +662,7 @@ O Exemplo interativo seguinte apresenta uma aplicação do processo de filtragem
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3HBiKuxP2" height="600" imagem="imgs/cap4/p5js-filtragem.png" qrcode="imgs/cap4/qrcode-filtragem.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/filtragem/" height="600" imagem="imgs/cap4/p5js-filtragem.png" qrcode="imgs/cap4/qrcode-filtragem.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/filtragem/" height="550" imagem="imgs/cap4/p5js-filtragem.png" qrcode="imgs/cap4/qrcode-filtragem.png"}
 :::
 
 ## Vantagens e Limitações

@@ -129,7 +129,7 @@ O código interativo em sequência demostra o funcionamento da operação de dil
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" height="400" imagem="imgs/cap7/p5js-dilatacao.png" qrcode="imgs/cap7/qrcode-dilatacao.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/dilatacao/" height="400" imagem="imgs/cap7/p5js-dilatacao.png" qrcode="imgs/cap7/qrcode-dilatacao.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/dilatacao/" height="360" imagem="imgs/cap7/p5js-dilatacao.png" qrcode="imgs/cap7/qrcode-dilatacao.png"}
 :::
 
 ### Erosão {.unnumbered}
@@ -152,7 +152,7 @@ O código interativo em sequência demostra o funcionamento da operação de ero
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" height="400" imagem="imgs/cap7/p5js-erosao.png" qrcode="imgs/cap7/qrcode-erosao.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/erosao/" height="400" imagem="imgs/cap7/p5js-erosao.png" qrcode="imgs/cap7/qrcode-erosao.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/erosao/" height="360" imagem="imgs/cap7/p5js-erosao.png" qrcode="imgs/cap7/qrcode-erosao.png"}
 :::
 
 ### Abertura e Fechamento {.unnumbered}
@@ -180,7 +180,7 @@ O exemplo interativo seguinte está a implementação da operações de erosão,
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/6VAsB0SBo" height="550" imagem="imgs/cap7/p5js-morfo.png" qrcode="imgs/cap7/qrcode-morfo.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/morfo/" height="550" imagem="imgs/cap7/p5js-morfo.png" qrcode="imgs/cap7/qrcode-morfo.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/morfo/" height="440" imagem="imgs/cap7/p5js-morfo.png" qrcode="imgs/cap7/qrcode-morfo.png"}
 :::
 
 ### Operação Hit or Miss (Tudo ou nada) {.unnumbered}
@@ -260,7 +260,7 @@ O exemplo interativo seguinte simula o processo de afinamento para uma imagem co
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" height="300" imagem="imgs/cap7/p5js-simulacao.png" qrcode="imgs/cap7/qrcode-simulacao.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/simulacao/" height="300" imagem="imgs/cap7/p5js-simulacao.png" qrcode="imgs/cap7/qrcode-simulacao.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/simulacao/" height="250" imagem="imgs/cap7/p5js-simulacao.png" qrcode="imgs/cap7/qrcode-simulacao.png"}
 :::
 
 No exemplo interativo seguinte está uma implementação do algoritmo rápido de afinamento de @zhang1984thinning para aplicação à silhueta de um homem.
@@ -268,7 +268,7 @@ No exemplo interativo seguinte está uma implementação do algoritmo rápido de
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8aSI6XMnX" height="550" imagem="imgs/cap7/p5js-afinamento.png" qrcode="imgs/cap7/qrcode-afinamento.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/afinamento/" height="550" imagem="imgs/cap7/p5js-afinamento.png" qrcode="imgs/cap7/qrcode-afinamento.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/afinamento/" height="410" imagem="imgs/cap7/p5js-afinamento.png" qrcode="imgs/cap7/qrcode-afinamento.png"}
 :::
 
 ### Operações Geodésicas {.unnumbered}
@@ -387,7 +387,7 @@ Como resultado, são reconstruídas apenas as letras do texto gerado que satisfa
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cEQHgceVN" height="600" imagem="imgs/cap7/p5js-geodesica.png" qrcode="imgs/cap7/qrcode-geodesica.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/geodesica/" height="600" imagem="imgs/cap7/p5js-geodesica.png" qrcode="imgs/cap7/qrcode-geodesica.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/geodesica/" height="550" imagem="imgs/cap7/p5js-geodesica.png" qrcode="imgs/cap7/qrcode-geodesica.png"}
 :::
 
 ## Propriedades das Operações Morfológicas
