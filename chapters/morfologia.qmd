@@ -126,7 +126,10 @@ A dilatação é frequentemente utilizada para preencher pequenas lacunas, conec
 
 O código interativo em sequência demostra o funcionamento da operação de dilatação. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da dilatação:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" height="400" imagem="imgs/cap7/p5js-dilatacao.png" qrcode="imgs/cap7/qrcode-dilatacao.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" height="400" imagem="imgs/cap7/p5js-dilatacao.png" qrcode="imgs/cap7/qrcode-dilatacao.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/dilatacao/" height="400" imagem="imgs/cap7/p5js-dilatacao.png" qrcode="imgs/cap7/qrcode-dilatacao.png"}
 :::
 
 ### Erosão {.unnumbered}
@@ -146,7 +149,10 @@ Essa operação é útil para remover pequenas protuberâncias, separar objetos 
 
 O código interativo em sequência demostra o funcionamento da operação de erosão. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da erosão:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" height="400" imagem="imgs/cap7/p5js-erosao.png" qrcode="imgs/cap7/qrcode-erosao.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" height="400" imagem="imgs/cap7/p5js-erosao.png" qrcode="imgs/cap7/qrcode-erosao.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/erosao/" height="400" imagem="imgs/cap7/p5js-erosao.png" qrcode="imgs/cap7/qrcode-erosao.png"}
 :::
 
 ### Abertura e Fechamento {.unnumbered}
@@ -171,7 +177,10 @@ $$
 
 O exemplo interativo seguinte está a implementação da operações de erosão, dilatação, abertura e fechamento para imagens pbm:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/6VAsB0SBo" height="550" imagem="imgs/cap7/p5js-morfo.png" qrcode="imgs/cap7/qrcode-morfo.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/6VAsB0SBo" height="550" imagem="imgs/cap7/p5js-morfo.png" qrcode="imgs/cap7/qrcode-morfo.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/morfo/" height="550" imagem="imgs/cap7/p5js-morfo.png" qrcode="imgs/cap7/qrcode-morfo.png"}
 :::
 
 ### Operação Hit or Miss (Tudo ou nada) {.unnumbered}
@@ -248,12 +257,18 @@ Na @fig-familia está representada uma família homotópica para afinamento ou e
 
 O exemplo interativo seguinte simula o processo de afinamento para uma imagem considerando a família homotópia da @fig-familia. Os controles na simulação servem para executar o algoritmo de afinamento passo a passo, resetar a simulação, interromper ou continuar de forma automática. Ainda é possível controlar a velocidade da simulação automática. A cada passo é mostrado o elemento da família homotópica que está sendo utilizado para o afinamento na imagem e abaixo dela.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" height="300" imagem="imgs/cap7/p5js-simulacao.png" qrcode="imgs/cap7/qrcode-simulacao.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" height="300" imagem="imgs/cap7/p5js-simulacao.png" qrcode="imgs/cap7/qrcode-simulacao.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/simulacao/" height="300" imagem="imgs/cap7/p5js-simulacao.png" qrcode="imgs/cap7/qrcode-simulacao.png"}
 :::
 
 No exemplo interativo seguinte está uma implementação do algoritmo rápido de afinamento de @zhang1984thinning para aplicação à silhueta de um homem.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8aSI6XMnX" height="550" imagem="imgs/cap7/p5js-afinamento.png" qrcode="imgs/cap7/qrcode-afinamento.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8aSI6XMnX" height="550" imagem="imgs/cap7/p5js-afinamento.png" qrcode="imgs/cap7/qrcode-afinamento.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/afinamento/" height="550" imagem="imgs/cap7/p5js-afinamento.png" qrcode="imgs/cap7/qrcode-afinamento.png"}
 :::
 
 ### Operações Geodésicas {.unnumbered}
@@ -369,7 +384,10 @@ A **reconstrução geodésica** é então realizada por um processo iterativo de
 
 Como resultado, são reconstruídas apenas as letras do texto gerado que satisfazem as propriedades de largura e altura definidas pelo elemento estruturante.
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cEQHgceVN" height="600" imagem="imgs/cap7/p5js-geodesica.png" qrcode="imgs/cap7/qrcode-geodesica.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cEQHgceVN" height="600" imagem="imgs/cap7/p5js-geodesica.png" qrcode="imgs/cap7/qrcode-geodesica.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/geodesica/" height="600" imagem="imgs/cap7/p5js-geodesica.png" qrcode="imgs/cap7/qrcode-geodesica.png"}
 :::
 
 ## Propriedades das Operações Morfológicas
@@ -466,7 +484,10 @@ De maneira geral, essas duas operações podem ser interpretadas como filtros mo
 
 O exemplo interativo seguinte apresenta essas operações:
 
-::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8ekG_1FsO" height="600" imagem="imgs/cap7/p5js-cinza.png" qrcode="imgs/cap7/qrcode-cinza.png"}
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8ekG_1FsO" height="600" imagem="imgs/cap7/p5js-cinza.png" qrcode="imgs/cap7/qrcode-cinza.png"}
+::: -->
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/cinza/" height="600" imagem="imgs/cap7/p5js-cinza.png" qrcode="imgs/cap7/qrcode-cinza.png"}
 :::
 
 ## Aplicações da Morfologia em Tons de Cinza
