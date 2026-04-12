@@ -1,4 +1,4 @@
-name: Publish Quarto Book (HTML only)
+name: Publish Quarto Book
 
 on:
   push:
@@ -9,35 +9,28 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Setup Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-
-      - name: Cache Quarto
-        uses: actions/cache@v4
-        with:
-          path: ~/.quarto
-          key: ${{ runner.os }}-quarto
 
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y librsvg2-bin
 
-      # 👇 Aqui está o pulo do gato
-      - name: Render HTML only
-        run: quarto render --to html
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Setup TinyTeX
+        uses: r-lib/actions/setup-tinytex@v2
+
+      - name: Render book
+        run: quarto render
 
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
