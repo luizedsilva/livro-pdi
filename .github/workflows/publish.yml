@@ -2,7 +2,7 @@ name: Publish Quarto Book (HTML only)
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: write
@@ -35,11 +35,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y librsvg2-bin
 
-      # 👇 Aqui está o pulo do gato
+      # ✅ Renderiza SOMENTE HTML
       - name: Render HTML only
         run: quarto render --to html
 
+      # ✅ Publica SEM renderizar novamente
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          render: false
