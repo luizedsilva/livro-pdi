@@ -367,7 +367,7 @@ g(x,y) =
 <p>O código interativo seguinte exemplifica essa abordagem. No exemplo, pode-se escolher o nível de ruído sal e pimenta na imagem e o limiar. É possível verificar que o ruído (ponto isolado) se mistura com algumas bordas da imagem.</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/BxhAHtDlu" height="600" imagem="imgs/cap8/p5js-isolado.png" qrcode="imgs/cap8/qrcode-isolado.png"}
 ::: -->
-<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/isolado/" width="100%" height="600" style="border:none;"></iframe></div>
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/isolado/" width="100%" height="680" style="border:none;"></iframe></div>
 <p>Essa é uma abordagem mais básicas de limiarização global, na qual um único valor de limiar <span class="math inline">\(T\)</span> é utilizado para toda a imagem. Esse método é eficaz quando há boa separação entre os níveis de intensidade do objeto e do fundo, como em imagens com histogramas bimodais. No entanto, em situações onde a iluminação não é uniforme, essa abordagem pode apresentar resultados insatisfatórios.</p>
 <p>Para contornar esse problema, utiliza-se a limiarização adaptativa, em que o valor de <span class="math inline">\(T\)</span> varia ao longo da imagem, sendo calculado com base em características locais, como média ou mediana de regiões vizinhas. Isso permite uma melhor adaptação a variações de iluminação e melhora a segmentação em imagens mais complexas.</p>
 <p>Outra técnica amplamente utilizada é o método de Otsu, que determina automaticamente o valor ótimo de limiar a partir da análise do histograma da imagem. Esse método busca maximizar a variância entre classes (objeto e fundo), ou, de forma equivalente, minimizar a variância intra-classes. Por não exigir intervenção manual, o método de Otsu é bastante popular em aplicações práticas.</p>
@@ -403,7 +403,7 @@ G_y =\;&amp; [I(x-1,y+1) + 2I(x,y+1) + I(x+1,y+1)] \\
 <p>Uma versão simplificada desses cálculos é apresentada no exemplo interativo a seguir. Ao clicar em uma linha da imagem, ela é selecionada e utilizada para construir o perfil horizontal de intensidade correspondente. A partir desse perfil, são gerados o perfil simplificado (amostrado) e as estimativas da primeira e da segunda derivadas, que evidenciam as bordas. Essas derivadas são calculadas por meio de aproximações discretas de uma função unidimensional, com base nas formulações de <span class="math inline">\(G_x\)</span> ou <span class="math inline">\(G_y\)</span>.</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/vwJlyplFQ" height="650" imagem="imgs/cap8/p5js-profile.png" qrcode="imgs/cap8/qrcode-profile.png"}
 ::: -->
-<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/profile/" width="100%" height="650" style="border:none;"></iframe></div>
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/profile/" width="100%" height="600" style="border:none;"></iframe></div>
 <p>Essas operações estão representadas nas máscaras de convolução para identificação de bordas horizontais e verticais da <a href="#fig-sobel" class="quarto-xref">Figura&nbsp;<span>8.1</span></a>.</p>
 <div id="fig-sobel" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -505,19 +505,19 @@ Listagem&nbsp;8.1
 <p>O exemplo interativo seguinte apresenta uma simulação desse algoritmo de watershed por marcadores para uma imagem unidimensional. Inicialmente, estão marcados os pontos <span class="math inline">\(a = 1\)</span>, <span class="math inline">\(f = 2\)</span> e <span class="math inline">\(h = 3\)</span>. A cada passo os pontos vizinhos das regiões marcadas são colocados nas filas apropriadas. O pontos de watershed são marcados com cor amarela (valor = 4).</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/pdFTjSFE0" height="600" imagem="imgs/cap8/p5js-simula.png" qrcode="imgs/cap8/qrcode-simula.png"}
 ::: -->
-<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/simula/" width="100%" height="600" style="border:none;"></iframe></div>
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/simula/" width="100%" height="550" style="border:none;"></iframe></div>
 <p>Os exemplos seguintes demonstram o mesmo algoritmo para imagens. O primeiro exemplo mostra a execução do algoritmo de forma bidimensional. E o segundo mostra a mesma imagem como um relevo tridimensional. Existe uma marca para cada região da imagem. E o crescimento da regiões (inundação do relevo) é realizado até que são encontradas as linhas divisoras de água (watershed).</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/mk25edaHn" height="650" imagem="imgs/cap8/p5js-watershed2d.png" qrcode="imgs/cap8/qrcode-watershed2d.png"}
 ::: -->
-<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/watershed2d/" width="100%" height="650" style="border:none;"></iframe></div>
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/watershed2d/" width="100%" height="580" style="border:none;"></iframe></div>
 <p>A mesma simulação para um representação da mesma imagem como superfície em sequência:</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/vG7r2Wnd4" height="600" imagem="imgs/cap8/p5js-watershed3d.png" qrcode="imgs/cap8/qrcode-watershed3d.png"}
 ::: -->
-<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/watershed3d/" width="100%" height="600" style="border:none;"></iframe></div>
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/watershed3d/" width="100%" height="550" style="border:none;"></iframe></div>
 <p>O exemplo interativo seguinte está a implementação para segmentação de imagens reais. Pode-se carregar uma imagem. Para execução do algoritmo basta clicar dentro de alguma região. O clique define um marcador. O outro marcador é a borda da imagem. O algoritmo é então aplicado sobre a imagem de gradiente morfológico (dilatação menos erosão) que evidencia as bordas. Uma linha vermelha seja adicionada a imagem, como resultado da operação de watershed para identificação da borda que contorna o ponto marcado.</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/5fXyn6cyw" height="600" imagem="imgs/cap8/p5js-watershed.png" qrcode="imgs/cap8/qrcode-watershed.png"}
 ::: -->
-<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/watershed/" width="100%" height="600" style="border:none;"></iframe></div>
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/watershed/" width="100%" height="500" style="border:none;"></iframe></div>
 </section>
 </section>
 <section id="segmentação-baseada-em-clustering" class="level3 unnumbered">
@@ -531,7 +531,7 @@ J = \sum_{k=1}^{K} \sum_{x_i \in C_k} | x_i - \mu_k |^2
 <p>O código exemplo seguinte implementa essa técnica para imagens:</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/7ooZnvesJ" height="600" imagem="imgs/cap8/p5js-kmeans.png" qrcode="imgs/cap8/qrcode-kmeans.png"}
 ::: -->
-<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/kmeans/" width="100%" height="600" style="border:none;"></iframe></div>
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/kmeans/" width="100%" height="400" style="border:none;"></iframe></div>
 <p>Outro método relevante é o Mean Shift, que não exige a definição prévia do número de grupos. Esse algoritmo baseia-se na estimativa de densidade de probabilidade no espaço de características, deslocando iterativamente cada ponto em direção às regiões de maior densidade. Como resultado, os pontos convergem para modos da distribuição, formando clusters de maneira automática.</p>
 <p>A escolha dos atributos utilizados no processo de agrupamento é fundamental para o sucesso da segmentação. Características como intensidade são adequadas para imagens em tons de cinza, enquanto a cor é amplamente utilizada em imagens RGB. A inclusão da posição espacial dos pixels também pode melhorar os resultados, ao favorecer a formação de regiões mais compactas e coerentes. Dessa forma, a segmentação por clustering oferece uma abordagem flexível e poderosa, especialmente em cenários onde a separação entre regiões não é claramente definida por limiares simples.</p>
 </section>
