@@ -1,6 +1,6 @@
 # Créditos das Imagens
 
-As imagens utilizadas ao longo deste livro foram selecionadas de forma a garantir acessibilidade, clareza didática e respeito aos direitos autorais. Parte delas foi obtida no repositório Wikimedia Commons (@fig-avenida, @fig-cao1, @fig-cao2, @fig-cao3, @fig-cao4, @fig-cao5, @fig-cao6, @fig-cao7, @fig-cao8, @fig-mariposa, @fig-flor1, @fig-flor2, @fig-food1), que disponibiliza conteúdos sob licenças livres, permitindo seu uso e adaptação com a devida atribuição. Complementarmente, algumas imagens foram geradas com o auxílio de ferramentas de inteligência artificial, como ChatGPT (@fig-moire5, @fig-silhueta, @fig-conesCC, @fig-olhoCC, @fig-amostra, @fig-captura, @fig-compressao, @fig-cores, @fig-fourier, @fig-interpretacao, @fig-melhoramento, @fig-morfologia, @fig-python, @fig-representa e @fig-segmenta) e Gemini (@fig-food2), com o objetivo de ilustrar conceitos específicos de maneira personalizada. Sempre que aplicável (@fig-monalisa), buscou-se indicar a origem e a licença das imagens, assegurando transparência e conformidade com as boas práticas de uso de conteúdo visual.
+As imagens utilizadas ao longo deste livro foram selecionadas de forma a garantir acessibilidade, clareza didática e respeito aos direitos autorais. Parte delas foi obtida no repositório Wikimedia Commons (@fig-avenida, @fig-cao1, @fig-cao2, @fig-cao3, @fig-cao4, @fig-cao5, @fig-cao6, @fig-cao7, @fig-cao8, @fig-mariposa, @fig-flor1, @fig-flor2, @fig-food1), que disponibiliza conteúdos sob licenças livres, permitindo seu uso e adaptação com a devida atribuição. Complementarmente, algumas imagens foram geradas com o auxílio de ferramentas de inteligência artificial, como ChatGPT (@fig-moire5, @fig-silhueta, @fig-conesCC, @fig-olhoCC, @fig-amostraCC, @fig-captura, @fig-compressao, @fig-cores, @fig-fourier, @fig-interpretacao, @fig-melhoramento, @fig-morfologia, @fig-python, @fig-representa e @fig-segmenta) e Gemini (@fig-food2), com o objetivo de ilustrar conceitos específicos de maneira personalizada. Sempre que aplicável (@fig-monalisa), buscou-se indicar a origem e a licença das imagens, assegurando transparência e conformidade com as boas práticas de uso de conteúdo visual.
 
 ![Avenida Portugal - Foto: Donatas Dabravolskas / Wikimedia Commons](/imgs-CC/avenidaportugal.jpg){#fig-avenida width="60%" fig-align="center"} 
 
@@ -40,7 +40,7 @@ As imagens utilizadas ao longo deste livro foram selecionadas de forma a garanti
 
 ![Olho - Foto: Gerada por IA (chatgpt)](/imgs-CC/olho.png){#fig-olhoCC width="60%" fig-align="center"}
 
-![Amostra - Foto: Gerada por IA (chatgpt)](imgs/amostra.png){#fig-amostra width="60%" fig-align="center"}
+![Amostra - Foto: Gerada por IA (chatgpt)](imgs/amostra.png){#fig-amostraCC width="60%" fig-align="center"}
 
 ![Captura - Foto: Gerada por IA (chatgpt)](imgs/captura.png){#fig-captura width="60%" fig-align="center"}
 

@@ -20,7 +20,7 @@ Essa mudança de representação permite compreender e manipular característica
 
 A resolução de muitos problemas torna-se complexa quando realizada diretamente no domínio original. Operações como divisão, convolução ou correlação frequentemente exigem alto custo computacional ou manipulações algébricas trabalhosas. Uma estratégia clássica para contornar essa dificuldade consiste em **transformar o problema para outro domínio**, no qual as operações envolvidas se tornam mais simples.
 
-![Mudança de domínio](/imgs/cap4/mudancadominio.png){#fig-mudanca fig-align="center" width="60%"}
+![Mudança de domínio.](/imgs/cap4/mudancadominio.png){#fig-mudanca fig-align="center" width="60%"}
 
 O diagrama da @fig-mudanca ilustra esse princípio por meio de um exemplo elementar. No domínio original, a relação
 
@@ -64,17 +64,17 @@ O exemplo ilustrativo seguinte, adaptado do código de **Daniel Shiffman**[^four
 
 [^fourier-1]: (<https://thecodingtrain.com/CodingChallenges/125-fourier-series.html>)
 
-Nesse exemplo, cada **termo da série** é representado por um **círculo trigonométrico** (*epiciclo*). O **raio de cada círculo** corresponde à **amplitude** do termo, enquanto a **frequência** é representada pela **velocidade de rotação** do círculo. Os círculos são conectados de forma sequencial, de modo que o **centro de cada círculo** coincide com a **extremidade do raio do círculo anterior**, conforme ilustrado na @fig-epiciclo.
-
-![Representação dos termos como Epiciclos](/imgs/cap4/epiciclo.png){#fig-epiciclo fig-align="center" width="80%"}
-
-A **soma dos termos da série** é obtida pela **projeção vertical** (eixo $y$) do vetor resultante, formado pelo encadeamento dos raios de todos os círculos. À medida que mais termos são adicionados, a forma de onda resultante aproxima-se progressivamente de uma **onda quadrada**, evidenciando o princípio fundamental da série de Fourier: a representação de funções periódicas complexas como a soma de senos e cossenos.
-
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kk4tjuY7W" height="600" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
 ::: -->
 
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/epiciclo/" height="590" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
 :::
+
+Nesse exemplo, cada **termo da série** é representado por um **círculo trigonométrico** (*epiciclo*). O **raio de cada círculo** corresponde à **amplitude** do termo, enquanto a **frequência** é representada pela **velocidade de rotação** do círculo. Os círculos são conectados de forma sequencial, de modo que o **centro de cada círculo** coincide com a **extremidade do raio do círculo anterior**, conforme ilustrado na @fig-epiciclo.
+
+![Representação dos termos como Epiciclos.](/imgs/cap4/epiciclo.png){#fig-epiciclo fig-align="center" width="80%"}
+
+A **soma dos termos da série** é obtida pela **projeção vertical** (eixo $y$) do vetor resultante, formado pelo encadeamento dos raios de todos os círculos. À medida que mais termos são adicionados, a forma de onda resultante aproxima-se progressivamente de uma **onda quadrada**, evidenciando o princípio fundamental da série de Fourier: a representação de funções periódicas complexas como a soma de senos e cossenos.
 
 ## Transformada de Fourier Unidmensional
 
@@ -103,7 +103,15 @@ Assim, a Transformada de Fourier projeta o sinal original sobre um conjunto de *
 
 ### Interpretação Física e Intuitiva
 
-Cada valor de $F(\mu)$ é um **número complexo** que contém duas informações fundamentais:
+Cada valor de $F(\mu)$ é um **número complexo**, que pode ser escrito na forma:
+
+$$
+F(\mu) = \operatorname{Re}(F(\mu)) + j\, \operatorname{Im}(F(\mu)),
+$$
+
+onde $\operatorname{Re}(\cdot)$ e $\operatorname{Im}(\cdot)$ representam, respectivamente, as partes **real** e **imaginária** do número complexo.
+
+A partir dessa representação, extraem-se duas informações fundamentais:
 
 -   **Magnitude** $$
     |F(\mu)| = \sqrt{\operatorname{Re}^2 + \operatorname{Im}^2}
@@ -152,7 +160,7 @@ $$
 
 A @fig-transformacao1 ilustra essa transformação contínua unidimensional:
 
-![Transformação: a) função simples, b) transformada calculada e c) espectro](/imgs/cap4/g4.svg){#fig-transformacao1 fig-align="center" width="80%"}
+![Transformação: a) função simples, b) transformada calculada e c) espectro.](/imgs/cap4/g4.svg){#fig-transformacao1 fig-align="center" width="80%"}
 
 A simulação em Geogebra ([abrir exemplo no GeoGebra](https://www.geogebra.org/calculator/f6gyatmc){target="_blank"}) demonstra essa função pulso, o espectro calculado e o módulo do espectro.
 
@@ -248,7 +256,7 @@ Muitas operações importantes, como filtragem, realce e supressão de ruído, t
 
 ### Definição Matemática
 
-A **Transformada de Fourier bidimensional contínua** de uma função $f(x,y)$ é definida por:
+A **Transformada de Fourier contínua bidimensional** de uma função $f(x,y)$ é definida por:
 
 $$
 F(u,v) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}
@@ -319,7 +327,7 @@ F(u,v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} f(x,y)
 \, e^{-j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
 $$
 
-onde (u) e (v) representam as coordenadas no domínio da frequência e (j) é a unidade imaginária.
+onde $u$ e $v$ representam as coordenadas no domínio da frequência e $j$ é a unidade imaginária.
 
 A transformada inversa permite recuperar a imagem original a partir de sua representação espectral:
 
@@ -490,9 +498,9 @@ Essa estrutura é conhecida como **butterfly** (imagem seguinte), pois o diagram
 
 A @fig-amostra a seguir ilustra um conjunto discreto de amostras de um sinal unidimensional no domínio espacial. Esse exemplo simples permite compreender, de forma concreta, como a **Transformada Discreta de Fourier (DFT)** decompõe um sinal em suas componentes de frequência.
 
-![Amostras do sinal no domínio espacial](/imgs/cap4/amostra.png){#fig-amostra fig-align="center" width="70%"}
+![Amostras do sinal no domínio espacial.](/imgs/cap4/amostra.png){#fig-amostra fig-align="center" width="70%"}
 
-Considere o sinal discreto $f(x)$, definido para $x = 0,1,2,3$, com valores $f(0)=1$, $f(1)=2$, $f(2)=4$ e $f(3)=3$, obtidos de uma função $f(t)$. O coeficiente de frequência zero da DFT, $F(0)$, corresponde à soma de todas as amostras do sinal e representa a **componente DC**(*Direct Current*), isto é, o valor médio escalado do sinal. Assim, tem-se:
+Considere o sinal discreto $f(x)$, definido para $x = 0,1,2,3$, com valores $f(0)=1$, $f(1)=2$, $f(2)=4$ e $f(3)=3$, obtidos de uma função $f(t)$. O coeficiente de frequência zero da DFT, $F(0)$, corresponde à soma de todas as amostras do sinal e representa a **componente DC** (*Direct Current*), isto é, o valor médio escalado do sinal. Assim, tem-se:
 
 $$
 \begin{aligned}
@@ -611,7 +619,7 @@ onde $D_0$ representa a frequência de corte. Embora simples, esse filtro pode i
 
 [^fourier-2]: (<https://pt.wikipedia.org/wiki/Fen%C3%B4meno_de_Gibbs>)
 
-![Filtros para Transformada de Fourier](/imgs/cap4/filtros.png){#fig-filtros fig-align="center" width="60%"}
+![Filtros para Transformada de Fourier.](/imgs/cap4/filtros.png){#fig-filtros fig-align="center" width="60%"}
 
 O filtro gaussiano (representado na @fig-filtros b) apresenta uma transição suave e contínua, evitando descontinuidades abruptas. Sua expressão é:
 
@@ -620,7 +628,7 @@ H(u,v) =
 e^{-\frac{D(u,v)^2}{2D_0^2}}.
 $$
 
-Esse filtro não produz ringing significativo e resulta em suavização progressiva das altas frequências.
+Esse filtro não produz *ringing* significativo (isto é, oscilações artificiais ou halos próximos a bordas da imagem, comuns em filtros com transições abruptas) e resulta em suavização progressiva das altas frequências.
 
 O filtro Butterworth (representado na @fig-filtros c) representa um compromisso entre o ideal e o gaussiano. Sua formulação é:
 
@@ -647,6 +655,8 @@ $$
 
 Nesse caso, as altas frequências são preservadas, destacando bordas e estruturas finas da imagem.
 
+### Restauração do Espectro
+
 O processo de restauração do espectro consiste em transformar a imagem para o domínio da frequência, modificar seletivamente suas componentes espectrais e reconstruí-la por meio da transformada inversa. Matematicamente, esse procedimento pode ser representado por:
 
 $$
@@ -655,7 +665,9 @@ g(x,y) =
 \{H(u,v)\mathcal{F}[f(x,y)]\}.
 $$
 
-Essa abordagem permite suavização, realce de detalhes, redução de ruído e correção de degradações, oferecendo maior controle matemático sobre o comportamento do filtro e eficiência computacional quando implementada via FFT.
+### Resultado Final
+
+A abordagem completa (geração do espectro, filtragem e restauração) permite suavização, realce de detalhes, redução de ruído e correção de degradações, oferecendo maior controle matemático sobre o comportamento do filtro e eficiência computacional quando implementada via FFT.
 
 O Exemplo interativo seguinte apresenta uma aplicação do processo de filtragem por Fourier.
 
@@ -848,7 +860,7 @@ O problema desta atividade é desenvolver uma ferramenta capaz de remover esse r
 
 2.  A partir do espectro obtido, o programa deverá:
 
-    a)  Identificar visualmente os picos associados ao ruído periódico (moire)
+    a)  Identificar visualmente os picos associados ao ruído periódico (moiré)
 
     b)  Criar uma máscara (filtro) para remover essas frequências
 
