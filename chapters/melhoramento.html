@@ -353,15 +353,15 @@ window.Quarto = {
 <p>Em uma imagem digital, cada pixel pode ser identificado por suas coordenadas no plano da imagem. Seja <span class="math inline">\(p\)</span> um pixel localizado na posição <span class="math inline">\((i, j)\)</span>. A partir dessa posição, é possível definir diferentes relações de vizinhança entre os pixels, que são amplamente utilizadas em operações de processamento de imagens, como filtragem, segmentação e detecção de bordas.</p>
 <section id="vizinhança-dos-pixels" class="level3">
 <h3 class="anchored" data-anchor-id="vizinhança-dos-pixels">Vizinhança dos Pixels</h3>
-<p>A <strong>vizinhança de 4 pixels</strong>, também chamada de vizinhança ortogonal, considera apenas os pixels que estão imediatamente acima, abaixo, à esquerda e à direita do pixel (p). Esses pixels compartilham um lado com (p). Formalmente, o conjunto desses vizinhos é definido por<br>
+<p>A <strong>vizinhança de 4 pixels</strong>, também chamada de vizinhança ortogonal, considera apenas os pixels que estão imediatamente acima, abaixo, à esquerda e à direita do pixel <span class="math inline">\(p\)</span>. Esses pixels compartilham um lado com <span class="math inline">\(p\)</span>. Formalmente, o conjunto desses vizinhos é definido por:<br>
 <span class="math display">\[
 N_4(p) = \{(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)\}.\
 \]</span></p>
-<p>Além desses, também podemos considerar os <strong>vizinhos diagonais</strong> de (p). Esses pixels estão posicionados nas quatro diagonais ao redor do pixel central, compartilhando apenas um vértice com ele. O conjunto dos vizinhos diagonais é dado por<br>
+<p>Além desses, também podemos considerar os <strong>vizinhos diagonais</strong> de <span class="math inline">\(p\)</span>. Esses pixels estão posicionados nas quatro diagonais ao redor do pixel central, compartilhando apenas um vértice com ele. O conjunto dos vizinhos diagonais é dado por:<br>
 <span class="math display">\[
 N_D(p) = \{(i + 1, j + 1), (i - 1, j - 1), (i - 1, j + 1), (i + 1, j - 1)\}.\
 \]</span></p>
-<p>Quando consideramos simultaneamente os vizinhos ortogonais e os vizinhos diagonais, obtemos a <strong>vizinhança de 8 pixels</strong>. Essa vizinhança inclui todos os pixels imediatamente adjacentes ao redor de (p), formando um bloco <span class="math inline">\(3 \times 3\)</span> com <span class="math inline">\(p\)</span> no centro. O conjunto de vizinhos é definido pela união das duas vizinhanças anteriores:<br>
+<p>Quando consideramos simultaneamente os vizinhos ortogonais e os vizinhos diagonais, obtemos a <strong>vizinhança de 8 pixels</strong>. Essa vizinhança inclui todos os pixels imediatamente adjacentes ao redor de <span class="math inline">\(p\)</span>, formando um bloco <span class="math inline">\(3 \times 3\)</span> com <span class="math inline">\(p\)</span> no centro. O conjunto de vizinhos é definido pela união das duas vizinhanças anteriores:<br>
 <span class="math display">\[
 N_8(p) = N_4(p) \cup N_D(p).\
 \]</span></p>
@@ -369,33 +369,33 @@ N_8(p) = N_4(p) \cup N_D(p).\
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../imgs/cap3/vizinhanca.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Ilustração das relações de vizinhança dos pixels</figcaption>
+<figcaption>Ilustração das relações de vizinhança dos pixels.</figcaption>
 </figure>
 </div>
 </section>
 <section id="medidas-de-distância-dos-pixels" class="level3">
 <h3 class="anchored" data-anchor-id="medidas-de-distância-dos-pixels">Medidas de Distância dos pixels</h3>
 <p>Em uma imagem digital, também é comum definir <strong>medidas de distância entre pixels</strong>. Essas medidas são importantes em diversas aplicações de processamento de imagens, como segmentação, crescimento de regiões, transformadas de distância e análise de conectividade. Considere dois pixels <span class="math inline">\(p\)</span> e <span class="math inline">\(q\)</span>, localizados nas coordenadas <span class="math inline">\(p = (i_1, j_1)\)</span> e <span class="math inline">\(q = (i_2, j_2)\)</span>.</p>
-<p>A <strong>distância euclidiana</strong> corresponde à distância geométrica tradicional entre dois pontos no plano cartesiano. Ela representa o comprimento do segmento de reta que liga os pixels <span class="math inline">\(p\)</span> e <span class="math inline">\(q\)</span>. Essa medida é definida por</p>
+<p>A <strong>distância euclidiana</strong> corresponde à distância geométrica tradicional entre dois pontos no plano cartesiano. Ela representa o comprimento do segmento de reta que liga os pixels <span class="math inline">\(p\)</span> e <span class="math inline">\(q\)</span>. Essa medida é definida por:</p>
 <p><span class="math display">\[
 d_e = \sqrt{(i_1 - i_2)^2 + (j_1 - j_2)^2}
 \]</span></p>
 <p>Essa é a distância mais natural do ponto de vista geométrico, porém pode ser computacionalmente mais custosa, pois envolve o cálculo de raiz quadrada.</p>
-<p>Outra medida bastante utilizada em processamento de imagens é a <strong>distância city-block</strong> (ou <strong>distância Manhattan</strong>). Nesse caso, a distância é calculada considerando apenas deslocamentos horizontais e verticais, como se o movimento ocorresse em uma grade de ruas ortogonais de uma cidade. A distância é dada por</p>
+<p>Outra medida bastante utilizada em processamento de imagens é a <strong>distância city-block</strong> (ou <strong>distância Manhattan</strong>). Nesse caso, a distância é calculada considerando apenas deslocamentos horizontais e verticais, como se o movimento ocorresse em uma grade de ruas ortogonais de uma cidade. A distância é dada por:</p>
 <p><span class="math display">\[
 d_c = |i_1 - i_2| + |j_1 - j_2|
 \]</span></p>
 <p>Essa medida está diretamente associada à <strong>vizinhança de 4 pixels</strong>, pois o deslocamento entre os pontos ocorre apenas pelas direções horizontal e vertical.</p>
-<p>Uma terceira medida é a <strong>distância xadrez</strong> (ou <strong>distância de Chebyshev</strong>). Nessa definição, a distância entre dois pixels corresponde ao maior deslocamento necessário entre as coordenadas horizontal e vertical. Essa medida é definida por</p>
+<p>Uma terceira medida é a <strong>distância xadrez</strong> (ou <strong>distância de Chebyshev</strong>). Nessa definição, a distância entre dois pixels corresponde ao maior deslocamento necessário entre as coordenadas horizontal e vertical. Essa medida é definida por:</p>
 <p><span class="math display">\[
 d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
 \]</span></p>
-<p>O nome distância xadrez vem do fato de que ela corresponde ao número mínimo de movimentos necessários para um <strong>rei</strong> se deslocar entre duas casas em um tabuleiro de xadrez. Essa métrica está associada à <strong>vizinhança de 8 pixels</strong>, pois permite movimentos tanto nas direções ortogonais quanto diagonais.</p>
+<p>O nome ‘distância xadrez’ vem do fato de que ela corresponde ao número mínimo de movimentos necessários para um <strong>rei</strong> se deslocar entre duas casas em um tabuleiro de xadrez. Essa métrica está associada à <strong>vizinhança de 8 pixels</strong>, pois permite movimentos tanto nas direções ortogonais quanto diagonais.</p>
 <p>Essas três medidas de distância são amplamente utilizadas em algoritmos de processamento de imagens, e a escolha de qual utilizar depende do tipo de conectividade e da modelagem geométrica desejada para o problema.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../imgs/cap3/distancia.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Medidas de distância em imagens digitais</figcaption>
+<figcaption>Medidas de distância em imagens digitais.</figcaption>
 </figure>
 </div>
 </section>
@@ -403,6 +403,11 @@ d_x = \max(|i_1 - i_2|, |j_1 - j_2|)
 <h3 class="anchored" data-anchor-id="algoritmo-transformada-de-distância-em-imagem-binária">Algoritmo: Transformada de Distância em Imagem Binária</h3>
 <p>Considere uma <strong>imagem binária</strong> na qual as regiões de pixels com valor <strong>1</strong> representam objetos, e deseja-se calcular a <strong>distância de cada pixel do objeto até o fundo (pixels 0)</strong>.</p>
 <p>O algoritmo (<a href="#lst-distancia" class="quarto-xref">Listagem&nbsp;<span>3.1</span></a>) possui <strong>duas fases</strong> e o resultado será uma <strong>imagem em tons de cinza</strong>, onde o valor de cada pixel indica sua distância ao fundo.</p>
+<p>A utilização de duas fases no algoritmo é essencial para garantir que a informação de distância se propague corretamente em toda a imagem.</p>
+<p>Na primeira fase (varredura direta), cada pixel é atualizado considerando apenas seus vizinhos acima e à esquerda. Dessa forma, as distâncias são propagadas progressivamente a partir do canto superior esquerdo da imagem.</p>
+<p>Entretanto, essa etapa não é suficiente para capturar corretamente distâncias que dependem de caminhos provenientes de outras direções.</p>
+<p>Por isso, na segunda fase (varredura inversa), a imagem é percorrida no sentido oposto, permitindo que cada pixel considere também os vizinhos à direita e abaixo. Essa etapa corrige e refina os valores previamente calculados, garantindo que a distância mínima ao fundo seja corretamente determinada.</p>
+<p>Assim, as duas varreduras em conjunto permitem que a informação de distância se propague em todas as direções da imagem, produzindo um resultado consistente.</p>
 <div id="lst-distancia" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-distancia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -454,6 +459,7 @@ Listagem&nbsp;3.1
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/rp0vlNYIX" height="500" imagem="imgs/cap3/p5js-distance.png" qrcode="imgs/cap3/qrcode-distance.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/distance/" width="100%" height="330" style="border:none;"></iframe></div>
+<p>Esse processo pode ser interpretado como um esquema de relaxamento iterativo, no qual cada pixel atualiza seu valor com base em seus vizinhos, de forma semelhante a algoritmos clássicos de propagação de custo em grafos.</p>
 </section>
 <section id="adjacência-e-conectividade-dos-pixels" class="level3">
 <h3 class="anchored" data-anchor-id="adjacência-e-conectividade-dos-pixels">Adjacência e Conectividade dos Pixels</h3>
@@ -479,7 +485,7 @@ Listagem&nbsp;3.1
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../imgs/cap3/regiao-borda.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Ilustração de uma região, borda interna e borda externa</figcaption>
+<figcaption>Ilustração de uma região, borda interna e borda externa.</figcaption>
 </figure>
 </div>
 <p>Ao definir regiões e fronteiras, é importante evitar o chamado <strong>paradoxo da conectividade</strong>, que ocorre quando diferentes critérios de vizinhança produzem ambiguidades na definição de conectividade entre pixels. Para evitar esse problema, utiliza-se uma regra complementar: se a <strong>vizinhança de 8 pixels (</strong><span class="math inline">\(N_8\)</span>) for utilizada para definir a borda, então a <strong>vizinhança de 4 pixels (</strong><span class="math inline">\(N_4\)</span>) deve ser utilizada para definir a região. De forma equivalente, se a borda for definida utilizando <span class="math inline">\(N_4\)</span>, a região deve ser definida utilizando <span class="math inline">\(N_8\)</span>.</p>
@@ -489,7 +495,7 @@ Listagem&nbsp;3.1
 <img src="../imgs/cap3/paradoxo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-paradoxo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;3.1: Ilustração do paradoxo da conectividade
+Figura&nbsp;3.1: Ilustração do paradoxo da conectividade.
 </figcaption>
 </figure>
 </div>
@@ -599,7 +605,7 @@ g(x,y) = a\,f(x,y) + b
 </section>
 <section id="transformações-logarítmicas" class="level3">
 <h3 class="anchored" data-anchor-id="transformações-logarítmicas">Transformações Logarítmicas</h3>
-<p>Transformações logarítmicas (da <a href="#lst-logaritmica" class="quarto-xref">Listagem&nbsp;<span>3.3</span></a>) são utilizadas para expandir valores de baixa intensidade e comprimir valores elevados, sendo especialmente úteis em imagens que apresentam grande variação dinâmica.</p>
+<p>Transformações logarítmicas (da <a href="#lst-logaritmica" class="quarto-xref">Listagem&nbsp;<span>3.3</span></a>) são utilizadas para expandir valores de baixa intensidade e comprimir valores elevados. Elas são especialmente úteis em imagens que apresentam grande faixa dinâmica, isto é, imagens nas quais há uma grande diferença entre os menores e maiores valores de intensidade.</p>
 <p>Uma forma típica é dada por:</p>
 <p><span class="math display">\[
 g(x,y) = c\,\log\!\left(1 + f(x,y)\right)
@@ -608,7 +614,7 @@ g(x,y) = c\,\log\!\left(1 + f(x,y)\right)
 <p><span class="math display">\[
 c = \frac{max}{\log(1 + max)}
 \]</span></p>
-<p>Onde <span class="math inline">\(max = L-1\)</span> é a máxima intensidade de pixel na imagem, ou seja, o maior valor retornado para a função imagem <span class="math inline">\(f(x,y)\)</span>.</p>
+<p>onde <span class="math inline">\(max = L-1\)</span> é a máxima intensidade de pixel na imagem, ou seja, o maior valor retornado para a função imagem <span class="math inline">\(f(x,y)\)</span>.</p>
 <div id="lst-logaritmica" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-logaritmica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -668,7 +674,7 @@ Listagem&nbsp;3.4
 <section id="transformação-linear-por-partes" class="level3">
 <h3 class="anchored" data-anchor-id="transformação-linear-por-partes">Transformação Linear por Partes</h3>
 <p>Uma abordagem bastante flexível para a transformação pontual dos níveis de intensidade de uma imagem é o uso de funções lineares por partes. Nesse tipo de transformação, o mapeamento entre os níveis de cinza de entrada e saída é definido por diferentes segmentos lineares ao longo da faixa dinâmica da imagem. Isso permite ajustar de forma independente diferentes regiões de intensidade, possibilitando, por exemplo, realçar detalhes em áreas escuras ou comprimir variações em regiões muito claras. A principal vantagem dessa técnica é sua flexibilidade, enquanto a principal desvantagem é a necessidade de definir um maior número de parâmetros.</p>
-<p>A função de transformação pode ser definida por quatro pontos: <span class="math inline">\(A = (0,0)\)</span>, <span class="math inline">\(B = (x_1,y_1)\)</span>, <span class="math inline">\(C = (x_2,y_2)\)</span> e <span class="math inline">\(D = (L−1,L−1)\)</span>, onde L representa o número de níveis de cinza. Esses pontos dividem a função em três trechos: <span class="math inline">\(A–B\)</span>, <span class="math inline">\(B–C\)</span> e <span class="math inline">\(C–D\)</span>. Cada um desses trechos é descrito por uma função linear distinta, permitindo controlar de forma localizada o comportamento da transformação.</p>
+<p>A função de transformação pode ser definida por quatro pontos: <span class="math inline">\(A = (0,0)\)</span>, <span class="math inline">\(B = (x_1,y_1)\)</span>, <span class="math inline">\(C = (x_2,y_2)\)</span> e <span class="math inline">\(D = (L−1,L−1)\)</span>, onde <span class="math inline">\(L\)</span> representa o número de níveis de cinza. Esses pontos dividem a função em três trechos: <span class="math inline">\(A–B\)</span>, <span class="math inline">\(B–C\)</span> e <span class="math inline">\(C–D\)</span>. Cada um desses trechos é descrito por uma função linear distinta, permitindo controlar de forma localizada o comportamento da transformação.</p>
 <p>De maneira geral, a reta que liga dois pontos <span class="math inline">\((x_1,y_1)\)</span> e <span class="math inline">\((x_2,y_2)\)</span> pode ser descrita pela equação <span class="math inline">\(y = a \times x + b\)</span>, em que o coeficiente angular <span class="math inline">\(a\)</span> é dado por <span class="math inline">\((y_2 − y_1)/(x_2 − x_1)\)</span>, e o termo independente <span class="math inline">\(b\)</span> é calculado como <span class="math inline">\(b = y_2 − a·x_2\)</span>. Assim, para cada trecho da função (<span class="math inline">\(A–B\)</span>, <span class="math inline">\(B–C\)</span> e <span class="math inline">\(C–D\)</span>), é possível determinar uma equação linear específica que define o mapeamento dos níveis de intensidade naquele intervalo.</p>
 <p>Como exemplo, considere uma imagem com 8 níveis de cinza, variando de 0 a 7 e que os pontos intermediários são <span class="math inline">\(B = (2,5)\)</span> e <span class="math inline">\(C = (4,6)\)</span>. A partir desses valores, obtêm-se três segmentos com comportamentos distintos: um crescimento acentuado entre <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, que amplia os níveis mais baixos; um crescimento mais suave entre <span class="math inline">\(B\)</span> e <span class="math inline">\(C\)</span>; e uma região de compressão entre <span class="math inline">\(C\)</span> e <span class="math inline">\(D\)</span>, que reduz a variação dos níveis mais altos. Calculando as equações correspondentes e arredondando os valores, obtém-se o vetor de transformação <span class="math inline">\(T = [0, 3, 5, 6, 6, 6, 7, 7]\)</span>, conforme ilustrado na <a href="#fig-partes" class="quarto-xref">Figura&nbsp;<span>3.2</span></a>.</p>
 <div id="fig-partes" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -677,13 +683,13 @@ Listagem&nbsp;3.4
 <img src="../imgs/cap3/partes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;3.2: Transformação linear por partes
+Figura&nbsp;3.2: Transformação linear por partes.
 </figcaption>
 </figure>
 </div>
 <p>Essa transformação evidencia um comportamento importante: há um aumento de contraste nas regiões escuras da imagem, uma transição moderada nos níveis intermediários e uma compressão nas regiões claras. Esse tipo de controle é particularmente útil em aplicações de processamento de imagens, pois permite enfatizar características relevantes em diferentes faixas de intensidade.</p>
 <p>Na prática, a implementação dessa transformação é geralmente feita por meio de uma tabela de consulta (Look-Up Table — LUT), na qual cada nível de intensidade de entrada é substituído diretamente pelo valor correspondente de saída. Isso torna o processo eficiente e adequado para aplicações em tempo real.</p>
-<p>O exemplo interativo seguinte demonstra a transformação linear por partes. Mova os pontos B (vermelho) e C(verde) para ajustar o contraste da imagem.</p>
+<p>O exemplo interativo seguinte demonstra a transformação linear por partes. Mova os pontos B (vermelho) e C (verde) para ajustar o contraste da imagem.</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2ZjbPla9T" height="400" imagem="imgs/cap3/p5js-linear.png" qrcode="imgs/cap3/qrcode-linear.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/linear/" width="100%" height="350" style="border:none;"></iframe></div>
@@ -693,7 +699,7 @@ Figura&nbsp;3.2: Transformação linear por partes
 <h2 data-number="3.6" class="anchored" data-anchor-id="histograma-de-imagens"><span class="header-section-number">3.6</span> Histograma de Imagens</h2>
 <p>O histograma de uma imagem descreve a distribuição dos níveis de intensidade dos pixels. Ele fornece uma representação estatística que é amplamente utilizada para análise e melhoramento de imagens.</p>
 <p>Imagens com baixo contraste tendem a apresentar histogramas concentrados em uma faixa estreita de valores, enquanto imagens com bom contraste exibem histogramas mais espalhados ao longo da escala de intensidades.</p>
-<p>Algoritmo para calcular o histograma de uma imagem está em <a href="#lst-histograma" class="quarto-xref">Listagem&nbsp;<span>3.5</span></a>.</p>
+<p>Algoritmo para calcular o histograma de uma imagem está incluído em <a href="#lst-histograma" class="quarto-xref">Listagem&nbsp;<span>3.5</span></a>.</p>
 <section id="equalização-de-histograma" class="level3">
 <h3 class="anchored" data-anchor-id="equalização-de-histograma">Equalização de Histograma</h3>
 <p>A equalização de histograma (<span class="citation" data-cites="pizer1987adaptive">Pizer et al. (<a href="references.html#ref-pizer1987adaptive" role="doc-biblioref">1987</a>)</span>, <span class="citation" data-cites="zuiderveld1994contrast">Zuiderveld (<a href="references.html#ref-zuiderveld1994contrast" role="doc-biblioref">1994</a>)</span>) é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.</p>
@@ -908,7 +914,7 @@ H[a_i f_i(x,y) + a_j f_j(x,y)]
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../imgs/cap3/filtros.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Filtros</figcaption>
+<figcaption>Filtros.</figcaption>
 </figure>
 </div>
 <p>Um filtro passa-alta realça bordas e detalhes, atenuando as baixas frequências (regiões suaves). Em PDI, isso é feito com kernels cuja soma dos coeficientes é zero (ou próxima de zero).</p>
