@@ -315,7 +315,7 @@ A apresentação simultânea da imagem original, da imagem quantizada e das matr
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/0drz5M5vK" height="600" imagem="imgs/cap9/p5js-matriz.png" qrcode="imgs/cap9/qrcode-matriz.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/matriz/" height="280" imagem="imgs/cap9/p5js-matriz.png" qrcode="imgs/cap9/qrcode-matriz.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/matriz/" height="300" imagem="imgs/cap9/p5js-matriz.png" qrcode="imgs/cap9/qrcode-matriz.png"}
 :::
 
 ## Considerações Finais

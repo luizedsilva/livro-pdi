@@ -128,7 +128,7 @@ Em sequência um simulador desse algoritmo:
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/rp0vlNYIX" height="500" imagem="imgs/cap3/p5js-distance.png" qrcode="imgs/cap3/qrcode-distance.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/distance/" height="330" imagem="imgs/cap3/p5js-distance.png" qrcode="imgs/cap3/qrcode-distance.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/distance/" height="350" imagem="imgs/cap3/p5js-distance.png" qrcode="imgs/cap3/qrcode-distance.png"}
 :::
 
 Esse processo pode ser interpretado como um esquema de relaxamento iterativo, no qual cada pixel atualiza seu valor com base em seus vizinhos, de forma semelhante a algoritmos clássicos de propagação de custo em grafos.
@@ -237,7 +237,7 @@ Em sequência um simulador desse algoritmo:
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/nAeHKMA9H" height="500" imagem="imgs/cap3/p5js-rotula.png" qrcode="imgs/cap3/qrcode-rotula.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/rotula/" height="330" imagem="imgs/cap3/p5js-rotula.png" qrcode="imgs/cap3/qrcode-rotula.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/rotula/" height="350" imagem="imgs/cap3/p5js-rotula.png" qrcode="imgs/cap3/qrcode-rotula.png"}
 :::
 
 ## Conceito de Melhoramento de Imagens
@@ -474,7 +474,7 @@ O exemplo interativo a seguir apresenta a implementação do algoritmo de **equa
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/nFphWvonZ" height="500" imagem="imgs/cap3/p5js-histograma.png" qrcode="imgs/cap3/qrcode-histograma.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/histograma/" height="430" imagem="imgs/cap3/p5js-histograma.png" qrcode="imgs/cap3/qrcode-histograma.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/histograma/" height="450" imagem="imgs/cap3/p5js-histograma.png" qrcode="imgs/cap3/qrcode-histograma.png"}
 :::
 
 ## Filtragem
@@ -570,7 +570,7 @@ No exemplo interativo em sequência, esses diversos filtros podem ser testados:
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/2T58I4gUQ" height="550" imagem="imgs/cap3/p5js-filtro.png" qrcode="imgs/cap3/qrcode-filtro.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/filtro/" height="480" imagem="imgs/cap3/p5js-filtro.png" qrcode="imgs/cap3/qrcode-filtro.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/filtro/" height="500" imagem="imgs/cap3/p5js-filtro.png" qrcode="imgs/cap3/qrcode-filtro.png"}
 :::
 
 ## Considerações sobre Ruído
@@ -633,7 +633,7 @@ No exemplo interativo seguinte está um programa que permite carregar uma imagem
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/xk5SXodH3" height="450" imagem="imgs/cap3/p5js-mediana.png" qrcode="imgs/cap3/qrcode-mediana.png"}
 ::: -->
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/mediana/" height="390" imagem="imgs/cap3/p5js-mediana.png" qrcode="imgs/cap3/qrcode-mediana.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/mediana/" height="400" imagem="imgs/cap3/p5js-mediana.png" qrcode="imgs/cap3/qrcode-mediana.png"}
 :::
 
 ## Considerações Finais
