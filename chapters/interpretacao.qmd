@@ -151,9 +151,7 @@ Em redes neurais tradicionais do tipo *feedforward*, o número de neurônios nec
 
 As CNNs resolvem esse problema ao explorar duas ideias fundamentais: **compartilhamento de pesos** e **conectividade local**. Dessa forma, conseguem extrair características relevantes da imagem enquanto reduzem significativamente sua dimensionalidade. Um exemplo típico mostra que uma imagem de entrada com dimensão $224 \times 224 \times 3$ pode ser transformada, ao longo das camadas da rede, em uma representação muito menor, como $1 \times 1 \times 1000$, mantendo as informações essenciais para classificação.
 
-### Representação da Imagem e Operação de Convolução
-
-Uma imagem colorida pode ser interpretada como a combinação de três matrizes, correspondentes aos canais de cor vermelho $R$, verde $G$ e azul $B$. Cada pixel é, portanto, descrito por três valores de intensidade.
+### Operação de Convolução
 
 A operação central das CNNs é a **convolução**, na qual pequenos filtros (ou máscaras) percorrem a imagem (conforme ilustrado na @fig-cnncamadas), detectando padrões locais como bordas, texturas e formas. Por exemplo, filtros específicos podem ser projetados para identificar linhas horizontais ou verticais.
 
@@ -200,7 +198,7 @@ $$
 
 onde $F$ é o tamanho do filtro e $S$ é o *stride*.
 
-O exemplo interativo seguinte demonstra os cálculos e o resultado da camada de Pooling.
+O exemplo interativo seguinte demonstra os cálculos realizados em função do tamanho do fitro e do stride e em seguida é apresentado o resultado de saída da camada de Pooling.
 
 ```{=html}
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/n71g9My6G" height="500" imagem="imgs/cap10/p5js-pooling.png" qrcode="imgs/cap10/qrcode-pooling.png"}
@@ -246,14 +244,16 @@ A arquitetura **MobileNet** está ilustrada na @fig-mobilenet.
 
 ![Arquitetura MobileNet](/imgs/cap10/mobilenet.png){#fig-mobilenet width="90%" fig-align="center"}
 
-E para ilustrar o seu funcionamento são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5 para classificação de pássaros.
+Para ilustrar o funcionamento da Arquitetura MobileNet são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5[^interpretacao-1] para classificação de pássaros.
+
+[^interpretacao-1]: (<https://docs.ml5js.org>)
 
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/" height="450" imagem="imgs/cap10/p5js-mobilenet.png" qrcode="imgs/cap10/qrcode-mobilenet.png"}
 :::
 
-A partir da documentação disponível da biblioteca ml5, denominado **HandPose**[^interpretacao-1], foi construído o segundo exemplo interativo, que captura imagens da câmera e identifica os dedos da mão (conforme ilustrado na @fig-hand). O código em p5.js está nas @lst-handpose1 e @lst-handpose2.
+A partir da documentação disponível da biblioteca ml5, denominado **HandPose**[^interpretacao-2], foi construído o segundo exemplo interativo, que captura imagens da câmera e identifica os dedos da mão (conforme ilustrado na @fig-hand). O código em p5.js está nas @lst-handpose1 e @lst-handpose2.
 
-[^interpretacao-1]: (<https://docs.ml5js.org/#/reference/handpose>)
+[^interpretacao-2]: (<https://docs.ml5js.org/#/reference/handpose>)
 
 ![Diagrama com identificação dos pontos da mão](/imgs/cap10/hand.png){#fig-hand width="60%" fig-align="center"}
 
@@ -350,11 +350,11 @@ function gotHands(results) {
 }
 ```
 
-A função $draw$ usa essas informações para adicionar a imagem de vídeo pontos vermelhos que identificam as articulações dos dedos da mão e uma linha verde que une todas essas articulações (conforme indicado na @fig-hand).
+A função $draw$ usa essas informações para adicionar à imagem de vídeo pontos vermelhos que identificam as articulações dos dedos da mão e uma linha verde que une todas essas articulações (conforme indicado na @fig-hand).
 
-O exemplo interativo pode ser acessado em (observação: será solicitado a liberação da câmera no navegador para acessar este exemplo):
+O exemplo interativo pode ser acessado em sequência (**observação:** será solicitada a liberação da câmera no navegador para acessar este exemplo):
 
-::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/handpose/" height="450" imagem="imgs/cap10/p5js-handpose.png" qrcode="imgs/cap10/qrcode-handpose.png"}
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/handpose/" height="500" imagem="imgs/cap10/p5js-handpose.png" qrcode="imgs/cap10/qrcode-handpose.png"}
 :::
 
 ## Considerações Finais
@@ -529,7 +529,7 @@ O estudante deverá modificar um exemplo existente para identificar e rotular di
 
 **Problema**
 
-O modelo HandPose permite detectar pontos-chave (landmarks) da mão, mas não classifica diretamente gest os.
+O modelo HandPose permite detectar pontos-chave (landmarks) da mão, mas não classifica diretamente gestos.
 
 O desafio desta atividade é construir uma camada adicional de lógica para interpretar esses pontos e reconhecer gestos específicos, como:
 
