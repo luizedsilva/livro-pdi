@@ -46,3 +46,4 @@ qrencode -o qrcode-watershed2d.png "https://luizedsilva.github.io/livro-pdi/p5js
 qrencode -o qrcode-watershed3d.png "https://luizedsilva.github.io/livro-pdi/p5js/watershed3d/"
 qrencode -o qrcode-petalas.png "https://luizedsilva.github.io/livro-pdi/p5js/petalas/"
 qrencode -o qrcode-mobilenet.png "https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/"
+qrencode -o qrcode-mobilenet.png "https://luizedsilva.github.io/livro-pdi/p5js/handpose/"
