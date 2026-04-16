@@ -283,7 +283,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">10.9</span> Considerações Finais</a></li>
   </ul>
-<div class="toc-actions"><ul></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -534,6 +534,16 @@ Figura&nbsp;10.7: Camada Dropout
 <section id="arquiteturas-de-cnn" class="level3">
 <h3 class="anchored" data-anchor-id="arquiteturas-de-cnn">Arquiteturas de CNN</h3>
 <p>Diversas arquiteturas de CNN foram propostas ao longo dos anos, cada uma trazendo avanços significativos na área de visão computacional. De forma geral, essas arquiteturas consistem no empilhamento de camadas convolucionais, funções de ativação e camadas de pooling, seguidas por camadas totalmente conectadas.</p>
+<p>Entre as arquiteturas mais conhecidas, destacam-se:</p>
+<ul>
+<li><strong>LeNet-5:</strong> uma das primeiras CNNs, aplicada ao reconhecimento de dígitos (ilustrado na <a href="#fig-lenet5" class="quarto-xref">Figura&nbsp;<span>10.8</span></a>);</li>
+<li><strong>AlexNet:</strong> responsável por impulsionar o uso de deep learning em visão computacional (ilustrado na <a href="#fig-alexnet" class="quarto-xref">Figura&nbsp;<span>10.9</span></a>);</li>
+<li><strong>GoogleNet (Inception):</strong> introduziu estruturas mais profundas e eficientes;</li>
+<li><strong>ResNet:</strong> utilizou conexões residuais para treinar redes muito profundas com maior estabilidade.</li>
+<li><strong>MobileNet:</strong> projetada para dispositivos móveis, utiliza convoluções separáveis em profundidade (ilustrado na <a href="#fig-mobilenet" class="quarto-xref">Figura&nbsp;<span>10.10</span></a>)</li>
+</ul>
+<section id="arquitetura-lenet-5" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arquitetura-lenet-5">Arquitetura LeNet-5</h4>
 <div id="fig-lenet5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lenet5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -544,13 +554,9 @@ Figura&nbsp;10.8: Arquitetura LeNet-5
 </figcaption>
 </figure>
 </div>
-<p>Entre as arquiteturas mais conhecidas, destacam-se:</p>
-<ul>
-<li><strong>LeNet-5:</strong> uma das primeiras CNNs, aplicada ao reconhecimento de dígitos (ilustrado na <a href="#fig-lenet5" class="quarto-xref">Figura&nbsp;<span>10.8</span></a>);</li>
-<li><strong>AlexNet:</strong> responsável por impulsionar o uso de deep learning em visão computacional (ilustrado na <a href="#fig-alexnet" class="quarto-xref">Figura&nbsp;<span>10.9</span></a>);</li>
-<li><strong>GoogleNet (Inception):</strong> introduziu estruturas mais profundas e eficientes;</li>
-<li><strong>ResNet:</strong> utilizou conexões residuais para treinar redes muito profundas com maior estabilidade.</li>
-</ul>
+</section>
+<section id="arquitetura-alexnet" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arquitetura-alexnet">Arquitetura AlexNet</h4>
 <div id="fig-alexnet" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-alexnet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -561,6 +567,51 @@ Figura&nbsp;10.9: Arquitetura AlexNet
 </figcaption>
 </figure>
 </div>
+</section>
+<section id="arquitetura-mobilenet" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arquitetura-mobilenet">Arquitetura MobileNet</h4>
+<p>A arquitetura <strong>MobileNet</strong> está ilustrada na <a href="#fig-mobilenet" class="quarto-xref">Figura&nbsp;<span>10.10</span></a>.</p>
+<div id="fig-mobilenet" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mobilenet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap10/mobilenet.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mobilenet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10.10: Arquitetura AlexNet
+</figcaption>
+</figure>
+</div>
+<!-- E resumida na seguinte tabela @tbl-mobilenet.
+
+Entrada: 224×224×3
+
+| Camada | Tipo | Filtro / Operação | Stride | Saída |
+|--------|------|------------------|--------|--------|
+| 1 | Conv | 3×3, 32 | 2 | 112×112×32 |
+| 2 | Depthwise Conv | 3×3 | 1 | 112×112×32 |
+| 3 | Pointwise Conv | 1×1, 64 | 1 | 112×112×64 |
+| 4 | Depthwise Conv | 3×3 | 2 | 56×56×64 |
+| 5 | Pointwise Conv | 1×1, 128 | 1 | 56×56×128 |
+| 6 | Depthwise Conv | 3×3 | 1 | 56×56×128 |
+| 7 | Pointwise Conv | 1×1, 128 | 1 | 56×56×128 |
+| 8 | Depthwise Conv | 3×3 | 2 | 28×28×128 |
+| 9 | Pointwise Conv | 1×1, 256 | 1 | 28×28×256 |
+| 10 | Depthwise Conv | 3×3 | 1 | 28×28×256 |
+| 11 | Pointwise Conv | 1×1, 256 | 1 | 28×28×256 |
+| 12 | Depthwise Conv | 3×3 | 2 | 14×14×256 |
+| 13 | Pointwise Conv | 1×1, 512 | 1 | 14×14×512 |
+| 14–23 | Depthwise + Pointwise (×5) | 3×3 / 1×1, 512 | 1 | 14×14×512 |
+| 24 | Depthwise Conv | 3×3 | 2 | 7×7×512 |
+| 25 | Pointwise Conv | 1×1, 1024 | 1 | 7×7×1024 |
+| 26 | Depthwise Conv | 3×3 | 1 | 7×7×1024 |
+| 27 | Pointwise Conv | 1×1, 1024 | 1 | 7×7×1024 |
+| 28 | Avg Pool | 7×7 | — | 1×1×1024 |
+| 29 | Fully Connected | 1000 | — | 1×1×1000 |
+| 30 | Softmax | — | — | Probabilidades |
+: Arquitetura da MobileNet V1 {#tbl-mobilenet} -->
+<p>O exemplo ilustrativo em sequência demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5 para classificação de pássaros.</p>
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/" width="100%" height="450" style="border:none;"></iframe></div>
+</section>
 </section>
 </section>
 <section id="considerações-finais" class="level2" data-number="10.9">
@@ -1199,7 +1250,7 @@ Szegedy, Christian, Wei Liu, Yangqing Jia, et al. 2015. <span>“Going deeper wi
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul></ul></div></div>
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
