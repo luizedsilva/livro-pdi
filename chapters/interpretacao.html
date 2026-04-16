@@ -612,7 +612,7 @@ Figura&nbsp;10.10: Arquitetura MobileNet
 </div>
 <p>E para ilustrar o seu funcionamento são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5 para classificação de pássaros.</p>
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/" width="100%" height="450" style="border:none;"></iframe></div>
-<p>Seguindo a documentação disponível da biblioteca ml5, denominado HandPose<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, foi construído o segundo exemplo interativo, que a partir da imagem obtida da câmera, identifica os dedos da mão (conforme ilustrado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>). O código em p5.js está nas <a href="#lst-handpose1" class="quarto-xref">Listagem&nbsp;<span>10.1</span></a> e <a href="#lst-handpose2" class="quarto-xref">Listagem&nbsp;<span>10.2</span></a>.</p>
+<p>A partir da documentação disponível da biblioteca ml5, denominado <strong>HandPose</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, foi construído o segundo exemplo interativo, que captura imagens da câmera e identifica os dedos da mão (conforme ilustrado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>). O código em p5.js está nas <a href="#lst-handpose1" class="quarto-xref">Listagem&nbsp;<span>10.1</span></a> e <a href="#lst-handpose2" class="quarto-xref">Listagem&nbsp;<span>10.2</span></a>.</p>
 <div id="fig-hand" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-hand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -892,6 +892,66 @@ Listagem&nbsp;10.2
 <p>Discuta os impactos sociais e éticos dessas aplicações.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled" title="Atividade Prática: Reconhecimento de Gestos com HandPose (ml5.js)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Atividade Prática: Reconhecimento de Gestos com HandPose (ml5.js)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Objetivo</strong></p>
+<p>O objetivo desta atividade é explorar conceitos de visão computacional com redes neurais pré-treinadas, utilizando o modelo ml5.js baseado no HandPose.</p>
+<p>O estudante deverá modificar um exemplo existente para identificar e rotular diferentes gestos da mão em tempo real.</p>
+<hr>
+<p><strong>Problema</strong></p>
+<p>O modelo HandPose permite detectar pontos-chave (landmarks) da mão, mas não classifica diretamente gest os.</p>
+<p>O desafio desta atividade é construir uma camada adicional de lógica para interpretar esses pontos e reconhecer gestos específicos, como:</p>
+<ul>
+<li>mão aberta</li>
+<li>mão fechada</li>
+<li>sinal de “positivo” (joinha 👍)</li>
+<li>sinal de “paz e amor” ✌️</li>
+</ul>
+<hr>
+<p><strong>Descrição</strong></p>
+<p>A partir de um exemplo base com HandPose, você deverá:</p>
+<ol type="a">
+<li><p>Capturar o vídeo da webcam</p></li>
+<li><p>Detectar a mão e seus pontos-chave (landmarks)</p></li>
+<li><p>Exibir esses pontos na tela</p></li>
+</ol>
+<p>Em seguida, implemente um mecanismo de classificação de gestos, baseado na posição relativa dos dedos:</p>
+<ol type="a">
+<li><p>Identificar se os dedos estão estendidos ou dobrados</p></li>
+<li><p>Criar regras heurísticas para cada gesto, por exemplo:</p></li>
+</ol>
+<ul>
+<li>Mão aberta: todos os dedos estendidos</li>
+<li>Mão fechada: todos os dedos dobrados</li>
+<li>Positivo: polegar estendido e demais dobrados</li>
+<li>Paz e amor: indicador e médio estendidos</li>
+</ul>
+<p>O programa deverá:</p>
+<ol type="a">
+<li><p>Analisar os landmarks a cada frame</p></li>
+<li><p>Classificar o gesto atual</p></li>
+<li><p>Exibir o rótulo do gesto na tela (ex: “Mão aberta”)</p></li>
+</ol>
+<hr>
+<p><strong>Entrada</strong></p>
+<p>Captura de vídeo em tempo real via webcam</p>
+<hr>
+<p><strong>Saída</strong></p>
+<p>O programa deve apresentar:</p>
+<ul>
+<li>Vídeo da webcam com os pontos da mão desenhados</li>
+<li>Classificação do gesto exibida na tela em tempo real</li>
+</ul>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
@@ -939,7 +999,7 @@ Szegedy, Christian, Wei Liu, Yangqing Jia, et al. 2015. <span>“Going deeper wi
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>https://docs.ml5js.org/#/reference/handpose<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>(<a href="https://docs.ml5js.org/#/reference/handpose" class="uri">https://docs.ml5js.org/#/reference/handpose</a>)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
