@@ -312,7 +312,7 @@ window.Quarto = {
   <li><a href="#redes-neurais-convolucionais-cnn" id="toc-redes-neurais-convolucionais-cnn" class="nav-link" data-scroll-target="#redes-neurais-convolucionais-cnn"><span class="header-section-number">10.8</span> Redes Neurais Convolucionais (CNN)</a>
   <ul class="collapse">
   <li><a href="#motivação-e-redução-de-dimensionalidade" id="toc-motivação-e-redução-de-dimensionalidade" class="nav-link" data-scroll-target="#motivação-e-redução-de-dimensionalidade">Motivação e Redução de Dimensionalidade</a></li>
-  <li><a href="#representação-da-imagem-e-operação-de-convolução" id="toc-representação-da-imagem-e-operação-de-convolução" class="nav-link" data-scroll-target="#representação-da-imagem-e-operação-de-convolução">Representação da Imagem e Operação de Convolução</a></li>
+  <li><a href="#operação-de-convolução" id="toc-operação-de-convolução" class="nav-link" data-scroll-target="#operação-de-convolução">Operação de Convolução</a></li>
   <li><a href="#estrutura-das-camadas-em-uma-cnn" id="toc-estrutura-das-camadas-em-uma-cnn" class="nav-link" data-scroll-target="#estrutura-das-camadas-em-uma-cnn">Estrutura das Camadas em uma CNN</a></li>
   <li><a href="#arquiteturas-de-cnn" id="toc-arquiteturas-de-cnn" class="nav-link" data-scroll-target="#arquiteturas-de-cnn">Arquiteturas de CNN</a></li>
   </ul></li>
@@ -473,9 +473,8 @@ Figura&nbsp;10.3: Formação da imagem no cérebro humano
 <p>Em redes neurais tradicionais do tipo <em>feedforward</em>, o número de neurônios necessários para processar imagens pode se tornar extremamente elevado. Por exemplo, uma imagem de dimensão <span class="math inline">\(1000 \times 1000\)</span> exigiria, em uma abordagem direta, cerca de <span class="math inline">\(10^6\)</span> neurônios apenas na camada de entrada.</p>
 <p>As CNNs resolvem esse problema ao explorar duas ideias fundamentais: <strong>compartilhamento de pesos</strong> e <strong>conectividade local</strong>. Dessa forma, conseguem extrair características relevantes da imagem enquanto reduzem significativamente sua dimensionalidade. Um exemplo típico mostra que uma imagem de entrada com dimensão <span class="math inline">\(224 \times 224 \times 3\)</span> pode ser transformada, ao longo das camadas da rede, em uma representação muito menor, como <span class="math inline">\(1 \times 1 \times 1000\)</span>, mantendo as informações essenciais para classificação.</p>
 </section>
-<section id="representação-da-imagem-e-operação-de-convolução" class="level3">
-<h3 class="anchored" data-anchor-id="representação-da-imagem-e-operação-de-convolução">Representação da Imagem e Operação de Convolução</h3>
-<p>Uma imagem colorida pode ser interpretada como a combinação de três matrizes, correspondentes aos canais de cor vermelho <span class="math inline">\(R\)</span>, verde <span class="math inline">\(G\)</span> e azul <span class="math inline">\(B\)</span>. Cada pixel é, portanto, descrito por três valores de intensidade.</p>
+<section id="operação-de-convolução" class="level3">
+<h3 class="anchored" data-anchor-id="operação-de-convolução">Operação de Convolução</h3>
 <p>A operação central das CNNs é a <strong>convolução</strong>, na qual pequenos filtros (ou máscaras) percorrem a imagem (conforme ilustrado na <a href="#fig-cnncamadas" class="quarto-xref">Figura&nbsp;<span>10.4</span></a>), detectando padrões locais como bordas, texturas e formas. Por exemplo, filtros específicos podem ser projetados para identificar linhas horizontais ou verticais.</p>
 <div id="fig-cnncamadas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -538,7 +537,7 @@ h_2 = \frac{h_1 - F}{S} + 1
 d_2 = d_1
 \]</span></p>
 <p>onde <span class="math inline">\(F\)</span> é o tamanho do filtro e <span class="math inline">\(S\)</span> é o <em>stride</em>.</p>
-<p>O exemplo interativo seguinte demonstra os cálculos e o resultado da camada de Pooling.</p>
+<p>O exemplo interativo seguinte demonstra os cálculos realizados em função do tamanho do fitro e do stride e em seguida é apresentado o resultado de saída da camada de Pooling.</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/n71g9My6G" height="500" imagem="imgs/cap10/p5js-pooling.png" qrcode="imgs/cap10/qrcode-pooling.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/pooling/" width="100%" height="450" style="border:none;"></iframe></div>
@@ -610,9 +609,9 @@ Figura&nbsp;10.10: Arquitetura MobileNet
 </figcaption>
 </figure>
 </div>
-<p>E para ilustrar o seu funcionamento são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5 para classificação de pássaros.</p>
+<p>Para ilustrar o funcionamento da Arquitetura MobileNet são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> para classificação de pássaros.</p>
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/" width="100%" height="450" style="border:none;"></iframe></div>
-<p>A partir da documentação disponível da biblioteca ml5, denominado <strong>HandPose</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, foi construído o segundo exemplo interativo, que captura imagens da câmera e identifica os dedos da mão (conforme ilustrado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>). O código em p5.js está nas <a href="#lst-handpose1" class="quarto-xref">Listagem&nbsp;<span>10.1</span></a> e <a href="#lst-handpose2" class="quarto-xref">Listagem&nbsp;<span>10.2</span></a>.</p>
+<p>A partir da documentação disponível da biblioteca ml5, denominado <strong>HandPose</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, foi construído o segundo exemplo interativo, que captura imagens da câmera e identifica os dedos da mão (conforme ilustrado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>). O código em p5.js está nas <a href="#lst-handpose1" class="quarto-xref">Listagem&nbsp;<span>10.1</span></a> e <a href="#lst-handpose2" class="quarto-xref">Listagem&nbsp;<span>10.2</span></a>.</p>
 <div id="fig-hand" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-hand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -716,9 +715,9 @@ Listagem&nbsp;10.2
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-fontsize="\small"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gotHands</span>(results) {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  hands <span class="op">=</span> results<span class="op">;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A função <span class="math inline">\(draw\)</span> usa essas informações para adicionar a imagem de vídeo pontos vermelhos que identificam as articulações dos dedos da mão e uma linha verde que une todas essas articulações (conforme indicado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>).</p>
-<p>O exemplo interativo pode ser acessado em (observação: será solicitado a liberação da câmera no navegador para acessar este exemplo):</p>
-<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/handpose/" width="100%" height="450" style="border:none;"></iframe></div>
+<p>A função <span class="math inline">\(draw\)</span> usa essas informações para adicionar à imagem de vídeo pontos vermelhos que identificam as articulações dos dedos da mão e uma linha verde que une todas essas articulações (conforme indicado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>).</p>
+<p>O exemplo interativo pode ser acessado em sequência (<strong>observação:</strong> será solicitada a liberação da câmera no navegador para acessar este exemplo):</p>
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/handpose/" width="100%" height="500" style="border:none;"></iframe></div>
 </section>
 </section>
 </section>
@@ -907,7 +906,7 @@ Listagem&nbsp;10.2
 <p>O estudante deverá modificar um exemplo existente para identificar e rotular diferentes gestos da mão em tempo real.</p>
 <hr>
 <p><strong>Problema</strong></p>
-<p>O modelo HandPose permite detectar pontos-chave (landmarks) da mão, mas não classifica diretamente gest os.</p>
+<p>O modelo HandPose permite detectar pontos-chave (landmarks) da mão, mas não classifica diretamente gestos.</p>
 <p>O desafio desta atividade é construir uma camada adicional de lógica para interpretar esses pontos e reconhecer gestos específicos, como:</p>
 <ul>
 <li>mão aberta</li>
@@ -999,7 +998,8 @@ Szegedy, Christian, Wei Liu, Yangqing Jia, et al. 2015. <span>“Going deeper wi
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>(<a href="https://docs.ml5js.org/#/reference/handpose" class="uri">https://docs.ml5js.org/#/reference/handpose</a>)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>(<a href="https://docs.ml5js.org" class="uri">https://docs.ml5js.org</a>)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>(<a href="https://docs.ml5js.org/#/reference/handpose" class="uri">https://docs.ml5js.org/#/reference/handpose</a>)<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
