@@ -316,6 +316,7 @@ window.Quarto = {
   <li><a href="#estrutura-das-camadas-em-uma-cnn" id="toc-estrutura-das-camadas-em-uma-cnn" class="nav-link" data-scroll-target="#estrutura-das-camadas-em-uma-cnn">Estrutura das Camadas em uma CNN</a></li>
   <li><a href="#arquiteturas-de-cnn" id="toc-arquiteturas-de-cnn" class="nav-link" data-scroll-target="#arquiteturas-de-cnn">Arquiteturas de CNN</a></li>
   </ul></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">10.9</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -566,7 +567,7 @@ Figura&nbsp;10.7: Camada Dropout
 </section>
 </section>
 <section id="arquiteturas-de-cnn" class="level3">
-<h3 class="anchored">Arquiteturas de CNN</h3>
+<h3 class="anchored" data-anchor-id="arquiteturas-de-cnn">Arquiteturas de CNN</h3>
 <p>Diversas arquiteturas de CNN foram propostas ao longo dos anos, cada uma trazendo avanços significativos na área de visão computacional. De forma geral, essas arquiteturas consistem no empilhamento de camadas convolucionais, funções de ativação e camadas de pooling, seguidas por camadas totalmente conectadas.</p>
 <p>Entre as arquiteturas mais conhecidas, destacam-se:</p>
 <ul>
@@ -603,7 +604,7 @@ Figura&nbsp;10.9: Arquitetura AlexNet
 </div>
 </section>
 <section id="arquitetura-mobilenet" class="level4 unnumbered">
-<h4 class="unnumbered anchored">Arquitetura MobileNet</h4>
+<h4 class="unnumbered anchored" data-anchor-id="arquitetura-mobilenet">Arquitetura MobileNet</h4>
 <p>A arquitetura <strong>MobileNet</strong> está ilustrada na <a href="#fig-mobilenet" class="quarto-xref">Figura&nbsp;<span>10.10</span></a>.</p>
 <div id="fig-mobilenet" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -701,18 +702,24 @@ Listagem&nbsp;10.1
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span>(points[<span class="dv">9</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">9</span>]<span class="op">.</span><span class="at">y</span><span class="op">,</span> points[<span class="dv">13</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">13</span>]<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span>(points[<span class="dv">13</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">13</span>]<span class="op">.</span><span class="at">y</span><span class="op">,</span> points[<span class="dv">17</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">17</span>]<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
+</div>
 <p>Depois que o modelo pré-treinado que identifica a mão é carregado:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-fontsize="\small"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  handPose <span class="op">=</span> ml5<span class="op">.</span><span class="fu">handPose</span>(video<span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Modelo carregado!"</span>)<span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    handPose<span class="op">.</span><span class="fu">detectStart</span>(video<span class="op">,</span> gotHands)<span class="op">;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Toda vez que é reconhecida não quadro do vídeo, os parâmetros são atualizados em <span class="math inline">\(hand\)</span>:</p>
+<p>Toda vez que é reconhecida a mão num quadro do vídeo, os parâmetros são atualizados em <span class="math inline">\(hand\)</span>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-fontsize="\small"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gotHands</span>(results) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  hands <span class="op">=</span> results<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A função <span class="math inline">\(draw\)</span> usa essas informações para adicionar a imagem de vídeo pontos vermelhos que identificam as articulações dos dedos da mão e uma linha verde que une todas essas articulações (conforme indicado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>).</p>
 <p>O exemplo interativo pode ser acessado em:</p>
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/handpose/" width="100%" height="450" style="border:none;"></iframe></div>
+</section>
+</section>
+</section>
 <section id="considerações-finais" class="level2" data-number="10.9">
 <h2 data-number="10.9" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">10.9</span> Considerações Finais</h2>
 <p>Ao longo deste capítulo, foi possível compreender como o reconhecimento e a interpretação de imagens representam o nível mais alto do processamento digital de imagens, no qual os dados deixam de ser apenas estruturas numéricas e passam a adquirir significado. Essa transição é fundamental para o desenvolvimento de sistemas capazes de tomar decisões e atuar de forma inteligente em diferentes contextos.</p>
@@ -885,10 +892,6 @@ Listagem&nbsp;10.1
 </div>
 
 
-</section>
-</div>
-</figure>
-</div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-bishop2006pattern" class="csl-entry" role="listitem">
 Bishop, Christopher M. 2006. <em>Pattern Recognition and Machine Learning</em>. Springer.
@@ -930,8 +933,6 @@ Simonyan, Karen, e Andrew Zisserman. 2015. <span>“Very deep convolutional netw
 Szegedy, Christian, Wei Liu, Yangqing Jia, et al. 2015. <span>“Going deeper with convolutions”</span>. <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 1–9.
 </div>
 </div>
-</section>
-</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
