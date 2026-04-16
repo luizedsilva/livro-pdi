@@ -577,8 +577,6 @@ Figura&nbsp;10.7: Camada Dropout
 <li><strong>ResNet:</strong> utilizou conexões residuais para treinar redes muito profundas com maior estabilidade.</li>
 <li><strong>MobileNet:</strong> projetada para dispositivos móveis, utiliza convoluções separáveis em profundidade (ilustrado na <a href="#fig-mobilenet" class="quarto-xref">Figura&nbsp;<span>10.10</span></a>)</li>
 </ul>
-<section id="arquitetura-lenet-5" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="arquitetura-lenet-5">Arquitetura LeNet-5</h4>
 <div id="fig-lenet5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lenet5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -589,9 +587,6 @@ Figura&nbsp;10.8: Arquitetura LeNet-5
 </figcaption>
 </figure>
 </div>
-</section>
-<section id="arquitetura-alexnet" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="arquitetura-alexnet">Arquitetura AlexNet</h4>
 <div id="fig-alexnet" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-alexnet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -602,7 +597,6 @@ Figura&nbsp;10.9: Arquitetura AlexNet
 </figcaption>
 </figure>
 </div>
-</section>
 <section id="arquitetura-mobilenet" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="arquitetura-mobilenet">Arquitetura MobileNet</h4>
 <p>A arquitetura <strong>MobileNet</strong> está ilustrada na <a href="#fig-mobilenet" class="quarto-xref">Figura&nbsp;<span>10.10</span></a>.</p>
@@ -616,25 +610,25 @@ Figura&nbsp;10.10: Arquitetura MobileNet
 </figcaption>
 </figure>
 </div>
-<p>O exemplo ilustrativo em sequência demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5 para classificação de pássaros.</p>
+<p>E para ilustrar o seu funcionamento são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5 para classificação de pássaros.</p>
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/" width="100%" height="450" style="border:none;"></iframe></div>
-<p>Seguindo a documentação disponível da biblioteca ml5, denominado HandPose<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, foi construído o seguinte exemplo interativo, que a partir da imagem obtida da câmera, identifica os dedos da mão (conforme ilustrado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>). O código em p5.js está na <a href="#lst-handpose" class="quarto-xref">Listagem&nbsp;<span>10.1</span></a>.</p>
+<p>Seguindo a documentação disponível da biblioteca ml5, denominado HandPose<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, foi construído o segundo exemplo interativo, que a partir da imagem obtida da câmera, identifica os dedos da mão (conforme ilustrado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>). O código em p5.js está nas <a href="#lst-handpose1" class="quarto-xref">Listagem&nbsp;<span>10.1</span></a> e <a href="#lst-handpose2" class="quarto-xref">Listagem&nbsp;<span>10.2</span></a>.</p>
 <div id="fig-hand" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-hand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap10/hand.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
+<img src="../imgs/cap10/hand.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;10.11: Diagrama com identificação dos pontos da mão
 </figcaption>
 </figure>
 </div>
-<div id="lst-handpose" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<div id="lst-handpose1" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-handpose-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-handpose1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listagem&nbsp;10.1
 </figcaption>
-<div aria-describedby="lst-handpose-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="lst-handpose1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-fontsize="\small"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> video<span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> handPose<span class="op">;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> hands <span class="op">=</span> []<span class="op">;</span></span>
@@ -675,45 +669,53 @@ Listagem&nbsp;10.1
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="co">// desenhar conexões</span></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drawSkeleton</span>(points)<span class="op">;</span></span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">drawSkeleton</span>(points) {</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stroke</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">255</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">strokeWeight</span>(<span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> fingers <span class="op">=</span> [</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span> <span class="co">// polegar</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span> <span class="co">// indicador</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="co">// médio</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span><span class="op">,</span> <span class="dv">13</span><span class="op">,</span> <span class="dv">14</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">16</span>]<span class="op">,</span> <span class="co">// anelar</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span><span class="op">,</span> <span class="dv">17</span><span class="op">,</span> <span class="dv">18</span><span class="op">,</span> <span class="dv">19</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> <span class="co">// mínimo</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">;</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> f <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> f <span class="op">&lt;</span> fingers<span class="op">.</span><span class="at">length</span><span class="op">;</span> f<span class="op">++</span>) {</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> finger <span class="op">=</span> fingers[f]<span class="op">;</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> finger<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> a <span class="op">=</span> points[finger[i]]<span class="op">;</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> b <span class="op">=</span> points[finger[i <span class="op">+</span> <span class="dv">1</span>]]<span class="op">;</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>      <span class="fu">line</span>(a<span class="op">.</span><span class="at">x</span><span class="op">,</span> a<span class="op">.</span><span class="at">y</span><span class="op">,</span> b<span class="op">.</span><span class="at">x</span><span class="op">,</span> b<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span>(points[<span class="dv">5</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">5</span>]<span class="op">.</span><span class="at">y</span><span class="op">,</span> points[<span class="dv">9</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">9</span>]<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span>(points[<span class="dv">9</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">9</span>]<span class="op">.</span><span class="at">y</span><span class="op">,</span> points[<span class="dv">13</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">13</span>]<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span>(points[<span class="dv">13</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">13</span>]<span class="op">.</span><span class="at">y</span><span class="op">,</span> points[<span class="dv">17</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">17</span>]<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
+</div>
+<div id="lst-handpose2" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-handpose2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listagem&nbsp;10.2
+</figcaption>
+<div aria-describedby="lst-handpose2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-fontsize="\small"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">drawSkeleton</span>(points) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stroke</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">255</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">strokeWeight</span>(<span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> fingers <span class="op">=</span> [</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span> <span class="co">// polegar</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span> <span class="co">// indicador</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">12</span>]<span class="op">,</span> <span class="co">// médio</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span><span class="op">,</span> <span class="dv">13</span><span class="op">,</span> <span class="dv">14</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">16</span>]<span class="op">,</span> <span class="co">// anelar</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span><span class="op">,</span> <span class="dv">17</span><span class="op">,</span> <span class="dv">18</span><span class="op">,</span> <span class="dv">19</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> <span class="co">// mínimo</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> f <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> f <span class="op">&lt;</span> fingers<span class="op">.</span><span class="at">length</span><span class="op">;</span> f<span class="op">++</span>) {</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> finger <span class="op">=</span> fingers[f]<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> finger<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> a <span class="op">=</span> points[finger[i]]<span class="op">;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> b <span class="op">=</span> points[finger[i <span class="op">+</span> <span class="dv">1</span>]]<span class="op">;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">line</span>(a<span class="op">.</span><span class="at">x</span><span class="op">,</span> a<span class="op">.</span><span class="at">y</span><span class="op">,</span> b<span class="op">.</span><span class="at">x</span><span class="op">,</span> b<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span>(points[<span class="dv">5</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">5</span>]<span class="op">.</span><span class="at">y</span><span class="op">,</span> points[<span class="dv">9</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">9</span>]<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span>(points[<span class="dv">9</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">9</span>]<span class="op">.</span><span class="at">y</span><span class="op">,</span> points[<span class="dv">13</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">13</span>]<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span>(points[<span class="dv">13</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">13</span>]<span class="op">.</span><span class="at">y</span><span class="op">,</span> points[<span class="dv">17</span>]<span class="op">.</span><span class="at">x</span><span class="op">,</span> points[<span class="dv">17</span>]<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </figure>
 </div>
 <p>Depois que o modelo pré-treinado que identifica a mão é carregado:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-fontsize="\small"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  handPose <span class="op">=</span> ml5<span class="op">.</span><span class="fu">handPose</span>(video<span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Modelo carregado!"</span>)<span class="op">;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    handPose<span class="op">.</span><span class="fu">detectStart</span>(video<span class="op">,</span> gotHands)<span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Toda vez que é reconhecida a mão num quadro do vídeo, os parâmetros são atualizados em <span class="math inline">\(hand\)</span>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-fontsize="\small"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gotHands</span>(results) {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  hands <span class="op">=</span> results<span class="op">;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-fontsize="\small"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  handPose <span class="op">=</span> ml5<span class="op">.</span><span class="fu">handPose</span>(video<span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Modelo carregado!"</span>)<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    handPose<span class="op">.</span><span class="fu">detectStart</span>(video<span class="op">,</span> gotHands)<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Toda vez que é reconhecida a mão num quadro do vídeo, os parâmetros são atualizados em <span class="math inline">\(hands\)</span>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-fontsize="\small"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gotHands</span>(results) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  hands <span class="op">=</span> results<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A função <span class="math inline">\(draw\)</span> usa essas informações para adicionar a imagem de vídeo pontos vermelhos que identificam as articulações dos dedos da mão e uma linha verde que une todas essas articulações (conforme indicado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>).</p>
 <p>O exemplo interativo pode ser acessado em (observação: será solicitado a liberação da câmera no navegador para acessar este exemplo):</p>
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/handpose/" width="100%" height="450" style="border:none;"></iframe></div>
