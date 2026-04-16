@@ -202,8 +202,10 @@ onde $F$ é o tamanho do filtro e $S$ é o *stride*.
 
 O exemplo interativo seguinte demonstra os cálculos e o resultado da camada de Pooling.
 
+```{=html}
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/n71g9My6G" height="500" imagem="imgs/cap10/p5js-pooling.png" qrcode="imgs/cap10/qrcode-pooling.png"}
 ::: -->
+```
 
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/pooling/" height="450" imagem="imgs/cap10/p5js-pooling.png" qrcode="imgs/cap10/qrcode-pooling.png"}
 :::
@@ -234,26 +236,28 @@ Entre as arquiteturas mais conhecidas, destacam-se:
 -   **ResNet:** utilizou conexões residuais para treinar redes muito profundas com maior estabilidade.
 -   **MobileNet:** projetada para dispositivos móveis, utiliza convoluções separáveis em profundidade (ilustrado na @fig-mobilenet)
 
-![Arquitetura LeNet-5](/imgs/cap10/lenet5.png){width="90%" fig-align="center" #fig-lenet5}
+![Arquitetura LeNet-5](/imgs/cap10/lenet5.png){#fig-lenet5 width="90%" fig-align="center"}
 
-![Arquitetura AlexNet](/imgs/cap10/alexnet.png){width="90%" fig-align="center" #fig-alexnet}
+![Arquitetura AlexNet](/imgs/cap10/alexnet.png){#fig-alexnet width="90%" fig-align="center"}
 
-#### Arquitetura MobileNet{.unnumbered}
+#### Arquitetura MobileNet {.unnumbered}
 
-A arquitetura **MobileNet** está ilustrada na @fig-mobilenet. 
+A arquitetura **MobileNet** está ilustrada na @fig-mobilenet.
 
-![Arquitetura MobileNet](/imgs/cap10/mobilenet.png){width="90%" fig-align="center" #fig-mobilenet}
+![Arquitetura MobileNet](/imgs/cap10/mobilenet.png){#fig-mobilenet width="90%" fig-align="center"}
 
-E para ilustrar o seu funcionamento são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5 para classificação de pássaros. 
+E para ilustrar o seu funcionamento são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5 para classificação de pássaros.
 
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/" height="450" imagem="imgs/cap10/p5js-mobilenet.png" qrcode="imgs/cap10/qrcode-mobilenet.png"}
 :::
 
-Seguindo a documentação disponível da biblioteca ml5, denominado HandPose^[https://docs.ml5js.org/#/reference/handpose], foi construído o segundo exemplo interativo, que a partir da imagem obtida da câmera, identifica os dedos da mão (conforme ilustrado na @fig-hand). O código em p5.js está nas @lst-handpose1 e @lst-handpose2.
+A partir da documentação disponível da biblioteca ml5, denominado **HandPose**[^interpretacao-1], foi construído o segundo exemplo interativo, que captura imagens da câmera e identifica os dedos da mão (conforme ilustrado na @fig-hand). O código em p5.js está nas @lst-handpose1 e @lst-handpose2.
 
-![Diagrama com identificação dos pontos da mão](/imgs/cap10/hand.png){width="60%" fig-align="center" #fig-hand}
+[^interpretacao-1]: (<https://docs.ml5js.org/#/reference/handpose>)
 
-:::{#lst-handpose1}
+![Diagrama com identificação dos pontos da mão](/imgs/cap10/hand.png){#fig-hand width="60%" fig-align="center"}
+
+::: {#lst-handpose1}
 ``` {.js fontsize="\\small"}
 let video;
 let handPose;
@@ -299,7 +303,7 @@ function draw() {
 ```
 :::
 
-:::{#lst-handpose2}
+::: {#lst-handpose2}
 ``` {.js fontsize="\\small"}
 function drawSkeleton(points) {
   stroke(0, 255, 0);
@@ -353,7 +357,6 @@ O exemplo interativo pode ser acessado em (observação: será solicitado a libe
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/handpose/" height="450" imagem="imgs/cap10/p5js-handpose.png" qrcode="imgs/cap10/qrcode-handpose.png"}
 :::
 
-
 ## Considerações Finais
 
 Ao longo deste capítulo, foi possível compreender como o reconhecimento e a interpretação de imagens representam o nível mais alto do processamento digital de imagens, no qual os dados deixam de ser apenas estruturas numéricas e passam a adquirir significado. Essa transição é fundamental para o desenvolvimento de sistemas capazes de tomar decisões e atuar de forma inteligente em diferentes contextos.
@@ -371,147 +374,213 @@ De forma geral, observa-se uma evolução clara: de métodos baseados em descrit
 Por fim, destaca-se que o reconhecimento e a interpretação de imagens continuam sendo áreas em constante evolução, impulsionadas pelo avanço do aprendizado de máquina e pelo aumento da disponibilidade de dados. O domínio dos conceitos apresentados neste capítulo fornece uma base sólida para o desenvolvimento de aplicações inteligentes em diversas áreas, como medicina, indústria, segurança e sistemas autônomos.
 
 ::: {.callout-note title="Exercícios"}
-
 **Exercício 1 — Conceitual**
 
 Explique com suas palavras:
 
-a) O que é **interpretação de imagens**  
-b) Como ela se diferencia da segmentação e da descrição  
-c) Qual seu papel em sistemas de visão computacional  
+a)  O que é **interpretação de imagens**\
+b)  Como ela se diferencia da segmentação e da descrição\
+c)  Qual seu papel em sistemas de visão computacional
 
----
+------------------------------------------------------------------------
 
 **Exercício 2 — Pipeline de visão**
 
 Explique as etapas de um sistema típico de visão computacional:
 
-a) Aquisição  
-b) Pré-processamento  
-c) Segmentação  
-d) Representação e descrição  
-e) Interpretação  
+a)  Aquisição\
+b)  Pré-processamento\
+c)  Segmentação\
+d)  Representação e descrição\
+e)  Interpretação
 
 Qual o papel de cada etapa?
 
----
+------------------------------------------------------------------------
 
 **Exercício 3 — Classificação**
 
 Explique:
 
-a) O que é um problema de **classificação**  
-b) Diferença entre classificação supervisionada e não supervisionada  
-c) Exemplos de aplicações  
+a)  O que é um problema de **classificação**\
+b)  Diferença entre classificação supervisionada e não supervisionada\
+c)  Exemplos de aplicações
 
----
+------------------------------------------------------------------------
 
 **Exercício 4 — Características (features)**
 
 Explique:
 
-a) O que são **características (features)**  
-b) Por que são importantes para a interpretação  
-c) Exemplos de características utilizadas em imagens  
+a)  O que são **características (features)**\
+b)  Por que são importantes para a interpretação\
+c)  Exemplos de características utilizadas em imagens
 
----
+------------------------------------------------------------------------
 
 **Exercício 5 — Treinamento e teste**
 
 Explique:
 
-a) O que é um conjunto de treinamento  
-b) O que é um conjunto de teste  
-c) Por que é importante separar esses conjuntos  
+a)  O que é um conjunto de treinamento\
+b)  O que é um conjunto de teste\
+c)  Por que é importante separar esses conjuntos
 
----
+------------------------------------------------------------------------
 
 **Exercício 6 — Classificadores**
 
 Explique o funcionamento básico de:
 
-a) K-vizinhos mais próximos (KNN)  
-b) Árvores de decisão  
-c) Redes neurais  
+a)  K-vizinhos mais próximos (KNN)\
+b)  Árvores de decisão\
+c)  Redes neurais
 
----
+------------------------------------------------------------------------
 
 **Exercício 7 — Métricas de avaliação**
 
 Explique:
 
-a) Acurácia  
-b) Precisão  
-c) Revocação (recall)  
-d) F1-score  
+a)  Acurácia\
+b)  Precisão\
+c)  Revocação (recall)\
+d)  F1-score
 
 Quando cada métrica é mais importante?
 
----
+------------------------------------------------------------------------
 
 **Exercício 8 — Matriz de confusão**
 
 Explique:
 
-a) O que é uma matriz de confusão  
-b) O significado de:
-- Verdadeiro positivo  
-- Falso positivo  
-- Verdadeiro negativo  
-- Falso negativo  
+a)  O que é uma matriz de confusão\
+b)  O significado de:
 
----
+-   Verdadeiro positivo\
+-   Falso positivo\
+-   Verdadeiro negativo\
+-   Falso negativo
+
+------------------------------------------------------------------------
 
 **Exercício 9 — Implementação prática (classificação simples)**
 
 Implemente um programa que:
 
-a) Utilize características simples (ex: área, perímetro)  
-b) Classifique objetos em duas classes  
-c) Utilize um classificador simples (ex: KNN)  
+a)  Utilize características simples (ex: área, perímetro)\
+b)  Classifique objetos em duas classes\
+c)  Utilize um classificador simples (ex: KNN)
 
----
+------------------------------------------------------------------------
 
 **Exercício 10 — Implementação prática (avaliação)**
 
 Implemente:
 
-a) Cálculo de acurácia  
-b) Construção da matriz de confusão  
-c) Avaliação do desempenho do classificador  
+a)  Cálculo de acurácia\
+b)  Construção da matriz de confusão\
+c)  Avaliação do desempenho do classificador
 
----
+------------------------------------------------------------------------
 
 **Exercício 11 — Comparação de métodos**
 
 Compare diferentes classificadores quanto a:
 
-- desempenho  
-- complexidade  
-- necessidade de dados  
+-   desempenho\
+-   complexidade\
+-   necessidade de dados
 
----
+------------------------------------------------------------------------
 
 **Exercício 12 — Desafios**
 
 Explique os principais desafios da interpretação de imagens:
 
-a) Variação de iluminação  
-b) Ruído  
-c) Oclusões  
-d) Variabilidade dos objetos  
+a)  Variação de iluminação\
+b)  Ruído\
+c)  Oclusões\
+d)  Variabilidade dos objetos
 
----
+------------------------------------------------------------------------
 
 **Questão reflexiva**
 
 Explique a importância da interpretação de imagens em aplicações como:
 
-- Diagnóstico médico assistido por computador  
-- Veículos autônomos  
-- Reconhecimento facial  
-- Sistemas de vigilância  
+-   Diagnóstico médico assistido por computador\
+-   Veículos autônomos\
+-   Reconhecimento facial\
+-   Sistemas de vigilância
 
 Discuta os impactos sociais e éticos dessas aplicações.
+:::
 
+::: {.callout-note title="Atividade Prática: Reconhecimento de Gestos com HandPose (ml5.js)"}
+**Objetivo**
+
+O objetivo desta atividade é explorar conceitos de visão computacional com redes neurais pré-treinadas, utilizando o modelo ml5.js baseado no HandPose.
+
+O estudante deverá modificar um exemplo existente para identificar e rotular diferentes gestos da mão em tempo real.
+
+------------------------------------------------------------------------
+
+**Problema**
+
+O modelo HandPose permite detectar pontos-chave (landmarks) da mão, mas não classifica diretamente gest os.
+
+O desafio desta atividade é construir uma camada adicional de lógica para interpretar esses pontos e reconhecer gestos específicos, como:
+
+-   mão aberta
+-   mão fechada
+-   sinal de "positivo" (joinha 👍)
+-   sinal de "paz e amor" ✌️
+
+------------------------------------------------------------------------
+
+**Descrição**
+
+A partir de um exemplo base com HandPose, você deverá:
+
+a)  Capturar o vídeo da webcam
+
+b)  Detectar a mão e seus pontos-chave (landmarks)
+
+c)  Exibir esses pontos na tela
+
+Em seguida, implemente um mecanismo de classificação de gestos, baseado na posição relativa dos dedos:
+
+a)  Identificar se os dedos estão estendidos ou dobrados
+
+b)  Criar regras heurísticas para cada gesto, por exemplo:
+
+-   Mão aberta: todos os dedos estendidos
+-   Mão fechada: todos os dedos dobrados
+-   Positivo: polegar estendido e demais dobrados
+-   Paz e amor: indicador e médio estendidos
+
+O programa deverá:
+
+a)  Analisar os landmarks a cada frame
+
+b)  Classificar o gesto atual
+
+c)  Exibir o rótulo do gesto na tela (ex: "Mão aberta")
+
+------------------------------------------------------------------------
+
+**Entrada**
+
+Captura de vídeo em tempo real via webcam
+
+------------------------------------------------------------------------
+
+**Saída**
+
+O programa deve apresentar:
+
+-   Vídeo da webcam com os pontos da mão desenhados
+-   Classificação do gesto exibida na tela em tempo real
 :::
