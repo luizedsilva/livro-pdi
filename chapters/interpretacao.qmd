@@ -226,16 +226,62 @@ A camada de **dropout** (ilustrada na @fig-dropout) é uma técnica de regulariz
 
 Diversas arquiteturas de CNN foram propostas ao longo dos anos, cada uma trazendo avanços significativos na área de visão computacional. De forma geral, essas arquiteturas consistem no empilhamento de camadas convolucionais, funções de ativação e camadas de pooling, seguidas por camadas totalmente conectadas.
 
-![Arquitetura LeNet-5](/imgs/cap10/lenet5.png){width="90%" fig-align="center" #fig-lenet5}
-
 Entre as arquiteturas mais conhecidas, destacam-se:
 
 -   **LeNet-5:** uma das primeiras CNNs, aplicada ao reconhecimento de dígitos (ilustrado na @fig-lenet5);
 -   **AlexNet:** responsável por impulsionar o uso de deep learning em visão computacional (ilustrado na @fig-alexnet);
 -   **GoogleNet (Inception):** introduziu estruturas mais profundas e eficientes;
 -   **ResNet:** utilizou conexões residuais para treinar redes muito profundas com maior estabilidade.
+-   **MobileNet:** projetada para dispositivos móveis, utiliza convoluções separáveis em profundidade (ilustrado na @fig-mobilenet)
+
+#### Arquitetura LeNet-5{.unnumbered}
+
+![Arquitetura LeNet-5](/imgs/cap10/lenet5.png){width="90%" fig-align="center" #fig-lenet5}
+
+#### Arquitetura AlexNet{.unnumbered}
 
 ![Arquitetura AlexNet](/imgs/cap10/alexnet.png){width="90%" fig-align="center" #fig-alexnet}
+
+#### Arquitetura MobileNet{.unnumbered}
+
+A arquitetura **MobileNet** está ilustrada na @fig-mobilenet. 
+
+![Arquitetura AlexNet](/imgs/cap10/mobilenet.png){width="90%" fig-align="center" #fig-mobilenet}
+
+<!-- E resumida na seguinte tabela @tbl-mobilenet.
+
+Entrada: 224×224×3
+
+| Camada | Tipo | Filtro / Operação | Stride | Saída |
+|--------|------|------------------|--------|--------|
+| 1 | Conv | 3×3, 32 | 2 | 112×112×32 |
+| 2 | Depthwise Conv | 3×3 | 1 | 112×112×32 |
+| 3 | Pointwise Conv | 1×1, 64 | 1 | 112×112×64 |
+| 4 | Depthwise Conv | 3×3 | 2 | 56×56×64 |
+| 5 | Pointwise Conv | 1×1, 128 | 1 | 56×56×128 |
+| 6 | Depthwise Conv | 3×3 | 1 | 56×56×128 |
+| 7 | Pointwise Conv | 1×1, 128 | 1 | 56×56×128 |
+| 8 | Depthwise Conv | 3×3 | 2 | 28×28×128 |
+| 9 | Pointwise Conv | 1×1, 256 | 1 | 28×28×256 |
+| 10 | Depthwise Conv | 3×3 | 1 | 28×28×256 |
+| 11 | Pointwise Conv | 1×1, 256 | 1 | 28×28×256 |
+| 12 | Depthwise Conv | 3×3 | 2 | 14×14×256 |
+| 13 | Pointwise Conv | 1×1, 512 | 1 | 14×14×512 |
+| 14–23 | Depthwise + Pointwise (×5) | 3×3 / 1×1, 512 | 1 | 14×14×512 |
+| 24 | Depthwise Conv | 3×3 | 2 | 7×7×512 |
+| 25 | Pointwise Conv | 1×1, 1024 | 1 | 7×7×1024 |
+| 26 | Depthwise Conv | 3×3 | 1 | 7×7×1024 |
+| 27 | Pointwise Conv | 1×1, 1024 | 1 | 7×7×1024 |
+| 28 | Avg Pool | 7×7 | — | 1×1×1024 |
+| 29 | Fully Connected | 1000 | — | 1×1×1000 |
+| 30 | Softmax | — | — | Probabilidades |
+: Arquitetura da MobileNet V1 {#tbl-mobilenet} -->
+
+O exemplo ilustrativo em sequência demonstra o funcionamento de um classificador pré-treinado,
+disponível na biblioteca ml5 para classificação de pássaros. 
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/" height="450" imagem="imgs/cap10/p5js-mobilenet.png" qrcode="imgs/cap10/qrcode-mobilenet.png"}
+:::
 
 ## Considerações Finais
 

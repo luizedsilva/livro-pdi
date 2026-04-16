@@ -24,7 +24,7 @@ book:
   cover-image: capa.png
   date: today
   repo-url: https://github.com/luizedsilva/livro-pdi
-  repo-actions: [none]
+  repo-actions: []
   sharing: [twitter, facebook]
   page-footer:
     left: "Silva, L.E e Silveira, T."
