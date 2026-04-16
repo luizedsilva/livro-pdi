@@ -234,11 +234,7 @@ Entre as arquiteturas mais conhecidas, destacam-se:
 -   **ResNet:** utilizou conexões residuais para treinar redes muito profundas com maior estabilidade.
 -   **MobileNet:** projetada para dispositivos móveis, utiliza convoluções separáveis em profundidade (ilustrado na @fig-mobilenet)
 
-#### Arquitetura LeNet-5{.unnumbered}
-
 ![Arquitetura LeNet-5](/imgs/cap10/lenet5.png){width="90%" fig-align="center" #fig-lenet5}
-
-#### Arquitetura AlexNet{.unnumbered}
 
 ![Arquitetura AlexNet](/imgs/cap10/alexnet.png){width="90%" fig-align="center" #fig-alexnet}
 
@@ -248,18 +244,16 @@ A arquitetura **MobileNet** está ilustrada na @fig-mobilenet.
 
 ![Arquitetura MobileNet](/imgs/cap10/mobilenet.png){width="90%" fig-align="center" #fig-mobilenet}
 
-
-O exemplo ilustrativo em sequência demonstra o funcionamento de um classificador pré-treinado,
-disponível na biblioteca ml5 para classificação de pássaros. 
+E para ilustrar o seu funcionamento são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5 para classificação de pássaros. 
 
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/" height="450" imagem="imgs/cap10/p5js-mobilenet.png" qrcode="imgs/cap10/qrcode-mobilenet.png"}
 :::
 
-Seguindo a documentação disponível da biblioteca ml5, denominado HandPose^[https://docs.ml5js.org/#/reference/handpose], foi construído o seguinte exemplo interativo, que a partir da imagem obtida da câmera, identifica os dedos da mão (conforme ilustrado na @fig-hand). O código em p5.js está na @lst-handpose.
+Seguindo a documentação disponível da biblioteca ml5, denominado HandPose^[https://docs.ml5js.org/#/reference/handpose], foi construído o segundo exemplo interativo, que a partir da imagem obtida da câmera, identifica os dedos da mão (conforme ilustrado na @fig-hand). O código em p5.js está nas @lst-handpose1 e @lst-handpose2.
 
-![Diagrama com identificação dos pontos da mão](/imgs/cap10/hand.png){width="90%" fig-align="center" #fig-hand}
+![Diagrama com identificação dos pontos da mão](/imgs/cap10/hand.png){width="60%" fig-align="center" #fig-hand}
 
-:::{#lst-handpose}
+:::{#lst-handpose1}
 ``` {.js fontsize="\\small"}
 let video;
 let handPose;
@@ -302,7 +296,11 @@ function draw() {
     drawSkeleton(points);
   }
 }
+```
+:::
 
+:::{#lst-handpose2}
+``` {.js fontsize="\\small"}
 function drawSkeleton(points) {
   stroke(0, 255, 0);
   strokeWeight(2);
@@ -340,7 +338,7 @@ Depois que o modelo pré-treinado que identifica a mão é carregado:
   });
 ```
 
-Toda vez que é reconhecida a mão num quadro do vídeo, os parâmetros são atualizados em $hand$:
+Toda vez que é reconhecida a mão num quadro do vídeo, os parâmetros são atualizados em $hands$:
 
 ``` {.js fontsize="\\small"}
 function gotHands(results) {
