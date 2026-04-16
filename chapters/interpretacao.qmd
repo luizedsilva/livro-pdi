@@ -329,6 +329,8 @@ function drawSkeleton(points) {
   line(points[13].x, points[13].y, points[17].x, points[17].y);
 }
 ```
+:::
+
 Depois que o modelo pré-treinado que identifica a mão é carregado:
 
 ``` {.js fontsize="\\small"}
@@ -338,7 +340,7 @@ Depois que o modelo pré-treinado que identifica a mão é carregado:
   });
 ```
 
-Toda vez que é reconhecida não quadro do vídeo, os parâmetros são atualizados em $hand$:
+Toda vez que é reconhecida a mão num quadro do vídeo, os parâmetros são atualizados em $hand$:
 
 ``` {.js fontsize="\\small"}
 function gotHands(results) {
