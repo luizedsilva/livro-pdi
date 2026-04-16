@@ -150,6 +150,26 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Processamento Digital de Imagens</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/luizedsilva/livro-pdi" title="Código fonte" class="quarto-navigation-tool px-1" aria-label="Código fonte"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Compartilhar" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Compartilhar"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -263,7 +283,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">10.9</span> Considerações Finais</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/luizedsilva/livro-pdi/edit/main/chapters/interpretacao.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -335,6 +355,8 @@ x_n
 <p>Para simplificar a análise, podem ser utilizadas apenas duas características, formando um vetor de características definido por <span class="math inline">\(x = [x_1, x_2]^T\)</span>, em que <span class="math inline">\(x_1\)</span> representa o comprimento da pétala e <span class="math inline">\(x_2\)</span> representa sua largura. Dessa forma, cada flor é descrita por um vetor bidimensional, facilitando tanto a visualização quanto a aplicação de métodos de classificação.</p>
 <p>As flores são divididas em três classes de padrões, denotadas por <span class="math inline">\(w_1\)</span>, <span class="math inline">\(w_2\)</span> e <span class="math inline">\(w_3\)</span>, que correspondem às variedades <em>setosa</em>, <em>virgínica</em> e <em>versicolor</em>, respectivamente. Cada uma dessas classes apresenta características próprias, embora possa haver sobreposição entre elas dependendo das medidas consideradas.</p>
 <p>Com essa representação, cada flor pode ser interpretada como um ponto em um espaço bidimensional, no qual os eixos correspondem às características selecionadas. Esse tipo de visualização permite compreender como os padrões se distribuem no espaço de características e como diferentes classes podem ser separadas por meio de técnicas de classificação.</p>
+<p>O exemplo ilustrativo em sequência implementa aa classificação das flores Iris. No exemplo pode-se treinar um modelo de aprendizado de máquina para distinguir automaticamente entre diferentes espécies — como <em>setosa</em>, <em>versicolor</em> e <em>virginica</em> — a partir de características mensuráveis das flores, especialmente o comprimento e a largura das pétalas e sépalas. Inicialmente, um conjunto de dados rotulado é utilizado para que o modelo aprenda os padrões associados a cada classe. Em seguida, esses dados podem ser visualizados em um plano bidimensional (por exemplo, usando apenas as medidas das pétalas), permitindo observar como as espécies se agrupam no espaço de características. Após o treinamento, o modelo é capaz de receber novas amostras e classificá-las com base nesses padrões aprendidos, demonstrando, de forma prática, conceitos fundamentais de aprendizado supervisionado como treinamento, generalização e tomada de decisão. Para testar, basta clicar no plano. No rotulo abaixo é apresentado a classificação da flor selecionada.</p>
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/petalas/" width="100%" height="650" style="border:none;"></iframe></div>
 </section>
 <section id="uso-de-representações-e-descritores-como-features" class="level2" data-number="10.5">
 <h2 data-number="10.5" class="anchored" data-anchor-id="uso-de-representações-e-descritores-como-features"><span class="header-section-number">10.5</span> Uso de Representações e Descritores como Features</h2>
@@ -1170,6 +1192,26 @@ Szegedy, Christian, Wei Liu, Yangqing Jia, et al. 2015. <span>“Going deeper wi
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Silva, L.E e Silveira, T.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/luizedsilva/livro-pdi/edit/main/chapters/interpretacao.qmd" class="toc-action"><i class="bi bi-github"></i>Editar essa página</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link active" href="https://github.com/luizedsilva/livro-pdi" aria-current="page">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 
