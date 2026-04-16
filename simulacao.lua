@@ -1,12 +1,8 @@
 -- =========================
--- Filtro: simulacao.lua
+-- Filtro: simulacao.lua (ajustado)
 -- =========================
 
 local document_meta = {}
-
--- local function warn(msg)
---   io.stderr:write("[simulacao.lua] " .. msg .. "\n")
--- end
 
 local function file_exists(path)
   if path == nil or path == "" then return false end
@@ -18,53 +14,42 @@ local function file_exists(path)
   return false
 end
 
--- 1. Captura Metadados Globais
+-- Captura metadados
 local function get_metadata(meta)
   document_meta = meta
   return meta
 end
 
--- 2. Processa as Divs
+-- =========================
+-- PROCESSAMENTO DAS SIMULAÇÕES
+-- =========================
 local function process_div(el)
   if not el.classes:includes("simulacao") then
     return nil
   end
 
-  -- Função ajustada para priorizar atributos da Div
   local function get_attr_or_meta(name)
-    -- Primeiro tenta pegar o atributo direto da div (ex: url="...")
     local val = el.attributes[name]
-    
-    -- Se não achar, tenta pegar do meta (ex: app-url: "...")
+
     if (val == nil or val == "") then
-      -- Mapeia os nomes curtos da div para os nomes longos do meta
       local meta_key = "app-" .. name
       if document_meta[meta_key] then
         val = pandoc.utils.stringify(document_meta[meta_key])
       end
     end
-    
+
     return val or ""
   end
 
-  -- Busca os valores priorizando o escopo local
   local url    = get_attr_or_meta("url")
   local height = get_attr_or_meta("height")
-  if height == "" then height = "400" end -- Default
+  if height == "" then height = "400" end
   local imagem = get_attr_or_meta("imagem")
   local qrcode = get_attr_or_meta("qrcode")
 
---   -- Validação
---   if url == "" then 
---     warn("URL não definida para simulação.") 
---   end
-  
---   if imagem ~= "" and not file_exists(imagem) then
---     warn("Imagem não encontrada: " .. imagem)
---     imagem = ""
---   end
-
-  -- Renderização HTML
+  -- =========================
+  -- HTML
+  -- =========================
   if FORMAT:match("html") then
     if url ~= "" then
       local html = string.format(
@@ -77,44 +62,137 @@ local function process_div(el)
     end
   end
 
-  -- Renderização LaTeX (PDF)
+  -- =========================
+  -- PDF (LaTeX)
+  -- =========================
   if FORMAT:match("latex") then
     local latex = ""
+
     if imagem ~= "" then
-      -- Adicionado [H] para forçar a posição e evitar que as imagens flutuem e se misturem
-      latex = latex .. "\\begin{figure}[H]\n\\centering\n\\fbox{\\includegraphics[width=0.6\\textwidth]{" .. imagem .. "}}\n"
-      latex = latex .. "\\caption{Visualização da aplicação interativa}\n\\end{figure}\n"
+      latex = latex .. "\\begin{figure}[H]\n\\centering\n"
+      latex = latex .. "\\fbox{\\includegraphics[width=0.6\\textwidth]{" .. imagem .. "}}\n"
+      latex = latex .. "\\caption{Visualização da aplicação interativa}\n"
+      latex = latex .. "\\end{figure}\n"
     end
+
     if url ~= "" then
-      -- Usa a biblioteca skins (enhanced) para evitar erros de renderização
-      latex = latex .. "\\begin{tcolorbox}[enhanced jigsaw, title=Acesso Interativo]\nAcesse a simulação em: \\url{" .. url .. "}\n"
+      latex = latex .. "\\begin{tcolorbox}[enhanced jigsaw, title=Acesso Interativo]\n"
+      latex = latex .. "Acesse a simulação em: \\url{" .. url .. "}\n"
+
       if qrcode ~= "" and file_exists(qrcode) then
         latex = latex .. "\\begin{center}\\includegraphics[width=3cm]{" .. qrcode .. "}\\end{center}\n"
       end
+
       latex = latex .. "\\end{tcolorbox}\n"
     end
+
     return pandoc.RawBlock("latex", latex)
   end
 
-  -- Renderização EPUB
+  -- =========================
+  -- EPUB
+  -- =========================
   if FORMAT:match("epub") then
     local blocks = {}
+
     if imagem ~= "" then
-      table.insert(blocks, pandoc.Para({pandoc.Image({pandoc.Str("Simulação")}, imagem)}))
+      table.insert(blocks,
+        pandoc.Para({pandoc.Image({pandoc.Str("Simulação")}, imagem)})
+      )
     end
+
     if url ~= "" then
-      table.insert(blocks, pandoc.Para({pandoc.Str("Acesse: "), pandoc.Link(pandoc.Str(url), url)}))
+      table.insert(blocks,
+        pandoc.Para({
+          pandoc.Str("Acesse: "),
+          pandoc.Link(pandoc.Str(url), url)
+        })
+      )
+
       if qrcode ~= "" and file_exists(qrcode) then
-        table.insert(blocks, pandoc.Para({pandoc.Image({pandoc.Str("QR")}, qrcode, "", {width="100px"})}))
+        table.insert(blocks,
+          pandoc.Para({
+            pandoc.Image({pandoc.Str("QR")}, qrcode, "", {width="100px"})
+          })
+        )
       end
     end
+
+    return blocks
+  end
+
+  -- =========================
+  -- DOCX (AJUSTADO PROFISSIONAL)
+  -- =========================
+  if FORMAT:match("docx") then
+    local blocks = {}
+
+    -- Título estilo "caixa"
+    table.insert(blocks,
+      pandoc.Para(
+        {pandoc.Strong(pandoc.Str("Simulação Interativa"))}
+      )
+    )
+
+    -- Linha separadora
+    table.insert(blocks,
+      pandoc.Para({pandoc.Str("------------------------------")})
+    )
+
+    -- Imagem
+    if imagem ~= "" then
+      table.insert(blocks,
+        pandoc.Para({
+          pandoc.Image({pandoc.Str("Visualização")}, imagem)
+        })
+      )
+    end
+
+    -- Link
+    if url ~= "" then
+      table.insert(blocks,
+        pandoc.Para({
+          pandoc.Str("Acesse: "),
+          pandoc.Link(pandoc.Str(url), url)
+        })
+      )
+    end
+
+    -- QR Code
+    if qrcode ~= "" and file_exists(qrcode) then
+      table.insert(blocks,
+        pandoc.Para({
+          pandoc.Image({pandoc.Str("QR Code")}, qrcode, "", {width="120px"})
+        })
+      )
+    end
+
+    -- Linha inferior
+    table.insert(blocks,
+      pandoc.Para({pandoc.Str("------------------------------")})
+    )
+
     return blocks
   end
 
   return nil
 end
 
+-- =========================
+-- CORREÇÃO DE CÓDIGO (ANTI-CENTRALIZAÇÃO DOCX)
+-- =========================
+function CodeBlock(el)
+  return pandoc.CodeBlock(
+    el.text,
+    pandoc.Attr(el.identifier or "", el.classes or {}, el.attributes or {})
+  )
+end
+
+-- =========================
+-- RETORNO DO FILTRO
+-- =========================
 return {
   { Meta = get_metadata },
-  { Div = process_div }
+  { Div = process_div },
+  { CodeBlock = CodeBlock }
 }

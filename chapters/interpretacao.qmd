@@ -66,6 +66,11 @@ As flores são divididas em três classes de padrões, denotadas por $w_1$, $w_2
 
 Com essa representação, cada flor pode ser interpretada como um ponto em um espaço bidimensional, no qual os eixos correspondem às características selecionadas. Esse tipo de visualização permite compreender como os padrões se distribuem no espaço de características e como diferentes classes podem ser separadas por meio de técnicas de classificação.
 
+O exemplo ilustrativo em sequência implementa aa classificação das flores Iris. No exemplo pode-se treinar um modelo de aprendizado de máquina para distinguir automaticamente entre diferentes espécies — como *setosa*, *versicolor* e *virginica* — a partir de características mensuráveis das flores, especialmente o comprimento e a largura das pétalas e sépalas. Inicialmente, um conjunto de dados rotulado é utilizado para que o modelo aprenda os padrões associados a cada classe. Em seguida, esses dados podem ser visualizados em um plano bidimensional (por exemplo, usando apenas as medidas das pétalas), permitindo observar como as espécies se agrupam no espaço de características. Após o treinamento, o modelo é capaz de receber novas amostras e classificá-las com base nesses padrões aprendidos, demonstrando, de forma prática, conceitos fundamentais de aprendizado supervisionado como treinamento, generalização e tomada de decisão. Para testar, basta clicar no plano. No rotulo abaixo é apresentado a classificação da flor selecionada.
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/petalas/" height="650" imagem="imgs/cap10/p5js-petalas.png" qrcode="imgs/cap10/qrcode-petalas.png"}
+:::
+
 ## Uso de Representações e Descritores como Features
 
 No capítulo anterior, foram apresentadas diversas técnicas de **representação e descrição de imagens**, incluindo descritores de forma, textura e níveis de cinza. Nesta seção, estabelece-se a conexão entre esses conceitos e os sistemas de aprendizado de máquina, nos quais tais descritores passam a desempenhar o papel de **features** (características de entrada).

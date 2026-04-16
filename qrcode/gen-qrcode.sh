@@ -44,3 +44,4 @@ qrencode -o qrcode-transformacao.png "https://luizedsilva.github.io/livro-pdi/p5
 qrencode -o qrcode-watershed.png "https://luizedsilva.github.io/livro-pdi/p5js/watershed/"
 qrencode -o qrcode-watershed2d.png "https://luizedsilva.github.io/livro-pdi/p5js/watershed2d/"
 qrencode -o qrcode-watershed3d.png "https://luizedsilva.github.io/livro-pdi/p5js/watershed3d/"
+qrencode -o qrcode-petalas.png "https://luizedsilva.github.io/livro-pdi/p5js/petalas/"
