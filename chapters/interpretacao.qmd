@@ -333,7 +333,7 @@ function drawSkeleton(points) {
 ```
 :::
 
-Depois que o modelo pré-treinado que identifica a mão é carregado:
+Inicialmente, o modelo pré-treinado que identifica a mão é carregado no seguinte trecho de código:
 
 ``` {.js fontsize="\\small"}
   handPose = ml5.handPose(video, () => {
@@ -342,7 +342,7 @@ Depois que o modelo pré-treinado que identifica a mão é carregado:
   });
 ```
 
-Toda vez que é reconhecida a mão num quadro do vídeo, os parâmetros são atualizados em $hands$:
+A partir de então, toda vez que é reconhecida a mão num quadro do vídeo, os parâmetros são atualizados em $hands$:
 
 ``` {.js fontsize="\\small"}
 function gotHands(results) {
@@ -350,7 +350,7 @@ function gotHands(results) {
 }
 ```
 
-A função $draw$ usa essas informações para adicionar à imagem de vídeo pontos vermelhos que identificam as articulações dos dedos da mão e uma linha verde que une todas essas articulações (conforme indicado na @fig-hand).
+A função $draw$ usa as informações em $hands$ para adicionar à imagem de vídeo pontos vermelhos que identificam as articulações dos dedos da mão e linhas verdes que une todas essas articulações (conforme indicado na @fig-hand).
 
 O exemplo interativo pode ser acessado em sequência (**observação:** será solicitada a liberação da câmera no navegador para acessar este exemplo):
 
