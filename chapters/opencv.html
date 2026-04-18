@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12&nbsp; Créditos das Imagens – Processamento Digital de Imagens</title>
+<title>11&nbsp; Introdução ao OpenCV – Processamento Digital de Imagens</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,8 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/references.html" rel="next">
-<link href="../chapters/opencv.html" rel="prev">
+<link href="../chapters/creditos.html" rel="next">
+<link href="../chapters/interpretacao.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -86,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/creditos.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Créditos das Imagens</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/opencv.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -199,13 +234,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/opencv.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/opencv.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/creditos.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/creditos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Créditos das Imagens</span></span></a>
   </div>
 </li>
@@ -220,15 +255,30 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#visão-computacional-e-opencv" id="toc-visão-computacional-e-opencv" class="nav-link active" data-scroll-target="#visão-computacional-e-opencv"><span class="header-section-number">11.1</span> Visão Computacional e OpenCV</a></li>
+  <li><a href="#estrutura-da-biblioteca-opencv" id="toc-estrutura-da-biblioteca-opencv" class="nav-link" data-scroll-target="#estrutura-da-biblioteca-opencv"><span class="header-section-number">11.2</span> Estrutura da Biblioteca OpenCV</a></li>
+  <li><a href="#leitura-e-exibição-de-imagens" id="toc-leitura-e-exibição-de-imagens" class="nav-link" data-scroll-target="#leitura-e-exibição-de-imagens"><span class="header-section-number">11.3</span> Leitura e Exibição de Imagens</a></li>
+  <li><a href="#representação-de-imagens-no-opencv" id="toc-representação-de-imagens-no-opencv" class="nav-link" data-scroll-target="#representação-de-imagens-no-opencv"><span class="header-section-number">11.4</span> Representação de Imagens no OpenCV</a></li>
+  <li><a href="#redimensionamento-de-imagens" id="toc-redimensionamento-de-imagens" class="nav-link" data-scroll-target="#redimensionamento-de-imagens"><span class="header-section-number">11.5</span> Redimensionamento de Imagens</a></li>
+  <li><a href="#filtragem-e-redução-de-ruído" id="toc-filtragem-e-redução-de-ruído" class="nav-link" data-scroll-target="#filtragem-e-redução-de-ruído"><span class="header-section-number">11.6</span> Filtragem e Redução de Ruído</a></li>
+  <li><a href="#detecção-de-bordas" id="toc-detecção-de-bordas" class="nav-link" data-scroll-target="#detecção-de-bordas"><span class="header-section-number">11.7</span> Detecção de Bordas</a></li>
+  <li><a href="#limiarização-threshold" id="toc-limiarização-threshold" class="nav-link" data-scroll-target="#limiarização-threshold"><span class="header-section-number">11.8</span> Limiarização (Threshold)</a></li>
+  <li><a href="#aplicações-práticas-do-opencv" id="toc-aplicações-práticas-do-opencv" class="nav-link" data-scroll-target="#aplicações-práticas-do-opencv"><span class="header-section-number">11.9</span> Aplicações Práticas do OpenCV</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">11.10</span> Considerações Finais</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Créditos das Imagens</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></h1>
 </div>
 
 
@@ -245,319 +295,92 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>As imagens utilizadas ao longo deste livro foram selecionadas de forma a garantir acessibilidade, clareza didática e respeito aos direitos autorais. Parte delas foi obtida no repositório Wikimedia Commons (<a href="#fig-avenida" class="quarto-xref">Figura&nbsp;<span>12.1</span></a>, <a href="#fig-cao1" class="quarto-xref">Figura&nbsp;<span>12.2</span></a>, <a href="#fig-cao2" class="quarto-xref">Figura&nbsp;<span>12.3</span></a>, <a href="#fig-cao3" class="quarto-xref">Figura&nbsp;<span>12.4</span></a>, <a href="#fig-cao4" class="quarto-xref">Figura&nbsp;<span>12.5</span></a>, <a href="#fig-cao5" class="quarto-xref">Figura&nbsp;<span>12.6</span></a>, <a href="#fig-cao6" class="quarto-xref">Figura&nbsp;<span>12.7</span></a>, <a href="#fig-cao7" class="quarto-xref">Figura&nbsp;<span>12.8</span></a>, <a href="#fig-cao8" class="quarto-xref">Figura&nbsp;<span>12.9</span></a>, <a href="#fig-mariposa" class="quarto-xref">Figura&nbsp;<span>12.10</span></a>, <a href="#fig-flor1" class="quarto-xref">Figura&nbsp;<span>12.12</span></a>, <a href="#fig-flor2" class="quarto-xref">Figura&nbsp;<span>12.13</span></a>, <a href="#fig-food1" class="quarto-xref">Figura&nbsp;<span>12.14</span></a>, <a href="#fig-sparrow" class="quarto-xref">Figura&nbsp;<span>12.31</span></a>), que disponibiliza conteúdos sob licenças livres, permitindo seu uso e adaptação com a devida atribuição. Complementarmente, algumas imagens foram geradas com o auxílio de ferramentas de inteligência artificial, como ChatGPT (<a href="#fig-moire5" class="quarto-xref">Figura&nbsp;<span>12.16</span></a>, <a href="#fig-silhueta" class="quarto-xref">Figura&nbsp;<span>12.17</span></a>, <a href="#fig-conesCC" class="quarto-xref">Figura&nbsp;<span>12.18</span></a>, <a href="#fig-olhoCC" class="quarto-xref">Figura&nbsp;<span>12.19</span></a>, <a href="#fig-amostra" class="quarto-xref">Figura&nbsp;<span>12.20</span></a>, <a href="#fig-captura" class="quarto-xref">Figura&nbsp;<span>12.21</span></a>, <a href="#fig-compressao" class="quarto-xref">Figura&nbsp;<span>12.22</span></a>, <a href="#fig-cores" class="quarto-xref">Figura&nbsp;<span>12.23</span></a>, <a href="#fig-fourier" class="quarto-xref">Figura&nbsp;<span>12.24</span></a>, <a href="#fig-interpretacao" class="quarto-xref">Figura&nbsp;<span>12.25</span></a>, <a href="#fig-melhoramento" class="quarto-xref">Figura&nbsp;<span>12.26</span></a>, <a href="#fig-morfologia" class="quarto-xref">Figura&nbsp;<span>12.27</span></a>, <a href="#fig-python" class="quarto-xref">Figura&nbsp;<span>12.28</span></a>, <a href="#fig-representa" class="quarto-xref">Figura&nbsp;<span>12.29</span></a> e <a href="#fig-segmenta" class="quarto-xref">Figura&nbsp;<span>12.30</span></a>) e Gemini (<a href="#fig-food2" class="quarto-xref">Figura&nbsp;<span>12.15</span></a>), com o objetivo de ilustrar conceitos específicos de maneira personalizada. Sempre que aplicável (<a href="#fig-monalisa" class="quarto-xref">Figura&nbsp;<span>12.11</span></a>), buscou-se indicar a origem e a licença das imagens, assegurando transparência e conformidade com as boas práticas de uso de conteúdo visual.</p>
-<div id="fig-avenida" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-avenida-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/avenidaportugal.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-avenida-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.1: Avenida Portugal - Foto: Donatas Dabravolskas / Wikimedia Commons
-</figcaption>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../chapters/imgs/python.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
-<div id="fig-cao1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cao1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/cao1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cao1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.2: Cao1 - Foto: Markus Trienke / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-cao2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cao2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/cao2.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cao2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.3: Cao2 - Foto: LiCheng Shih / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-cao3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cao3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/cao3.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cao3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.4: Cao3 - Foto: Dhadaveswapnali / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-cao4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cao4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/cao4.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cao4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.5: Cao4 - Foto: Pleple2000 / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-cao5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cao5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/cao5.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cao5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.6: Cao5 - Foto: Rennett Stowe / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-cao6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cao6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/cao6.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cao6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.7: Cao6 - Foto: AWeith / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-cao7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cao7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/cao7.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cao7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.8: Cao7 - Foto: Iouri Goussev / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-cao8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cao8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/cao8.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cao8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.9: Cao8 - Foto: Pittigrilli / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-mariposa" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-mariposa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/mariposa.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mariposa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.10: Mariposa - Foto: LiCheng Shih / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-monalisa" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-monalisa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/monalisa.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-monalisa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.11: Monalisa - Foto: Domínio Público
-</figcaption>
-</figure>
-</div>
-<div id="fig-flor1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-flor1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/flor1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flor1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.12: Flor1 - Foto: Quartl / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-flor2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-flor2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/flor2.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flor2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.13: Flor2 - Foto: Lystopad / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-food1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-food1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/food1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-food1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.14: Food1 - Foto: Dina Said / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
-<div id="fig-food2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-food2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/food2.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-food2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.15: Food2 - Foto: Gerada por IA (Gemini)
-</figcaption>
-</figure>
-</div>
-<div id="fig-moire5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-moire5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/moire5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-moire5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.16: Moire5 - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-silhueta" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-silhueta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/silhueta.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-silhueta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.17: Silhueta - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-conesCC" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-conesCC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/conesbastonetes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-conesCC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.18: ConesBastonetes - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-olhoCC" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-olhoCC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/olho.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-olhoCC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.19: Olho - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-amostra" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-amostra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/amostra.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-amostra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.20: Amostra - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-captura" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-captura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/captura.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-captura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.21: Captura - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-compressao" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-compressao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/compressao.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compressao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.22: Compressão - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-cores" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/cores.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.23: Cores - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-fourier" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-fourier-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/fourier.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fourier-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.24: Fourier - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-interpretacao" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-interpretacao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/interpretacao.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interpretacao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.25: Interpretação - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-melhoramento" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-melhoramento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/melhoramento.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-melhoramento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.26: Melhoramento - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-morfologia" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-morfologia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/morfologia.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-morfologia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.27: Morfologia - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-python" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-python-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/python.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-python-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.28: Python - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-representa" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-representa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/representa.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-representa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.29: Representa - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-segmenta" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-segmenta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="imgs/segmenta.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-segmenta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.30: Segmenta - Foto: Gerada por IA (chatgpt)
-</figcaption>
-</figure>
-</div>
-<div id="fig-sparrow" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-sparrow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs-CC/sparrow.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sparrow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.31: Sparrow - Foto: Deepak Sundar / Wikimedia Commons
-</figcaption>
-</figure>
-</div>
+<p>O OpenCV (Open Source Computer Vision Library) é uma biblioteca amplamente utilizada para o desenvolvimento de aplicações em visão computacional e processamento digital de imagens. Criado originalmente pela Intel, o OpenCV é distribuído como software livre e oferece suporte a múltiplas linguagens, com grande destaque para Python e C++.</p>
+<p>Este capítulo apresenta os conceitos fundamentais do OpenCV, sua estrutura básica e exemplos práticos de uso.</p>
+<section id="visão-computacional-e-opencv" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="visão-computacional-e-opencv"><span class="header-section-number">11.1</span> Visão Computacional e OpenCV</h2>
+<p>A visão computacional tem como objetivo permitir que sistemas computacionais interpretem informações visuais provenientes do mundo real. Para isso, utiliza técnicas de processamento de imagens, reconhecimento de padrões e aprendizado de máquina.</p>
+<p>O OpenCV disponibiliza implementações eficientes desses algoritmos, facilitando o desenvolvimento de aplicações práticas.</p>
+</section>
+<section id="estrutura-da-biblioteca-opencv" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="estrutura-da-biblioteca-opencv"><span class="header-section-number">11.2</span> Estrutura da Biblioteca OpenCV</h2>
+<p>Em Python, o OpenCV é acessado principalmente por meio do módulo <code>cv2</code>. Após a instalação, a biblioteca pode ser importada da seguinte forma:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="leitura-e-exibição-de-imagens" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="leitura-e-exibição-de-imagens"><span class="header-section-number">11.3</span> Leitura e Exibição de Imagens</h2>
+<p>A leitura de imagens é feita com a função <code>imread</code>, e a exibição com <code>imshow</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>imagem <span class="op">=</span> cv2.imread(<span class="st">"imagem.jpg"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>cv2.imshow(<span class="st">"Imagem Original"</span>, imagem)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>cv2.waitKey(<span class="dv">0</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="representação-de-imagens-no-opencv" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="representação-de-imagens-no-opencv"><span class="header-section-number">11.4</span> Representação de Imagens no OpenCV</h2>
+<p>No OpenCV, imagens coloridas são representadas no formato <strong>BGR</strong> (Blue, Green, Red), e não RGB.</p>
+<p>A conversão para tons de cinza pode ser feita da seguinte forma:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>imgcinza <span class="op">=</span> cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cv2.imshow(<span class="st">"Imagem em Cinza"</span>, imgcinza)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>cv2.waitKey(<span class="dv">0</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="redimensionamento-de-imagens" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="redimensionamento-de-imagens"><span class="header-section-number">11.5</span> Redimensionamento de Imagens</h2>
+<p>O redimensionamento é uma operação comum no processamento de imagens:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>imgresize <span class="op">=</span> cv2.resize(imagem, (<span class="dv">300</span>, <span class="dv">200</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>cv2.imshow(<span class="st">"Imagem Redimensionada"</span>, imgresize)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>cv2.waitKey(<span class="dv">0</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="filtragem-e-redução-de-ruído" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="filtragem-e-redução-de-ruído"><span class="header-section-number">11.6</span> Filtragem e Redução de Ruído</h2>
+<p>Filtros são usados para suavizar imagens e reduzir ruídos. Um dos mais comuns é o filtro Gaussiano:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>imgsuave <span class="op">=</span> cv2.GaussianBlur(imagem, (<span class="dv">5</span>, <span class="dv">5</span>), <span class="dv">0</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cv2.imshow(<span class="st">"Imagem Suavizada"</span>, imgsuave)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cv2.waitKey(<span class="dv">0</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="detecção-de-bordas" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="detecção-de-bordas"><span class="header-section-number">11.7</span> Detecção de Bordas</h2>
+<p>A detecção de bordas é fundamental para a identificação de objetos. Um método amplamente utilizado é o detector de bordas de Canny:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bordas <span class="op">=</span> cv2.Canny(imagem_cinza, <span class="dv">100</span>, <span class="dv">200</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cv2.imshow(<span class="st">"Bordas Detectadas"</span>, bordas)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>cv2.waitKey(<span class="dv">0</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="limiarização-threshold" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="limiarização-threshold"><span class="header-section-number">11.8</span> Limiarização (Threshold)</h2>
+<p>A limiarização converte uma imagem em tons de cinza para uma imagem binária:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>_, imgbin <span class="op">=</span> cv2.threshold(imagem_cinza, <span class="dv">127</span>, <span class="dv">255</span>, cv2.THRESH_BINARY)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cv2.imshow(<span class="st">"Imagem Binária"</span>, imgbin)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cv2.waitKey(<span class="dv">0</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="aplicações-práticas-do-opencv" class="level2" data-number="11.9">
+<h2 data-number="11.9" class="anchored" data-anchor-id="aplicações-práticas-do-opencv"><span class="header-section-number">11.9</span> Aplicações Práticas do OpenCV</h2>
+<p>Com essas operações básicas, é possível desenvolver aplicações como:</p>
+<ul>
+<li>reconhecimento facial;</li>
+<li>sistemas de vigilância;</li>
+<li>análise de imagens médicas;</li>
+<li>visão computacional em robótica;</li>
+<li>processamento de vídeos em tempo real.</li>
+</ul>
+</section>
+<section id="considerações-finais" class="level2" data-number="11.10">
+<h2 data-number="11.10" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">11.10</span> Considerações Finais</h2>
+<p>O OpenCV fornece uma base sólida para o desenvolvimento de aplicações em visão computacional. A compreensão das operações fundamentais — leitura, conversão, filtragem, segmentação e detecção de bordas — é essencial para avançar em aplicações mais complexas.</p>
+<p>Este capítulo apresentou os conceitos iniciais e exemplos práticos que servirão como base para os próximos estudos em processamento e interpretação de imagens.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -962,13 +785,13 @@ Figura&nbsp;12.31: Sparrow - Foto: Deepak Sundar / Wikimedia Commons
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/opencv.html" class="pagination-link" aria-label="Introdução ao OpenCV">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introdução ao OpenCV</span></span>
+      <a href="../chapters/interpretacao.html" class="pagination-link" aria-label="Reconhecimento e Interpretação de Imagens">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reconhecimento e Interpretação de Imagens</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/references.html" class="pagination-link" aria-label="Referências">
-        <span class="nav-page-text">Referências</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/creditos.html" class="pagination-link" aria-label="Créditos das Imagens">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Créditos das Imagens</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
