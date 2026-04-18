@@ -41,8 +41,8 @@ No OpenCV, imagens coloridas são representadas no formato **BGR** (Blue, Green,
 A conversão para tons de cinza pode ser feita da seguinte forma:
 
 ```python
-imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
-cv2.imshow("Imagem em Cinza", imagem_cinza)
+imgcinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
+cv2.imshow("Imagem em Cinza", imgcinza)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
@@ -52,8 +52,8 @@ cv2.destroyAllWindows()
 O redimensionamento é uma operação comum no processamento de imagens:
 
 ```python
-imagem_redimensionada = cv2.resize(imagem, (300, 200))
-cv2.imshow("Imagem Redimensionada", imagem_redimensionada)
+imgresize = cv2.resize(imagem, (300, 200))
+cv2.imshow("Imagem Redimensionada", imgresize)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
@@ -63,8 +63,8 @@ cv2.destroyAllWindows()
 Filtros são usados para suavizar imagens e reduzir ruídos. Um dos mais comuns é o filtro Gaussiano:
 
 ```python
-imagem_suavizada = cv2.GaussianBlur(imagem, (5, 5), 0)
-cv2.imshow("Imagem Suavizada", imagem_suavizada)
+imgsuave = cv2.GaussianBlur(imagem, (5, 5), 0)
+cv2.imshow("Imagem Suavizada", imgsuave)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
@@ -85,8 +85,8 @@ cv2.destroyAllWindows()
 A limiarização converte uma imagem em tons de cinza para uma imagem binária:
 
 ```python
-_, imagem_binaria = cv2.threshold(imagem_cinza, 127, 255, cv2.THRESH_BINARY)
-cv2.imshow("Imagem Binária", imagem_binaria)
+_, imgbin = cv2.threshold(imagem_cinza, 127, 255, cv2.THRESH_BINARY)
+cv2.imshow("Imagem Binária", imgbin)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```

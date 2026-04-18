@@ -43,6 +43,7 @@ book:
     - chapters/segmentacao.qmd
     - chapters/representacao.qmd
     - chapters/interpretacao.qmd
+    - chapters/opencv.qmd
     - chapters/creditos.qmd
     - chapters/references.qmd
 
