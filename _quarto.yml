@@ -48,6 +48,7 @@ book:
     - chapters/references.qmd
 
 bibliography: references.bib
+csl: abnt.csl
 
 repository:
   url: https://github.com/luizedsilva/livro-pdi
@@ -64,6 +65,7 @@ format:
       - cosmo
       - brand
   pdf:
+    cite-method: biblatex
     documentclass: book
     pdf-engine: lualatex
     include-in-header: header.tex

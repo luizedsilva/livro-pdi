@@ -298,9 +298,11 @@ Essas transformações facilitam a identificação de componentes menos signific
 
 A codificação entropia é uma etapa essencial em muitos sistemas de compressão. Ela visa representar os dados de forma eficiente, utilizando códigos de comprimento variável baseados na probabilidade de ocorrência dos símbolos.
 
-Algoritmos clássicos incluem a codificação de Huffman, que utiliza árvores binárias para atribuir códigos mais curtos a símbolos mais frequentes, e a codificação aritmética, que alcança taxas de compressão próximas ao limite teórico da entropia.
+Algoritmos clássicos incluem a codificação de @huffman1952method, que utiliza árvores binárias para atribuir códigos mais curtos a símbolos mais frequentes, e a codificação aritmética, que alcança taxas de compressão próximas ao limite teórico da entropia.
 
-O **algoritmo de Huffman** é um método de compressão de dados amplamente utilizado baseado em **codificação estatística sem perdas**. Ele foi proposto por David A. Huffman em 1952 e tem como objetivo reduzir o número médio de bits necessários para representar um conjunto de símbolos. Esse algoritmo explora a frequência de ocorrência dos símbolos, atribuindo códigos menores aos símbolos mais frequentes e códigos maiores aos símbolos menos frequentes, resultando em uma representação mais eficiente dos dados.
+O algoritmo de Huffman é uma técnica de compressão de dados sem perdas baseada em estatística. Seu objetivo é diminuir a quantidade média de bits usada para representar um conjunto de símbolos.
+
+Para isso, o algoritmo analisa a frequência de cada símbolo e atribui códigos mais curtos aos símbolos mais frequentes e códigos mais longos aos menos frequentes. Dessa forma, a representação final dos dados se torna mais eficiente, reduzindo o tamanho total sem perder informação.
 
 A ideia central da codificação de Huffman é construir um **código de comprimento variável**, no qual cada símbolo é representado por uma sequência de bits cujo tamanho depende de sua probabilidade de ocorrência. Diferentemente dos códigos de comprimento fixo, em que todos os símbolos são representados pelo mesmo número de bits, a codificação de Huffman permite que símbolos mais comuns utilizem menos bits, reduzindo o tamanho total da informação codificada.
 
@@ -343,7 +345,7 @@ A simulação em sequência apresenta a árvore construída a partir das frequê
 
 ### Codificação LZW
 
-A **codificação de Lempel–Ziv–Welch (LZW)** é uma técnica de compressão de dados **sem perda** amplamente utilizada em arquivos e formatos de imagem, como GIF e TIFF. O método foi proposto por **Terry Welch** em 1984 como uma melhoria das técnicas de compressão desenvolvidas anteriormente por **Abraham Lempel** e **Jacob Ziv**. A ideia central da LZW é substituir sequências de símbolos por **códigos numéricos de tamanho fixo**, reduzindo a quantidade de dados necessária para representar a informação original.
+A **codificação de Lempel–Ziv–Welch (LZW)** é uma técnica de compressão de dados **sem perda** amplamente utilizada em arquivos e formatos de imagem, como GIF e TIFF. O método foi proposto por @welch1984technique como uma melhoria das técnicas de compressão desenvolvidas anteriormente por **Abraham Lempel** e **Jacob Ziv**. A ideia central da LZW é substituir sequências de símbolos por **códigos numéricos de tamanho fixo**, reduzindo a quantidade de dados necessária para representar a informação original.
 
 Diferentemente de outros métodos de compressão estatísticos, como a codificação de Huffman, a técnica LZW **não requer conhecimento prévio das probabilidades de ocorrência dos símbolos da fonte**. Em vez disso, ela constrói dinamicamente um **dicionário de sequências de símbolos** durante o processo de compressão. Inicialmente, esse dicionário contém apenas os símbolos básicos do alfabeto da fonte (por exemplo, os valores possíveis de pixels ou caracteres). À medida que a sequência de entrada é analisada, novas combinações de símbolos são identificadas e adicionadas ao dicionário, cada uma associada a uma palavra-código.
 

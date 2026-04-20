@@ -117,7 +117,7 @@ De forma geral, o casamento de padrões e as medidas de correlação constituem 
 
 ## Redes Neurais e Redes Neurais de Múltiplas Camadas
 
-As **redes neurais artificiais** (@haykin2009neural, @bishop2006pattern, @goodfellow2016deep, @mitchell1997machine, @rumelhart1986learning, @cybenko1989approximation, @hornik1989multilayer, @hagan1996neural, ilustrado na @fig-neuronio) constituem uma das principais abordagens para o desenvolvimento de sistemas inteligentes capazes de realizar reconhecimento e interpretação de imagens. Inspiradas no funcionamento do cérebro humano, essas redes são compostas por unidades básicas chamadas neurônios artificiais, organizadas em camadas e interconectadas por pesos ajustáveis.
+As **redes neurais artificiais** [@haykin2009neural; @bishop2006pattern; @goodfellow2016deep; @mitchell1997machine; @rumelhart1986learning; @cybenko1989approximation; @hornik1989multilayer; @hagan1996neural], ilustradas na @fig-neuronio, constituem uma das principais abordagens para o desenvolvimento de sistemas inteligentes capazes de realizar reconhecimento e interpretação de imagens. Inspiradas no funcionamento do cérebro humano, essas redes são compostas por unidades básicas chamadas neurônios artificiais, organizadas em camadas e interconectadas por pesos ajustáveis.
 
 ![Redes neurais artificiais](/imgs/cap10/neuronio.png){#fig-neuronio fig-align="center" width="70%"}
 
@@ -139,7 +139,7 @@ Em síntese, as redes neurais desempenham um papel central na construção de si
 
 ## Redes Neurais Convolucionais (CNN)
 
-As **Redes Neurais Convolucionais** (*Convolutional Neural Networks – CNNs*, @lecun1998gradient, @goodfellow2016deep, @krizhevsky2012imagenet, @simonyan2015very, @he2016deep, @szegedy2015going) representam uma das principais abordagens modernas para o reconhecimento e interpretação de imagens. Essas redes têm sido amplamente utilizadas não apenas em visão computacional, mas também em áreas como processamento de voz e linguagem natural. Sua concepção foi inspirada em estudos do córtex visual humano, nos quais se observou que certos neurônios respondem a estímulos visuais localizados em regiões específicas do campo visual (conforme ilustrado na @fig-cortex).
+As **Redes Neurais Convolucionais** (*Convolutional Neural Networks – CNNs*) [@lecun1998gradient; @goodfellow2016deep; @krizhevsky2012imagenet; @simonyan2015very; @he2016deep; @szegedy2015going] representam uma das principais abordagens modernas para o reconhecimento e interpretação de imagens. Essas redes têm sido amplamente utilizadas não apenas em visão computacional, mas também em áreas como processamento de voz e linguagem natural. Sua concepção foi inspirada em estudos do córtex visual humano, nos quais se observou que certos neurônios respondem a estímulos visuais localizados em regiões específicas do campo visual (conforme ilustrado na @fig-cortex).
 
 ![Formação da imagem no cérebro humano](/imgs/cap10/cortex.png){#fig-cortex width="80%" fig-align="center"}
 

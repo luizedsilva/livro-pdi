@@ -75,7 +75,7 @@ Essa forma normalizada torna o descritor **invariante à escolha do ponto inicia
 
 ### Algoritmo de Rastreamento de Contorno (Chain Code)
 
-O código de cadeia é construído a partir de um contorno. O algoritmo de rastreamento de contorno (@moore1968contour, @suzuki1985topological, @freeman1961encoding, @pavlidis1982algorithms), representado na @lst-contorno tem como objetivo percorrer a fronteira de um objeto binário, identificando todos os pixels pertencentes ao seu contorno de forma ordenada. A seguir, apresenta-se uma versão estruturada e detalhada do procedimento:
+O código de cadeia é construído a partir de um contorno. O algoritmo de rastreamento de contorno [@moore1968contour; @suzuki1985topological; @freeman1961encoding; @pavlidis1982algorithms], representado na @lst-contorno tem como objetivo percorrer a fronteira de um objeto binário, identificando todos os pixels pertencentes ao seu contorno de forma ordenada. A seguir, apresenta-se uma versão estruturada e detalhada do procedimento:
 
 :::{#lst-contorno}
 ```{.c}
@@ -154,7 +154,7 @@ Essa simplificação deve equilibrar dois objetivos principais:
 
 ### Principais Métodos
 
-Diversos algoritmos podem ser utilizados para realizar a aproximação poligonal. Entre os mais conhecidos, destaca-se o Algoritmo de Douglas-Peucker (@douglas1973algorithms, @ramer1972iterative).
+Diversos algoritmos podem ser utilizados para realizar a aproximação poligonal. Entre os mais conhecidos, destaca-se o Algoritmo de Douglas-Peucker [@douglas1973algorithms; @ramer1972iterative].
 
 #### Algoritmo de Douglas-Peucker {.unnumbered}
 
