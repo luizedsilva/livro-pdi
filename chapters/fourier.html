@@ -62,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 1em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -373,7 +374,7 @@ window.Quarto = {
 </figure>
 </div>
 <p>A análise de imagens no domínio espacial, embora intuitiva e amplamente utilizada, apresenta limitações quando se deseja compreender a distribuição de padrões periódicos, texturas e estruturas repetitivas. Para superar essas limitações, recorre-se à análise no <strong>domínio da frequência</strong>, na qual a imagem é representada como uma combinação de componentes senoidais de diferentes frequências.</p>
-<p>A <strong>Transformada de Fourier</strong> (<span class="citation" data-cites="bracewell2000fourier">Bracewell (<a href="references.html#ref-bracewell2000fourier" role="doc-biblioref">2000</a>)</span>, <span class="citation" data-cites="oppenheim1999discrete">Oppenheim e Schafer (<a href="references.html#ref-oppenheim1999discrete" role="doc-biblioref">1999</a>)</span>, <span class="citation" data-cites="oppenheim2010signals">Oppenheim et al. (<a href="references.html#ref-oppenheim2010signals" role="doc-biblioref">2010</a>)</span>, <span class="citation" data-cites="cooley1965algorithm">Cooley e Tukey (<a href="references.html#ref-cooley1965algorithm" role="doc-biblioref">1965</a>)</span>, <span class="citation" data-cites="fourier1822theorie">Fourier (<a href="references.html#ref-fourier1822theorie" role="doc-biblioref">1822</a>)</span>) constitui a principal ferramenta matemática para essa mudança de domínio, sendo fundamental em diversas áreas do Processamento Digital de Imagens, como filtragem, compressão, restauração e análise de textura.</p>
+<p>A <strong>Transformada de Fourier</strong> <span class="citation" data-cites="bracewell2000fourier oppenheim1999discrete oppenheim2010signals cooley1965algorithm fourier1822theorie">(<a href="references.html#ref-bracewell2000fourier" role="doc-biblioref">Bracewell, 2000</a>; <a href="references.html#ref-cooley1965algorithm" role="doc-biblioref">Cooley; Tukey, 1965</a>; <a href="references.html#ref-fourier1822theorie" role="doc-biblioref">Fourier, 1822</a>; <a href="references.html#ref-oppenheim1999discrete" role="doc-biblioref">Oppenheim; Schafer, 1999</a>; <a href="references.html#ref-oppenheim2010signals" role="doc-biblioref">Oppenheim; Willsky; Nawab, 2010</a>)</span> constitui a principal ferramenta matemática para essa mudança de domínio, sendo fundamental em diversas áreas do Processamento Digital de Imagens, como filtragem, compressão, restauração e análise de textura.</p>
 <section id="domínio-espacial-e-domínio-da-frequência" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="domínio-espacial-e-domínio-da-frequência"><span class="header-section-number">4.1</span> Domínio Espacial e Domínio da Frequência</h2>
 <p>No domínio espacial, uma imagem é representada diretamente por seus valores de intensidade, descritos por uma função bidimensional <span class="math inline">\(f(x,y)\)</span>. Cada ponto <span class="math inline">\((x,y)\)</span> corresponde a um pixel da imagem.</p>
@@ -1197,21 +1198,21 @@ g(x,y) =
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
 <div id="ref-bracewell2000fourier" class="csl-entry" role="listitem">
-Bracewell, Ronald N. 2000. <em>The Fourier Transform and Its Applications</em>. 3º ed. McGraw-Hill.
+BRACEWELL, Ronald N. <strong>The Fourier Transform and Its Applications</strong>. 3. ed. <em>[S.l.]</em>: McGraw-Hill, 2000.
 </div>
 <div id="ref-cooley1965algorithm" class="csl-entry" role="listitem">
-Cooley, James W., e John W. Tukey. 1965. <span>“An algorithm for the machine calculation of complex Fourier series”</span>. <em>Mathematics of Computation</em> 19 (90): 297–301.
+COOLEY, James W.; TUKEY, John W. An algorithm for the machine calculation of complex Fourier series. <strong>Mathematics of Computation</strong>, v. 19, n. 90, p. 297–301, 1965.
 </div>
 <div id="ref-fourier1822theorie" class="csl-entry" role="listitem">
-Fourier, Joseph. 1822. <em>Th<span>é</span>orie analytique de la chaleur</em>.
+FOURIER, Joseph. Th<span>é</span>orie analytique de la chaleur. 1822.
 </div>
 <div id="ref-oppenheim1999discrete" class="csl-entry" role="listitem">
-Oppenheim, Alan V., e Ronald W. Schafer. 1999. <em>Discrete-Time Signal Processing</em>. 2º ed. Prentice Hall.
+OPPENHEIM, Alan V.; SCHAFER, Ronald W. <strong>Discrete-Time Signal Processing</strong>. 2. ed. <em>[S.l.]</em>: Prentice Hall, 1999.
 </div>
 <div id="ref-oppenheim2010signals" class="csl-entry" role="listitem">
-Oppenheim, Alan V., Alan S. Willsky, e S. Hamid Nawab. 2010. <em>Signals and Systems</em>. 2º ed. Prentice Hall.
+OPPENHEIM, Alan V.; WILLSKY, Alan S.; NAWAB, S. Hamid. <strong>Signals and Systems</strong>. 2. ed. <em>[S.l.]</em>: Prentice Hall, 2010.
 </div>
 </div>
 </section>

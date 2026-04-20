@@ -62,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 1em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -431,7 +432,7 @@ x_n
 </section>
 <section id="redes-neurais-e-redes-neurais-de-múltiplas-camadas" class="level2" data-number="10.7">
 <h2 data-number="10.7" class="anchored" data-anchor-id="redes-neurais-e-redes-neurais-de-múltiplas-camadas"><span class="header-section-number">10.7</span> Redes Neurais e Redes Neurais de Múltiplas Camadas</h2>
-<p>As <strong>redes neurais artificiais</strong> (<span class="citation" data-cites="haykin2009neural">Haykin (<a href="references.html#ref-haykin2009neural" role="doc-biblioref">2009</a>)</span>, <span class="citation" data-cites="bishop2006pattern">Bishop (<a href="references.html#ref-bishop2006pattern" role="doc-biblioref">2006</a>)</span>, <span class="citation" data-cites="goodfellow2016deep">Goodfellow et al. (<a href="references.html#ref-goodfellow2016deep" role="doc-biblioref">2016</a>)</span>, <span class="citation" data-cites="mitchell1997machine">Mitchell (<a href="references.html#ref-mitchell1997machine" role="doc-biblioref">1997</a>)</span>, <span class="citation" data-cites="rumelhart1986learning">Rumelhart et al. (<a href="references.html#ref-rumelhart1986learning" role="doc-biblioref">1986</a>)</span>, <span class="citation" data-cites="cybenko1989approximation">Cybenko (<a href="references.html#ref-cybenko1989approximation" role="doc-biblioref">1989</a>)</span>, <span class="citation" data-cites="hornik1989multilayer">Hornik et al. (<a href="references.html#ref-hornik1989multilayer" role="doc-biblioref">1989</a>)</span>, <span class="citation" data-cites="hagan1996neural">Hagan et al. (<a href="references.html#ref-hagan1996neural" role="doc-biblioref">1996</a>)</span>, ilustrado na <a href="#fig-neuronio" class="quarto-xref">Figura&nbsp;<span>10.1</span></a>) constituem uma das principais abordagens para o desenvolvimento de sistemas inteligentes capazes de realizar reconhecimento e interpretação de imagens. Inspiradas no funcionamento do cérebro humano, essas redes são compostas por unidades básicas chamadas neurônios artificiais, organizadas em camadas e interconectadas por pesos ajustáveis.</p>
+<p>As <strong>redes neurais artificiais</strong> <span class="citation" data-cites="haykin2009neural bishop2006pattern goodfellow2016deep mitchell1997machine rumelhart1986learning cybenko1989approximation hornik1989multilayer hagan1996neural">(<a href="references.html#ref-bishop2006pattern" role="doc-biblioref">Bishop, 2006</a>; <a href="references.html#ref-cybenko1989approximation" role="doc-biblioref">Cybenko, 1989</a>; <a href="references.html#ref-goodfellow2016deep" role="doc-biblioref">Goodfellow; Bengio; Courville, 2016</a>; <a href="references.html#ref-hagan1996neural" role="doc-biblioref">Hagan; Demuth; Beale, 1996</a>; <a href="references.html#ref-haykin2009neural" role="doc-biblioref">Haykin, 2009</a>; <a href="references.html#ref-hornik1989multilayer" role="doc-biblioref">Hornik; Stinchcombe; White, 1989</a>; <a href="references.html#ref-mitchell1997machine" role="doc-biblioref">Mitchell, 1997</a>; <a href="references.html#ref-rumelhart1986learning" role="doc-biblioref">Rumelhart; Hinton; Williams, 1986</a>)</span>, ilustradas na <a href="#fig-neuronio" class="quarto-xref">Figura&nbsp;<span>10.1</span></a>, constituem uma das principais abordagens para o desenvolvimento de sistemas inteligentes capazes de realizar reconhecimento e interpretação de imagens. Inspiradas no funcionamento do cérebro humano, essas redes são compostas por unidades básicas chamadas neurônios artificiais, organizadas em camadas e interconectadas por pesos ajustáveis.</p>
 <div id="fig-neuronio" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-neuronio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -462,7 +463,7 @@ Figura&nbsp;10.2: Redes neurais de múltiplas camadas
 </section>
 <section id="redes-neurais-convolucionais-cnn" class="level2" data-number="10.8">
 <h2 data-number="10.8" class="anchored" data-anchor-id="redes-neurais-convolucionais-cnn"><span class="header-section-number">10.8</span> Redes Neurais Convolucionais (CNN)</h2>
-<p>As <strong>Redes Neurais Convolucionais</strong> (<em>Convolutional Neural Networks – CNNs</em>, <span class="citation" data-cites="lecun1998gradient">LeCun et al. (<a href="references.html#ref-lecun1998gradient" role="doc-biblioref">1998</a>)</span>, <span class="citation" data-cites="goodfellow2016deep">Goodfellow et al. (<a href="references.html#ref-goodfellow2016deep" role="doc-biblioref">2016</a>)</span>, <span class="citation" data-cites="krizhevsky2012imagenet">Krizhevsky et al. (<a href="references.html#ref-krizhevsky2012imagenet" role="doc-biblioref">2012</a>)</span>, <span class="citation" data-cites="simonyan2015very">Simonyan e Zisserman (<a href="references.html#ref-simonyan2015very" role="doc-biblioref">2015</a>)</span>, <span class="citation" data-cites="he2016deep">He et al. (<a href="references.html#ref-he2016deep" role="doc-biblioref">2016</a>)</span>, <span class="citation" data-cites="szegedy2015going">Szegedy et al. (<a href="references.html#ref-szegedy2015going" role="doc-biblioref">2015</a>)</span>) representam uma das principais abordagens modernas para o reconhecimento e interpretação de imagens. Essas redes têm sido amplamente utilizadas não apenas em visão computacional, mas também em áreas como processamento de voz e linguagem natural. Sua concepção foi inspirada em estudos do córtex visual humano, nos quais se observou que certos neurônios respondem a estímulos visuais localizados em regiões específicas do campo visual (conforme ilustrado na <a href="#fig-cortex" class="quarto-xref">Figura&nbsp;<span>10.3</span></a>).</p>
+<p>As <strong>Redes Neurais Convolucionais</strong> (<em>Convolutional Neural Networks – CNNs</em>) <span class="citation" data-cites="lecun1998gradient goodfellow2016deep krizhevsky2012imagenet simonyan2015very he2016deep szegedy2015going">(<a href="references.html#ref-goodfellow2016deep" role="doc-biblioref">Goodfellow; Bengio; Courville, 2016</a>; <a href="references.html#ref-he2016deep" role="doc-biblioref">He et al., 2016</a>; <a href="references.html#ref-krizhevsky2012imagenet" role="doc-biblioref">Krizhevsky; Sutskever; Hinton, 2012</a>; <a href="references.html#ref-lecun1998gradient" role="doc-biblioref">LeCun et al., 1998</a>; <a href="references.html#ref-simonyan2015very" role="doc-biblioref">Simonyan; Zisserman, 2015</a>; <a href="references.html#ref-szegedy2015going" role="doc-biblioref">Szegedy et al., 2015</a>)</span> representam uma das principais abordagens modernas para o reconhecimento e interpretação de imagens. Essas redes têm sido amplamente utilizadas não apenas em visão computacional, mas também em áreas como processamento de voz e linguagem natural. Sua concepção foi inspirada em estudos do córtex visual humano, nos quais se observou que certos neurônios respondem a estímulos visuais localizados em regiões específicas do campo visual (conforme ilustrado na <a href="#fig-cortex" class="quarto-xref">Figura&nbsp;<span>10.3</span></a>).</p>
 <div id="fig-cortex" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cortex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -959,45 +960,45 @@ Listagem&nbsp;10.2
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
 <div id="ref-bishop2006pattern" class="csl-entry" role="listitem">
-Bishop, Christopher M. 2006. <em>Pattern Recognition and Machine Learning</em>. Springer.
+BISHOP, Christopher M. <strong>Pattern Recognition and Machine Learning</strong>. <em>[S.l.]</em>: Springer, 2006.
 </div>
 <div id="ref-cybenko1989approximation" class="csl-entry" role="listitem">
-Cybenko, George. 1989. <span>“Approximation by superpositions of a sigmoidal function”</span>. <em>Mathematics of Control, Signals and Systems</em> 2 (4): 303–14.
+CYBENKO, George. Approximation by superpositions of a sigmoidal function. <strong>Mathematics of Control, Signals and Systems</strong>, v. 2, n. 4, p. 303–314, 1989.
 </div>
 <div id="ref-goodfellow2016deep" class="csl-entry" role="listitem">
-Goodfellow, Ian, Yoshua Bengio, e Aaron Courville. 2016. <em>Deep Learning</em>. MIT Press.
+GOODFELLOW, Ian; BENGIO, Yoshua; COURVILLE, Aaron. <strong>Deep Learning</strong>. <em>[S.l.]</em>: MIT Press, 2016.
 </div>
 <div id="ref-hagan1996neural" class="csl-entry" role="listitem">
-Hagan, Martin T., Howard B. Demuth, e Mark H. Beale. 1996. <em>Neural Network Design</em>. PWS Publishing.
+HAGAN, Martin T.; DEMUTH, Howard B.; BEALE, Mark H. <strong>Neural Network Design</strong>. <em>[S.l.]</em>: PWS Publishing, 1996.
 </div>
 <div id="ref-haykin2009neural" class="csl-entry" role="listitem">
-Haykin, Simon. 2009. <em>Neural Networks and Learning Machines</em>. 3º ed. Prentice Hall.
+HAYKIN, Simon. <strong>Neural Networks and Learning Machines</strong>. 3. ed. <em>[S.l.]</em>: Prentice Hall, 2009.
 </div>
 <div id="ref-he2016deep" class="csl-entry" role="listitem">
-He, Kaiming, Xiangyu Zhang, Shaoqing Ren, e Jian Sun. 2016. <span>“Deep residual learning for image recognition”</span>. <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 770–78.
+HE, Kaiming <em>et al.</em> Deep residual learning for image recognition. <strong>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</strong>, p. 770–778, 2016.
 </div>
 <div id="ref-hornik1989multilayer" class="csl-entry" role="listitem">
-Hornik, Kurt, Maxwell Stinchcombe, e Halbert White. 1989. <span>“Multilayer feedforward networks are universal approximators”</span>. <em>Neural Networks</em> 2 (5): 359–66.
+HORNIK, Kurt; STINCHCOMBE, Maxwell; WHITE, Halbert. Multilayer feedforward networks are universal approximators. <strong>Neural Networks</strong>, v. 2, n. 5, p. 359–366, 1989.
 </div>
 <div id="ref-krizhevsky2012imagenet" class="csl-entry" role="listitem">
-Krizhevsky, Alex, Ilya Sutskever, e Geoffrey E. Hinton. 2012. <span>“ImageNet classification with deep convolutional neural networks”</span>. <em>Advances in Neural Information Processing Systems (NeurIPS)</em> 25: 1097–105.
+KRIZHEVSKY, Alex; SUTSKEVER, Ilya; HINTON, Geoffrey E. ImageNet classification with deep convolutional neural networks. <strong>Advances in Neural Information Processing Systems (NeurIPS)</strong>, v. 25, p. 1097–1105, 2012.
 </div>
 <div id="ref-lecun1998gradient" class="csl-entry" role="listitem">
-LeCun, Yann, Léon Bottou, Yoshua Bengio, e Patrick Haffner. 1998. <span>“Gradient-based learning applied to document recognition”</span>. <em>Proceedings of the IEEE</em> 86 (11): 2278–324.
+LECUN, Yann <em>et al.</em> Gradient-based learning applied to document recognition. <strong>Proceedings of the IEEE</strong>, v. 86, n. 11, p. 2278–2324, 1998.
 </div>
 <div id="ref-mitchell1997machine" class="csl-entry" role="listitem">
-Mitchell, Tom M. 1997. <em>Machine Learning</em>. McGraw-Hill.
+MITCHELL, Tom M. <strong>Machine Learning</strong>. <em>[S.l.]</em>: McGraw-Hill, 1997.
 </div>
 <div id="ref-rumelhart1986learning" class="csl-entry" role="listitem">
-Rumelhart, David E., Geoffrey E. Hinton, e Ronald J. Williams. 1986. <span>“Learning representations by back-propagating errors”</span>. <em>Nature</em> 323: 533–36.
+RUMELHART, David E.; HINTON, Geoffrey E.; WILLIAMS, Ronald J. Learning representations by back-propagating errors. <strong>Nature</strong>, v. 323, p. 533–536, 1986.
 </div>
 <div id="ref-simonyan2015very" class="csl-entry" role="listitem">
-Simonyan, Karen, e Andrew Zisserman. 2015. <span>“Very deep convolutional networks for large-scale image recognition”</span>. <em>International Conference on Learning Representations (ICLR)</em>.
+SIMONYAN, Karen; ZISSERMAN, Andrew. Very deep convolutional networks for large-scale image recognition. <strong>International Conference on Learning Representations (ICLR)</strong>, 2015.
 </div>
 <div id="ref-szegedy2015going" class="csl-entry" role="listitem">
-Szegedy, Christian, Wei Liu, Yangqing Jia, et al. 2015. <span>“Going deeper with convolutions”</span>. <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 1–9.
+SZEGEDY, Christian <em>et al.</em> Going deeper with convolutions. <strong>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</strong>, p. 1–9, 2015.
 </div>
 </div>
 </section>

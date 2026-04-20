@@ -62,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 1em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -424,7 +425,7 @@ Figura&nbsp;9.2: Código de Cadeia
 </section>
 <section id="algoritmo-de-rastreamento-de-contorno-chain-code" class="level3">
 <h3 class="anchored" data-anchor-id="algoritmo-de-rastreamento-de-contorno-chain-code">Algoritmo de Rastreamento de Contorno (Chain Code)</h3>
-<p>O código de cadeia é construído a partir de um contorno. O algoritmo de rastreamento de contorno (<span class="citation" data-cites="moore1968contour">Moore (<a href="references.html#ref-moore1968contour" role="doc-biblioref">1968</a>)</span>, <span class="citation" data-cites="suzuki1985topological">Suzuki e Abe (<a href="references.html#ref-suzuki1985topological" role="doc-biblioref">1985</a>)</span>, <span class="citation" data-cites="freeman1961encoding">Freeman (<a href="references.html#ref-freeman1961encoding" role="doc-biblioref">1961</a>)</span>, <span class="citation" data-cites="pavlidis1982algorithms">Pavlidis (<a href="references.html#ref-pavlidis1982algorithms" role="doc-biblioref">1982</a>)</span>), representado na <a href="#lst-contorno" class="quarto-xref">Listagem&nbsp;<span>9.1</span></a> tem como objetivo percorrer a fronteira de um objeto binário, identificando todos os pixels pertencentes ao seu contorno de forma ordenada. A seguir, apresenta-se uma versão estruturada e detalhada do procedimento:</p>
+<p>O código de cadeia é construído a partir de um contorno. O algoritmo de rastreamento de contorno <span class="citation" data-cites="moore1968contour suzuki1985topological freeman1961encoding pavlidis1982algorithms">(<a href="references.html#ref-freeman1961encoding" role="doc-biblioref">Freeman, 1961</a>; <a href="references.html#ref-moore1968contour" role="doc-biblioref">Moore, 1968</a>; <a href="references.html#ref-pavlidis1982algorithms" role="doc-biblioref">Pavlidis, 1982</a>; <a href="references.html#ref-suzuki1985topological" role="doc-biblioref">Suzuki; Abe, 1985</a>)</span>, representado na <a href="#lst-contorno" class="quarto-xref">Listagem&nbsp;<span>9.1</span></a> tem como objetivo percorrer a fronteira de um objeto binário, identificando todos os pixels pertencentes ao seu contorno de forma ordenada. A seguir, apresenta-se uma versão estruturada e detalhada do procedimento:</p>
 <div id="lst-contorno" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-contorno-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -502,7 +503,7 @@ Listagem&nbsp;9.1
 </section>
 <section id="principais-métodos" class="level3">
 <h3 class="anchored" data-anchor-id="principais-métodos">Principais Métodos</h3>
-<p>Diversos algoritmos podem ser utilizados para realizar a aproximação poligonal. Entre os mais conhecidos, destaca-se o Algoritmo de Douglas-Peucker (<span class="citation" data-cites="douglas1973algorithms">Douglas e Peucker (<a href="references.html#ref-douglas1973algorithms" role="doc-biblioref">1973</a>)</span>, <span class="citation" data-cites="ramer1972iterative">Ramer (<a href="references.html#ref-ramer1972iterative" role="doc-biblioref">1972</a>)</span>).</p>
+<p>Diversos algoritmos podem ser utilizados para realizar a aproximação poligonal. Entre os mais conhecidos, destaca-se o Algoritmo de Douglas-Peucker <span class="citation" data-cites="douglas1973algorithms ramer1972iterative">(<a href="references.html#ref-douglas1973algorithms" role="doc-biblioref">Douglas; Peucker, 1973</a>; <a href="references.html#ref-ramer1972iterative" role="doc-biblioref">Ramer, 1972</a>)</span>.</p>
 <section id="algoritmo-de-douglas-peucker" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="algoritmo-de-douglas-peucker">Algoritmo de Douglas-Peucker</h4>
 <p>Este é um dos métodos mais populares. O procedimento é recursivo:</p>
@@ -1029,24 +1030,24 @@ F... 7... 0... 0... 1... 2... 4... 6... 4... 8...
 <span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
 <div id="ref-douglas1973algorithms" class="csl-entry" role="listitem">
-Douglas, David H., e Thomas K. Peucker. 1973. <span>“Algorithms for the reduction of the number of points required to represent a digitized line or its caricature”</span>. <em>Cartographica: The International Journal for Geographic Information and Geovisualization</em> 10 (2): 112–22.
+DOUGLAS, David H.; PEUCKER, Thomas K. Algorithms for the reduction of the number of points required to represent a digitized line or its caricature. <strong>Cartographica: The International Journal for Geographic Information and Geovisualization</strong>, v. 10, n. 2, p. 112–122, 1973.
 </div>
 <div id="ref-freeman1961encoding" class="csl-entry" role="listitem">
-Freeman, Herbert. 1961. <span>“On the encoding of arbitrary geometric configurations”</span>. <em>IRE Transactions on Electronic Computers</em> EC-10 (2): 260–68.
+FREEMAN, Herbert. On the encoding of arbitrary geometric configurations. <strong>IRE Transactions on Electronic Computers</strong>, v. EC-10, n. 2, p. 260–268, 1961.
 </div>
 <div id="ref-moore1968contour" class="csl-entry" role="listitem">
-Moore, Edward F. 1968. <span>“Contour tracing algorithms”</span>. <em>Communications of the ACM</em>.
+MOORE, Edward F. Contour tracing algorithms. <strong>Communications of the ACM</strong>, 1968.
 </div>
 <div id="ref-pavlidis1982algorithms" class="csl-entry" role="listitem">
-Pavlidis, Theo. 1982. <em>Algorithms for Graphics and Image Processing</em>.
+PAVLIDIS, Theo. Algorithms for Graphics and Image Processing. 1982.
 </div>
 <div id="ref-ramer1972iterative" class="csl-entry" role="listitem">
-Ramer, Urs. 1972. <em>An iterative procedure for the polygonal approximation of plane curves</em>. Em <em>Computer Graphics and Image Processing</em>, v. 1.
+RAMER, Urs. <strong>An iterative procedure for the polygonal approximation of plane curves</strong>. <em>[S.l.: S.n.]</em>. v. 1 p. 244–256
 </div>
 <div id="ref-suzuki1985topological" class="csl-entry" role="listitem">
-Suzuki, Satoshi, e Keiichi Abe. 1985. <span>“Topological structural analysis of digitized binary images by border following”</span>. <em>Computer Vision, Graphics, and Image Processing</em> 30 (1): 32–46.
+SUZUKI, Satoshi; ABE, Keiichi. Topological structural analysis of digitized binary images by border following. <strong>Computer Vision, Graphics, and Image Processing</strong>, v. 30, n. 1, p. 32–46, 1985.
 </div>
 </div>
 </section>

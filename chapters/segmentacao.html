@@ -62,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 1em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -512,7 +513,7 @@ Listagem&nbsp;8.1
 <h3 class="unnumbered anchored" data-anchor-id="segmentação-por-morfologia-matemática-e-watershed">Segmentação por Morfologia Matemática e Watershed</h3>
 <p>A segmentação baseada em morfologia matemática utiliza operadores que exploram a forma e a estrutura dos objetos presentes na imagem. Esses operadores são aplicados com o auxílio de um elemento estruturante <span class="math inline">\(B\)</span>, que define a vizinhança considerada nas operações. Entre as principais operações morfológicas estão a erosão e a dilatação. A erosão tende a reduzir as regiões claras da imagem, sendo útil para remover pequenos ruídos e separar objetos conectados, enquanto a dilatação expande essas regiões, preenchendo falhas e conectando componentes próximos.</p>
 <p>A partir dessas operações básicas, definem-se operações compostas, como a abertura e o fechamento. A abertura, dada por <span class="math inline">\(A \circ B = (A \ominus B) \oplus B\)</span>, é eficaz na remoção de pequenos objetos ou ruídos, preservando a forma geral das estruturas maiores. Já o fechamento, definido como <span class="math inline">\(A \bullet B = (A \oplus B) \ominus B\)</span>, é utilizado para preencher lacunas e suavizar contornos. Essas operações são amplamente empregadas no refinamento de segmentações, na separação de objetos conectados e na eliminação de imperfeições.</p>
-<p>Outra abordagem importante é a segmentação por watershed (<span class="citation" data-cites="beucher1979watershed">Beucher e Lantuejoul (<a href="references.html#ref-beucher1979watershed" role="doc-biblioref">1979</a>)</span>, <span class="citation" data-cites="beucher1992morphological">Beucher (<a href="references.html#ref-beucher1992morphological" role="doc-biblioref">1992</a>)</span>, <span class="citation" data-cites="vincent1991watersheds">Vincent e Soille (<a href="references.html#ref-vincent1991watersheds" role="doc-biblioref">1991</a>)</span>, <span class="citation" data-cites="roerdink2000watershed">Roerdink e Meijster (<a href="references.html#ref-roerdink2000watershed" role="doc-biblioref">2000</a>)</span>), que interpreta a imagem como uma superfície topográfica, na qual os níveis de intensidade representam altitudes. Nessa interpretação, regiões de baixa intensidade correspondem a vales ou bacias, enquanto regiões de alta intensidade representam divisores de água. O algoritmo simula um processo de inundação, no qual a água começa a preencher as bacias a partir de mínimos locais, e barreiras são construídas quando diferentes regiões em crescimento se encontram.</p>
+<p>Outra abordagem importante é a segmentação por watershed <span class="citation" data-cites="beucher1979watershed beucher1992morphological vincent1991watersheds roerdink2000watershed">(<a href="references.html#ref-beucher1992morphological" role="doc-biblioref">Beucher, 1992</a>; <a href="references.html#ref-beucher1979watershed" role="doc-biblioref">Beucher; Lantuejoul, 1979</a>; <a href="references.html#ref-roerdink2000watershed" role="doc-biblioref">Roerdink; Meijster, 2000</a>; <a href="references.html#ref-vincent1991watersheds" role="doc-biblioref">Vincent; Soille, 1991</a>)</span>, que interpreta a imagem como uma superfície topográfica, na qual os níveis de intensidade representam altitudes. Nessa interpretação, regiões de baixa intensidade correspondem a vales ou bacias, enquanto regiões de alta intensidade representam divisores de água. O algoritmo simula um processo de inundação, no qual a água começa a preencher as bacias a partir de mínimos locais, e barreiras são construídas quando diferentes regiões em crescimento se encontram.</p>
 <p>Esse processo resulta na divisão da imagem em regiões distintas, associadas às bacias formadas. No entanto, um problema comum do método watershed é a supersegmentação, causada pela presença de múltiplos mínimos locais, muitas vezes decorrentes de ruído ou pequenas variações na imagem. Para contornar esse problema, é comum utilizar técnicas baseadas em marcadores, nas quais pontos de interesse (internos aos objetos e ao fundo) são previamente definidos, guiando o processo de segmentação e produzindo resultados mais consistentes e controlados.</p>
 <section id="algoritmo-de-watershed-por-marcadores" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="algoritmo-de-watershed-por-marcadores">Algoritmo de Watershed por Marcadores</h4>
@@ -856,18 +857,18 @@ I = \frac{R + G + B}{3}
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
 <div id="ref-beucher1992morphological" class="csl-entry" role="listitem">
-Beucher, Serge. 1992. <span>“The morphological approach to segmentation: the watershed transformation”</span>. <em>Mathematical Morphology in Image Processing</em>, 433–81.
+BEUCHER, Serge. The morphological approach to segmentation: the watershed transformation. <em>In</em>: Marcel Dekker, 1992.
 </div>
 <div id="ref-beucher1979watershed" class="csl-entry" role="listitem">
-Beucher, Serge, e Christian Lantuejoul. 1979. <em>Use of watersheds in contour detection</em>.
+BEUCHER, Serge; LANTUEJOUL, Christian. Use of watersheds in contour detection. 1979.
 </div>
 <div id="ref-roerdink2000watershed" class="csl-entry" role="listitem">
-Roerdink, Jos B. T. M., e Arnold Meijster. 2000. <em>The Watershed Transform: Definitions, Algorithms and Parallelization Strategies</em>. Em <em>Fundamenta Informaticae</em>, v. 41.
+ROERDINK, Jos B. T. M.; MEIJSTER, Arnold. <strong>The Watershed Transform: Definitions, Algorithms and Parallelization Strategies</strong>. <em>[S.l.: S.n.]</em>. v. 41 p. 187–228
 </div>
 <div id="ref-vincent1991watersheds" class="csl-entry" role="listitem">
-Vincent, Luc, e Pierre Soille. 1991. <span>“Watersheds in digital spaces: an efficient algorithm based on immersion simulations”</span>. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em> 13 (6): 583–98.
+VINCENT, Luc; SOILLE, Pierre. Watersheds in digital spaces: an efficient algorithm based on immersion simulations. <strong>IEEE Transactions on Pattern Analysis and Machine Intelligence</strong>, v. 13, n. 6, p. 583–598, 1991.
 </div>
 </div>
 </section>

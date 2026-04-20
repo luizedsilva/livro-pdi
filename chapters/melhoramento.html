@@ -62,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 1em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -728,9 +729,9 @@ Figura&nbsp;3.2: Transformação linear por partes.
 <p>Algoritmo para calcular o histograma de uma imagem está incluído em <a href="#lst-histograma" class="quarto-xref">Listagem&nbsp;<span>3.5</span></a>.</p>
 <section id="equalização-de-histograma" class="level3">
 <h3 class="anchored" data-anchor-id="equalização-de-histograma">Equalização de Histograma</h3>
-<p>A equalização de histograma (<span class="citation" data-cites="pizer1987adaptive">Pizer et al. (<a href="references.html#ref-pizer1987adaptive" role="doc-biblioref">1987</a>)</span>, <span class="citation" data-cites="zuiderveld1994contrast">Zuiderveld (<a href="references.html#ref-zuiderveld1994contrast" role="doc-biblioref">1994</a>)</span>) é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.</p>
+<p>A equalização de histograma <span class="citation" data-cites="pizer1987adaptive zuiderveld1994contrast">(<a href="references.html#ref-pizer1987adaptive" role="doc-biblioref">Pizer et al., 1987</a>; <a href="references.html#ref-zuiderveld1994contrast" role="doc-biblioref">Zuiderveld, 1994</a>)</span> é uma técnica de melhoramento que visa redistribuir os níveis de intensidade de uma imagem de forma aproximadamente uniforme. O objetivo é maximizar o contraste global, especialmente em imagens cujos níveis estão concentrados em uma região específica.</p>
 <p>Essa técnica é amplamente utilizada devido à sua simplicidade e eficácia, embora possa produzir resultados indesejados em algumas aplicações, como a amplificação de ruído.</p>
-<p>O processo chamado de <strong>Mapeamento de Intensidade</strong> (<span class="citation" data-cites="gonzalez2010processamento">Gonzalez e Woods (<a href="references.html#ref-gonzalez2010processamento" role="doc-biblioref">2010</a>)</span>) é dado por:</p>
+<p>O processo chamado de <strong>Mapeamento de Intensidade</strong> segundo <span class="citation" data-cites="gonzalez2010processamento">Gonzalez; Woods (<a href="references.html#ref-gonzalez2010processamento" role="doc-biblioref">2010</a>)</span> é dado por:</p>
 <p><span class="math display">\[
 s_k = T(r_k) = (L - 1)\sum_{j=0}^{k} p_r(r_j)
             = \frac{L - 1}{MN}\sum_{j=0}^{k} n_j
@@ -1301,15 +1302,15 @@ f_w = 4(\frac{f}{4}) + \frac{w}{64}
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
 <div id="ref-gonzalez2010processamento" class="csl-entry" role="listitem">
-Gonzalez, Rafael C., e Richard E. Woods. 2010. <em>Processamento Digital de Imagens</em>. 3º ed. Pearson Prentice Hall.
+GONZALEZ, Rafael C.; WOODS, Richard E. <strong>Processamento Digital de Imagens</strong>. 3. ed. São Paulo: Pearson Prentice Hall, 2010.
 </div>
 <div id="ref-pizer1987adaptive" class="csl-entry" role="listitem">
-Pizer, Stephen M., E. Philip Amburn, John D. Austin, et al. 1987. <span>“Adaptive histogram equalization and its variations”</span>. <em>Computer Vision, Graphics, and Image Processing</em> 39 (3): 355–68.
+PIZER, Stephen M. <em>et al.</em> Adaptive histogram equalization and its variations. <strong>Computer Vision, Graphics, and Image Processing</strong>, v. 39, n. 3, p. 355–368, 1987.
 </div>
 <div id="ref-zuiderveld1994contrast" class="csl-entry" role="listitem">
-Zuiderveld, Karel. 1994. <em>Contrast limited adaptive histogram equalization</em>. 474–85.
+ZUIDERVELD, Karel. Contrast limited adaptive histogram equalization. p. 474–485, 1994.
 </div>
 </div>
 </section>

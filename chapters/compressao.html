@@ -58,7 +58,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 1em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -673,8 +693,9 @@ MSE =
 <section id="codificação-huffman" class="level3">
 <h3 class="anchored" data-anchor-id="codificação-huffman">Codificação Huffman</h3>
 <p>A codificação entropia é uma etapa essencial em muitos sistemas de compressão. Ela visa representar os dados de forma eficiente, utilizando códigos de comprimento variável baseados na probabilidade de ocorrência dos símbolos.</p>
-<p>Algoritmos clássicos incluem a codificação de Huffman, que utiliza árvores binárias para atribuir códigos mais curtos a símbolos mais frequentes, e a codificação aritmética, que alcança taxas de compressão próximas ao limite teórico da entropia.</p>
-<p>O <strong>algoritmo de Huffman</strong> é um método de compressão de dados amplamente utilizado baseado em <strong>codificação estatística sem perdas</strong>. Ele foi proposto por David A. Huffman em 1952 e tem como objetivo reduzir o número médio de bits necessários para representar um conjunto de símbolos. Esse algoritmo explora a frequência de ocorrência dos símbolos, atribuindo códigos menores aos símbolos mais frequentes e códigos maiores aos símbolos menos frequentes, resultando em uma representação mais eficiente dos dados.</p>
+<p>Algoritmos clássicos incluem a codificação de <span class="citation" data-cites="huffman1952method">Huffman (<a href="references.html#ref-huffman1952method" role="doc-biblioref">1952</a>)</span>, que utiliza árvores binárias para atribuir códigos mais curtos a símbolos mais frequentes, e a codificação aritmética, que alcança taxas de compressão próximas ao limite teórico da entropia.</p>
+<p>O algoritmo de Huffman é uma técnica de compressão de dados sem perdas baseada em estatística. Seu objetivo é diminuir a quantidade média de bits usada para representar um conjunto de símbolos.</p>
+<p>Para isso, o algoritmo analisa a frequência de cada símbolo e atribui códigos mais curtos aos símbolos mais frequentes e códigos mais longos aos menos frequentes. Dessa forma, a representação final dos dados se torna mais eficiente, reduzindo o tamanho total sem perder informação.</p>
 <p>A ideia central da codificação de Huffman é construir um <strong>código de comprimento variável</strong>, no qual cada símbolo é representado por uma sequência de bits cujo tamanho depende de sua probabilidade de ocorrência. Diferentemente dos códigos de comprimento fixo, em que todos os símbolos são representados pelo mesmo número de bits, a codificação de Huffman permite que símbolos mais comuns utilizem menos bits, reduzindo o tamanho total da informação codificada.</p>
 <p>O processo de construção do código de Huffman inicia-se com a <strong>determinação da frequência de ocorrência de cada símbolo</strong> presente nos dados (conforme ilustrado na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>6.5</span></a>). Em seguida, esses símbolos são organizados em uma estrutura conhecida como <strong>árvore binária de Huffman</strong>. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores (iterações i = 1, 2, 3 e 4 na <a href="#fig-huffman" class="quarto-xref">Figura&nbsp;<span>6.5</span></a>). Esse processo continua até que todos os nós estejam conectados em uma única árvore.</p>
 <div id="fig-huffman" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -719,7 +740,7 @@ Listagem&nbsp;6.1
 </section>
 <section id="codificação-lzw" class="level3">
 <h3 class="anchored" data-anchor-id="codificação-lzw">Codificação LZW</h3>
-<p>A <strong>codificação de Lempel–Ziv–Welch (LZW)</strong> é uma técnica de compressão de dados <strong>sem perda</strong> amplamente utilizada em arquivos e formatos de imagem, como GIF e TIFF. O método foi proposto por <strong>Terry Welch</strong> em 1984 como uma melhoria das técnicas de compressão desenvolvidas anteriormente por <strong>Abraham Lempel</strong> e <strong>Jacob Ziv</strong>. A ideia central da LZW é substituir sequências de símbolos por <strong>códigos numéricos de tamanho fixo</strong>, reduzindo a quantidade de dados necessária para representar a informação original.</p>
+<p>A <strong>codificação de Lempel–Ziv–Welch (LZW)</strong> é uma técnica de compressão de dados <strong>sem perda</strong> amplamente utilizada em arquivos e formatos de imagem, como GIF e TIFF. O método foi proposto por <span class="citation" data-cites="welch1984technique">Welch (<a href="references.html#ref-welch1984technique" role="doc-biblioref">1984</a>)</span> como uma melhoria das técnicas de compressão desenvolvidas anteriormente por <strong>Abraham Lempel</strong> e <strong>Jacob Ziv</strong>. A ideia central da LZW é substituir sequências de símbolos por <strong>códigos numéricos de tamanho fixo</strong>, reduzindo a quantidade de dados necessária para representar a informação original.</p>
 <p>Diferentemente de outros métodos de compressão estatísticos, como a codificação de Huffman, a técnica LZW <strong>não requer conhecimento prévio das probabilidades de ocorrência dos símbolos da fonte</strong>. Em vez disso, ela constrói dinamicamente um <strong>dicionário de sequências de símbolos</strong> durante o processo de compressão. Inicialmente, esse dicionário contém apenas os símbolos básicos do alfabeto da fonte (por exemplo, os valores possíveis de pixels ou caracteres). À medida que a sequência de entrada é analisada, novas combinações de símbolos são identificadas e adicionadas ao dicionário, cada uma associada a uma palavra-código.</p>
 <p>O processo de compressão ocorre conforme <a href="#lst-lzwencode" class="quarto-xref">Listagem&nbsp;<span>6.2</span></a>. O algoritmo percorre a sequência de entrada procurando a <strong>maior sequência de símbolos que já esteja presente no dicionário</strong>. Quando essa sequência é encontrada, o algoritmo emite o código correspondente e acrescenta ao dicionário uma nova entrada formada pela sequência reconhecida seguida do próximo símbolo da entrada. Dessa forma, o dicionário cresce progressivamente, passando a representar padrões mais longos e frequentes presentes nos dados.</p>
 <p>Uma característica importante da LZW é que <strong>tanto o codificador quanto o decodificador constroem o mesmo dicionário de forma incremental</strong>, seguindo exatamente as mesmas regras. Por esse motivo, <strong>não é necessário transmitir o dicionário junto com os dados comprimidos</strong>, o que contribui para a eficiência do método. Durante a descompressão (<a href="#lst-lzwdecode" class="quarto-xref">Listagem&nbsp;<span>6.3</span></a>), os códigos recebidos são utilizados para reconstruir as sequências originais, enquanto o dicionário é atualizado da mesma forma que ocorreu na compressão.</p>
@@ -805,7 +826,7 @@ Listagem&nbsp;6.3
 <section id="formato-jpeg" class="level3">
 <h3 class="anchored" data-anchor-id="formato-jpeg">Formato JPEG</h3>
 <p>As etapas da codificação JPEG estão representadas na <a href="#fig-etapas" class="quarto-xref">Figura&nbsp;<span>6.6</span></a>.</p>
-<div id="fig-etapas" class="quarto-float quarto-figure quarto-figure-center anchored" data-align="center" data-fig-align="center">
+<div id="fig-etapas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-etapas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap6/etapas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" data-align="center">
@@ -1197,6 +1218,14 @@ AnAnB+B+EAECEEEDEBB+</code></pre>
 </div>
 
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
+<div id="ref-huffman1952method" class="csl-entry" role="listitem">
+HUFFMAN, David A. <a href="https://doi.org/10.1109/JRPROC.1952.273898">A Method for the Construction of Minimum-Redundancy Codes</a>. <strong>Proceedings of the IRE</strong>, v. 40, n. 9, p. 1098–1101, 1952.
+</div>
+<div id="ref-welch1984technique" class="csl-entry" role="listitem">
+WELCH, Terry A. <a href="https://doi.org/10.1109/MC.1984.1659158">A Technique for High-Performance Data Compression</a>. <strong>Computer</strong>, v. 17, n. 6, p. 8–19, 1984.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

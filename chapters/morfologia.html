@@ -62,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 1em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -375,7 +376,7 @@ window.Quarto = {
 <p><img src="../chapters/imgs/morfologia.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
-<p>A <strong>Morfologia Matemática</strong> (<span class="citation" data-cites="serra1982image">Serra (<a href="references.html#ref-serra1982image" role="doc-biblioref">1982</a>)</span>, <span class="citation" data-cites="serra1988image">Serra (<a href="references.html#ref-serra1988image" role="doc-biblioref">1988</a>)</span>, <span class="citation" data-cites="soille2003morphological">Soille (<a href="references.html#ref-soille2003morphological" role="doc-biblioref">2003</a>)</span>, <span class="citation" data-cites="heijmans1994morphological">Heijmans (<a href="references.html#ref-heijmans1994morphological" role="doc-biblioref">1994</a>)</span>, <span class="citation" data-cites="matheron1975random">Matheron (<a href="references.html#ref-matheron1975random" role="doc-biblioref">1975</a>)</span>, <span class="citation" data-cites="vincent1993morphological">Vincent (<a href="references.html#ref-vincent1993morphological" role="doc-biblioref">1993</a>)</span>) é um ramo não linear do <strong>processamento digital de imagens</strong>, desenvolvido na década de 1960 por <strong>George Matheron</strong> e <strong>Jean Serra</strong>. Essa área surgiu no contexto da análise de estruturas geométricas, tendo como principal objetivo extrair informações relevantes de imagens a partir da manipulação de suas formas.</p>
+<p>A <strong>Morfologia Matemática</strong> <span class="citation" data-cites="serra1982image serra1988image soille2003morphological heijmans1994morphological matheron1975random vincent1993morphological">(<a href="references.html#ref-heijmans1994morphological" role="doc-biblioref">Heijmans, 1994</a>; <a href="references.html#ref-matheron1975random" role="doc-biblioref">Matheron, 1975</a>; <a href="references.html#ref-serra1982image" role="doc-biblioref">Serra, 1982</a>, <a href="references.html#ref-serra1988image" role="doc-biblioref">1988</a>; <a href="references.html#ref-soille2003morphological" role="doc-biblioref">Soille, 2003</a>; <a href="references.html#ref-vincent1993morphological" role="doc-biblioref">Vincent, 1993</a>)</span> é um ramo não linear do <strong>processamento digital de imagens</strong>, desenvolvido na década de 1960 por <strong>George Matheron</strong> e <strong>Jean Serra</strong>. Essa área surgiu no contexto da análise de estruturas geométricas, tendo como principal objetivo extrair informações relevantes de imagens a partir da manipulação de suas formas.</p>
 <p>Os trabalhos iniciais de Matheron e Serra foram fundamentados na ideia de que a informação contida em uma imagem pode ser analisada por meio de transformações baseadas em forma e estrutura. Nesse contexto, foram definidas duas operações fundamentais que constituem a base da morfologia matemática: a <strong>dilatação</strong> e a <strong>erosão</strong>. Essas operações permitem modificar a geometria dos objetos presentes na imagem, possibilitando tanto a expansão quanto a contração de suas regiões.</p>
 <p>Originalmente, a teoria foi desenvolvida para <strong>imagens binárias</strong>, nas quais os pixels assumem apenas dois valores (tipicamente 0 e 1). Posteriormente, essa abordagem foi estendida para imagens em <strong>tons de cinza</strong>, permitindo uma aplicação mais ampla em problemas reais, nos quais as imagens possuem múltiplos níveis de intensidade.</p>
 <p>A ideia central da morfologia matemática consiste em comparar a imagem de interesse com uma pequena forma previamente definida, chamada <strong>elemento estruturante</strong>. Esse elemento funciona como uma sonda que percorre a imagem, avaliando como sua forma se ajusta às estruturas presentes. A partir dessa comparação, é possível identificar padrões, destacar regiões específicas e extrair características importantes. O resultado das operações morfológicas depende diretamente da forma, do tamanho e da orientação do elemento estruturante utilizado.</p>
@@ -601,7 +602,7 @@ Figura&nbsp;7.5: Família homotópica
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" height="300" imagem="imgs/cap7/p5js-simulacao.png" qrcode="imgs/cap7/qrcode-simulacao.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/simulacao/" width="100%" height="250" style="border:none;"></iframe></div>
-<p>No exemplo interativo seguinte está uma implementação do algoritmo rápido de afinamento de <span class="citation" data-cites="zhang1984thinning">Zhang e Suen (<a href="references.html#ref-zhang1984thinning" role="doc-biblioref">1984</a>)</span> para aplicação à silhueta de um homem.</p>
+<p>No exemplo interativo seguinte está uma implementação do algoritmo rápido de afinamento de <span class="citation" data-cites="zhang1984thinning">Zhang; Suen (<a href="references.html#ref-zhang1984thinning" role="doc-biblioref">1984</a>)</span> para aplicação à silhueta de um homem.</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8aSI6XMnX" height="550" imagem="imgs/cap7/p5js-afinamento.png" qrcode="imgs/cap7/qrcode-afinamento.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/afinamento/" width="100%" height="410" style="border:none;"></iframe></div>
@@ -1030,27 +1031,27 @@ f \bullet b = (f \oplus b) \ominus b
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
 <div id="ref-heijmans1994morphological" class="csl-entry" role="listitem">
-Heijmans, Henk J. A. M. 1994. <em>Morphological Image Operators</em>. Academic Press.
+HEIJMANS, Henk J. A. M. <strong>Morphological Image Operators</strong>. <em>[S.l.]</em>: Academic Press, 1994.
 </div>
 <div id="ref-matheron1975random" class="csl-entry" role="listitem">
-Matheron, Georges. 1975. <em>Random Sets and Integral Geometry</em>.
+MATHERON, Georges. Random Sets and Integral Geometry. 1975.
 </div>
 <div id="ref-serra1982image" class="csl-entry" role="listitem">
-Serra, Jean. 1982. <em>Image Analysis and Mathematical Morphology</em>. Academic Press.
+SERRA, Jean. <strong>Image Analysis and Mathematical Morphology</strong>. <em>[S.l.]</em>: Academic Press, 1982.
 </div>
 <div id="ref-serra1988image" class="csl-entry" role="listitem">
-Serra, Jean. 1988. <em>Image Analysis and Mathematical Morphology, Volume 2: Theoretical Advances</em>. Academic Press.
+SERRA, Jean. <strong>Image Analysis and Mathematical Morphology, Volume 2: Theoretical Advances</strong>. <em>[S.l.]</em>: Academic Press, 1988.
 </div>
 <div id="ref-soille2003morphological" class="csl-entry" role="listitem">
-Soille, Pierre. 2003. <em>Morphological Image Analysis: Principles and Applications</em>. 2º ed. Springer.
+SOILLE, Pierre. <strong>Morphological Image Analysis: Principles and Applications</strong>. 2. ed. <em>[S.l.]</em>: Springer, 2003.
 </div>
 <div id="ref-vincent1993morphological" class="csl-entry" role="listitem">
-Vincent, Luc. 1993. <span>“Morphological grayscale reconstruction in image analysis: Applications and efficient algorithms”</span>. <em>IEEE Transactions on Image Processing</em> 2 (2): 176–201.
+VINCENT, Luc. Morphological grayscale reconstruction in image analysis: Applications and efficient algorithms. <strong>IEEE Transactions on Image Processing</strong>, v. 2, n. 2, p. 176–201, 1993.
 </div>
 <div id="ref-zhang1984thinning" class="csl-entry" role="listitem">
-Zhang, T. Y., e C. Y. Suen. 1984. <span>“A fast parallel algorithm for thinning digital patterns”</span>. <em>Communications of the ACM</em> 27 (3): 236–39.
+ZHANG, T. Y.; SUEN, C. Y. A fast parallel algorithm for thinning digital patterns. <strong>Communications of the ACM</strong>, v. 27, n. 3, p. 236–239, 1984.
 </div>
 </div>
 </section>
