@@ -30,7 +30,7 @@ ou aproximadamente **224 GB** de dados.
 
 Esse cálculo mostra que mesmo um vídeo relativamente simples, em resolução padrão e sem qualquer compressão, pode ocupar centenas de gigabytes de armazenamento. Na prática, armazenar ou transmitir esse volume de dados seria inviável para a maioria das aplicações, especialmente em sistemas de streaming, dispositivos móveis e transmissão em redes de comunicação.
 
-A **compressão de imagens e vídeos** surge justamente para reduzir essa enorme quantidade de dados. Os algoritmos de compressão exploram diferentes tipos de **redundância presentes nas imagens**, como redundância espacial, temporal e estatística, permitindo representar a mesma informação visual com muito menos bits.
+A **compressão de imagens e vídeos** surge justamente para reduzir essa enorme quantidade de dados. Os algoritmos de compressão exploram diferentes tipos de **redundância presentes nas imagens**, permitindo representar a mesma informação visual com muito menos bits.
 
 Graças a técnicas de compressão, formatos como **JPEG, MPEG e H.264** conseguem reduzir drasticamente o tamanho dos arquivos, tornando possível armazenar, transmitir e processar imagens e vídeos de forma eficiente em sistemas computacionais.
 
@@ -40,9 +40,9 @@ A compressão tem como objetivo principal reduzir a quantidade de dados necessá
 
 O **modelo genérico de compressão de imagens** consiste em um processo utilizado para **reduzir o tamanho físico dos dados de uma imagem**, com o objetivo de **otimizar sua transmissão e armazenamento**. Imagens digitais geralmente ocupam uma quantidade significativa de memória, principalmente quando possuem alta resolução ou profundidade de bits. Dessa forma, técnicas de compressão tornam-se essenciais em diversas aplicações, como transmissão de imagens pela internet, armazenamento em dispositivos digitais e sistemas multimídia.
 
-![Modelo genérico de compressão de imagens](/imgs/cap6/codifica.png){#fig-codifica fig-align="center" width="80%"}
+![Modelo genérico de compressão de imagens.](/imgs/cap6/codifica.png){#fig-codifica fig-align="center" width="80%"}
 
-O processo de compressão normalmente envolve **duas fases principais: a codificação e a decodificação** (conforme ilustrada na @fig-codifica). Na fase de **codificação**, a imagem original é analisada e transformada em uma representação mais compacta, reduzindo a quantidade de bits necessária para armazenar ou transmitir os dados. Esse processo pode envolver diferentes estratégias, como remoção de redundâncias, transformação dos dados ou eliminação de informações consideradas menos relevantes para a percepção visual humana. Já na fase de **decodificação**, os dados comprimidos são processados para reconstruir a imagem, produzindo uma versão que pode ser idêntica à original ou apresentar pequenas diferenças, dependendo do método de compressão utilizado.
+O processo de compressão normalmente envolve **duas fases principais: a codificação e a decodificação** (conforme ilustrado na @fig-codifica). Na fase de **codificação**, a imagem original é analisada e transformada em uma representação mais compacta, reduzindo a quantidade de bits necessária para armazenar ou transmitir os dados. Esse processo pode envolver diferentes estratégias, como remoção de redundâncias, transformação dos dados ou eliminação de informações consideradas menos relevantes para a percepção visual humana. Já na fase de **decodificação**, os dados comprimidos são processados para reconstruir a imagem, produzindo uma versão que pode ser idêntica à original ou apresentar pequenas diferenças, dependendo do método de compressão utilizado.
 
 A ideia fundamental por trás da compressão é **explorar padrões e redundâncias presentes na imagem**. Em muitas imagens, determinados valores ou padrões de pixels aparecem com maior frequência que outros. Assim, é possível representar esses elementos mais frequentes utilizando **uma quantidade menor de bits**, enquanto elementos menos frequentes podem ser representados com códigos maiores. Esse princípio está presente em diversos métodos de compressão, como os esquemas de codificação estatística, nos quais símbolos mais frequentes recebem códigos mais curtos.
 
@@ -95,11 +95,11 @@ $$
 
 ou seja, **75% dos dados eram redundantes** e puderam ser removidos na compressão.
 
-Em imagens digitais, a redundância pode aparecer de diferentes formas, como **redundância espacial**, **redundância espectral** e **redundância temporal** (no caso de vídeos). Os algoritmos de compressão exploram essas redundâncias para representar a informação visual de forma muito mais eficiente.
+Esse exemplo mostra que a eficiência da compressão depende diretamente da identificação de redundâncias nos dados. Ao explorar essas repetições, os algoritmos conseguem representar a informação visual de forma mais compacta, reduzindo a quantidade de dados necessária para armazenamento ou transmissão.
 
 ## Tipos de Redundância em Imagens
 
-A eficiência da compressão está diretamente relacionada à identificação e eliminação de redundâncias. Em imagens digitais, destacam-se três tipos principais:
+Em imagens digitais, a redundância pode aparecer de diferentes formas. A seguir, são descritos os principais tipos de redundância presentes em imagens.
 
 ### Redundância Espacial
 
@@ -107,7 +107,7 @@ A redundância espacial decorre da alta correlação entre pixels vizinhos. Em r
 
 Muitas imagens apresentam uma característica importante: **pixels vizinhos frequentemente possuem valores iguais ou muito semelhantes**. Essa propriedade ocorre principalmente em regiões homogêneas da imagem, como áreas de fundo ou superfícies uniformes. Explorar essa característica permite reduzir a quantidade de dados necessária para representar a imagem.
 
-Uma forma simples de aproveitar essa redundância é armazenar **apenas as diferenças ou repetições entre pixels consecutivos**, em vez de registrar o valor de cada pixel individualmente. Um método bastante utilizado para esse propósito é a **codificação por comprimento de corrida** (*Run-Length Encoding – RLE*).
+Uma forma simples de aproveitar essa redundância é armazenar **apenas as diferenças ou repetições entre pixels consecutivos**, em vez de registrar o valor de cada pixel individualmente. Um método bastante utilizado para esse propósito é a **codificação por comprimento de sequência** (*Run-Length Encoding – RLE*).
 
 A ideia central da RLE é substituir sequências de valores repetidos por um **par de números** que indica:
 
@@ -134,7 +134,7 @@ Isso significa que:
 
 Dessa forma, uma sequência longa de pixels pode ser representada por um número muito menor de elementos. Esse tipo de compressão é especialmente eficiente em imagens que possuem **grandes regiões homogêneas**, como documentos digitalizados, imagens binárias ou máscaras de segmentação.
 
-Entretanto, quando a imagem possui muitas variações de intensidade entre pixels vizinhos, o comprimento das sequências tende a ser pequeno e o ganho de compressão diminui. Mesmo assim, a codificação por comprimento de corrida continua sendo uma técnica simples e eficiente, frequentemente utilizada como etapa intermediária em diversos algoritmos de compressão de imagens.
+Entretanto, quando a imagem possui muitas variações de intensidade entre pixels vizinhos, o comprimento das sequências tende a ser pequeno e o ganho de compressão diminui. Mesmo assim, a RLE continua sendo uma técnica simples e eficiente, frequentemente utilizada como etapa intermediária em diversos algoritmos de compressão de imagens.
 
 ### Redundância Estatística
 
@@ -142,9 +142,11 @@ A redundância estatística está associada à distribuição não uniforme dos 
 
 Uma das formas mais simples de reduzir o tamanho de uma imagem digital é explorar a **redundância de codificação**. Esse tipo de redundância ocorre quando diferentes símbolos (por exemplo, valores de pixels) são representados por códigos com o **mesmo número de bits**, mesmo que alguns símbolos apareçam com muito mais frequência do que outros.
 
-Considere a tabela apresentada, que mostra a quantidade de ocorrências de cada valor de pixel em uma imagem. Os valores variam de 1 a 8 e cada um aparece um número diferente de vezes na imagem.
+Considere a tabela apresentada a seguir, que mostra a frequência de ocorrência de cada valor de pixel em uma imagem. Os valores variam de 1 a 8 e cada um aparece um número diferente de vezes na imagem.
+A tabela também compara dois esquemas distintos de codificação para representar esses valores de pixel:
 
-No esquema **Cód. 1**, todos os valores de pixel são representados por códigos de **3 bits**, pois existem oito possíveis valores. Nesse caso, a codificação é fixa:
+- **Cód. 1:** codificação de tamanho fixo, utilizando o mesmo número de bits para todos os valores;
+- **Cód. 2:** codificação de tamanho variável, atribuindo códigos menores aos valores mais frequentes.
 
 |     Pixel | Qtd. | Cód. 1 |    Bits | Cód. 2 |    Bits |
 |----------:|-----:|:------:|--------:|:------:|--------:|
@@ -158,7 +160,7 @@ No esquema **Cód. 1**, todos os valores de pixel são representados por código
 |         8 |    2 |  111   |       6 | 000000 |      12 |
 | **Total** |      |        | **300** |        | **270** |
 
-Como cada ocorrência utiliza 3 bits, o número total de bits necessários para representar todos os pixels da imagem é 300 bits.
+No esquema **Cód. 1**, todos os valores de pixel são representados por códigos de **3 bits**, pois existem oito possíveis valores. Como cada ocorrência utiliza 3 bits, o número total de bits necessários para representar todos os pixels da imagem é 300 bits.
 
 Entretanto, observando a coluna **Qtd.**, percebe-se que alguns valores de pixel aparecem com muito mais frequência que outros. Por exemplo, os pixels **2, 3 e 1** aparecem muitas vezes, enquanto os valores **7 e 8** são raros. Essa diferença de frequência pode ser explorada para reduzir o tamanho da representação.
 
@@ -189,17 +191,17 @@ Esse princípio é a base de diversos métodos de compressão, como a **codifica
 
 A redundância psicovisual explora limitações do sistema visual humano. Certas informações podem ser descartadas ou representadas de forma aproximada sem causar impacto perceptível significativo na qualidade da imagem.
 
-![256 tons de cinza](/imgs/cap6/avenida.png){width="60%" fig-align="center" #fig-psico1}
-
-![16 tons de cinza](/imgs/cap6/avenida16.png){width="60%" fig-align="center" #fig-psico2}
-
-![4 tons de cinza](/imgs/cap6/avenida4.png){width="60%" fig-align="center" #fig-psico3}
-
 O sistema visual humano não é igualmente sensível a todas as variações de intensidade presentes em uma imagem. Pequenas diferenças entre níveis de cinza muitas vezes não são percebidas pelo observador.
 
 Essa característica é chamada de **redundância psicovisual** e pode ser explorada em algoritmos de compressão de imagens. A ideia consiste em remover ou reduzir informações que possuem pouca relevância para a percepção humana, diminuindo a quantidade de dados necessária para representar a imagem.
 
 A @fig-psico1, @fig-psico2 e @fig-psico3 mostram a mesma imagem codificada com diferentes números de níveis de cinza: 256, 16 e 4 níveis, respectivamente. Observa-se que, mesmo com uma redução significativa no número de níveis disponíveis, a estrutura global da imagem ainda permanece reconhecível. Isso demonstra que parte da informação original pode ser descartada sem comprometer de forma significativa a percepção visual.
+
+![256 tons de cinza.](/imgs/cap6/avenida.png){width="60%" fig-align="center" #fig-psico1}
+
+![16 tons de cinza.](/imgs/cap6/avenida16.png){width="60%" fig-align="center" #fig-psico2}
+
+![4 tons de cinza.](/imgs/cap6/avenida4.png){width="60%" fig-align="center" #fig-psico3}
 
 Essa propriedade é amplamente explorada em métodos de compressão com perda (*lossy compression*), como os utilizados em formatos de imagem e vídeo amplamente difundidos.
 
@@ -207,7 +209,7 @@ Essa propriedade é amplamente explorada em métodos de compressão com perda (*
 
 Na **compressão sem perda**, a imagem reconstruída após a descompressão é idêntica à imagem original. Esse tipo de compressão é essencial em aplicações onde a fidelidade absoluta dos dados é crítica, como imagens médicas, científicas e técnicas.
 
-Métodos comuns de compressão sem perda incluem codificação por comprimento de execução, codificação preditiva e codificação entropia, como os algoritmos de Huffman e aritmético.
+Métodos comuns de compressão sem perda incluem codificação RLE, codificação preditiva e codificação por entropia, como os algoritmos de Huffman e codificação aritmética.
 
 A **compressão com perda** permite pequenas distorções na imagem reconstruída em troca de taxas de compressão significativamente maiores. Esse tipo de compressão é amplamente utilizado em aplicações multimídia, onde a percepção visual é mais importante do que a exatidão pixel a pixel.
 
@@ -230,12 +232,22 @@ e_T =
 \left[f'(x,y) - f(x,y)\right]
 $$
 
-Entretanto, essa medida pode não representar adequadamente a magnitude real do erro. Por isso, uma métrica mais utilizada é o **erro médio quadrático** (*Mean Squared Error – MSE*) ou sua raiz, conhecida como **erro raiz da média quadrática** (*Root Mean Square Error – RMSE*).
+onde $M$ e $N$ representam as dimensões da imagem.
 
-O erro raiz da média quadrática é dado por:
+Entretanto, essa medida pode não representar adequadamente a magnitude real do erro. Por isso, uma métrica mais utilizada é o **erro médio quadrático** (*Mean Squared Error – MSE*), dado por:
 
 $$
 e_{MQ} =
+\frac{1}{MN}
+\sum_{x=0}^{M-1}
+\sum_{y=0}^{N-1}
+\left[f'(x,y) - f(x,y)\right]^2
+$$
+
+ou sua raiz, conhecida como **erro raiz da média quadrática** (*Root Mean Square Error – RMSE*), que é dado por:
+
+$$
+e_{RMQ} =
 \sqrt{
 \frac{1}{MN}
 \sum_{x=0}^{M-1}
@@ -244,9 +256,7 @@ e_{MQ} =
 }
 $$
 
-onde $M$ e $N$ representam as dimensões da imagem.
-
-Essa medida fornece uma estimativa da **diferença média entre os pixels da imagem original e da imagem reconstruída**. Quanto menor o valor de $e_{MQ}$, maior será a fidelidade da imagem comprimida em relação à imagem original.
+Particularmente, a métrica $RMSE$ fornece uma estimativa da **diferença média entre os pixels da imagem original e da imagem reconstruída**. Quanto menor o valor de $e_{RMQ}$, maior será a fidelidade da imagem comprimida em relação à imagem original.
 
 Outra métrica amplamente utilizada na avaliação de qualidade de imagens comprimidas é a **PSNR (*Peak Signal-to-Noise Ratio*)**, que mede a relação entre o valor máximo possível do sinal da imagem e o erro introduzido pela compressão.
 
@@ -255,48 +265,46 @@ A PSNR é definida como:
 $$
 PSNR = 10 \log_{10}
 \left(
-\frac{L^2}{MSE}
+\frac{L^2}{e_{MQ}}
 \right)
 $$
 
 onde:
 
 -   $L$ é o **valor máximo possível do nível de intensidade** da imagem\
--   $MSE$ é o **erro médio quadrático**
+-   $e_{MQ}$ é o erro médio quadrático entre a imagem original e a imagem reconstruída.
 
-Para imagens de **8 bits**, o valor máximo de intensidade é
+Para imagens de **8 bits**, o valor máximo de intensidade é $L = 255$.
 
-$$
-L = 255
-$$
-
-e o $MSE$ é calculado como:
-
-$$
-MSE =
-\frac{1}{MN}
-\sum_{x=0}^{M-1}
-\sum_{y=0}^{N-1}
-\left[f'(x,y) - f(x,y)\right]^2
-$$
-
-Valores mais altos de **PSNR** indicam maior similaridade entre a imagem original e a imagem reconstruída. Em muitas aplicações práticas, valores de PSNR entre **30 dB e 50 dB** são considerados aceitáveis, dependendo do tipo de imagem e da aplicação. (observação: O resultado da PSNR é dado em decibéis (dB) porque envolve uma relação logarítmica entre sinais, semelhante ao que ocorre em medidas de potência em telecomunicações.)
+Valores mais altos de **PSNR** indicam maior similaridade entre a imagem original e a imagem reconstruída. Em muitas aplicações práticas, valores de PSNR entre **30 dB e 50 dB**[^psnr-db] são considerados aceitáveis, dependendo do tipo de imagem e da aplicação.
 
 Apesar da utilidade dessas métricas matemáticas, elas nem sempre refletem perfeitamente a qualidade percebida pelo observador. Em muitos casos, **a avaliação visual humana continua sendo o critério mais importante**, pois o sistema visual humano possui sensibilidades diferentes para contraste, textura e detalhes da imagem.
 
+[^psnr-db]: A PSNR é expressa em decibéis (dB) porque é baseada em uma relação logarítmica entre sinais, de forma semelhante às medidas de potência utilizadas em telecomunicações e processamento de sinais.
+
 ## Transformações Utilizadas na Compressão
 
-Diversos métodos de compressão utilizam transformações matemáticas para concentrar a energia da imagem em um pequeno conjunto de coeficientes. Entre as mais utilizadas destacam-se:
+Diversos métodos de compressão utilizam transformações matemáticas para concentrar a energia da imagem em um pequeno conjunto de coeficientes. Essas transformações facilitam a identificação de componentes menos significativas, que podem ser quantizadas de forma mais agressiva. Entre as mais utilizadas destacam-se:
 
--   Transformada Discreta do Cosseno (DCT);
--   Transformada de Fourier;
--   Transformada Wavelet.
+### Transformada Discreta do Cosseno (DCT)
 
-Essas transformações facilitam a identificação de componentes menos significativas, que podem ser quantizadas de forma mais agressiva.
+A Transformada Discreta do Cosseno (DCT) converte a imagem do domínio espacial para o domínio da frequência, concentrando grande parte da energia da imagem em poucos coeficientes de baixa frequência. Essa característica permite representar a imagem de forma compacta, tornando a DCT amplamente utilizada em métodos de compressão com perda, como o padrão JPEG.
+
+### Transformada de Fourier
+
+A Transformada de Fourier representa a imagem em termos de suas componentes de frequência. Embora tenha grande importância teórica em processamento de sinais e imagens, seu uso direto em compressão é menos comum que o da DCT, devido à menor capacidade de compactação energética em imagens naturais.
+
+### Transformada Wavelet
+
+A Transformada Wavelet permite representar a imagem em diferentes escalas e resoluções, preservando simultaneamente informações espaciais e de frequência. Essa característica a torna bastante eficiente em compressão de imagens, sendo utilizada em padrões como JPEG2000.
+
+## Métodos de Codificação
+
+Após a etapa de transformação, muitos sistemas de compressão utilizam métodos de codificação para representar os coeficientes de maneira mais eficiente, reduzindo ainda mais a quantidade de dados armazenados. Apresentamos a seguir dois métodos de codificação amplamente utilizados em compressão de imagens: a codificação de Huffman e a codificação LZW.
 
 ### Codificação Huffman
 
-A codificação entropia é uma etapa essencial em muitos sistemas de compressão. Ela visa representar os dados de forma eficiente, utilizando códigos de comprimento variável baseados na probabilidade de ocorrência dos símbolos.
+A codificação por entropia é uma etapa essencial em muitos sistemas de compressão. Ela visa representar os dados de forma eficiente, utilizando códigos de comprimento variável baseados na probabilidade de ocorrência dos símbolos.
 
 Algoritmos clássicos incluem a codificação de @huffman1952method, que utiliza árvores binárias para atribuir códigos mais curtos a símbolos mais frequentes, e a codificação aritmética, que alcança taxas de compressão próximas ao limite teórico da entropia.
 
@@ -308,7 +316,7 @@ A ideia central da codificação de Huffman é construir um **código de comprim
 
 O processo de construção do código de Huffman inicia-se com a **determinação da frequência de ocorrência de cada símbolo** presente nos dados (conforme ilustrado na @fig-huffman). Em seguida, esses símbolos são organizados em uma estrutura conhecida como **árvore binária de Huffman**. Inicialmente, cada símbolo é representado como um nó da árvore com um peso correspondente à sua frequência. O algoritmo então combina repetidamente os dois nós de menor frequência, criando um novo nó cujo peso é a soma dos dois anteriores (iterações i = 1, 2, 3 e 4 na @fig-huffman). Esse processo continua até que todos os nós estejam conectados em uma única árvore.
 
-![Iterações para construção de uma árvore de Huffman](/imgs/cap6/huffman.png){#fig-huffman fig-align="center" width="80%"}
+![Iterações para construção de uma árvore de Huffman.](/imgs/cap6/huffman.png){#fig-huffman fig-align="center" width="80%"}
 
 Após a construção da árvore, os códigos binários são obtidos percorrendo-se os caminhos da raiz até cada folha da árvore. Normalmente, atribui-se o valor **0 para um ramo à esquerda** e **1 para um ramo à direita**. Assim, cada símbolo recebe um código binário correspondente ao caminho percorrido até ele. Uma característica importante desses códigos é que eles são **códigos prefixos**, ou seja, nenhum código é prefixo de outro. Isso garante que a sequência de bits possa ser decodificada de forma inequívoca.
 
@@ -423,27 +431,23 @@ Em resumo, a codificação LZW destaca-se por combinar **simplicidade, eficiênc
 
 ## Padrões de Compressão de Imagens
 
-Ao longo das últimas décadas, diversos padrões de compressão de imagens digitais foram desenvolvidos com o objetivo de melhorar a eficiência de armazenamento e transmissão de dados visuais, ao mesmo tempo em que garantem interoperabilidade entre diferentes dispositivos e sistemas. A padronização desses métodos é fundamental para que imagens possam ser produzidas, armazenadas e visualizadas em diferentes plataformas sem perda de compatibilidade. Esses padrões buscam equilibrar fatores como taxa de compressão, qualidade visual da imagem reconstruída e complexidade computacional dos algoritmos envolvidos no processo de codificação e decodificação.
+Ao longo das últimas décadas, diversos padrões de compressão de imagens digitais foram desenvolvidos com o objetivo de melhorar a eficiência de armazenamento e transmissão de dados visuais, ao mesmo tempo em que garantem interoperabilidade entre diferentes dispositivos e sistemas. A padronização desses métodos é fundamental para que imagens possam ser produzidas, armazenadas e visualizadas em diferentes plataformas sem perda de compatibilidade.
 
-Entre os padrões mais conhecidos destaca-se o JPEG (Joint Photographic Experts Group), amplamente utilizado para compressão de fotografias e imagens com grande variação de tons e cores. O método JPEG baseia-se na Transformada Discreta do Cosseno (DCT) aplicada a blocos da imagem e emprega técnicas de quantização e codificação entropia para reduzir a quantidade de dados necessária para representar a imagem. Embora o processo de compressão seja geralmente com perda de informação, ele permite alcançar altas taxas de compressão com degradação visual relativamente pequena, o que explica sua ampla utilização em câmeras digitais, páginas da web e sistemas de armazenamento de imagens.
-
-Outro padrão bastante difundido é o PNG (Portable Network Graphics), que utiliza compressão sem perda de informação. Diferentemente do JPEG, o PNG preserva exatamente os valores originais dos pixels, sendo especialmente adequado para imagens que contêm texto, gráficos, diagramas ou áreas de cores uniformes. A compressão no formato PNG baseia-se em técnicas de predição e codificação entropia, permitindo reduzir o tamanho do arquivo sem comprometer a fidelidade da imagem original.
-
-Mais recentemente, o formato WebP foi desenvolvido com foco em aplicações na web, buscando reduzir o tamanho dos arquivos de imagem sem comprometer significativamente a qualidade visual. O WebP combina técnicas modernas de compressão, oferecendo suporte tanto para compressão com perda quanto sem perda, além de permitir transparência e animação. Devido à sua eficiência na redução do tamanho dos arquivos, esse formato tem sido amplamente adotado em aplicações web, contribuindo para o carregamento mais rápido de páginas e a economia de largura de banda.
-
-Cada um desses padrões apresenta características específicas que os tornam mais adequados para determinados tipos de aplicação. Enquanto alguns priorizam altas taxas de compressão com pequenas perdas perceptuais, outros enfatizam a preservação exata da informação original. Assim, a escolha do formato de compressão depende do equilíbrio desejado entre qualidade visual, eficiência de armazenamento e complexidade computacional do processo de codificação e decodificação.
+Cada padrão de compressão adota estratégias específicas de representação e codificação da informação visual. Alguns priorizam altas taxas de compressão com pequenas perdas perceptuais, enquanto outros buscam preservar integralmente os dados originais da imagem. Assim, a escolha do formato de compressão depende do equilíbrio desejado entre qualidade visual, eficiência de armazenamento e complexidade computacional do processo de codificação e decodificação. A seguir, são apresentados alguns dos principais padrões de compressão utilizados em imagens digitais.
 
 ### Formato JPEG
 
+Entre os padrões mais conhecidos destaca-se o JPEG (Joint Photographic Experts Group), amplamente utilizado para compressão de fotografias e imagens com grande variação de tons e cores. O método JPEG baseia-se na Transformada Discreta do Cosseno (DCT) aplicada a blocos da imagem e emprega técnicas de quantização e codificação por entropia para reduzir a quantidade de dados necessária para representar a imagem. Embora o processo de compressão seja geralmente com perda de informação, ele permite alcançar altas taxas de compressão com degradação visual relativamente pequena, o que explica sua ampla utilização em câmeras digitais, páginas da web e sistemas de armazenamento de imagens.
+
 As etapas da codificação JPEG estão representadas na @fig-etapas.
 
-![Etapas da codificação JPEG](/imgs/cap6/etapas.png){#fig-etapas align="center" fig-align="center" width="80%"}
+![Etapas da codificação JPEG.](/imgs/cap6/etapas.png){#fig-etapas align="center" fig-align="center" width="80%"}
 
 #### Conversão YCbCr {.unnumbered}
 
 A primeira etapa do processo de compressão JPEG consiste na conversão da imagem do espaço de cores RGB para o espaço de cores YCbCr. No formato RGB, cada pixel é representado pelas intensidades das três componentes de cor primárias: vermelho (R), verde (G) e azul (B). Embora esse modelo seja adequado para dispositivos de exibição, ele não é o mais apropriado para compressão, pois mistura informações de brilho e de cor. Para tornar o processo de compressão mais eficiente, o JPEG realiza uma transformação que separa essas duas informações.
 
-![Conversão RGB para YCbCr](/imgs/cap6/luminancia.png){fig-align="center" width="60%"}
+![Conversão RGB para YCbCr.](/imgs/cap6/luminancia.png){fig-align="center" width="60%"}
 
 No espaço de cores YCbCr, cada pixel passa a ser descrito por três componentes distintas: luminância (Y) e duas componentes de crominância (Cb e Cr). A componente Y representa o nível de brilho da imagem, ou seja, a informação de intensidade luminosa que define os contornos e os detalhes estruturais da cena. As componentes Cb e Cr representam as informações de cor, correspondendo aproximadamente às diferenças entre o azul e a luminância, e entre o vermelho e a luminância, respectivamente. Essa separação é fundamental porque o sistema visual humano é muito mais sensível às variações de luminância do que às variações de cor.
 
@@ -463,15 +467,21 @@ $$
 
 Nessas equações, observa-se que a componente de luminância é uma combinação ponderada das três cores primárias, com maior peso para o verde, refletindo a maior sensibilidade do olho humano a essa cor. As componentes de crominância recebem um deslocamento de 128 unidades para que seus valores permaneçam dentro do intervalo usual de representação digital de imagens, normalmente entre 0 e 255.
 
-A principal vantagem dessa transformação é permitir que as componentes de crominância sejam representadas com menor resolução espacial do que a luminância, sem causar degradação perceptível significativa. Como o olho humano percebe mais detalhes de brilho do que de cor, o algoritmo JPEG pode reduzir a quantidade de dados das componentes Cb e Cr por meio de um processo conhecido como subamostragem de crominância. Essa estratégia reduz o volume de informação que precisa ser codificada, contribuindo de forma significativa para a eficiência da compressão.
+Após a conversão para o espaço YCbCr, cada componente da imagem é tratada separadamente nas etapas seguintes do algoritmo JPEG. Em geral, a componente de luminância preserva maior quantidade de detalhes, enquanto as componentes de crominância podem sofrer maior redução de informação. Essa etapa inicial de transformação de cores, portanto, prepara os dados da imagem para as fases posteriores do processo de compressão.
 
-Após a conversão para o espaço YCbCr, cada componente da imagem é tratada separadamente nas etapas seguintes do algoritmo JPEG. Em geral, a componente de luminância preserva maior quantidade de detalhes, enquanto as componentes de crominância podem sofrer maior redução de informação. Essa etapa inicial de transformação de cores, portanto, prepara os dados da imagem para as fases posteriores do processo de compressão, que incluem a divisão da imagem em blocos, a aplicação da Transformada Discreta do Cosseno (DCT), a quantização e a codificação dos coeficientes.
+#### Subamostragem de Crominância {.unnumbered}
 
-#### Transformada do Cosseno Discreto (DCT) {.unnumbered}
+A principal vantagem da transformação linear para a conversão de RGB para YCbCr é permitir que as componentes de crominância sejam representadas com menor resolução espacial do que a luminância, sem causar degradação perceptível significativa. Como o olho humano percebe mais detalhes de brilho do que de cor, o algoritmo JPEG pode reduzir a quantidade de dados das componentes Cb e Cr por meio de um processo conhecido como subamostragem de crominância. Essa estratégia reduz o volume de informação que precisa ser codificada, contribuindo de forma significativa para a eficiência da compressão.
 
-A Transformada Discreta do Cosseno (DCT) é uma das etapas centrais do algoritmo de compressão JPEG. Após a conversão da imagem para o espaço de cores YCbCr e a divisão da imagem em blocos de $8 \times 8$ pixels, cada bloco é transformado do domínio espacial para o domínio da frequência. Essa transformação permite representar a informação da imagem em termos de diferentes componentes de frequência, separando as variações lentas (baixas frequências) das variações rápidas (altas frequências) da intensidade luminosa.
+#### Divisão em Blocos 8 x 8 {.unnumbered}
 
-A DCT utilizada no JPEG é a chamada **DCT bidimensional**, aplicada a cada bloco de $8 \times 8$. Essa transformação calcula um conjunto de coeficientes que representam a contribuição das diferentes frequências presentes no bloco. O coeficiente localizado na posição $(0,0)$ corresponde à componente de frequência zero, também chamada de **coeficiente DC**, que representa o valor médio do bloco. Os demais coeficientes são chamados de **coeficientes AC** e descrevem variações espaciais da intensidade, correspondendo a diferentes padrões de frequência horizontal e vertical.
+Nesta etapa, a imagem é dividida em blocos de $8 \times 8$ pixels. Essa divisão é uma etapa crucial do algoritmo JPEG, pois cada bloco é processado de forma independente nas etapas seguintes. A escolha do tamanho de $8 \times 8$ pixels é um compromisso entre a eficiência da compressão e a complexidade computacional. Blocos menores poderiam resultar em melhor qualidade visual, mas aumentariam significativamente o número de blocos a serem processados, enquanto blocos maiores poderiam levar a degradação perceptível da imagem devido à maior quantidade de informação agrupada em cada bloco.
+
+#### Transformada Discreta do Cosseno (DCT) {.unnumbered}
+
+A Transformada Discreta do Cosseno (DCT) é uma das etapas centrais do algoritmo de compressão JPEG, na qual cada bloco é transformado do domínio espacial para o domínio da frequência. Essa transformação permite representar a informação da imagem em termos de diferentes componentes de frequência, separando as variações lentas (baixas frequências) das variações rápidas (altas frequências) da intensidade luminosa.
+
+A DCT utilizada no JPEG é a chamada **DCT bidimensional**, aplicada a cada bloco $8 \times 8$. Essa transformação calcula um conjunto de coeficientes que representam a contribuição das diferentes frequências presentes nos blocos. O coeficiente localizado na posição $(0,0)$ corresponde à componente de frequência zero, também chamada de **coeficiente DC**, que representa o valor médio do bloco. Os demais coeficientes são chamados de **coeficientes AC** e descrevem variações espaciais da intensidade, correspondendo a diferentes padrões de frequência horizontal e vertical.
 
 A expressão matemática da DCT bidimensional aplicada a um bloco de imagem pode ser escrita como:
 
@@ -481,7 +491,7 @@ $$
 
 Nessa equação, $f(x,y)$ representa o valor do pixel localizado na posição $(x,y)$ do bloco original, enquanto $F(u,v)$ representa o coeficiente transformado correspondente às frequências horizontal $u$ e vertical $v$. Os índices $x$ e $y$ percorrem as posições do bloco de imagem no domínio espacial, enquanto $u$ e $v$ indicam as diferentes frequências no domínio transformado.
 
-Os termos (C(u)) e (C(v)) são fatores de normalização utilizados para garantir a ortogonalidade da transformação e são definidos por:
+Os termos $C(u)$ e $C(v)$ são fatores de normalização utilizados para garantir a ortogonalidade da transformação e são definidos por:
 
 $$
 C(k)=
@@ -493,13 +503,13 @@ $$
 
 Esses fatores ajustam a amplitude do coeficiente DC em relação aos coeficientes AC. O fator adicional $\frac{1}{4}$ presente na equação decorre da normalização da transformada para blocos de dimensão $8 \times 8$.
 
-A principal finalidade da DCT no JPEG é **concentrar a maior parte da energia da imagem em poucos coeficientes de baixa frequência**. Em imagens naturais, as variações de intensidade costumam ser suaves, o que faz com que os coeficientes associados às baixas frequências tenham valores maiores, enquanto muitos coeficientes de alta frequência tendem a assumir valores pequenos ou próximos de zero. Essa propriedade é fundamental para a etapa seguinte do algoritmo, a **quantização**, na qual os coeficientes de menor importância perceptual podem ser reduzidos ou eliminados, permitindo uma compressão significativa da imagem.
+A principal finalidade da DCT no JPEG é **concentrar a maior parte da energia da imagem em poucos coeficientes de baixa frequência**. Em imagens naturais, as variações de intensidade costumam ser suaves, o que faz com que os coeficientes associados às baixas frequências tenham valores maiores, enquanto muitos coeficientes de alta frequência tendem a assumir valores pequenos ou próximos de zero. Essa propriedade é fundamental para a etapa seguinte do algoritmo.
 
-Após a aplicação da DCT, cada bloco de $8 \times 8$ pixels é transformado em uma matriz de $8 \times 8$ coeficientes de frequência. Esses coeficientes passam então pelo processo de quantização e, posteriormente, pelas etapas de reorganização em zig-zag e codificação entrópica. Dessa forma, a DCT desempenha um papel essencial no JPEG ao converter a informação da imagem para um formato no qual a redundância pode ser explorada de maneira eficiente pelo processo de compressão.
+Após a aplicação da DCT, cada bloco de $8 \times 8$ pixels é transformado em uma matriz de dimensão $8 \times 8$ de coeficientes de frequência. Dessa forma, a DCT desempenha um papel essencial no JPEG ao converter a informação da imagem para um formato no qual a redundância pode ser explorada de maneira eficiente pelo processo de compressão.
 
 #### Quantização {.unnumbered}
 
-Após a aplicação da Transformada Discreta do Cosseno (DCT), cada bloco de $8 \times 8$ pixels da imagem passa a ser representado por um conjunto de coeficientes de frequência. Esses coeficientes indicam a contribuição das diferentes frequências espaciais presentes no bloco. A etapa seguinte do algoritmo JPEG é a **quantização**, responsável por reduzir a precisão desses coeficientes e, consequentemente, diminuir a quantidade de informação necessária para representar a imagem.
+Após a aplicação da Transformada Discreta do Cosseno (DCT), cada bloco de $8 \times 8$ pixels da imagem passa a ser representado por um conjunto de coeficientes de frequência. Esses coeficientes indicam a contribuição das diferentes frequências espaciais presentes no bloco. A etapa seguinte, a **quantização**, será responsável por reduzir a precisão desses coeficientes e, consequentemente, diminuir a quantidade de informação necessária para representar a imagem.
 
 A quantização é a principal etapa responsável pela perda de informação no processo de compressão JPEG. Nessa fase, os coeficientes obtidos pela DCT são divididos por valores previamente definidos em uma matriz de quantização. Após essa divisão, os resultados são arredondados para o inteiro mais próximo. Esse processo reduz a precisão dos coeficientes, especialmente aqueles associados às altas frequências, que têm menor impacto perceptual na qualidade visual da imagem.
 
@@ -523,29 +533,27 @@ $$
 
 Nesse modelo, o valor da matriz cresce gradualmente à medida que se aumenta a distância da origem da matriz, representando o aumento da penalização aplicada às frequências mais altas. O parâmetro **fator** controla a intensidade dessa penalização e, portanto, influencia diretamente a taxa de compressão obtida.
 
-Após a quantização, a matriz de coeficientes resultante contém muitos valores nulos, especialmente nas regiões correspondentes às altas frequências. Essa característica é explorada nas etapas seguintes do algoritmo JPEG, nas quais os coeficientes são reorganizados em ordem de zig-zag e codificados por métodos de compressão entrópica, como a codificação de Huffman. Dessa forma, a quantização desempenha um papel fundamental no JPEG ao reduzir a redundância perceptual da imagem e possibilitar taxas de compressão elevadas com perda visual relativamente pequena.
+Após a quantização, a matriz de coeficientes resultante contém muitos valores nulos, especialmente nas regiões correspondentes às altas frequências. Essa característica é explorada nas etapas seguintes do algoritmo JPEG. Dessa forma, a quantização desempenha um papel fundamental no JPEG ao reduzir a redundância perceptual da imagem e possibilitar taxas de compressão elevadas com perda visual relativamente pequena.
 
 #### Varredura zig-zag {.unnumbered}
 
-Após a etapa de quantização, cada bloco da imagem é representado por uma matriz de $8 \times 8$ coeficientes quantizados da DCT. Esses coeficientes ainda estão organizados na forma bidimensional correspondente às frequências horizontal e vertical. No entanto, para facilitar as etapas seguintes de compressão, o algoritmo JPEG reorganiza esses coeficientes em uma sequência unidimensional por meio de um processo conhecido como **varredura em zig-zag**.
+Após a etapa de quantização, os coeficientes de cada bloco da imagem ainda estão organizados na forma bidimensional correspondente às frequências horizontal e vertical. No entanto, para facilitar as etapas seguintes de compressão, o algoritmo JPEG reorganiza esses coeficientes em uma sequência unidimensional por meio de um processo conhecido como **varredura em zig-zag**.
 
 A operação de zig-zag consiste em percorrer a matriz de coeficientes seguindo um padrão diagonal específico que começa no canto superior esquerdo da matriz e termina no canto inferior direito. Esse percurso é projetado de modo que os coeficientes de **baixa frequência**, localizados próximos da posição $(0,0)$, sejam visitados primeiro, enquanto os coeficientes de **alta frequência**, que normalmente aparecem nas regiões inferiores e à direita da matriz, sejam visitados posteriormente. Como resultado, a matriz bidimensional de coeficientes é convertida em um vetor de 64 elementos.
 
-A principal motivação para esse tipo de ordenação está relacionada às propriedades estatísticas dos coeficientes após a quantização. Em imagens naturais, a maior parte da energia do sinal está concentrada nas baixas frequências. Assim, os primeiros coeficientes da matriz tendem a possuir valores relativamente grandes, enquanto muitos coeficientes de alta frequência tornam-se iguais a zero após a quantização. Ao organizar os coeficientes seguindo o padrão em zig-zag, o algoritmo agrupa os valores mais significativos no início da sequência e concentra longas sequências de zeros na parte final.
-
-Essa reorganização é particularmente importante para as etapas seguintes de compressão. Após a varredura em zig-zag, os coeficientes são codificados utilizando técnicas de compressão entrópica, como a **codificação por comprimento de sequência (Run-Length Encoding – RLE)** combinada com **codificação de Huffman**. Como a varredura em zig-zag tende a produzir longas sequências consecutivas de zeros, essas sequências podem ser representadas de forma muito eficiente, reduzindo significativamente o número de bits necessários para armazenar o bloco.
+A principal motivação para esse tipo de ordenação está relacionada às propriedades estatísticas dos coeficientes após a quantização. Em imagens naturais, a maior parte da energia do sinal está concentrada nas baixas frequências. Assim, os primeiros coeficientes da matriz tendem a possuir valores relativamente grandes, enquanto muitos coeficientes de alta frequência tornam-se iguais a zero após a quantização. Ao organizar os coeficientes seguindo o padrão em zig-zag, o algoritmo agrupa os valores mais significativos no início da sequência e concentra longas sequências de zeros na parte final, reduzindo significativamente o número de bits necessários para armazenar o bloco.
 
 Outro aspecto relevante é a distinção entre o primeiro coeficiente da sequência e os demais. O primeiro elemento da sequência corresponde ao coeficiente DC do bloco, que representa o valor médio da luminância no bloco. Esse coeficiente é tratado de forma especial na codificação JPEG, sendo codificado de maneira diferencial em relação ao coeficiente DC do bloco anterior. Os demais coeficientes, chamados de coeficientes AC, são codificados utilizando pares que indicam o número de zeros consecutivos e o valor do próximo coeficiente diferente de zero.
 
-Dessa forma, a operação de zig-zag desempenha um papel fundamental no processo de compressão JPEG, pois reorganiza os coeficientes de frequência de maneira a explorar a concentração de energia nas baixas frequências e a presença de longas sequências de zeros nas altas frequências. Essa reorganização aumenta a eficiência das técnicas de codificação utilizadas nas etapas subsequentes, contribuindo para a obtenção de elevadas taxas de compressão com boa qualidade visual da imagem reconstruída.
+Assim, a varredura em zig-zag reorganiza os coeficientes de forma a concentrar inicialmente os componentes de baixa frequência e agrupar, ao final, longas sequências de zeros associadas às altas frequências. Essa estratégia aumenta a eficiência das etapas de codificação subsequentes, contribuindo para altas taxas de compressão com boa qualidade visual da imagem reconstruída.
 
-#### Codificação da Corrida da Cadeia {.unnumbered}
+#### Codificação por Comprimento de Sequência {.unnumbered}
 
-Após a reorganização dos coeficientes quantizados por meio da varredura em zig-zag, obtém-se uma sequência unidimensional de 64 valores para cada bloco de $8 \times 8$. Nessa sequência, o primeiro elemento corresponde ao coeficiente DC e os demais representam os coeficientes AC. Como resultado da quantização, muitos coeficientes de alta frequência tornam-se iguais a zero, especialmente na parte final da sequência. Para explorar essa característica e reduzir ainda mais a quantidade de dados, o algoritmo JPEG utiliza a técnica de **Run-Length Encoding (RLE)**, ou codificação por comprimento de sequência.
+Como a varredura em zig-zag tende a agrupar longas sequências de coeficientes nulos ao final da sequência unidimensional gerada, o algoritmo JPEG utiliza a técnica de **Run-Length Encoding (RLE)**, ou codificação por comprimento de sequência, para representar esses valores de forma mais eficiente.
 
 A codificação RLE consiste em representar sequências consecutivas de valores repetidos de forma compacta, armazenando apenas o valor repetido e o número de vezes que ele ocorre consecutivamente. No contexto do JPEG, essa técnica é aplicada principalmente às sequências de zeros presentes entre os coeficientes AC. Em vez de armazenar explicitamente cada zero, o algoritmo registra quantos zeros aparecem antes do próximo coeficiente diferente de zero.
 
-Na prática, cada coeficiente AC diferente de zero é representado por um par de valores da forma ((r, v)), onde (r) indica o número de zeros consecutivos que precedem o coeficiente e (v) corresponde ao valor do coeficiente diferente de zero. Por exemplo, considere a seguinte sequência de coeficientes após a varredura em zig-zag:
+Na prática, cada coeficiente AC diferente de zero é representado por um par de valores da forma ($r, v$), onde $r$ indica o número de zeros consecutivos que precedem o coeficiente e $v$ corresponde ao valor do coeficiente diferente de zero. Por exemplo, considere a seguinte sequência de coeficientes após a varredura em zig-zag:
 
 $$
 [15, 0, 0, -3, 0, 0, 0, 2]
@@ -559,13 +567,13 @@ $$
 
 O primeiro par indica que o coeficiente 15 aparece imediatamente, sem zeros anteriores. O segundo par indica que existem dois zeros antes do coeficiente −3, e o terceiro par indica três zeros antes do coeficiente 2.
 
-Além disso, o padrão JPEG define símbolos especiais para lidar com casos particulares. Quando restam apenas zeros até o final do bloco, utiliza-se um símbolo denominado **End of Block (EOB)**, que indica que todos os coeficientes restantes são iguais a zero. Esse mecanismo evita a necessidade de representar explicitamente todos os zeros finais. Outro símbolo especial é o **Zero Run Length (ZRL)**, utilizado quando ocorre uma sequência de 16 zeros consecutivos.
+Além disso, o padrão JPEG define símbolos especiais para lidar com casos particulares. Quando restam apenas zeros até o final do bloco, utiliza-se um símbolo denominado **End of Block (EOB)**, representado pelo par ($0,0$), que indica que todos os coeficientes restantes são iguais a zero. Esse mecanismo evita a necessidade de representar explicitamente todos os zeros finais. Outro símbolo especial é o **Zero Run Length (ZRL)**, dado pelo par ($0,15$), utilizado quando ocorre uma sequência de 16 zeros consecutivos.
 
-Após a aplicação da RLE, os pares gerados ainda não constituem a forma final comprimida. Esses pares são então codificados por meio de **codificação de Huffman**, que atribui códigos binários mais curtos aos padrões mais frequentes. Dessa forma, a combinação entre varredura em zig-zag, codificação RLE e codificação de Huffman permite explorar tanto a redundância estrutural quanto a redundância estatística dos coeficientes da DCT, contribuindo significativamente para a eficiência do algoritmo de compressão JPEG.
+Após a aplicação da RLE, os pares gerados ainda não constituem a forma final comprimida. Esses pares são então codificados por meio de **codificação de Huffman**, que é descrita a seguir.
 
 #### Codificação Huffman {.unnumbered}
 
-Após a aplicação da varredura em zig-zag e da codificação por comprimento de sequência (Run-Length Encoding – RLE), os coeficientes do bloco passam a ser representados por uma sequência de símbolos que descrevem tanto os valores dos coeficientes quanto a quantidade de zeros que os precedem. Entretanto, esses símbolos ainda podem ser representados de forma mais eficiente por meio de técnicas de compressão estatística. Para esse propósito, o padrão JPEG utiliza a **codificação de Huffman**, um método de codificação entrópica que atribui códigos binários de diferentes comprimentos aos símbolos de acordo com sua frequência de ocorrência.
+Os símbolos produzidos após a etapa de codificação RLE ainda podem ser representados de forma mais eficiente por meio de técnicas de compressão estatística. Para esse propósito, o padrão JPEG utiliza a **codificação de Huffman**, um método de codificação por entropia que atribui códigos binários de diferentes comprimentos aos símbolos de acordo com sua frequência de ocorrência.
 
 A codificação de Huffman baseia-se no princípio de que símbolos que aparecem com maior frequência devem receber códigos binários mais curtos, enquanto símbolos menos frequentes recebem códigos mais longos. Dessa forma, a representação média dos dados tende a utilizar menos bits, reduzindo o tamanho final do arquivo comprimido. No JPEG, os códigos de Huffman são aplicados tanto aos coeficientes DC quanto aos coeficientes AC, porém de maneiras ligeiramente diferentes.
 
@@ -573,19 +581,24 @@ Para os **coeficientes DC**, o algoritmo JPEG utiliza codificação diferencial.
 
 Para os **coeficientes AC**, a codificação utiliza os pares gerados pela etapa de RLE. Cada símbolo é representado por um par $(r, s)$, onde $r$ indica o número de zeros consecutivos antes do coeficiente e $s$ representa a categoria (ou tamanho em bits) do coeficiente diferente de zero. Esse par $(r, s)$ é codificado utilizando uma tabela de Huffman específica para coeficientes AC. Após o código de Huffman correspondente ao par, são acrescentados os bits que representam a magnitude do coeficiente.
 
-O padrão JPEG define também alguns símbolos especiais utilizados durante a codificação dos coeficientes AC. Um deles é o **End of Block (EOB)** que representa o par (0,0), que indica que todos os coeficientes restantes do bloco são iguais a zero. Outro símbolo é o **Zero Run Length (ZRL)**, que representa uma sequência de 16 zeros consecutivos (0,15). Esses símbolos contribuem para aumentar a eficiência da compressão, pois sequências longas de zeros são muito comuns após a quantização.
-
 Embora o padrão JPEG forneça tabelas de Huffman padrão, ele também permite que tabelas personalizadas sejam utilizadas. Essas tabelas podem ser geradas a partir das estatísticas de uma imagem ou de um conjunto de imagens, permitindo otimizar a codificação para determinados tipos de conteúdo. Entretanto, na prática, muitas implementações utilizam as tabelas padrão (luminância e crominância) devido à sua simplicidade e boa eficiência em uma ampla variedade de imagens.
 
 Dessa forma, a codificação de Huffman constitui a etapa final do processo de compressão JPEG, responsável por transformar os símbolos gerados nas etapas anteriores em uma sequência compacta de bits. Ao explorar as probabilidades de ocorrência dos diferentes símbolos, essa técnica reduz ainda mais o tamanho dos dados, contribuindo para a alta eficiência do formato JPEG na compressão de imagens digitais.
 
-O exemplo interativo seguinte demonstra as etapas de codificação para um bloco $8 \times 8$. Com o botão "Passo", os valores do bloco $8 \times 8$ são modificados para apresentar o resultado da etapa realizada (deslocamento, DCT, Quantização, zig-zag, RLE e Huffman). As etapas zig-zag, RLE e Huffman são apresentadas concomitantemente. A cada passo, são apresentados a contagem de zeros antes de cada coeficiente DCT e para cada par (run, coeficiente), são mostrados à direita do bloco a diferença $DC_i - DC_{i-1}$ (considerasse $DC_{i-1}=-17$ nesta simulação) para codificação do coeficiente DC e para todos os coeficientes são mostrados a categoria, o prefixo e a mantissa consultadas nas tabelas DC e AC (padrão de luminância) de Huffman:
+O exemplo interativo a seguir apresenta as principais etapas da codificação JPEG aplicadas a um bloco de dimensão $8 \times 8$. Utilizando o botão "Passo", os valores do bloco são atualizados progressivamente para ilustrar as etapas de deslocamento, DCT, quantização, varredura em zig-zag, RLE e codificação de Huffman. As etapas de zig-zag, RLE e Huffman são exibidas de forma integrada. Durante esse processo, são apresentados:
+
+- a quantidade de zeros consecutivos antes de cada coeficiente não nulo;
+- os pares $(run,\ coeficiente)$ utilizados na etapa de RLE;
+- a diferença diferencial do coeficiente DC, calculada como $DC_i - DC_{i-1}$ (considerando $DC_{i-1} = -17$ nesta simulação);
+- a categoria, o prefixo e a mantissa associados aos coeficientes DC e AC segundo as tabelas Huffman do padrão JPEG para luminância (no padrão JPEG, a categoria indica a quantidade de bits necessária para representar o coeficiente, enquanto o prefixo corresponde ao código de Huffman associado a essa categoria).
 
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/crAHlJNHf" height="600" imagem="imgs/cap6/p5js-jpeg.png" qrcode="imgs/cap6/qrcode-jpeg.png"}
 ::: -->
 
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/jpeg/" height="430" imagem="imgs/cap6/p5js-jpeg.png" qrcode="imgs/cap6/qrcode-jpeg.png"}
 :::
+
+Dessa forma, a simulação permite acompanhar visualmente como os coeficientes transformados são convertidos em uma representação binária compacta ao longo do processo de compressão.
 
 ### Formato Base-64
 
@@ -599,7 +612,7 @@ O processo de codificação ocorre agrupando inicialmente os dados binários em 
 
 A tabela de conversão da Base-64 é formada pelos caracteres A–Z, a–z, 0–9, além dos símbolos + e /. Quando o número total de bytes do arquivo não é múltiplo de três, caracteres de preenchimento (=) são utilizados para completar a codificação final.
 
-#### Tabela de Conversão {.unnumbered}
+#### Tabela de Conversão da Base-64 {.unnumbered}
 
 | Valor | Caractere | Valor | Caractere |
 |-------|-----------|-------|-----------|
@@ -609,7 +622,7 @@ A tabela de conversão da Base-64 é formada pelos caracteres A–Z, a–z, 0–
 
 Para ilustrar o processo, considere a sequência de caracteres **"Man"**. Cada caractere é inicialmente convertido para sua representação binária em ASCII. Assim, os caracteres $M$, $a$ e $n$ correspondem respectivamente às sequências $01001101$, $01100001$ e $01101110$. Ao concatenar esses valores obtemos uma sequência de 24 bits. Essa sequência é então dividida em quatro grupos de 6 bits, resultando nos valores $010011$, $010110$, $000101$ e $101110$. Convertendo esses grupos para seus valores decimais correspondentes e consultando a tabela Base-64, obtêm-se os caracteres T, W, F e u. Dessa forma, a sequência **"Man"** é representada na codificação Base-64 como **"TWFu"**.
 
-A codificação Base-64 é amplamente utilizada em diversas aplicações computacionais. Entre suas aplicações mais comuns estão o envio de anexos em mensagens de correio eletrônico, a incorporação de imagens diretamente em documentos HTML ou CSS, o armazenamento de dados binários em estruturas JSON e a transmissão de informações em interfaces de programação de aplicações (APIs) baseadas em texto. Apesar do aumento no tamanho dos dados, essa técnica garante que informações binárias possam ser transportadas com segurança em ambientes que suportam apenas conteúdo textual.
+A codificação Base-64 é amplamente utilizada em diversas aplicações computacionais. Entre suas aplicações mais comuns estão o envio de anexos em mensagens de correio eletrônico, a incorporação de imagens diretamente em documentos HTML ou CSS (exemplo a seguir), o armazenamento de dados binários em estruturas JSON e a transmissão de informações em Interfaces de Programação de Aplicações (APIs) baseadas em texto. Apesar do aumento no tamanho dos dados, essa técnica garante que informações binárias possam ser transportadas com segurança em ambientes que suportam apenas conteúdo textual.
 
 **Imagem dentro de HTML:**
 
@@ -624,6 +637,12 @@ O código interativo seguinte demonstra esse processo de codificação:
 
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/base64/" height="500" imagem="imgs/cap6/p5js-base64.png" qrcode="imgs/cap6/qrcode-base64.png"}
 :::
+
+### Formatos PNG e WebP
+
+Outro padrão bastante difundido é o PNG (Portable Network Graphics), que utiliza compressão sem perda de informação. Diferentemente do JPEG, o PNG preserva exatamente os valores originais dos pixels, sendo especialmente adequado para imagens que contêm texto, gráficos, diagramas ou áreas de cores uniformes. A compressão no formato PNG baseia-se em técnicas de predição e codificação por entropia, permitindo reduzir o tamanho do arquivo sem comprometer a fidelidade da imagem original.
+
+Mais recentemente, o formato WebP foi desenvolvido com foco em aplicações na web, buscando reduzir o tamanho dos arquivos de imagem sem comprometer significativamente a qualidade visual. O WebP combina técnicas modernas de compressão, oferecendo suporte tanto para compressão com perda quanto sem perda, além de permitir transparência e animação. Devido à sua eficiência na redução do tamanho dos arquivos, esse formato tem sido amplamente adotado em aplicações web, contribuindo para o carregamento mais rápido de páginas e a economia de largura de banda.
 
 ## Considerações Finais
 
@@ -681,7 +700,7 @@ b) Qual a redução percentual do tamanho?
 Explique o funcionamento básico de:
 
 a) Codificação de Huffman  
-b) Codificação por comprimento de corrida (RLE)  
+b) Codificação por comprimento de sequência (RLE)  
 
 Indique vantagens e limitações de cada método.
 
@@ -702,7 +721,7 @@ c) Em quais situações esse tipo de compressão é mais utilizado
 Descreva as principais etapas do algoritmo JPEG:
 
 a) Conversão de espaço de cores  
-b) Transformada (DCT)  
+b) Transformada Discreta do Cosseno (DCT)  
 c) Quantização  
 d) Codificação  
 
@@ -720,17 +739,17 @@ c) Como a matriz de quantização afeta a qualidade da imagem
 
 ---
 
-**Exercício 9 — Implementação prática (RLE)**
+**Exercício 9 — Implementação prática da RLE**
 
 Implemente um programa que:
 
 a) Leia uma imagem em tons de cinza  
-b) Aplique compressão por comprimento de corrida (RLE)  
+b) Aplique compressão por comprimento de sequência (RLE)  
 c) Mostre o tamanho antes e depois da compressão  
 
 ---
 
-**Exercício 10 — Implementação prática (Huffman)**
+**Exercício 10 — Implementação prática do algoritmo de Huffman**
 
 Implemente um programa que:
 
@@ -779,19 +798,19 @@ Discuta o equilíbrio entre **qualidade** e **tamanho do arquivo**.
 
 :::
 
-::: {.callout-note title="Atividade Prática: Descompressão de Imagens (LZW + Base64)"}
+::: {.callout-note title="Atividade Prática: Descompressão de Imagens (LZW + Base-64)"}
 
 **Objetivo**
 
-O objetivo desta atividade é explorar conceitos de **compressão e descompressão de imagens**, implementando um descompactador que utiliza a técnica **LZW (Lempel-Ziv-Welch)** combinada com a codificação **Base64**.
+O objetivo desta atividade é explorar conceitos de **compressão e descompressão de imagens**, implementando um descompactador que utiliza a técnica **LZW (Lempel-Ziv-Welch)** combinada com a codificação **Base-64**.
 
 ---
 
 **Problema**
 
-Em sistemas de transmissão e armazenamento, é comum representar dados binários em formato textual. Um exemplo disso é o uso da codificação **Base64**, frequentemente combinada com algoritmos de compressão.
+Em sistemas de transmissão e armazenamento, é comum representar dados binários em formato textual. Um exemplo disso é o uso da codificação **Base-64**, frequentemente combinada com algoritmos de compressão.
 
-Nesta atividade, você deverá desenvolver um programa capaz de **compactar e descompactar uma imagem codificada em um formato que combina LZW (12 bits) e Base64**, reconstruindo a imagem original em formato PGM.
+Nesta atividade, você deverá desenvolver um programa capaz de **compactar e descompactar uma imagem codificada em um formato que combina LZW (12 bits) e Base-64**, reconstruindo a imagem original em formato PGM.
 
 ---
 
@@ -807,9 +826,9 @@ Nesta atividade, você deverá desenvolver um programa capaz de **compactar e de
 
 2. O programa deverá:
 
-   a) Ler os dados codificados em **Base64**  
+   a) Ler os dados codificados em **Base-64**  
 
-   b) Converter os caracteres Base64 em códigos binários de **12 bits**  
+   b) Converter os caracteres Base-64 em códigos binários de **12 bits**  
 
    c) Reconstruir a sequência de códigos LZW  
 
@@ -834,7 +853,7 @@ O arquivo `.l64` possui a seguinte estrutura:
 ```text
 lzw-b64
 <nl> <nc>
-<dados codificados em Base64>
+<dados codificados em Base-64>
 ```
 ---
 
@@ -858,7 +877,7 @@ lzw-b64
 AnAnB+B+EAECEEEDEBB+
 ```
 
-Observe que os dois primeiros caracteres em Base64 no arquivo compactado (A = 000000
+Observe que os dois primeiros caracteres em Base-64 no arquivo compactado (A = 000000
 e n = 100111), como um único código de 12 bits corresponde a 000000100111, que é igual
 ao valor 39. Outro exemplo, EA = 000100000000 é igual ao código 256.
 
