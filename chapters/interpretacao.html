@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -96,10 +99,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-36bf55b16c7cb4b1420f41495cb5446a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3d497cff885f6278d37568d0ef0763f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -129,7 +132,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -397,13 +400,13 @@ x_n
 <p>Para simplificar a análise, podem ser utilizadas apenas duas características, formando um vetor de características definido por <span class="math inline">\(x = [x_1, x_2]^T\)</span>, em que <span class="math inline">\(x_1\)</span> representa o comprimento da pétala e <span class="math inline">\(x_2\)</span> representa sua largura. Dessa forma, cada flor é descrita por um vetor bidimensional, facilitando tanto a visualização quanto a aplicação de métodos de classificação.</p>
 <p>As flores são divididas em três classes de padrões, denotadas por <span class="math inline">\(w_1\)</span>, <span class="math inline">\(w_2\)</span> e <span class="math inline">\(w_3\)</span>, que correspondem às variedades <em>setosa</em>, <em>virgínica</em> e <em>versicolor</em>, respectivamente. Cada uma dessas classes apresenta características próprias, embora possa haver sobreposição entre elas dependendo das medidas consideradas.</p>
 <p>Com essa representação, cada flor pode ser interpretada como um ponto em um espaço bidimensional, no qual os eixos correspondem às características selecionadas. Esse tipo de visualização permite compreender como os padrões se distribuem no espaço de características e como diferentes classes podem ser separadas por meio de técnicas de classificação.</p>
-<p>O exemplo ilustrativo em sequência implementa aa classificação das flores Iris. No exemplo pode-se treinar um modelo de aprendizado de máquina para distinguir automaticamente entre diferentes espécies — como <em>setosa</em>, <em>versicolor</em> e <em>virginica</em> — a partir de características mensuráveis das flores, especialmente o comprimento e a largura das pétalas e sépalas. Inicialmente, um conjunto de dados rotulado é utilizado para que o modelo aprenda os padrões associados a cada classe. Em seguida, esses dados podem ser visualizados em um plano bidimensional (por exemplo, usando apenas as medidas das pétalas), permitindo observar como as espécies se agrupam no espaço de características. Após o treinamento, o modelo é capaz de receber novas amostras e classificá-las com base nesses padrões aprendidos, demonstrando, de forma prática, conceitos fundamentais de aprendizado supervisionado como treinamento, generalização e tomada de decisão. Para testar, basta clicar no plano. No rotulo abaixo é apresentado a classificação da flor selecionada.</p>
+<p>O exemplo ilustrativo em sequência implementa a classificação das flores Íris. No exemplo pode-se treinar um modelo de aprendizado de máquina para distinguir automaticamente entre diferentes espécies — como <em>setosa</em>, <em>versicolor</em> e <em>virgínica</em> — a partir de características mensuráveis das flores, especialmente o comprimento e a largura das pétalas e sépalas. Inicialmente, um conjunto de dados rotulado é utilizado para que o modelo aprenda os padrões associados a cada classe. Em seguida, esses dados podem ser visualizados em um plano bidimensional (por exemplo, usando apenas as medidas das pétalas), permitindo observar como as espécies se agrupam no espaço de características. Após o treinamento, o modelo é capaz de receber novas amostras e classificá-las com base nesses padrões aprendidos, demonstrando, de forma prática, conceitos fundamentais de aprendizado supervisionado como treinamento, generalização e tomada de decisão. Para testar, basta clicar no plano. No rótulo abaixo é apresentado a classificação da flor selecionada.</p>
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/petalas/" width="100%" height="550" style="border:none;"></iframe></div>
 </section>
 <section id="uso-de-representações-e-descritores-como-features" class="level2" data-number="10.5">
 <h2 data-number="10.5" class="anchored" data-anchor-id="uso-de-representações-e-descritores-como-features"><span class="header-section-number">10.5</span> Uso de Representações e Descritores como Features</h2>
 <p>No capítulo anterior, foram apresentadas diversas técnicas de <strong>representação e descrição de imagens</strong>, incluindo descritores de forma, textura e níveis de cinza. Nesta seção, estabelece-se a conexão entre esses conceitos e os sistemas de aprendizado de máquina, nos quais tais descritores passam a desempenhar o papel de <strong>features</strong> (características de entrada).</p>
-<p>De modo geral, algoritmos de aprendizado de máquina não operam diretamente sobre imagens em sua forma bruta, mas sim sobre representações numéricas que sintetizam informações relevantes. Nesse contexto, os descritores extraídos — como área, perímetro, momentos, histogramas de intensidade, características de textura (como GLCM) e atributos morfológicos — são organizados em vetores de características, que servem como entrada para os modelos de classificação ou regressão.</p>
+<p>De modo geral, algoritmos de aprendizado de máquina não operam diretamente sobre imagens em sua forma bruta, mas sim sobre representações numéricas que sintetizam informações relevantes. Nesse contexto, os descritores extraídos — como área, perímetro, momentos, histogramas de intensidade, características de textura (como GLCM) e atributos morfológicos — são organizados em vetores de características, que servem como entrada para modelos clássicos de <strong>classificação</strong>, que identificam a categoria de um objeto, ou de <strong>regressão</strong>, que estimam um valor contínuo, como uma medida física ou uma probabilidade.</p>
 <p>Por exemplo, em um problema de classificação de objetos, pode-se utilizar:</p>
 <ul>
 <li><p><strong>descritores de forma</strong>, como compacidade e excentricidade, para diferenciar objetos geométricos;</p></li>
@@ -439,7 +442,7 @@ x_n
 <img src="../imgs/cap10/neuronio.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-neuronio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.1: Redes neurais artificiais
+Figura&nbsp;10.1: Redes neurais artificiais.
 </figcaption>
 </figure>
 </div>
@@ -451,7 +454,7 @@ Figura&nbsp;10.1: Redes neurais artificiais
 <img src="../imgs/cap10/camadas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-camadas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.2: Redes neurais de múltiplas camadas
+Figura&nbsp;10.2: Redes neurais de múltiplas camadas.
 </figcaption>
 </figure>
 </div>
@@ -470,7 +473,7 @@ Figura&nbsp;10.2: Redes neurais de múltiplas camadas
 <img src="../imgs/cap10/cortex.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cortex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.3: Formação da imagem no cérebro humano
+Figura&nbsp;10.3: Formação da imagem no cérebro humano.
 </figcaption>
 </figure>
 </div>
@@ -489,7 +492,7 @@ Figura&nbsp;10.3: Formação da imagem no cérebro humano
 <img src="../imgs/cap10/cnn-camadas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cnncamadas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.4: Camadas da CNN
+Figura&nbsp;10.4: Camadas da CNN.
 </figcaption>
 </figure>
 </div>
@@ -515,7 +518,7 @@ Figura&nbsp;10.4: Camadas da CNN
 <img src="../imgs/cap10/funcoes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-funcoes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.5: Função de ativação
+Figura&nbsp;10.5: Função de ativação.
 </figcaption>
 </figure>
 </div>
@@ -529,7 +532,7 @@ Figura&nbsp;10.5: Função de ativação
 <img src="../imgs/cap10/pooling.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pooling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.6: Pooling
+Figura&nbsp;10.6: Pooling.
 </figcaption>
 </figure>
 </div>
@@ -559,14 +562,14 @@ d_2 = d_1
 </section>
 <section id="camada-dropout" class="level4">
 <h4 class="anchored" data-anchor-id="camada-dropout">Camada Dropout</h4>
-<p>A camada de <strong>dropout</strong> (ilustrada na <a href="#fig-dropout" class="quarto-xref">Figura&nbsp;<span>10.7</span></a>) é uma técnica de regularização utilizada para evitar <em>overfitting</em>. Durante o treinamento, ela desativa aleatoriamente uma fração dos neurônios, forçando a rede a aprender representações mais robustas e generalizáveis.</p>
+<p>A camada de <strong>dropout</strong> (ilustrada na <a href="#fig-dropout" class="quarto-xref">Figura&nbsp;<span>10.7</span></a>) é uma técnica de regularização utilizada para reduzir o <em>overfitting</em> (ou <em>sobreajuste</em>), fenômeno em que a rede neural se adapta excessivamente aos dados de treinamento e passa a apresentar pior desempenho em dados não vistos. Durante o treinamento, ela desativa aleatoriamente uma fração dos neurônios, forçando a rede a aprender representações mais robustas e generalizáveis.</p>
 <div id="fig-dropout" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dropout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap10/dropout.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dropout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.7: Camada Dropout
+Figura&nbsp;10.7: Camada Dropout.
 </figcaption>
 </figure>
 </div>
@@ -589,7 +592,7 @@ Figura&nbsp;10.7: Camada Dropout
 <img src="../imgs/cap10/lenet5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lenet5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.8: Arquitetura LeNet-5
+Figura&nbsp;10.8: Arquitetura LeNet-5.
 </figcaption>
 </figure>
 </div>
@@ -599,23 +602,22 @@ Figura&nbsp;10.8: Arquitetura LeNet-5
 <img src="../imgs/cap10/alexnet.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alexnet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.9: Arquitetura AlexNet
+Figura&nbsp;10.9: Arquitetura AlexNet.
 </figcaption>
 </figure>
 </div>
-<section id="arquitetura-mobilenet" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="arquitetura-mobilenet">Arquitetura MobileNet</h4>
-<p>A arquitetura <strong>MobileNet</strong> está ilustrada na <a href="#fig-mobilenet" class="quarto-xref">Figura&nbsp;<span>10.10</span></a>.</p>
 <div id="fig-mobilenet" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mobilenet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap10/mobilenet.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mobilenet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.10: Arquitetura MobileNet
+Figura&nbsp;10.10: Arquitetura MobileNet.
 </figcaption>
 </figure>
 </div>
+<section id="arquitetura-mobilenet" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arquitetura-mobilenet">Arquitetura MobileNet</h4>
 <p>Para ilustrar o funcionamento da Arquitetura MobileNet são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> para classificação de pássaros.</p>
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/" width="100%" height="450" style="border:none;"></iframe></div>
 <p>A partir da documentação disponível da biblioteca ml5, denominado <strong>HandPose</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, foi construído o segundo exemplo interativo, que captura imagens da câmera e identifica os dedos da mão (conforme ilustrado na <a href="#fig-hand" class="quarto-xref">Figura&nbsp;<span>10.11</span></a>). O código em p5.js está nas <a href="#lst-handpose1" class="quarto-xref">Listagem&nbsp;<span>10.1</span></a> e <a href="#lst-handpose2" class="quarto-xref">Listagem&nbsp;<span>10.2</span></a>.</p>
@@ -625,7 +627,7 @@ Figura&nbsp;10.10: Arquitetura MobileNet
 <img src="../imgs/cap10/hand.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10.11: Diagrama com identificação dos pontos da mão
+Figura&nbsp;10.11: Diagrama com identificação dos pontos da mão.
 </figcaption>
 </figure>
 </div>
@@ -962,19 +964,19 @@ Listagem&nbsp;10.2
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
 <div id="ref-bishop2006pattern" class="csl-entry" role="listitem">
-BISHOP, Christopher M. <strong>Pattern Recognition and Machine Learning</strong>. <em>[S.l.]</em>: Springer, 2006.
+BISHOP, Christopher M. <strong>Pattern Recognition and Machine Learning</strong>. New York: Springer, 2006.
 </div>
 <div id="ref-cybenko1989approximation" class="csl-entry" role="listitem">
 CYBENKO, George. Approximation by superpositions of a sigmoidal function. <strong>Mathematics of Control, Signals and Systems</strong>, v. 2, n. 4, p. 303–314, 1989.
 </div>
 <div id="ref-goodfellow2016deep" class="csl-entry" role="listitem">
-GOODFELLOW, Ian; BENGIO, Yoshua; COURVILLE, Aaron. <strong>Deep Learning</strong>. <em>[S.l.]</em>: MIT Press, 2016.
+GOODFELLOW, Ian; BENGIO, Yoshua; COURVILLE, Aaron. <strong>Deep Learning</strong>. Cambridge: MIT Press, 2016.
 </div>
 <div id="ref-hagan1996neural" class="csl-entry" role="listitem">
-HAGAN, Martin T.; DEMUTH, Howard B.; BEALE, Mark H. <strong>Neural Network Design</strong>. <em>[S.l.]</em>: PWS Publishing, 1996.
+HAGAN, Martin T.; DEMUTH, Howard B.; BEALE, Mark H. <strong>Neural Network Design</strong>. Boston: PWS Publishing, 1996.
 </div>
 <div id="ref-haykin2009neural" class="csl-entry" role="listitem">
-HAYKIN, Simon. <strong>Neural Networks and Learning Machines</strong>. 3. ed. <em>[S.l.]</em>: Prentice Hall, 2009.
+HAYKIN, Simon. <strong>Neural Networks and Learning Machines</strong>. 3. ed. Upper Saddle River: Prentice Hall, 2009.
 </div>
 <div id="ref-he2016deep" class="csl-entry" role="listitem">
 HE, Kaiming <em>et al.</em> Deep residual learning for image recognition. <strong>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</strong>, p. 770–778, 2016.
@@ -989,7 +991,7 @@ KRIZHEVSKY, Alex; SUTSKEVER, Ilya; HINTON, Geoffrey E. ImageNet classification w
 LECUN, Yann <em>et al.</em> Gradient-based learning applied to document recognition. <strong>Proceedings of the IEEE</strong>, v. 86, n. 11, p. 2278–2324, 1998.
 </div>
 <div id="ref-mitchell1997machine" class="csl-entry" role="listitem">
-MITCHELL, Tom M. <strong>Machine Learning</strong>. <em>[S.l.]</em>: McGraw-Hill, 1997.
+MITCHELL, Tom M. <strong>Machine Learning</strong>. New York: McGraw-Hill, 1997.
 </div>
 <div id="ref-rumelhart1986learning" class="csl-entry" role="listitem">
 RUMELHART, David E.; HINTON, Geoffrey E.; WILLIAMS, Ronald J. Learning representations by back-propagating errors. <strong>Nature</strong>, v. 323, p. 533–536, 1986.

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -41,10 +44,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-36bf55b16c7cb4b1420f41495cb5446a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3d497cff885f6278d37568d0ef0763f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -245,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>As imagens utilizadas ao longo deste livro foram selecionadas de forma a garantir acessibilidade, clareza didática e respeito aos direitos autorais. Parte delas foi obtida no repositório Wikimedia Commons (<a href="#fig-avenida" class="quarto-xref">Figura&nbsp;<span>12.1</span></a>, <a href="#fig-cao1" class="quarto-xref">Figura&nbsp;<span>12.2</span></a>, <a href="#fig-cao2" class="quarto-xref">Figura&nbsp;<span>12.3</span></a>, <a href="#fig-cao3" class="quarto-xref">Figura&nbsp;<span>12.4</span></a>, <a href="#fig-cao4" class="quarto-xref">Figura&nbsp;<span>12.5</span></a>, <a href="#fig-cao5" class="quarto-xref">Figura&nbsp;<span>12.6</span></a>, <a href="#fig-cao6" class="quarto-xref">Figura&nbsp;<span>12.7</span></a>, <a href="#fig-cao7" class="quarto-xref">Figura&nbsp;<span>12.8</span></a>, <a href="#fig-cao8" class="quarto-xref">Figura&nbsp;<span>12.9</span></a>, <a href="#fig-mariposa" class="quarto-xref">Figura&nbsp;<span>12.10</span></a>, <a href="#fig-flor1" class="quarto-xref">Figura&nbsp;<span>12.12</span></a>, <a href="#fig-flor2" class="quarto-xref">Figura&nbsp;<span>12.13</span></a>, <a href="#fig-food1" class="quarto-xref">Figura&nbsp;<span>12.14</span></a>, <a href="#fig-sparrow" class="quarto-xref">Figura&nbsp;<span>12.31</span></a>), que disponibiliza conteúdos sob licenças livres, permitindo seu uso e adaptação com a devida atribuição. Complementarmente, algumas imagens foram geradas com o auxílio de ferramentas de inteligência artificial, como ChatGPT (<a href="#fig-moire5" class="quarto-xref">Figura&nbsp;<span>12.16</span></a>, <a href="#fig-silhueta" class="quarto-xref">Figura&nbsp;<span>12.17</span></a>, <a href="#fig-conesCC" class="quarto-xref">Figura&nbsp;<span>12.18</span></a>, <a href="#fig-olhoCC" class="quarto-xref">Figura&nbsp;<span>12.19</span></a>, <a href="#fig-amostra" class="quarto-xref">Figura&nbsp;<span>12.20</span></a>, <a href="#fig-captura" class="quarto-xref">Figura&nbsp;<span>12.21</span></a>, <a href="#fig-compressao" class="quarto-xref">Figura&nbsp;<span>12.22</span></a>, <a href="#fig-cores" class="quarto-xref">Figura&nbsp;<span>12.23</span></a>, <a href="#fig-fourier" class="quarto-xref">Figura&nbsp;<span>12.24</span></a>, <a href="#fig-interpretacao" class="quarto-xref">Figura&nbsp;<span>12.25</span></a>, <a href="#fig-melhoramento" class="quarto-xref">Figura&nbsp;<span>12.26</span></a>, <a href="#fig-morfologia" class="quarto-xref">Figura&nbsp;<span>12.27</span></a>, <a href="#fig-python" class="quarto-xref">Figura&nbsp;<span>12.28</span></a>, <a href="#fig-representa" class="quarto-xref">Figura&nbsp;<span>12.29</span></a> e <a href="#fig-segmenta" class="quarto-xref">Figura&nbsp;<span>12.30</span></a>) e Gemini (<a href="#fig-food2" class="quarto-xref">Figura&nbsp;<span>12.15</span></a>), com o objetivo de ilustrar conceitos específicos de maneira personalizada. Sempre que aplicável (<a href="#fig-monalisa" class="quarto-xref">Figura&nbsp;<span>12.11</span></a>), buscou-se indicar a origem e a licença das imagens, assegurando transparência e conformidade com as boas práticas de uso de conteúdo visual.</p>
+<p>As imagens utilizadas ao longo deste livro foram selecionadas de forma a garantir acessibilidade, clareza didática e respeito aos direitos autorais. Parte delas foi obtida no repositório Wikimedia Commons (<a href="#fig-avenida" class="quarto-xref">Figura&nbsp;<span>12.1</span></a>, <a href="#fig-cao1" class="quarto-xref">Figura&nbsp;<span>12.2</span></a>, <a href="#fig-cao2" class="quarto-xref">Figura&nbsp;<span>12.3</span></a>, <a href="#fig-cao3" class="quarto-xref">Figura&nbsp;<span>12.4</span></a>, <a href="#fig-cao4" class="quarto-xref">Figura&nbsp;<span>12.5</span></a>, <a href="#fig-cao5" class="quarto-xref">Figura&nbsp;<span>12.6</span></a>, <a href="#fig-cao6" class="quarto-xref">Figura&nbsp;<span>12.7</span></a>, <a href="#fig-cao7" class="quarto-xref">Figura&nbsp;<span>12.8</span></a>, <a href="#fig-cao8" class="quarto-xref">Figura&nbsp;<span>12.9</span></a>, <a href="#fig-mariposa" class="quarto-xref">Figura&nbsp;<span>12.10</span></a>, <a href="#fig-flor1" class="quarto-xref">Figura&nbsp;<span>12.12</span></a>, <a href="#fig-flor2" class="quarto-xref">Figura&nbsp;<span>12.13</span></a>, <a href="#fig-food1" class="quarto-xref">Figura&nbsp;<span>12.14</span></a>, <a href="#fig-sparrow" class="quarto-xref">Figura&nbsp;<span>12.31</span></a>), que disponibiliza conteúdos sob licenças livres, permitindo seu uso e adaptação com a devida atribuição. Complementarmente, algumas imagens foram geradas com o auxílio de ferramentas de inteligência artificial, como ChatGPT (<a href="#fig-moire5" class="quarto-xref">Figura&nbsp;<span>12.16</span></a>, <a href="#fig-silhueta" class="quarto-xref">Figura&nbsp;<span>12.17</span></a>, <a href="#fig-conesCC" class="quarto-xref">Figura&nbsp;<span>12.18</span></a>, <a href="#fig-olhoCC" class="quarto-xref">Figura&nbsp;<span>12.19</span></a>, <a href="fourier.html#fig-amostra" class="quarto-xref">Figura&nbsp;<span>4.4</span></a>, <a href="#fig-captura" class="quarto-xref">Figura&nbsp;<span>12.21</span></a>, <a href="#fig-compressao" class="quarto-xref">Figura&nbsp;<span>12.22</span></a>, <a href="#fig-cores" class="quarto-xref">Figura&nbsp;<span>12.23</span></a>, <a href="#fig-fourier" class="quarto-xref">Figura&nbsp;<span>12.24</span></a>, <a href="#fig-interpretacao" class="quarto-xref">Figura&nbsp;<span>12.25</span></a>, <a href="#fig-melhoramento" class="quarto-xref">Figura&nbsp;<span>12.26</span></a>, <a href="#fig-morfologia" class="quarto-xref">Figura&nbsp;<span>12.27</span></a>, <a href="#fig-python" class="quarto-xref">Figura&nbsp;<span>12.28</span></a>, <a href="#fig-representa" class="quarto-xref">Figura&nbsp;<span>12.29</span></a> e <a href="#fig-segmenta" class="quarto-xref">Figura&nbsp;<span>12.30</span></a>) e Gemini (<a href="#fig-food2" class="quarto-xref">Figura&nbsp;<span>12.15</span></a>), com o objetivo de ilustrar conceitos específicos de maneira personalizada. Sempre que aplicável (<a href="#fig-monalisa" class="quarto-xref">Figura&nbsp;<span>12.11</span></a>), buscou-se indicar a origem e a licença das imagens, assegurando transparência e conformidade com as boas práticas de uso de conteúdo visual.</p>
 <div id="fig-avenida" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-avenida-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -436,12 +439,12 @@ Figura&nbsp;12.19: Olho - Foto: Gerada por IA (chatgpt)
 </figcaption>
 </figure>
 </div>
-<div id="fig-amostra" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-amostraCC" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-amostra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-amostraCC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="imgs/amostra.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-amostra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-amostraCC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;12.20: Amostra - Foto: Gerada por IA (chatgpt)
 </figcaption>
 </figure>

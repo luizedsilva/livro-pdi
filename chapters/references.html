@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -59,10 +62,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-36bf55b16c7cb4b1420f41495cb5446a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3d497cff885f6278d37568d0ef0763f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -270,15 +273,15 @@ watershed transformation. <em>In</em>: Marcel Dekker, 1992.
 </div>
 <div id="ref-beucher1979watershed" class="csl-entry" role="listitem">
 BEUCHER, Serge; LANTUEJOUL, Christian. Use of watersheds in contour
-detection. 1979.
+detection. <em>In</em>: 1979.
 </div>
 <div id="ref-bishop2006pattern" class="csl-entry" role="listitem">
 BISHOP, Christopher M. <strong>Pattern Recognition and Machine
-Learning</strong>. <em>[S.l.]</em>: Springer, 2006.
+Learning</strong>. New York: Springer, 2006.
 </div>
 <div id="ref-bracewell2000fourier" class="csl-entry" role="listitem">
 BRACEWELL, Ronald N. <strong>The Fourier Transform and Its
-Applications</strong>. 3. ed. <em>[S.l.]</em>: McGraw-Hill, 2000.
+Applications</strong>. 3. ed. New York: McGraw-Hill, 2000.
 </div>
 <div id="ref-cooley1965algorithm" class="csl-entry" role="listitem">
 COOLEY, James W.; TUKEY, John W. An algorithm for the machine
@@ -298,7 +301,9 @@ Geographic Information and Geovisualization</strong>, v. 10, n. 2, p.
 112–122, 1973.
 </div>
 <div id="ref-fourier1822theorie" class="csl-entry" role="listitem">
-FOURIER, Joseph. Th<span>é</span>orie analytique de la chaleur. 1822.
+FOURIER, Jean-Baptiste Joseph. <strong>Th<span>é</span>orie analytique
+de la chaleur</strong>. Paris: Chez Firmin Didot, p<span>è</span>re et
+fils, 1822.
 </div>
 <div id="ref-freeman1961encoding" class="csl-entry" role="listitem">
 FREEMAN, Herbert. On the encoding of arbitrary geometric configurations.
@@ -315,15 +320,15 @@ Processing</strong>. 4. ed. New York: Pearson, 2018.
 </div>
 <div id="ref-goodfellow2016deep" class="csl-entry" role="listitem">
 GOODFELLOW, Ian; BENGIO, Yoshua; COURVILLE, Aaron. <strong>Deep
-Learning</strong>. <em>[S.l.]</em>: MIT Press, 2016.
+Learning</strong>. Cambridge: MIT Press, 2016.
 </div>
 <div id="ref-hagan1996neural" class="csl-entry" role="listitem">
 HAGAN, Martin T.; DEMUTH, Howard B.; BEALE, Mark H. <strong>Neural
-Network Design</strong>. <em>[S.l.]</em>: PWS Publishing, 1996.
+Network Design</strong>. Boston: PWS Publishing, 1996.
 </div>
 <div id="ref-haykin2009neural" class="csl-entry" role="listitem">
 HAYKIN, Simon. <strong>Neural Networks and Learning Machines</strong>.
-3. ed. <em>[S.l.]</em>: Prentice Hall, 2009.
+3. ed. Upper Saddle River: Prentice Hall, 2009.
 </div>
 <div id="ref-he2016deep" class="csl-entry" role="listitem">
 HE, Kaiming <em>et al.</em> Deep residual learning for image
@@ -332,7 +337,7 @@ Vision and Pattern Recognition (CVPR)</strong>, p. 770–778, 2016.
 </div>
 <div id="ref-heijmans1994morphological" class="csl-entry" role="listitem">
 HEIJMANS, Henk J. A. M. <strong>Morphological Image Operators</strong>.
-<em>[S.l.]</em>: Academic Press, 1994.
+Boston: Academic Press, 1994.
 </div>
 <div id="ref-hornik1989multilayer" class="csl-entry" role="listitem">
 HORNIK, Kurt; STINCHCOMBE, Maxwell; WHITE, Halbert. Multilayer
@@ -361,10 +366,11 @@ recognition. <strong>Proceedings of the IEEE</strong>, v. 86, n. 11, p.
 2278–2324, 1998.
 </div>
 <div id="ref-matheron1975random" class="csl-entry" role="listitem">
-MATHERON, Georges. Random Sets and Integral Geometry. 1975.
+MATHERON, Georges. <strong>Random Sets and Integral Geometry</strong>.
+New York: Wiley, 1975.
 </div>
 <div id="ref-mitchell1997machine" class="csl-entry" role="listitem">
-MITCHELL, Tom M. <strong>Machine Learning</strong>. <em>[S.l.]</em>:
+MITCHELL, Tom M. <strong>Machine Learning</strong>. New York:
 McGraw-Hill, 1997.
 </div>
 <div id="ref-moore1968contour" class="csl-entry" role="listitem">
@@ -373,14 +379,15 @@ the ACM</strong>, 1968.
 </div>
 <div id="ref-oppenheim1999discrete" class="csl-entry" role="listitem">
 OPPENHEIM, Alan V.; SCHAFER, Ronald W. <strong>Discrete-Time Signal
-Processing</strong>. 2. ed. <em>[S.l.]</em>: Prentice Hall, 1999.
+Processing</strong>. 2. ed. Upper Saddle River: Prentice Hall, 1999.
 </div>
 <div id="ref-oppenheim2010signals" class="csl-entry" role="listitem">
 OPPENHEIM, Alan V.; WILLSKY, Alan S.; NAWAB, S. Hamid. <strong>Signals
-and Systems</strong>. 2. ed. <em>[S.l.]</em>: Prentice Hall, 2010.
+and Systems</strong>. 2. ed. Upper Saddle River: Prentice Hall, 2010.
 </div>
 <div id="ref-pavlidis1982algorithms" class="csl-entry" role="listitem">
-PAVLIDIS, Theo. Algorithms for Graphics and Image Processing. 1982.
+PAVLIDIS, Theo. <strong>Algorithms for Graphics and Image
+Processing</strong>. Rockville: Computer Science Press, 1982.
 </div>
 <div id="ref-pizer1987adaptive" class="csl-entry" role="listitem">
 PIZER, Stephen M. <em>et al.</em> Adaptive histogram equalization and
@@ -392,14 +399,15 @@ PRATT, William K. <strong>Digital Image Processing: PIKS Scientific
 Inside</strong>. 4. ed. Hoboken: Wiley-Interscience, 2007.
 </div>
 <div id="ref-ramer1972iterative" class="csl-entry" role="listitem">
-RAMER, Urs. <strong>An iterative procedure for the polygonal
-approximation of plane curves</strong>. <em>[S.l.: S.n.]</em>. v. 1 p.
-244–256
+RAMER, Urs. An iterative procedure for the polygonal approximation of
+plane curves. <strong>Computer Graphics and Image Processing</strong>,
+v. 1, n. 3, p. 244–256, 1972.
 </div>
 <div id="ref-roerdink2000watershed" class="csl-entry" role="listitem">
-ROERDINK, Jos B. T. M.; MEIJSTER, Arnold. <strong>The Watershed
-Transform: Definitions, Algorithms and Parallelization
-Strategies</strong>. <em>[S.l.: S.n.]</em>. v. 41 p. 187–228
+ROERDINK, Jos B. T. M.; MEIJSTER, Arnold. The Watershed Transform:
+Definitions, Algorithms and Parallelization Strategies.
+<strong>Fundamenta Informaticae</strong>, v. 41, n. 1–2, p. 187–228,
+2000.
 </div>
 <div id="ref-rumelhart1986learning" class="csl-entry" role="listitem">
 RUMELHART, David E.; HINTON, Geoffrey E.; WILLIAMS, Ronald J. Learning
@@ -408,11 +416,11 @@ representations by back-propagating errors. <strong>Nature</strong>, v.
 </div>
 <div id="ref-serra1982image" class="csl-entry" role="listitem">
 SERRA, Jean. <strong>Image Analysis and Mathematical
-Morphology</strong>. <em>[S.l.]</em>: Academic Press, 1982.
+Morphology</strong>. London: Academic Press, 1982.
 </div>
 <div id="ref-serra1988image" class="csl-entry" role="listitem">
 SERRA, Jean. <strong>Image Analysis and Mathematical Morphology, Volume
-2: Theoretical Advances</strong>. <em>[S.l.]</em>: Academic Press, 1988.
+2: Theoretical Advances</strong>. London: Academic Press, 1988.
 </div>
 <div id="ref-simonyan2015very" class="csl-entry" role="listitem">
 SIMONYAN, Karen; ZISSERMAN, Andrew. Very deep convolutional networks for
@@ -421,7 +429,7 @@ Learning Representations (ICLR)</strong>, 2015.
 </div>
 <div id="ref-soille2003morphological" class="csl-entry" role="listitem">
 SOILLE, Pierre. <strong>Morphological Image Analysis: Principles and
-Applications</strong>. 2. ed. <em>[S.l.]</em>: Springer, 2003.
+Applications</strong>. 2. ed. Berlin: Springer, 2003.
 </div>
 <div id="ref-sonka2014image" class="csl-entry" role="listitem">
 SONKA, Milan; HLAVAC, Vaclav; BOYLE, Roger. <strong>Image Processing,
@@ -464,8 +472,9 @@ patterns. <strong>Communications of the ACM</strong>, v. 27, n. 3, p.
 236–239, 1984.
 </div>
 <div id="ref-zuiderveld1994contrast" class="csl-entry" role="listitem">
-ZUIDERVELD, Karel. Contrast limited adaptive histogram equalization. p.
-474–485, 1994.
+ZUIDERVELD, Karel. Contrast limited adaptive histogram equalization.
+<em>In</em>: <strong>Graphics Gems IV</strong>. <em>[S.l.]</em>:
+Academic Press, 1994. p. 474–485.
 </div>
 </div>
 

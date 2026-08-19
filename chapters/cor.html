@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -76,10 +79,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-36bf55b16c7cb4b1420f41495cb5446a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3d497cff885f6278d37568d0ef0763f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -109,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -291,20 +294,15 @@ window.Quarto = {
   <ul>
   <li><a href="#percepção-da-cor" id="toc-percepção-da-cor" class="nav-link active" data-scroll-target="#percepção-da-cor"><span class="header-section-number">5.1</span> Percepção da Cor</a></li>
   <li><a href="#conceitos-básicos-de-cor" id="toc-conceitos-básicos-de-cor" class="nav-link" data-scroll-target="#conceitos-básicos-de-cor"><span class="header-section-number">5.2</span> Conceitos Básicos de Cor</a></li>
-  <li><a href="#modelo-de-cor-rgb" id="toc-modelo-de-cor-rgb" class="nav-link" data-scroll-target="#modelo-de-cor-rgb"><span class="header-section-number">5.3</span> Modelo de Cor RGB</a></li>
-  <li><a href="#modelo-de-cor-cmy-e-cmyk" id="toc-modelo-de-cor-cmy-e-cmyk" class="nav-link" data-scroll-target="#modelo-de-cor-cmy-e-cmyk"><span class="header-section-number">5.4</span> Modelo de Cor CMY e CMYK</a></li>
-  <li><a href="#modelo-de-cor-hsv" id="toc-modelo-de-cor-hsv" class="nav-link" data-scroll-target="#modelo-de-cor-hsv"><span class="header-section-number">5.5</span> Modelo de Cor HSV</a>
+  <li><a href="#modelos-de-cor" id="toc-modelos-de-cor" class="nav-link" data-scroll-target="#modelos-de-cor"><span class="header-section-number">5.3</span> Modelos de Cor</a>
   <ul class="collapse">
-  <li><a href="#interpretação-geométrica" id="toc-interpretação-geométrica" class="nav-link" data-scroll-target="#interpretação-geométrica">Interpretação geométrica</a></li>
-  <li><a href="#conversão-de-rgb-para-hsv" id="toc-conversão-de-rgb-para-hsv" class="nav-link" data-scroll-target="#conversão-de-rgb-para-hsv">Conversão de RGB para HSV</a></li>
+  <li><a href="#modelos-aditivos" id="toc-modelos-aditivos" class="nav-link" data-scroll-target="#modelos-aditivos">Modelos Aditivos</a></li>
+  <li><a href="#modelos-subtrativos" id="toc-modelos-subtrativos" class="nav-link" data-scroll-target="#modelos-subtrativos">Modelos Subtrativos</a></li>
+  <li><a href="#modelos-perceptuais" id="toc-modelos-perceptuais" class="nav-link" data-scroll-target="#modelos-perceptuais">Modelos Perceptuais</a></li>
   </ul></li>
-  <li><a href="#modelo-de-cor-hsi" id="toc-modelo-de-cor-hsi" class="nav-link" data-scroll-target="#modelo-de-cor-hsi"><span class="header-section-number">5.6</span> Modelo de Cor HSI</a>
-  <ul class="collapse">
-  <li><a href="#conversão-de-rgb-para-hsi" id="toc-conversão-de-rgb-para-hsi" class="nav-link" data-scroll-target="#conversão-de-rgb-para-hsi">Conversão de RGB para HSI</a></li>
-  </ul></li>
-  <li><a href="#representação-de-imagens-coloridas" id="toc-representação-de-imagens-coloridas" class="nav-link" data-scroll-target="#representação-de-imagens-coloridas"><span class="header-section-number">5.7</span> Representação de Imagens Coloridas</a></li>
-  <li><a href="#aplicações-de-imagens-coloridas" id="toc-aplicações-de-imagens-coloridas" class="nav-link" data-scroll-target="#aplicações-de-imagens-coloridas"><span class="header-section-number">5.8</span> Aplicações de Imagens Coloridas</a></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">5.9</span> Considerações Finais</a></li>
+  <li><a href="#representação-de-imagens-coloridas" id="toc-representação-de-imagens-coloridas" class="nav-link" data-scroll-target="#representação-de-imagens-coloridas"><span class="header-section-number">5.4</span> Representação de Imagens Coloridas</a></li>
+  <li><a href="#aplicações-de-imagens-coloridas" id="toc-aplicações-de-imagens-coloridas" class="nav-link" data-scroll-target="#aplicações-de-imagens-coloridas"><span class="header-section-number">5.5</span> Aplicações de Imagens Coloridas</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">5.6</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -344,7 +342,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../imgs/cap5/prisma.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Dispersão da luz branca</figcaption>
+<figcaption>Dispersão da luz branca.</figcaption>
 </figure>
 </div>
 <p>O conjunto de cores resultante desse experimento é denominado <strong>espectro visível da luz</strong>. Ele corresponde à faixa do espectro eletromagnético que pode ser percebida pelo olho humano e costuma ser representado como uma sequência contínua de cores que se estende do violeta ao vermelho.</p>
@@ -357,46 +355,64 @@ window.Quarto = {
 <p>A <strong>matiz</strong> (<em>hue</em>) corresponde à tonalidade dominante da cor, sendo a característica que permite distinguir uma cor de outra no espectro visível. Em termos práticos, a matiz identifica se uma cor é percebida como vermelha, azul, verde, amarela, entre outras. Esse atributo está relacionado principalmente ao <strong>comprimento de onda predominante da luz</strong> que atinge o olho humano.</p>
 <p>A <strong>saturação</strong> indica o grau de pureza ou intensidade da cor. Cores altamente saturadas apresentam tonalidades vivas e intensas, enquanto cores com baixa saturação tendem a parecer mais esmaecidas ou próximas de tons de cinza. Em outras palavras, a saturação expressa o quanto uma cor está misturada com luz branca ou com outras cores, afetando a vivacidade da tonalidade percebida.</p>
 <p>O <strong>brilho</strong>, também denominado <strong>intensidade</strong> ou <strong>luminosidade</strong>, representa a quantidade de luz associada à cor. Esse atributo está relacionado à percepção de quão clara ou escura uma cor é. Cores com maior brilho são percebidas como mais claras, enquanto cores com menor brilho aparecem mais escuras.</p>
-<p>Esses três atributos perceptuais são amplamente utilizados na definição de <strong>modelos de cor</strong>, que são representações matemáticas destinadas a descrever e manipular cores em sistemas computacionais. Modelos como HSV (<em>Hue, Saturation, Value</em>) e HSL (<em>Hue, Saturation, Lightness</em>) organizam as cores justamente com base nesses parâmetros perceptuais, facilitando tarefas como edição de imagens, segmentação de cores e desenvolvimento de algoritmos de <strong>processamento de imagens digitais</strong>.</p>
+<p>Esses três atributos perceptuais servem de base para diversos modelos de cor empregados em sistemas computacionais, apresentados na sequência.</p>
 </section>
-<section id="modelo-de-cor-rgb" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="modelo-de-cor-rgb"><span class="header-section-number">5.3</span> Modelo de Cor RGB</h2>
-<p>O modelo RGB representa as cores a partir da combinação de três componentes espectrais primárias: vermelho (<em>red</em>), verde (<em>green</em>) e azul (<em>blue</em>). Cada cor é definida por um triplo de valores que indicam a intensidade de cada uma dessas componentes. Esse modelo pode ser interpretado geometricamente como um sistema de coordenadas cartesianas tridimensional, no qual cada eixo corresponde a uma das cores primárias.</p>
+<section id="modelos-de-cor" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="modelos-de-cor"><span class="header-section-number">5.3</span> Modelos de Cor</h2>
+<p>Embora a percepção humana das cores possa ser descrita por atributos como matiz, saturação e brilho, sistemas computacionais necessitam de representações matemáticas formais para armazenar, processar e reproduzir cores digitalmente. Essas representações são denominadas <strong>modelos de cor</strong>.</p>
+<p>Cada modelo descreve e organiza as cores de acordo com objetivos específicos. Alguns são voltados para dispositivos de captura e exibição, como monitores e câmeras, enquanto outros são mais adequados para impressão ou para aplicações de análise e processamento de imagens.</p>
+<p>A seguir, são apresentados alguns dos principais modelos de cor utilizados em computação gráfica e processamento digital de imagens.</p>
+<section id="modelos-aditivos" class="level3">
+<h3 class="anchored" data-anchor-id="modelos-aditivos">Modelos Aditivos</h3>
+<p>Nos modelos aditivos, as cores são formadas pela combinação de diferentes intensidades luminosas emitidas pelas componentes primárias.</p>
+<section id="modelo-de-cor-rgb" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-de-cor-rgb">Modelo de Cor RGB</h4>
+<p>O modelo RGB representa as cores por meio da combinação aditiva de três componentes primárias de luz: vermelho (<em>red</em>), verde (<em>green</em>) e azul (<em>blue</em>). Nesse modelo, diferentes cores são obtidas pela soma das intensidades luminosas dessas três componentes.</p>
+<p>Cada cor é definida por um triplo de valores que indica a intensidade de vermelho, verde e azul. Geometricamente, esse modelo pode ser representado como um sistema de coordenadas cartesianas tridimensional, no qual cada eixo corresponde a uma das cores primárias.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../imgs/cap5/rgb.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Cubo RGB</figcaption>
+<figcaption>Cubo RGB.</figcaption>
 </figure>
 </div>
-<p>No cubo RGB, o ponto de origem (0,0,0) representa a ausência total de luz, ou seja, a cor preta (<em>black</em>). À medida que os valores das componentes aumentam, a cor resultante torna-se mais clara. No extremo oposto do cubo, o ponto (1,1,1) representa a presença máxima das três componentes, resultando na cor branca (<em>white</em>).</p>
-<p>Os vértices localizados sobre os eixos correspondem às cores primárias: azul em (0,0,1), verde em (0,1,0) e vermelho em (1,0,0). Esses pontos indicam que apenas uma das componentes está presente com intensidade máxima, enquanto as demais são nulas.</p>
-<p>As demais cores são obtidas pela combinação dessas componentes. Por exemplo, o ponto (0,1,1), localizado no plano formado pelos eixos verde e azul, representa a cor ciano (<em>cyan</em>), que resulta da mistura dessas duas cores primárias. De forma análoga, o ponto (1,0,1) corresponde ao magenta (<em>magenta</em>), e o ponto (1,1,0) ao amarelo (<em>yellow</em>).</p>
+<p>No cubo RGB, o ponto de origem <span class="math inline">\((0,0,0)\)</span> representa a ausência total de luz, ou seja, a cor preta (<em>black</em>). À medida que os valores das componentes aumentam, a cor resultante torna-se mais clara. No extremo oposto do cubo, o ponto <span class="math inline">\((1,1,1)\)</span> representa a presença máxima das três componentes, resultando na cor branca (<em>white</em>).</p>
+<p>Os vértices localizados sobre os eixos correspondem às cores primárias: azul em <span class="math inline">\((0,0,1)\)</span>, verde em <span class="math inline">\((0,1,0)\)</span> e vermelho em <span class="math inline">\((1,0,0)\)</span>. Esses pontos indicam que apenas uma das componentes está presente com intensidade máxima, enquanto as demais são nulas.</p>
+<p>As demais cores são obtidas pela combinação dessas componentes. Por exemplo, o ponto <span class="math inline">\((0,1,1)\)</span>, localizado no plano formado pelos eixos verde e azul, representa a cor ciano (<em>cyan</em>), que resulta da mistura dessas duas cores primárias. De forma análoga, o ponto <span class="math inline">\((1,0,1)\)</span> corresponde ao magenta (<em>magenta</em>), e o ponto <span class="math inline">\((1,1,0)\)</span> ao amarelo (<em>yellow</em>).</p>
 <p>Assim, o cubo RGB fornece uma representação intuitiva e geométrica do espaço de cores, permitindo visualizar como diferentes combinações das componentes primárias geram todas as demais cores perceptíveis nesse modelo.</p>
+<p>O modelo RGB é amplamente utilizado em dispositivos emissores de luz, como monitores, televisores, projetores e câmeras digitais, sendo um dos modelos de cor mais importantes em computação gráfica e processamento digital de imagens.</p>
 </section>
-<section id="modelo-de-cor-cmy-e-cmyk" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="modelo-de-cor-cmy-e-cmyk"><span class="header-section-number">5.4</span> Modelo de Cor CMY e CMYK</h2>
+</section>
+<section id="modelos-subtrativos" class="level3">
+<h3 class="anchored" data-anchor-id="modelos-subtrativos">Modelos Subtrativos</h3>
+<p>Nos modelos subtrativos, as cores são formadas pela absorção parcial da luz incidente sobre uma superfície refletora, como papel ou outros materiais impressos.</p>
+<section id="modelos-de-cor-cmy-e-cmyk" class="level4">
+<h4 class="anchored" data-anchor-id="modelos-de-cor-cmy-e-cmyk">Modelos de Cor CMY e CMYK</h4>
 <p>O modelo CMY é um modelo de cores baseado nas componentes ciano (<em>cyan</em>), magenta (<em>magenta</em>) e amarelo (<em>yellow</em>), sendo amplamente utilizado em processos de impressão. Diferentemente do modelo RGB, que é aditivo (baseado na emissão de luz), o modelo CMY é subtrativo, pois descreve como as cores são formadas pela absorção de luz refletida por uma superfície.</p>
 <p>Nesse modelo, parte-se da cor branca, que representa a reflexão total da luz (equivalente ao papel em branco). À medida que as tintas são aplicadas, certas componentes da luz são absorvidas (subtraídas), modificando a cor percebida. Cada uma das cores primárias do modelo CMY atua removendo uma componente do modelo RGB: o ciano absorve o vermelho, o magenta absorve o verde e o amarelo absorve o azul.</p>
-<p>As cores no modelo CMY também podem ser representadas em um sistema de coordenadas tridimensional, semelhante ao cubo RGB. O ponto (0,0,0) corresponde ao branco (ausência de tinta), enquanto o ponto (1,1,1) representa a combinação máxima das três tintas, que idealmente resultaria em preto. No entanto, devido a imperfeições dos pigmentos, essa combinação geralmente produz um tom escuro acinzentado, motivo pelo qual, na prática, utiliza-se o modelo estendido CMYK, com a adição da tinta preta (<em>black</em>).</p>
+<p>As cores no modelo CMY também podem ser representadas em um sistema de coordenadas tridimensional, semelhante ao cubo RGB. O ponto <span class="math inline">\((0,0,0)\)</span> corresponde ao branco (ausência de tinta), enquanto o ponto <span class="math inline">\((1,1,1)\)</span> representa a combinação máxima das três tintas, que idealmente resultaria em preto. No entanto, devido a imperfeições dos pigmentos, essa combinação geralmente produz um tom escuro acinzentado, motivo pelo qual, na prática, utiliza-se o modelo estendido CMYK, com a adição da tinta preta (<em>black</em>).</p>
 <p>A conversão entre RGB e CMY pode ser expressa de forma simples, considerando valores normalizados:</p>
 <p><span class="math display">\[
 C = 1 - R, \quad M = 1 - G, \quad Y = 1 - B
 \]</span></p>
-<p>As combinações entre as componentes CMY geram outras cores. Por exemplo, a mistura de ciano e magenta produz azul, a mistura de ciano e amarelo resulta em verde, e a combinação de magenta e amarelo gera vermelho. Essas relações evidenciam que o modelo CMY é, na prática, o complementar do modelo RGB.</p>
-<p>O canal adicional K no modelo CMYK é utilizado para melhorar o contraste e reduzir o consumo de tinta.</p>
+<p>As combinações entre as componentes CMY geram outras cores. Por exemplo, a mistura de ciano e magenta produz azul, a mistura de ciano e amarelo resulta em verde, e a combinação de magenta e amarelo gera vermelho. Essas relações evidenciam que o modelo CMY é, na prática, complementar ao modelo RGB.</p>
+<p>No modelo CMYK, o canal adicional K é utilizado para melhorar o contraste, produzir pretos mais intensos e reduzir o consumo de tintas coloridas.</p>
 </section>
-<section id="modelo-de-cor-hsv" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="modelo-de-cor-hsv"><span class="header-section-number">5.5</span> Modelo de Cor HSV</h2>
-<p>O modelo HSV (<em>Hue, Saturation, Value</em>) é uma representação de cores que busca se aproximar da forma como os seres humanos percebem e descrevem as cores. Assim como o modelo HSI, ele separa a informação cromática da informação de brilho, facilitando tarefas de análise e processamento de imagens.</p>
-<p>No modelo HSV, as cores são representadas em uma geometria conhecida como <strong>hexcone</strong> (ou cone hexagonal). Nessa representação, o eixo vertical corresponde ao <strong>valor (V)</strong>, que indica o brilho da cor. O valor varia de 0 (preto) até 1 (máximo brilho). Diferentemente do modelo HSI, o topo do modelo HSV não corresponde ao branco puro necessariamente, mas à cor mais intensa possível para uma determinada matiz.</p>
-<p>A <strong>matiz (H – hue)</strong> representa o tipo da cor e é dada por um ângulo ao redor do eixo vertical. Esse ângulo varia de 0° a 360°, sendo que diferentes intervalos correspondem a cores perceptuais distintas: 0° representa o vermelho, 120° o verde e 240° o azul. As demais cores são obtidas por valores intermediários desse ângulo.</p>
-<p>A <strong>saturação (S)</strong> indica o quão “pura” ou “intensa” é a cor. No modelo HSV, a saturação mede a proximidade da cor em relação ao eixo central do cone. Quando (S = 0), a cor está no eixo e corresponde a um tom de cinza (sem cor definida). Quando (S = 1), a cor está na superfície externa do cone, apresentando máxima pureza.</p>
+</section>
+<section id="modelos-perceptuais" class="level3">
+<h3 class="anchored" data-anchor-id="modelos-perceptuais">Modelos Perceptuais</h3>
+<p>Nos modelos perceptuais, as cores são organizadas de forma mais próxima à maneira como o sistema visual humano as interpreta. Em geral, esses modelos separam a informação cromática da informação de brilho, o que os torna especialmente úteis em tarefas de segmentação, realce e análise de imagens.</p>
+<section id="modelo-de-cor-hsv" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-de-cor-hsv">Modelo de Cor HSV</h4>
+<p>O modelo HSV (<em>Hue, Saturation, Value</em>) busca representar as cores de forma intuitiva, aproximando-se da maneira como os seres humanos descrevem a aparência visual. Nesse modelo, a informação de cor é separada da informação de brilho, facilitando diversas aplicações em processamento digital de imagens.</p>
+<p>No modelo HSV, as cores são representadas em uma geometria conhecida como <strong>hexcone</strong> (ou cone hexagonal). Nessa representação, o eixo vertical corresponde ao <strong>valor (V)</strong>, que indica o brilho da cor. O valor varia de <span class="math inline">\(0\)</span> (preto) até <span class="math inline">\(1\)</span> (máximo brilho). Diferente de outros modelos de cor, o topo do modelo HSV não corresponde ao branco puro necessariamente, mas à cor mais intensa possível para uma determinada matiz.</p>
+<p>A <strong>matiz (H – hue)</strong> representa o tipo da cor e é dada por um ângulo ao redor do eixo vertical. Esse ângulo varia de <span class="math inline">\(0°\)</span> a <span class="math inline">\(360°\)</span>, sendo que diferentes intervalos correspondem a cores perceptuais distintas: <span class="math inline">\(0°\)</span> representa o vermelho, <span class="math inline">\(120°\)</span> o verde e <span class="math inline">\(240°\)</span> o azul. As demais cores são obtidas por valores intermediários desse ângulo.</p>
+<p>A <strong>saturação (S)</strong> indica o quão “pura” ou “intensa” é a cor. Nesse caso, a saturação mede a proximidade da cor em relação ao eixo central do cone. Quando (S = <span class="math inline">\(0\)</span>), a cor está no eixo e corresponde a um tom de cinza (sem cor definida). Quando (S = <span class="math inline">\(1\)</span>), a cor está na superfície externa do cone, apresentando máxima pureza.</p>
 <p>No exemplo interativo em sequência está um cone que representa as matiz, saturação e o valor no modelo de cores HSV. Arraste o cone com o mouse para uma visualização tridimensional do cone:</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/0eQ1ldSV0" height="550" imagem="imgs/cap5/p5js-hsvcone.png" qrcode="imgs/cap5/qrcode-hsvcone.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/hsvcone/" width="100%" height="500" style="border:none;"></iframe></div>
-<section id="interpretação-geométrica" class="level3">
-<h3 class="anchored" data-anchor-id="interpretação-geométrica">Interpretação geométrica</h3>
+<section id="interpretação-geométrica" class="level5">
+<h5 class="anchored" data-anchor-id="interpretação-geométrica"><strong>Interpretação geométrica</strong></h5>
 <ul>
 <li>O <strong>eixo vertical (V)</strong> vai do preto até as cores mais brilhantes.</li>
 <li>A <strong>saturação (S)</strong> é a distância radial em relação ao eixo central.</li>
@@ -404,9 +420,9 @@ C = 1 - R, \quad M = 1 - G, \quad Y = 1 - B
 </ul>
 <p>Dessa forma, o modelo HSV pode ser visualizado como um conjunto de “discos” empilhados: cada disco corresponde a um valor de brilho, e dentro de cada disco as cores variam em matiz e saturação.</p>
 </section>
-<section id="conversão-de-rgb-para-hsv" class="level3">
-<h3 class="anchored" data-anchor-id="conversão-de-rgb-para-hsv">Conversão de RGB para HSV</h3>
-<p>Com os valores dos componentes de cor R, G e B, definidas no intervalo entre 0 e 1, o modelo HSV pode ser calculado através das seguintes equações:</p>
+<section id="conversão-de-rgb-para-hsv" class="level5">
+<h5 class="anchored" data-anchor-id="conversão-de-rgb-para-hsv"><strong>Conversão de RGB para HSV</strong></h5>
+<p>Com os valores dos componentes de cor R, G e B, definidas no intervalo <span class="math inline">\([0,1]\)</span>, o modelo HSV pode ser calculado através das seguintes equações:</p>
 <p><span class="math display">\[
 H = \left\{  
             \begin{array}{cl}
@@ -429,26 +445,26 @@ S = \left\{
 <p><span class="math display">\[
 V = MAX
 \]</span></p>
-<p>No exemplo interativo em sequência está uma representação usando o círculo de cores e o triângulo que liga branco, o preto e todas as matizes da cor escolhida no modelo HSI. Clique no círculo de cores para selecionar a matiz. No triângulo correspondente estão representados o vértice da matiz selecionada, o vértice da cor branca e o vértice cor preta. O triângulo é pintado com as variações de saturação e intensidade da matiz selecionada:</p>
+<p>No exemplo interativo em sequência está uma representação usando o círculo de cores e o triângulo que liga branco, o preto e todas as matizes da cor escolhida no modelo HSV. Clique no círculo de cores para selecionar a matiz. No triângulo correspondente estão representados o vértice da matiz selecionada, o vértice da cor branca e o vértice cor preta. O triângulo é pintado com as variações de saturação e intensidade da matiz selecionada:</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/_iighNxoE" height="550" imagem="imgs/cap5/p5js-hsvcirculo.png" qrcode="imgs/cap5/qrcode-hsvcirculo.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/hsvcirculo/" width="100%" height="420" style="border:none;"></iframe></div>
 </section>
 </section>
-<section id="modelo-de-cor-hsi" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="modelo-de-cor-hsi"><span class="header-section-number">5.6</span> Modelo de Cor HSI</h2>
-<p>O modelo HSI (<em>Hue, Saturation, Intensity</em>) descreve as cores de uma forma mais próxima da percepção humana, separando a informação de cor (matiz e saturação) da informação de brilho (intensidade). Essa separação é especialmente útil em processamento de imagens, pois permite manipular iluminação e cor de forma independente.</p>
-<p>No modelo HSI, a <strong>intensidade (I)</strong> representa o brilho da cor e é definida ao longo de um eixo vertical que vai do preto (0,0,0) ao branco (1,1,1). Esse eixo corresponde à linha onde as três componentes RGB possuem o mesmo valor, ou seja, tons de cinza. Quanto maior o valor de intensidade, mais clara é a cor.</p>
+<section id="modelo-de-cor-hsi" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-de-cor-hsi">Modelo de Cor HSI</h4>
+<p>O modelo HSI (<em>Hue, Saturation, Intensity</em>) organiza as cores de uma forma mais próxima da percepção humana, separando a informação de cor (matiz e saturação) da informação de brilho (intensidade). Essa separação é especialmente útil em processamento de imagens, pois permite manipular iluminação e cor de forma independente.</p>
+<p>No modelo HSI, a <strong>intensidade (I)</strong> representa o brilho da cor e é definida ao longo de um eixo vertical que vai do preto <span class="math inline">\((0,0,0)\)</span> ao branco <span class="math inline">\((1,1,1)\)</span>. Esse eixo corresponde à linha onde as três componentes RGB possuem o mesmo valor, ou seja, tons de cinza. Quanto maior o valor de intensidade, mais clara é a cor.</p>
 <p>A <strong>saturação (S)</strong> indica o grau de pureza da cor. Geometricamente, ela corresponde à distância entre a cor e o eixo de intensidade. Cores localizadas exatamente sobre esse eixo possuem saturação zero (tons de cinza), enquanto cores mais afastadas do eixo são mais saturadas, ou seja, mais “vivas”.</p>
 <p>A <strong>matiz (H – hue)</strong> representa o tipo da cor (vermelho, verde, azul, etc.). Ela é determinada pelo ângulo no plano perpendicular ao eixo de intensidade. Esse plano pode ser entendido como um triângulo formado pela interseção do cubo RGB com um plano de intensidade constante. Por exemplo, no plano que passa pela cor ciano, os vértices do triângulo ajudam a definir a matiz das cores presentes naquele nível de intensidade.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../imgs/cap5/hsi.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Modelo HSI</figcaption>
+<figcaption>Modelo HSI.</figcaption>
 </figure>
 </div>
-<section id="conversão-de-rgb-para-hsi" class="level3">
-<h3 class="anchored" data-anchor-id="conversão-de-rgb-para-hsi">Conversão de RGB para HSI</h3>
+<section id="conversão-de-rgb-para-hsi" class="level5">
+<h5 class="anchored" data-anchor-id="conversão-de-rgb-para-hsi"><strong>Conversão de RGB para HSI</strong></h5>
 <p>Considere uma cor no modelo RGB com componentes normalizadas no intervalo <span class="math inline">\([0,1]\)</span>, ou seja, <span class="math inline">\(R\)</span>, <span class="math inline">\(G\)</span> e <span class="math inline">\(B\)</span>.</p>
 <p><span class="math display">\[
 H = \left\{  \begin{array}{ll}
@@ -472,13 +488,15 @@ I = \frac{1}{3}(R + G + B)
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/cores/" width="100%" height="300" style="border:none;"></iframe></div>
 </section>
 </section>
-<section id="representação-de-imagens-coloridas" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="representação-de-imagens-coloridas"><span class="header-section-number">5.7</span> Representação de Imagens Coloridas</h2>
+</section>
+</section>
+<section id="representação-de-imagens-coloridas" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="representação-de-imagens-coloridas"><span class="header-section-number">5.4</span> Representação de Imagens Coloridas</h2>
 <p>Imagens coloridas podem ser representadas de diferentes formas, dependendo do modelo de cor adotado. Em geral, uma imagem colorida pode ser vista como um conjunto de imagens monocromáticas correlacionadas.</p>
 <p>Essa representação permite que técnicas clássicas de processamento em tons de cinza sejam aplicadas individualmente aos canais de cor ou a componentes específicas do modelo adotado.</p>
 </section>
-<section id="aplicações-de-imagens-coloridas" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="aplicações-de-imagens-coloridas"><span class="header-section-number">5.8</span> Aplicações de Imagens Coloridas</h2>
+<section id="aplicações-de-imagens-coloridas" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="aplicações-de-imagens-coloridas"><span class="header-section-number">5.5</span> Aplicações de Imagens Coloridas</h2>
 <p>O uso de imagens coloridas é essencial em diversas aplicações, tais como:</p>
 <ul>
 <li>segmentação baseada em cor;</li>
@@ -489,8 +507,8 @@ I = \frac{1}{3}(R + G + B)
 </ul>
 <p>A escolha adequada do modelo de cor é determinante para o sucesso dessas aplicações.</p>
 </section>
-<section id="considerações-finais" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">5.9</span> Considerações Finais</h2>
+<section id="considerações-finais" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">5.6</span> Considerações Finais</h2>
 <p>As imagens coloridas desempenham um papel central no Processamento Digital de Imagens moderno. A compreensão dos modelos de cor e de suas características é fundamental para o desenvolvimento de sistemas eficientes e robustos.</p>
 <p>O domínio desses conceitos permite selecionar representações adequadas e explorar de forma eficaz as informações cromáticas presentes nas imagens, ampliando as possibilidades de análise e interpretação.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercícios">

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -96,10 +99,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-36bf55b16c7cb4b1420f41495cb5446a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3d497cff885f6278d37568d0ef0763f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -129,7 +132,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -309,43 +312,39 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#imagens-binárias" id="toc-imagens-binárias" class="nav-link active" data-scroll-target="#imagens-binárias"><span class="header-section-number">7.1</span> Imagens Binárias</a>
+  <li><a href="#conceitos-fundamentais-da-morfologia-matemática" id="toc-conceitos-fundamentais-da-morfologia-matemática" class="nav-link active" data-scroll-target="#conceitos-fundamentais-da-morfologia-matemática"><span class="header-section-number">7.1</span> Conceitos Fundamentais da Morfologia Matemática</a>
   <ul class="collapse">
-  <li><a href="#união" id="toc-união" class="nav-link" data-scroll-target="#união">União</a></li>
-  <li><a href="#interseção" id="toc-interseção" class="nav-link" data-scroll-target="#interseção">Interseção</a></li>
-  <li><a href="#complemento" id="toc-complemento" class="nav-link" data-scroll-target="#complemento">Complemento</a></li>
-  <li><a href="#conjunto-simétrico" id="toc-conjunto-simétrico" class="nav-link" data-scroll-target="#conjunto-simétrico">Conjunto Simétrico</a></li>
-  <li><a href="#translação" id="toc-translação" class="nav-link" data-scroll-target="#translação">Translação</a></li>
-  <li><a href="#diferença" id="toc-diferença" class="nav-link" data-scroll-target="#diferença">Diferença</a></li>
+  <li><a href="#imagem" id="toc-imagem" class="nav-link" data-scroll-target="#imagem">Imagem</a></li>
+  <li><a href="#elemento-estruturante" id="toc-elemento-estruturante" class="nav-link" data-scroll-target="#elemento-estruturante">Elemento Estruturante</a></li>
   </ul></li>
-  <li><a href="#conceitos-fundamentais-da-morfologia-matemática" id="toc-conceitos-fundamentais-da-morfologia-matemática" class="nav-link" data-scroll-target="#conceitos-fundamentais-da-morfologia-matemática"><span class="header-section-number">7.2</span> Conceitos Fundamentais da Morfologia Matemática</a></li>
-  <li><a href="#elemento-estruturante" id="toc-elemento-estruturante" class="nav-link" data-scroll-target="#elemento-estruturante"><span class="header-section-number">7.3</span> Elemento Estruturante</a></li>
-  <li><a href="#as-operações-morfológicas" id="toc-as-operações-morfológicas" class="nav-link" data-scroll-target="#as-operações-morfológicas"><span class="header-section-number">7.4</span> As Operações Morfológicas</a>
+  <li><a href="#as-operações-morfológicas-clássicas" id="toc-as-operações-morfológicas-clássicas" class="nav-link" data-scroll-target="#as-operações-morfológicas-clássicas"><span class="header-section-number">7.2</span> As Operações Morfológicas Clássicas</a>
   <ul class="collapse">
   <li><a href="#dilatação" id="toc-dilatação" class="nav-link" data-scroll-target="#dilatação">Dilatação</a></li>
   <li><a href="#erosão" id="toc-erosão" class="nav-link" data-scroll-target="#erosão">Erosão</a></li>
   <li><a href="#abertura-e-fechamento" id="toc-abertura-e-fechamento" class="nav-link" data-scroll-target="#abertura-e-fechamento">Abertura e Fechamento</a></li>
   <li><a href="#operação-hit-or-miss-tudo-ou-nada" id="toc-operação-hit-or-miss-tudo-ou-nada" class="nav-link" data-scroll-target="#operação-hit-or-miss-tudo-ou-nada">Operação Hit or Miss (Tudo ou nada)</a></li>
   <li><a href="#afinamento-e-espessamento" id="toc-afinamento-e-espessamento" class="nav-link" data-scroll-target="#afinamento-e-espessamento">Afinamento e Espessamento</a></li>
-  <li><a href="#operações-geodésicas" id="toc-operações-geodésicas" class="nav-link" data-scroll-target="#operações-geodésicas">Operações Geodésicas</a></li>
+  </ul></li>
+  <li><a href="#operações-morfológicas-geodésicas" id="toc-operações-morfológicas-geodésicas" class="nav-link" data-scroll-target="#operações-morfológicas-geodésicas"><span class="header-section-number">7.3</span> Operações Morfológicas Geodésicas</a>
+  <ul class="collapse">
   <li><a href="#dilatação-geodésica" id="toc-dilatação-geodésica" class="nav-link" data-scroll-target="#dilatação-geodésica">Dilatação geodésica</a></li>
   <li><a href="#erosão-geodésica" id="toc-erosão-geodésica" class="nav-link" data-scroll-target="#erosão-geodésica">Erosão geodésica</a></li>
   <li><a href="#reconstrução-geodésica" id="toc-reconstrução-geodésica" class="nav-link" data-scroll-target="#reconstrução-geodésica">Reconstrução geodésica</a></li>
   </ul></li>
-  <li><a href="#propriedades-das-operações-morfológicas" id="toc-propriedades-das-operações-morfológicas" class="nav-link" data-scroll-target="#propriedades-das-operações-morfológicas"><span class="header-section-number">7.5</span> Propriedades das Operações Morfológicas</a></li>
-  <li><a href="#aplicações-da-morfologia-binária" id="toc-aplicações-da-morfologia-binária" class="nav-link" data-scroll-target="#aplicações-da-morfologia-binária"><span class="header-section-number">7.6</span> Aplicações da Morfologia Binária</a></li>
-  <li><a href="#morfologia-em-tons-de-cinza-numérica" id="toc-morfologia-em-tons-de-cinza-numérica" class="nav-link" data-scroll-target="#morfologia-em-tons-de-cinza-numérica"><span class="header-section-number">7.7</span> Morfologia em tons de cinza (numérica)</a></li>
-  <li><a href="#fundamentos-da-morfologia-em-tons-de-cinza" id="toc-fundamentos-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.8</span> Fundamentos da Morfologia em Tons de Cinza</a>
+  <li><a href="#propriedades-das-operações-morfológicas" id="toc-propriedades-das-operações-morfológicas" class="nav-link" data-scroll-target="#propriedades-das-operações-morfológicas"><span class="header-section-number">7.4</span> Propriedades das Operações Morfológicas</a></li>
+  <li><a href="#aplicações-da-morfologia-binária" id="toc-aplicações-da-morfologia-binária" class="nav-link" data-scroll-target="#aplicações-da-morfologia-binária"><span class="header-section-number">7.5</span> Aplicações da Morfologia Binária</a></li>
+  <li><a href="#morfologia-em-tons-de-cinza-numérica" id="toc-morfologia-em-tons-de-cinza-numérica" class="nav-link" data-scroll-target="#morfologia-em-tons-de-cinza-numérica"><span class="header-section-number">7.6</span> Morfologia em tons de cinza (numérica)</a></li>
+  <li><a href="#fundamentos-da-morfologia-em-tons-de-cinza" id="toc-fundamentos-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.7</span> Fundamentos da Morfologia em Tons de Cinza</a>
   <ul class="collapse">
   <li><a href="#elemento-estruturante-1" id="toc-elemento-estruturante-1" class="nav-link" data-scroll-target="#elemento-estruturante-1">Elemento Estruturante</a></li>
-  <li><a href="#dilatação-em-tons-de-cinza" id="toc-dilatação-em-tons-de-cinza" class="nav-link" data-scroll-target="#dilatação-em-tons-de-cinza">Dilatação em Tons de Cinza</a></li>
-  <li><a href="#erosão-em-tons-de-cinza" id="toc-erosão-em-tons-de-cinza" class="nav-link" data-scroll-target="#erosão-em-tons-de-cinza">Erosão em Tons de Cinza</a></li>
-  <li><a href="#abertura-em-tons-de-cinza" id="toc-abertura-em-tons-de-cinza" class="nav-link" data-scroll-target="#abertura-em-tons-de-cinza">Abertura em Tons de Cinza</a></li>
-  <li><a href="#fechamento-em-tons-de-cinza" id="toc-fechamento-em-tons-de-cinza" class="nav-link" data-scroll-target="#fechamento-em-tons-de-cinza">Fechamento em Tons de Cinza</a></li>
+  <li><a href="#dilatação-1" id="toc-dilatação-1" class="nav-link" data-scroll-target="#dilatação-1">Dilatação</a></li>
+  <li><a href="#erosão-1" id="toc-erosão-1" class="nav-link" data-scroll-target="#erosão-1">Erosão</a></li>
+  <li><a href="#abertura" id="toc-abertura" class="nav-link" data-scroll-target="#abertura">Abertura</a></li>
+  <li><a href="#fechamento" id="toc-fechamento" class="nav-link" data-scroll-target="#fechamento">Fechamento</a></li>
   <li><a href="#top-hat-e-bottom-hat" id="toc-top-hat-e-bottom-hat" class="nav-link" data-scroll-target="#top-hat-e-bottom-hat">Top hat e Bottom hat</a></li>
   </ul></li>
-  <li><a href="#aplicações-da-morfologia-em-tons-de-cinza" id="toc-aplicações-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.9</span> Aplicações da Morfologia em Tons de Cinza</a></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">7.10</span> Considerações Finais</a></li>
+  <li><a href="#aplicações-da-morfologia-em-tons-de-cinza" id="toc-aplicações-da-morfologia-em-tons-de-cinza" class="nav-link" data-scroll-target="#aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.8</span> Aplicações da Morfologia em Tons de Cinza</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">7.9</span> Considerações Finais</a></li>
   </ul>
 </nav>
     </div>
@@ -383,8 +382,15 @@ window.Quarto = {
 <p>O conjunto de transformações morfológicas é bastante amplo e abrange diversas aplicações no processamento de imagens. Essas operações são amplamente utilizadas na filtragem de ruídos, permitindo a remoção de pequenas imperfeições, e na segmentação de imagens, auxiliando na separação de objetos de interesse do fundo. Também desempenham um papel importante na restauração de imagens degradadas e na detecção de arestas, contribuindo para a identificação de contornos. Além disso, são empregadas na análise de textura e na extração de características relevantes, fundamentais em tarefas de reconhecimento de padrões. Outras aplicações incluem a esqueletização e o afinamento de estruturas, que simplificam a representação dos objetos, bem como a análise de forma e de componentes conectados. As transformações morfológicas também são úteis no preenchimento de regiões e curvas, além de contribuírem para técnicas de compressão de dados.</p>
 <p>Devido à sua capacidade de analisar e manipular estruturas geométricas, a morfologia matemática tem sido aplicada com sucesso em diversas áreas. Na visão robótica, é utilizada para interpretar o ambiente, detectar obstáculos e reconhecer objetos. Na inspeção industrial e na microscopia, auxilia na identificação de defeitos, medições de precisão e análise de materiais em escala microscópica. No processamento de imagens médicas, contribui para a segmentação de órgãos, detecção de anomalias e apoio ao diagnóstico. No sensoriamento remoto, é empregada na análise de imagens de satélite, como na identificação de áreas urbanas, vegetação e corpos d’água. Na biologia, apoia o estudo de estruturas celulares e tecidos, enquanto na metalurgia é utilizada para examinar a microestrutura de materiais. Além disso, nos sistemas de leitura automática de caracteres (OCR), a morfologia é fundamental para a limpeza, segmentação e reconhecimento de letras e números.</p>
 <p>Assim, a morfologia matemática constitui uma ferramenta poderosa e versátil para a análise estrutural de imagens, sendo amplamente utilizada em problemas que envolvem reconhecimento de padrões, segmentação e interpretação de cenas.</p>
-<section id="imagens-binárias" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="imagens-binárias"><span class="header-section-number">7.1</span> Imagens Binárias</h2>
+<section id="conceitos-fundamentais-da-morfologia-matemática" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="conceitos-fundamentais-da-morfologia-matemática"><span class="header-section-number">7.1</span> Conceitos Fundamentais da Morfologia Matemática</h2>
+<p>As operações morfológicas envolvem dois conjuntos principais:</p>
+<ul>
+<li><strong>Imagem</strong>: o conjunto que representa os objetos de interesse;</li>
+<li><strong>Elemento estruturante</strong>: um pequeno conjunto que define a forma e a escala da operação.</li>
+</ul>
+<section id="imagem" class="level3">
+<h3 class="anchored" data-anchor-id="imagem">Imagem</h3>
 <p>As <strong>imagens binárias</strong> constituem a forma mais simples de representação no processamento digital de imagens. Nesse tipo de imagem, cada pixel pode assumir apenas dois valores possíveis, normalmente <strong>0</strong> ou <strong>1</strong>, representando, respectivamente, o fundo e o objeto de interesse. Essa simplicidade torna as imagens binárias particularmente adequadas para análises estruturais e geométricas, sendo amplamente utilizadas em morfologia matemática.</p>
 <p>Uma maneira conveniente e poderosa de representar imagens binárias é por meio da <strong>teoria dos conjuntos</strong>. Nesse contexto, uma imagem pode ser interpretada como um conjunto de pontos no plano discreto. Mais especificamente, considera-se que cada pixel com valor 1 pertence ao conjunto, enquanto os pixels com valor 0 não pertencem.</p>
 <p>Assim, uma imagem binária <span class="math inline">\(A\)</span> pode ser definida como:</p>
@@ -393,81 +399,72 @@ A = \{ (x, y) \in \mathbb{Z}^2 \mid f(x,y) = 1 \}
 \]</span></p>
 <p>onde <span class="math inline">\(f(x,y)\)</span> é a função que descreve a imagem. Dessa forma, a imagem deixa de ser vista apenas como uma matriz e passa a ser tratada como um conjunto de coordenadas no espaço bidimensional discreto.</p>
 <p>Essa representação é fundamental para a morfologia matemática, pois permite aplicar diretamente operações clássicas da teoria dos conjuntos. A seguir, revisamos as principais operações utilizadas.</p>
-<div id="fig-conjunto1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-conjunto1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../imgs/cap7/conjunto1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-conjunto1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7.1: Operações de conjuntos sobre imagens: a) Imagem X b) complemento de X c) simétrico de X e d) X transladado
-</figcaption>
-</figure>
-</div>
-<section id="união" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="união">União</h3>
+<section id="união" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="união">União</h4>
 <p>A <strong>união</strong> de dois conjuntos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> corresponde ao conjunto de todos os pontos que pertencem a pelo menos um dos conjuntos:</p>
 <p><span class="math display">\[
 A \cup B = \{ z \mid z \in A \ \text{ou} \ z \in B \}
 \]</span></p>
 <p>No contexto de imagens, a união combina os objetos presentes em ambas as imagens.</p>
 </section>
-<section id="interseção" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="interseção">Interseção</h3>
+<section id="interseção" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="interseção">Interseção</h4>
 <p>A <strong>interseção</strong> corresponde aos pontos que pertencem simultaneamente aos dois conjuntos:</p>
 <p><span class="math display">\[
 A \cap B = \{ z \mid z \in A \ \text{e} \ z \in B \}
 \]</span></p>
 <p>Essa operação destaca apenas as regiões comuns entre duas imagens.</p>
 </section>
-<section id="complemento" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="complemento">Complemento</h3>
+<section id="complemento" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="complemento">Complemento</h4>
 <p>O complemento <span class="math inline">\(X^c\)</span> do conjunto <span class="math inline">\(X\)</span> ’e dado por <span class="math display">\[X^c = \{p \in D_I: I(p) = 0\}\]</span> Para a imagem binária da <a href="#fig-conjunto1" class="quarto-xref">Figura&nbsp;<span>7.1</span></a> a) <span class="math display">\[X = \{(-1,0),(-1,1),(0,-1),(0,0),(0,1),(1,0)\}\]</span> <span class="math display">\[X^c = \{(-1,-1),(1,-1),(1,1),(2,-1),(2,0),(2,1)\}\]</span></p>
 <p>No caso de imagens, o complemento inverte os valores: pixels 1 tornam-se 0, e vice-versa.</p>
+<div id="fig-conjunto1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-conjunto1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../imgs/cap7/conjunto1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-conjunto1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.1: Operações de conjuntos sobre imagens: a) Imagem X b) complemento de X c) simétrico de X e d) X transladado.
+</figcaption>
+</figure>
+</div>
 </section>
-<section id="conjunto-simétrico" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="conjunto-simétrico">Conjunto Simétrico</h3>
+<section id="conjunto-simétrico" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="conjunto-simétrico">Conjunto Simétrico</h4>
 <p>O conjunto simétrico <span class="math inline">\(\breve{X}\)</span> do conjunto <span class="math inline">\(X\)</span> é dado por <span class="math display">\[\breve{X} = \{-p: p \in X\}\]</span> Para a imagem da <a href="#fig-conjunto1" class="quarto-xref">Figura&nbsp;<span>7.1</span></a>: <span class="math display">\[X = \{(-1,0),(-1,1),(0,-1),(0,0),(0,1),(1,0)\}\]</span> <span class="math display">\[\breve{X} = \{(1,0),(1,-1),(0,1),(0,0),(0,-1),(-1,0)\}\]</span></p>
 <p>No caso de imagens, todas as coordenadas dos pontos do conjunto imagem são multiplicados por -1. Uma outra forma de interpretar essa operação é através do empelhamento dos pontos com relação a diagonal principal, representada por uma linha vermelha pontilha da imagem <span class="math inline">\(X\)</span> e no seu conjunto simétrico <span class="math inline">\(\breve{X}\)</span>, na <a href="#fig-conjunto1" class="quarto-xref">Figura&nbsp;<span>7.1</span></a>.</p>
 </section>
-<section id="translação" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="translação">Translação</h3>
+<section id="translação" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="translação">Translação</h4>
 <p>A translação <span class="math inline">\(X_u\)</span> do conjunto <span class="math inline">\(X\)</span> por um vetor <span class="math inline">\(u\)</span> é dado por <span class="math display">\[X_u = \{q: q = p+u, p \in X\}\]</span> Seja <span class="math display">\[X = \{(-1,0),(-1,1),(0,-1),(0,0),(0,1),(1,0)\}\]</span> Para a <a href="#fig-conjunto1" class="quarto-xref">Figura&nbsp;<span>7.1</span></a> e <span class="math inline">\(u = (1,0)\)</span>: <span class="math display">\[X_u = \{(0,0),(0,1),(1,-1),(1,0),(1,1),(2,0)\}\]</span></p>
 <p>Essa operação é essencial em morfologia matemática, pois o elemento estruturante é frequentemente transladado ao longo da imagem para realizar comparações locais.</p>
+</section>
+<section id="diferença" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="diferença">Diferença</h4>
+<p>O conjunto diferença <span class="math inline">\(X\backslash Y\)</span> dos conjuntos <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é dado por <span class="math display">\[X\backslash Y = X \cap Y^c\]</span></p>
+<p>Em imagens, essa operação remove de <span class="math inline">\(A\)</span> as regiões que coincidem com <span class="math inline">\(B\)</span>, conforme ilustrado na <a href="#fig-conjunto2" class="quarto-xref">Figura&nbsp;<span>7.2</span></a>.</p>
 <div id="fig-conjunto2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-conjunto2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap7/conjunto2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-conjunto2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7.2: Operações de conjuntos sobre imagens
+Figura&nbsp;7.2: Operações de conjuntos sobre imagens.
 </figcaption>
 </figure>
 </div>
-</section>
-<section id="diferença" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="diferença">Diferença</h3>
-<p>O conjunto diferença <span class="math inline">\(X\backslash Y\)</span> dos conjuntos <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é dado por <span class="math display">\[X\backslash Y = X \cap Y^c\]</span></p>
-<p>Em imagens, essa operação remove de <span class="math inline">\(A\)</span> as regiões que coincidem com <span class="math inline">\(B\)</span>, conforme ilustrado na <a href="#fig-conjunto2" class="quarto-xref">Figura&nbsp;<span>7.2</span></a>.</p>
 <p>A representação de imagens binárias como conjuntos e o uso dessas operações formam a base matemática das transformações morfológicas. A partir dessa fundamentação, é possível definir de maneira rigorosa operações como erosão e dilatação, que serão apresentadas nas próximas seções.</p>
 </section>
 </section>
-<section id="conceitos-fundamentais-da-morfologia-matemática" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="conceitos-fundamentais-da-morfologia-matemática"><span class="header-section-number">7.2</span> Conceitos Fundamentais da Morfologia Matemática</h2>
-<p>A morfologia matemática baseia-se na teoria dos conjuntos. Uma imagem binária pode ser interpretada como um conjunto de pontos no plano bidimensional, correspondentes aos pixels de valor 1.</p>
-<p>As operações morfológicas envolvem dois conjuntos principais:</p>
-<ul>
-<li><strong>Imagem</strong>: o conjunto que representa os objetos de interesse;</li>
-<li><strong>Elemento estruturante</strong>: um pequeno conjunto que define a forma e a escala da operação.</li>
-</ul>
-<p>O elemento estruturante atua como uma sonda que percorre a imagem, permitindo analisar e modificar suas estruturas geométricas.</p>
-</section>
-<section id="elemento-estruturante" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="elemento-estruturante"><span class="header-section-number">7.3</span> Elemento Estruturante</h2>
-<p>O <strong>elemento estruturante</strong> é um componente central da morfologia matemática. Ele pode assumir diferentes formas, como linhas, quadrados, discos ou cruzes, e possui um ponto de origem que define sua posição relativa durante as operações.</p>
+<section id="elemento-estruturante" class="level3">
+<h3 class="anchored" data-anchor-id="elemento-estruturante">Elemento Estruturante</h3>
+<p>O <strong>elemento estruturante</strong> é um componente central da morfologia matemática. Atua como uma sonda que percorre a imagem, permitindo analisar e modificar suas estruturas geométricas. Ele pode assumir diferentes formas, como linhas, quadrados, discos ou cruzes, e possui um ponto de origem que define sua posição relativa durante as operações.</p>
 <p>A escolha do elemento estruturante influencia diretamente o resultado das operações morfológicas, pois determina quais características geométricas serão preservadas, realçadas ou removidas.</p>
 </section>
-<section id="as-operações-morfológicas" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="as-operações-morfológicas"><span class="header-section-number">7.4</span> As Operações Morfológicas</h2>
+</section>
+<section id="as-operações-morfológicas-clássicas" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="as-operações-morfológicas-clássicas"><span class="header-section-number">7.2</span> As Operações Morfológicas Clássicas</h2>
 <p>Seja o elemento estruturante <span class="math inline">\(B_p\)</span> um subconjunto finito centrado em <span class="math inline">\(p\)</span>, e seja <span class="math inline">\(I\)</span> uma imagem binária. Neste caso, podemos considerar que:</p>
 <ul>
 <li><span class="math inline">\(B_p\)</span> está incluído em <span class="math inline">\(I\)</span> (notação <span class="math inline">\(B_p \subset I\)</span>).</li>
@@ -482,19 +479,19 @@ Figura&nbsp;7.2: Operações de conjuntos sobre imagens
 \delta_B(I) = I \oplus B = \{p:I \cap B_p \neq \emptyset\} =
 \bigcup_{b \in \breve{B}} I_b
 \]</span></p>
-<p>onde <span class="math inline">\(\breve{B}\)</span> representa a reflexão (conjunto simétrico) do elemento estruturante <span class="math inline">\(B\)</span>. A <a href="#fig-dilatacao-conjunto" class="quarto-xref">Figura&nbsp;<span>7.3</span></a> mostra a dilatação como a união de várias translações da imagem, realizadas a partir de cada ponto do elemento estruturante refletido (simétrico)</p>
+<p>onde <span class="math inline">\(\breve{B}\)</span> representa a reflexão (conjunto simétrico) do elemento estruturante <span class="math inline">\(B\)</span>. A <a href="#fig-dilatacao-conjunto" class="quarto-xref">Figura&nbsp;<span>7.3</span></a> mostra a dilatação como a união de várias translações da imagem, realizadas a partir de cada ponto do elemento estruturante refletido (simétrico).</p>
 <div id="fig-dilatacao-conjunto" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dilatacao-conjunto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap7/dilatacao-conjunto.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dilatacao-conjunto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7.3: Dilatação como união
+Figura&nbsp;7.3: Dilatação como união.
 </figcaption>
 </figure>
 </div>
 <p>A dilatação é frequentemente utilizada para preencher pequenas lacunas, conectar componentes próximos e suavizar contornos internos. O processo de dilatação é realizado como uma convolução do elemento estruturante.</p>
-<p>O código interativo em sequência demostra o funcionamento da operação de dilatação. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da dilatação:</p>
+<p>O código interativo em sequência demostra o funcionamento da operação de dilatação. Clique no botão ‘Passo’ para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da dilatação:</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3OTqYoR4G" height="400" imagem="imgs/cap7/p5js-dilatacao.png" qrcode="imgs/cap7/qrcode-dilatacao.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/dilatacao/" width="100%" height="360" style="border:none;"></iframe></div>
@@ -513,12 +510,12 @@ Figura&nbsp;7.3: Dilatação como união
 <img src="../imgs/cap7/erosao-conjunto.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-erosao-conjunto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7.4: Erosão como interseção
+Figura&nbsp;7.4: Erosão como interseção.
 </figcaption>
 </figure>
 </div>
 <p>Essa operação é útil para remover pequenas protuberâncias, separar objetos conectados por regiões estreitas e eliminar ruídos isolados.</p>
-<p>O código interativo em sequência demostra o funcionamento da operação de erosão. Clique no botão passo para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentada o resultado da erosão:</p>
+<p>O código interativo em sequência mostra o funcionamento da operação de erosão. Clique no botão ‘Passo’ para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentado o resultado da erosão:</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/TrZU1VgSn" height="400" imagem="imgs/cap7/p5js-erosao.png" qrcode="imgs/cap7/qrcode-erosao.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/erosao/" width="100%" height="360" style="border:none;"></iframe></div>
@@ -536,7 +533,7 @@ Figura&nbsp;7.4: Erosão como interseção
 <p><span class="math display">\[
 \varphi_B(I) = I \bullet B = \varepsilon_B (\delta_B(I))
 \]</span></p>
-<p>O exemplo interativo seguinte está a implementação da operações de erosão, dilatação, abertura e fechamento para imagens pbm:</p>
+<p>O exemplo interativo seguinte está a implementação das operações de erosão, dilatação, abertura e fechamento para imagens pbm:</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/6VAsB0SBo" height="550" imagem="imgs/cap7/p5js-morfo.png" qrcode="imgs/cap7/qrcode-morfo.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/morfo/" width="100%" height="440" style="border:none;"></iframe></div>
@@ -556,17 +553,18 @@ Figura&nbsp;7.4: Erosão como interseção
 <p>O afinamento pode ser visto como uma aplicação sucessiva da operação tudo-ou-nada com diferentes elementos estruturantes, que identificam padrões de pixels que podem ser removidos com segurança. Esses padrões são projetados para preservar características como continuidade e ramificações.</p>
 <p>O resultado do afinamento é frequentemente chamado de <strong>esqueleto</strong> da imagem, pois mantém a forma básica e a estrutura dos objetos, mas com espessura mínima. Essa representação é muito útil em diversas aplicações, como reconhecimento de padrões, análise de formas, processamento de caracteres (OCR) e extração de características.</p>
 <p>Devido à sua natureza iterativa e dependente de condições locais, o afinamento pode ser sensível a ruídos. Por isso, é comum aplicar etapas de pré-processamento, como filtragem ou abertura, para melhorar a qualidade do resultado final.</p>
-<p>Formalmente, o afinamento de uma imagem binária <span class="math inline">\(I\)</span> pelo elemento estruturante <span class="math inline">\(B\)</span>, denotado por <span class="math inline">\(I \bigcirc B\)</span>, pode ser definido em termos de uma transformação Tudo ou Nada:</p>
+<p>Formalmente, o afinamento de uma imagem binária <span class="math inline">\(I\)</span> pelo elemento estruturante <span class="math inline">\(B\)</span>, denotado por <span class="math inline">\(I \bigcirc B\)</span>, pode ser definido em termos de uma transformação tudo-ou-nada:</p>
 <p><span class="math display">\[
 I \bigcirc B = I \backslash (I \otimes B)
 \]</span></p>
-<p>Definido desta forma, o afinamento elimina apenas pontos da borda de <span class="math inline">\(I\)</span>. O afinamento deve ser aplicado até a idempotência, considerando-se uma sequência de elementos estruturantes homotópicos (que preservam a topologia da imagem) <span class="math inline">\(B^1,B^2,...\)</span> aplicados iterativamente assim:</p>
+<p>Definido desta forma, o afinamento elimina apenas pontos da borda de <span class="math inline">\(I\)</span>. O afinamento deve ser aplicado até a idempotência (isto é, até que novas aplicações da operação não produzam mais alterações na imagem), considerando-se uma sequência de elementos estruturantes homotópicos (que preservam a topologia da imagem) <span class="math inline">\(B^1,B^2,...\)</span> aplicados iterativamente assim:</p>
 <p><span class="math display">\[
 \begin{array}{c}
 I^1 = I \bigcirc B^1\\
 I^2 = I^1 \bigcirc B^2\\
 I^3 = I^2 \bigcirc B^3\\
-        . . .
+        . . .\\
+I^n = I^{n-1} \bigcirc B^n\\
 \end{array}
 \]</span></p>
 <p>O <strong>espessamento</strong> (<em>thickening</em>) é uma operação morfológica que tem como objetivo aumentar a espessura dos objetos em uma imagem binária, preservando sua forma e conectividade. Ele pode ser entendido como o processo complementar ao afinamento, pois, em vez de remover pixels das bordas, adiciona pixels de maneira controlada.</p>
@@ -578,27 +576,28 @@ I^3 = I^2 \bigcirc B^3\\
 <p><span class="math display">\[
 I \bigodot B = I \cup (I \otimes B)
 \]</span></p>
-<p>Onde <span class="math inline">\(B\)</span> é um elemento estruturante homotópico de espessamento (complemento da família homotópica empregada no afinamento). Esta operação pode ser obtida a partir de um processamento sequencial do tipo:</p>
+<p>onde <span class="math inline">\(B\)</span> é um elemento estruturante homotópico de espessamento (complemento da família homotópica empregada no afinamento). Esta operação pode ser obtida a partir de um processamento sequencial do tipo:</p>
 <p><span class="math display">\[
 \begin{array}{c}
 I^1 = I \bigodot B^1\\
 I^2 = I^1 \bigodot B^2\\
 I^3 = I^2 \bigodot B^3\\
-        . . .
+        . . .\\
+I^n = I^{n-1} \bigodot B^n\\
 \end{array}
 \]</span></p>
-<p>Na <a href="#fig-familia" class="quarto-xref">Figura&nbsp;<span>7.5</span></a> está representada uma família homotópica para afinamento ou espessamento</p>
+<p>Na <a href="#fig-familia" class="quarto-xref">Figura&nbsp;<span>7.5</span></a> está representada uma família homotópica para afinamento ou espessamento.</p>
 <div id="fig-familia" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-familia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap7/familia.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-familia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7.5: Família homotópica
+Figura&nbsp;7.5: Família homotópica.
 </figcaption>
 </figure>
 </div>
-<p>O exemplo interativo seguinte simula o processo de afinamento para uma imagem considerando a família homotópia da <a href="#fig-familia" class="quarto-xref">Figura&nbsp;<span>7.5</span></a>. Os controles na simulação servem para executar o algoritmo de afinamento passo a passo, resetar a simulação, interromper ou continuar de forma automática. Ainda é possível controlar a velocidade da simulação automática. A cada passo é mostrado o elemento da família homotópica que está sendo utilizado para o afinamento na imagem e abaixo dela.</p>
+<p>O exemplo interativo seguinte simula o processo de afinamento para uma imagem considerando a família homotópia da <a href="#fig-familia" class="quarto-xref">Figura&nbsp;<span>7.5</span></a>. Clique no botão ‘Passo’ para posicionar o elemento estruturante no próximo pixel. Na imagem da direita é apresentado o resultado do afinamento:</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/cFSmoa_OL" height="300" imagem="imgs/cap7/p5js-simulacao.png" qrcode="imgs/cap7/qrcode-simulacao.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/simulacao/" width="100%" height="250" style="border:none;"></iframe></div>
@@ -607,8 +606,9 @@ Figura&nbsp;7.5: Família homotópica
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/afinamento/" width="100%" height="410" style="border:none;"></iframe></div>
 </section>
-<section id="operações-geodésicas" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="operações-geodésicas">Operações Geodésicas</h3>
+</section>
+<section id="operações-morfológicas-geodésicas" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="operações-morfológicas-geodésicas"><span class="header-section-number">7.3</span> Operações Morfológicas Geodésicas</h2>
 <p>As operações geodésicas em morfologia matemática tratam da análise de distâncias e caminhos definidos no interior de um conjunto, geralmente associado a um objeto em uma imagem binária. Diferentemente das medidas clássicas de distância, que consideram o espaço como um todo, as operações geodésicas levam em conta apenas os pontos pertencentes ao conjunto de interesse, respeitando sua forma e sua conectividade.</p>
 <p>Sejam <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> dois pontos pertencentes a um conjunto <span class="math inline">\(A\)</span>, conforme ilustrado na <a href="#fig-distancia-geodesica" class="quarto-xref">Figura&nbsp;<span>7.6</span></a>. Define-se como distância geodésica <span class="math inline">\(d_A(x,y)\)</span> o comprimento do menor caminho que conecta <span class="math inline">\(x\)</span> a <span class="math inline">\(y\)</span>, sendo esse caminho inteiramente contido em <span class="math inline">\(A\)</span>. Em outras palavras, considera-se o menor percurso possível entre esses pontos sem sair da região definida por <span class="math inline">\(A\)</span>. Caso não exista tal caminho — isto é, se <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pertencem a componentes desconexas — a distância geodésica é definida como infinita.</p>
 <div id="fig-distancia-geodesica" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -617,14 +617,14 @@ Figura&nbsp;7.5: Família homotópica
 <img src="../imgs/cap7/distancia-geodesica.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distancia-geodesica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7.6: Distância geodésica
+Figura&nbsp;7.6: Distância geodésica.
 </figcaption>
 </figure>
 </div>
 <p>Essa definição pode ser interpretada de forma intuitiva ao se considerar uma imagem binária: os pontos pertencentes ao objeto formam uma região pela qual é permitido “caminhar”, enquanto o fundo atua como uma barreira. Assim, a distância geodésica corresponde ao menor número de passos necessários para ir de um ponto a outro, deslocando-se apenas por pixels vizinhos pertencentes ao objeto, de acordo com uma conectividade previamente definida, como 4 ou 8 vizinhos.</p>
 <p>A distância geodésica difere da distância euclidiana justamente por levar em consideração a geometria e a topologia do objeto. Enquanto a distância euclidiana corresponde ao comprimento da linha reta entre dois pontos, a distância geodésica acompanha a forma do objeto, podendo resultar em caminhos mais longos quando há curvaturas ou obstáculos internos.</p>
 <p>Esse conceito constitui a base para diversas operações em morfologia matemática, como dilatações e erosões geodésicas, além da reconstrução morfológica. Nessas operações, a propagação ou retração de regiões ocorre de forma controlada, sendo limitada por um conjunto máscara, o que permite preservar estruturas relevantes da imagem. Dessa forma, as operações geodésicas são fundamentais em aplicações como segmentação, extração de esqueletos e análise de formas.</p>
-<p>A partir da métrica geodésica <span class="math inline">\(d_A\)</span>, pode-se estender o conceito de distância para medir a separação entre um ponto e um subconjunto de <span class="math inline">\(A\)</span>. Seja <span class="math inline">\(x \in A\)</span> e <span class="math inline">\(B \subseteq A\)</span>. Define-se a distância geodésica entre o ponto <span class="math inline">\(x\)</span> e o conjunto <span class="math inline">\(B\)</span>, denotada por <span class="math inline">\(d_A(x,B)\)</span>, como a menor distância geodésica entre <span class="math inline">\(x\)</span> e qualquer ponto <span class="math inline">\(y\)</span> pertencente a <span class="math inline">\(B\)</span>. Em outras palavras, considera-se todos os possíveis caminhos, inteiramente contidos em <span class="math inline">\(A\)</span>, que ligam <span class="math inline">\(x\)</span> a pontos de <span class="math inline">\(B\)</span>, e escolhe-se aquele de menor comprimento.</p>
+<p>A partir da métrica geodésica <span class="math inline">\(d_A\)</span>, pode-se estender o conceito de distância para medir a separação entre um ponto e um subconjunto de <span class="math inline">\(A\)</span>. Seja <span class="math inline">\(x \in A\)</span> e <span class="math inline">\(B \subseteq A\)</span>. Define-se a distância geodésica entre o ponto <span class="math inline">\(x\)</span> e o conjunto <span class="math inline">\(B\)</span>, denotada por <span class="math inline">\(d_A(x,B)\)</span>, como a menor distância geodésica entre <span class="math inline">\(x\)</span> e qualquer ponto <span class="math inline">\(y\)</span> pertencente a <span class="math inline">\(B\)</span>. Em outras palavras, consideram-se todos os possíveis caminhos, inteiramente contidos em <span class="math inline">\(A\)</span>, que ligam <span class="math inline">\(x\)</span> a pontos de <span class="math inline">\(B\)</span>, e escolhe-se aquele de menor comprimento.</p>
 <p>Formalmente, essa definição pode ser expressa como:</p>
 <p><span class="math display">\[
 d_A(x,B) = \inf_{y \in B} d_A(x,y)
@@ -641,7 +641,6 @@ B_X(x,\lambda) = \{ y \in X : d_X(x,y) \leq \lambda \}.
 \delta_X^\lambda(Y) = \{ x \in X : B_X(x,\lambda) \cap Y \neq \emptyset \}.
 \]</span></p>
 <p>Essa formulação mostra que a dilatação geodésica pode ser interpretada como uma expansão de <span class="math inline">\(Y\)</span> dentro de <span class="math inline">\(X\)</span>, limitada pela estrutura do próprio conjunto <span class="math inline">\(X\)</span>. Diferentemente da dilatação clássica, que se baseia apenas em um elemento estruturante fixo, a dilatação geodésica respeita a geometria e a conectividade do domínio, impedindo que a expansão ultrapasse regiões proibidas. Essa característica torna as operações geodésicas particularmente adequadas para aplicações em que é necessário controlar a propagação dentro de formas complexas, como na reconstrução morfológica e na segmentação de imagens.</p>
-</section>
 <section id="dilatação-geodésica" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="dilatação-geodésica">Dilatação geodésica</h3>
 <p>A dilatação geodésica de ordem <span class="math inline">\(n\)</span>, definida no espaço <span class="math inline">\(\mathbb{Z}^2\)</span>, pode ser obtida por meio da aplicação iterativa de dilatações geodésicas elementares de ordem 1. Ou seja, a dilatação geodésica de ordem maior é construída a partir da repetição sucessiva da operação básica.</p>
@@ -676,7 +675,7 @@ B_X(x,\lambda) = \{ y \in X : d_X(x,y) \leq \lambda \}.
 <img src="../imgs/cap7/reconstrucao.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reconstrucao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7.7: Reconstrução geodésica
+Figura&nbsp;7.7: Reconstrução geodésica.
 </figcaption>
 </figure>
 </div>
@@ -692,7 +691,7 @@ Figura&nbsp;7.7: Reconstrução geodésica
 \rho_I(J) = \bigcup_{n \geq 1} \delta^n_I(J),
 \]</span></p>
 <p>o que indica que o resultado corresponde à união das sucessivas dilatações geodésicas de <span class="math inline">\(J\)</span> em <span class="math inline">\(I\)</span>, realizadas até que não haja mais crescimento do conjunto.</p>
-<p>O exemplo seguinte ilustra, de forma visual e interativa, a aplicação de <strong>operações geodésicas</strong> em imagens binárias. Inicialmente, é gerada uma imagem contendo caracteres aleatórios, que em seguida é convertida para uma representação binária, na qual os objetos (letras) são definidos por pixels brancos e o fundo por pixels pretos.</p>
+<p>O exemplo interativo seguinte ilustra a aplicação de <strong>operações geodésicas</strong> em imagens binárias. Inicialmente, é gerada uma imagem contendo caracteres aleatórios, que em seguida é convertida para uma representação binária, na qual os objetos (letras) são definidos por pixels brancos e o fundo por pixels pretos.</p>
 <p>Na etapa seguinte, aplica-se a <strong>erosão binária</strong> com um elemento estruturante retangular de tamanho ajustável. Essa operação tem o efeito de manter os componentes que contém as propriedades de altura e largura do elemento estruturante selecionado. O resultado da erosão é utilizado como <strong>imagem marcadora</strong>, enquanto a imagem binária original atua como <strong>máscara</strong>.</p>
 <p>A <strong>reconstrução geodésica</strong> é então realizada por um processo iterativo de crescimento da imagem marcadora, limitado pela máscara. A cada passo, os pixels se expandem apenas para regiões permitidas, preservando a conectividade original. O processo termina quando não há mais alterações.</p>
 <p>Como resultado, são reconstruídas apenas as letras do texto gerado que satisfazem as propriedades de largura e altura definidas pelo elemento estruturante.</p>
@@ -701,8 +700,8 @@ Figura&nbsp;7.7: Reconstrução geodésica
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/geodesica/" width="100%" height="550" style="border:none;"></iframe></div>
 </section>
 </section>
-<section id="propriedades-das-operações-morfológicas" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="propriedades-das-operações-morfológicas"><span class="header-section-number">7.5</span> Propriedades das Operações Morfológicas</h2>
+<section id="propriedades-das-operações-morfológicas" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="propriedades-das-operações-morfológicas"><span class="header-section-number">7.4</span> Propriedades das Operações Morfológicas</h2>
 <p>As operações morfológicas apresentam propriedades importantes, como:</p>
 <ul>
 <li><strong>Idempotência</strong>: a aplicação repetida de abertura ou fechamento não altera o resultado após a primeira aplicação;</li>
@@ -711,20 +710,20 @@ Figura&nbsp;7.7: Reconstrução geodésica
 </ul>
 <p>Essas propriedades fornecem uma base teórica sólida para o uso da morfologia matemática em sistemas de processamento de imagens.</p>
 </section>
-<section id="aplicações-da-morfologia-binária" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="aplicações-da-morfologia-binária"><span class="header-section-number">7.6</span> Aplicações da Morfologia Binária</h2>
+<section id="aplicações-da-morfologia-binária" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="aplicações-da-morfologia-binária"><span class="header-section-number">7.5</span> Aplicações da Morfologia Binária</h2>
 <p>A morfologia matemática binária é amplamente utilizada em diversas aplicações no processamento digital de imagens, desempenhando um papel fundamental em diferentes etapas de análise e interpretação. Entre suas principais aplicações destacam-se a remoção de ruído impulsivo, o preenchimento de regiões, a extração de contornos e a análise de conectividade entre componentes da imagem. Além disso, a morfologia é frequentemente empregada como etapa de pré-processamento em tarefas mais complexas, como segmentação e reconhecimento de padrões, contribuindo para a melhoria da qualidade dos resultados. Sua simplicidade conceitual, aliada à sua eficiência computacional, torna a morfologia matemática uma ferramenta essencial no processamento de imagens digitais.</p>
 </section>
-<section id="morfologia-em-tons-de-cinza-numérica" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="morfologia-em-tons-de-cinza-numérica"><span class="header-section-number">7.7</span> Morfologia em tons de cinza (numérica)</h2>
+<section id="morfologia-em-tons-de-cinza-numérica" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="morfologia-em-tons-de-cinza-numérica"><span class="header-section-number">7.6</span> Morfologia em tons de cinza (numérica)</h2>
 <p>As operações morfológicas clássicas — como dilatação, erosão, abertura e fechamento — foram originalmente definidas para imagens binárias, nas quais os pixels pertencem ou não a um conjunto. No entanto, essas operações podem ser naturalmente estendidas para imagens em níveis de cinza, dando origem à chamada <strong>morfologia numérica</strong>. Nessa abordagem, em vez de trabalhar apenas com valores discretos (0 ou 1), os pixels passam a assumir valores inteiros dentro de um intervalo, representando diferentes intensidades.</p>
 <p>Nas imagens binárias, as operações morfológicas são formuladas com base em operações de conjuntos, como união e interseção. Já no caso de imagens em níveis de cinza ou coloridas, essa interpretação não é mais adequada, pois não há apenas presença ou ausência de um pixel, mas sim diferentes graus de intensidade. Assim, as operações deixam de representar inclusão ou remoção de pixels e passam a promover <strong>modificações graduais nos valores de intensidade</strong>.</p>
 <p>Para viabilizar essa generalização, as operações de conjunto são substituídas por operações aritméticas. Em particular, a <strong>união</strong> é associada ao operador máximo (max), enquanto a <strong>interseção</strong> corresponde ao operador mínimo (min). Dessa forma, a dilatação em níveis de cinza consiste em atribuir a cada pixel o maior valor encontrado em sua vizinhança definida pelo elemento estruturante, enquanto a erosão atribui o menor valor dessa mesma vizinhança.</p>
 <p>Essa interpretação permite entender a dilatação como uma operação que tende a <strong>expandir regiões claras</strong> (aumentando os valores de intensidade), enquanto a erosão tende a <strong>expandir regiões escuras</strong> (reduzindo os valores). Como consequência, as operações compostas, como abertura e fechamento, mantêm suas propriedades fundamentais: a abertura suaviza contornos e remove detalhes brilhantes pequenos, enquanto o fechamento preenche pequenas regiões escuras e conecta estruturas próximas.</p>
 <p>Portanto, a morfologia numérica preserva a essência das operações morfológicas binárias, mas adapta sua formulação para lidar com a riqueza de informações presente em imagens em tons de cinza. Essa extensão amplia o campo de aplicação da morfologia matemática, tornando-a uma ferramenta poderosa para filtragem, realce e análise de imagens reais.</p>
 </section>
-<section id="fundamentos-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.8</span> Fundamentos da Morfologia em Tons de Cinza</h2>
+<section id="fundamentos-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="fundamentos-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.7</span> Fundamentos da Morfologia em Tons de Cinza</h2>
 <p>A morfologia matemática em tons de cinza baseia-se em operadores de <strong>máximo</strong> e <strong>mínimo</strong> aplicados localmente à imagem, utilizando um <strong>elemento estruturante</strong> que também pode ser definido como uma função.</p>
 <p>Seja <span class="math inline">\(f\)</span> a imagem de entrada e <span class="math inline">\(b\)</span> um elemento estruturante. As operações morfológicas são definidas de forma a preservar e analisar a geometria das superfícies de intensidade da imagem.</p>
 <section id="elemento-estruturante-1" class="level3 unnumbered">
@@ -736,33 +735,33 @@ Figura&nbsp;7.7: Reconstrução geodésica
 </ul>
 <p>Elementos estruturantes planos são os mais utilizados na prática, pois simplificam as operações e facilitam a interpretação dos resultados.</p>
 </section>
-<section id="dilatação-em-tons-de-cinza" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="dilatação-em-tons-de-cinza">Dilatação em Tons de Cinza</h3>
+<section id="dilatação-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="dilatação-1">Dilatação</h3>
 <p>A <strong>dilatação</strong> em tons de cinza tende a realçar regiões claras e expandir máximos locais. Para um elemento estruturante plano, a dilatação é definida como:</p>
 <p><span class="math display">\[
 (f \oplus b)(x,y) = \max_{(s,t) \in b} { f(x - s, y - t) }
 \]</span></p>
 <p>Essa operação eleva os valores de intensidade nas vizinhanças definidas pelo elemento estruturante, sendo útil para realçar detalhes claros e preencher vales rasos.</p>
 </section>
-<section id="erosão-em-tons-de-cinza" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="erosão-em-tons-de-cinza">Erosão em Tons de Cinza</h3>
+<section id="erosão-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="erosão-1">Erosão</h3>
 <p>A <strong>erosão</strong> em tons de cinza é a operação dual da dilatação e tem como efeito principal a atenuação de regiões claras e a expansão de mínimos locais. Para um elemento estruturante plano, a erosão é definida como:</p>
 <p><span class="math display">\[
 (f \ominus b)(x,y) = \min_{(s,t) \in b} { f(x + s, y + t) }
 \]</span></p>
 <p>Essa operação é utilizada para eliminar picos isolados e reduzir variações abruptas de intensidade.</p>
 </section>
-<section id="abertura-em-tons-de-cinza" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="abertura-em-tons-de-cinza">Abertura em Tons de Cinza</h3>
+<section id="abertura" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="abertura">Abertura</h3>
 <p>A <strong>abertura</strong> em tons de cinza é definida como a erosão seguida de uma dilatação:</p>
 <p><span class="math display">\[
 f \circ b = (f \ominus b) \oplus b
 \]</span></p>
 <p>A abertura suaviza a imagem, removendo picos brilhantes menores que o elemento estruturante, enquanto preserva a forma geral das regiões maiores.</p>
 </section>
-<section id="fechamento-em-tons-de-cinza" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fechamento-em-tons-de-cinza">Fechamento em Tons de Cinza</h3>
-<p>O <strong>fechamento</strong> é a operação dual da abertura, definido como:</p>
+<section id="fechamento" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fechamento">Fechamento</h3>
+<p>O <strong>fechamento</strong> em tons de cinza é a operação dual da abertura, definido como:</p>
 <p><span class="math display">\[
 f \bullet b = (f \oplus b) \ominus b
 \]</span></p>
@@ -771,8 +770,8 @@ f \bullet b = (f \oplus b) \ominus b
 <section id="top-hat-e-bottom-hat" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="top-hat-e-bottom-hat">Top hat e Bottom hat</h3>
 <p>As operações <strong>top-hat</strong> e <strong>bottom-hat</strong> são obtidas a partir da combinação das operações morfológicas de <strong>abertura</strong> e <strong>fechamento</strong> com a subtração de imagens. Essas transformações são particularmente úteis para destacar detalhes locais e reduzir efeitos indesejados de iluminação não uniforme, sendo amplamente empregadas em tarefas de realce e análise de imagens.</p>
-<p>A operação <strong>top-hat</strong>, também chamada de <em>white top-hat</em>, é definida como a diferença entre a imagem original ( f ) e sua abertura por um elemento estruturante ( b ), isto é, ( (f) = f - (f b) ). Como a abertura tende a remover pequenos objetos claros que não conseguem conter o elemento estruturante, o resultado dessa subtração corresponde exatamente a esses elementos removidos. Dessa forma, o top-hat atua como um operador que evidencia pequenos detalhes brilhantes presentes na imagem, especialmente quando estes estão sobre um fundo mais escuro ou com variações suaves de intensidade.</p>
-<p>Por outro lado, a operação <strong>bottom-hat</strong>, ou <em>black top-hat</em>, é definida como a diferença entre o fechamento da imagem e a imagem original, ou seja, ( (f) = (f b) - f ). O fechamento tem como efeito principal eliminar pequenas regiões escuras, preenchendo cavidades e suavizando descontinuidades negativas. Assim, ao subtrair a imagem original do resultado do fechamento, obtêm-se exatamente essas regiões escuras removidas. Consequentemente, o bottom-hat é utilizado para destacar pequenos objetos escuros ou detalhes negativos presentes na imagem, especialmente quando situados sobre fundos mais claros.</p>
+<p>A operação <strong>top-hat</strong>, também chamada de <em>white top-hat</em>, é definida como a diferença entre a imagem original <span class="math inline">\(f\)</span> e sua abertura por um elemento estruturante <span class="math inline">\(b\)</span>, isto é, <span class="math inline">\(\text{That}(f) = f - (f \circ b)\)</span>. Como a abertura tende a remover pequenos objetos claros que não conseguem conter o elemento estruturante, o resultado dessa subtração corresponde exatamente a esses elementos removidos. Dessa forma, o top-hat atua como um operador que evidencia pequenos detalhes brilhantes presentes na imagem, especialmente quando estes estão sobre um fundo mais escuro ou com variações suaves de intensidade.</p>
+<p>Por outro lado, a operação <strong>bottom-hat</strong>, ou <em>black top-hat</em>, é definida como a diferença entre o fechamento da imagem e a imagem original, ou seja, <span class="math inline">\(\text{Bhat}(f) = (f \bullet b) - f\)</span>. O fechamento tem como efeito principal eliminar pequenas regiões escuras, preenchendo cavidades e suavizando descontinuidades negativas. Assim, ao subtrair a imagem original do resultado do fechamento, obtêm-se exatamente essas regiões escuras removidas. Consequentemente, o bottom-hat é utilizado para destacar pequenos objetos escuros ou detalhes negativos presentes na imagem, especialmente quando situados sobre fundos mais claros.</p>
 <p>De maneira geral, essas duas operações podem ser interpretadas como filtros morfológicos que isolam componentes locais da imagem. Enquanto o top-hat evidencia estruturas claras que foram eliminadas pela abertura, o bottom-hat destaca estruturas escuras removidas pelo fechamento. Em ambos os casos, essas operações atuam como ferramentas eficazes para realçar detalhes finos e compensar variações de fundo, sendo particularmente úteis em aplicações como inspeção visual, análise biomédica e processamento de documentos.</p>
 <p>O exemplo interativo seguinte apresenta essas operações:</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/8ekG_1FsO" height="600" imagem="imgs/cap7/p5js-cinza.png" qrcode="imgs/cap7/qrcode-cinza.png"}
@@ -780,8 +779,8 @@ f \bullet b = (f \oplus b) \ominus b
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/cinza/" width="100%" height="330" style="border:none;"></iframe></div>
 </section>
 </section>
-<section id="aplicações-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.9</span> Aplicações da Morfologia em Tons de Cinza</h2>
+<section id="aplicações-da-morfologia-em-tons-de-cinza" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="aplicações-da-morfologia-em-tons-de-cinza"><span class="header-section-number">7.8</span> Aplicações da Morfologia em Tons de Cinza</h2>
 <p>A morfologia matemática em tons de cinza é amplamente utilizada em aplicações como:</p>
 <ul>
 <li>realce e suavização de imagens;</li>
@@ -792,12 +791,12 @@ f \bullet b = (f \oplus b) \ominus b
 </ul>
 <p>Sua capacidade de preservar características geométricas torna-a especialmente útil em imagens naturais e médicas.</p>
 </section>
-<section id="considerações-finais" class="level2" data-number="7.10">
-<h2 data-number="7.10" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">7.10</span> Considerações Finais</h2>
+<section id="considerações-finais" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">7.9</span> Considerações Finais</h2>
 <p>Ao longo deste capítulo, foram apresentados os principais fundamentos da <strong>morfologia matemática</strong>, tanto no contexto de imagens binárias quanto em níveis de cinza. Partindo de operações básicas como <strong>dilatação</strong> e <strong>erosão</strong>, foi possível compreender como a interação entre a imagem e o elemento estruturante permite modificar, analisar e extrair informações relevantes com base na forma e na estrutura dos objetos presentes.</p>
 <p>No caso das imagens binárias, as operações morfológicas mostraram-se ferramentas intuitivas e eficazes para manipulação de formas, permitindo expandir, reduzir, conectar ou separar regiões. A partir dessas operações elementares, foram introduzidas transformações mais elaboradas, como <strong>abertura</strong> e <strong>fechamento</strong>, que possibilitam a remoção seletiva de ruídos e a preservação de características estruturais importantes. Essas operações evidenciam o papel fundamental do elemento estruturante, cuja forma e tamanho determinam diretamente o tipo de processamento realizado.</p>
 <p>A extensão desses conceitos para imagens em níveis de cinza amplia o poder da morfologia matemática. Nesse contexto, as operações passam a atuar sobre valores de intensidade, sendo interpretadas como filtros não lineares baseados em máximos e mínimos locais. Isso permite não apenas a manipulação da geometria dos objetos, mas também o controle de variações de brilho e contraste, tornando a morfologia uma ferramenta versátil para o processamento de imagens reais.</p>
-<p>Além das operações clássicas, foram discutidas transformações derivadas, como <strong>gradiente morfológico</strong>, <strong>top-hat</strong> e <strong>bottom-hat</strong>, que permitem destacar bordas, realçar detalhes finos e compensar variações de iluminação. Essas operações demonstram como a combinação de operadores básicos pode gerar técnicas mais sofisticadas, capazes de evidenciar informações específicas da imagem de maneira eficiente.</p>
+<p>Além das operações clássicas, foram discutidas transformações derivadas, como <strong>top-hat</strong> e <strong>bottom-hat</strong>, que permitem destacar bordas, realçar detalhes finos e compensar variações de iluminação. Essas operações demonstram como a combinação de operadores básicos pode gerar técnicas mais sofisticadas, capazes de evidenciar informações específicas da imagem de maneira eficiente.</p>
 <p>De modo geral, a morfologia matemática se destaca por sua abordagem baseada na forma, diferenciando-se de métodos puramente baseados em intensidade ou frequência. Sua natureza não linear e sua dependência do elemento estruturante conferem grande flexibilidade, permitindo sua adaptação a diferentes tipos de problemas e aplicações. Entre essas aplicações, destacam-se a segmentação de imagens, a remoção de ruídos, a análise de formas, o processamento de imagens médicas e a inspeção automatizada.</p>
 <p>Por fim, é importante ressaltar que o sucesso das operações morfológicas depende fortemente da escolha adequada do elemento estruturante, bem como da compreensão das características da imagem a ser processada. Assim, mais do que um conjunto de operações isoladas, a morfologia matemática constitui um <strong>arcabouço conceitual poderoso</strong>, que, quando bem aplicado, permite explorar de forma eficaz a estrutura e os detalhes das imagens digitais.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercícios">
@@ -1033,19 +1032,19 @@ f \bullet b = (f \oplus b) \ominus b
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
 <div id="ref-heijmans1994morphological" class="csl-entry" role="listitem">
-HEIJMANS, Henk J. A. M. <strong>Morphological Image Operators</strong>. <em>[S.l.]</em>: Academic Press, 1994.
+HEIJMANS, Henk J. A. M. <strong>Morphological Image Operators</strong>. Boston: Academic Press, 1994.
 </div>
 <div id="ref-matheron1975random" class="csl-entry" role="listitem">
-MATHERON, Georges. Random Sets and Integral Geometry. 1975.
+MATHERON, Georges. <strong>Random Sets and Integral Geometry</strong>. New York: Wiley, 1975.
 </div>
 <div id="ref-serra1982image" class="csl-entry" role="listitem">
-SERRA, Jean. <strong>Image Analysis and Mathematical Morphology</strong>. <em>[S.l.]</em>: Academic Press, 1982.
+SERRA, Jean. <strong>Image Analysis and Mathematical Morphology</strong>. London: Academic Press, 1982.
 </div>
 <div id="ref-serra1988image" class="csl-entry" role="listitem">
-SERRA, Jean. <strong>Image Analysis and Mathematical Morphology, Volume 2: Theoretical Advances</strong>. <em>[S.l.]</em>: Academic Press, 1988.
+SERRA, Jean. <strong>Image Analysis and Mathematical Morphology, Volume 2: Theoretical Advances</strong>. London: Academic Press, 1988.
 </div>
 <div id="ref-soille2003morphological" class="csl-entry" role="listitem">
-SOILLE, Pierre. <strong>Morphological Image Analysis: Principles and Applications</strong>. 2. ed. <em>[S.l.]</em>: Springer, 2003.
+SOILLE, Pierre. <strong>Morphological Image Analysis: Principles and Applications</strong>. 2. ed. Berlin: Springer, 2003.
 </div>
 <div id="ref-vincent1993morphological" class="csl-entry" role="listitem">
 VINCENT, Luc. Morphological grayscale reconstruction in image analysis: Applications and efficient algorithms. <strong>IEEE Transactions on Image Processing</strong>, v. 2, n. 2, p. 176–201, 1993.

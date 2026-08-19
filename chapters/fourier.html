@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -96,10 +99,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-36bf55b16c7cb4b1420f41495cb5446a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3d497cff885f6278d37568d0ef0763f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -129,7 +132,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -340,7 +343,11 @@ window.Quarto = {
   <li><a href="#estrutura-butterfly" id="toc-estrutura-butterfly" class="nav-link" data-scroll-target="#estrutura-butterfly">Estrutura Butterfly</a></li>
   <li><a href="#centralização-do-espectro" id="toc-centralização-do-espectro" class="nav-link" data-scroll-target="#centralização-do-espectro">Centralização do Espectro</a></li>
   </ul></li>
-  <li><a href="#filtragem-no-domínio-da-frequência" id="toc-filtragem-no-domínio-da-frequência" class="nav-link" data-scroll-target="#filtragem-no-domínio-da-frequência"><span class="header-section-number">4.6</span> Filtragem no Domínio da Frequência</a></li>
+  <li><a href="#filtragem-no-domínio-da-frequência" id="toc-filtragem-no-domínio-da-frequência" class="nav-link" data-scroll-target="#filtragem-no-domínio-da-frequência"><span class="header-section-number">4.6</span> Filtragem no Domínio da Frequência</a>
+  <ul class="collapse">
+  <li><a href="#restauração-do-espectro" id="toc-restauração-do-espectro" class="nav-link" data-scroll-target="#restauração-do-espectro">Restauração do Espectro</a></li>
+  <li><a href="#resultado-final" id="toc-resultado-final" class="nav-link" data-scroll-target="#resultado-final">Resultado Final</a></li>
+  </ul></li>
   <li><a href="#vantagens-e-limitações" id="toc-vantagens-e-limitações" class="nav-link" data-scroll-target="#vantagens-e-limitações"><span class="header-section-number">4.7</span> Vantagens e Limitações</a></li>
   <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">4.8</span> Considerações Finais</a></li>
   </ul>
@@ -392,7 +399,7 @@ window.Quarto = {
 <img src="../imgs/cap4/mudancadominio.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mudanca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.1: Mudança de domínio
+Figura&nbsp;4.1: Mudança de domínio.
 </figcaption>
 </figure>
 </div>
@@ -422,6 +429,9 @@ y = \frac{x}{z}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/soma/" width="100%" height="540" style="border:none;"></iframe></div>
 <p>O exemplo ilustrativo seguinte, adaptado do código de <strong>Daniel Shiffman</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, demonstra como uma série de Fourier pode ser utilizada para representar uma onda quadrada.</p>
+<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kk4tjuY7W" height="600" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
+::: -->
+<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/epiciclo/" width="100%" height="590" style="border:none;"></iframe></div>
 <p>Nesse exemplo, cada <strong>termo da série</strong> é representado por um <strong>círculo trigonométrico</strong> (<em>epiciclo</em>). O <strong>raio de cada círculo</strong> corresponde à <strong>amplitude</strong> do termo, enquanto a <strong>frequência</strong> é representada pela <strong>velocidade de rotação</strong> do círculo. Os círculos são conectados de forma sequencial, de modo que o <strong>centro de cada círculo</strong> coincide com a <strong>extremidade do raio do círculo anterior</strong>, conforme ilustrado na <a href="#fig-epiciclo" class="quarto-xref">Figura&nbsp;<span>4.2</span></a>.</p>
 <div id="fig-epiciclo" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -429,14 +439,11 @@ y = \frac{x}{z}
 <img src="../imgs/cap4/epiciclo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-epiciclo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.2: Representação dos termos como Epiciclos
+Figura&nbsp;4.2: Representação dos termos como Epiciclos.
 </figcaption>
 </figure>
 </div>
 <p>A <strong>soma dos termos da série</strong> é obtida pela <strong>projeção vertical</strong> (eixo <span class="math inline">\(y\)</span>) do vetor resultante, formado pelo encadeamento dos raios de todos os círculos. À medida que mais termos são adicionados, a forma de onda resultante aproxima-se progressivamente de uma <strong>onda quadrada</strong>, evidenciando o princípio fundamental da série de Fourier: a representação de funções periódicas complexas como a soma de senos e cossenos.</p>
-<!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/kk4tjuY7W" height="600" imagem="imgs/cap4/p5js-epiciclo.png" qrcode="imgs/cap4/qrcode-epiciclo.png"}
-::: -->
-<div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/epiciclo/" width="100%" height="590" style="border:none;"></iframe></div>
 </section>
 </section>
 <section id="transformada-de-fourier-unidmensional" class="level2" data-number="4.3">
@@ -462,7 +469,12 @@ e^{j\theta} = \cos\theta + j\sin\theta
 </section>
 <section id="interpretação-física-e-intuitiva" class="level3">
 <h3 class="anchored" data-anchor-id="interpretação-física-e-intuitiva">Interpretação Física e Intuitiva</h3>
-<p>Cada valor de <span class="math inline">\(F(\mu)\)</span> é um <strong>número complexo</strong> que contém duas informações fundamentais:</p>
+<p>Cada valor de <span class="math inline">\(F(\mu)\)</span> é um <strong>número complexo</strong>, que pode ser escrito na forma:</p>
+<p><span class="math display">\[
+F(\mu) = \operatorname{Re}(F(\mu)) + j\, \operatorname{Im}(F(\mu)),
+\]</span></p>
+<p>onde <span class="math inline">\(\operatorname{Re}(\cdot)\)</span> e <span class="math inline">\(\operatorname{Im}(\cdot)\)</span> representam, respectivamente, as partes <strong>real</strong> e <strong>imaginária</strong> do número complexo.</p>
+<p>A partir dessa representação, extraem-se duas informações fundamentais:</p>
 <ul>
 <li><p><strong>Magnitude</strong> <span class="math display">\[
 |F(\mu)| = \sqrt{\operatorname{Re}^2 + \operatorname{Im}^2}
@@ -508,7 +520,7 @@ F(\mu)
 <img src="../imgs/cap4/g4.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-transformacao1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.3: Transformação: a) função simples, b) transformada calculada e c) espectro
+Figura&nbsp;4.3: Transformação: a) função simples, b) transformada calculada e c) espectro.
 </figcaption>
 </figure>
 </div>
@@ -604,7 +616,7 @@ Listagem&nbsp;4.1
 </section>
 <section id="definição-matemática-1" class="level3">
 <h3 class="anchored" data-anchor-id="definição-matemática-1">Definição Matemática</h3>
-<p>A <strong>Transformada de Fourier bidimensional contínua</strong> de uma função <span class="math inline">\(f(x,y)\)</span> é definida por:</p>
+<p>A <strong>Transformada de Fourier contínua bidimensional</strong> de uma função <span class="math inline">\(f(x,y)\)</span> é definida por:</p>
 <p><span class="math display">\[
 F(u,v) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}
 f(x,y)\, e^{-j2\pi(ux + vy)} \, dx\,dy
@@ -665,7 +677,7 @@ F(u,v)\, e^{j2\pi(ux + vy)} \, du\,dv
 F(u,v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} f(x,y)
 \, e^{-j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
 \]</span></p>
-<p>onde (u) e (v) representam as coordenadas no domínio da frequência e (j) é a unidade imaginária.</p>
+<p>onde <span class="math inline">\(u\)</span> e <span class="math inline">\(v\)</span> representam as coordenadas no domínio da frequência e <span class="math inline">\(j\)</span> é a unidade imaginária.</p>
 <p>A transformada inversa permite recuperar a imagem original a partir de sua representação espectral:</p>
 <p><span class="math display">\[
 f(x,y) = \frac{1}{MN} \sum_{u=0}^{M-1} \sum_{v=0}^{N-1} F(u,v)
@@ -841,18 +853,18 @@ M = 2^n
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/butterfly8/" width="100%" height="520" style="border:none;"></iframe></div>
 <section id="um-exemplo-1" class="level4">
 <h4 class="anchored" data-anchor-id="um-exemplo-1">Um exemplo</h4>
-<p>A <a href="creditos.html#fig-amostra" class="quarto-xref">Figura&nbsp;<span>12.20</span></a> a seguir ilustra um conjunto discreto de amostras de um sinal unidimensional no domínio espacial. Esse exemplo simples permite compreender, de forma concreta, como a <strong>Transformada Discreta de Fourier (DFT)</strong> decompõe um sinal em suas componentes de frequência.</p>
+<p>A <a href="#fig-amostra" class="quarto-xref">Figura&nbsp;<span>4.4</span></a> a seguir ilustra um conjunto discreto de amostras de um sinal unidimensional no domínio espacial. Esse exemplo simples permite compreender, de forma concreta, como a <strong>Transformada Discreta de Fourier (DFT)</strong> decompõe um sinal em suas componentes de frequência.</p>
 <div id="fig-amostra" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-amostra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../imgs/cap4/amostra.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-amostra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.4: Amostras do sinal no domínio espacial
+Figura&nbsp;4.4: Amostras do sinal no domínio espacial.
 </figcaption>
 </figure>
 </div>
-<p>Considere o sinal discreto <span class="math inline">\(f(x)\)</span>, definido para <span class="math inline">\(x = 0,1,2,3\)</span>, com valores <span class="math inline">\(f(0)=1\)</span>, <span class="math inline">\(f(1)=2\)</span>, <span class="math inline">\(f(2)=4\)</span> e <span class="math inline">\(f(3)=3\)</span>, obtidos de uma função <span class="math inline">\(f(t)\)</span>. O coeficiente de frequência zero da DFT, <span class="math inline">\(F(0)\)</span>, corresponde à soma de todas as amostras do sinal e representa a <strong>componente DC</strong>(<em>Direct Current</em>), isto é, o valor médio escalado do sinal. Assim, tem-se:</p>
+<p>Considere o sinal discreto <span class="math inline">\(f(x)\)</span>, definido para <span class="math inline">\(x = 0,1,2,3\)</span>, com valores <span class="math inline">\(f(0)=1\)</span>, <span class="math inline">\(f(1)=2\)</span>, <span class="math inline">\(f(2)=4\)</span> e <span class="math inline">\(f(3)=3\)</span>, obtidos de uma função <span class="math inline">\(f(t)\)</span>. O coeficiente de frequência zero da DFT, <span class="math inline">\(F(0)\)</span>, corresponde à soma de todas as amostras do sinal e representa a <strong>componente DC</strong> (<em>Direct Current</em>), isto é, o valor médio escalado do sinal. Assim, tem-se:</p>
 <p><span class="math display">\[
 \begin{aligned}
 F(0) &amp;= \sum_{x=0}^{3} f(x) \\
@@ -942,7 +954,7 @@ H(u,v) =
 <img src="../imgs/cap4/filtros.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-filtros-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.5: Filtros para Transformada de Fourier
+Figura&nbsp;4.5: Filtros para Transformada de Fourier.
 </figcaption>
 </figure>
 </div>
@@ -951,7 +963,7 @@ Figura&nbsp;4.5: Filtros para Transformada de Fourier
 H(u,v) =
 e^{-\frac{D(u,v)^2}{2D_0^2}}.
 \]</span></p>
-<p>Esse filtro não produz ringing significativo e resulta em suavização progressiva das altas frequências.</p>
+<p>Esse filtro não produz <em>ringing</em> significativo (isto é, oscilações artificiais ou halos próximos a bordas da imagem, comuns em filtros com transições abruptas) e resulta em suavização progressiva das altas frequências.</p>
 <p>O filtro Butterworth (representado na <a href="#fig-filtros" class="quarto-xref">Figura&nbsp;<span>4.5</span></a> c) representa um compromisso entre o ideal e o gaussiano. Sua formulação é:</p>
 <p><span class="math display">\[
 H(u,v) =
@@ -967,17 +979,23 @@ H(u,v) =
 H_{PA}(u,v) = 1 - H_{PB}(u,v).
 \]</span></p>
 <p>Nesse caso, as altas frequências são preservadas, destacando bordas e estruturas finas da imagem.</p>
+<section id="restauração-do-espectro" class="level3">
+<h3 class="anchored" data-anchor-id="restauração-do-espectro">Restauração do Espectro</h3>
 <p>O processo de restauração do espectro consiste em transformar a imagem para o domínio da frequência, modificar seletivamente suas componentes espectrais e reconstruí-la por meio da transformada inversa. Matematicamente, esse procedimento pode ser representado por:</p>
 <p><span class="math display">\[
 g(x,y) =
 \mathcal{F}^{-1}
 \{H(u,v)\mathcal{F}[f(x,y)]\}.
 \]</span></p>
-<p>Essa abordagem permite suavização, realce de detalhes, redução de ruído e correção de degradações, oferecendo maior controle matemático sobre o comportamento do filtro e eficiência computacional quando implementada via FFT.</p>
+</section>
+<section id="resultado-final" class="level3">
+<h3 class="anchored" data-anchor-id="resultado-final">Resultado Final</h3>
+<p>A abordagem completa (geração do espectro, filtragem e restauração) permite suavização, realce de detalhes, redução de ruído e correção de degradações, oferecendo maior controle matemático sobre o comportamento do filtro e eficiência computacional quando implementada via FFT.</p>
 <p>O Exemplo interativo seguinte apresenta uma aplicação do processo de filtragem por Fourier.</p>
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/3HBiKuxP2" height="600" imagem="imgs/cap4/p5js-filtragem.png" qrcode="imgs/cap4/qrcode-filtragem.png"}
 ::: -->
 <div class="simulacao-container"><iframe src="https://luizedsilva.github.io/livro-pdi/p5js/filtragem/" width="100%" height="550" style="border:none;"></iframe></div>
+</section>
 </section>
 <section id="vantagens-e-limitações" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="vantagens-e-limitações"><span class="header-section-number">4.7</span> Vantagens e Limitações</h2>
@@ -1164,7 +1182,7 @@ g(x,y) =
 </ol></li>
 <li><p>A partir do espectro obtido, o programa deverá:</p>
 <ol type="a">
-<li><p>Identificar visualmente os picos associados ao ruído periódico (moire)</p></li>
+<li><p>Identificar visualmente os picos associados ao ruído periódico (moiré)</p></li>
 <li><p>Criar uma máscara (filtro) para remover essas frequências</p></li>
 <li><p>Aplicar o filtro no domínio da frequência</p></li>
 </ol></li>
@@ -1200,19 +1218,19 @@ g(x,y) =
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list" style="display: none">
 <div id="ref-bracewell2000fourier" class="csl-entry" role="listitem">
-BRACEWELL, Ronald N. <strong>The Fourier Transform and Its Applications</strong>. 3. ed. <em>[S.l.]</em>: McGraw-Hill, 2000.
+BRACEWELL, Ronald N. <strong>The Fourier Transform and Its Applications</strong>. 3. ed. New York: McGraw-Hill, 2000.
 </div>
 <div id="ref-cooley1965algorithm" class="csl-entry" role="listitem">
 COOLEY, James W.; TUKEY, John W. An algorithm for the machine calculation of complex Fourier series. <strong>Mathematics of Computation</strong>, v. 19, n. 90, p. 297–301, 1965.
 </div>
 <div id="ref-fourier1822theorie" class="csl-entry" role="listitem">
-FOURIER, Joseph. Th<span>é</span>orie analytique de la chaleur. 1822.
+FOURIER, Jean-Baptiste Joseph. <strong>Th<span>é</span>orie analytique de la chaleur</strong>. Paris: Chez Firmin Didot, p<span>è</span>re et fils, 1822.
 </div>
 <div id="ref-oppenheim1999discrete" class="csl-entry" role="listitem">
-OPPENHEIM, Alan V.; SCHAFER, Ronald W. <strong>Discrete-Time Signal Processing</strong>. 2. ed. <em>[S.l.]</em>: Prentice Hall, 1999.
+OPPENHEIM, Alan V.; SCHAFER, Ronald W. <strong>Discrete-Time Signal Processing</strong>. 2. ed. Upper Saddle River: Prentice Hall, 1999.
 </div>
 <div id="ref-oppenheim2010signals" class="csl-entry" role="listitem">
-OPPENHEIM, Alan V.; WILLSKY, Alan S.; NAWAB, S. Hamid. <strong>Signals and Systems</strong>. 2. ed. <em>[S.l.]</em>: Prentice Hall, 2010.
+OPPENHEIM, Alan V.; WILLSKY, Alan S.; NAWAB, S. Hamid. <strong>Signals and Systems</strong>. 2. ed. Upper Saddle River: Prentice Hall, 2010.
 </div>
 </div>
 </section>
