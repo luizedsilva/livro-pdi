@@ -78,5 +78,5 @@ format:
     number-sections: true
     css: styles.css
     cover-image: capa.png
-  docx:
-    reference-doc: reference_abnt.docx
+  # docx:
+  #   reference-doc: reference_abnt.docx
