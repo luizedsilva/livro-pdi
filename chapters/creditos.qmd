@@ -40,7 +40,7 @@ As imagens utilizadas ao longo deste livro foram selecionadas de forma a garanti
 
 ![Olho - Foto: Gerada por IA (chatgpt)](/imgs-CC/olho.png){#fig-olhoCC width="60%" fig-align="center"}
 
-![Amostra - Foto: Gerada por IA (chatgpt)](imgs/amostra.png){#fig-amostra width="60%" fig-align="center"}
+![Amostra - Foto: Gerada por IA (chatgpt)](imgs/amostra.png){#fig-amostraCC width="60%" fig-align="center"}
 
 ![Captura - Foto: Gerada por IA (chatgpt)](imgs/captura.png){#fig-captura width="60%" fig-align="center"}
 
