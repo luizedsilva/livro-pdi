@@ -10,7 +10,7 @@ number-depth: 2
 filters:
   - simulacao.lua
 
-resources: 
+resources:
   - p5js
 
 book:
@@ -23,6 +23,14 @@ book:
       affiliation: "Universidade Federal de Alfenas"
   cover-image: capa.png
   date: today
+  repo-url: https://github.com/luizedsilva/livro-pdi
+  repo-actions: []
+  sharing: [twitter, facebook]
+  page-footer:
+    left: "Silva, L.E e Silveira, T."
+    right:
+      - icon: github
+        href: https://github.com/luizedsilva/livro-pdi
   chapters:
     - index.qmd
     - chapters/intro.qmd
@@ -35,10 +43,16 @@ book:
     - chapters/segmentacao.qmd
     - chapters/representacao.qmd
     - chapters/interpretacao.qmd
+    - chapters/opencv.qmd
     - chapters/creditos.qmd
     - chapters/references.qmd
 
 bibliography: references.bib
+csl: abnt.csl
+
+repository:
+  url: https://github.com/luizedsilva/livro-pdi
+  branch: main
 
 format:
   html:
@@ -51,6 +65,7 @@ format:
       - cosmo
       - brand
   pdf:
+    cite-method: biblatex
     documentclass: book
     pdf-engine: lualatex
     include-in-header: header.tex
@@ -63,3 +78,5 @@ format:
     number-sections: true
     css: styles.css
     cover-image: capa.png
+  docx:
+    reference-doc: reference_abnt.docx

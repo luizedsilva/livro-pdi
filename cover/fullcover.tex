@@ -8,6 +8,8 @@
   paperheight=29.7cm,
   margin=0cm
 ]{geometry}
+\usepackage{fontspec}
+\setmainfont{Montserrat}
 
 \pagestyle{empty}
 
@@ -48,19 +50,22 @@
 % ($(front)+(-7cm,7cm)$) rectangle ($(front)+(7cm,11cm)$);
 
 % sombra
-\node[align=center, text=black]
-at ($(front)+(0.15cm,4.85cm)$)
-{
-\Huge\bfseries Processamento Digital de Imagens\\[0.6cm]
-\large Uma abordagem interativa com {\ttfamily p5.js}
-};
+% \node[align=center, text=black]
+% at ($(front)+(0.15cm,4.85cm)$)
+% {
+% \Huge\bfseries Processamento Digital de Imagens\\[0.6cm]
+% \large Uma abordagem interativa com {\ttfamily p5.js}
+% };
 
 % texto principal
 \node[align=center, text=white]
 at ($(front)+(0.15cm,5cm)$)
 {
-\Huge\bfseries Processamento Digital de Imagens\\[0.6cm]
-\large Uma abordagem interativa com {\ttfamily p5.js}
+{\fontsize{48}{52}\selectfont\bfseries\MakeUppercase{PROCESSAMENTO}}\\ [0.6cm]
+{\fontsize{48}{52}\selectfont\bfseries\MakeUppercase{DIGITAL DE IMAGENS}}\\ [1cm]
+% \Huge\bfseries Processamento Digital de Imagens\\[0.6cm]
+{\fontsize{20}{22}\selectfont\bfseries\MakeUppercase{Uma abordagem interativa com p5.js}}
+% \large Uma abordagem interativa com {\ttfamily p5.js}
 };
 
 % =========================
@@ -70,21 +75,21 @@ at ($(front)+(0.15cm,5cm)$)
 % ($(front)+(-7cm,-11cm)$) rectangle ($(front)+(7cm,-7cm)$);
 
 % sombra
-\node[align=center, text=black]
-at ($(front)+(0.15cm,-9.15cm)$)
-{
-\Large Luiz Eduardo da Silva\\
-\\
-\Large Tiago Silveira
-};
+% \node[align=center, text=black]
+% at ($(front)+(0.15cm,-9.15cm)$)
+% {
+% \Large Luiz Eduardo da Silva\\
+% \\
+% \Large Tiago Silveira
+% };
 
 % texto principal
 \node[align=center, text=white]
 at ($(front)+(0,-9cm)$)
 {
-\Large Luiz Eduardo da Silva\\
+\huge Luiz Eduardo da Silva\\
 \\
-\Large Tiago Silveira
+\huge Tiago Silveira
 };
 
 % =========================

@@ -66,11 +66,16 @@ As flores são divididas em três classes de padrões, denotadas por $w_1$, $w_2
 
 Com essa representação, cada flor pode ser interpretada como um ponto em um espaço bidimensional, no qual os eixos correspondem às características selecionadas. Esse tipo de visualização permite compreender como os padrões se distribuem no espaço de características e como diferentes classes podem ser separadas por meio de técnicas de classificação.
 
+O exemplo ilustrativo em sequência implementa a classificação das flores Íris. No exemplo pode-se treinar um modelo de aprendizado de máquina para distinguir automaticamente entre diferentes espécies — como *setosa*, *versicolor* e *virgínica* — a partir de características mensuráveis das flores, especialmente o comprimento e a largura das pétalas e sépalas. Inicialmente, um conjunto de dados rotulado é utilizado para que o modelo aprenda os padrões associados a cada classe. Em seguida, esses dados podem ser visualizados em um plano bidimensional (por exemplo, usando apenas as medidas das pétalas), permitindo observar como as espécies se agrupam no espaço de características. Após o treinamento, o modelo é capaz de receber novas amostras e classificá-las com base nesses padrões aprendidos, demonstrando, de forma prática, conceitos fundamentais de aprendizado supervisionado como treinamento, generalização e tomada de decisão. Para testar, basta clicar no plano. No rótulo abaixo é apresentado a classificação da flor selecionada.
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/petalas/" height="550" imagem="imgs/cap10/p5js-petalas.png" qrcode="imgs/cap10/qrcode-petalas.png"}
+:::
+
 ## Uso de Representações e Descritores como Features
 
 No capítulo anterior, foram apresentadas diversas técnicas de **representação e descrição de imagens**, incluindo descritores de forma, textura e níveis de cinza. Nesta seção, estabelece-se a conexão entre esses conceitos e os sistemas de aprendizado de máquina, nos quais tais descritores passam a desempenhar o papel de **features** (características de entrada).
 
-De modo geral, algoritmos de aprendizado de máquina não operam diretamente sobre imagens em sua forma bruta, mas sim sobre representações numéricas que sintetizam informações relevantes. Nesse contexto, os descritores extraídos — como área, perímetro, momentos, histogramas de intensidade, características de textura (como GLCM) e atributos morfológicos — são organizados em vetores de características, que servem como entrada para os modelos de classificação ou regressão.
+De modo geral, algoritmos de aprendizado de máquina não operam diretamente sobre imagens em sua forma bruta, mas sim sobre representações numéricas que sintetizam informações relevantes. Nesse contexto, os descritores extraídos — como área, perímetro, momentos, histogramas de intensidade, características de textura (como GLCM) e atributos morfológicos — são organizados em vetores de características, que servem como entrada para modelos clássicos de **classificação**, que identificam a categoria de um objeto, ou de **regressão**, que estimam um valor contínuo, como uma medida física ou uma probabilidade.
 
 Por exemplo, em um problema de classificação de objetos, pode-se utilizar:
 
@@ -112,15 +117,15 @@ De forma geral, o casamento de padrões e as medidas de correlação constituem 
 
 ## Redes Neurais e Redes Neurais de Múltiplas Camadas
 
-As **redes neurais artificiais** (@haykin2009neural, @bishop2006pattern, @goodfellow2016deep, @mitchell1997machine, @rumelhart1986learning, @cybenko1989approximation, @hornik1989multilayer, @hagan1996neural, ilustrado na @fig-neuronio) constituem uma das principais abordagens para o desenvolvimento de sistemas inteligentes capazes de realizar reconhecimento e interpretação de imagens. Inspiradas no funcionamento do cérebro humano, essas redes são compostas por unidades básicas chamadas neurônios artificiais, organizadas em camadas e interconectadas por pesos ajustáveis.
+As **redes neurais artificiais** [@haykin2009neural; @bishop2006pattern; @goodfellow2016deep; @mitchell1997machine; @rumelhart1986learning; @cybenko1989approximation; @hornik1989multilayer; @hagan1996neural], ilustradas na @fig-neuronio, constituem uma das principais abordagens para o desenvolvimento de sistemas inteligentes capazes de realizar reconhecimento e interpretação de imagens. Inspiradas no funcionamento do cérebro humano, essas redes são compostas por unidades básicas chamadas neurônios artificiais, organizadas em camadas e interconectadas por pesos ajustáveis.
 
-![Redes neurais artificiais](/imgs/cap10/neuronio.png){#fig-neuronio fig-align="center" width="70%"}
+![Redes neurais artificiais.](/imgs/cap10/neuronio.png){#fig-neuronio fig-align="center" width="70%"}
 
 Cada neurônio recebe um conjunto de entradas, realiza uma combinação linear ponderada desses valores e aplica uma função de ativação, produzindo uma saída. Durante o processo de aprendizado, os pesos das conexões são ajustados de forma a minimizar o erro entre a saída produzida pela rede e a saída desejada. Esse ajuste é geralmente realizado por algoritmos de otimização, como o método do gradiente descendente associado ao algoritmo de retropropagação (*backpropagation*).
 
 Nos sistemas de reconhecimento de imagens, as redes neurais recebem como entrada vetores de características extraídos das imagens — como descritores de forma, textura e intensidade — e aprendem a associar esses vetores a classes específicas. Dessa forma, a rede atua como um classificador capaz de generalizar a partir de exemplos previamente apresentados.
 
-![Redes neurais de múltiplas camadas](/imgs/cap10/camadas.png){#fig-camadas width="80%" fig-align="center"}
+![Redes neurais de múltiplas camadas.](/imgs/cap10/camadas.png){#fig-camadas width="80%" fig-align="center"}
 
 As **redes neurais de múltiplas camadas**, (ilustrado na @fig-camadas) também conhecidas como *Multilayer Perceptrons* (MLP), estendem esse modelo básico ao incluir uma ou mais **camadas ocultas** entre a entrada e a saída. Essas camadas intermediárias permitem que a rede aprenda representações mais complexas dos dados, sendo capaz de modelar relações não lineares entre as características e as classes.
 
@@ -134,9 +139,9 @@ Em síntese, as redes neurais desempenham um papel central na construção de si
 
 ## Redes Neurais Convolucionais (CNN)
 
-As **Redes Neurais Convolucionais** (*Convolutional Neural Networks – CNNs*, @lecun1998gradient, @goodfellow2016deep, @krizhevsky2012imagenet, @simonyan2015very, @he2016deep, @szegedy2015going) representam uma das principais abordagens modernas para o reconhecimento e interpretação de imagens. Essas redes têm sido amplamente utilizadas não apenas em visão computacional, mas também em áreas como processamento de voz e linguagem natural. Sua concepção foi inspirada em estudos do córtex visual humano, nos quais se observou que certos neurônios respondem a estímulos visuais localizados em regiões específicas do campo visual (conforme ilustrado na @fig-cortex).
+As **Redes Neurais Convolucionais** (*Convolutional Neural Networks – CNNs*) [@lecun1998gradient; @goodfellow2016deep; @krizhevsky2012imagenet; @simonyan2015very; @he2016deep; @szegedy2015going] representam uma das principais abordagens modernas para o reconhecimento e interpretação de imagens. Essas redes têm sido amplamente utilizadas não apenas em visão computacional, mas também em áreas como processamento de voz e linguagem natural. Sua concepção foi inspirada em estudos do córtex visual humano, nos quais se observou que certos neurônios respondem a estímulos visuais localizados em regiões específicas do campo visual (conforme ilustrado na @fig-cortex).
 
-![Formação da imagem no cérebro humano](/imgs/cap10/cortex.png){#fig-cortex width="80%" fig-align="center"}
+![Formação da imagem no cérebro humano.](/imgs/cap10/cortex.png){#fig-cortex width="80%" fig-align="center"}
 
 Essa característica motivou o desenvolvimento de modelos capazes de explorar informações locais em imagens, tornando as CNNs especialmente eficientes para capturar padrões espaciais.
 
@@ -146,13 +151,11 @@ Em redes neurais tradicionais do tipo *feedforward*, o número de neurônios nec
 
 As CNNs resolvem esse problema ao explorar duas ideias fundamentais: **compartilhamento de pesos** e **conectividade local**. Dessa forma, conseguem extrair características relevantes da imagem enquanto reduzem significativamente sua dimensionalidade. Um exemplo típico mostra que uma imagem de entrada com dimensão $224 \times 224 \times 3$ pode ser transformada, ao longo das camadas da rede, em uma representação muito menor, como $1 \times 1 \times 1000$, mantendo as informações essenciais para classificação.
 
-### Representação da Imagem e Operação de Convolução
-
-Uma imagem colorida pode ser interpretada como a combinação de três matrizes, correspondentes aos canais de cor vermelho $R$, verde $G$ e azul $B$. Cada pixel é, portanto, descrito por três valores de intensidade.
+### Operação de Convolução
 
 A operação central das CNNs é a **convolução**, na qual pequenos filtros (ou máscaras) percorrem a imagem (conforme ilustrado na @fig-cnncamadas), detectando padrões locais como bordas, texturas e formas. Por exemplo, filtros específicos podem ser projetados para identificar linhas horizontais ou verticais.
 
-![Camadas da CNN](/imgs/cap10/cnn-camadas.png){#fig-cnncamadas width="60%" fig-align="center"}
+![Camadas da CNN.](/imgs/cap10/cnn-camadas.png){#fig-cnncamadas width="60%" fig-align="center"}
 
 Dois parâmetros importantes nesse processo são:
 
@@ -171,13 +174,13 @@ Uma CNN é composta por diferentes tipos de camadas, organizadas de forma hierá
 
 Essa é a principal camada da CNN, responsável pela **extração de características**. Nela, filtros são aplicados à imagem para gerar mapas de características (*feature maps*). Após a convolução, é comum aplicar uma função de ativação (ilustradas na @fig-funcoes), como a **ReLU (Rectified Linear Unit)**, que substitui valores negativos por zero, introduzindo não linearidade ao modelo.
 
-![Função de ativação](/imgs/cap10/funcoes.png){#fig-funcoes fig-align="center" width="80%"}
+![Função de ativação.](/imgs/cap10/funcoes.png){#fig-funcoes fig-align="center" width="80%"}
 
 #### Camada de Pooling
 
 A camada de **pooling** (ilustrada na @fig-pooling) tem como objetivo reduzir a dimensionalidade dos dados, mantendo as características mais importantes. Isso contribui para diminuir o custo computacional e aumentar a robustez a pequenas variações na imagem.
 
-![Pooling](/imgs/cap10/pooling.png){#fig-pooling width="60%" fig-align="center"}
+![Pooling.](/imgs/cap10/pooling.png){#fig-pooling width="60%" fig-align="center"}
 
 Se a entrada possui dimensão $w_1 \times h_1 \times d_1$, a saída da camada de pooling pode ser calculada como:
 
@@ -195,10 +198,12 @@ $$
 
 onde $F$ é o tamanho do filtro e $S$ é o *stride*.
 
-O exemplo interativo seguinte demonstra os cálculos e o resultado da camada de Pooling.
+O exemplo interativo seguinte demonstra os cálculos realizados em função do tamanho do fitro e do stride e em seguida é apresentado o resultado de saída da camada de Pooling.
 
+```{=html}
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/n71g9My6G" height="500" imagem="imgs/cap10/p5js-pooling.png" qrcode="imgs/cap10/qrcode-pooling.png"}
 ::: -->
+```
 
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/pooling/" height="450" imagem="imgs/cap10/p5js-pooling.png" qrcode="imgs/cap10/qrcode-pooling.png"}
 :::
@@ -213,15 +218,13 @@ A camada final da rede fornece o resultado da classificação. Em problemas bin�
 
 #### Camada Dropout
 
-A camada de **dropout** (ilustrada na @fig-dropout) é uma técnica de regularização utilizada para evitar *overfitting*. Durante o treinamento, ela desativa aleatoriamente uma fração dos neurônios, forçando a rede a aprender representações mais robustas e generalizáveis.
+A camada de **dropout** (ilustrada na @fig-dropout) é uma técnica de regularização utilizada para reduzir o *overfitting* (ou *sobreajuste*), fenômeno em que a rede neural se adapta excessivamente aos dados de treinamento e passa a apresentar pior desempenho em dados não vistos. Durante o treinamento, ela desativa aleatoriamente uma fração dos neurônios, forçando a rede a aprender representações mais robustas e generalizáveis.
 
-![Camada Dropout](/imgs/cap10/dropout.png){#fig-dropout fig-align="center" width="80%"}
+![Camada Dropout.](/imgs/cap10/dropout.png){#fig-dropout fig-align="center" width="80%"}
 
 ### Arquiteturas de CNN
 
 Diversas arquiteturas de CNN foram propostas ao longo dos anos, cada uma trazendo avanços significativos na área de visão computacional. De forma geral, essas arquiteturas consistem no empilhamento de camadas convolucionais, funções de ativação e camadas de pooling, seguidas por camadas totalmente conectadas.
-
-![Arquitetura LeNet-5](/imgs/cap10/lenet5.png){width="90%" fig-align="center" #fig-lenet5}
 
 Entre as arquiteturas mais conhecidas, destacam-se:
 
@@ -229,8 +232,128 @@ Entre as arquiteturas mais conhecidas, destacam-se:
 -   **AlexNet:** responsável por impulsionar o uso de deep learning em visão computacional (ilustrado na @fig-alexnet);
 -   **GoogleNet (Inception):** introduziu estruturas mais profundas e eficientes;
 -   **ResNet:** utilizou conexões residuais para treinar redes muito profundas com maior estabilidade.
+-   **MobileNet:** projetada para dispositivos móveis, utiliza convoluções separáveis em profundidade (ilustrado na @fig-mobilenet)
 
-![Arquitetura AlexNet](/imgs/cap10/alexnet.png){width="90%" fig-align="center" #fig-alexnet}
+![Arquitetura LeNet-5.](/imgs/cap10/lenet5.png){#fig-lenet5 width="90%" fig-align="center"}
+
+![Arquitetura AlexNet.](/imgs/cap10/alexnet.png){#fig-alexnet width="90%" fig-align="center"}
+
+![Arquitetura MobileNet.](/imgs/cap10/mobilenet.png){#fig-mobilenet width="90%" fig-align="center"}
+
+#### Arquitetura MobileNet {.unnumbered}
+
+Para ilustrar o funcionamento da Arquitetura MobileNet são apresentados dois exemplos interativos. O primeiro exemplo demonstra o funcionamento de um classificador pré-treinado, disponível na biblioteca ml5[^interpretacao-1] para classificação de pássaros.
+
+[^interpretacao-1]: (<https://docs.ml5js.org>)
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/mobilenet/" height="450" imagem="imgs/cap10/p5js-mobilenet.png" qrcode="imgs/cap10/qrcode-mobilenet.png"}
+:::
+
+A partir da documentação disponível da biblioteca ml5, denominado **HandPose**[^interpretacao-2], foi construído o segundo exemplo interativo, que captura imagens da câmera e identifica os dedos da mão (conforme ilustrado na @fig-hand). O código em p5.js está nas @lst-handpose1 e @lst-handpose2.
+
+[^interpretacao-2]: (<https://docs.ml5js.org/#/reference/handpose>)
+
+![Diagrama com identificação dos pontos da mão.](/imgs/cap10/hand.png){#fig-hand width="60%" fig-align="center"}
+
+::: {#lst-handpose1}
+``` {.js fontsize="\\small"}
+let video;
+let handPose;
+let hands = [];
+
+function setup() {
+  createCanvas(640, 480);
+
+  video = createCapture(VIDEO);
+  video.size(640, 480);
+  video.hide();
+
+  handPose = ml5.handPose(video, () => {
+    console.log("Modelo carregado!");
+    handPose.detectStart(video, gotHands);
+  });
+}
+
+function gotHands(results) {
+  hands = results;
+}
+
+function draw() {
+  translate(width, 0);
+  scale(-1, 1);
+
+  image(video, 0, 0, width, height);
+
+  for (let i = 0; i < hands.length; i++) {
+    let hand = hands[i];
+    let points = hand.keypoints || hand.landmarks;
+
+    for (let j = 0; j < points.length; j++) {
+      let keypoint = points[j];
+      fill(255, 0, 0);
+      noStroke();
+      circle(keypoint.x, keypoint.y, 10);
+    }
+    // desenhar conexões
+    drawSkeleton(points);
+  }
+}
+```
+:::
+
+::: {#lst-handpose2}
+``` {.js fontsize="\\small"}
+function drawSkeleton(points) {
+  stroke(0, 255, 0);
+  strokeWeight(2);
+
+  let fingers = [
+    [0, 1, 2, 3, 4], // polegar
+    [0, 5, 6, 7, 8], // indicador
+    [0, 9, 10, 11, 12], // médio
+    [0, 13, 14, 15, 16], // anelar
+    [0, 17, 18, 19, 20], // mínimo
+  ];
+
+  for (let f = 0; f < fingers.length; f++) {
+    let finger = fingers[f];
+
+    for (let i = 0; i < finger.length - 1; i++) {
+      let a = points[finger[i]];
+      let b = points[finger[i + 1]];
+      line(a.x, a.y, b.x, b.y);
+    }
+  }
+  line(points[5].x, points[5].y, points[9].x, points[9].y);
+  line(points[9].x, points[9].y, points[13].x, points[13].y);
+  line(points[13].x, points[13].y, points[17].x, points[17].y);
+}
+```
+:::
+
+Inicialmente, o modelo pré-treinado que identifica a mão é carregado no seguinte trecho de código:
+
+``` {.js fontsize="\\small"}
+  handPose = ml5.handPose(video, () => {
+    console.log("Modelo carregado!");
+    handPose.detectStart(video, gotHands);
+  });
+```
+
+A partir de então, toda vez que é reconhecida a mão num quadro do vídeo, os parâmetros são atualizados em $hands$:
+
+``` {.js fontsize="\\small"}
+function gotHands(results) {
+  hands = results;
+}
+```
+
+A função $draw$ usa as informações em $hands$ para adicionar à imagem de vídeo pontos vermelhos que identificam as articulações dos dedos da mão e linhas verdes que unem todas essas articulações (conforme indicado na @fig-hand).
+
+O exemplo interativo pode ser acessado em sequência (**observação:** será solicitada a liberação da câmera no navegador para acessar este exemplo):
+
+::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/handpose/" height="500" imagem="imgs/cap10/p5js-handpose.png" qrcode="imgs/cap10/qrcode-handpose.png"}
+:::
 
 ## Considerações Finais
 
@@ -249,147 +372,213 @@ De forma geral, observa-se uma evolução clara: de métodos baseados em descrit
 Por fim, destaca-se que o reconhecimento e a interpretação de imagens continuam sendo áreas em constante evolução, impulsionadas pelo avanço do aprendizado de máquina e pelo aumento da disponibilidade de dados. O domínio dos conceitos apresentados neste capítulo fornece uma base sólida para o desenvolvimento de aplicações inteligentes em diversas áreas, como medicina, indústria, segurança e sistemas autônomos.
 
 ::: {.callout-note title="Exercícios"}
-
 **Exercício 1 — Conceitual**
 
 Explique com suas palavras:
 
-a) O que é **interpretação de imagens**  
-b) Como ela se diferencia da segmentação e da descrição  
-c) Qual seu papel em sistemas de visão computacional  
+a)  O que é **interpretação de imagens**\
+b)  Como ela se diferencia da segmentação e da descrição\
+c)  Qual seu papel em sistemas de visão computacional
 
----
+------------------------------------------------------------------------
 
 **Exercício 2 — Pipeline de visão**
 
 Explique as etapas de um sistema típico de visão computacional:
 
-a) Aquisição  
-b) Pré-processamento  
-c) Segmentação  
-d) Representação e descrição  
-e) Interpretação  
+a)  Aquisição\
+b)  Pré-processamento\
+c)  Segmentação\
+d)  Representação e descrição\
+e)  Interpretação
 
 Qual o papel de cada etapa?
 
----
+------------------------------------------------------------------------
 
 **Exercício 3 — Classificação**
 
 Explique:
 
-a) O que é um problema de **classificação**  
-b) Diferença entre classificação supervisionada e não supervisionada  
-c) Exemplos de aplicações  
+a)  O que é um problema de **classificação**\
+b)  Diferença entre classificação supervisionada e não supervisionada\
+c)  Exemplos de aplicações
 
----
+------------------------------------------------------------------------
 
 **Exercício 4 — Características (features)**
 
 Explique:
 
-a) O que são **características (features)**  
-b) Por que são importantes para a interpretação  
-c) Exemplos de características utilizadas em imagens  
+a)  O que são **características (features)**\
+b)  Por que são importantes para a interpretação\
+c)  Exemplos de características utilizadas em imagens
 
----
+------------------------------------------------------------------------
 
 **Exercício 5 — Treinamento e teste**
 
 Explique:
 
-a) O que é um conjunto de treinamento  
-b) O que é um conjunto de teste  
-c) Por que é importante separar esses conjuntos  
+a)  O que é um conjunto de treinamento\
+b)  O que é um conjunto de teste\
+c)  Por que é importante separar esses conjuntos
 
----
+------------------------------------------------------------------------
 
 **Exercício 6 — Classificadores**
 
 Explique o funcionamento básico de:
 
-a) K-vizinhos mais próximos (KNN)  
-b) Árvores de decisão  
-c) Redes neurais  
+a)  K-vizinhos mais próximos (KNN)\
+b)  Árvores de decisão\
+c)  Redes neurais
 
----
+------------------------------------------------------------------------
 
 **Exercício 7 — Métricas de avaliação**
 
 Explique:
 
-a) Acurácia  
-b) Precisão  
-c) Revocação (recall)  
-d) F1-score  
+a)  Acurácia\
+b)  Precisão\
+c)  Revocação (recall)\
+d)  F1-score
 
 Quando cada métrica é mais importante?
 
----
+------------------------------------------------------------------------
 
 **Exercício 8 — Matriz de confusão**
 
 Explique:
 
-a) O que é uma matriz de confusão  
-b) O significado de:
-- Verdadeiro positivo  
-- Falso positivo  
-- Verdadeiro negativo  
-- Falso negativo  
+a)  O que é uma matriz de confusão\
+b)  O significado de:
 
----
+-   Verdadeiro positivo\
+-   Falso positivo\
+-   Verdadeiro negativo\
+-   Falso negativo
+
+------------------------------------------------------------------------
 
 **Exercício 9 — Implementação prática (classificação simples)**
 
 Implemente um programa que:
 
-a) Utilize características simples (ex: área, perímetro)  
-b) Classifique objetos em duas classes  
-c) Utilize um classificador simples (ex: KNN)  
+a)  Utilize características simples (ex: área, perímetro)\
+b)  Classifique objetos em duas classes\
+c)  Utilize um classificador simples (ex: KNN)
 
----
+------------------------------------------------------------------------
 
 **Exercício 10 — Implementação prática (avaliação)**
 
 Implemente:
 
-a) Cálculo de acurácia  
-b) Construção da matriz de confusão  
-c) Avaliação do desempenho do classificador  
+a)  Cálculo de acurácia\
+b)  Construção da matriz de confusão\
+c)  Avaliação do desempenho do classificador
 
----
+------------------------------------------------------------------------
 
 **Exercício 11 — Comparação de métodos**
 
 Compare diferentes classificadores quanto a:
 
-- desempenho  
-- complexidade  
-- necessidade de dados  
+-   desempenho\
+-   complexidade\
+-   necessidade de dados
 
----
+------------------------------------------------------------------------
 
 **Exercício 12 — Desafios**
 
 Explique os principais desafios da interpretação de imagens:
 
-a) Variação de iluminação  
-b) Ruído  
-c) Oclusões  
-d) Variabilidade dos objetos  
+a)  Variação de iluminação\
+b)  Ruído\
+c)  Oclusões\
+d)  Variabilidade dos objetos
 
----
+------------------------------------------------------------------------
 
 **Questão reflexiva**
 
 Explique a importância da interpretação de imagens em aplicações como:
 
-- Diagnóstico médico assistido por computador  
-- Veículos autônomos  
-- Reconhecimento facial  
-- Sistemas de vigilância  
+-   Diagnóstico médico assistido por computador\
+-   Veículos autônomos\
+-   Reconhecimento facial\
+-   Sistemas de vigilância
 
 Discuta os impactos sociais e éticos dessas aplicações.
+:::
 
+::: {.callout-note title="Atividade Prática: Reconhecimento de Gestos com HandPose (ml5.js)"}
+**Objetivo**
+
+O objetivo desta atividade é explorar conceitos de visão computacional com redes neurais pré-treinadas, utilizando o modelo ml5.js baseado no HandPose.
+
+O estudante deverá modificar um exemplo existente para identificar e rotular diferentes gestos da mão em tempo real.
+
+------------------------------------------------------------------------
+
+**Problema**
+
+O modelo HandPose permite detectar pontos-chave (landmarks) da mão, mas não classifica diretamente gestos.
+
+O desafio desta atividade é construir uma camada adicional de lógica para interpretar esses pontos e reconhecer gestos específicos, como:
+
+-   mão aberta
+-   mão fechada
+-   sinal de "positivo" (joinha 👍)
+-   sinal de "paz e amor" ✌️
+
+------------------------------------------------------------------------
+
+**Descrição**
+
+A partir de um exemplo base com HandPose, você deverá:
+
+a)  Capturar o vídeo da webcam
+
+b)  Detectar a mão e seus pontos-chave (landmarks)
+
+c)  Exibir esses pontos na tela
+
+Em seguida, implemente um mecanismo de classificação de gestos, baseado na posição relativa dos dedos:
+
+a)  Identificar se os dedos estão estendidos ou dobrados
+
+b)  Criar regras heurísticas para cada gesto, por exemplo:
+
+-   Mão aberta: todos os dedos estendidos
+-   Mão fechada: todos os dedos dobrados
+-   Positivo: polegar estendido e demais dobrados
+-   Paz e amor: indicador e médio estendidos
+
+O programa deverá:
+
+a)  Analisar os landmarks a cada frame
+
+b)  Classificar o gesto atual
+
+c)  Exibir o rótulo do gesto na tela (ex: "Mão aberta")
+
+------------------------------------------------------------------------
+
+**Entrada**
+
+Captura de vídeo em tempo real via webcam
+
+------------------------------------------------------------------------
+
+**Saída**
+
+O programa deve apresentar:
+
+-   Vídeo da webcam com os pontos da mão desenhados
+-   Classificação do gesto exibida na tela em tempo real
 :::
