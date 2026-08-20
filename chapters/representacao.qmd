@@ -21,25 +21,15 @@ Na etapa de descrição, é fundamental que as características escolhidas como 
 
 A representação e a descrição de formas constituem etapas essenciais no processamento digital de imagens, pois permitem transformar objetos visuais em estruturas organizadas e em conjuntos de características que podem ser analisadas computacionalmente. Para isso, existe um conjunto de técnicas consolidadas, cada uma com abordagens e objetivos específicos, que buscam capturar diferentes aspectos das formas presentes nas imagens.
 
-Uma das estratégias mais clássicas é o **código de cadeia**, que representa o contorno de um objeto como uma sequência de direções discretas. Essa abordagem é simples e eficiente, sendo especialmente útil para descrever a geometria do contorno de maneira compacta, além de preservar a conectividade entre os pontos.
-
-A **aproximação poligonal** é outra técnica importante, que consiste em simplificar o contorno de uma forma por meio de segmentos de reta. Ao reduzir o número de pontos necessários para representar o objeto, essa abordagem diminui a complexidade dos dados, mantendo apenas os elementos mais relevantes da estrutura geométrica.
-
-As **assinaturas de forma** representam o contorno por meio de funções unidimensionais, como a distância entre o centroide e a borda em função do ângulo. Essa técnica facilita a análise e a comparação entre formas, pois transforma uma estrutura bidimensional em um vetor ou função que pode ser facilmente manipulado.
-
-A **esqueletização** (ou *skeletonization*) busca representar a forma a partir de seu eixo central, preservando a topologia do objeto. O esqueleto reduz a forma a uma estrutura mais simples, composta por linhas finas que mantêm a conectividade e a estrutura global, sendo útil em aplicações como reconhecimento de padrões e análise estrutural.
-
-Além das abordagens baseadas no contorno, existem os **descritores de região**, que consideram as propriedades internas do objeto, como área, momentos, intensidade e distribuição espacial dos pixels. Esses descritores fornecem uma visão mais global da forma, sendo menos sensíveis a pequenas variações na borda.
-
-Por fim, a **análise de textura** complementa a descrição ao capturar padrões de variação de intensidade dentro da região. Técnicas como matrizes de coocorrência e filtros permitem identificar características como regularidade, rugosidade e orientação, sendo fundamentais para diferenciar regiões com aparência semelhante, mas com estruturas internas distintas.
+A seguir, exploraremos cada uma dessas técnicas, detalhando seus princípios, algoritmos e aplicações, proporcionando uma compreensão abrangente das estratégias de representação e descrição de imagens.
 
 ## Código de Cadeia
 
 O **código de cadeia (chain code)** é uma técnica clássica para representação de fronteiras em imagens binárias. Ele descreve o contorno de um objeto por meio de uma sequência de direções, obtida ao percorrer, de forma ordenada, os pixels que compõem sua borda. Essa abordagem permite transformar uma estrutura bidimensional (a forma do objeto) em uma representação unidimensional (uma sequência numérica), facilitando a análise e comparação de formas.
 
-### Representação direcional
+### Representação Direcional
 
-![Código de Cadeia](/imgs/cap9/codigocadeia.png){width="60%" fig-align="center" #fig-codigocadeia}
+![Código de Cadeia.](/imgs/cap9/codigocadeia.png){width="60%" fig-align="center" #fig-codigocadeia}
 
 A construção do código de cadeia baseia-se na definição de uma vizinhança entre pixels. Existem duas formas principais (conforme ilustrado na @fig-codigocadeia):
 
@@ -48,9 +38,9 @@ A construção do código de cadeia baseia-se na definição de uma vizinhança 
 
 No caso 8-direcional, cada movimento entre pixels adjacentes é representado por um número de 0 a 7, indicando a direção do deslocamento. Assim, ao percorrer o contorno de um objeto, obtém-se uma sequência de números que descreve completamente sua forma.
 
-### Exemplo de código de cadeia
+### Exemplo de Código de Cadeia
 
-![Código de Cadeia](/imgs/cap9/dois.png){width="60%" fig-align="center" #fig-dois}
+![Código de Cadeia.](/imgs/cap9/dois.png){width="60%" fig-align="center" #fig-dois}
 
 Considere um objeto cuja fronteira foi percorrida a partir de um pixel inicial (indicado por uma seta na @fig-dois). O código de cadeia obtido pode ser representado por uma sequência como:
 
@@ -61,7 +51,7 @@ Considere um objeto cuja fronteira foi percorrida a partir de um pixel inicial (
 Cada dígito dessa sequência indica a direção do próximo passo ao longo do contorno. Dessa forma, toda a geometria da borda do objeto é codificada em uma única cadeia de valores inteiros.
 
 
-### Dependência do ponto inicial
+### Dependência do Ponto Inicial
 
 Uma característica importante do código de cadeia é que ele **depende do ponto inicial escolhido** para iniciar o rastreamento do contorno. Diferentes pontos de partida podem gerar sequências distintas para o mesmo objeto, embora todas representem a mesma forma.
 
@@ -203,7 +193,7 @@ Quando se utilizam valores pequenos de $\varepsilon$, a aproximação tende a se
 Além da escolha do parâmetro $\varepsilon$, é importante considerar a influência de ruídos presentes no contorno. Irregularidades decorrentes de processos de aquisição ou segmentação podem introduzir variações indesejadas que afetam negativamente a aproximação poligonal, levando à preservação de pontos irrelevantes ou à distorção da forma simplificada. Por essa razão, é comum aplicar previamente técnicas de suavização, como filtros ou operações morfológicas, com o objetivo de reduzir esses ruídos e obter uma representação mais estável e coerente do contorno antes da simplificação.
 
 
-## Assinatura da forma
+## Assinatura da Forma
 
 A **assinatura da forma** é uma técnica de representação amplamente utilizada no processamento digital de imagens para descrever contornos de objetos de maneira compacta e informativa. Em vez de armazenar todos os pontos do contorno — o que pode ser redundante e custoso — a assinatura transforma a forma em uma função unidimensional, geralmente definida em termos de um parâmetro angular. Essa abordagem reduz a complexidade da representação, ao mesmo tempo em que preserva características essenciais da geometria do objeto.
 
@@ -227,7 +217,7 @@ O exemplo interativo seguinte ilustra esta estratégia. A partir do contorno da 
 
 ## Esqueletização
 
-A **esqueletização** é uma técnica de representação de formas que busca reduzir uma região a uma estrutura central, fina e conectada, preservando sua topologia e características essenciais. O resultado, conhecido como **esqueleto** (*skeleton*), pode ser interpretado como o conjunto de pontos equidistantes das bordas do objeto, funcionando como um eixo medial que descreve sua estrutura interna. Essa representação é especialmente útil por manter informações importantes, como conectividade e ramificações, ao mesmo tempo em que reduz significativamente a quantidade de dados. No contexto deste capítulo, a esqueletização pode ser relacionada diretamente à abordagem apresentada na morfologia matemática por meio da operação de **afinamento morfológico** (*thinning*). O afinamento consiste na remoção iterativa de pixels da borda, sob condições específicas, até que a forma seja reduzida a linhas de espessura unitária, sem quebrar sua conectividade. Dessa forma, o esqueleto obtido por afinamento pode ser visto como uma implementação prática da esqueletização, destacando como operações morfológicas fornecem uma base sólida e eficiente para a representação estrutural de formas em imagens digitais.
+A **esqueletização** é uma técnica de representação de formas que busca reduzir uma região a uma estrutura central, fina e conectada, preservando sua topologia e características essenciais. O resultado, conhecido como **esqueleto** (*skeleton*), pode ser interpretado como o conjunto de pontos equidistantes das bordas do objeto, funcionando como um eixo medial que descreve sua estrutura interna. Essa representação é especialmente útil por manter informações importantes, como conectividade e ramificações, ao mesmo tempo em que reduz significativamente a quantidade de dados, sendo útil em aplicações como reconhecimento de padrões e análise estrutural. No contexto deste capítulo, a esqueletização pode ser relacionada diretamente à abordagem apresentada na morfologia matemática por meio da operação de **afinamento morfológico** (*thinning*). O afinamento consiste na remoção iterativa de pixels da borda, sob condições específicas, até que a forma seja reduzida a linhas de espessura unitária, sem quebrar sua conectividade. Dessa forma, o esqueleto obtido por afinamento pode ser visto como uma implementação prática da esqueletização, destacando como operações morfológicas fornecem uma base sólida e eficiente para a representação estrutural de formas em imagens digitais.
 
 
 ## Descritores de Região
@@ -238,7 +228,7 @@ Uma das características fundamentais dos descritores de regiões é sua capacid
 
 Além das propriedades geométricas, os descritores de regiões também podem incorporar **informações estatísticas de intensidade**, como média, variância e histogramas de níveis de cinza ou de cores. Esses descritores são particularmente úteis quando diferentes objetos apresentam formas semelhantes, mas diferem em textura ou tonalidade. Por exemplo, duas regiões com formatos parecidos podem ser distinguidas por suas distribuições de intensidade, o que amplia o poder discriminativo da representação.
 
-Outro grupo relevante são os **momentos de região**, que fornecem uma descrição mais sofisticada da distribuição espacial dos pixels. Momentos geométricos e momentos invariantes (como os momentos de Hu) são amplamente utilizados por sua capacidade de representar a forma de maneira compacta e, ao mesmo tempo, invariantes a transformações como translação, rotação e escala. Isso os torna extremamente úteis em aplicações onde os objetos podem aparecer em diferentes posições e orientações.
+Outro grupo importante de descritores é o dos **momentos de região**, que fornecem uma descrição mais sofisticada da distribuição espacial dos pixels. Entre eles destacam-se os momentos geométricos e os momentos invariantes (como os momentos de Hu), amplamente utilizados por representarem a forma de maneira compacta e permanecerem invariantes a transformações como translação, rotação e escala. Essa característica os torna especialmente úteis em aplicações nas quais os objetos podem aparecer em diferentes posições, orientações ou tamanhos.
 O momento de ordem $(p,q)$, por exemplo, é definido como:
 
 $$
@@ -253,7 +243,7 @@ Em síntese, os descritores de regiões oferecem uma forma rica e abrangente de 
 
 Os **descritores de textura** são técnicas utilizadas no processamento digital de imagens para caracterizar padrões de variação de intensidade ou cor em uma região. Diferentemente dos descritores de forma, que se concentram na geometria dos objetos, os descritores de textura capturam propriedades relacionadas à **organização espacial dos pixels**, como repetição, rugosidade, suavidade e regularidade. Essas características são fundamentais para distinguir regiões que possuem formas semelhantes, mas apresentam padrões internos distintos.
 
-Uma das abordagens mais comuns para descrever textura baseia-se em **métodos estatísticos**, que analisam a distribuição e a relação entre os níveis de intensidade dos pixels. Entre esses métodos, destacam-se as matrizes de coocorrência de níveis de cinza (GLCM), que consideram a frequência com que pares de pixels com determinados valores ocorrem em posições relativas específicas. A partir dessas matrizes, podem ser extraídas medidas como contraste, homogeneidade, energia e entropia, que fornecem uma descrição quantitativa da textura presente na imagem.
+Uma das abordagens mais comuns para descrever textura baseia-se em **métodos estatísticos**, que analisam a distribuição e a relação entre os níveis de intensidade dos pixels. Entre esses métodos, destacam-se as matrizes de coocorrência de níveis de cinza, que consideram a frequência com que pares de pixels com determinados valores ocorrem em posições relativas específicas. A partir dessas matrizes, podem ser extraídas medidas como contraste, homogeneidade, energia e entropia, que fornecem uma descrição quantitativa da textura presente na imagem.
 
 Outra categoria importante envolve os **descritores estruturais**, que modelam a textura como a repetição de padrões elementares, chamados de primitivas ou texels. Nessa abordagem, busca-se identificar regularidades na disposição desses elementos, sendo particularmente útil em texturas altamente organizadas, como tecidos ou superfícies artificiais. Já os **métodos baseados em filtros** analisam a resposta da imagem a operadores específicos, como filtros de Gabor ou wavelets, permitindo capturar informações em diferentes escalas e orientações. Esses métodos são eficazes para identificar padrões direcionais e frequências espaciais características da textura.
 
@@ -263,34 +253,34 @@ Os descritores de textura desempenham um papel essencial em diversas aplicaçõe
 
 Em síntese, os descritores de textura oferecem uma maneira eficaz de representar padrões complexos presentes nas imagens, complementando outras formas de descrição, como contorno e região. Ao capturar informações sobre a organização interna dos pixels, essas técnicas ampliam significativamente a capacidade de análise e interpretação de imagens digitais em diferentes contextos.
 
-### Matrizes de Coocorrência e Matriz de diferença
+### Matrizes de Coocorrência e Matriz de Diferença
 
 As **matrizes de coocorrência** e as **matrizes de diferença** são técnicas clássicas de descrição de textura que se baseiam na análise das relações espaciais entre os níveis de intensidade dos pixels. Diferentemente de métodos que consideram apenas estatísticas globais (como média e variância), essas abordagens capturam **como os pixels se organizam em relação aos seus vizinhos**, fornecendo uma representação mais rica da estrutura da textura.
 
-#### Matriz de coocorrência {.unnumbered}
+#### Matriz de Coocorrência {.unnumbered}
 
 A **matriz de coocorrência de níveis de cinza** (GLCM – *Gray Level Co-occurrence Matrix*) descreve a frequência com que pares de pixels com determinados valores de intensidade ocorrem em uma posição relativa específica. Para construí-la, define-se um deslocamento espacial — por exemplo, um pixel à direita, acima ou em uma determinada direção e distância — e, em seguida, contabiliza-se quantas vezes um pixel com intensidade $i$ ocorre ao lado de um pixel com intensidade $j$. O resultado é uma matriz em que cada elemento $(i,j)$ representa essa frequência de coocorrência. A escolha da direção e da distância influencia diretamente o tipo de padrão capturado, permitindo analisar texturas com diferentes orientações e escalas.
 
 A partir da matriz de coocorrência, podem ser extraídas diversas medidas estatísticas que caracterizam a textura. Entre as mais utilizadas estão o **contraste**, que indica a variação local de intensidade; a **homogeneidade**, que mede a proximidade dos valores em relação à diagonal da matriz; a **energia**, associada à uniformidade; e a **entropia**, que reflete o grau de desordem da textura. Essas medidas transformam a matriz em um vetor de características compacto, amplamente utilizado em tarefas de classificação e reconhecimento.
 
-![Matriz de coocorrência](/imgs/cap9/coocorrencia.png){width="80%" fig-align="center" #fig-matco}
+![Matriz de coocorrência.](/imgs/cap9/coocorrencia.png){width="80%" fig-align="center" #fig-matco}
 
-O exemplo apresentado na @fig-matco ilustra a construção de uma **matriz de coocorrência de níveis de cinza (GLCM)** a partir de uma pequena imagem quantizada em quatro níveis (1, 2, 3 e 4). 
+O exemplo apresentado na @fig-matco ilustra a construção de uma **matriz de coocorrência de níveis de cinza** a partir de uma pequena imagem quantizada em quatro níveis (1, 2, 3 e 4). 
 
-Inicialmente, observa-se a imagem original, onde cada pixel possui um valor discreto. Em seguida, define-se uma **relação espacial** — no caso do exemplo, considera-se um deslocamento (por exemplo, um pixel à direita). A partir disso, percorre-se a imagem e, para cada pixel, analisa-se o valor do seu vizinho na direção escolhida, formando pares ordenados do tipo ((i, j)), onde (i) é o valor do pixel de referência e (j) é o valor do vizinho.
+Inicialmente, observa-se a imagem original, onde cada pixel possui um valor discreto. Em seguida, define-se uma **relação espacial** — no caso do exemplo, considera-se um deslocamento (por exemplo, um pixel à direita). A partir disso, percorre-se a imagem e, para cada pixel, analisa-se o valor do seu vizinho na direção escolhida, formando pares ordenados do tipo $(i, j)$, onde $i$ é o valor do pixel de referência e $j$ é o valor do vizinho.
 
-Cada ocorrência desses pares é contabilizada em uma matriz (P(i,j)), na qual as linhas representam o valor do pixel de referência e as colunas representam o valor do pixel vizinho. Por exemplo, se um pixel com valor 3 tem um vizinho com valor 2, incrementa-se a posição (P(3,2)) da matriz. Esse processo é repetido para todos os pixels válidos da imagem.
+Cada ocorrência desses pares é contabilizada em uma matriz $P(i,j)$, na qual as linhas representam o valor do pixel de referência e as colunas representam o valor do pixel vizinho. Por exemplo, se um pixel com valor 3 tem um vizinho com valor 2, incrementa-se a posição $P(3,2)$ da matriz. Esse processo é repetido para todos os pixels válidos da imagem.
 
 Ao final, obtém-se a matriz de coocorrência, que expressa a frequência com que diferentes combinações de níveis de cinza ocorrem na imagem segundo a relação espacial definida. Essa matriz é fundamental para a **extração de características de textura**, pois captura padrões como uniformidade, contraste e repetição de intensidades na imagem.
 
 
-#### Matriz de diferença {.unnumbered}
+#### Matriz de Diferença {.unnumbered}
 
 Por sua vez, a **matriz de diferença** (também conhecida como *Gray Level Difference Matrix* – GLDM) é uma variação conceitualmente mais simples. Em vez de considerar pares ordenados $(i,j)$, ela analisa a **diferença absoluta de intensidade** entre pixels vizinhos. Para um dado deslocamento, calcula-se $|i - j|$ para cada par de pixels e contabiliza-se a frequência de cada valor de diferença. O resultado é um vetor ou matriz que descreve a distribuição dessas diferenças ao longo da imagem. Essa abordagem enfatiza diretamente o grau de variação local, sendo particularmente útil para distinguir texturas suaves (com pequenas diferenças) de texturas rugosas (com grandes variações).
 
-![Matriz de diferença](/imgs/cap9/diferenca.png){width="80%" fig-align="center" #fig-matdif}
+![Matriz de diferença.](/imgs/cap9/diferenca.png){width="80%" fig-align="center" #fig-matdif}
 
-O exemplo da **matriz de diferença** da @fig-matdif apresenta uma alternativa à matriz de coocorrência para descrever relações espaciais entre níveis de cinza. Enquanto a matriz de coocorrência contabiliza pares ordenados ((i,j)), a matriz de diferença considera apenas o **valor absoluto da diferença entre os níveis de cinza** de pixels vizinhos.
+O exemplo da **matriz de diferença** da @fig-matdif apresenta uma alternativa à matriz de coocorrência para descrever relações espaciais entre níveis de cinza. Enquanto a matriz de coocorrência contabiliza pares ordenados $(i,j)$, a matriz de diferença considera apenas o **valor absoluto da diferença entre os níveis de cinza** de pixels vizinhos.
 
 No exemplo destacado, a região em vermelho indica um par de pixels vizinhos que está sendo analisado. A partir desses dois valores, calcula-se a diferença e incrementa-se a posição correspondente na matriz de diferença. Diferentemente da matriz de coocorrência, que é bidimensional, a matriz de diferença pode ser representada como um **vetor (ou histograma)**, no qual cada posição $D(d)$ armazena o número de ocorrências da diferença $d$.
 
@@ -300,11 +290,11 @@ Assim, a matriz de diferença constitui uma representação mais compacta da tex
 
 A principal diferença entre essas duas técnicas está no nível de detalhamento da representação. A matriz de coocorrência preserva a informação completa sobre as combinações de intensidades entre pares de pixels, oferecendo uma descrição mais rica, porém com maior custo computacional. Já a matriz de diferença simplifica essa relação ao focar apenas na magnitude da variação, resultando em uma representação mais compacta e eficiente, embora menos detalhada.
 
-Em termos de aplicação, ambas as abordagens são amplamente utilizadas em **segmentação, classificação de texturas e análise de imagens médicas e industriais**. Muitas vezes, elas são empregadas de forma complementar: a GLCM fornece uma descrição detalhada das relações estruturais, enquanto a matriz de diferença destaca o comportamento das variações locais. Assim, juntas, contribuem para uma caracterização mais robusta e discriminativa das texturas presentes em imagens digitais.
+Em termos de aplicação, ambas as abordagens são amplamente utilizadas em **segmentação, classificação de texturas e análise de imagens médicas e industriais**. Muitas vezes, elas são empregadas de forma complementar: a GLCM fornece uma descrição detalhada das relações estruturais, enquanto a GLDM destaca o comportamento das variações locais. Assim, juntas, contribuem para uma caracterização mais robusta e discriminativa das texturas presentes em imagens digitais.
 
-O exemplo interativo seguinte tem como objetivo ilustrar, de forma visual e intuitiva, o processo de construção da **matriz de coocorrência (GLCM)** e da **matriz de diferença** a partir de uma imagem digital. Inicialmente, a imagem original é exibida juntamente com sua versão em tons de cinza quantizada, permitindo ao usuário observar como os valores contínuos de intensidade são convertidos em um número reduzido de níveis discretos.
+O exemplo interativo seguinte tem como objetivo ilustrar, de forma visual e intuitiva, o processo de construção da **matriz de coocorrência** e da **matriz de diferença** a partir de uma imagem digital. Inicialmente, a imagem original é exibida juntamente com sua versão em tons de cinza quantizada, permitindo ao usuário observar como os valores contínuos de intensidade são convertidos em um número reduzido de níveis discretos.
 
-A visualização da imagem quantizada permite compreender como os níveis de cinza são agrupados antes do cálculo das matrizes. Essa etapa reduz a complexidade do problema e torna viável a construção da matriz de coocorrência, que depende de um número limitado de níveis. Além disso, evidencia que tanto a GLCM quanto a matriz de diferença não operam diretamente sobre os valores originais da imagem, mas sim sobre uma representação simplificada, preservando apenas as variações estruturais mais relevantes.
+A visualização da imagem quantizada permite compreender como os níveis de cinza são agrupados antes do cálculo das matrizes. Essa etapa reduz a complexidade do problema e torna viável a construção da matriz de coocorrência, que depende de um número limitado de níveis. Além disso, evidencia que tanto a GLCM quanto a GLDM não operam diretamente sobre os valores originais da imagem, mas sim sobre uma representação simplificada, preservando apenas as variações estruturais mais relevantes.
 
 A partir da imagem quantizada, o algoritmo percorre os pixels considerando uma relação espacial definida — neste exemplo, um deslocamento horizontal de um pixel. Para cada par de pixels vizinhos, são realizadas duas análises complementares. Na primeira, registra-se a ocorrência do par de níveis $(i, j)$, incrementando a posição correspondente na matriz de coocorrência. Essa matriz bidimensional expressa a frequência com que diferentes combinações de intensidades ocorrem na imagem, sendo particularmente útil para capturar padrões de textura, como repetição e orientação.
 

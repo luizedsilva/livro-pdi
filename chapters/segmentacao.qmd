@@ -42,13 +42,7 @@ onde $g(x,y)$ representa a imagem binarizada resultante.
 
 Uma das abordagens mais básicas é a limiarização global, na qual um único valor de limiar $T$ é utilizado para toda a imagem. Esse método é eficaz quando há boa separação entre os níveis de intensidade do objeto e do fundo, como em imagens com histogramas bimodais. No entanto, em situações onde a iluminação não é uniforme, essa abordagem pode apresentar resultados insatisfatórios.
 
-A detecção de pontos isolados, por exemplo, pode ser obtida de maneira direta, utilizando a máscara abaixo e aplicando a operação de convolução em toda a imagem. Dizemos que um ponto foi detectado se:
-
-$$
-|R| > T
-$$
-
-onde $T$ é um limiar não-negativo e $R$ é o resultado da aplicação da máscara.
+A detecção de pontos isolados, por exemplo, pode ser obtida de maneira direta, utilizando a máscara 
 
 $$
 \begin{bmatrix}
@@ -57,6 +51,14 @@ $$
 -1 & -1 & -1
 \end{bmatrix}
 $$
+
+e aplicando a operação de convolução em toda a imagem. Dizemos que um ponto foi detectado se:
+
+$$
+|R| > T
+$$
+
+onde $T$ é um limiar não-negativo e $R$ é o resultado da aplicação da máscara.
 
 
 O código interativo seguinte exemplifica essa abordagem. No exemplo, pode-se escolher o nível de ruído sal e pimenta na imagem e o limiar. É possível verificar que o ruído (ponto isolado) se mistura com algumas bordas da imagem.
@@ -67,9 +69,7 @@ O código interativo seguinte exemplifica essa abordagem. No exemplo, pode-se es
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/isolado/" height="680" imagem="imgs/cap8/p5js-isolado.png" qrcode="imgs/cap8/qrcode-isolado.png"}
 :::
 
-Essa é uma abordagem mais básicas de limiarização global, na qual um único valor de limiar $T$ é utilizado para toda a imagem. Esse método é eficaz quando há boa separação entre os níveis de intensidade do objeto e do fundo, como em imagens com histogramas bimodais. No entanto, em situações onde a iluminação não é uniforme, essa abordagem pode apresentar resultados insatisfatórios.
-
-Para contornar esse problema, utiliza-se a limiarização adaptativa, em que o valor de $T$ varia ao longo da imagem, sendo calculado com base em características locais, como média ou mediana de regiões vizinhas. Isso permite uma melhor adaptação a variações de iluminação e melhora a segmentação em imagens mais complexas.
+Para contornar o baixo desempenho da limiarização global em algumas situações, utiliza-se a limiarização adaptativa, em que o valor de $T$ varia ao longo da imagem, sendo calculado com base em características locais, como média ou mediana de regiões vizinhas. Isso permite uma melhor adaptação a variações de iluminação e melhora a segmentação em imagens mais complexas.
 
 Outra técnica amplamente utilizada é o método de Otsu, que determina automaticamente o valor ótimo de limiar a partir da análise do histograma da imagem. Esse método busca maximizar a variância entre classes (objeto e fundo), ou, de forma equivalente, minimizar a variância intra-classes. Por não exigir intervenção manual, o método de Otsu é bastante popular em aplicações práticas.
 
@@ -124,7 +124,7 @@ Uma versão simplificada desses cálculos é apresentada no exemplo interativo a
 
 Essas operações estão representadas nas máscaras de convolução para identificação de bordas horizontais e verticais da @fig-sobel.
 
-![Máscaras da convolução para filtragem de Sobel](/imgs/cap8/sobel.png){width="60%" fig-align="center" #fig-sobel}
+![Máscaras da convolução para filtragem de Sobel.](/imgs/cap8/sobel.png){width="60%" fig-align="center" #fig-sobel}
 
 A aplicação das duas máscaras pode ser simplificada na expressão:
 
@@ -169,7 +169,7 @@ image sobel(image in)
 ```
 :::
 
-O filtro Lapraciano mede a variação da variação da intensidade da imagem, ou seja, corresponde à segunda derivada espacial, indicando quão rapidamente o valor do pixel está mudando em relação aos seus vizinhos. Por essa característica, ele é especialmente eficaz em destacar regiões onde ocorrem mudanças bruscas de intensidade, que correspondem às bordas dos objetos na imagem. Diferentemente do gradiente, que fornece informação direcional (indicando a orientação da borda), o Laplaciano é um operador não direcional, produzindo apenas um valor escalar com sinal, que indica se a região corresponde a um máximo ou mínimo local de intensidade:
+O filtro Laplaciano mede a variação da variação da intensidade da imagem, ou seja, corresponde à segunda derivada espacial, indicando quão rapidamente o valor do pixel está mudando em relação aos seus vizinhos. Por essa característica, ele é especialmente eficaz em destacar regiões onde ocorrem mudanças bruscas de intensidade, que correspondem às bordas dos objetos na imagem. Diferentemente do gradiente, que fornece informação direcional (indicando a orientação da borda), o Laplaciano é um operador não direcional, produzindo apenas um valor escalar com sinal, que indica se a região corresponde a um máximo ou mínimo local de intensidade:
 
 $$
 \bigtriangledown^2 I= \frac{\delta^2 I}{\delta x^2} + \frac{\delta^2 I}{\delta y^2}
@@ -242,7 +242,7 @@ O exemplo interativo seguinte apresenta uma simulação desse algoritmo de water
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/simula/" height="550" imagem="imgs/cap8/p5js-simula.png" qrcode="imgs/cap8/qrcode-simula.png"}
 :::
 
-Os exemplos seguintes demonstram o mesmo algoritmo para imagens. O primeiro exemplo mostra a execução do algoritmo de forma bidimensional. E o segundo mostra a mesma imagem como um relevo tridimensional. Existe uma marca para cada região da imagem. E o crescimento da regiões (inundação do relevo) é realizado até que são encontradas as linhas divisoras de água (watershed).
+Os exemplos seguintes mostram o mesmo algoritmo para imagens. O primeiro exemplo mostra a execução do algoritmo de forma bidimensional. E o segundo mostra a mesma imagem como um relevo tridimensional. Existe uma marca para cada região da imagem. E o crescimento da regiões (inundação do relevo) é realizado até que são encontradas as linhas divisoras de água (watershed).
 
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/mk25edaHn" height="650" imagem="imgs/cap8/p5js-watershed2d.png" qrcode="imgs/cap8/qrcode-watershed2d.png"}
 ::: -->
@@ -258,7 +258,7 @@ A mesma simulação para um representação da mesma imagem como superfície em 
 ::: {.simulacao url="https://luizedsilva.github.io/livro-pdi/p5js/watershed3d/" height="550" imagem="imgs/cap8/p5js-watershed3d.png" qrcode="imgs/cap8/qrcode-watershed3d.png"}
 :::
 
-O exemplo interativo seguinte está a implementação para segmentação de imagens reais. Pode-se carregar uma imagem. Para execução do algoritmo basta clicar dentro de alguma região. O clique define um marcador. O outro marcador é a borda da imagem. O algoritmo é então aplicado sobre a imagem de gradiente morfológico (dilatação menos erosão) que evidencia as bordas. Uma linha vermelha seja adicionada a imagem, como resultado da operação de watershed para identificação da borda que contorna o ponto marcado.
+No exemplo interativo seguinte está a implementação para segmentação de imagens reais. Pode-se carregar uma imagem. Para execução do algoritmo basta clicar dentro de alguma região. O clique define um marcador. O outro marcador é a borda da imagem. O algoritmo é então aplicado sobre a imagem de gradiente morfológico (dilatação menos erosão) que evidencia as bordas. Uma linha vermelha será adicionada a imagem, como resultado da operação de watershed para identificação da borda que contorna o ponto marcado.
 
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/5fXyn6cyw" height="600" imagem="imgs/cap8/p5js-watershed.png" qrcode="imgs/cap8/qrcode-watershed.png"}
 ::: -->
@@ -278,7 +278,7 @@ $$
 
 onde $C_k$ representa o conjunto de pontos do cluster $k$ e $\mu_k$ seu centroide.
 
-O código exemplo seguinte implementa essa técnica para imagens:
+O exemplo interativo seguinte implementa essa técnica para imagens:
 
 <!-- ::: {.simulacao url="https://editor.p5js.org/luizedsilva/full/7ooZnvesJ" height="600" imagem="imgs/cap8/p5js-kmeans.png" qrcode="imgs/cap8/qrcode-kmeans.png"}
 ::: -->
@@ -294,7 +294,7 @@ A escolha dos atributos utilizados no processo de agrupamento é fundamental par
 
 A segmentação com inteligência artificial representa uma das abordagens mais avançadas e eficazes no processamento de imagens moderno. Diferentemente dos métodos clássicos, que dependem de regras explícitas e critérios definidos manualmente, essas técnicas são capazes de aprender automaticamente padrões complexos diretamente a partir dos dados. Isso permite lidar com cenários desafiadores, como variações de iluminação, ruído, oclusões e grande diversidade de formas e texturas.
 
-Entre os principais modelos utilizados destacam-se as redes neurais convolucionais (CNNs), que exploram a estrutura espacial das imagens por meio de operações de convolução. Essas redes aprendem representações hierárquicas, начиная desde características simples, como bordas e texturas, até padrões mais abstratos, como formas e objetos completos. Essa capacidade torna as CNNs particularmente adequadas para tarefas de segmentação.
+Entre os principais modelos utilizados destacam-se as redes neurais convolucionais (CNNs), que exploram a estrutura espacial das imagens por meio de operações de convolução. Essas redes aprendem representações hierárquicas que vão desde características simples, como bordas e texturas, até padrões mais abstratos, como formas e objetos completos. Essa capacidade torna as CNNs particularmente adequadas para tarefas de segmentação.
 
 Arquiteturas específicas foram desenvolvidas para segmentação de imagens, como a U-Net, amplamente utilizada em aplicações médicas. Esse modelo apresenta uma estrutura em formato de “U”, composta por um caminho de contração (encoder), responsável pela extração de características, e um caminho de expansão (decoder), que reconstrói a segmentação com precisão espacial. Outro modelo relevante é o Mask R-CNN, que estende técnicas de detecção de objetos ao fornecer, além das caixas delimitadoras, máscaras de segmentação para cada objeto identificado na imagem.
 
@@ -335,7 +335,7 @@ A segmentação de imagens possui um amplo espectro de aplicações, sendo uma e
 
 Na área de diagnóstico médico, a segmentação é amplamente utilizada para identificar estruturas anatômicas e detectar anomalias em exames de imagem, como tomografias, ressonâncias magnéticas e radiografias. Aplicações incluem a delimitação de órgãos, a detecção de tumores e o acompanhamento da evolução de doenças, contribuindo diretamente para a tomada de decisão clínica.
 
-Em veículos autônomos, a segmentação desempenha um papel crucial na compreensão do ambiente ao redor. Ela é utilizada para identificar elementos como faixas de rodagem, pedestres, veículos e obstáculos, permitindo que o sistema tome decisões seguras em tempo real. Nesse contexto, a segmentação semântica e a segmentação por instâncias são particularmente importantes.
+Em veículos autônomos, a segmentação desempenha um papel crucial na compreensão do ambiente ao redor. Ela é utilizada para identificar elementos como faixas de rodagem, pedestres, veículos e obstáculos, permitindo que o sistema tome decisões seguras em tempo real. Nesse contexto, destacam-se a **segmentação semântica**, que atribui uma classe a cada pixel da imagem (como pista, calçada, veículo ou pedestre), e a **segmentação por instâncias**, que também identifica cada objeto individualmente, diferenciando, por exemplo, um veículo de outro ou um pedestre de outro na mesma cena.
 
 Na agricultura de precisão, técnicas de segmentação são aplicadas para monitorar culturas, identificar pragas, avaliar o estado de saúde das plantas e estimar produtividade. A análise de imagens obtidas por drones ou satélites permite segmentar áreas específicas, auxiliando no manejo eficiente dos recursos agrícolas.
 
@@ -515,7 +515,7 @@ O resultado esperado é uma imagem onde:
 
 **Descrição**
 
-1. Escolha uma imagem colorida (formato PPM), diferente do exemplo apresentado em aula.
+1. Escolha uma imagem colorida (formato PPM).
 
 2. Desenvolva um programa (`borre.c`) que execute as seguintes etapas:
 
